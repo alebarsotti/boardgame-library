@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ale's Board Game Library</title>
+    <meta
+      name="description"
+      content="Colección de juegos de mesa con filtros avanzados, recomendaciones y selección aleatoria."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero__glow"></div>
+        <div class="hero__copy">
+          <div class="hero__utility">
+            <div class="segmented-control" id="language-segment" aria-label="Language"></div>
+          </div>
+          <p class="eyebrow" data-i18n="heroEyebrow"></p>
+          <h1 data-i18n="heroTitle"></h1>
+          <p class="hero__lede" data-i18n="heroLede"></p>
+          <div class="hero__actions">
+            <button class="button button--primary" id="random-trigger" type="button">
+              <span data-i18n="randomAction"></span>
+            </button>
+            <a class="button button--ghost" href="#collection" data-i18n="exploreAction"></a>
+          </div>
+        </div>
+        <div class="hero__stats" id="hero-stats"></div>
+      </header>
+
+      <main class="layout" id="collection">
+        <aside class="filters" id="filters-panel">
+          <div class="filters__header">
+            <div>
+              <p class="eyebrow" data-i18n="filterEyebrow"></p>
+              <h2 data-i18n="filterTitle"></h2>
+            </div>
+            <button class="button button--ghost button--small mobile-only" id="close-filters" type="button">
+              <span data-i18n="close"></span>
+            </button>
+          </div>
+
+          <label class="field">
+            <span data-i18n="searchLabel"></span>
+            <input id="search-input" type="search" />
+          </label>
+
+          <div class="field-grid">
+            <label class="field">
+              <span data-i18n="playersLabel"></span>
+              <select id="players-filter"></select>
+            </label>
+            <label class="field">
+              <span data-i18n="durationLabel"></span>
+              <select id="time-filter"></select>
+            </label>
+          </div>
+
+          <div class="field-grid">
+            <label class="field">
+              <span data-i18n="weightLabel"></span>
+              <select id="weight-filter"></select>
+            </label>
+            <label class="field">
+              <span data-i18n="languageLabel"></span>
+              <select id="language-filter"></select>
+            </label>
+          </div>
+
+          <div class="field-grid">
+            <label class="field">
+              <span data-i18n="bestPlayersLabel"></span>
+              <select id="best-players-filter"></select>
+            </label>
+            <label class="field">
+              <span data-i18n="ageLabel"></span>
+              <select id="age-filter"></select>
+            </label>
+          </div>
+
+          <div class="field-grid">
+            <label class="field">
+              <span data-i18n="sortLabel"></span>
+              <select id="sort-filter"></select>
+            </label>
+            <label class="field">
+              <span data-i18n="viewLabel"></span>
+              <select id="view-filter"></select>
+            </label>
+          </div>
+
+          <div class="recommendations-card">
+            <div class="recommendations-card__header">
+              <p class="eyebrow" data-i18n="recommendEyebrow"></p>
+              <h3 data-i18n="recommendTitle"></h3>
+            </div>
+            <div class="chip-list" id="recommendation-chips"></div>
+          </div>
+        </aside>
+
+        <section class="content">
+          <div class="toolbar">
+            <button class="button button--ghost mobile-only" id="open-filters" type="button">
+              <span data-i18n="openFilters"></span>
+            </button>
+            <div class="toolbar__summary">
+              <p class="eyebrow" data-i18n="resultsEyebrow"></p>
+              <h2 id="results-count"></h2>
+            </div>
+            <div class="toolbar__actions">
+              <button class="button button--ghost" id="reset-filters" type="button" data-i18n="resetFilters"></button>
+              <button class="button button--primary" id="toolbar-random" type="button" data-i18n="randomAction"></button>
+            </div>
+          </div>
+
+          <div class="section-tabs" id="collection-tabs"></div>
+          <div class="active-filters" id="active-filters"></div>
+          <div class="collection-grid" id="games-grid"></div>
+          <div class="empty-state hidden" id="empty-state">
+            <h3 data-i18n="emptyTitle"></h3>
+            <p data-i18n="emptyBody"></p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>
+          <span data-i18n="poweredBy"></span>
+          <a href="https://boardgamegeek.com/" target="_blank" rel="noreferrer">BoardGameGeek</a>
+        </p>
+      </footer>
+    </div>
+
+    <dialog class="modal" id="details-dialog">
+      <button class="modal__close" id="details-close" type="button" aria-label="Close">+</button>
+      <div class="modal__content" id="details-content"></div>
+    </dialog>
+
+    <dialog class="modal modal--compact" id="random-dialog">
+      <button class="modal__close" id="random-close" type="button" aria-label="Close">+</button>
+      <div class="modal__content" id="random-content"></div>
+    </dialog>
+
+    <template id="game-card-template">
+      <article class="game-card">
+        <button class="game-card__button" type="button">
+          <div class="game-card__art"></div>
+          <div class="game-card__body">
+            <div class="game-card__heading">
+              <div>
+                <p class="game-card__title"></p>
+                <p class="game-card__subtitle"></p>
+              </div>
+              <span class="game-card__badge"></span>
+            </div>
+            <div class="game-card__meta"></div>
+            <div class="game-card__tags"></div>
+          </div>
+        </button>
+      </article>
+    </template>
+
+    <script src="./data/games-data.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
