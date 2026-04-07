@@ -1,0 +1,698 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items termsofuse="https://boardgamegeek.com/xmlapi/termsofuse">
+	<item type="boardgame" id="173346">
+		<thumbnail>https://cf.geekdo-images.com/zdagMskTF7wJBPjX74XsRw__small/img/gV1-ckZSIC-dCxxpq1Y7GmPITzQ=/fit-in/200x150/filters:strip_icc()/pic2576399.jpg</thumbnail>
+		<image>https://cf.geekdo-images.com/zdagMskTF7wJBPjX74XsRw__original/img/Ju836WNSaW7Mab9Vjq2TJ_FqhWQ=/0x0/filters:format(jpeg)/pic2576399.jpg</image>
+		<name type="primary" sortindex="1" value="7 Wonders Duel" />
+		<name type="alternate" sortindex="1" value="7 Csoda Párbaj" />
+		<name type="alternate" sortindex="1" value="7 Cudów Świata: Pojedynek" />
+		<name type="alternate" sortindex="1" value="7 Divů světa: Duel" />
+		<name type="alternate" sortindex="1" value="7 Чудес: Дуэль" />
+		<name type="alternate" sortindex="1" value="7 สิ่งมหัศจรรย์ ดวล" />
+		<name type="alternate" sortindex="1" value="7 원더스 대결" />
+		<name type="alternate" sortindex="1" value="لعبة مبارزة العجائب السبعة" />
+		<name type="alternate" sortindex="1" value="七大奇蹟 對決" />
+		<name type="alternate" sortindex="1" value="七大奇迹:对决" />
+		<name type="alternate" sortindex="1" value="七大奇迹：对决" />
+		<name type="alternate" sortindex="1" value="七大对决" />
+		<name type="alternate" sortindex="1" value="世界の七不思議:デュエル" />
+		<description>In many ways 7 Wonders Duel resembles its parent game 7 Wonders. Over three ages, players acquire cards that provide resources or advance their military or scientific development in order to develop a civilization and complete wonders. What's different about 7 Wonders Duel is that, as the title suggests, the game is solely for two players.
+
+Players do not draft cards simultaneously from decks of cards, but from a display of face-down and face-up cards arranged at the start of a round. A player can take a card only if it's not covered by any others, so timing comes into play, as it can with bonus moves that allow the player to take a second card immediately. As in the original game, each acquired card can be built, discarded for coins, or used to construct a wonder. Each player also starts with four wonder cards, and the construction of a wonder provides its owner with a special ability. Only seven wonders can be built, though, so one player will end up short.
+
+Players can purchase resources at any time from the bank, or they can gain cards during the game that provide them with resources for future building; as they are acquired, the cost for those resources increases for the opponent, representing the owner's dominance in this area.
+
+You can win 7 Wonders Duel in one of three ways: each time you acquire a military card, you advance the military marker toward your opponent's capital (also giving you a bonus at certain positions). If you reach the opponent's capital, you win the game immediately. Or if you acquire six of seven different scientific symbols, you achieve scientific dominance and win immediately. If none of these situations occurs, then the player with the most points at the end of the game wins.
+
+</description>
+		<yearpublished value="2015" />
+		<minplayers value="2" />
+		<maxplayers value="2" />
+		<poll name="suggested_numplayers" title="User Suggested Number of Players" totalvotes="1508">
+			<results numplayers="1">
+				<result value="Best" numvotes="13" />
+				<result value="Recommended" numvotes="107" />
+				<result value="Not Recommended" numvotes="1083" />
+			</results>
+			<results numplayers="2">
+				<result value="Best" numvotes="1459" />
+				<result value="Recommended" numvotes="31" />
+				<result value="Not Recommended" numvotes="6" />
+			</results>
+			<results numplayers="2+">
+				<result value="Best" numvotes="7" />
+				<result value="Recommended" numvotes="5" />
+				<result value="Not Recommended" numvotes="1154" />
+			</results>
+		</poll>
+		<poll-summary name="suggested_numplayers"  title="User Suggested Number of Players">
+			<result name="bestwith" value="Best with 2 players" />
+			<result name="recommmendedwith" value="Recommended with 2 players" />
+		</poll-summary>
+		<playingtime value="30" />
+		<minplaytime value="30" />
+		<maxplaytime value="30" />
+		<minage value="10" />
+		<poll name="suggested_playerage" title="User Suggested Player Age" totalvotes="413">
+			<results>
+				<result value="2" numvotes="0" />
+				<result value="3" numvotes="0" />
+				<result value="4" numvotes="0" />
+				<result value="5" numvotes="2" />
+				<result value="6" numvotes="8" />
+				<result value="8" numvotes="116" />
+				<result value="10" numvotes="187" />
+				<result value="12" numvotes="86" />
+				<result value="14" numvotes="12" />
+				<result value="16" numvotes="1" />
+				<result value="18" numvotes="1" />
+				<result value="21 and up" numvotes="0" />
+			</results>
+		</poll>
+		<poll name="language_dependence" title="Language Dependence" totalvotes="128">
+			<results>
+				<result level="1" value="No necessary in-game text" numvotes="119" />
+				<result level="2" value="Some necessary text - easily memorized or small crib sheet" numvotes="9" />
+				<result level="3" value="Moderate in-game text - needs crib sheet or paste ups" numvotes="0" />
+				<result level="4" value="Extensive use of text - massive conversion needed to be playable" numvotes="0" />
+				<result level="5" value="Unplayable in another language" numvotes="0" />
+			</results>
+		</poll>
+		<link type="boardgamecategory" id="1050" value="Ancient" />
+		<link type="boardgamecategory" id="1002" value="Card Game" />
+		<link type="boardgamecategory" id="1029" value="City Building" />
+		<link type="boardgamecategory" id="1015" value="Civilization" />
+		<link type="boardgamecategory" id="1021" value="Economic" />
+		<link type="boardgamemechanic" id="2875" value="End Game Bonuses" />
+		<link type="boardgamemechanic" id="2902" value="Income" />
+		<link type="boardgamemechanic" id="2981" value="Melding and Splaying" />
+		<link type="boardgamemechanic" id="2011" value="Modular Board" />
+		<link type="boardgamemechanic" id="3099" value="Multi-Use Cards" />
+		<link type="boardgamemechanic" id="2846" value="Once-Per-Game Abilities" />
+		<link type="boardgamemechanic" id="2041" value="Open Drafting" />
+		<link type="boardgamemechanic" id="2823" value="Score-and-Reset Game" />
+		<link type="boardgamemechanic" id="2004" value="Set Collection" />
+		<link type="boardgamemechanic" id="2884" value="Sudden Death Ending" />
+		<link type="boardgamemechanic" id="3100" value="Tags" />
+		<link type="boardgamemechanic" id="2849" value="Tech Trees / Tech Tracks" />
+		<link type="boardgamemechanic" id="2939" value="Track Movement" />
+		<link type="boardgamemechanic" id="2888" value="Tug of War" />
+		<link type="boardgamemechanic" id="2897" value="Variable Set-up" />
+		<link type="boardgamefamily" id="27524" value="Ancient: Babylon" />
+		<link type="boardgamefamily" id="72535" value="Ancient: Egypt" />
+		<link type="boardgamefamily" id="52373" value="Ancient: Greece" />
+		<link type="boardgamefamily" id="5606" value="Ancient: Rome" />
+		<link type="boardgamefamily" id="77012" value="Constructions: Pyramids" />
+		<link type="boardgamefamily" id="70360" value="Digital Implementations: Board Game Arena" />
+		<link type="boardgamefamily" id="78432" value="Digital Implementations: Google Play" />
+		<link type="boardgamefamily" id="17552" value="Game: 7 Wonders" />
+		<link type="boardgamefamily" id="39540" value="Game: 7 Wonders Duel" />
+		<link type="boardgamefamily" id="27646" value="Mechanism: Tableau Building" />
+		<link type="boardgamefamily" id="78198" value="Misc: Watch It Played How To Videos" />
+		<link type="boardgamefamily" id="65851" value="Players: Games with expansions that add solo play" />
+		<link type="boardgamefamily" id="61979" value="Players: Two-Player Only Games" />
+		<link type="boardgamefamily" id="62276" value="Versions &amp; Editions: Two-Player Versions of More-Player Games" />
+		<link type="boardgameexpansion" id="309116" value="7 Wonders Duel: Agora" />
+		<link type="boardgameexpansion" id="348601" value="7 Wonders Duel: Agora – Tu Quoque Fili Promo Card" />
+		<link type="boardgameexpansion" id="202976" value="7 Wonders Duel: Pantheon" />
+		<link type="boardgameexpansion" id="310215" value="7 Wonders Duel: Solo" />
+		<link type="boardgameexpansion" id="196339" value="7 Wonders Duel: Statue of Liberty Promo Card" />
+		<link type="boardgameexpansion" id="186069" value="7 Wonders Duel: The Messe Promo Card" />
+		<link type="boardgameexpansion" id="274383" value="Leaders (fan expansion for 7 Wonders Duel)" />
+		<link type="boardgameaccessory" id="334636" value="7 Cudów Świata: Pojedynek – reDrewno Insert" />
+		<link type="boardgameaccessory" id="333853" value="7 Wonders Duel + Pantheon + Agora: Eurohell Design Insert" />
+		<link type="boardgameaccessory" id="354399" value="7 Wonders Duel + Pantheon + Agora: Folded Space Insert" />
+		<link type="boardgameaccessory" id="347408" value="7 Wonders Duel + Pantheon + Agora: Game Tamer organizer" />
+		<link type="boardgameaccessory" id="457325" value="7 Wonders Duel + Pantheon + Agora: LaserOx Dueling Wonders Insert" />
+		<link type="boardgameaccessory" id="333852" value="7 Wonders Duel + Pantheon: Eurohell Design Insert" />
+		<link type="boardgameaccessory" id="291721" value="7 Wonders Duel + Pantheon: Folded Space Insert" />
+		<link type="boardgameaccessory" id="437379" value="7 Wonders Duel: Braille Accessibility Kit" />
+		<link type="boardgameaccessory" id="207907" value="7 Wonders Duel: Broken Token Organizer" />
+		<link type="boardgameaccessory" id="309490" value="7 Wonders Duel: e-Raptor Insert" />
+		<link type="boardgameaccessory" id="336659" value="7 Wonders Duel: Eurohell Design Insert" />
+		<link type="boardgameaccessory" id="347023" value="7 Wonders Duel: Gold, silver and bronze Conflict pawns" />
+		<link type="boardgameaccessory" id="428448" value="7 Wonders Duel: Hobby Next Kit" />
+		<link type="boardgameaccessory" id="271935" value="7 Wonders Duel: Insert Here Insert" />
+		<link type="boardgameaccessory" id="306199" value="7 Wonders Duel: Laserox Dueling Wonders Organizer" />
+		<link type="boardgameaccessory" id="219880" value="7 Wonders Duel: Metal Coins" />
+		<link type="boardgameaccessory" id="186070" value="7 Wonders Duel: Metal Conflict Pawn" />
+		<link type="boardgameaccessory" id="369236" value="7 Wonders Duel: Moedas &amp; Co. Metal Coins" />
+		<link type="boardgameaccessory" id="212289" value="7 Wonders Duel: Pantheon – Metal Minerva Pawn" />
+		<link type="boardgameaccessory" id="255878" value="7 Wonders Duel: Sagrada Familia Alternate Art Promo Card" />
+		<link type="boardgameaccessory" id="373836" value="7 Wonders Duel: Spike Craft Insert" />
+		<link type="boardgameaccessory" id="228690" value="7 Wonders Duel: Stonehenge Alternate Art Promo Card" />
+		<link type="boardgameaccessory" id="448975" value="7 Wonders Duel: The Dicetroyers Organizer" />
+		<link type="boardgameaccessory" id="348618" value="7 Wonders Duel: The GiftForge Insert" />
+		<link type="boardgameaccessory" id="444758" value="7 Wonders Duel: Tokens Garden Metal Coins" />
+		<link type="boardgameaccessory" id="272265" value="7 Wonders Duel: Tower Rex Organizer" />
+		<link type="boardgameaccessory" id="400962" value="7 Wonders: Duel – Playmaty Rubber Mat" />
+		<link type="boardgameimplementation" id="421006" value="The Lord of the Rings: Duel for Middle-earth" />
+		<link type="boardgameimplementation" id="68448" value="7 Wonders" inbound="true"/>
+		<link type="boardgamedesigner" id="9714" value="Antoine Bauza" />
+		<link type="boardgamedesigner" id="1727" value="Bruno Cathala" />
+		<link type="boardgameartist" id="12016" value="Miguel Coimbra" />
+		<link type="boardgamepublisher" id="4384" value="Repos Production" />
+		<link type="boardgamepublisher" id="23043" value="ADC Blackfire Entertainment" />
+		<link type="boardgamepublisher" id="157" value="asmodee" />
+		<link type="boardgamepublisher" id="15889" value="Asterion Press" />
+		<link type="boardgamepublisher" id="34501" value="Boardgame Space" />
+		<link type="boardgamepublisher" id="50696" value="CoolPlay" />
+		<link type="boardgamepublisher" id="15605" value="Galápagos Jogos" />
+		<link type="boardgamepublisher" id="8820" value="Gém Klub Kft." />
+		<link type="boardgamepublisher" id="1391" value="Hobby Japan" />
+		<link type="boardgamepublisher" id="9634" value="KADABRA" />
+		<link type="boardgamepublisher" id="6214" value="Kaissa Chess &amp; Games" />
+		<link type="boardgamepublisher" id="8291" value="Korea Boardgames" />
+		<link type="boardgamepublisher" id="3218" value="Lautapelit.fi" />
+		<link type="boardgamepublisher" id="9325" value="Lifestyle Boardgames Ltd" />
+		<link type="boardgamepublisher" id="30399" value="Ludicus Games" />
+		<link type="boardgamepublisher" id="31904" value="Ponva d.o.o." />
+		<link type="boardgamepublisher" id="36366" value="Pridemage Games" />
+		<link type="boardgamepublisher" id="7466" value="Rebel Sp. z o.o." />
+		<link type="boardgamepublisher" id="33998" value="Siam Board Games" />
+		<link type="boardgamepublisher" id="32645" value="Sombreros Production" />
+		<link type="boardgamepublisher" id="44209" value="Ігромаг" />
+		<statistics page="1">
+			<ratings >
+				<usersrated value="108231" />
+				<average value="8.07838" />
+				<bayesaverage value="7.95376" />
+				<ranks>
+					<rank type="subtype" id="1" name="boardgame" friendlyname="Board Game Rank" value="24" bayesaverage="7.95376" />
+					<rank type="family" id="5497" name="strategygames" friendlyname="Strategy Game Rank" value="28" bayesaverage="7.91793" />
+				</ranks>
+				<stddev value="1.20108" />
+				<median value="0" />
+				<owned value="183129" />
+				<trading value="1435" />
+				<wanting value="856" />
+				<wishing value="12167" />
+				<numcomments value="14166" />
+				<numweights value="3405" />
+				<averageweight value="2.2273" />
+			</ratings>
+		</statistics>
+	</item>
+	<item type="boardgame" id="199561">
+		<thumbnail>https://cf.geekdo-images.com/77OxPP4ckbOgK9sPg-6KDw__small/img/zCe7i6vc7LoJZDDnVUQQlU-uw4w=/fit-in/200x150/filters:strip_icc()/pic9374520.png</thumbnail>
+		<image>https://cf.geekdo-images.com/77OxPP4ckbOgK9sPg-6KDw__original/img/oh6s7_lx_jMP0zvHK7RttbhQd5I=/0x0/filters:format(png)/pic9374520.png</image>
+		<name type="primary" sortindex="1" value="Sagrada" />
+		<name type="alternate" sortindex="1" value="Саґрада" />
+		<name type="alternate" sortindex="1" value="Саграда" />
+		<name type="alternate" sortindex="1" value="ซากราดา" />
+		<name type="alternate" sortindex="1" value="サグラダ" />
+		<name type="alternate" sortindex="1" value="聖家族大教堂 SAGRADA" />
+		<name type="alternate" sortindex="1" value="사그라다" />
+		<description>Draft dice and use the tools-of-the-trade in Sagrada to carefully construct your stained glass window masterpiece.
+
+In more detail, each player builds a stained glass window by building up a grid of dice on their player board. Each board has some restrictions on which color or shade (value) of die can be placed there. Dice of the same shade or color may never be placed next to each other. Dice are drafted in player order, with the start player rotating each round, snaking back around after the last player drafts two dice. Scoring is variable per game based on achieving various patterns and varieties of placement...as well as bonus points for dark shades of a particular hidden goal color.
+
+Special tools can be used to help you break the rules by spending skill tokens; once a tool is used, it then requires more skill tokens for the other players to use them.
+
+The highest scoring window artisan wins!
+
+</description>
+		<yearpublished value="2017" />
+		<minplayers value="1" />
+		<maxplayers value="4" />
+		<poll name="suggested_numplayers" title="User Suggested Number of Players" totalvotes="610">
+			<results numplayers="1">
+				<result value="Best" numvotes="24" />
+				<result value="Recommended" numvotes="194" />
+				<result value="Not Recommended" numvotes="176" />
+			</results>
+			<results numplayers="2">
+				<result value="Best" numvotes="293" />
+				<result value="Recommended" numvotes="225" />
+				<result value="Not Recommended" numvotes="20" />
+			</results>
+			<results numplayers="3">
+				<result value="Best" numvotes="198" />
+				<result value="Recommended" numvotes="285" />
+				<result value="Not Recommended" numvotes="11" />
+			</results>
+			<results numplayers="4">
+				<result value="Best" numvotes="148" />
+				<result value="Recommended" numvotes="299" />
+				<result value="Not Recommended" numvotes="49" />
+			</results>
+			<results numplayers="4+">
+				<result value="Best" numvotes="9" />
+				<result value="Recommended" numvotes="38" />
+				<result value="Not Recommended" numvotes="242" />
+			</results>
+		</poll>
+		<poll-summary name="suggested_numplayers"  title="User Suggested Number of Players">
+			<result name="bestwith" value="Best with 2 players" />
+			<result name="recommmendedwith" value="Recommended with 1–4 players" />
+		</poll-summary>
+		<playingtime value="45" />
+		<minplaytime value="30" />
+		<maxplaytime value="45" />
+		<minage value="14" />
+		<poll name="suggested_playerage" title="User Suggested Player Age" totalvotes="175">
+			<results>
+				<result value="2" numvotes="0" />
+				<result value="3" numvotes="1" />
+				<result value="4" numvotes="0" />
+				<result value="5" numvotes="4" />
+				<result value="6" numvotes="19" />
+				<result value="8" numvotes="68" />
+				<result value="10" numvotes="69" />
+				<result value="12" numvotes="8" />
+				<result value="14" numvotes="4" />
+				<result value="16" numvotes="2" />
+				<result value="18" numvotes="0" />
+				<result value="21 and up" numvotes="0" />
+			</results>
+		</poll>
+		<poll name="language_dependence" title="Language Dependence" totalvotes="50">
+			<results>
+				<result level="1" value="No necessary in-game text" numvotes="4" />
+				<result level="2" value="Some necessary text - easily memorized or small crib sheet" numvotes="41" />
+				<result level="3" value="Moderate in-game text - needs crib sheet or paste ups" numvotes="5" />
+				<result level="4" value="Extensive use of text - massive conversion needed to be playable" numvotes="0" />
+				<result level="5" value="Unplayable in another language" numvotes="0" />
+			</results>
+		</poll>
+		<link type="boardgamecategory" id="1009" value="Abstract Strategy" />
+		<link type="boardgamecategory" id="1017" value="Dice" />
+		<link type="boardgamecategory" id="1028" value="Puzzle" />
+		<link type="boardgamemechanic" id="2912" value="Contracts" />
+		<link type="boardgamemechanic" id="2072" value="Dice Rolling" />
+		<link type="boardgamemechanic" id="2875" value="End Game Bonuses" />
+		<link type="boardgamemechanic" id="2978" value="Grid Coverage" />
+		<link type="boardgamemechanic" id="2041" value="Open Drafting" />
+		<link type="boardgamemechanic" id="2048" value="Pattern Building" />
+		<link type="boardgamemechanic" id="2004" value="Set Collection" />
+		<link type="boardgamemechanic" id="2819" value="Solo / Solitaire Game" />
+		<link type="boardgamemechanic" id="2828" value="Turn Order: Progressive" />
+		<link type="boardgamemechanic" id="2897" value="Variable Set-up" />
+		<link type="boardgamefamily" id="77906" value="Category: Dized Tutorial" />
+		<link type="boardgamefamily" id="18639" value="Cities: Barcelona (Spain)" />
+		<link type="boardgamefamily" id="113664" value="Components: Coloured Dice" />
+		<link type="boardgamefamily" id="79497" value="Components: Dice as Playing Units" />
+		<link type="boardgamefamily" id="8374" value="Crowdfunding: Kickstarter" />
+		<link type="boardgamefamily" id="104952" value="Digital Implementations: Apple App Store" />
+		<link type="boardgamefamily" id="112176" value="Digital Implementations: Dire Wolf Game Room" />
+		<link type="boardgamefamily" id="78432" value="Digital Implementations: Google Play" />
+		<link type="boardgamefamily" id="77349" value="Digital Implementations: Steam" />
+		<link type="boardgamefamily" id="50196" value="Game: Sagrada" />
+		<link type="boardgamefamily" id="65163" value="Mechanism: Dice Drafting" />
+		<link type="boardgamefamily" id="78198" value="Misc: Watch It Played How To Videos" />
+		<link type="boardgamefamily" id="4705" value="Organizations: The Game Artisans of Canada" />
+		<link type="boardgamefamily" id="5666" value="Players: Games with Solitaire Rules" />
+		<link type="boardgamefamily" id="56419" value="Theme: Art" />
+		<link type="boardgamefamily" id="75454" value="Theme: Art style – Art Nouveau" />
+		<link type="boardgamefamily" id="110914" value="Theme: Stained Glass" />
+		<link type="boardgameexpansion" id="253493" value="RiaCon Window Pattern Card (fan expansion for Sagrada)" />
+		<link type="boardgameexpansion" id="309707" value="Sagrada: 2020 Promo Pack" />
+		<link type="boardgameexpansion" id="368442" value="Sagrada: 2022 Mini-Tournament Pack" />
+		<link type="boardgameexpansion" id="367792" value="Sagrada: 2022 Promo Pack" />
+		<link type="boardgameexpansion" id="398016" value="Sagrada: 2023 Mini-Tournament Pack" />
+		<link type="boardgameexpansion" id="426656" value="Sagrada: 2024 Mini-Tournament Pack" />
+		<link type="boardgameexpansion" id="451596" value="Sagrada: 2025 Mini-Tournament Pack (2025)" />
+		<link type="boardgameexpansion" id="465171" value="Sagrada: 2025 Promo Card Collection" />
+		<link type="boardgameexpansion" id="244262" value="Sagrada: 5-6 Player Expansion" />
+		<link type="boardgameexpansion" id="286275" value="Sagrada: Horizontal Symmetry Promo Card" />
+		<link type="boardgameexpansion" id="466710" value="Sagrada: Panorama" />
+		<link type="boardgameexpansion" id="451741" value="Sagrada: Promo – 2025 Gen Con Window Pattern Card" />
+		<link type="boardgameexpansion" id="397915" value="Sagrada: Promo – Gen Con 2023 Window Pattern Card" />
+		<link type="boardgameexpansion" id="426187" value="Sagrada: Promo – Gen Con 2024 Window Pattern Card" />
+		<link type="boardgameexpansion" id="225269" value="Sagrada: Promo 1 – Vitraux/Balboa Bay Window Pattern Card" />
+		<link type="boardgameexpansion" id="309221" value="Sagrada: Promo 10 – Dice Tower 2020 Window Pattern Card" />
+		<link type="boardgameexpansion" id="329601" value="Sagrada: Promo 11 – Game Store 2020 Window Pattern Card" />
+		<link type="boardgameexpansion" id="310565" value="Sagrada: Promo 12 – Tantrum House 2020 Window Pattern Card" />
+		<link type="boardgameexpansion" id="367789" value="Sagrada: Promo 13 – Galápagos Jogos" />
+		<link type="boardgameexpansion" id="348593" value="Sagrada: Promo 14 – Game Boy Geek 2021 Window Pattern Card" />
+		<link type="boardgameexpansion" id="367790" value="Sagrada: Promo 15 – Geekach Games Window Pattern Card" />
+		<link type="boardgameexpansion" id="351368" value="Sagrada: Promo 16 – CuseCon 2021 Window Pattern Card" />
+		<link type="boardgameexpansion" id="346200" value="Sagrada: Promo 17 – Gathering of Friends 2021 Window Pattern Card" />
+		<link type="boardgameexpansion" id="372408" value="Sagrada: Promo 19 – Tantrum House 2022 Window Pattern Card" />
+		<link type="boardgameexpansion" id="233638" value="Sagrada: Promo 2 – Alpenglow/Komorebi Window Pattern Card" />
+		<link type="boardgameexpansion" id="368441" value="Sagrada: Promo 20 – Sagrada x Fog of Love Window Pattern Card" />
+		<link type="boardgameexpansion" id="376642" value="Sagrada: Promo 21 – Game Boy Geek 2022 Window Pattern Card" />
+		<link type="boardgameexpansion" id="398061" value="Sagrada: Promo 22 – Game Boy Geek 2023 Window Pattern Card" />
+		<link type="boardgameexpansion" id="425212" value="Sagrada: Promo 24 – Tantrum House 2024 Window Pattern Card" />
+		<link type="boardgameexpansion" id="431411" value="Sagrada: Promo 25 – Game Boy Geek 2024 Window Pattern Card" />
+		<link type="boardgameexpansion" id="457122" value="Sagrada: Promo 27 – Game Boy Geek 2025 Window Pattern Card" />
+		<link type="boardgameexpansion" id="460490" value="Sagrada: Promo 29 – Tantrum House 2025 Window Pattern Card" />
+		<link type="boardgameexpansion" id="252099" value="Sagrada: Promo 3 – International Tabletop Day Window Pattern Card" />
+		<link type="boardgameexpansion" id="236940" value="Sagrada: Promo 4 – BoardGameGeek Window Pattern Card" />
+		<link type="boardgameexpansion" id="270329" value="Sagrada: Promo 5 – Watch It Played Window Pattern Card" />
+		<link type="boardgameexpansion" id="250293" value="Sagrada: Promo 6 – Man Vs Meeple Window Pattern Card" />
+		<link type="boardgameexpansion" id="250292" value="Sagrada: Promo 7 – Game Boy Geek Window Pattern Card" />
+		<link type="boardgameexpansion" id="347022" value="Sagrada: Promo 8 – Apollo/Godfather Window Pattern Card" />
+		<link type="boardgameexpansion" id="329515" value="Sagrada: Promo 9 – Man Vs Meeple Window Pattern Card" />
+		<link type="boardgameexpansion" id="465172" value="Sagrada: Remastered Celebration Foil Promos" />
+		<link type="boardgameexpansion" id="359142" value="Sagrada: The Great Facades – Glory" />
+		<link type="boardgameexpansion" id="301561" value="Sagrada: The Great Facades – Life" />
+		<link type="boardgameexpansion" id="263695" value="Sagrada: The Great Facades – Passion" />
+		<link type="boardgameaccessory" id="369044" value="Sagrada: &quot;Floodgate&quot; Player Board" />
+		<link type="boardgameaccessory" id="369121" value="Sagrada: &quot;Kickstarter&quot; Player Board" />
+		<link type="boardgameaccessory" id="287107" value="Sagrada: Broken Token Organizer" />
+		<link type="boardgameaccessory" id="465193" value="Sagrada: Dice Tray" />
+		<link type="boardgameaccessory" id="358028" value="Sagrada: Folded Space Insert" />
+		<link type="boardgameaccessory" id="271965" value="Sagrada: Insert Here Insert" />
+		<link type="boardgameaccessory" id="344568" value="Sagrada: Laserox Insert" />
+		<link type="boardgameaccessory" id="416769" value="Sagrada: reDrewno Insert" />
+		<link type="boardgameaccessory" id="324239" value="Sagrada: Replacement Dice" />
+		<link type="boardgameaccessory" id="365836" value="Sagrada: Tower Rex Organizer" />
+		<link type="boardgameaccessory" id="360063" value="Sagrahtzee" />
+		<link type="boardgameimplementation" id="369751" value="Sagrada Artisans" />
+		<link type="boardgamedesigner" id="88370" value="Adrian Adamescu" />
+		<link type="boardgamedesigner" id="67502" value="Daryl Andrews" />
+		<link type="boardgameartist" id="95939" value="Brigette Indelicato" />
+		<link type="boardgameartist" id="28024" value="Kwanchai Moriya" />
+		<link type="boardgameartist" id="39902" value="Peter Wocken" />
+		<link type="boardgamepublisher" id="21756" value="Floodgate Games" />
+		<link type="boardgamepublisher" id="10768" value="Cranio Creations" />
+		<link type="boardgamepublisher" id="34522" value="CrowD Games" />
+		<link type="boardgamepublisher" id="2366" value="Devir" />
+		<link type="boardgamepublisher" id="39390" value="Engames" />
+		<link type="boardgamepublisher" id="26380" value="FoxGames" />
+		<link type="boardgamepublisher" id="15605" value="Galápagos Jogos" />
+		<link type="boardgamepublisher" id="58739" value="Geekach LLC" />
+		<link type="boardgamepublisher" id="36210" value="Lanlalen" />
+		<link type="boardgamepublisher" id="25203" value="Lex Games" />
+		<link type="boardgamepublisher" id="30521" value="Mandoo Games" />
+		<link type="boardgamepublisher" id="5400" value="Matagot" />
+		<link type="boardgamepublisher" id="38392" value="MEBO Games" />
+		<link type="boardgamepublisher" id="7992" value="MINDOK" />
+		<link type="boardgamepublisher" id="51614" value="MIPL" />
+		<link type="boardgamepublisher" id="30552" value="One Moment Games" />
+		<link type="boardgamepublisher" id="39" value="Pegasus Spiele" />
+		<link type="boardgamepublisher" id="36563" value="Reflexshop" />
+		<link type="boardgamepublisher" id="45523" value="Yes Papa Games" />
+		<statistics page="1">
+			<ratings >
+				<usersrated value="47493" />
+				<average value="7.46991" />
+				<bayesaverage value="7.32554" />
+				<ranks>
+					<rank type="subtype" id="1" name="boardgame" friendlyname="Board Game Rank" value="223" bayesaverage="7.32554" />
+					<rank type="family" id="4666" name="abstracts" friendlyname="Abstract Game Rank" value="11" bayesaverage="7.29305" />
+					<rank type="family" id="5499" name="familygames" friendlyname="Family Game Rank" value="44" bayesaverage="7.34406" />
+				</ranks>
+				<stddev value="1.1605" />
+				<median value="0" />
+				<owned value="80156" />
+				<trading value="636" />
+				<wanting value="853" />
+				<wishing value="10036" />
+				<numcomments value="6546" />
+				<numweights value="1041" />
+				<averageweight value="1.9164" />
+			</ratings>
+		</statistics>
+	</item>
+	<item type="boardgameexpansion" id="244262">
+		<thumbnail>https://cf.geekdo-images.com/Fa7AXB525_XEDatF3jOOWQ__small/img/fB1XDHuLu45TNg2GakzSg6H2GZI=/fit-in/200x150/filters:strip_icc()/pic4238050.jpg</thumbnail>
+		<image>https://cf.geekdo-images.com/Fa7AXB525_XEDatF3jOOWQ__original/img/puYBg5Ccukq74MHLhEaZ3iKEJW4=/0x0/filters:format(jpeg)/pic4238050.jpg</image>
+		<name type="primary" sortindex="1" value="Sagrada: 5-6 Player Expansion" />
+		<name type="alternate" sortindex="1" value="Sagrada: Erweiterung" />
+		<name type="alternate" sortindex="1" value="Sagrada: Espansione per 5-6 giocatori" />
+		<name type="alternate" sortindex="1" value="Sagrada: Jeszcze więcej szkła" />
+		<name type="alternate" sortindex="1" value="Sagrada: Rozšíření pro 5 a 6 hráčů" />
+		<name type="alternate" sortindex="1" value="Sagrada: Uitbreiding 5-6 spelers" />
+		<name type="alternate" sortindex="1" value="Саграда: Дополнение для 5-6 игроков" />
+		<name type="alternate" sortindex="1" value="サグラダ 5-6人用拡張" />
+		<name type="alternate" sortindex="1" value="사그라다: 5-6명 확장팩" />
+		<description>Add to your Sagrada experience with the 5-6 Player Expansion!
+
+You can now enjoy more Sagrada by adding up to 2 extra players! This expansion introduces the Private Dice Pool boards for smooth gameplay through 6 players. Also includes new private objectives, tools, and window pattern cards.
+
+This expansion is not standalone. The Sagrada base game is required to play.
+
+</description>
+		<yearpublished value="2018" />
+		<minplayers value="5" />
+		<maxplayers value="6" />
+		<poll name="suggested_numplayers" title="User Suggested Number of Players" totalvotes="36">
+			<results numplayers="1">
+				<result value="Best" numvotes="0" />
+				<result value="Recommended" numvotes="9" />
+				<result value="Not Recommended" numvotes="14" />
+			</results>
+			<results numplayers="2">
+				<result value="Best" numvotes="15" />
+				<result value="Recommended" numvotes="14" />
+				<result value="Not Recommended" numvotes="2" />
+			</results>
+			<results numplayers="3">
+				<result value="Best" numvotes="19" />
+				<result value="Recommended" numvotes="9" />
+				<result value="Not Recommended" numvotes="2" />
+			</results>
+			<results numplayers="4">
+				<result value="Best" numvotes="9" />
+				<result value="Recommended" numvotes="19" />
+				<result value="Not Recommended" numvotes="1" />
+			</results>
+			<results numplayers="5">
+				<result value="Best" numvotes="6" />
+				<result value="Recommended" numvotes="16" />
+				<result value="Not Recommended" numvotes="5" />
+			</results>
+			<results numplayers="6">
+				<result value="Best" numvotes="4" />
+				<result value="Recommended" numvotes="12" />
+				<result value="Not Recommended" numvotes="10" />
+			</results>
+			<results numplayers="6+">
+				<result value="Best" numvotes="0" />
+				<result value="Recommended" numvotes="1" />
+				<result value="Not Recommended" numvotes="22" />
+			</results>
+		</poll>
+		<poll-summary name="suggested_numplayers"  title="User Suggested Number of Players">
+			<result name="bestwith" value="Best with 3 players" />
+			<result name="recommmendedwith" value="Recommended with 2–6 players" />
+		</poll-summary>
+		<playingtime value="40" />
+		<minplaytime value="20" />
+		<maxplaytime value="40" />
+		<minage value="14" />
+		<poll name="suggested_playerage" title="User Suggested Player Age" totalvotes="12">
+			<results>
+				<result value="2" numvotes="0" />
+				<result value="3" numvotes="0" />
+				<result value="4" numvotes="0" />
+				<result value="5" numvotes="0" />
+				<result value="6" numvotes="2" />
+				<result value="8" numvotes="3" />
+				<result value="10" numvotes="6" />
+				<result value="12" numvotes="1" />
+				<result value="14" numvotes="0" />
+				<result value="16" numvotes="0" />
+				<result value="18" numvotes="0" />
+				<result value="21 and up" numvotes="0" />
+			</results>
+		</poll>
+		<poll name="language_dependence" title="Language Dependence" totalvotes="5">
+			<results>
+				<result level="1" value="No necessary in-game text" numvotes="0" />
+				<result level="2" value="Some necessary text - easily memorized or small crib sheet" numvotes="4" />
+				<result level="3" value="Moderate in-game text - needs crib sheet or paste ups" numvotes="1" />
+				<result level="4" value="Extensive use of text - massive conversion needed to be playable" numvotes="0" />
+				<result level="5" value="Unplayable in another language" numvotes="0" />
+			</results>
+		</poll>
+		<link type="boardgamecategory" id="1017" value="Dice" />
+		<link type="boardgamecategory" id="1042" value="Expansion for Base-game" />
+		<link type="boardgamecategory" id="1028" value="Puzzle" />
+		<link type="boardgamemechanic" id="2072" value="Dice Rolling" />
+		<link type="boardgamemechanic" id="2041" value="Open Drafting" />
+		<link type="boardgamemechanic" id="2048" value="Pattern Building" />
+		<link type="boardgamemechanic" id="2004" value="Set Collection" />
+		<link type="boardgamefamily" id="50196" value="Game: Sagrada" />
+		<link type="boardgamefamily" id="65163" value="Mechanism: Dice Drafting" />
+		<link type="boardgamefamily" id="4705" value="Organizations: The Game Artisans of Canada" />
+		<link type="boardgamefamily" id="61990" value="Players: Expansions Changing Player Count" />
+		<link type="boardgamefamily" id="110914" value="Theme: Stained Glass" />
+		<link type="boardgameexpansion" id="199561" value="Sagrada" inbound="true"/>
+		<link type="boardgameaccessory" id="358028" value="Sagrada: Folded Space Insert" />
+		<link type="boardgameaccessory" id="271965" value="Sagrada: Insert Here Insert" />
+		<link type="boardgameaccessory" id="344568" value="Sagrada: Laserox Insert" />
+		<link type="boardgameaccessory" id="416769" value="Sagrada: reDrewno Insert" />
+		<link type="boardgameaccessory" id="365836" value="Sagrada: Tower Rex Organizer" />
+		<link type="boardgamedesigner" id="88370" value="Adrian Adamescu" />
+		<link type="boardgamedesigner" id="67502" value="Daryl Andrews" />
+		<link type="boardgameartist" id="39902" value="Peter Wocken" />
+		<link type="boardgamepublisher" id="21756" value="Floodgate Games" />
+		<link type="boardgamepublisher" id="10768" value="Cranio Creations" />
+		<link type="boardgamepublisher" id="34522" value="CrowD Games" />
+		<link type="boardgamepublisher" id="2366" value="Devir" />
+		<link type="boardgamepublisher" id="39390" value="Engames" />
+		<link type="boardgamepublisher" id="26380" value="FoxGames" />
+		<link type="boardgamepublisher" id="30521" value="Mandoo Games" />
+		<link type="boardgamepublisher" id="5400" value="Matagot" />
+		<link type="boardgamepublisher" id="7992" value="MINDOK" />
+		<link type="boardgamepublisher" id="39" value="Pegasus Spiele" />
+		<statistics page="1">
+			<ratings >
+				<usersrated value="3484" />
+				<average value="7.69362" />
+				<bayesaverage value="6.78002" />
+				<ranks>
+					<rank type="subtype" id="1" name="boardgame" friendlyname="Board Game Rank" value="Not Ranked" bayesaverage="6.78002" />
+					<rank type="family" id="5499" name="familygames" friendlyname="Family Game Rank" value="Not Ranked" bayesaverage="6.96223" />
+				</ranks>
+				<stddev value="1.14199" />
+				<median value="0" />
+				<owned value="17282" />
+				<trading value="92" />
+				<wanting value="137" />
+				<wishing value="853" />
+				<numcomments value="800" />
+				<numweights value="36" />
+				<averageweight value="2.1111" />
+			</ratings>
+		</statistics>
+	</item>
+	<item type="boardgame" id="346965">
+		<thumbnail>https://cf.geekdo-images.com/l-NBWJ1gIcfOCfrvAw8qvw__small/img/kvxUPoBvCzjV5r6poE29LFUQnSM=/fit-in/200x150/filters:strip_icc()/pic6389125.jpg</thumbnail>
+		<image>https://cf.geekdo-images.com/l-NBWJ1gIcfOCfrvAw8qvw__original/img/VaPUWBlEE3Wg_QGYAsHxKV8mBkw=/0x0/filters:format(jpeg)/pic6389125.jpg</image>
+		<name type="primary" sortindex="1" value="Azul: Queen&#039;s Garden" />
+		<name type="alternate" sortindex="1" value="Azul: A királyné kertje" />
+		<name type="alternate" sortindex="1" value="Azul: Die Gärten der Königin" />
+		<name type="alternate" sortindex="1" value="Azul: Il Giardino della Regina" />
+		<name type="alternate" sortindex="1" value="Azul: Jardim da Rainha" />
+		<name type="alternate" sortindex="1" value="Azul: Jardín de la Reina" />
+		<name type="alternate" sortindex="1" value="Azul: Kraljičin Vrt" />
+		<name type="alternate" sortindex="1" value="Azul: Le Jardin de la Reine" />
+		<name type="alternate" sortindex="1" value="Azul: Ogród Królowej" />
+		<name type="alternate" sortindex="1" value="Azul: Tuin van de koningin" />
+		<name type="alternate" sortindex="1" value="Azul: Zahrady pro královnu" />
+		<name type="alternate" sortindex="1" value="Azul: Кралска Градина" />
+		<name type="alternate" sortindex="1" value="Azul. Сад Королевы" />
+		<name type="alternate" sortindex="1" value="Азул: Сад королеви" />
+		<name type="alternate" sortindex="1" value="อาซูล สวนพฤกษาราชินี" />
+		<name type="alternate" sortindex="1" value="アズール：王妃の庭園" />
+		<name type="alternate" sortindex="1" value="花磚物語 花園宮殿" />
+		<name type="alternate" sortindex="1" value="아줄: 왕비의 정원" />
+		<description>Welcome back to the palace of Sintra! King Manuel I has commissioned the best garden designers of Portugal to construct the most extraordinary garden for his wife, Queen Maria of Aragon.
+
+In Azul: Queen's Garden, players are tasked with arranging a magnificent garden for the King's lovely wife by arranging beautiful plants, trees, and ornamental features.
+
+Using an innovative drafting mechanism, the signature of the Azul series, players must carefully select colorful tiles to decorate their garden. Only the most incredible garden designers will flourish and win the Queen's blessing.
+
+&amp;mdash;description from the publisher
+
+</description>
+		<yearpublished value="2021" />
+		<minplayers value="2" />
+		<maxplayers value="4" />
+		<poll name="suggested_numplayers" title="User Suggested Number of Players" totalvotes="95">
+			<results numplayers="1">
+				<result value="Best" numvotes="0" />
+				<result value="Recommended" numvotes="2" />
+				<result value="Not Recommended" numvotes="49" />
+			</results>
+			<results numplayers="2">
+				<result value="Best" numvotes="61" />
+				<result value="Recommended" numvotes="26" />
+				<result value="Not Recommended" numvotes="0" />
+			</results>
+			<results numplayers="3">
+				<result value="Best" numvotes="26" />
+				<result value="Recommended" numvotes="48" />
+				<result value="Not Recommended" numvotes="1" />
+			</results>
+			<results numplayers="4">
+				<result value="Best" numvotes="12" />
+				<result value="Recommended" numvotes="31" />
+				<result value="Not Recommended" numvotes="25" />
+			</results>
+			<results numplayers="4+">
+				<result value="Best" numvotes="0" />
+				<result value="Recommended" numvotes="0" />
+				<result value="Not Recommended" numvotes="44" />
+			</results>
+		</poll>
+		<poll-summary name="suggested_numplayers"  title="User Suggested Number of Players">
+			<result name="bestwith" value="Best with 2 players" />
+			<result name="recommmendedwith" value="Recommended with 2–4 players" />
+		</poll-summary>
+		<playingtime value="60" />
+		<minplaytime value="45" />
+		<maxplaytime value="60" />
+		<minage value="10" />
+		<poll name="suggested_playerage" title="User Suggested Player Age" totalvotes="19">
+			<results>
+				<result value="2" numvotes="0" />
+				<result value="3" numvotes="0" />
+				<result value="4" numvotes="0" />
+				<result value="5" numvotes="0" />
+				<result value="6" numvotes="0" />
+				<result value="8" numvotes="5" />
+				<result value="10" numvotes="2" />
+				<result value="12" numvotes="12" />
+				<result value="14" numvotes="0" />
+				<result value="16" numvotes="0" />
+				<result value="18" numvotes="0" />
+				<result value="21 and up" numvotes="0" />
+			</results>
+		</poll>
+		<poll name="language_dependence" title="Language Dependence" totalvotes="9">
+			<results>
+				<result level="1" value="No necessary in-game text" numvotes="9" />
+				<result level="2" value="Some necessary text - easily memorized or small crib sheet" numvotes="0" />
+				<result level="3" value="Moderate in-game text - needs crib sheet or paste ups" numvotes="0" />
+				<result level="4" value="Extensive use of text - massive conversion needed to be playable" numvotes="0" />
+				<result level="5" value="Unplayable in another language" numvotes="0" />
+			</results>
+		</poll>
+		<link type="boardgamecategory" id="1009" value="Abstract Strategy" />
+		<link type="boardgamecategory" id="1028" value="Puzzle" />
+		<link type="boardgamecategory" id="1070" value="Renaissance" />
+		<link type="boardgamemechanic" id="2875" value="End Game Bonuses" />
+		<link type="boardgamemechanic" id="2048" value="Pattern Building" />
+		<link type="boardgamemechanic" id="2004" value="Set Collection" />
+		<link type="boardgamemechanic" id="2002" value="Tile Placement" />
+		<link type="boardgamemechanic" id="2829" value="Turn Order: Claim Action" />
+		<link type="boardgamefamily" id="5614" value="Country: Portugal" />
+		<link type="boardgamefamily" id="57039" value="Game: Azul" />
+		<link type="boardgamefamily" id="56419" value="Theme: Art" />
+		<link type="boardgameexpansion" id="349221" value="Azul: Queen&#039;s Garden – Bonus Cards" />
+		<link type="boardgameimplementation" id="230802" value="Azul" inbound="true"/>
+		<link type="boardgamedesigner" id="42" value="Michael Kiesling" />
+		<link type="boardgameartist" id="14057" value="Chris Quilliams" />
+		<link type="boardgamepublisher" id="38363" value="Next Move Games" />
+		<link type="boardgamepublisher" id="50230" value="Belleville (Бельвіль)" />
+		<link type="boardgamepublisher" id="9068" value="Broadway Toys LTD" />
+		<link type="boardgamepublisher" id="15605" value="Galápagos Jogos" />
+		<link type="boardgamepublisher" id="8820" value="Gém Klub Kft." />
+		<link type="boardgamepublisher" id="4785" value="Ghenos Games" />
+		<link type="boardgamepublisher" id="1391" value="Hobby Japan" />
+		<link type="boardgamepublisher" id="8291" value="Korea Boardgames" />
+		<link type="boardgamepublisher" id="5812" value="Lacerta" />
+		<link type="boardgamepublisher" id="7992" value="MINDOK" />
+		<link type="boardgamepublisher" id="51614" value="MIPL" />
+		<link type="boardgamepublisher" id="29085" value="Paladium Games" />
+		<link type="boardgamepublisher" id="7466" value="Rebel Sp. z o.o." />
+		<link type="boardgamepublisher" id="39774" value="Tower Tactic Games" />
+		<link type="boardgamepublisher" id="1466" value="Zvezda" />
+		<statistics page="1">
+			<ratings >
+				<usersrated value="6213" />
+				<average value="7.44211" />
+				<bayesaverage value="6.86089" />
+				<ranks>
+					<rank type="subtype" id="1" name="boardgame" friendlyname="Board Game Rank" value="667" bayesaverage="6.86089" />
+					<rank type="family" id="4666" name="abstracts" friendlyname="Abstract Game Rank" value="18" bayesaverage="7.15137" />
+					<rank type="family" id="5499" name="familygames" friendlyname="Family Game Rank" value="151" bayesaverage="6.97633" />
+				</ranks>
+				<stddev value="1.41783" />
+				<median value="0" />
+				<owned value="13720" />
+				<trading value="110" />
+				<wanting value="177" />
+				<wishing value="2008" />
+				<numcomments value="946" />
+				<numweights value="227" />
+				<averageweight value="2.9207" />
+			</ratings>
+		</statistics>
+	</item>
+</items>
