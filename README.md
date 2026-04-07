@@ -31,6 +31,14 @@ powershell -ExecutionPolicy Bypass -File .\scripts\build-data.ps1 -CsvPath "C:\p
 
 If you have a BGG application token, you can enrich the dataset with cover images, descriptions, categories, and mechanics.
 
+The script accepts the token in three ways, in this order:
+
+- `-BggToken "YOUR_TOKEN"`
+- `BGG_TOKEN` environment variable
+- a local `.bgg-token` file in the project root
+
+The `.bgg-token` file is ignored by Git.
+
 Only enrich remote URLs:
 
 ```powershell

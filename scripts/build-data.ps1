@@ -9,6 +9,8 @@
 )
 
 $ErrorActionPreference = "Stop"
+$projectRoot = Split-Path -Parent $PSScriptRoot
+$localTokenPath = Join-Path $projectRoot ".bgg-token"
 
 function To-Bool($value) {
   return "$value" -eq "1"
@@ -110,6 +112,25 @@ function Read-JsonMap($path) {
   return $map
 }
 
+function Resolve-BggToken($explicitToken, $tokenPath) {
+  if (-not [string]::IsNullOrWhiteSpace($explicitToken)) {
+    return $explicitToken.Trim()
+  }
+
+  if ($env:BGG_TOKEN -and -not [string]::IsNullOrWhiteSpace($env:BGG_TOKEN)) {
+    return $env:BGG_TOKEN.Trim()
+  }
+
+  if (Test-Path $tokenPath) {
+    $fileToken = (Get-Content $tokenPath -Raw).Trim()
+    if (-not [string]::IsNullOrWhiteSpace($fileToken)) {
+      return $fileToken
+    }
+  }
+
+  return ""
+}
+
 function New-SearchTokens($game) {
   $parts = @(
     $game.name,
@@ -187,6 +208,8 @@ function Download-ImageIfNeeded($imageUrl, $id, $imagesDirectory, $token) {
 if (-not (Test-Path $CsvPath)) {
   throw "CSV not found at $CsvPath. Pass -CsvPath with the exported BoardGameGeek collection CSV."
 }
+
+$BggToken = Resolve-BggToken $BggToken $localTokenPath
 
 $rows = Import-Csv $CsvPath
 $games = @()
