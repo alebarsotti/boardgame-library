@@ -32,9 +32,9 @@ Core parts of the project:
 - `styles.css` defines the visual system and responsive layout
 - `app.js` handles data loading, filtering, rendering, localization, dialogs, persistence, and random selection
 - `data/` contains generated collection data and optional supporting files
-- `scripts/build-data.ps1` transforms a BoardGameGeek collection CSV into the runtime dataset
+- `scripts/build_data.py` transforms a BoardGameGeek collection CSV into the runtime dataset
 
-The current dataset model includes collection metadata plus per-game fields such as player counts, play time, weight, age guidance, ownership state, tags, ratings, and optional enrichment fields like descriptions, mechanics, categories, and images.
+The current dataset model includes collection metadata plus per-game fields such as player counts, play time, weight, age guidance, ownership state, tags, ratings, and optional enrichment fields like summaries, descriptions, mechanics, categories, and images.
 
 ## Current User-Facing Capabilities
 
@@ -56,7 +56,7 @@ The runtime app reads local generated data instead of depending on live BoardGam
 The current flow is:
 
 1. Export collection data from BoardGameGeek as CSV.
-2. Run `scripts/build-data.ps1`.
+2. Run `scripts/build_data.py`.
 3. Generate `data/games.json` for normal static hosting.
 4. Generate `data/games-data.js` for direct `file://` usage.
 5. Optionally enrich data with BoardGameGeek metadata and optionally download images locally.
