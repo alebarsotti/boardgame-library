@@ -51,13 +51,6 @@ const translations = {
     links: "Enlaces",
     openBgg: "Abrir en BGG",
     notAvailable: "Sin dato",
-    editName: "Editar nombre",
-    resetName: "Restablecer nombre",
-    editNamePrompt: "Nombre a mostrar en esta interfaz:",
-    exportOverrides: "Guardar overrides",
-    importOverrides: "Cargar overrides",
-    overridesHint:
-      "Los cambios quedan guardados en este navegador. Si quieres incorporarlos al proyecto, guarda un archivo y úsalo como data/name-overrides.json antes de regenerar el dataset.",
     randomTitle: "La mesa acaba de decidir",
     randomBody: "Sorteo hecho solo entre los juegos que cumplen tus filtros actuales.",
     reroll: "Volver a sortear",
@@ -156,13 +149,6 @@ const translations = {
     links: "Links",
     openBgg: "Open on BGG",
     notAvailable: "Not available",
-    editName: "Edit name",
-    resetName: "Reset name",
-    editNamePrompt: "Displayed name for this interface:",
-    exportOverrides: "Save overrides",
-    importOverrides: "Load overrides",
-    overridesHint:
-      "Changes are stored in this browser. To bake them into the project, save a file and use it as data/name-overrides.json before rebuilding the dataset.",
     randomTitle: "The table has made a choice",
     randomBody: "Randomized only from games matching your active filters.",
     reroll: "Reroll",
@@ -308,10 +294,6 @@ function loadPreferences() {
 
 function savePreferences() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state.preferences));
-}
-
-function saveNameOverrides() {
-  localStorage.setItem(NAME_OVERRIDES_KEY, JSON.stringify(state.nameOverrides));
 }
 
 function bindEvents() {
@@ -653,7 +635,6 @@ function openDetails(game) {
   const copy = translations[state.language];
   const displayName = getDisplayName(game);
   const secondaryName = getSecondaryName(game);
-  const hasOverride = Boolean(getNameOverride(game.id));
   const tags = getDisplayTags(game).concat(game.categories || [], game.mechanics || []).slice(0, 10);
 
   elements.detailsContent.innerHTML = `
@@ -664,13 +645,6 @@ function openDetails(game) {
           <p class="eyebrow">${escapeHtml(game.yearPublished ? String(game.yearPublished) : copy.notAvailable)}</p>
           <h2>${escapeHtml(displayName)}</h2>
           <p>${escapeHtml([secondaryName, buildDetailSubtitle(game)].filter(Boolean).join(" - "))}</p>
-          <div class="random-actions" style="margin-top:14px">
-            <button class="button button--ghost" id="edit-name-button" type="button">${escapeHtml(copy.editName)}</button>
-            ${hasOverride ? `<button class="button button--ghost" id="reset-name-button" type="button">${escapeHtml(copy.resetName)}</button>` : ""}
-            <button class="button button--ghost" id="export-overrides-button" type="button">${escapeHtml(copy.exportOverrides)}</button>
-            <button class="button button--ghost" id="import-overrides-button" type="button">${escapeHtml(copy.importOverrides)}</button>
-          </div>
-          <p style="margin-top:12px; color: var(--muted); font-size: 0.92rem;">${escapeHtml(copy.overridesHint)}</p>
         </div>
         <div class="detail-meta">
           ${metaPill("players", formatPlayers(game))}
@@ -705,34 +679,6 @@ function openDetails(game) {
   `;
 
   injectCover(document.querySelector("#detail-cover"), game, 420);
-
-  elements.detailsContent.querySelector("#edit-name-button").addEventListener("click", () => {
-    const nextValue = window.prompt(copy.editNamePrompt, displayName);
-    if (nextValue === null) return;
-    if (String(nextValue).trim()) {
-      setNameOverride(game.id, nextValue);
-    } else {
-      clearNameOverride(game.id);
-    }
-    render();
-    openDetails(game);
-  });
-
-  const resetButton = elements.detailsContent.querySelector("#reset-name-button");
-  if (resetButton) {
-    resetButton.addEventListener("click", () => {
-      clearNameOverride(game.id);
-      render();
-      openDetails(game);
-    });
-  }
-
-  elements.detailsContent.querySelector("#export-overrides-button").addEventListener("click", exportNameOverrides);
-  elements.detailsContent.querySelector("#import-overrides-button").addEventListener("click", async () => {
-    await importNameOverrides();
-    render();
-    openDetails(game);
-  });
 
   if (!elements.detailsDialog.open) elements.detailsDialog.showModal();
 }
@@ -854,94 +800,6 @@ function getNameOverride(gameId) {
   const localOverride = state.nameOverrides?.[gameId]?.[state.language] || "";
   if (localOverride) return localOverride;
   return gameId && state.data?.games ? state.data.games.find((game) => game.id === gameId)?.nameOverrides?.[state.language] || "" : "";
-}
-
-function setNameOverride(gameId, value) {
-  const normalized = String(value || "").trim();
-  const current = state.nameOverrides?.[gameId] || {};
-  state.nameOverrides = {
-    ...state.nameOverrides,
-    [gameId]: {
-      ...current,
-      [state.language]: normalized
-    }
-  };
-  saveNameOverrides();
-}
-
-function clearNameOverride(gameId) {
-  if (!state.nameOverrides?.[gameId]) return;
-  const next = { ...state.nameOverrides[gameId] };
-  delete next[state.language];
-  const all = { ...state.nameOverrides };
-  if (Object.keys(next).length) {
-    all[gameId] = next;
-  } else {
-    delete all[gameId];
-  }
-  state.nameOverrides = all;
-  saveNameOverrides();
-}
-
-async function exportNameOverrides() {
-  const payload = JSON.stringify(state.nameOverrides, null, 2);
-
-  if (window.showSaveFilePicker) {
-    try {
-      const handle = await window.showSaveFilePicker({
-        suggestedName: "name-overrides.json",
-        types: [{ description: "JSON", accept: { "application/json": [".json"] } }]
-      });
-      const writable = await handle.createWritable();
-      await writable.write(payload);
-      await writable.close();
-      return;
-    } catch (error) {
-      if (error?.name === "AbortError") return;
-    }
-  }
-
-  const blob = new Blob([payload], { type: "application/json" });
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = "name-overrides.json";
-  link.click();
-  URL.revokeObjectURL(link.href);
-}
-
-async function importNameOverrides() {
-  if (window.showOpenFilePicker) {
-    try {
-      const [handle] = await window.showOpenFilePicker({
-        multiple: false,
-        types: [{ description: "JSON", accept: { "application/json": [".json"] } }]
-      });
-      const file = await handle.getFile();
-      const text = await file.text();
-      state.nameOverrides = JSON.parse(text || "{}");
-      saveNameOverrides();
-      return;
-    } catch (error) {
-      if (error?.name === "AbortError") return;
-    }
-  }
-
-  await new Promise((resolve) => {
-    const input = document.createElement("input");
-    input.type = "file";
-    input.accept = ".json,application/json";
-    input.addEventListener("change", async () => {
-      if (!input.files?.length) {
-        resolve();
-        return;
-      }
-      const text = await input.files[0].text();
-      state.nameOverrides = JSON.parse(text || "{}");
-      saveNameOverrides();
-      resolve();
-    });
-    input.click();
-  });
 }
 
 function getInitials(name) {

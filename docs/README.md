@@ -1,18 +1,18 @@
 # Product Specs
 
-This `docs/` directory is the canonical place for product-facing specifications for `boardgame-library`.
+This `docs/` directory is the canonical place for product-facing specifications and supporting reference material for `boardgame-library`.
 
 It has two purposes:
 
 - explain what the app is today
 - capture future improvements as separate high-level specs that can be implemented incrementally
+- preserve supporting technical reference material that informs future implementation
 
 The root project [`README.md`](../README.md) should stay focused on setup, data generation, and local usage. This docs area is for product context, roadmap thinking, and implementation guidance at a high level.
 
 ## Current Specs
 
 - [`app-overview.md`](./app-overview.md): product overview, goals, current capabilities, and present limitations
-- [`00-spec-remove-name-overrides-ui.md`](./00-spec-remove-name-overrides-ui.md): remove the current game-detail controls for editing names and importing or exporting overrides
 - [`01-spec-game-content-enrichment.md`](./01-spec-game-content-enrichment.md): richer game descriptions, cover art, and content quality improvements powered by generated data
 - [`02-spec-expansion-grouping.md`](./02-spec-expansion-grouping.md): hide expansions from top-level listings and surface them only within their base game details
 - [`03-spec-information-architecture-refresh.md`](./03-spec-information-architecture-refresh.md): split the app into clearer top-level sections such as Home, Browse, Archive, and future utility areas
@@ -20,9 +20,18 @@ The root project [`README.md`](../README.md) should stay focused on setup, data 
 - [`05-spec-random-picker-experience.md`](./05-spec-random-picker-experience.md): evolve the random picker into a dedicated, more expressive experience
 - [`06-spec-visual-design-system-refresh.md`](./06-spec-visual-design-system-refresh.md): define a broader visual refresh including theming, typography, and presentation polish
 
+## Technical References
+
+- [`reference/bgg-xmlapi-observed-response-reference.md`](./reference/bgg-xmlapi-observed-response-reference.md): implementation-facing notes about observed BoardGameGeek XML API response structure and safe fields to use
+- [`reference/example.xml`](./reference/example.xml): sample BoardGameGeek XML response used by the reference documentation
+
 ## Archive
 
 Completed specs should be moved out of the active roadmap and into [`archive/`](./archive/) once their implementation is done and the document is no longer the current working spec.
+
+Recently archived:
+
+- [`archive/00-spec-remove-name-overrides-ui.md`](./archive/00-spec-remove-name-overrides-ui.md): removed the current game-detail controls for editing names and importing or exporting overrides
 
 Archived specs should keep their numbered filename so the implementation history remains easy to follow.
 
@@ -36,7 +45,7 @@ Use numbered kebab-case filenames so the intended roadmap order is explicit, suc
 - `07-spec-search-improvements.md`
 - `08-spec-mobile-polish.md`
 
-Reserve `app-overview.md` and `README.md` for foundational documentation. Numbered specs are for future or active initiatives.
+Reserve `app-overview.md` and `README.md` for foundational documentation. Numbered specs are for future or active initiatives. Supporting technical notes should live outside the numbered sequence, for example under `reference/`.
 
 ## Spec Conventions
 

@@ -59,15 +59,15 @@ This generates:
 
 ## Name Overrides
 
-Displayed names use only the base BGG names plus any manual overrides.
+Displayed names use the base BGG names plus any overrides already prepared in the generated dataset.
 
-If you want to adjust a title, you can do it from the game detail panel with the edit name button. That change is stored locally in the browser.
-
-You can also save those overrides to a JSON file and load them again later. If you want to bake them into the project, save the file as `data/name-overrides.json` and then run:
+There is no runtime UI for editing or importing overrides from the app itself. Title curation should happen in source data by maintaining `data/name-overrides.json` and then rebuilding the dataset:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\build-data.ps1 -CsvPath "C:\path\your-collection.csv"
 ```
+
+When that file is present, the build step merges the override values into the generated data so the app can display them without exposing an editing workflow in the detail view.
 
 ## Publishing
 

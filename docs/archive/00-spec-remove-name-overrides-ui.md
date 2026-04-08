@@ -1,6 +1,6 @@
 # Remove Name Overrides UI
 
-Status: Proposed
+Status: Implemented
 Priority: Immediate
 Related docs: app-overview.md
 

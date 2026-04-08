@@ -47,8 +47,7 @@ The current dataset model includes collection metadata plus per-game fields such
 - Open a detail dialog for each game
 - Pick a random game from the currently filtered result set
 - Switch UI language between Spanish and English
-- Save UI preferences and manual name overrides in the browser
-- Import or export name overrides for reuse
+- Save UI preferences in the browser
 
 ## Data Flow
 
@@ -78,7 +77,7 @@ No backend service is required for the current product.
 - No backend, server-side storage, or authenticated user model
 - No live sync with BoardGameGeek at runtime
 - Data quality depends on the exported CSV and optional enrichment step
-- Personal edits such as name overrides are browser-local unless explicitly exported and baked back into the dataset
+- Title curation such as name overrides is handled during data preparation and baked into the generated dataset
 - The app is oriented around a single personal collection rather than multiple users or shared libraries
 - Current product behavior is driven by generated local files, so data refresh is a manual workflow
 

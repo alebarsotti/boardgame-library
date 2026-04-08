@@ -1,4 +1,4 @@
-# BGG XML API Observed Response Spec
+# BGG XML API Observed Response Reference
 
 ## Purpose
 
@@ -18,7 +18,7 @@ copy of the official BGG documentation. The goal is to document:
 
 Observed sample file:
 
-- [example.xml](/E:/dev/Misc/boardgame-library/docs/example.xml)
+- [example.xml](/E:/dev/Misc/boardgame-library/docs/reference/example.xml)
 
 Observed request shape:
 
