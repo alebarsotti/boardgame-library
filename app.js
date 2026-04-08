@@ -426,12 +426,43 @@ function setSelectOptions(select, options, selectedValue) {
 
 async function loadData() {
   if (window[INLINE_DATA_KEY]) {
-    state.data = window[INLINE_DATA_KEY];
+    state.data = normalizeDataset(window[INLINE_DATA_KEY]);
     return;
   }
 
   const response = await fetch(DATA_URL);
-  state.data = await response.json();
+  state.data = normalizeDataset(await response.json());
+}
+
+function normalizeDataset(data) {
+  if (!data || !Array.isArray(data.games)) return data;
+  return {
+    ...data,
+    games: data.games.map(normalizeGame)
+  };
+}
+
+function normalizeGame(game) {
+  return {
+    ...game,
+    recommendedPlayers: toPlayerArray(game.recommendedPlayers),
+    bestPlayers: toPlayerArray(game.bestPlayers),
+    categories: Array.isArray(game.categories) ? game.categories : [],
+    mechanics: Array.isArray(game.mechanics) ? game.mechanics : [],
+    tags: Array.isArray(game.tags) ? game.tags : [],
+    summary: typeof game.summary === "string" ? game.summary : ""
+  };
+}
+
+function toPlayerArray(value) {
+  if (Array.isArray(value)) {
+    return value
+      .map((item) => Number(item))
+      .filter((item) => Number.isFinite(item));
+  }
+  const normalized = Number(value);
+  if (Number.isFinite(normalized)) return [normalized];
+  return [];
 }
 
 function render() {
@@ -510,12 +541,14 @@ function sortGames(left, right) {
 }
 
 function matchesRecommendation(game, recommendation) {
+  const bestPlayers = toPlayerArray(game.bestPlayers);
+  const recommendedPlayers = toPlayerArray(game.recommendedPlayers);
   const map = {
-    duo: game.bestPlayers.includes(2) || game.recommendedPlayers.includes(2),
+    duo: bestPlayers.includes(2) || recommendedPlayers.includes(2),
     quick: game.timeBand === "quick",
     heavy: game.weightBand === "heavy",
-    teach: game.tags.includes("teaching-friendly"),
-    solo: game.tags.includes("solo"),
+    teach: (game.tags || []).includes("teaching-friendly"),
+    solo: (game.tags || []).includes("solo"),
     group: game.maxPlayers >= 6
   };
   return Boolean(map[recommendation]);
@@ -624,10 +657,12 @@ function metaPill(icon, label) {
 
 function getDisplayTags(game) {
   const list = [];
-  if (game.bestPlayers.length) list.push(`${translations[state.language].bestAt} ${joinPlayers(game.bestPlayers)}`);
-  if (game.tags.includes("teaching-friendly")) list.push(translations[state.language].recTeach);
-  if (game.tags.includes("solo")) list.push(translations[state.language].recSolo);
-  if (game.tags.includes("great-at-2")) list.push(translations[state.language].recDuo);
+  const bestPlayers = toPlayerArray(game.bestPlayers);
+  const tags = Array.isArray(game.tags) ? game.tags : [];
+  if (bestPlayers.length) list.push(`${translations[state.language].bestAt} ${joinPlayers(bestPlayers)}`);
+  if (tags.includes("teaching-friendly")) list.push(translations[state.language].recTeach);
+  if (tags.includes("solo")) list.push(translations[state.language].recSolo);
+  if (tags.includes("great-at-2")) list.push(translations[state.language].recDuo);
   return list.slice(0, 3);
 }
 
@@ -665,7 +700,7 @@ function openDetails(game) {
         </div>
         <div class="detail-section">
           <h3>${escapeHtml(copy.notes)}</h3>
-          <p>${escapeHtml(game.notes || game.description || copy.notAvailable)}</p>
+          <p>${escapeHtml(game.notes || game.summary || game.description || copy.notAvailable)}</p>
         </div>
         <div class="detail-section">
           <h3>${escapeHtml(copy.links)}</h3>

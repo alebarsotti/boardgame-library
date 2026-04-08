@@ -13,27 +13,27 @@ Static site for exploring a BoardGameGeek collection with:
 - `index.html`: main structure
 - `styles.css`: editorial look and responsive layout
 - `app.js`: data loading, filters, persistence, and modals
-- `scripts/build-data.ps1`: generates `data/games.json` and `data/games-data.js` from the CSV
+- `scripts/build_data.py`: generates `data/games.json` and `data/games-data.js` from the CSV
 
 ## Regenerating Data
 
-```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\build-data.ps1 -CsvPath "C:\path\your-collection.csv"
+```bash
+python scripts/build_data.py --csv-path "C:\path\your-collection.csv"
 ```
 
 You can also provide output paths:
 
-```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\build-data.ps1 -CsvPath "C:\path\your-collection.csv" -OutputPath ".\data\games.json"
+```bash
+python scripts/build_data.py --csv-path "C:\path\your-collection.csv" --output-path ".\data\games.json"
 ```
 
 ## Enriching with BGG
 
-If you have a BGG application token, you can enrich the dataset with cover images, descriptions, categories, and mechanics.
+If you have a BGG application token, you can enrich the dataset with cover images, short summaries, full descriptions, categories, and mechanics.
 
 The script accepts the token in three ways, in this order:
 
-- `-BggToken "YOUR_TOKEN"`
+- `--bgg-token "YOUR_TOKEN"`
 - `BGG_TOKEN` environment variable
 - a local `.bgg-token` file in the project root
 
@@ -41,21 +41,21 @@ The `.bgg-token` file is ignored by Git.
 
 Only enrich remote URLs:
 
-```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\build-data.ps1 -CsvPath "C:\path\your-collection.csv" -BggToken "YOUR_TOKEN"
+```bash
+python scripts/build_data.py --csv-path "C:\path\your-collection.csv" --bgg-token "YOUR_TOKEN"
 ```
 
 Enrich and download images locally:
 
-```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\build-data.ps1 -CsvPath "C:\path\your-collection.csv" -BggToken "YOUR_TOKEN" -DownloadImages
+```bash
+python scripts/build_data.py --csv-path "C:\path\your-collection.csv" --bgg-token "YOUR_TOKEN" --download-images
 ```
 
 This generates:
 
 - `data/games.json`
 - `data/games-data.js`
-- `data/images/` if `-DownloadImages` is enabled
+- `data/images/` if `--download-images` is enabled
 
 ## Name Overrides
 
@@ -63,8 +63,8 @@ Displayed names use the base BGG names plus any overrides already prepared in th
 
 There is no runtime UI for editing or importing overrides from the app itself. Title curation should happen in source data by maintaining `data/name-overrides.json` and then rebuilding the dataset:
 
-```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\build-data.ps1 -CsvPath "C:\path\your-collection.csv"
+```bash
+python scripts/build_data.py --csv-path "C:\path\your-collection.csv"
 ```
 
 When that file is present, the build step merges the override values into the generated data so the app can display them without exposing an editing workflow in the detail view.

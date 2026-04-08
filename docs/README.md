@@ -19,6 +19,7 @@ The root project [`README.md`](../README.md) should stay focused on setup, data 
 - [`04-spec-discovery-controls-refresh.md`](./04-spec-discovery-controls-refresh.md): improve filters, sorting, and view modes across collection browsing
 - [`05-spec-random-picker-experience.md`](./05-spec-random-picker-experience.md): evolve the random picker into a dedicated, more expressive experience
 - [`06-spec-visual-design-system-refresh.md`](./06-spec-visual-design-system-refresh.md): define a broader visual refresh including theming, typography, and presentation polish
+- [`07-spec-ai-assisted-localized-content.md`](./07-spec-ai-assisted-localized-content.md): add a cached AI-assisted layer for bilingual summaries and future localized content generation
 
 ## Technical References
 
