@@ -1,6 +1,6 @@
 # Information Architecture Refresh
 
-Status: Proposed
+Status: Archived after implementation
 Priority: Mid-term
 Related docs: app-overview.md, 05-spec-random-picker-experience.md, 06-spec-visual-design-system-refresh.md
 

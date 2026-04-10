@@ -2,6 +2,9 @@ const DATA_URL = "./data/games.json";
 const INLINE_DATA_KEY = "__BGG_LIBRARY_DATA__";
 const STORAGE_KEY = "bgg-library-preferences-v3";
 const NAME_OVERRIDES_KEY = "bgg-library-name-overrides-v1";
+const RANDOM_HISTORY_LIMIT = 5;
+const RANDOM_REVEAL_MIN_MS = 900;
+const RANDOM_REVEAL_MAX_MS = 1400;
 
 const PAGE_KEYS = ["home", "browse", "archive", "random", "settings"];
 
@@ -13,19 +16,20 @@ const translations = {
     navArchive: "Archivo",
     navRandom: "Azar",
     navSettings: "Ajustes",
-    heroEyebrow: "Coleccion personal de juegos",
-    heroTitle: "Un catalogo mas claro para elegir mejor.",
+    heroEyebrow: "Colección personal de juegos",
+    heroTitle: "Un catálogo más claro para elegir mejor.",
     heroLede:
-      "Explora la biblioteca, revisa el archivo y deja que Azar te ayude a decidir sin perder los filtros utiles del flujo original.",
-    randomAction: "Elegir al azar",
-    exploreAction: "Explorar la coleccion",
+      "Explora la biblioteca, revisa el archivo y deja que Azar te ayude a decidir sin perder los filtros útiles del flujo original.",
+    openRandomAction: "Abrir Azar",
+    randomAction: "Sortear ahora",
+    exploreAction: "Explorar la colección",
     openArchiveAction: "Ver archivo",
     openSettingsAction: "Abrir ajustes",
-    filterEyebrow: "Busqueda guiada",
+    filterEyebrow: "Búsqueda guiada",
     filterTitle: "Encontrar el juego justo",
     searchLabel: "Buscar por nombre, tag o nota",
     playersLabel: "Jugadores",
-    durationLabel: "Duracion",
+    durationLabel: "Duración",
     weightLabel: "Peso",
     languageLabel: "Idioma / texto",
     bestPlayersLabel: "Mejor cantidad",
@@ -35,11 +39,9 @@ const translations = {
     filterModeExact: "Exacto",
     filterModeUntil: "Hasta",
     filterModeFrom: "Desde",
-    filterModeHintDuration: "Como leer este filtro de duracion",
-    filterModeHintWeight: "Como leer este filtro de peso",
     filterModeExplainExact: "Solo juegos dentro de esta banda",
-    filterModeExplainUntil: "Incluye esta banda y cualquier opcion mas corta o mas liviana",
-    filterModeExplainFrom: "Incluye esta banda y cualquier opcion mas larga o mas pesada",
+    filterModeExplainUntil: "Incluye esta banda y cualquier opción más corta o más liviana",
+    filterModeExplainFrom: "Incluye esta banda y cualquier opción más larga o más pesada",
     activeFiltersTitle: "Filtros activos",
     activeFilterMode: "Modo",
     recommendEyebrow: "Atajos curados",
@@ -48,16 +50,16 @@ const translations = {
     close: "Cerrar",
     resultsEyebrow: "Resultados filtrados",
     resetFilters: "Limpiar filtros",
-    emptyTitle: "No hay coincidencias para esta combinacion.",
-    emptyBody: "Proba aflojar algun filtro o deja que la suerte elija desde otro conjunto.",
-    owned: "En coleccion",
-    prevOwned: "Anteriormente poseido",
-    currentCollection: "coleccion actual",
+    emptyTitle: "No hay coincidencias para esta combinación.",
+    emptyBody: "Probá aflojar algún filtro o dejar que la suerte elija desde otro conjunto.",
+    owned: "En colección",
+    prevOwned: "Anteriormente poseído",
+    currentCollection: "colección actual",
     archiveCollection: "archivo",
     heroCount: "juegos cargados",
-    heroOwned: "hoy en estanteria",
+    heroOwned: "hoy en estantería",
     heroPrev: "en archivo",
-    heroQuick: "partidas rapidas",
+    heroQuick: "partidas rápidas",
     bestAt: "mejor en",
     recommendedAt: "recomendado en",
     ageText: "Edad sugerida",
@@ -68,7 +70,7 @@ const translations = {
     content: "Contenido",
     links: "Enlaces",
     openBgg: "Abrir en BGG",
-    expansion: "Expansion",
+    expansion: "Expansión",
     expansionRequiresBase: "Requiere juego base",
     expansionsTitle: "Expansiones",
     expansionsEmpty: "No hay expansiones vinculadas.",
@@ -77,14 +79,18 @@ const translations = {
     randomBody: "Sorteo hecho solo entre los juegos que cumplen tus filtros activos.",
     reroll: "Volver a sortear",
     openDetails: "Abrir detalle",
-    randomSummaryTitle: "Restricciones vigentes",
-    viewGridLabel: "Galeria",
+    randomSummaryTitle: "Scope activo",
+    randomSummaryCandidates: "Candidatos elegibles",
+    randomSummaryWorkspace: "Workspace fuente",
+    randomSummaryCount: "Títulos por sorteo",
+    randomSummaryStale: "Los filtros cambiaron desde el último resultado. Hacé un nuevo sorteo para mantener el contexto alineado.",
+    viewGridLabel: "Galería",
     viewListLabel: "Lista",
     anyOption: "Cualquiera",
     timeQuick: "Hasta 30 min",
     timeStandard: "31 a 60 min",
     timeExtended: "61 a 120 min",
-    timeEpic: "Mas de 120 min",
+    timeEpic: "Más de 120 min",
     weightLight: "Liviano",
     weightMediumLight: "Medio liviano",
     weightMediumHeavy: "Medio pesado",
@@ -98,17 +104,17 @@ const translations = {
     ageKids: "Hasta 8+",
     ageFamily: "9+ a 12+",
     ageTeen: "13+ a 15+",
-    ageAdult: "16+ o mas",
+    ageAdult: "16+ o más",
     sortName: "Nombre",
     sortRating: "Rating BGG",
     sortRank: "Ranking BGG",
     sortWeight: "Peso",
-    sortTime: "Duracion",
-    sortMaxPlayers: "Max jugadores",
+    sortTime: "Duración",
+    sortMaxPlayers: "Máx. jugadores",
     recDuo: "Ideal para 2",
-    recQuick: "Rapidos",
+    recQuick: "Rápidos",
     recHeavy: "Pesados",
-    recTeach: "Faciles de ensenar",
+    recTeach: "Fáciles de enseñar",
     recSolo: "Con modo solo",
     recGroup: "Para grupo grande",
     filterSearch: "Texto",
@@ -118,43 +124,61 @@ const translations = {
     filterLanguage: "Idioma",
     filterBestPlayers: "Mejor cantidad",
     filterAge: "Edad",
-    filterSection: "Seccion",
-    sectionOwned: "Coleccion",
+    filterSection: "Sección",
+    sectionOwned: "Colección",
     sectionArchive: "Archivo",
     languageSpanish: "ES",
     languageEnglish: "EN",
-    poweredBy: "Datos e imagenes provistos por",
+    poweredBy: "Datos e imágenes provistos por",
     homeCollectionEyebrow: "Estado de la biblioteca",
     homeCollectionTitle: "Una vista general para arrancar sin vueltas.",
     homeCollectionBody:
-      "Aca ves rapido como esta la biblioteca y elegis si queres explorar la coleccion activa, revisar el archivo o dejar que la app te sugiera una opcion.",
+      "Acá ves rápido cómo está la biblioteca y elegís si querés explorar la colección activa, revisar el archivo o dejar que la app te sugiera una opción.",
     homeUtilityEyebrow: "Accesos directos",
     homeUtilityTitle: "Cada tarea tiene su propio espacio",
     homeUtilityBody:
-      "Explorar queda para filtrar en serio, Archivo para revisar juegos que ya no estan, Azar para desempatar y Ajustes para preferencias duraderas.",
+      "Explorar queda para filtrar en serio, Archivo para revisar juegos que ya no están, Azar para desempatar y Ajustes para preferencias duraderas.",
     homeBrowseShortcut: "Ir a explorar",
     homeRandomShortcut: "Ir a azar",
     homeSettingsShortcut: "Ver ajustes",
-    workspaceBrowseEyebrow: "Exploracion guiada",
-    workspaceBrowseTitle: "Explorar la coleccion actual",
+    workspaceBrowseEyebrow: "Exploración guiada",
+    workspaceBrowseTitle: "Explorar la colección actual",
     workspaceBrowseBody: "Este es el espacio para buscar en profundidad dentro de la ludoteca activa, con filtros, orden y vistas compactas.",
-    workspaceArchiveEyebrow: "Archivo historico",
-    workspaceArchiveTitle: "Revisar el archivo historico",
-    workspaceArchiveBody: "El archivo ahora tiene su propia pantalla para recorrer juegos que ya no estan sin mezclarlos con la coleccion actual.",
-    randomPageEyebrow: "Decision rapida",
-    randomPageTitle: "Una seccion dedicada para decidir sin vueltas",
-    randomPageBody: "Azar toma los filtros activos del ultimo espacio que usaste y te devuelve una opcion concreta para destrabar la mesa.",
-    randomPageEmptyTitle: "Todavia no hay un sorteo",
-    randomPageEmptyBody: "Usa el boton principal para elegir un juego desde el conjunto activo.",
+    workspaceArchiveEyebrow: "Archivo histórico",
+    workspaceArchiveTitle: "Revisar el archivo histórico",
+    workspaceArchiveBody: "El archivo ahora tiene su propia pantalla para recorrer juegos que ya no están sin mezclarlos con la colección actual.",
+    randomPageEyebrow: "Mesa de decisión",
+    randomPageTitle: "Azar ahora es una experiencia completa para destrabar la mesa",
+    randomPageBody: "Usa el workspace activo como fuente, revela una opción con un pequeño suspenso y conserva una memoria breve para comparar resultados recientes.",
+    randomPageEmptyTitle: "Todavía no hay un sorteo",
+    randomPageEmptyBody: "Entrá cuando quieras, revisá el scope actual y dispará un sorteo solo cuando la mesa esté lista para decidir.",
+    randomPageRevealEyebrow: "Sorteando",
+    randomPageRevealTitle: "Barajando candidatos para esta mesa",
+    randomPageRevealBody: "El resultado va a respetar exactamente las restricciones activas del workspace actual.",
+    randomPageNoCandidatesTitle: "No hay candidatos con este scope",
+    randomPageNoCandidatesBody: "Ajustá filtros en el workspace anterior o volvé a intentar con un conjunto más amplio.",
+    randomPageStaleTitle: "El último resultado ya no coincide con este scope",
+    randomPageStaleBody: "Los filtros activos cambiaron desde el sorteo anterior. Lanzá uno nuevo para ver una opción válida para la situación actual.",
     randomPageScope: "Tomando filtros desde",
     randomPageOpenWorkspace: "Volver al espacio anterior",
+    randomPageScopeFallback: "Todavía no elegiste un workspace con filtros activos.",
+    randomPageHistoryCurrent: "Resultado actual",
+    randomPageHistoryOpenDetails: "Ver detalle",
+    randomPageResultsEyebrow: "Selección actual",
+    randomPageResultsTitleSingle: "Título sorteado",
+    randomPageResultsTitleMulti: "Títulos sorteados",
+    randomScoreLabel: "Puntaje",
+    randomHistoryEyebrow: "Historial de sesión",
+    randomHistoryTitle: "Resultados recientes",
+    randomHistoryBody: "Sirve para comparar opciones sin guardar nada de forma permanente.",
+    randomHistoryEmpty: "Los sorteos de esta sesión aparecerán acá.",
     settingsEyebrow: "Preferencias",
-    settingsTitle: "Ajustes para una experiencia mas comoda",
+    settingsTitle: "Ajustes para una experiencia más cómoda",
     settingsBody: "En esta primera etapa, el idioma pasa a un lugar estable y deja preparado el espacio para futuras preferencias.",
     settingsLanguageEyebrow: "Idioma",
-    settingsLanguageTitle: "Elegi el idioma de la interfaz",
-    settingsLanguageBody: "El cambio impacta la navegacion, los encabezados y el contenido visible de toda la app.",
-    settingsRoadmapEyebrow: "Proxima expansion",
+    settingsLanguageTitle: "Elegí el idioma de la interfaz",
+    settingsLanguageBody: "El cambio impacta la navegación, los encabezados y el contenido visible de toda la app.",
+    settingsRoadmapEyebrow: "Próxima expansión",
     settingsRoadmapTitle: "Lo que puede venir",
     settingsRoadmapBody:
       "Este espacio queda preparado para recibir temas, opciones visuales o preferencias adicionales sin volver a cargar el hero principal.",
@@ -172,7 +196,8 @@ const translations = {
     heroTitle: "A clearer catalog for choosing better.",
     heroLede:
       "Browse the library, revisit the archive, and let Random help the table decide without losing the useful filter flow.",
-    randomAction: "Pick at random",
+    openRandomAction: "Open Random",
+    randomAction: "Draw now",
     exploreAction: "Browse collection",
     openArchiveAction: "Open archive",
     openSettingsAction: "Open settings",
@@ -190,8 +215,6 @@ const translations = {
     filterModeExact: "Exact",
     filterModeUntil: "Up to",
     filterModeFrom: "From",
-    filterModeHintDuration: "How to read this duration filter",
-    filterModeHintWeight: "How to read this weight filter",
     filterModeExplainExact: "Only games inside this band",
     filterModeExplainUntil: "Includes this band and anything shorter or lighter",
     filterModeExplainFrom: "Includes this band and anything longer or heavier",
@@ -232,7 +255,10 @@ const translations = {
     randomBody: "Randomized only from games matching your active filters.",
     reroll: "Reroll",
     openDetails: "Open details",
-    randomSummaryTitle: "Current restrictions",
+    randomSummaryTitle: "Current scope",
+    randomSummaryCandidates: "Eligible candidates",
+    randomSummaryWorkspace: "Source workspace",
+    randomSummaryStale: "Filters changed since the last result. Draw again to keep the decision aligned with the current scope.",
     viewGridLabel: "Gallery",
     viewListLabel: "List",
     anyOption: "Any",
@@ -296,13 +322,27 @@ const translations = {
     workspaceArchiveEyebrow: "Historical archive",
     workspaceArchiveTitle: "Archive: revisit games no longer on the shelf",
     workspaceArchiveBody: "Archive is now a dedicated destination for browsing past titles without mixing them into the active collection flow.",
-    randomPageEyebrow: "Decision space",
-    randomPageTitle: "Random now has its own place",
-    randomPageBody: "This page uses the active filters from the last workspace you used and proposes one concrete option for the table.",
+    randomPageEyebrow: "Decision table",
+    randomPageTitle: "Random is now a full decision experience",
+    randomPageBody: "It uses the active workspace as its source, adds a short reveal, and keeps a lightweight session memory so the table can compare a few recent draws.",
     randomPageEmptyTitle: "No draw yet",
-    randomPageEmptyBody: "Use the main button to pick a game from the active candidate set.",
+    randomPageEmptyBody: "Drop in whenever you want, review the current scope, and trigger a draw only when the table is ready to decide.",
+    randomPageRevealEyebrow: "Drawing",
+    randomPageRevealTitle: "Shuffling candidates for this table",
+    randomPageRevealBody: "The result will respect the active filters from the current workspace exactly as they are now.",
+    randomPageNoCandidatesTitle: "No candidates match this scope",
+    randomPageNoCandidatesBody: "Adjust filters in the previous workspace or broaden the pool before drawing again.",
+    randomPageStaleTitle: "The previous result no longer matches this scope",
+    randomPageStaleBody: "Active filters changed after the last draw. Start a new one to get a valid option for the current situation.",
     randomPageScope: "Using filters from",
     randomPageOpenWorkspace: "Back to previous view",
+    randomPageScopeFallback: "You have not used a filter workspace yet.",
+    randomPageHistoryCurrent: "Current result",
+    randomPageHistoryOpenDetails: "Open details",
+    randomHistoryEyebrow: "Session memory",
+    randomHistoryTitle: "Recent draws",
+    randomHistoryBody: "Useful for comparing options without saving anything permanently.",
+    randomHistoryEmpty: "Draws from this session will appear here.",
     settingsEyebrow: "Preferences",
     settingsTitle: "Settings for a more comfortable experience",
     settingsBody: "In this first step, language moves into a stable place and leaves room for future preferences.",
@@ -354,7 +394,14 @@ const state = {
   nameOverrides: {},
   data: null,
   filteredGames: [],
-  randomSelection: null
+  randomSelection: [],
+  randomHistory: [],
+  randomRevealState: "idle",
+  randomSelectionContext: null,
+  randomLastAttemptContext: null,
+  currentRandomEntryIds: [],
+  randomDrawCount: 1,
+  randomRevealTimer: null
 };
 
 const elements = {};
@@ -408,9 +455,9 @@ function cacheElements() {
   elements.recommendationChips = document.querySelector("#recommendation-chips");
   elements.detailsDialog = document.querySelector("#details-dialog");
   elements.detailsContent = document.querySelector("#details-content");
-  elements.randomDialog = document.querySelector("#random-dialog");
   elements.randomPageSummary = document.querySelector("#random-page-summary");
   elements.randomPageContent = document.querySelector("#random-page-content");
+  elements.randomPageHistory = document.querySelector("#random-page-history");
   elements.filtersPanel = document.querySelector("#filters-panel");
   elements.cardTemplate = document.querySelector("#game-card-template");
   elements.languageSegment = document.querySelector("#language-segment");
@@ -450,15 +497,14 @@ function bindEvents() {
   elements.viewFilter.addEventListener("click", handleFilterControlClick);
   document.querySelector("#reset-filters").addEventListener("click", resetFilters);
   document.querySelector("#details-close").addEventListener("click", () => elements.detailsDialog.close());
-  document.querySelector("#random-close").addEventListener("click", () => elements.randomDialog.close());
   document.querySelector("#open-filters").addEventListener("click", () => elements.filtersPanel.classList.add("is-open"));
   document.querySelector("#close-filters").addEventListener("click", () => elements.filtersPanel.classList.remove("is-open"));
   document.querySelector("#home-browse-action").addEventListener("click", () => setActivePage("browse"));
-  document.querySelector("#home-random-action").addEventListener("click", drawRandomFromCurrentScope);
+  document.querySelector("#home-random-action").addEventListener("click", () => setActivePage("random"));
   document.querySelector("#home-archive-action").addEventListener("click", () => setActivePage("archive"));
   document.querySelector("#workspace-settings-action").addEventListener("click", () => setActivePage("settings"));
-  document.querySelector("#workspace-random-action").addEventListener("click", drawRandomFromCurrentScope);
-  document.querySelector("#toolbar-random").addEventListener("click", drawRandomFromCurrentScope);
+  document.querySelector("#workspace-random-action").addEventListener("click", () => setActivePage("random"));
+  document.querySelector("#toolbar-random").addEventListener("click", () => setActivePage("random"));
   document.querySelector("#random-browse-action").addEventListener("click", () => setActivePage(state.lastWorkspacePage));
   document.querySelector("#random-page-trigger").addEventListener("click", drawRandomFromCurrentScope);
 }
@@ -474,6 +520,9 @@ function setFilter(key, value) {
   if (key === "view") {
     state.preferences.view = value;
     savePreferences();
+  }
+  if (state.randomRevealState !== "revealing" && isRandomResultOutOfSync()) {
+    clearCurrentRandomSelection();
   }
   render();
 }
@@ -643,7 +692,6 @@ function renderFilterControls() {
     const baseClass = key === "view" ? "toolbar__view filter-control" : "filter-control";
     if (definition.style === "range") {
       const modeValue = state.filters[definition.modeKey] || "exact";
-      const hintLabel = key === "duration" ? copy.filterModeHintDuration : copy.filterModeHintWeight;
       container.className = `${baseClass} filter-control--range`;
       container.innerHTML = `
         <div class="segmented-control filter-control__modes">
@@ -651,7 +699,7 @@ function renderFilterControls() {
           ${renderRangeModeButton(key, "until", copy.filterModeUntil, modeValue)}
           ${renderRangeModeButton(key, "from", copy.filterModeFrom, modeValue)}
         </div>
-        <p class="filter-control__hint"><strong>${escapeHtml(hintLabel)}:</strong> ${escapeHtml(getRangeModeExplanation(modeValue))}</p>
+        <p class="filter-control__hint">${escapeHtml(getRangeModeExplanation(modeValue))}</p>
         <div class="chip-list filter-control__values">
           ${definition.options
             .map(([value, label]) => {
@@ -763,6 +811,7 @@ function render() {
   syncSectionWithPage();
   syncControls();
   state.filteredGames = getFilteredGames();
+  reconcileRandomSelection();
   renderPageNav();
   renderLanguageSegment();
   renderPanelVisibility();
@@ -1090,70 +1139,362 @@ function detailKv(label, value) {
   return `<div class="detail-kv"><strong>${escapeHtml(label)}</strong><span>${escapeHtml(value)}</span></div>`;
 }
 function drawRandomFromCurrentScope() {
-  state.filteredGames = getFilteredGames();
-  state.randomSelection = state.filteredGames.length ? state.filteredGames[Math.floor(Math.random() * state.filteredGames.length)] : null;
-  setActivePage("random");
+  if (state.randomRevealState === "revealing") return;
+
+  const context = buildRandomContext();
+  const candidates = getFilteredGames();
+  const drawCount = getAllowedRandomDrawCount(candidates.length);
+  const selection = pickRandomGames(candidates, context, drawCount);
+  const revealDuration = getRandomRevealDuration();
+
+  clearRandomRevealTimer();
+  state.randomLastAttemptContext = context;
+  state.randomSelection = [];
+  state.randomSelectionContext = null;
+  state.currentRandomEntryIds = [];
+  state.randomRevealState = "revealing";
+
+  if (state.activePage !== "random") {
+    setActivePage("random");
+  } else {
+    render();
+  }
+
+  state.randomRevealTimer = window.setTimeout(() => {
+    state.randomRevealTimer = null;
+    if (selection.length) {
+      const historyEntries = pushRandomHistory(selection, context);
+      state.randomSelection = selection;
+      state.randomSelectionContext = context;
+      state.currentRandomEntryIds = historyEntries.map((entry) => entry.id);
+      state.randomRevealState = "result";
+    } else {
+      state.randomSelection = [];
+      state.randomSelectionContext = null;
+      state.currentRandomEntryIds = [];
+      state.randomRevealState = "idle";
+    }
+    render();
+  }, revealDuration);
 }
 
 function renderRandomPage() {
   const copy = translations[state.language];
-  const sourceLabel = state.lastWorkspacePage === "archive" ? copy.drawnFromArchive : copy.drawnFromBrowse;
-  const filtersSummary = getRandomSummary() || `<span class="chip">${escapeHtml(copy.anyOption)}</span>`;
+  document.querySelector("#random-page-trigger").disabled = state.randomRevealState === "revealing";
+  const currentContext = buildRandomContext();
+  const sourceLabel = currentContext.scope === "archive" ? copy.drawnFromArchive : copy.drawnFromBrowse;
+  const filtersSummary = getRandomSummary(currentContext.filtersSnapshot) || `<span class="chip">${escapeHtml(copy.anyOption)}</span>`;
+  const isStale = state.randomLastAttemptContext && state.randomLastAttemptContext.signature !== currentContext.signature;
+  const maxDrawCount = Math.max(1, Math.min(RANDOM_HISTORY_LIMIT, state.filteredGames.length || RANDOM_HISTORY_LIMIT));
+  state.randomDrawCount = Math.min(Math.max(1, state.randomDrawCount || 1), maxDrawCount);
   elements.randomPageSummary.innerHTML = `
-    <p>${escapeHtml(copy.randomPageScope)} <strong>${escapeHtml(sourceLabel)}</strong></p>
+    <div class="random-summary__meta">
+      <div class="random-summary__metric">
+        <span>${escapeHtml(copy.randomSummaryWorkspace)}</span>
+        <strong>${escapeHtml(sourceLabel || copy.randomPageScopeFallback)}</strong>
+      </div>
+      <div class="random-summary__metric">
+        <span>${escapeHtml(copy.randomSummaryCandidates)}</span>
+        <strong>${escapeHtml(String(state.filteredGames.length))}</strong>
+      </div>
+      <label class="random-summary__metric random-summary__metric--control">
+        <span>${escapeHtml(copy.randomSummaryCount)}</span>
+        <select id="random-draw-count">
+          ${Array.from({ length: maxDrawCount }, (_, index) => index + 1)
+            .map((value) => `<option value="${value}" ${value === state.randomDrawCount ? "selected" : ""}>${value}</option>`)
+            .join("")}
+        </select>
+      </label>
+    </div>
     <div class="random-summary">${filtersSummary}</div>
+    ${isStale ? `<p class="random-summary__note">${escapeHtml(copy.randomSummaryStale)}</p>` : ""}
   `;
+  elements.randomPageSummary.querySelector("#random-draw-count").addEventListener("change", (event) => {
+    state.randomDrawCount = Math.max(1, Math.min(maxDrawCount, Number(event.target.value) || 1));
+  });
 
-  if (!state.randomSelection) {
+  if (state.randomRevealState === "revealing") {
     elements.randomPageContent.innerHTML = `
-      <p class="eyebrow">${escapeHtml(copy.randomTitle)}</p>
-      <h3>${escapeHtml(copy.randomPageEmptyTitle)}</h3>
-      <p>${escapeHtml(copy.randomPageEmptyBody)}</p>
-      <div class="random-actions">
-        <button class="button button--primary" id="random-page-empty-trigger" type="button">${escapeHtml(copy.randomAction)}</button>
-        <button class="button button--ghost" id="random-page-open-workspace" type="button">${escapeHtml(copy.randomPageOpenWorkspace)}</button>
+      <div class="random-stage__surface random-stage__surface--revealing">
+        <p class="eyebrow">${escapeHtml(copy.randomPageRevealEyebrow)}</p>
+        <h3>${escapeHtml(copy.randomPageRevealTitle)}</h3>
+        <p>${escapeHtml(copy.randomPageRevealBody)}</p>
+        <div class="random-reveal">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    `;
+    renderRandomHistory();
+    return;
+  }
+
+  if (!state.randomSelection.length) {
+    const showStaleState = Boolean(state.randomLastAttemptContext) && isStale;
+    const attemptedCurrentScope = state.randomLastAttemptContext && state.randomLastAttemptContext.signature === currentContext.signature;
+    const emptyTitle = showStaleState
+      ? copy.randomPageStaleTitle
+      : attemptedCurrentScope
+        ? copy.randomPageNoCandidatesTitle
+        : copy.randomPageEmptyTitle;
+    const emptyBody = showStaleState
+      ? copy.randomPageStaleBody
+      : attemptedCurrentScope
+        ? copy.randomPageNoCandidatesBody
+        : copy.randomPageEmptyBody;
+
+    elements.randomPageContent.innerHTML = `
+      <div class="random-stage__surface random-stage__surface--empty">
+        <p class="eyebrow">${escapeHtml(copy.randomTitle)}</p>
+        <h3>${escapeHtml(emptyTitle)}</h3>
+        <p>${escapeHtml(emptyBody)}</p>
+        <div class="random-actions">
+          <button class="button button--primary" id="random-page-empty-trigger" type="button">${escapeHtml(copy.randomAction)}</button>
+          <button class="button button--ghost" id="random-page-open-workspace" type="button">${escapeHtml(copy.randomPageOpenWorkspace)}</button>
+        </div>
       </div>
     `;
     elements.randomPageContent.querySelector("#random-page-empty-trigger").addEventListener("click", drawRandomFromCurrentScope);
     elements.randomPageContent.querySelector("#random-page-open-workspace").addEventListener("click", () => setActivePage(state.lastWorkspacePage));
+    renderRandomHistory();
     return;
   }
 
-  const game = state.randomSelection;
-  const displayName = getDisplayName(game);
+  const selectionTitle = state.randomSelection.length === 1 ? copy.randomPageResultsTitleSingle : copy.randomPageResultsTitleMulti;
   elements.randomPageContent.innerHTML = `
-    <p class="eyebrow">${escapeHtml(copy.randomTitle)}</p>
-    <h3>${escapeHtml(displayName)}</h3>
-    <p>${escapeHtml(copy.randomBody)}</p>
-    <div class="random-result">
-      <div class="detail-meta">
-        ${metaPill("players", formatPlayers(game))}
-        ${metaPill("time", formatPlayTime(game))}
-        ${metaPill("weight", labelForWeightBand(game.weightBand))}
+    <div class="random-stage__surface random-stage__surface--result">
+      <p class="eyebrow">${escapeHtml(copy.randomPageResultsEyebrow)}</p>
+      <h3>${escapeHtml(selectionTitle)}</h3>
+      <p>${escapeHtml(copy.randomBody)}</p>
+      <div class="random-result-list">
+        ${state.randomSelection
+          .map((game, index) => {
+            const displayName = getDisplayName(game);
+            const description = game.notes || game.summary || game.description || "";
+            return `
+              <article class="random-result-card">
+                <div class="random-result-card__header">
+                  <div class="random-result-card__cover" id="random-result-cover-${index}"></div>
+                  <div class="random-result-card__heading">
+                    <div class="random-result-card__title-row">
+                      <h4>${escapeHtml(displayName)}</h4>
+                      <span class="random-score">${escapeHtml(copy.randomScoreLabel)}: ${escapeHtml(formatGameScore(game))}</span>
+                    </div>
+                    <p class="random-result__subtitle">${escapeHtml(buildDetailSubtitle(game))}</p>
+                    ${description ? `<p class="random-result-card__description">${escapeHtml(description)}</p>` : ""}
+                  </div>
+                </div>
+                <div class="random-result">
+                  <div class="detail-meta">
+                    ${metaPill("players", formatPlayers(game))}
+                    ${metaPill("time", formatPlayTime(game))}
+                    ${metaPill("weight", labelForWeightBand(game.weightBand))}
+                    ${metaPill("age", game.ageText || translations[state.language].notAvailable)}
+                  </div>
+                  <div class="detail-tags">${getDisplayTags(game).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}</div>
+                </div>
+                <div class="random-actions">
+                  <button class="button button--primary" data-random-result-details="${index}" type="button">${escapeHtml(copy.openDetails)}</button>
+                </div>
+              </article>
+            `;
+          })
+          .join("")}
       </div>
-      <p style="margin-top:14px">${escapeHtml(buildDetailSubtitle(game))}</p>
-      <div class="detail-tags" style="margin-top:14px">${getDisplayTags(game).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}</div>
-    </div>
-    <div class="random-actions">
-      <button class="button button--ghost" id="random-page-reroll" type="button">${escapeHtml(copy.reroll)}</button>
-      <button class="button button--primary" id="random-page-details" type="button">${escapeHtml(copy.openDetails)}</button>
+      <div class="random-actions">
+        <button class="button button--ghost" id="random-page-reroll" type="button">${escapeHtml(copy.reroll)}</button>
+      </div>
     </div>
   `;
+  state.randomSelection.forEach((game, index) => {
+    injectCover(elements.randomPageContent.querySelector(`#random-result-cover-${index}`), game, 240);
+  });
   elements.randomPageContent.querySelector("#random-page-reroll").addEventListener("click", drawRandomFromCurrentScope);
-  elements.randomPageContent.querySelector("#random-page-details").addEventListener("click", () => openDetails(game));
+  elements.randomPageContent.querySelectorAll("[data-random-result-details]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const game = state.randomSelection[Number(button.dataset.randomResultDetails)];
+      if (game) openDetails(game);
+    });
+  });
+  renderRandomHistory();
 }
 
-function getRandomSummary() {
+function renderRandomHistory() {
+  const copy = translations[state.language];
+  if (!state.randomHistory.length) {
+    elements.randomPageHistory.innerHTML = `<p class="random-history-empty">${escapeHtml(copy.randomHistoryEmpty)}</p>`;
+    return;
+  }
+
+  elements.randomPageHistory.innerHTML = `
+    <div class="random-history-list">
+      ${state.randomHistory
+        .map((entry) => {
+          const game = getGameById(entry.gameId);
+          if (!game) return "";
+          const isCurrent = state.currentRandomEntryIds.includes(entry.id);
+          return `
+            <article class="random-history-entry ${isCurrent ? "is-current" : ""}">
+              <div class="random-history-entry__layout">
+                <div class="random-history-entry__cover" id="random-history-cover-${escapeAttribute(entry.id)}"></div>
+                <div class="random-history-entry__body">
+                  <div class="random-history-entry__header">
+                    <div>
+                      <h4>${escapeHtml(getDisplayName(game))}</h4>
+                      <p class="random-history-entry__subtitle">${escapeHtml(buildDetailSubtitle(game))}</p>
+                    </div>
+                    <div class="random-history-entry__badges">
+                      <span class="random-score">${escapeHtml(copy.randomScoreLabel)}: ${escapeHtml(formatGameScore(game))}</span>
+                      ${isCurrent ? `<span class="random-history-entry__badge">${escapeHtml(copy.randomPageHistoryCurrent)}</span>` : ""}
+                    </div>
+                  </div>
+                  <div class="detail-meta">
+                    ${metaPill("players", formatPlayers(game))}
+                    ${metaPill("time", formatPlayTime(game))}
+                    ${metaPill("weight", labelForWeightBand(game.weightBand))}
+                  </div>
+                  <div class="detail-tags">${getDisplayTags(game, { compact: true }).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}</div>
+                  <div class="random-history-entry__actions">
+                    <button class="button button--ghost button--small" data-random-history-details="${escapeAttribute(entry.id)}" type="button">${escapeHtml(copy.randomPageHistoryOpenDetails)}</button>
+                  </div>
+                </div>
+              </div>
+            </article>
+          `;
+        })
+        .join("")}
+    </div>
+  `;
+
+  elements.randomPageHistory.querySelectorAll("[data-random-history-details]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const entry = state.randomHistory.find((item) => item.id === button.dataset.randomHistoryDetails);
+      const game = entry ? getGameById(entry.gameId) : null;
+      if (game) openDetails(game);
+    });
+  });
+
+  state.randomHistory.forEach((entry) => {
+    const game = getGameById(entry.gameId);
+    const cover = elements.randomPageHistory.querySelector(`#random-history-cover-${CSS.escape(entry.id)}`);
+    if (game && cover) injectCover(cover, game, 112);
+  });
+}
+
+function getRandomSummary(filtersSnapshot = buildRandomFiltersSnapshot()) {
   const chips = [];
   const copy = translations[state.language];
-  chips.push(`<span class="chip">${escapeHtml(copy.filterSection)}: ${escapeHtml(getEffectiveSection() === "archive" ? copy.sectionArchive : copy.sectionOwned)}</span>`);
-  if (state.filters.players) chips.push(`<span class="chip">${escapeHtml(copy.filterPlayers)}: ${escapeHtml(state.filters.players === "6" ? "6+" : state.filters.players)}</span>`);
-  if (state.filters.duration) chips.push(`<span class="chip">${escapeHtml(copy.filterDuration)}: ${escapeHtml(getRangeFilterSummary("duration"))}</span>`);
-  if (state.filters.weight) chips.push(`<span class="chip">${escapeHtml(copy.filterWeight)}: ${escapeHtml(getRangeFilterSummary("weight"))}</span>`);
-  if (state.filters.languageKey) chips.push(`<span class="chip">${escapeHtml(copy.filterLanguage)}: ${escapeHtml(labelForLanguageKey(state.filters.languageKey))}</span>`);
-  if (state.filters.bestPlayers) chips.push(`<span class="chip">${escapeHtml(copy.filterBestPlayers)}: ${escapeHtml(state.filters.bestPlayers === "6" ? "6+" : state.filters.bestPlayers)}</span>`);
-  if (state.filters.age) chips.push(`<span class="chip">${escapeHtml(copy.filterAge)}: ${escapeHtml(labelForAgeBand(state.filters.age))}</span>`);
+  if (filtersSnapshot.search) chips.push(`<span class="chip">${escapeHtml(copy.filterSearch)}: ${escapeHtml(filtersSnapshot.search)}</span>`);
+  if (filtersSnapshot.players) chips.push(`<span class="chip">${escapeHtml(copy.filterPlayers)}: ${escapeHtml(filtersSnapshot.players === "6" ? "6+" : filtersSnapshot.players)}</span>`);
+  if (filtersSnapshot.duration) chips.push(`<span class="chip">${escapeHtml(copy.filterDuration)}: ${escapeHtml(getRangeFilterSummaryFromSnapshot("duration", filtersSnapshot))}</span>`);
+  if (filtersSnapshot.weight) chips.push(`<span class="chip">${escapeHtml(copy.filterWeight)}: ${escapeHtml(getRangeFilterSummaryFromSnapshot("weight", filtersSnapshot))}</span>`);
+  if (filtersSnapshot.languageKey) chips.push(`<span class="chip">${escapeHtml(copy.filterLanguage)}: ${escapeHtml(labelForLanguageKey(filtersSnapshot.languageKey))}</span>`);
+  if (filtersSnapshot.bestPlayers) chips.push(`<span class="chip">${escapeHtml(copy.filterBestPlayers)}: ${escapeHtml(filtersSnapshot.bestPlayers === "6" ? "6+" : filtersSnapshot.bestPlayers)}</span>`);
+  if (filtersSnapshot.age) chips.push(`<span class="chip">${escapeHtml(copy.filterAge)}: ${escapeHtml(labelForAgeBand(filtersSnapshot.age))}</span>`);
+  if (filtersSnapshot.recommendation) chips.push(`<span class="chip">Rec: ${escapeHtml(getFilterValueLabel("recommendation", filtersSnapshot.recommendation))}</span>`);
   return chips.join("");
+}
+
+function buildRandomContext() {
+  const scope = state.lastWorkspacePage === "archive" ? "archive" : "browse";
+  const filtersSnapshot = buildRandomFiltersSnapshot(scope);
+  return {
+    scope,
+    filtersSnapshot,
+    signature: serializeRandomContext(scope, filtersSnapshot)
+  };
+}
+
+function buildRandomFiltersSnapshot(scope = state.lastWorkspacePage === "archive" ? "archive" : "browse") {
+  return {
+    section: scope === "archive" ? "archive" : "owned",
+    search: state.filters.search || "",
+    players: state.filters.players || "",
+    duration: state.filters.duration || "",
+    durationMode: state.filters.durationMode || "exact",
+    weight: state.filters.weight || "",
+    weightMode: state.filters.weightMode || "exact",
+    languageKey: state.filters.languageKey || "",
+    bestPlayers: state.filters.bestPlayers || "",
+    age: state.filters.age || "",
+    recommendation: state.filters.recommendation || ""
+  };
+}
+
+function serializeRandomContext(scope, filtersSnapshot) {
+  return JSON.stringify({
+    scope,
+    section: filtersSnapshot.section,
+    search: filtersSnapshot.search,
+    players: filtersSnapshot.players,
+    duration: filtersSnapshot.duration,
+    durationMode: filtersSnapshot.durationMode,
+    weight: filtersSnapshot.weight,
+    weightMode: filtersSnapshot.weightMode,
+    languageKey: filtersSnapshot.languageKey,
+    bestPlayers: filtersSnapshot.bestPlayers,
+    age: filtersSnapshot.age,
+    recommendation: filtersSnapshot.recommendation
+  });
+}
+
+function pickRandomGames(candidates, context, count) {
+  if (!candidates.length) return [];
+  const recentIds = new Set(state.randomHistory.filter((entry) => entry.contextSignature === context.signature).map((entry) => entry.gameId));
+  const freshPool = candidates.filter((game) => !recentIds.has(game.id));
+  const basePool = freshPool.length >= count ? freshPool : candidates;
+  const shuffled = [...basePool].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, Math.min(count, shuffled.length));
+}
+
+function pushRandomHistory(games, context) {
+  const entries = games.map((game, index) => ({
+    id: `${Date.now()}-${index}-${Math.random().toString(16).slice(2, 8)}`,
+    gameId: game.id,
+    scope: context.scope,
+    filtersSnapshot: { ...context.filtersSnapshot },
+    contextSignature: context.signature,
+    drawnAt: new Date().toISOString()
+  }));
+  state.randomHistory = [...entries, ...state.randomHistory].slice(0, RANDOM_HISTORY_LIMIT);
+  return entries;
+}
+
+function reconcileRandomSelection() {
+  if (state.randomRevealState === "revealing") return;
+  if (isRandomResultOutOfSync()) {
+    clearCurrentRandomSelection();
+  }
+}
+
+function isRandomResultOutOfSync() {
+  return Boolean(state.randomSelectionContext) && state.randomSelectionContext.signature !== buildRandomContext().signature;
+}
+
+function clearCurrentRandomSelection() {
+  state.randomSelection = [];
+  state.randomSelectionContext = null;
+  state.currentRandomEntryIds = [];
+  if (state.randomRevealState !== "revealing") {
+    state.randomRevealState = "idle";
+  }
+}
+
+function clearRandomRevealTimer() {
+  if (state.randomRevealTimer) {
+    window.clearTimeout(state.randomRevealTimer);
+    state.randomRevealTimer = null;
+  }
+}
+
+function getRandomRevealDuration() {
+  return RANDOM_REVEAL_MIN_MS + Math.floor(Math.random() * (RANDOM_REVEAL_MAX_MS - RANDOM_REVEAL_MIN_MS + 1));
+}
+
+function getAllowedRandomDrawCount(candidateCount) {
+  const maxDrawCount = Math.max(1, Math.min(RANDOM_HISTORY_LIMIT, candidateCount || RANDOM_HISTORY_LIMIT));
+  return Math.min(Math.max(1, state.randomDrawCount || 1), maxDrawCount);
 }
 
 function injectCover(container, game, width) {
@@ -1268,6 +1609,13 @@ function formatPlayTime(game) {
   return translations[state.language].notAvailable;
 }
 
+function formatGameScore(game) {
+  if (typeof game?.averageRating === "number" && Number.isFinite(game.averageRating)) {
+    return game.averageRating.toFixed(1);
+  }
+  return translations[state.language].notAvailable;
+}
+
 function joinPlayers(values) {
   return values.map((value) => (value >= 6 ? "6+" : value)).join(", ");
 }
@@ -1279,10 +1627,14 @@ function getFilterValueLabel(key, value) {
 }
 
 function getRangeFilterSummary(key) {
+  return getRangeFilterSummaryFromSnapshot(key, state.filters);
+}
+
+function getRangeFilterSummaryFromSnapshot(key, snapshot) {
   const copy = translations[state.language];
-  const value = state.filters[key];
+  const value = snapshot[key];
   if (!value) return "";
-  const mode = state.filters[`${key}Mode`] || "exact";
+  const mode = snapshot[`${key}Mode`] || "exact";
   const valueLabel = getFilterValueLabel(key, value);
   if (mode === "exact") return valueLabel;
   return `${getModeLabel(mode).toLowerCase()} ${valueLabel}`;
@@ -1335,6 +1687,10 @@ function labelForLanguageKey(value) {
 function labelForAgeBand(value) {
   const copy = translations[state.language];
   return { kids: copy.ageKids, family: copy.ageFamily, teen: copy.ageTeen, adult: copy.ageAdult }[value] || value;
+}
+
+function getGameById(gameId) {
+  return state.data?.games?.find((game) => game.id === gameId) || null;
 }
 
 function labelForRecommendation(value) {
