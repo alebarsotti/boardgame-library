@@ -1,21 +1,31 @@
 const DATA_URL = "./data/games.json";
 const INLINE_DATA_KEY = "__BGG_LIBRARY_DATA__";
-const STORAGE_KEY = "bgg-library-preferences-v2";
+const STORAGE_KEY = "bgg-library-preferences-v3";
 const NAME_OVERRIDES_KEY = "bgg-library-name-overrides-v1";
+
+const PAGE_KEYS = ["home", "browse", "archive", "random", "settings"];
 
 const translations = {
   es: {
-    heroEyebrow: "Colección personal de juegos",
-    heroTitle: "Un catálogo pensado para elegir mejor que nunca.",
+    brandEyebrow: "Biblioteca personal",
+    navHome: "Inicio",
+    navBrowse: "Explorar",
+    navArchive: "Archivo",
+    navRandom: "Azar",
+    navSettings: "Ajustes",
+    heroEyebrow: "Coleccion personal de juegos",
+    heroTitle: "Un catalogo mas claro para elegir mejor.",
     heroLede:
-      "Explora la biblioteca de Ale con filtros útiles, notas personales, recomendaciones rápidas y un selector aleatorio que respeta exactamente las condiciones de la mesa.",
+      "Explora la biblioteca, revisa el archivo y deja que Azar te ayude a decidir sin perder los filtros utiles del flujo original.",
     randomAction: "Elegir al azar",
-    exploreAction: "Explorar la colección",
-    filterEyebrow: "Búsqueda guiada",
+    exploreAction: "Explorar la coleccion",
+    openArchiveAction: "Ver archivo",
+    openSettingsAction: "Abrir ajustes",
+    filterEyebrow: "Busqueda guiada",
     filterTitle: "Encontrar el juego justo",
     searchLabel: "Buscar por nombre, tag o nota",
     playersLabel: "Jugadores",
-    durationLabel: "Duración",
+    durationLabel: "Duracion",
     weightLabel: "Peso",
     languageLabel: "Idioma / texto",
     bestPlayersLabel: "Mejor cantidad",
@@ -28,17 +38,16 @@ const translations = {
     close: "Cerrar",
     resultsEyebrow: "Resultados filtrados",
     resetFilters: "Limpiar filtros",
-    emptyTitle: "No hay coincidencias para esta combinación.",
-    emptyBody: "Probá aflojar algún filtro o dejá que la suerte elija desde otro conjunto.",
-    owned: "En colección",
-    prevOwned: "Anteriormente poseído",
-    allGames: "todos los juegos",
-    currentCollection: "colección actual",
+    emptyTitle: "No hay coincidencias para esta combinacion.",
+    emptyBody: "Proba aflojar algun filtro o deja que la suerte elija desde otro conjunto.",
+    owned: "En coleccion",
+    prevOwned: "Anteriormente poseido",
+    currentCollection: "coleccion actual",
     archiveCollection: "archivo",
     heroCount: "juegos cargados",
-    heroOwned: "hoy en estantería",
+    heroOwned: "hoy en estanteria",
     heroPrev: "en archivo",
-    heroQuick: "partidas rápidas",
+    heroQuick: "partidas rapidas",
     bestAt: "mejor en",
     recommendedAt: "recomendado en",
     ageText: "Edad sugerida",
@@ -47,27 +56,25 @@ const translations = {
     languageDependence: "Dependencia del idioma",
     ownership: "Estado",
     content: "Contenido",
-    quantity: "Cantidad",
-    notes: "Notas",
     links: "Enlaces",
     openBgg: "Abrir en BGG",
-    expansion: "Expansión",
+    expansion: "Expansion",
     expansionRequiresBase: "Requiere juego base",
     expansionsTitle: "Expansiones",
     expansionsEmpty: "No hay expansiones vinculadas.",
     notAvailable: "Sin dato",
     randomTitle: "La mesa acaba de decidir",
-    randomBody: "Sorteo hecho solo entre los juegos que cumplen tus filtros actuales.",
+    randomBody: "Sorteo hecho solo entre los juegos que cumplen tus filtros activos.",
     reroll: "Volver a sortear",
     openDetails: "Abrir detalle",
     randomSummaryTitle: "Restricciones vigentes",
-    viewGridLabel: "Galería",
+    viewGridLabel: "Galeria",
     viewListLabel: "Lista",
     anyOption: "Cualquiera",
     timeQuick: "Hasta 30 min",
     timeStandard: "31 a 60 min",
     timeExtended: "61 a 120 min",
-    timeEpic: "Más de 120 min",
+    timeEpic: "Mas de 120 min",
     weightLight: "Liviano",
     weightMediumLight: "Medio liviano",
     weightMediumHeavy: "Medio pesado",
@@ -81,16 +88,16 @@ const translations = {
     ageKids: "Hasta 8+",
     ageFamily: "9+ a 12+",
     ageTeen: "13+ a 15+",
-    ageAdult: "16+ o más",
+    ageAdult: "16+ o mas",
     sortName: "Nombre",
     sortRating: "Rating BGG",
     sortRank: "Ranking BGG",
     sortWeight: "Peso",
-    sortTime: "Duración",
+    sortTime: "Duracion",
     recDuo: "Ideal para 2",
-    recQuick: "Rápidos",
+    recQuick: "Rapidos",
     recHeavy: "Pesados",
-    recTeach: "Fáciles de enseñar",
+    recTeach: "Faciles de ensenar",
     recSolo: "Con modo solo",
     recGroup: "Para grupo grande",
     filterSearch: "Texto",
@@ -100,20 +107,64 @@ const translations = {
     filterLanguage: "Idioma",
     filterBestPlayers: "Mejor cantidad",
     filterAge: "Edad",
-    filterSection: "Sección",
-    sectionOwned: "Colección",
+    filterSection: "Seccion",
+    sectionOwned: "Coleccion",
     sectionArchive: "Archivo",
     languageSpanish: "ES",
     languageEnglish: "EN",
-    poweredBy: "Datos e imágenes provistos por"
+    poweredBy: "Datos e imagenes provistos por",
+    homeCollectionEyebrow: "Estado de la biblioteca",
+    homeCollectionTitle: "Una vista general para arrancar sin vueltas.",
+    homeCollectionBody:
+      "Aca ves rapido como esta la biblioteca y elegis si queres explorar la coleccion activa, revisar el archivo o dejar que la app te sugiera una opcion.",
+    homeUtilityEyebrow: "Accesos directos",
+    homeUtilityTitle: "Cada tarea tiene su propio espacio",
+    homeUtilityBody:
+      "Explorar queda para filtrar en serio, Archivo para revisar juegos que ya no estan, Azar para desempatar y Ajustes para preferencias duraderas.",
+    homeBrowseShortcut: "Ir a explorar",
+    homeRandomShortcut: "Ir a azar",
+    homeSettingsShortcut: "Ver ajustes",
+    workspaceBrowseEyebrow: "Exploracion guiada",
+    workspaceBrowseTitle: "Explorar la coleccion actual",
+    workspaceBrowseBody: "Este es el espacio para buscar en profundidad dentro de la ludoteca activa, con filtros, orden y vistas compactas.",
+    workspaceArchiveEyebrow: "Archivo historico",
+    workspaceArchiveTitle: "Revisar el archivo historico",
+    workspaceArchiveBody: "El archivo ahora tiene su propia pantalla para recorrer juegos que ya no estan sin mezclarlos con la coleccion actual.",
+    randomPageEyebrow: "Decision rapida",
+    randomPageTitle: "Una seccion dedicada para decidir sin vueltas",
+    randomPageBody: "Azar toma los filtros activos del ultimo espacio que usaste y te devuelve una opcion concreta para destrabar la mesa.",
+    randomPageEmptyTitle: "Todavia no hay un sorteo",
+    randomPageEmptyBody: "Usa el boton principal para elegir un juego desde el conjunto activo.",
+    randomPageScope: "Tomando filtros desde",
+    randomPageOpenWorkspace: "Volver al espacio anterior",
+    settingsEyebrow: "Preferencias",
+    settingsTitle: "Ajustes para una experiencia mas comoda",
+    settingsBody: "En esta primera etapa, el idioma pasa a un lugar estable y deja preparado el espacio para futuras preferencias.",
+    settingsLanguageEyebrow: "Idioma",
+    settingsLanguageTitle: "Elegi el idioma de la interfaz",
+    settingsLanguageBody: "El cambio impacta la navegacion, los encabezados y el contenido visible de toda la app.",
+    settingsRoadmapEyebrow: "Proxima expansion",
+    settingsRoadmapTitle: "Lo que puede venir",
+    settingsRoadmapBody:
+      "Este espacio queda preparado para recibir temas, opciones visuales o preferencias adicionales sin volver a cargar el hero principal.",
+    drawnFromBrowse: "Explorar",
+    drawnFromArchive: "Archivo"
   },
   en: {
+    brandEyebrow: "Personal library",
+    navHome: "Home",
+    navBrowse: "Browse",
+    navArchive: "Archive",
+    navRandom: "Random",
+    navSettings: "Settings",
     heroEyebrow: "Personal board game collection",
-    heroTitle: "A catalog designed to help pick the right game faster.",
+    heroTitle: "A clearer catalog for choosing better.",
     heroLede:
-      "Browse Ale's library with practical filters, personal notes, quick recommendations, and a random picker that respects the exact conditions at the table.",
+      "Browse the library, revisit the archive, and let Random help the table decide without losing the useful filter flow.",
     randomAction: "Pick at random",
     exploreAction: "Browse collection",
+    openArchiveAction: "Open archive",
+    openSettingsAction: "Open settings",
     filterEyebrow: "Guided search",
     filterTitle: "Find the right game",
     searchLabel: "Search by name, tag, or note",
@@ -135,7 +186,6 @@ const translations = {
     emptyBody: "Try relaxing a filter or let chance choose from a broader set.",
     owned: "Currently owned",
     prevOwned: "Previously owned",
-    allGames: "all games",
     currentCollection: "current collection",
     archiveCollection: "archive",
     heroCount: "games loaded",
@@ -150,8 +200,6 @@ const translations = {
     languageDependence: "Language dependence",
     ownership: "Ownership",
     content: "Content",
-    quantity: "Quantity",
-    notes: "Notes",
     links: "Links",
     openBgg: "Open on BGG",
     expansion: "Expansion",
@@ -208,7 +256,43 @@ const translations = {
     sectionArchive: "Archive",
     languageSpanish: "ES",
     languageEnglish: "EN",
-    poweredBy: "Data and images provided by"
+    poweredBy: "Data and images provided by",
+    homeCollectionEyebrow: "Library status",
+    homeCollectionTitle: "A simple landing area for quick orientation.",
+    homeCollectionBody:
+      "Home summarizes the collection and directs you to the right experience depending on whether you want to explore, revisit the archive, or let the app decide.",
+    homeUtilityEyebrow: "Shortcuts",
+    homeUtilityTitle: "Clear entry points for each job",
+    homeUtilityBody:
+      "Browse is for deep filtering, Archive is for previously owned titles, Random is for tie-breakers, and Settings holds durable preferences.",
+    homeBrowseShortcut: "Go to browse",
+    homeRandomShortcut: "Go to random",
+    homeSettingsShortcut: "Open settings",
+    workspaceBrowseEyebrow: "Guided exploration",
+    workspaceBrowseTitle: "Browse: explore the current collection",
+    workspaceBrowseBody: "This is the deep filtering workspace for the active shelf, keeping the controls and views you already had.",
+    workspaceArchiveEyebrow: "Historical archive",
+    workspaceArchiveTitle: "Archive: revisit games no longer on the shelf",
+    workspaceArchiveBody: "Archive is now a dedicated destination for browsing past titles without mixing them into the active collection flow.",
+    randomPageEyebrow: "Decision space",
+    randomPageTitle: "Random now has its own place",
+    randomPageBody: "This page uses the active filters from the last workspace you used and proposes one concrete option for the table.",
+    randomPageEmptyTitle: "No draw yet",
+    randomPageEmptyBody: "Use the main button to pick a game from the active candidate set.",
+    randomPageScope: "Using filters from",
+    randomPageOpenWorkspace: "Back to previous view",
+    settingsEyebrow: "Preferences",
+    settingsTitle: "Settings for a more comfortable experience",
+    settingsBody: "In this first step, language moves into a stable place and leaves room for future preferences.",
+    settingsLanguageEyebrow: "Language",
+    settingsLanguageTitle: "Choose the interface language",
+    settingsLanguageBody: "This updates navigation, section headers, and visible content labels across the app.",
+    settingsRoadmapEyebrow: "Next layer",
+    settingsRoadmapTitle: "What can come next",
+    settingsRoadmapBody:
+      "This space is now ready for themes, visual settings, or additional preferences without overloading the main hero.",
+    drawnFromBrowse: "Browse",
+    drawnFromArchive: "Archive"
   }
 };
 
@@ -223,6 +307,8 @@ const icons = {
 
 const state = {
   language: "es",
+  activePage: "home",
+  lastWorkspacePage: "browse",
   filters: {
     search: "",
     players: "",
@@ -238,11 +324,13 @@ const state = {
   },
   preferences: {
     language: "es",
-    view: "grid"
+    view: "grid",
+    activePage: "home"
   },
   nameOverrides: {},
   data: null,
-  filteredGames: []
+  filteredGames: [],
+  randomSelection: null
 };
 
 const elements = {};
@@ -255,11 +343,20 @@ async function init() {
   bindEvents();
   applyTranslations();
   await loadData();
+  ensureValidActivePage();
+  syncSectionWithPage();
   render();
 }
 
 function cacheElements() {
+  elements.pageNav = document.querySelector("#page-nav");
   elements.heroStats = document.querySelector("#hero-stats");
+  elements.homeOwnedCount = document.querySelector("#home-owned-count");
+  elements.homeArchiveCount = document.querySelector("#home-archive-count");
+  elements.homeShortcuts = document.querySelector("#home-shortcuts");
+  elements.workspaceEyebrow = document.querySelector("#workspace-eyebrow");
+  elements.workspaceTitle = document.querySelector("#workspace-title");
+  elements.workspaceBody = document.querySelector("#workspace-body");
   elements.searchInput = document.querySelector("#search-input");
   elements.playersFilter = document.querySelector("#players-filter");
   elements.timeFilter = document.querySelector("#time-filter");
@@ -277,11 +374,15 @@ function cacheElements() {
   elements.detailsDialog = document.querySelector("#details-dialog");
   elements.detailsContent = document.querySelector("#details-content");
   elements.randomDialog = document.querySelector("#random-dialog");
-  elements.randomContent = document.querySelector("#random-content");
+  elements.randomPageSummary = document.querySelector("#random-page-summary");
+  elements.randomPageContent = document.querySelector("#random-page-content");
   elements.filtersPanel = document.querySelector("#filters-panel");
   elements.cardTemplate = document.querySelector("#game-card-template");
   elements.languageSegment = document.querySelector("#language-segment");
-  elements.collectionTabs = document.querySelector("#collection-tabs");
+  elements.homePanel = document.querySelector("#home-panel");
+  elements.workspacePanel = document.querySelector("#workspace-panel");
+  elements.randomPanel = document.querySelector("#random-panel");
+  elements.settingsPanel = document.querySelector("#settings-panel");
 }
 
 function loadPreferences() {
@@ -294,6 +395,8 @@ function loadPreferences() {
 
   state.language = state.preferences.language || "es";
   state.filters.view = state.preferences.view || "grid";
+  state.activePage = state.preferences.activePage || "home";
+  state.lastWorkspacePage = state.activePage === "archive" ? "archive" : "browse";
 
   try {
     state.nameOverrides = JSON.parse(localStorage.getItem(NAME_OVERRIDES_KEY) || "{}");
@@ -305,7 +408,6 @@ function loadPreferences() {
 function savePreferences() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state.preferences));
 }
-
 function bindEvents() {
   const bindings = [
     [elements.searchInput, "input", (event) => setFilter("search", event.target.value.trim().toLowerCase())],
@@ -325,12 +427,24 @@ function bindEvents() {
 
   bindings.forEach(([node, eventName, handler]) => node.addEventListener(eventName, handler));
   document.querySelector("#reset-filters").addEventListener("click", resetFilters);
-  document.querySelector("#random-trigger").addEventListener("click", openRandomDialog);
-  document.querySelector("#toolbar-random").addEventListener("click", openRandomDialog);
   document.querySelector("#details-close").addEventListener("click", () => elements.detailsDialog.close());
   document.querySelector("#random-close").addEventListener("click", () => elements.randomDialog.close());
   document.querySelector("#open-filters").addEventListener("click", () => elements.filtersPanel.classList.add("is-open"));
   document.querySelector("#close-filters").addEventListener("click", () => elements.filtersPanel.classList.remove("is-open"));
+  document.querySelector("#home-browse-action").addEventListener("click", () => setActivePage("browse"));
+  document.querySelector("#home-random-action").addEventListener("click", drawRandomFromCurrentScope);
+  document.querySelector("#home-archive-action").addEventListener("click", () => setActivePage("archive"));
+  document.querySelector("#workspace-settings-action").addEventListener("click", () => setActivePage("settings"));
+  document.querySelector("#workspace-random-action").addEventListener("click", drawRandomFromCurrentScope);
+  document.querySelector("#toolbar-random").addEventListener("click", drawRandomFromCurrentScope);
+  document.querySelector("#random-browse-action").addEventListener("click", () => setActivePage(state.lastWorkspacePage));
+  document.querySelector("#random-page-trigger").addEventListener("click", drawRandomFromCurrentScope);
+}
+
+function ensureValidActivePage() {
+  if (!PAGE_KEYS.includes(state.activePage)) {
+    state.activePage = "home";
+  }
 }
 
 function setFilter(key, value) {
@@ -346,9 +460,31 @@ function setLanguage(language) {
   render();
 }
 
-function setSection(section) {
-  state.filters.section = section;
+function setActivePage(page) {
+  if (!PAGE_KEYS.includes(page)) return;
+  state.activePage = page;
+  if (page === "browse" || page === "archive") {
+    state.lastWorkspacePage = page;
+    state.filters.section = page === "archive" ? "archive" : "owned";
+  }
+  state.preferences.activePage = page;
+  savePreferences();
+  elements.filtersPanel.classList.remove("is-open");
   render();
+}
+
+function syncSectionWithPage() {
+  if (state.activePage === "archive") {
+    state.filters.section = "archive";
+    state.lastWorkspacePage = "archive";
+    return;
+  }
+  if (state.activePage === "browse") {
+    state.filters.section = "owned";
+    state.lastWorkspacePage = "browse";
+    return;
+  }
+  state.filters.section = state.lastWorkspacePage === "archive" ? "archive" : "owned";
 }
 
 function resetFilters() {
@@ -363,7 +499,7 @@ function resetFilters() {
     sort: "name",
     view: state.preferences.view || "grid",
     recommendation: "",
-    section: state.filters.section
+    section: getEffectiveSection()
   };
   syncControls();
   render();
@@ -378,8 +514,28 @@ function applyTranslations() {
   });
   elements.searchInput.placeholder = copy.searchLabel;
   buildFilterOptions();
+  renderPageNav();
   renderLanguageSegment();
-  renderCollectionTabs();
+}
+
+function renderPageNav() {
+  const copy = translations[state.language];
+  const items = [
+    ["home", copy.navHome],
+    ["browse", copy.navBrowse],
+    ["archive", copy.navArchive],
+    ["random", copy.navRandom],
+    ["settings", copy.navSettings]
+  ];
+  elements.pageNav.innerHTML = items
+    .map(
+      ([value, label]) =>
+        `<button class="segment-button ${state.activePage === value ? "is-active" : ""}" data-page="${value}" type="button">${escapeHtml(label)}</button>`
+    )
+    .join("");
+  elements.pageNav.querySelectorAll("[data-page]").forEach((button) => {
+    button.addEventListener("click", () => setActivePage(button.dataset.page));
+  });
 }
 
 function renderLanguageSegment() {
@@ -396,23 +552,6 @@ function renderLanguageSegment() {
     .join("");
   elements.languageSegment.querySelectorAll("[data-language]").forEach((button) => {
     button.addEventListener("click", () => setLanguage(button.dataset.language));
-  });
-}
-
-function renderCollectionTabs() {
-  const copy = translations[state.language];
-  const tabs = [
-    ["owned", copy.sectionOwned],
-    ["archive", copy.sectionArchive]
-  ];
-  elements.collectionTabs.innerHTML = tabs
-    .map(
-      ([value, label]) =>
-        `<button class="segment-button ${state.filters.section === value ? "is-active" : ""}" data-section="${value}" type="button">${escapeHtml(label)}</button>`
-    )
-    .join("");
-  elements.collectionTabs.querySelectorAll("[data-section]").forEach((button) => {
-    button.addEventListener("click", () => setSection(button.dataset.section));
   });
 }
 
@@ -484,15 +623,20 @@ function toPlayerArray(value) {
 
 function render() {
   if (!state.data) return;
+  syncSectionWithPage();
   syncControls();
   state.filteredGames = getFilteredGames();
+  renderPageNav();
   renderLanguageSegment();
-  renderCollectionTabs();
+  renderPanelVisibility();
   renderHeroStats();
+  renderHomePanel();
+  renderWorkspaceHeading();
   renderResultsSummary();
   renderActiveFilters();
   renderRecommendationChips();
   renderGames();
+  renderRandomPage();
 }
 
 function syncControls() {
@@ -508,12 +652,24 @@ function syncControls() {
   elements.gamesGrid.classList.toggle("list-view", state.filters.view === "list");
 }
 
+function renderPanelVisibility() {
+  elements.homePanel.classList.toggle("hidden", state.activePage !== "home");
+  elements.workspacePanel.classList.toggle("hidden", !(state.activePage === "browse" || state.activePage === "archive"));
+  elements.randomPanel.classList.toggle("hidden", state.activePage !== "random");
+  elements.settingsPanel.classList.toggle("hidden", state.activePage !== "settings");
+}
+
+function getEffectiveSection() {
+  return state.filters.section === "archive" ? "archive" : "owned";
+}
+
 function getFilteredGames() {
+  const section = getEffectiveSection();
   return state.data.games
     .filter((game) => {
       if (shouldHideFromBrowse(game)) return false;
-      if (state.filters.section === "owned" && !game.own) return false;
-      if (state.filters.section === "archive" && !game.prevOwned) return false;
+      if (section === "owned" && !game.own) return false;
+      if (section === "archive" && !game.prevOwned) return false;
       if (state.filters.search && !game.searchText.includes(state.filters.search)) return false;
       if (state.filters.players) {
         const requested = state.filters.players === "6" ? 6 : Number(state.filters.players);
@@ -542,7 +698,6 @@ function getFilteredGames() {
     })
     .sort(sortGames);
 }
-
 function sortGames(left, right) {
   switch (state.filters.sort) {
     case "rating":
@@ -585,9 +740,37 @@ function renderHeroStats() {
     .join("");
 }
 
+function renderHomePanel() {
+  elements.homeOwnedCount.textContent = String(state.data.summary.ownCount);
+  elements.homeArchiveCount.textContent = String(state.data.summary.prevOwnedCount);
+
+  const copy = translations[state.language];
+  const shortcuts = [
+    ["browse", copy.homeBrowseShortcut],
+    ["random", copy.homeRandomShortcut],
+    ["settings", copy.homeSettingsShortcut]
+  ];
+
+  elements.homeShortcuts.innerHTML = shortcuts
+    .map(([page, label]) => `<button class="chip chip--interactive" data-home-page="${page}" type="button">${escapeHtml(label)}</button>`)
+    .join("");
+
+  elements.homeShortcuts.querySelectorAll("[data-home-page]").forEach((button) => {
+    button.addEventListener("click", () => setActivePage(button.dataset.homePage));
+  });
+}
+
+function renderWorkspaceHeading() {
+  const copy = translations[state.language];
+  const isArchive = getEffectiveSection() === "archive";
+  elements.workspaceEyebrow.textContent = isArchive ? copy.workspaceArchiveEyebrow : copy.workspaceBrowseEyebrow;
+  elements.workspaceTitle.textContent = isArchive ? copy.workspaceArchiveTitle : copy.workspaceBrowseTitle;
+  elements.workspaceBody.textContent = isArchive ? copy.workspaceArchiveBody : copy.workspaceBrowseBody;
+}
+
 function renderResultsSummary() {
   const copy = translations[state.language];
-  const scope = state.filters.section === "archive" ? copy.archiveCollection : copy.currentCollection;
+  const scope = getEffectiveSection() === "archive" ? copy.archiveCollection : copy.currentCollection;
   elements.resultsCount.textContent = `${state.filteredGames.length} ${scope}`;
 }
 
@@ -617,7 +800,7 @@ function renderRecommendationChips() {
 
 function renderActiveFilters() {
   const copy = translations[state.language];
-  const tags = [[copy.filterSection, state.filters.section === "archive" ? copy.sectionArchive : copy.sectionOwned]];
+  const tags = [[copy.filterSection, getEffectiveSection() === "archive" ? copy.sectionArchive : copy.sectionOwned]];
   if (state.filters.search) tags.push([copy.filterSearch, state.filters.search]);
   if (state.filters.players) tags.push([copy.filterPlayers, state.filters.players === "6" ? "6+" : state.filters.players]);
   if (state.filters.duration) tags.push([copy.filterDuration, labelForTimeBand(state.filters.duration)]);
@@ -778,61 +961,70 @@ function openDetails(game) {
 function detailKv(label, value) {
   return `<div class="detail-kv"><strong>${escapeHtml(label)}</strong><span>${escapeHtml(value)}</span></div>`;
 }
+function drawRandomFromCurrentScope() {
+  state.filteredGames = getFilteredGames();
+  state.randomSelection = state.filteredGames.length ? state.filteredGames[Math.floor(Math.random() * state.filteredGames.length)] : null;
+  setActivePage("random");
+}
 
-function openRandomDialog() {
+function renderRandomPage() {
   const copy = translations[state.language];
-  if (!state.filteredGames.length) {
-    elements.randomContent.innerHTML = `<div class="random-card"><p class="eyebrow">${escapeHtml(copy.randomTitle)}</p><h2>${escapeHtml(copy.emptyTitle)}</h2><p>${escapeHtml(copy.emptyBody)}</p></div>`;
-    if (!elements.randomDialog.open) elements.randomDialog.showModal();
+  const sourceLabel = state.lastWorkspacePage === "archive" ? copy.drawnFromArchive : copy.drawnFromBrowse;
+  const filtersSummary = getRandomSummary() || `<span class="chip">${escapeHtml(copy.anyOption)}</span>`;
+  elements.randomPageSummary.innerHTML = `
+    <p>${escapeHtml(copy.randomPageScope)} <strong>${escapeHtml(sourceLabel)}</strong></p>
+    <div class="random-summary">${filtersSummary}</div>
+  `;
+
+  if (!state.randomSelection) {
+    elements.randomPageContent.innerHTML = `
+      <p class="eyebrow">${escapeHtml(copy.randomTitle)}</p>
+      <h3>${escapeHtml(copy.randomPageEmptyTitle)}</h3>
+      <p>${escapeHtml(copy.randomPageEmptyBody)}</p>
+      <div class="random-actions">
+        <button class="button button--primary" id="random-page-empty-trigger" type="button">${escapeHtml(copy.randomAction)}</button>
+        <button class="button button--ghost" id="random-page-open-workspace" type="button">${escapeHtml(copy.randomPageOpenWorkspace)}</button>
+      </div>
+    `;
+    elements.randomPageContent.querySelector("#random-page-empty-trigger").addEventListener("click", drawRandomFromCurrentScope);
+    elements.randomPageContent.querySelector("#random-page-open-workspace").addEventListener("click", () => setActivePage(state.lastWorkspacePage));
     return;
   }
 
-  const game = state.filteredGames[Math.floor(Math.random() * state.filteredGames.length)];
+  const game = state.randomSelection;
   const displayName = getDisplayName(game);
-  const filtersSummary = getRandomSummary();
-  elements.randomContent.innerHTML = `
-    <div class="random-card">
-      <div>
-        <p class="eyebrow">${escapeHtml(copy.randomTitle)}</p>
-        <h2>${escapeHtml(displayName)}</h2>
-        <p>${escapeHtml(copy.randomBody)}</p>
+  elements.randomPageContent.innerHTML = `
+    <p class="eyebrow">${escapeHtml(copy.randomTitle)}</p>
+    <h3>${escapeHtml(displayName)}</h3>
+    <p>${escapeHtml(copy.randomBody)}</p>
+    <div class="random-result">
+      <div class="detail-meta">
+        ${metaPill("players", formatPlayers(game))}
+        ${metaPill("time", formatPlayTime(game))}
+        ${metaPill("weight", labelForWeightBand(game.weightBand))}
       </div>
-      <div class="random-result">
-        <div class="detail-meta">
-          ${metaPill("players", formatPlayers(game))}
-          ${metaPill("time", formatPlayTime(game))}
-          ${metaPill("weight", labelForWeightBand(game.weightBand))}
-        </div>
-        <p style="margin-top:14px">${escapeHtml(buildDetailSubtitle(game))}</p>
-        <div class="detail-tags" style="margin-top:14px">${getDisplayTags(game).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}</div>
-      </div>
-      <div>
-        <p class="eyebrow">${escapeHtml(copy.randomSummaryTitle)}</p>
-        <div class="random-summary">${filtersSummary || `<span class="chip">${escapeHtml(copy.anyOption)}</span>`}</div>
-      </div>
-      <div class="random-actions">
-        <button class="button button--ghost" id="reroll-random" type="button">${escapeHtml(copy.reroll)}</button>
-        <button class="button button--primary" id="open-random-details" type="button">${escapeHtml(copy.openDetails)}</button>
-      </div>
+      <p style="margin-top:14px">${escapeHtml(buildDetailSubtitle(game))}</p>
+      <div class="detail-tags" style="margin-top:14px">${getDisplayTags(game).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}</div>
+    </div>
+    <div class="random-actions">
+      <button class="button button--ghost" id="random-page-reroll" type="button">${escapeHtml(copy.reroll)}</button>
+      <button class="button button--primary" id="random-page-details" type="button">${escapeHtml(copy.openDetails)}</button>
     </div>
   `;
-  elements.randomContent.querySelector("#reroll-random").addEventListener("click", openRandomDialog);
-  elements.randomContent.querySelector("#open-random-details").addEventListener("click", () => {
-    elements.randomDialog.close();
-    openDetails(game);
-  });
-  if (!elements.randomDialog.open) elements.randomDialog.showModal();
+  elements.randomPageContent.querySelector("#random-page-reroll").addEventListener("click", drawRandomFromCurrentScope);
+  elements.randomPageContent.querySelector("#random-page-details").addEventListener("click", () => openDetails(game));
 }
 
 function getRandomSummary() {
   const chips = [];
   const copy = translations[state.language];
-  chips.push(`<span class="chip">${escapeHtml(copy.filterSection)}: ${escapeHtml(state.filters.section === "archive" ? copy.sectionArchive : copy.sectionOwned)}</span>`);
+  chips.push(`<span class="chip">${escapeHtml(copy.filterSection)}: ${escapeHtml(getEffectiveSection() === "archive" ? copy.sectionArchive : copy.sectionOwned)}</span>`);
   if (state.filters.players) chips.push(`<span class="chip">${escapeHtml(copy.filterPlayers)}: ${escapeHtml(state.filters.players === "6" ? "6+" : state.filters.players)}</span>`);
   if (state.filters.duration) chips.push(`<span class="chip">${escapeHtml(copy.filterDuration)}: ${escapeHtml(labelForTimeBand(state.filters.duration))}</span>`);
   if (state.filters.weight) chips.push(`<span class="chip">${escapeHtml(copy.filterWeight)}: ${escapeHtml(labelForWeightBand(state.filters.weight))}</span>`);
   if (state.filters.languageKey) chips.push(`<span class="chip">${escapeHtml(copy.filterLanguage)}: ${escapeHtml(labelForLanguageKey(state.filters.languageKey))}</span>`);
   if (state.filters.bestPlayers) chips.push(`<span class="chip">${escapeHtml(copy.filterBestPlayers)}: ${escapeHtml(state.filters.bestPlayers === "6" ? "6+" : state.filters.bestPlayers)}</span>`);
+  if (state.filters.age) chips.push(`<span class="chip">${escapeHtml(copy.filterAge)}: ${escapeHtml(labelForAgeBand(state.filters.age))}</span>`);
   return chips.join("");
 }
 

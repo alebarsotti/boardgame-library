@@ -6,7 +6,7 @@
     <title>Ale's Board Game Library</title>
     <meta
       name="description"
-      content="Colección de juegos de mesa con filtros avanzados, recomendaciones y selección aleatoria."
+      content="Coleccion de juegos de mesa con filtros avanzados, recomendaciones y seleccion aleatoria."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,116 +18,206 @@
   </head>
   <body>
     <div class="page-shell">
-      <header class="hero">
-        <div class="hero__glow"></div>
-        <div class="hero__copy">
-          <div class="hero__utility">
-            <div class="segmented-control" id="language-segment" aria-label="Language"></div>
-          </div>
-          <p class="eyebrow" data-i18n="heroEyebrow"></p>
-          <h1 data-i18n="heroTitle"></h1>
-          <p class="hero__lede" data-i18n="heroLede"></p>
-          <div class="hero__actions">
-            <button class="button button--primary" id="random-trigger" type="button">
-              <span data-i18n="randomAction"></span>
-            </button>
-            <a class="button button--ghost" href="#collection" data-i18n="exploreAction"></a>
-          </div>
+      <header class="topbar">
+        <div class="brand-block">
+          <p class="eyebrow" data-i18n="brandEyebrow"></p>
+          <h1 class="brand-title">Ale's Board Game Library</h1>
         </div>
-        <div class="hero__stats" id="hero-stats"></div>
+        <nav class="page-nav" id="page-nav" aria-label="Primary"></nav>
       </header>
 
-      <main class="layout" id="collection">
-        <aside class="filters" id="filters-panel">
-          <div class="filters__header">
+      <main class="page-stack">
+        <section class="page-panel page-panel--hero" id="home-panel" data-page="home">
+          <header class="hero">
+            <div class="hero__glow"></div>
+            <div class="hero__copy">
+              <p class="eyebrow" data-i18n="heroEyebrow"></p>
+              <h2 data-i18n="heroTitle"></h2>
+              <p class="hero__lede" data-i18n="heroLede"></p>
+              <div class="hero__actions">
+                <button class="button button--primary" id="home-browse-action" type="button" data-i18n="exploreAction"></button>
+                <button class="button button--ghost" id="home-random-action" type="button" data-i18n="randomAction"></button>
+              </div>
+            </div>
+            <div class="hero__stats" id="hero-stats"></div>
+          </header>
+
+          <div class="home-grid">
+            <article class="info-card">
+              <p class="eyebrow" data-i18n="homeCollectionEyebrow"></p>
+              <h3 data-i18n="homeCollectionTitle"></h3>
+              <p data-i18n="homeCollectionBody"></p>
+              <div class="home-stat-list">
+                <div class="home-stat">
+                  <strong id="home-owned-count"></strong>
+                  <span data-i18n="heroOwned"></span>
+                </div>
+                <div class="home-stat">
+                  <strong id="home-archive-count"></strong>
+                  <span data-i18n="heroPrev"></span>
+                </div>
+              </div>
+              <button class="button button--ghost" id="home-archive-action" type="button" data-i18n="openArchiveAction"></button>
+            </article>
+
+            <article class="info-card">
+              <p class="eyebrow" data-i18n="homeUtilityEyebrow"></p>
+              <h3 data-i18n="homeUtilityTitle"></h3>
+              <p data-i18n="homeUtilityBody"></p>
+              <div class="home-shortcuts" id="home-shortcuts"></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="page-panel hidden" id="workspace-panel" data-page="workspace">
+          <div class="section-heading">
             <div>
-              <p class="eyebrow" data-i18n="filterEyebrow"></p>
-              <h2 data-i18n="filterTitle"></h2>
+              <p class="eyebrow" id="workspace-eyebrow"></p>
+              <h2 id="workspace-title"></h2>
+              <p id="workspace-body"></p>
             </div>
-            <button class="button button--ghost button--small mobile-only" id="close-filters" type="button">
-              <span data-i18n="close"></span>
-            </button>
-          </div>
-
-          <label class="field">
-            <span data-i18n="searchLabel"></span>
-            <input id="search-input" type="search" />
-          </label>
-
-          <div class="field-grid">
-            <label class="field">
-              <span data-i18n="playersLabel"></span>
-              <select id="players-filter"></select>
-            </label>
-            <label class="field">
-              <span data-i18n="durationLabel"></span>
-              <select id="time-filter"></select>
-            </label>
-          </div>
-
-          <div class="field-grid">
-            <label class="field">
-              <span data-i18n="weightLabel"></span>
-              <select id="weight-filter"></select>
-            </label>
-            <label class="field">
-              <span data-i18n="languageLabel"></span>
-              <select id="language-filter"></select>
-            </label>
-          </div>
-
-          <div class="field-grid">
-            <label class="field">
-              <span data-i18n="bestPlayersLabel"></span>
-              <select id="best-players-filter"></select>
-            </label>
-            <label class="field">
-              <span data-i18n="ageLabel"></span>
-              <select id="age-filter"></select>
-            </label>
-          </div>
-
-          <div class="field-grid">
-            <label class="field">
-              <span data-i18n="sortLabel"></span>
-              <select id="sort-filter"></select>
-            </label>
-            <label class="field">
-              <span data-i18n="viewLabel"></span>
-              <select id="view-filter"></select>
-            </label>
-          </div>
-
-          <div class="recommendations-card">
-            <div class="recommendations-card__header">
-              <p class="eyebrow" data-i18n="recommendEyebrow"></p>
-              <h3 data-i18n="recommendTitle"></h3>
-            </div>
-            <div class="chip-list" id="recommendation-chips"></div>
-          </div>
-        </aside>
-
-        <section class="content">
-          <div class="toolbar">
-            <button class="button button--ghost mobile-only" id="open-filters" type="button">
-              <span data-i18n="openFilters"></span>
-            </button>
-            <div class="toolbar__summary">
-              <p class="eyebrow" data-i18n="resultsEyebrow"></p>
-              <h2 id="results-count"></h2>
-            </div>
-            <div class="toolbar__actions">
-              <button class="button button--ghost" id="reset-filters" type="button" data-i18n="resetFilters"></button>
-              <button class="button button--primary" id="toolbar-random" type="button" data-i18n="randomAction"></button>
+            <div class="section-heading__actions">
+              <button class="button button--ghost" id="workspace-settings-action" type="button" data-i18n="openSettingsAction"></button>
+              <button class="button button--primary" id="workspace-random-action" type="button" data-i18n="randomAction"></button>
             </div>
           </div>
 
-          <div class="section-tabs" id="collection-tabs"></div>
-          <div class="active-filters" id="active-filters"></div>
-          <div class="collection-grid" id="games-grid"></div>
-          <div class="empty-state hidden" id="empty-state">
-            <h3 data-i18n="emptyTitle"></h3>
-            <p data-i18n="emptyBody"></p>
+          <div class="layout" id="collection">
+            <aside class="filters" id="filters-panel">
+              <div class="filters__header">
+                <div>
+                  <p class="eyebrow" data-i18n="filterEyebrow"></p>
+                  <h2 data-i18n="filterTitle"></h2>
+                </div>
+                <button class="button button--ghost button--small mobile-only" id="close-filters" type="button">
+                  <span data-i18n="close"></span>
+                </button>
+              </div>
+
+              <label class="field">
+                <span data-i18n="searchLabel"></span>
+                <input id="search-input" type="search" />
+              </label>
+
+              <div class="field-grid">
+                <label class="field">
+                  <span data-i18n="playersLabel"></span>
+                  <select id="players-filter"></select>
+                </label>
+                <label class="field">
+                  <span data-i18n="durationLabel"></span>
+                  <select id="time-filter"></select>
+                </label>
+              </div>
+
+              <div class="field-grid">
+                <label class="field">
+                  <span data-i18n="weightLabel"></span>
+                  <select id="weight-filter"></select>
+                </label>
+                <label class="field">
+                  <span data-i18n="languageLabel"></span>
+                  <select id="language-filter"></select>
+                </label>
+              </div>
+
+              <div class="field-grid">
+                <label class="field">
+                  <span data-i18n="bestPlayersLabel"></span>
+                  <select id="best-players-filter"></select>
+                </label>
+                <label class="field">
+                  <span data-i18n="ageLabel"></span>
+                  <select id="age-filter"></select>
+                </label>
+              </div>
+
+              <div class="field-grid">
+                <label class="field">
+                  <span data-i18n="sortLabel"></span>
+                  <select id="sort-filter"></select>
+                </label>
+                <label class="field">
+                  <span data-i18n="viewLabel"></span>
+                  <select id="view-filter"></select>
+                </label>
+              </div>
+
+              <div class="recommendations-card">
+                <div class="recommendations-card__header">
+                  <p class="eyebrow" data-i18n="recommendEyebrow"></p>
+                  <h3 data-i18n="recommendTitle"></h3>
+                </div>
+                <div class="chip-list" id="recommendation-chips"></div>
+              </div>
+            </aside>
+
+            <section class="content">
+              <div class="toolbar">
+                <button class="button button--ghost mobile-only" id="open-filters" type="button">
+                  <span data-i18n="openFilters"></span>
+                </button>
+                <div class="toolbar__summary">
+                  <p class="eyebrow" data-i18n="resultsEyebrow"></p>
+                  <h2 id="results-count"></h2>
+                </div>
+                <div class="toolbar__actions">
+                  <button class="button button--ghost" id="reset-filters" type="button" data-i18n="resetFilters"></button>
+                  <button class="button button--primary" id="toolbar-random" type="button" data-i18n="randomAction"></button>
+                </div>
+              </div>
+
+              <div class="active-filters" id="active-filters"></div>
+              <div class="collection-grid" id="games-grid"></div>
+              <div class="empty-state hidden" id="empty-state">
+                <h3 data-i18n="emptyTitle"></h3>
+                <p data-i18n="emptyBody"></p>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="page-panel hidden" id="random-panel" data-page="random">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow" data-i18n="randomPageEyebrow"></p>
+              <h2 data-i18n="randomPageTitle"></h2>
+              <p data-i18n="randomPageBody"></p>
+            </div>
+            <div class="section-heading__actions">
+              <button class="button button--ghost" id="random-browse-action" type="button" data-i18n="exploreAction"></button>
+              <button class="button button--primary" id="random-page-trigger" type="button" data-i18n="randomAction"></button>
+            </div>
+          </div>
+          <div class="random-page-grid">
+            <article class="info-card">
+              <p class="eyebrow" data-i18n="randomSummaryTitle"></p>
+              <div class="random-summary" id="random-page-summary"></div>
+            </article>
+            <article class="info-card" id="random-page-content"></article>
+          </div>
+        </section>
+
+        <section class="page-panel hidden" id="settings-panel" data-page="settings">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow" data-i18n="settingsEyebrow"></p>
+              <h2 data-i18n="settingsTitle"></h2>
+              <p data-i18n="settingsBody"></p>
+            </div>
+          </div>
+          <div class="settings-grid">
+            <article class="info-card">
+              <p class="eyebrow" data-i18n="settingsLanguageEyebrow"></p>
+              <h3 data-i18n="settingsLanguageTitle"></h3>
+              <p data-i18n="settingsLanguageBody"></p>
+              <div class="segmented-control" id="language-segment" aria-label="Language"></div>
+            </article>
+            <article class="info-card">
+              <p class="eyebrow" data-i18n="settingsRoadmapEyebrow"></p>
+              <h3 data-i18n="settingsRoadmapTitle"></h3>
+              <p data-i18n="settingsRoadmapBody"></p>
+            </article>
           </div>
         </section>
       </main>
