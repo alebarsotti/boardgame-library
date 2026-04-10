@@ -36,7 +36,7 @@
               <p class="hero__lede" data-i18n="heroLede"></p>
               <div class="hero__actions">
                 <button class="button button--primary" id="home-browse-action" type="button" data-i18n="exploreAction"></button>
-                <button class="button button--ghost" id="home-random-action" type="button" data-i18n="randomAction"></button>
+                <button class="button button--ghost" id="home-random-action" type="button" data-i18n="openRandomAction"></button>
               </div>
             </div>
             <div class="hero__stats" id="hero-stats"></div>
@@ -78,7 +78,7 @@
             </div>
             <div class="section-heading__actions">
               <button class="button button--ghost" id="workspace-settings-action" type="button" data-i18n="openSettingsAction"></button>
-              <button class="button button--primary" id="workspace-random-action" type="button" data-i18n="randomAction"></button>
+              <button class="button button--primary" id="workspace-random-action" type="button" data-i18n="openRandomAction"></button>
             </div>
           </div>
 
@@ -163,7 +163,7 @@
                 </div>
                 <div class="toolbar__actions">
                   <button class="button button--ghost" id="reset-filters" type="button" data-i18n="resetFilters"></button>
-                  <button class="button button--primary" id="toolbar-random" type="button" data-i18n="randomAction"></button>
+                  <button class="button button--primary" id="toolbar-random" type="button" data-i18n="openRandomAction"></button>
                 </div>
               </div>
 
@@ -185,16 +185,28 @@
               <p data-i18n="randomPageBody"></p>
             </div>
             <div class="section-heading__actions">
-              <button class="button button--ghost" id="random-browse-action" type="button" data-i18n="exploreAction"></button>
+              <button class="button button--ghost" id="random-browse-action" type="button" data-i18n="randomPageOpenWorkspace"></button>
               <button class="button button--primary" id="random-page-trigger" type="button" data-i18n="randomAction"></button>
             </div>
           </div>
-          <div class="random-page-grid">
-            <article class="info-card">
-              <p class="eyebrow" data-i18n="randomSummaryTitle"></p>
-              <div class="random-summary" id="random-page-summary"></div>
-            </article>
-            <article class="info-card" id="random-page-content"></article>
+          <div class="random-page-layout">
+            <div class="random-page-sidebar">
+              <article class="info-card random-scope-card">
+                <p class="eyebrow" data-i18n="randomSummaryTitle"></p>
+                <div class="random-summary" id="random-page-summary"></div>
+              </article>
+              <article class="info-card random-history-card">
+                <div class="random-history-card__header">
+                  <div>
+                    <p class="eyebrow" data-i18n="randomHistoryEyebrow"></p>
+                    <h3 data-i18n="randomHistoryTitle"></h3>
+                  </div>
+                  <p data-i18n="randomHistoryBody"></p>
+                </div>
+                <div id="random-page-history"></div>
+              </article>
+            </div>
+            <article class="random-stage" id="random-page-content"></article>
           </div>
         </section>
 
@@ -233,11 +245,6 @@
     <dialog class="modal" id="details-dialog">
       <button class="modal__close" id="details-close" type="button" aria-label="Close">+</button>
       <div class="modal__content" id="details-content"></div>
-    </dialog>
-
-    <dialog class="modal modal--compact" id="random-dialog">
-      <button class="modal__close" id="random-close" type="button" aria-label="Close">+</button>
-      <div class="modal__content" id="random-content"></div>
     </dialog>
 
     <template id="game-card-template">
