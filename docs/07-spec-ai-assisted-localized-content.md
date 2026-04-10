@@ -2,7 +2,7 @@
 
 Status: Proposed
 Priority: Later
-Related docs: app-overview.md, 01-spec-game-content-enrichment.md
+Related docs: app-overview.md, archive/01-spec-game-content-enrichment.md
 
 ## Problem / Opportunity
 
@@ -28,7 +28,7 @@ An AI-assisted cache could improve the experience by:
 
 ## Current State
 
-The project currently supports generated summaries and full descriptions in the dataset, but those values are derived from the BGG source text during the build step and are regenerated from source content rather than reused from a persistent localized cache.
+The project now supports generated summaries and full descriptions in the dataset as a shipped baseline, but those values are still derived from the BGG source text during the build step and are regenerated from source content rather than reused from a persistent localized cache.
 
 The runtime app can already choose among multiple content fields, but it does not yet have a language-aware content model such as:
 
