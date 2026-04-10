@@ -35,6 +35,13 @@ const translations = {
     filterModeExact: "Exacto",
     filterModeUntil: "Hasta",
     filterModeFrom: "Desde",
+    filterModeHintDuration: "Como leer este filtro de duracion",
+    filterModeHintWeight: "Como leer este filtro de peso",
+    filterModeExplainExact: "Solo juegos dentro de esta banda",
+    filterModeExplainUntil: "Incluye esta banda y cualquier opcion mas corta o mas liviana",
+    filterModeExplainFrom: "Incluye esta banda y cualquier opcion mas larga o mas pesada",
+    activeFiltersTitle: "Filtros activos",
+    activeFilterMode: "Modo",
     recommendEyebrow: "Atajos curados",
     recommendTitle: "Recomendaciones",
     openFilters: "Filtros",
@@ -183,6 +190,13 @@ const translations = {
     filterModeExact: "Exact",
     filterModeUntil: "Up to",
     filterModeFrom: "From",
+    filterModeHintDuration: "How to read this duration filter",
+    filterModeHintWeight: "How to read this weight filter",
+    filterModeExplainExact: "Only games inside this band",
+    filterModeExplainUntil: "Includes this band and anything shorter or lighter",
+    filterModeExplainFrom: "Includes this band and anything longer or heavier",
+    activeFiltersTitle: "Active filters",
+    activeFilterMode: "Mode",
     recommendEyebrow: "Curated shortcuts",
     recommendTitle: "Recommendations",
     openFilters: "Filters",
@@ -594,7 +608,8 @@ function getFilterControlDefinitions() {
       options: [["", copy.anyOption], ["none", copy.languageNone], ["low", copy.languageLow], ["moderate", copy.languageModerate], ["high", copy.languageHigh], ["extreme", copy.languageExtreme], ["unknown", copy.languageUnknown]]
     },
     bestPlayers: {
-      style: "select",
+      style: "chips",
+      toggleable: true,
       options: [["", copy.anyOption], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6+"]]
     },
     age: {
@@ -628,6 +643,7 @@ function renderFilterControls() {
     const baseClass = key === "view" ? "toolbar__view filter-control" : "filter-control";
     if (definition.style === "range") {
       const modeValue = state.filters[definition.modeKey] || "exact";
+      const hintLabel = key === "duration" ? copy.filterModeHintDuration : copy.filterModeHintWeight;
       container.className = `${baseClass} filter-control--range`;
       container.innerHTML = `
         <div class="segmented-control filter-control__modes">
@@ -635,6 +651,7 @@ function renderFilterControls() {
           ${renderRangeModeButton(key, "until", copy.filterModeUntil, modeValue)}
           ${renderRangeModeButton(key, "from", copy.filterModeFrom, modeValue)}
         </div>
+        <p class="filter-control__hint"><strong>${escapeHtml(hintLabel)}:</strong> ${escapeHtml(getRangeModeExplanation(modeValue))}</p>
         <div class="chip-list filter-control__values">
           ${definition.options
             .map(([value, label]) => {
@@ -912,7 +929,12 @@ function renderActiveFilters() {
   if (state.filters.bestPlayers) tags.push([copy.filterBestPlayers, getFilterValueLabel("bestPlayers", state.filters.bestPlayers)]);
   if (state.filters.age) tags.push([copy.filterAge, getFilterValueLabel("age", state.filters.age)]);
   if (state.filters.recommendation) tags.push(["Rec", getFilterValueLabel("recommendation", state.filters.recommendation)]);
-  elements.activeFilters.innerHTML = tags.map(([label, value]) => `<span class="chip">${escapeHtml(label)}: ${escapeHtml(String(value))}</span>`).join("");
+  elements.activeFilters.innerHTML = `
+    <p class="active-filters__title">${escapeHtml(copy.activeFiltersTitle)}</p>
+    <div class="active-filters__list">
+      ${tags.map(([label, value]) => `<span class="chip">${escapeHtml(label)}: ${escapeHtml(String(value))}</span>`).join("")}
+    </div>
+  `;
 }
 
 function renderGames() {
@@ -1263,11 +1285,23 @@ function getRangeFilterSummary(key) {
   const mode = state.filters[`${key}Mode`] || "exact";
   const valueLabel = getFilterValueLabel(key, value);
   if (mode === "exact") return valueLabel;
-  const modeLabelMap = {
+  return `${getModeLabel(mode).toLowerCase()} ${valueLabel}`;
+}
+
+function getModeLabel(mode) {
+  const copy = translations[state.language];
+  return {
+    exact: copy.filterModeExact,
     until: copy.filterModeUntil,
     from: copy.filterModeFrom
-  };
-  return `${modeLabelMap[mode]} ${valueLabel}`;
+  }[mode || "exact"] || copy.filterModeExact;
+}
+
+function getRangeModeExplanation(mode) {
+  const copy = translations[state.language];
+  if (mode === "until") return copy.filterModeExplainUntil;
+  if (mode === "from") return copy.filterModeExplainFrom;
+  return copy.filterModeExplainExact;
 }
 
 function labelForTimeBand(value) {
