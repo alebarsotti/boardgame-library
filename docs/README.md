@@ -19,6 +19,7 @@ The root project [`README.md`](../README.md) should stay focused on setup, data 
 - [`06-spec-visual-design-system-refresh.md`](./06-spec-visual-design-system-refresh.md): define a broader visual refresh including theming, typography, and presentation polish
 - [`07-spec-ai-assisted-localized-content.md`](./07-spec-ai-assisted-localized-content.md): add a cached AI-assisted layer for bilingual summaries and future localized content generation
 - [`08-spec-expansion-curation-fallbacks.md`](./08-spec-expansion-curation-fallbacks.md): add manual curation and non-token fallback strategies for unresolved expansion relationships
+- [`09-spec-post-ia-layout-polish.md`](./09-spec-post-ia-layout-polish.md): refine spacing, density, hierarchy, and page balance after the information-architecture split
 
 ## Technical References
 
