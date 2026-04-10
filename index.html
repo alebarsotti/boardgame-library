@@ -23,7 +23,13 @@
           <p class="eyebrow" data-i18n="brandEyebrow"></p>
           <h1 class="brand-title">Ale's Board Game Library</h1>
         </div>
-        <nav class="page-nav" id="page-nav" aria-label="Primary"></nav>
+        <div class="topbar__controls">
+          <div class="theme-switch theme-switch--topbar">
+            <span class="theme-switch__label" data-i18n="themeLabel"></span>
+            <div class="segmented-control segmented-control--compact" id="theme-segment-header" aria-label="Theme"></div>
+          </div>
+          <nav class="page-nav" id="page-nav" aria-label="Primary"></nav>
+        </div>
       </header>
 
       <main class="page-stack">
@@ -219,6 +225,12 @@
             </div>
           </div>
           <div class="settings-grid">
+            <article class="info-card">
+              <p class="eyebrow" data-i18n="settingsThemeEyebrow"></p>
+              <h3 data-i18n="settingsThemeTitle"></h3>
+              <p data-i18n="settingsThemeBody"></p>
+              <div class="segmented-control" id="theme-segment-settings" aria-label="Theme"></div>
+            </article>
             <article class="info-card">
               <p class="eyebrow" data-i18n="settingsLanguageEyebrow"></p>
               <h3 data-i18n="settingsLanguageTitle"></h3>

@@ -13,7 +13,6 @@ The root project [`README.md`](../README.md) should stay focused on setup, data 
 ## Current Specs
 
 - [`app-overview.md`](./app-overview.md): product overview, goals, current capabilities, and present limitations
-- [`06-spec-visual-design-system-refresh.md`](./06-spec-visual-design-system-refresh.md): define a broader visual refresh including theming, typography, and presentation polish
 - [`07-spec-ai-assisted-localized-content.md`](./07-spec-ai-assisted-localized-content.md): add a cached AI-assisted layer for bilingual summaries and future localized content generation
 - [`08-spec-expansion-curation-fallbacks.md`](./08-spec-expansion-curation-fallbacks.md): add manual curation and non-token fallback strategies for unresolved expansion relationships
 - [`09-spec-post-ia-layout-polish.md`](./09-spec-post-ia-layout-polish.md): refine spacing, density, hierarchy, and page balance after the information-architecture split
@@ -29,6 +28,7 @@ Completed specs should be moved out of the active roadmap and into [`archive/`](
 
 Recently archived:
 
+- [`archive/06-spec-visual-design-system-refresh.md`](./archive/06-spec-visual-design-system-refresh.md): shipped the broader visual refresh with theme preferences, section identity, and refreshed typography hierarchy
 - [`archive/00-spec-remove-name-overrides-ui.md`](./archive/00-spec-remove-name-overrides-ui.md): removed the current game-detail controls for editing names and importing or exporting overrides
 - [`archive/01-spec-game-content-enrichment.md`](./archive/01-spec-game-content-enrichment.md): shipped the generated summary, description, categories, mechanics, and cover-art enrichment baseline
 - [`archive/02-spec-expansion-grouping.md`](./archive/02-spec-expansion-grouping.md): grouped resolved expansions under their base games and removed them from top-level browse lists

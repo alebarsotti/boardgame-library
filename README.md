@@ -79,3 +79,81 @@ It can also be opened directly by double-clicking `index.html`. For that workflo
 
 - `data/games.json` for regular static hosting
 - `data/games-data.js` for direct `file://` usage
+
+## Visual Testing
+
+Playwright is configured for lightweight visual smoke coverage of the static app.
+
+### Install once
+
+```bash
+npm install
+npx playwright install chromium
+```
+
+### Run the visual verification suite
+
+```bash
+npm run test:visual
+```
+
+What this currently verifies:
+
+- theme controls render in the header and in Settings
+- section navigation still works across Home, Browse, Archive, Random, and Settings
+- dark mode can be activated and remains active after reload
+- a basic mobile pass keeps the theme control visible in Settings
+
+The test runner starts a local static server automatically, so there is no separate dev server step.
+
+### Generate representative screenshots for PRs
+
+```bash
+npm run test:visual:capture
+```
+
+This produces PNG captures under `test-results/` for the most representative states of the app, including:
+
+- `home-light.png`
+- `browse-light.png`
+- `archive-light.png`
+- `random-light.png`
+- `settings-light.png`
+- `settings-dark.png`
+- `browse-dark.png`
+- `archive-dark.png`
+- `settings-mobile-dark.png`
+
+Recommended PR workflow:
+
+1. Run `npm run test:visual`.
+2. Run `npm run test:visual:capture` if the change affects layout, theme, hierarchy, or responsive behavior.
+3. Attach the most relevant screenshots from `test-results/` to the PR description.
+4. Prefer one image per meaningful state change instead of dumping every capture into the PR.
+
+This setup is meant as practical regression coverage and PR evidence, not as a full snapshot-testing system.
+
+## GitHub Actions
+
+The repository includes a lightweight GitHub Actions workflow at `.github/workflows/visual-checks.yml`.
+
+What it does on pull requests:
+
+- runs `npm run test:visual`
+- runs `npm run test:visual:capture`
+- uploads the generated `test-results/` folder as a workflow artifact
+- posts or updates a PR comment with the workflow run link and the capture bundle name
+
+Why it is set up this way:
+
+- it uses `ubuntu-latest` to keep GitHub Free usage efficient
+- it only triggers automatically when app, data, Playwright, or workflow files change
+- it keeps captures as short-lived artifacts instead of committing them to the repo
+
+Recommended PR habit:
+
+1. Wait for the `Visual Checks` workflow to finish.
+2. Open the sticky `Visual Checks` comment added by the workflow.
+3. Use the workflow link from that comment to download the artifact bundle.
+4. Attach only the most representative screenshots to the PR body.
+5. Mention any intentional visual deltas in the PR summary.
