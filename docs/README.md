@@ -19,7 +19,6 @@ The root project [`README.md`](../README.md) should stay focused on setup, data 
 - [`07-spec-ai-assisted-localized-content.md`](./07-spec-ai-assisted-localized-content.md): add a cached AI-assisted layer for bilingual summaries and future localized content generation
 - [`08-spec-expansion-curation-fallbacks.md`](./08-spec-expansion-curation-fallbacks.md): add manual curation and non-token fallback strategies for unresolved expansion relationships
 - [`09-spec-post-ia-layout-polish.md`](./09-spec-post-ia-layout-polish.md): refine spacing, density, hierarchy, and page balance after the information-architecture split
-- [`10-spec-ui-ux-review-followups.md`](./10-spec-ui-ux-review-followups.md): capture post-implementation UI and UX review items discovered while using the refreshed browse controls in practice
 
 ## Technical References
 
@@ -36,6 +35,7 @@ Recently archived:
 - [`archive/01-spec-game-content-enrichment.md`](./archive/01-spec-game-content-enrichment.md): shipped the generated summary, description, categories, mechanics, and cover-art enrichment baseline
 - [`archive/02-spec-expansion-grouping.md`](./archive/02-spec-expansion-grouping.md): grouped resolved expansions under their base games and removed them from top-level browse lists
 - [`archive/04-spec-discovery-controls-refresh.md`](./archive/04-spec-discovery-controls-refresh.md): refreshed browse controls, expanded sorting, improved list density, and aligned view switching with the results workspace
+- [`archive/10-spec-ui-ux-review-followups.md`](./archive/10-spec-ui-ux-review-followups.md): shipped the follow-up polish pass for browse controls, active-filter summaries, and view toggle clarity
 
 Archived specs should keep their numbered filename so the implementation history remains easy to follow.
 

@@ -1,7 +1,7 @@
 # UI / UX Review Follow-ups
 
-Status: Proposed
-Priority: Later
+Status: Implemented
+Priority: Completed
 Related docs: 05-spec-random-picker-experience.md, 06-spec-visual-design-system-refresh.md, 09-spec-post-ia-layout-polish.md
 
 ## Problem / Opportunity
@@ -53,16 +53,15 @@ Review the new interface in use and decide which of the following deserve a focu
 - broad branding or theming work that belongs to spec 06
 - random-experience redesign that belongs to spec 05
 
-## Open Questions
+## Implementation Outcome
 
-- Is the current duration and weight interaction the right balance between power and readability?
-- Do the compact select-based filters feel appropriately secondary, or too hidden?
-- Does the list/gallery toggle feel sufficiently obvious and discoverable in repeated use?
-- Which issues appear only on mobile or smaller laptop screens?
+- duration and weight controls now include inline mode explanations
+- `best players` returned to a direct-touch chip control
+- the gallery/list toggle gained a stronger labeled treatment in the toolbar
+- active-filter summaries now read naturally for ordinal filters, including on the Random page
+- mobile handling for the active-filter strip and toolbar view control was tightened without changing the underlying data model
 
-## Notes for Future Implementation
+## Notes for Future Reference
 
-- Treat this as an observation-driven polish spec, not a net-new feature initiative.
-- Prefer validating issues through actual usage before redesigning controls again.
-- Keep follow-up changes scoped to UI/UX quality unless repeated use reveals a true behavior gap.
-- If several items here cluster around spacing and hierarchy rather than interaction design, they may partially overlap with spec 09 and should be coordinated rather than duplicated.
+- This pass stayed within UI and interaction polish and did not change filtering behavior or data structures.
+- Any future follow-up should be treated as a new spec if it moves beyond clarity, spacing, or control treatment.
