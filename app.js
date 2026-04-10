@@ -32,6 +32,9 @@ const translations = {
     ageLabel: "Edad",
     sortLabel: "Ordenar por",
     viewLabel: "Vista",
+    filterModeExact: "Exacto",
+    filterModeUntil: "Hasta",
+    filterModeFrom: "Desde",
     recommendEyebrow: "Atajos curados",
     recommendTitle: "Recomendaciones",
     openFilters: "Filtros",
@@ -94,6 +97,7 @@ const translations = {
     sortRank: "Ranking BGG",
     sortWeight: "Peso",
     sortTime: "Duracion",
+    sortMaxPlayers: "Max jugadores",
     recDuo: "Ideal para 2",
     recQuick: "Rapidos",
     recHeavy: "Pesados",
@@ -176,6 +180,9 @@ const translations = {
     ageLabel: "Age",
     sortLabel: "Sort by",
     viewLabel: "View",
+    filterModeExact: "Exact",
+    filterModeUntil: "Up to",
+    filterModeFrom: "From",
     recommendEyebrow: "Curated shortcuts",
     recommendTitle: "Recommendations",
     openFilters: "Filters",
@@ -238,6 +245,7 @@ const translations = {
     sortRank: "BGG rank",
     sortWeight: "Weight",
     sortTime: "Duration",
+    sortMaxPlayers: "Max players",
     recDuo: "Great at 2",
     recQuick: "Quick games",
     recHeavy: "Heavy games",
@@ -313,7 +321,9 @@ const state = {
     search: "",
     players: "",
     duration: "",
+    durationMode: "exact",
     weight: "",
+    weightMode: "exact",
     languageKey: "",
     bestPlayers: "",
     age: "",
@@ -334,6 +344,17 @@ const state = {
 };
 
 const elements = {};
+const CONTROL_CONTAINER_MAP = {
+  players: "playersFilter",
+  duration: "timeFilter",
+  weight: "weightFilter",
+  languageKey: "languageFilter",
+  bestPlayers: "bestPlayersFilter",
+  age: "ageFilter",
+  sort: "sortFilter",
+  view: "viewFilter",
+  recommendation: "recommendationChips"
+};
 
 document.addEventListener("DOMContentLoaded", init);
 
@@ -409,23 +430,10 @@ function savePreferences() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state.preferences));
 }
 function bindEvents() {
-  const bindings = [
-    [elements.searchInput, "input", (event) => setFilter("search", event.target.value.trim().toLowerCase())],
-    [elements.playersFilter, "change", (event) => setFilter("players", event.target.value)],
-    [elements.timeFilter, "change", (event) => setFilter("duration", event.target.value)],
-    [elements.weightFilter, "change", (event) => setFilter("weight", event.target.value)],
-    [elements.languageFilter, "change", (event) => setFilter("languageKey", event.target.value)],
-    [elements.bestPlayersFilter, "change", (event) => setFilter("bestPlayers", event.target.value)],
-    [elements.ageFilter, "change", (event) => setFilter("age", event.target.value)],
-    [elements.sortFilter, "change", (event) => setFilter("sort", event.target.value)],
-    [elements.viewFilter, "change", (event) => {
-      setFilter("view", event.target.value);
-      state.preferences.view = event.target.value;
-      savePreferences();
-    }]
-  ];
-
-  bindings.forEach(([node, eventName, handler]) => node.addEventListener(eventName, handler));
+  elements.searchInput.addEventListener("input", (event) => setFilter("search", event.target.value.trim().toLowerCase()));
+  elements.filtersPanel.addEventListener("click", handleFilterControlClick);
+  elements.filtersPanel.addEventListener("change", handleFilterControlChange);
+  elements.viewFilter.addEventListener("click", handleFilterControlClick);
   document.querySelector("#reset-filters").addEventListener("click", resetFilters);
   document.querySelector("#details-close").addEventListener("click", () => elements.detailsDialog.close());
   document.querySelector("#random-close").addEventListener("click", () => elements.randomDialog.close());
@@ -449,6 +457,10 @@ function ensureValidActivePage() {
 
 function setFilter(key, value) {
   state.filters[key] = value;
+  if (key === "view") {
+    state.preferences.view = value;
+    savePreferences();
+  }
   render();
 }
 
@@ -492,7 +504,9 @@ function resetFilters() {
     search: "",
     players: "",
     duration: "",
+    durationMode: "exact",
     weight: "",
+    weightMode: "exact",
     languageKey: "",
     bestPlayers: "",
     age: "",
@@ -513,9 +527,9 @@ function applyTranslations() {
     node.textContent = copy[key] || key;
   });
   elements.searchInput.placeholder = copy.searchLabel;
-  buildFilterOptions();
   renderPageNav();
   renderLanguageSegment();
+  renderFilterControls();
 }
 
 function renderPageNav() {
@@ -555,22 +569,128 @@ function renderLanguageSegment() {
   });
 }
 
-function buildFilterOptions() {
+function getFilterControlDefinitions() {
   const copy = translations[state.language];
-  setSelectOptions(elements.playersFilter, [["", copy.anyOption], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6+"]], state.filters.players);
-  setSelectOptions(elements.timeFilter, [["", copy.anyOption], ["quick", copy.timeQuick], ["standard", copy.timeStandard], ["extended", copy.timeExtended], ["epic", copy.timeEpic]], state.filters.duration);
-  setSelectOptions(elements.weightFilter, [["", copy.anyOption], ["light", copy.weightLight], ["medium-light", copy.weightMediumLight], ["medium-heavy", copy.weightMediumHeavy], ["heavy", copy.weightHeavy]], state.filters.weight);
-  setSelectOptions(elements.languageFilter, [["", copy.anyOption], ["none", copy.languageNone], ["low", copy.languageLow], ["moderate", copy.languageModerate], ["high", copy.languageHigh], ["extreme", copy.languageExtreme], ["unknown", copy.languageUnknown]], state.filters.languageKey);
-  setSelectOptions(elements.bestPlayersFilter, [["", copy.anyOption], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6+"]], state.filters.bestPlayers);
-  setSelectOptions(elements.ageFilter, [["", copy.anyOption], ["kids", copy.ageKids], ["family", copy.ageFamily], ["teen", copy.ageTeen], ["adult", copy.ageAdult]], state.filters.age);
-  setSelectOptions(elements.sortFilter, [["name", copy.sortName], ["rating", copy.sortRating], ["rank", copy.sortRank], ["weight", copy.sortWeight], ["time", copy.sortTime]], state.filters.sort);
-  setSelectOptions(elements.viewFilter, [["grid", copy.viewGridLabel], ["list", copy.viewListLabel]], state.filters.view);
-  renderRecommendationChips();
+  return {
+    players: {
+      style: "chips",
+      toggleable: true,
+      options: [["", copy.anyOption], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6+"]]
+    },
+    duration: {
+      style: "range",
+      modeKey: "durationMode",
+      toggleable: true,
+      options: [["quick", "<=30"], ["standard", "31-60"], ["extended", "61-120"], ["epic", "120+"]]
+    },
+    weight: {
+      style: "range",
+      modeKey: "weightMode",
+      toggleable: true,
+      options: [["light", copy.weightLight], ["medium-light", copy.weightMediumLight], ["medium-heavy", copy.weightMediumHeavy], ["heavy", copy.weightHeavy]]
+    },
+    languageKey: {
+      style: "select",
+      options: [["", copy.anyOption], ["none", copy.languageNone], ["low", copy.languageLow], ["moderate", copy.languageModerate], ["high", copy.languageHigh], ["extreme", copy.languageExtreme], ["unknown", copy.languageUnknown]]
+    },
+    bestPlayers: {
+      style: "select",
+      options: [["", copy.anyOption], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6+"]]
+    },
+    age: {
+      style: "select",
+      options: [["", copy.anyOption], ["kids", copy.ageKids], ["family", copy.ageFamily], ["teen", copy.ageTeen], ["adult", copy.ageAdult]]
+    },
+    sort: {
+      style: "select",
+      options: [["name", copy.sortName], ["rating", copy.sortRating], ["rank", copy.sortRank], ["weight", copy.sortWeight], ["time", copy.sortTime], ["maxPlayers", copy.sortMaxPlayers]]
+    },
+    view: {
+      style: "segment",
+      toggleable: false,
+      options: [["grid", copy.viewGridLabel], ["list", copy.viewListLabel]]
+    },
+    recommendation: {
+      style: "chips",
+      toggleable: true,
+      options: [["duo", copy.recDuo], ["quick", copy.recQuick], ["heavy", copy.recHeavy], ["teach", copy.recTeach], ["solo", copy.recSolo], ["group", copy.recGroup]]
+    }
+  };
 }
 
-function setSelectOptions(select, options, selectedValue) {
-  select.innerHTML = options.map(([value, label]) => `<option value="${escapeAttribute(value)}">${escapeHtml(label)}</option>`).join("");
-  select.value = selectedValue;
+function renderFilterControls() {
+  const copy = translations[state.language];
+  const definitions = getFilterControlDefinitions();
+  Object.entries(CONTROL_CONTAINER_MAP).forEach(([key, elementKey]) => {
+    const container = elements[elementKey];
+    const definition = definitions[key];
+    if (!container || !definition) return;
+    const baseClass = key === "view" ? "toolbar__view filter-control" : "filter-control";
+    if (definition.style === "range") {
+      const modeValue = state.filters[definition.modeKey] || "exact";
+      container.className = `${baseClass} filter-control--range`;
+      container.innerHTML = `
+        <div class="segmented-control filter-control__modes">
+          ${renderRangeModeButton(key, "exact", copy.filterModeExact, modeValue)}
+          ${renderRangeModeButton(key, "until", copy.filterModeUntil, modeValue)}
+          ${renderRangeModeButton(key, "from", copy.filterModeFrom, modeValue)}
+        </div>
+        <div class="chip-list filter-control__values">
+          ${definition.options
+            .map(([value, label]) => {
+              const isActive = state.filters[key] === value;
+              return `<button class="chip chip--interactive ${isActive ? "chip--active" : ""}" data-filter-key="${escapeAttribute(key)}" data-filter-value="${escapeAttribute(value)}" type="button" aria-pressed="${isActive ? "true" : "false"}">${escapeHtml(label)}</button>`;
+            })
+            .join("")}
+        </div>
+      `;
+      return;
+    }
+    if (definition.style === "select") {
+      container.className = `${baseClass} filter-control--select`;
+      container.innerHTML = `<select data-filter-select="${escapeAttribute(key)}">${definition.options
+        .map(([value, label]) => `<option value="${escapeAttribute(value)}">${escapeHtml(label)}</option>`)
+        .join("")}</select>`;
+      container.querySelector("select").value = state.filters[key];
+      return;
+    }
+    container.className = definition.style === "segment" ? `${baseClass} segmented-control` : `${baseClass} chip-list`;
+    container.innerHTML = definition.options
+      .map(([value, label]) => {
+        const isActive = state.filters[key] === value;
+        const buttonClass = definition.style === "segment" ? "segment-button" : "chip chip--interactive";
+        return `<button class="${buttonClass} ${isActive ? "is-active chip--active" : ""}" data-filter-key="${escapeAttribute(key)}" data-filter-value="${escapeAttribute(value)}" type="button" aria-pressed="${isActive ? "true" : "false"}">${escapeHtml(label)}</button>`;
+      })
+      .join("");
+  });
+}
+
+function renderRangeModeButton(key, mode, label, currentMode) {
+  const isActive = currentMode === mode;
+  return `<button class="segment-button ${isActive ? "is-active" : ""}" data-filter-mode-key="${escapeAttribute(key)}" data-filter-mode-value="${escapeAttribute(mode)}" type="button" aria-pressed="${isActive ? "true" : "false"}">${escapeHtml(label)}</button>`;
+}
+
+function handleFilterControlClick(event) {
+  const modeControl = event.target.closest("[data-filter-mode-key]");
+  if (modeControl) {
+    const key = modeControl.dataset.filterModeKey;
+    setFilter(`${key}Mode`, modeControl.dataset.filterModeValue || "exact");
+    return;
+  }
+  const control = event.target.closest("[data-filter-key]");
+  if (!control) return;
+  const key = control.dataset.filterKey;
+  const value = control.dataset.filterValue || "";
+  const definition = getFilterControlDefinitions()[key];
+  if (!definition) return;
+  const nextValue = definition.toggleable && state.filters[key] === value ? "" : value;
+  setFilter(key, nextValue);
+}
+
+function handleFilterControlChange(event) {
+  const select = event.target.closest("[data-filter-select]");
+  if (!select) return;
+  setFilter(select.dataset.filterSelect, select.value);
 }
 
 async function loadData() {
@@ -634,21 +754,13 @@ function render() {
   renderWorkspaceHeading();
   renderResultsSummary();
   renderActiveFilters();
-  renderRecommendationChips();
+  renderFilterControls();
   renderGames();
   renderRandomPage();
 }
 
 function syncControls() {
   elements.searchInput.value = state.filters.search;
-  elements.playersFilter.value = state.filters.players;
-  elements.timeFilter.value = state.filters.duration;
-  elements.weightFilter.value = state.filters.weight;
-  elements.languageFilter.value = state.filters.languageKey;
-  elements.bestPlayersFilter.value = state.filters.bestPlayers;
-  elements.ageFilter.value = state.filters.age;
-  elements.sortFilter.value = state.filters.sort;
-  elements.viewFilter.value = state.filters.view;
   elements.gamesGrid.classList.toggle("list-view", state.filters.view === "list");
 }
 
@@ -663,6 +775,9 @@ function getEffectiveSection() {
   return state.filters.section === "archive" ? "archive" : "owned";
 }
 
+const DURATION_ORDER = ["quick", "standard", "extended", "epic"];
+const WEIGHT_ORDER = ["light", "medium-light", "medium-heavy", "heavy"];
+
 function getFilteredGames() {
   const section = getEffectiveSection();
   return state.data.games
@@ -675,8 +790,8 @@ function getFilteredGames() {
         const requested = state.filters.players === "6" ? 6 : Number(state.filters.players);
         if (!(game.minPlayers <= requested && game.maxPlayers >= requested)) return false;
       }
-      if (state.filters.duration && game.timeBand !== state.filters.duration) return false;
-      if (state.filters.weight && game.weightBand !== state.filters.weight) return false;
+      if (state.filters.duration && !matchesOrderedFilter(game.timeBand, state.filters.duration, state.filters.durationMode, DURATION_ORDER)) return false;
+      if (state.filters.weight && !matchesOrderedFilter(game.weightBand, state.filters.weight, state.filters.weightMode, WEIGHT_ORDER)) return false;
       if (state.filters.languageKey && game.languageKey !== state.filters.languageKey) return false;
       if (state.filters.bestPlayers) {
         const requested = state.filters.bestPlayers === "6" ? 6 : Number(state.filters.bestPlayers);
@@ -708,9 +823,21 @@ function sortGames(left, right) {
       return (right.avgWeight ?? -1) - (left.avgWeight ?? -1) || getDisplayName(left).localeCompare(getDisplayName(right));
     case "time":
       return (left.playingTime ?? Number.MAX_SAFE_INTEGER) - (right.playingTime ?? Number.MAX_SAFE_INTEGER) || getDisplayName(left).localeCompare(getDisplayName(right));
+    case "maxPlayers":
+      return (right.maxPlayers ?? -1) - (left.maxPlayers ?? -1) || getDisplayName(left).localeCompare(getDisplayName(right));
     default:
       return getDisplayName(left).localeCompare(getDisplayName(right));
   }
+}
+
+function matchesOrderedFilter(actualValue, selectedValue, mode, order) {
+  if (!selectedValue) return true;
+  const actualIndex = order.indexOf(actualValue);
+  const selectedIndex = order.indexOf(selectedValue);
+  if (actualIndex === -1 || selectedIndex === -1) return false;
+  if (mode === "until") return actualIndex <= selectedIndex;
+  if (mode === "from") return actualIndex >= selectedIndex;
+  return actualIndex === selectedIndex;
 }
 
 function matchesRecommendation(game, recommendation) {
@@ -774,41 +901,17 @@ function renderResultsSummary() {
   elements.resultsCount.textContent = `${state.filteredGames.length} ${scope}`;
 }
 
-function renderRecommendationChips() {
-  const copy = translations[state.language];
-  const recommendations = [
-    ["duo", copy.recDuo],
-    ["quick", copy.recQuick],
-    ["heavy", copy.recHeavy],
-    ["teach", copy.recTeach],
-    ["solo", copy.recSolo],
-    ["group", copy.recGroup]
-  ];
-  elements.recommendationChips.innerHTML = recommendations
-    .map(
-      ([value, label]) =>
-        `<button class="chip chip--interactive ${state.filters.recommendation === value ? "chip--active" : ""}" data-recommendation="${value}" type="button">${escapeHtml(label)}</button>`
-    )
-    .join("");
-  elements.recommendationChips.querySelectorAll("[data-recommendation]").forEach((button) => {
-    button.addEventListener("click", () => {
-      state.filters.recommendation = state.filters.recommendation === button.dataset.recommendation ? "" : button.dataset.recommendation;
-      render();
-    });
-  });
-}
-
 function renderActiveFilters() {
   const copy = translations[state.language];
   const tags = [[copy.filterSection, getEffectiveSection() === "archive" ? copy.sectionArchive : copy.sectionOwned]];
   if (state.filters.search) tags.push([copy.filterSearch, state.filters.search]);
-  if (state.filters.players) tags.push([copy.filterPlayers, state.filters.players === "6" ? "6+" : state.filters.players]);
-  if (state.filters.duration) tags.push([copy.filterDuration, labelForTimeBand(state.filters.duration)]);
-  if (state.filters.weight) tags.push([copy.filterWeight, labelForWeightBand(state.filters.weight)]);
-  if (state.filters.languageKey) tags.push([copy.filterLanguage, labelForLanguageKey(state.filters.languageKey)]);
-  if (state.filters.bestPlayers) tags.push([copy.filterBestPlayers, state.filters.bestPlayers === "6" ? "6+" : state.filters.bestPlayers]);
-  if (state.filters.age) tags.push([copy.filterAge, labelForAgeBand(state.filters.age)]);
-  if (state.filters.recommendation) tags.push(["Rec", labelForRecommendation(state.filters.recommendation)]);
+  if (state.filters.players) tags.push([copy.filterPlayers, getFilterValueLabel("players", state.filters.players)]);
+  if (state.filters.duration) tags.push([copy.filterDuration, getRangeFilterSummary("duration")]);
+  if (state.filters.weight) tags.push([copy.filterWeight, getRangeFilterSummary("weight")]);
+  if (state.filters.languageKey) tags.push([copy.filterLanguage, getFilterValueLabel("languageKey", state.filters.languageKey)]);
+  if (state.filters.bestPlayers) tags.push([copy.filterBestPlayers, getFilterValueLabel("bestPlayers", state.filters.bestPlayers)]);
+  if (state.filters.age) tags.push([copy.filterAge, getFilterValueLabel("age", state.filters.age)]);
+  if (state.filters.recommendation) tags.push(["Rec", getFilterValueLabel("recommendation", state.filters.recommendation)]);
   elements.activeFilters.innerHTML = tags.map(([label, value]) => `<span class="chip">${escapeHtml(label)}: ${escapeHtml(String(value))}</span>`).join("");
 }
 
@@ -818,11 +921,13 @@ function renderGames() {
   if (!state.filteredGames.length) return;
 
   const fragment = document.createDocumentFragment();
+  const isListView = state.filters.view === "list";
   state.filteredGames.forEach((game) => {
     const node = elements.cardTemplate.content.firstElementChild.cloneNode(true);
     const button = node.querySelector(".game-card__button");
     const art = node.querySelector(".game-card__art");
     const displayName = getDisplayName(game);
+    node.classList.toggle("game-card--list", isListView);
     node.querySelector(".game-card__title").textContent = displayName;
     node.querySelector(".game-card__subtitle").textContent = buildCardSubtitle(game);
     node.querySelector(".game-card__badge").textContent = game.averageRating ? game.averageRating.toFixed(1) : "n/a";
@@ -834,7 +939,7 @@ function renderGames() {
       metaPill("weight", labelForWeightBand(game.weightBand)),
       metaPill("age", game.ageText || translations[state.language].notAvailable)
     ].join("");
-    node.querySelector(".game-card__tags").innerHTML = getDisplayTags(game).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("");
+    node.querySelector(".game-card__tags").innerHTML = getDisplayTags(game, { compact: isListView }).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("");
     button.addEventListener("click", () => openDetails(game));
     fragment.append(node);
   });
@@ -861,7 +966,8 @@ function metaPill(icon, label) {
   return `<span class="meta-pill">${icons[icon]}<span>${escapeHtml(label)}</span></span>`;
 }
 
-function getDisplayTags(game) {
+function getDisplayTags(game, options = {}) {
+  const { compact = false } = options;
   const list = [];
   const bestPlayers = toPlayerArray(game.bestPlayers);
   const tags = Array.isArray(game.tags) ? game.tags : [];
@@ -870,7 +976,7 @@ function getDisplayTags(game) {
   if (tags.includes("teaching-friendly")) list.push(translations[state.language].recTeach);
   if (tags.includes("solo")) list.push(translations[state.language].recSolo);
   if (tags.includes("great-at-2")) list.push(translations[state.language].recDuo);
-  return list.slice(0, 3);
+  return list.slice(0, compact ? 2 : 3);
 }
 
 function openDetails(game) {
@@ -1020,8 +1126,8 @@ function getRandomSummary() {
   const copy = translations[state.language];
   chips.push(`<span class="chip">${escapeHtml(copy.filterSection)}: ${escapeHtml(getEffectiveSection() === "archive" ? copy.sectionArchive : copy.sectionOwned)}</span>`);
   if (state.filters.players) chips.push(`<span class="chip">${escapeHtml(copy.filterPlayers)}: ${escapeHtml(state.filters.players === "6" ? "6+" : state.filters.players)}</span>`);
-  if (state.filters.duration) chips.push(`<span class="chip">${escapeHtml(copy.filterDuration)}: ${escapeHtml(labelForTimeBand(state.filters.duration))}</span>`);
-  if (state.filters.weight) chips.push(`<span class="chip">${escapeHtml(copy.filterWeight)}: ${escapeHtml(labelForWeightBand(state.filters.weight))}</span>`);
+  if (state.filters.duration) chips.push(`<span class="chip">${escapeHtml(copy.filterDuration)}: ${escapeHtml(getRangeFilterSummary("duration"))}</span>`);
+  if (state.filters.weight) chips.push(`<span class="chip">${escapeHtml(copy.filterWeight)}: ${escapeHtml(getRangeFilterSummary("weight"))}</span>`);
   if (state.filters.languageKey) chips.push(`<span class="chip">${escapeHtml(copy.filterLanguage)}: ${escapeHtml(labelForLanguageKey(state.filters.languageKey))}</span>`);
   if (state.filters.bestPlayers) chips.push(`<span class="chip">${escapeHtml(copy.filterBestPlayers)}: ${escapeHtml(state.filters.bestPlayers === "6" ? "6+" : state.filters.bestPlayers)}</span>`);
   if (state.filters.age) chips.push(`<span class="chip">${escapeHtml(copy.filterAge)}: ${escapeHtml(labelForAgeBand(state.filters.age))}</span>`);
@@ -1142,6 +1248,26 @@ function formatPlayTime(game) {
 
 function joinPlayers(values) {
   return values.map((value) => (value >= 6 ? "6+" : value)).join(", ");
+}
+
+function getFilterValueLabel(key, value) {
+  const definition = getFilterControlDefinitions()[key];
+  const option = definition?.options.find(([optionValue]) => optionValue === value);
+  return option ? option[1] : value;
+}
+
+function getRangeFilterSummary(key) {
+  const copy = translations[state.language];
+  const value = state.filters[key];
+  if (!value) return "";
+  const mode = state.filters[`${key}Mode`] || "exact";
+  const valueLabel = getFilterValueLabel(key, value);
+  if (mode === "exact") return valueLabel;
+  const modeLabelMap = {
+    until: copy.filterModeUntil,
+    from: copy.filterModeFrom
+  };
+  return `${modeLabelMap[mode]} ${valueLabel}`;
 }
 
 function labelForTimeBand(value) {
