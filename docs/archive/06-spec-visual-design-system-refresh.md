@@ -1,7 +1,7 @@
 # Visual Design System Refresh
 
-Status: Proposed
-Priority: Later
+Status: Implemented
+Priority: Completed
 Related docs: app-overview.md, 03-spec-information-architecture-refresh.md, 04-spec-discovery-controls-refresh.md
 
 ## Problem / Opportunity

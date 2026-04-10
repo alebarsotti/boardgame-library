@@ -6,3 +6,6 @@ Desktop.ini
 .bgg-token
 __pycache__/
 *.pyc
+node_modules/
+playwright-report/
+test-results/

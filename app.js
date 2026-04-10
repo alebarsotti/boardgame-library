@@ -1,10 +1,12 @@
 const DATA_URL = "./data/games.json";
 const INLINE_DATA_KEY = "__BGG_LIBRARY_DATA__";
-const STORAGE_KEY = "bgg-library-preferences-v3";
+const STORAGE_KEY = "bgg-library-preferences-v4";
 const NAME_OVERRIDES_KEY = "bgg-library-name-overrides-v1";
 const RANDOM_HISTORY_LIMIT = 5;
 const RANDOM_REVEAL_MIN_MS = 900;
 const RANDOM_REVEAL_MAX_MS = 1400;
+const THEME_KEYS = ["auto", "light", "dark"];
+const systemThemeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
 const PAGE_KEYS = ["home", "browse", "archive", "random", "settings"];
 
@@ -16,6 +18,10 @@ const translations = {
     navArchive: "Archivo",
     navRandom: "Azar",
     navSettings: "Ajustes",
+    themeLabel: "Tema",
+    themeAuto: "Auto",
+    themeLight: "Claro",
+    themeDark: "Oscuro",
     heroEyebrow: "Colección personal de juegos",
     heroTitle: "Un catálogo más claro para elegir mejor.",
     heroLede:
@@ -175,6 +181,9 @@ const translations = {
     settingsEyebrow: "Preferencias",
     settingsTitle: "Ajustes para una experiencia más cómoda",
     settingsBody: "En esta primera etapa, el idioma pasa a un lugar estable y deja preparado el espacio para futuras preferencias.",
+    settingsThemeEyebrow: "Tema",
+    settingsThemeTitle: "Elegi como queres ver la biblioteca",
+    settingsThemeBody: "Podes seguir el sistema o fijar una apariencia clara u oscura para toda la app.",
     settingsLanguageEyebrow: "Idioma",
     settingsLanguageTitle: "Elegí el idioma de la interfaz",
     settingsLanguageBody: "El cambio impacta la navegación, los encabezados y el contenido visible de toda la app.",
@@ -192,6 +201,10 @@ const translations = {
     navArchive: "Archive",
     navRandom: "Random",
     navSettings: "Settings",
+    themeLabel: "Theme",
+    themeAuto: "Auto",
+    themeLight: "Light",
+    themeDark: "Dark",
     heroEyebrow: "Personal board game collection",
     heroTitle: "A clearer catalog for choosing better.",
     heroLede:
@@ -346,6 +359,9 @@ const translations = {
     settingsEyebrow: "Preferences",
     settingsTitle: "Settings for a more comfortable experience",
     settingsBody: "In this first step, language moves into a stable place and leaves room for future preferences.",
+    settingsThemeEyebrow: "Theme",
+    settingsThemeTitle: "Choose how the library should feel",
+    settingsThemeBody: "Let the app follow the system setting or pin a light or dark presentation across every section.",
     settingsLanguageEyebrow: "Language",
     settingsLanguageTitle: "Choose the interface language",
     settingsLanguageBody: "This updates navigation, section headers, and visible content labels across the app.",
@@ -389,7 +405,8 @@ const state = {
   preferences: {
     language: "es",
     view: "grid",
-    activePage: "home"
+    activePage: "home",
+    theme: "auto"
   },
   nameOverrides: {},
   data: null,
@@ -422,6 +439,8 @@ document.addEventListener("DOMContentLoaded", init);
 async function init() {
   cacheElements();
   loadPreferences();
+  bindThemeMediaQuery();
+  applyThemePreference();
   bindEvents();
   applyTranslations();
   await loadData();
@@ -460,6 +479,8 @@ function cacheElements() {
   elements.randomPageHistory = document.querySelector("#random-page-history");
   elements.filtersPanel = document.querySelector("#filters-panel");
   elements.cardTemplate = document.querySelector("#game-card-template");
+  elements.themeSegmentHeader = document.querySelector("#theme-segment-header");
+  elements.themeSegmentSettings = document.querySelector("#theme-segment-settings");
   elements.languageSegment = document.querySelector("#language-segment");
   elements.homePanel = document.querySelector("#home-panel");
   elements.workspacePanel = document.querySelector("#workspace-panel");
@@ -478,6 +499,7 @@ function loadPreferences() {
   state.language = state.preferences.language || "es";
   state.filters.view = state.preferences.view || "grid";
   state.activePage = state.preferences.activePage || "home";
+  state.preferences.theme = THEME_KEYS.includes(state.preferences.theme) ? state.preferences.theme : "auto";
   state.lastWorkspacePage = state.activePage === "archive" ? "archive" : "browse";
 
   try {
@@ -509,6 +531,21 @@ function bindEvents() {
   document.querySelector("#random-page-trigger").addEventListener("click", drawRandomFromCurrentScope);
 }
 
+function bindThemeMediaQuery() {
+  if (typeof systemThemeMediaQuery.addEventListener === "function") {
+    systemThemeMediaQuery.addEventListener("change", handleSystemThemeChange);
+    return;
+  }
+  if (typeof systemThemeMediaQuery.addListener === "function") {
+    systemThemeMediaQuery.addListener(handleSystemThemeChange);
+  }
+}
+
+function handleSystemThemeChange() {
+  if (state.preferences.theme !== "auto") return;
+  applyThemePreference();
+}
+
 function ensureValidActivePage() {
   if (!PAGE_KEYS.includes(state.activePage)) {
     state.activePage = "home";
@@ -533,6 +570,29 @@ function setLanguage(language) {
   savePreferences();
   applyTranslations();
   render();
+}
+
+function setTheme(theme) {
+  if (!THEME_KEYS.includes(theme)) return;
+  state.preferences.theme = theme;
+  savePreferences();
+  applyThemePreference();
+  renderThemeSegments();
+}
+
+function getEffectiveTheme() {
+  if (state.preferences.theme === "light" || state.preferences.theme === "dark") {
+    return state.preferences.theme;
+  }
+  return systemThemeMediaQuery.matches ? "dark" : "light";
+}
+
+function applyThemePreference() {
+  const preference = THEME_KEYS.includes(state.preferences.theme) ? state.preferences.theme : "auto";
+  const effectiveTheme = preference === "auto" ? getEffectiveTheme() : preference;
+  document.body.dataset.theme = effectiveTheme;
+  document.body.dataset.themePreference = preference;
+  document.documentElement.style.colorScheme = effectiveTheme;
 }
 
 function setActivePage(page) {
@@ -590,7 +650,11 @@ function applyTranslations() {
     node.textContent = copy[key] || key;
   });
   elements.searchInput.placeholder = copy.searchLabel;
+  elements.themeSegmentHeader?.setAttribute("aria-label", copy.themeLabel);
+  elements.themeSegmentSettings?.setAttribute("aria-label", copy.themeLabel);
+  elements.languageSegment?.setAttribute("aria-label", copy.languageLabel);
   renderPageNav();
+  renderThemeSegments();
   renderLanguageSegment();
   renderFilterControls();
 }
@@ -629,6 +693,27 @@ function renderLanguageSegment() {
     .join("");
   elements.languageSegment.querySelectorAll("[data-language]").forEach((button) => {
     button.addEventListener("click", () => setLanguage(button.dataset.language));
+  });
+}
+
+function renderThemeSegments() {
+  const copy = translations[state.language];
+  const options = [
+    ["auto", copy.themeAuto],
+    ["light", copy.themeLight],
+    ["dark", copy.themeDark]
+  ];
+  [elements.themeSegmentHeader, elements.themeSegmentSettings].forEach((container) => {
+    if (!container) return;
+    container.innerHTML = options
+      .map(
+        ([value, label]) =>
+          `<button class="segment-button ${state.preferences.theme === value ? "is-active" : ""}" data-theme="${value}" type="button">${escapeHtml(label)}</button>`
+      )
+      .join("");
+    container.querySelectorAll("[data-theme]").forEach((button) => {
+      button.addEventListener("click", () => setTheme(button.dataset.theme));
+    });
   });
 }
 
@@ -809,6 +894,8 @@ function toPlayerArray(value) {
 function render() {
   if (!state.data) return;
   syncSectionWithPage();
+  applyThemePreference();
+  syncVisualContext();
   syncControls();
   state.filteredGames = getFilteredGames();
   reconcileRandomSelection();
@@ -823,6 +910,10 @@ function render() {
   renderFilterControls();
   renderGames();
   renderRandomPage();
+}
+
+function syncVisualContext() {
+  document.body.dataset.page = state.activePage;
 }
 
 function syncControls() {
