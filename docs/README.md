@@ -13,13 +13,12 @@ The root project [`README.md`](../README.md) should stay focused on setup, data 
 ## Current Specs
 
 - [`app-overview.md`](./app-overview.md): product overview, goals, current capabilities, and present limitations
-- [`01-spec-game-content-enrichment.md`](./01-spec-game-content-enrichment.md): richer game descriptions, cover art, and content quality improvements powered by generated data
-- [`02-spec-expansion-grouping.md`](./02-spec-expansion-grouping.md): hide expansions from top-level listings and surface them only within their base game details
 - [`03-spec-information-architecture-refresh.md`](./03-spec-information-architecture-refresh.md): split the app into clearer top-level sections such as Home, Browse, Archive, and future utility areas
 - [`04-spec-discovery-controls-refresh.md`](./04-spec-discovery-controls-refresh.md): improve filters, sorting, and view modes across collection browsing
 - [`05-spec-random-picker-experience.md`](./05-spec-random-picker-experience.md): evolve the random picker into a dedicated, more expressive experience
 - [`06-spec-visual-design-system-refresh.md`](./06-spec-visual-design-system-refresh.md): define a broader visual refresh including theming, typography, and presentation polish
 - [`07-spec-ai-assisted-localized-content.md`](./07-spec-ai-assisted-localized-content.md): add a cached AI-assisted layer for bilingual summaries and future localized content generation
+- [`08-spec-expansion-curation-fallbacks.md`](./08-spec-expansion-curation-fallbacks.md): add manual curation and non-token fallback strategies for unresolved expansion relationships
 
 ## Technical References
 
@@ -33,6 +32,8 @@ Completed specs should be moved out of the active roadmap and into [`archive/`](
 Recently archived:
 
 - [`archive/00-spec-remove-name-overrides-ui.md`](./archive/00-spec-remove-name-overrides-ui.md): removed the current game-detail controls for editing names and importing or exporting overrides
+- [`archive/01-spec-game-content-enrichment.md`](./archive/01-spec-game-content-enrichment.md): shipped the generated summary, description, categories, mechanics, and cover-art enrichment baseline
+- [`archive/02-spec-expansion-grouping.md`](./archive/02-spec-expansion-grouping.md): grouped resolved expansions under their base games and removed them from top-level browse lists
 
 Archived specs should keep their numbered filename so the implementation history remains easy to follow.
 

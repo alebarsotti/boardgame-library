@@ -1,7 +1,7 @@
 # Game Content Enrichment
 
-Status: Proposed
-Priority: Near-term
+Status: Implemented
+Priority: Completed
 Related docs: app-overview.md
 
 ## Problem / Opportunity
@@ -28,7 +28,7 @@ The runtime app can already display:
 - `description` or `notes` text in the game detail dialog
 - categories and mechanics when those fields are present
 
-The build script can optionally enrich data through BoardGameGeek when a valid application token is available. However, that enrichment path may not be available immediately, and the current local dataset appears to have many empty content fields.
+The build script now enriches data through BoardGameGeek when a valid application token is available. The generated dataset includes cleaned descriptions, generated summaries, categories, mechanics, and cover images that the runtime app already consumes in cards and details.
 
 ## Proposed Direction
 
@@ -59,14 +59,18 @@ Because this depends on external access, the spec should treat BoardGameGeek enr
 - runtime calls to BoardGameGeek from the browser
 - guaranteeing enriched content for every game in the collection
 
-## Open Questions
+## Implementation Outcome
 
-- If no BGG token is available, should the app continue using sparse data silently or surface that the content layer is incomplete?
-- Should summaries be generated and stored once in the dataset, or regenerated whenever source data changes?
-- Should manually curated summaries be supported later as overrides when the automatic result is not good enough?
+- the build step now populates `summary`, `description`, `imageUrl`, `categories`, and `mechanics` from BGG when token access is available
+- cards and detail views consume that enriched content at runtime without requiring live API calls
+- the current dataset already ships with broad coverage for summaries, descriptions, and cover art
 
-## Notes for Future Implementation
+## Follow-up Debt
 
-- This spec depends on the availability of a BoardGameGeek application token for the preferred implementation path.
-- The current app already has rendering hooks for images and description-like text, so most of the missing value is in data quality and content preparation.
-- Future implementation should keep the browser runtime static and avoid making content enrichment a hard runtime dependency.
+- localized and more editorial summary quality improvements remain future work and are now tracked in `../07-spec-ai-assisted-localized-content.md`
+- builds without token access still degrade to a sparser dataset, which remains acceptable for the current static model
+
+## Notes
+
+- The browser runtime remains static; all enrichment happens ahead of time during dataset generation.
+- This archived spec establishes the baseline that later localized-content work should build on rather than replace.

@@ -46,10 +46,15 @@ const translations = {
     averageRating: "Rating promedio",
     languageDependence: "Dependencia del idioma",
     ownership: "Estado",
+    content: "Contenido",
     quantity: "Cantidad",
     notes: "Notas",
     links: "Enlaces",
     openBgg: "Abrir en BGG",
+    expansion: "Expansión",
+    expansionRequiresBase: "Requiere juego base",
+    expansionsTitle: "Expansiones",
+    expansionsEmpty: "No hay expansiones vinculadas.",
     notAvailable: "Sin dato",
     randomTitle: "La mesa acaba de decidir",
     randomBody: "Sorteo hecho solo entre los juegos que cumplen tus filtros actuales.",
@@ -144,10 +149,15 @@ const translations = {
     averageRating: "Average rating",
     languageDependence: "Language dependence",
     ownership: "Ownership",
+    content: "Content",
     quantity: "Quantity",
     notes: "Notes",
     links: "Links",
     openBgg: "Open on BGG",
+    expansion: "Expansion",
+    expansionRequiresBase: "Requires base game",
+    expansionsTitle: "Expansions",
+    expansionsEmpty: "No linked expansions.",
     notAvailable: "Not available",
     randomTitle: "The table has made a choice",
     randomBody: "Randomized only from games matching your active filters.",
@@ -450,7 +460,14 @@ function normalizeGame(game) {
     categories: Array.isArray(game.categories) ? game.categories : [],
     mechanics: Array.isArray(game.mechanics) ? game.mechanics : [],
     tags: Array.isArray(game.tags) ? game.tags : [],
-    summary: typeof game.summary === "string" ? game.summary : ""
+    summary: typeof game.summary === "string" ? game.summary : "",
+    bggItemType: typeof game.bggItemType === "string" ? game.bggItemType : "",
+    dependencyType: typeof game.dependencyType === "string" ? game.dependencyType : "",
+    requiresGameId: Number.isFinite(Number(game.requiresGameId)) ? Number(game.requiresGameId) : null,
+    requiresGameName: typeof game.requiresGameName === "string" ? game.requiresGameName : "",
+    expansionIds: Array.isArray(game.expansionIds)
+      ? game.expansionIds.map((item) => Number(item)).filter((item) => Number.isFinite(item))
+      : []
   };
 }
 
@@ -494,6 +511,7 @@ function syncControls() {
 function getFilteredGames() {
   return state.data.games
     .filter((game) => {
+      if (shouldHideFromBrowse(game)) return false;
       if (state.filters.section === "owned" && !game.own) return false;
       if (state.filters.section === "archive" && !game.prevOwned) return false;
       if (state.filters.search && !game.searchText.includes(state.filters.search)) return false;
@@ -643,11 +661,16 @@ function renderGames() {
 function buildCardSubtitle(game) {
   const bits = [];
   if (game.yearPublished) bits.push(String(game.yearPublished));
+  if (isExpansionGame(game)) bits.push(translations[state.language].expansion);
   return bits.join(" - ");
 }
 
 function buildDetailSubtitle(game) {
   const bits = [];
+  if (isExpansionGame(game)) bits.push(translations[state.language].expansion);
+  const requiredBase = getRequiredBaseGame(game);
+  if (requiredBase) bits.push(`${translations[state.language].expansionRequiresBase}: ${getDisplayName(requiredBase)}`);
+  else if (game.requiresGameName) bits.push(`${translations[state.language].expansionRequiresBase}: ${game.requiresGameName}`);
   return bits.join(" - ");
 }
 
@@ -659,6 +682,7 @@ function getDisplayTags(game) {
   const list = [];
   const bestPlayers = toPlayerArray(game.bestPlayers);
   const tags = Array.isArray(game.tags) ? game.tags : [];
+  if (isExpansionGame(game)) list.push(translations[state.language].expansion);
   if (bestPlayers.length) list.push(`${translations[state.language].bestAt} ${joinPlayers(bestPlayers)}`);
   if (tags.includes("teaching-friendly")) list.push(translations[state.language].recTeach);
   if (tags.includes("solo")) list.push(translations[state.language].recSolo);
@@ -671,6 +695,23 @@ function openDetails(game) {
   const displayName = getDisplayName(game);
   const secondaryName = getSecondaryName(game);
   const tags = getDisplayTags(game).concat(game.categories || [], game.mechanics || []).slice(0, 10);
+  const linkedExpansions = getExpansionGames(game);
+  const linkedExpansionsMarkup = linkedExpansions.length
+    ? `
+        <div class="expansion-list">
+          ${linkedExpansions
+            .map(
+              (expansion) => `
+                <button class="expansion-card" type="button" data-expansion-id="${escapeAttribute(expansion.id)}">
+                  <strong>${escapeHtml(getDisplayName(expansion))}</strong>
+                  <span>${escapeHtml(buildExpansionSummary(expansion))}</span>
+                </button>
+              `
+            )
+            .join("")}
+        </div>
+      `
+    : `<p>${escapeHtml(copy.expansionsEmpty)}</p>`;
 
   elements.detailsContent.innerHTML = `
     <div class="detail-layout">
@@ -699,9 +740,19 @@ function openDetails(game) {
           </div>
         </div>
         <div class="detail-section">
-          <h3>${escapeHtml(copy.notes)}</h3>
+          <h3>${escapeHtml(copy.content)}</h3>
           <p>${escapeHtml(game.notes || game.summary || game.description || copy.notAvailable)}</p>
         </div>
+        ${
+          linkedExpansions.length
+            ? `
+        <div class="detail-section">
+          <h3>${escapeHtml(copy.expansionsTitle)}</h3>
+          ${linkedExpansionsMarkup}
+        </div>
+        `
+            : ""
+        }
         <div class="detail-section">
           <h3>${escapeHtml(copy.links)}</h3>
           <div class="random-actions">
@@ -714,6 +765,12 @@ function openDetails(game) {
   `;
 
   injectCover(document.querySelector("#detail-cover"), game, 420);
+  elements.detailsContent.querySelectorAll("[data-expansion-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const expansion = findGameById(Number(button.dataset.expansionId));
+      if (expansion) openDetails(expansion);
+    });
+  });
 
   if (!elements.detailsDialog.open) elements.detailsDialog.showModal();
 }
@@ -790,6 +847,40 @@ function injectCover(container, game, width) {
     container.dataset.initials = getInitials(displayName);
     applyPlaceholderPalette(container, game, displayName);
   }
+}
+
+function shouldHideFromBrowse(game) {
+  return isExpansionGame(game) && hasResolvedBaseGame(game);
+}
+
+function isExpansionGame(game) {
+  return game?.dependencyType === "expansion" || game?.bggItemType === "boardgameexpansion";
+}
+
+function hasResolvedBaseGame(game) {
+  return Boolean(getRequiredBaseGame(game));
+}
+
+function getRequiredBaseGame(game) {
+  if (!game?.requiresGameId) return null;
+  return findGameById(game.requiresGameId);
+}
+
+function getExpansionGames(game) {
+  if (!Array.isArray(game?.expansionIds) || !game.expansionIds.length) return [];
+  return game.expansionIds
+    .map((id) => findGameById(id))
+    .filter(Boolean)
+    .sort((left, right) => getDisplayName(left).localeCompare(getDisplayName(right)));
+}
+
+function buildExpansionSummary(game) {
+  return [formatPlayers(game), formatPlayTime(game), labelForWeightBand(game.weightBand)].filter(Boolean).join(" - ");
+}
+
+function findGameById(gameId) {
+  if (!gameId || !state.data?.games) return null;
+  return state.data.games.find((game) => game.id === gameId) || null;
 }
 
 function applyPlaceholderPalette(container, game, displayName) {

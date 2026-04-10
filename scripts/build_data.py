@@ -239,6 +239,19 @@ def get_link_values(item: ET.Element, link_type: str) -> list[str]:
     return unique_list(values)
 
 
+def get_link_id_values(item: ET.Element, link_type: str, *, inbound: bool | None = None) -> list[int]:
+    values: list[int] = []
+    for link in item.findall(f"./link[@type='{link_type}']"):
+        inbound_attr = (link.attrib.get("inbound") or "").strip().lower()
+        is_inbound = inbound_attr == "true"
+        if inbound is not None and is_inbound != inbound:
+            continue
+        value = to_nullable_int(link.attrib.get("id"))
+        if value is not None and value not in values:
+            values.append(value)
+    return values
+
+
 def clean_description(raw: str) -> str:
     text = html.unescape(raw or "")
     text = text.replace("\r\n", "\n").replace("\r", "\n")
@@ -491,6 +504,11 @@ def build_game_from_row(row: dict[str, str], name_overrides: dict[str, Any]) -> 
         "description": "",
         "categories": [],
         "mechanics": [],
+        "bggItemType": "",
+        "dependencyType": "",
+        "requiresGameId": None,
+        "requiresGameName": "",
+        "expansionIds": [],
         "bggUrl": f"https://boardgamegeek.com/boardgame/{game_id}" if game_id else "",
         "thumbnailUrl": "",
         "imageUrl": "",
@@ -540,6 +558,30 @@ def enrich_games(
             game["imageUrl"] = (item.findtext("./image", default="") or "").strip() or game["thumbnailUrl"]
             game["categories"] = get_link_values(item, "boardgamecategory")
             game["mechanics"] = get_link_values(item, "boardgamemechanic")
+            game["bggItemType"] = (item.attrib.get("type") or "").strip()
+
+            if game["bggItemType"] == "boardgameexpansion":
+                game["dependencyType"] = "expansion"
+
+            inbound_base_ids = get_link_id_values(item, "boardgameexpansion", inbound=True)
+            outbound_expansion_ids = get_link_id_values(item, "boardgameexpansion", inbound=False)
+
+            if inbound_base_ids:
+                game["dependencyType"] = "expansion"
+                game["requiresGameId"] = inbound_base_ids[0]
+                base_name = next(
+                    (
+                        (link.attrib.get("value") or "").strip()
+                        for link in item.findall("./link[@type='boardgameexpansion']")
+                        if (link.attrib.get("inbound") or "").strip().lower() == "true"
+                        and to_nullable_int(link.attrib.get("id")) == inbound_base_ids[0]
+                    ),
+                    "",
+                )
+                game["requiresGameName"] = base_name
+
+            if outbound_expansion_ids:
+                game["expansionIds"] = outbound_expansion_ids
 
             if download_images and game["imageUrl"] and game["id"] is not None:
                 downloaded = download_image_if_needed(game["imageUrl"], int(game["id"]), images_directory, token)
@@ -548,6 +590,24 @@ def enrich_games(
             game["searchText"] = new_search_tokens(game)
 
         time.sleep(0.4)
+
+    for game_id, game in games_by_id.items():
+        expansion_ids = [value for value in game.get("expansionIds", []) if value in games_by_id]
+        game["expansionIds"] = expansion_ids
+
+        requires_game_id = game.get("requiresGameId")
+        if requires_game_id not in games_by_id:
+            game["requiresGameId"] = None
+        elif not game.get("requiresGameName"):
+            game["requiresGameName"] = games_by_id[requires_game_id].get("originalName") or games_by_id[requires_game_id].get("name", "")
+
+        if game.get("dependencyType") == "expansion" and game.get("requiresGameId") in games_by_id:
+            base_game = games_by_id[game["requiresGameId"]]
+            if game_id not in base_game["expansionIds"]:
+                base_game["expansionIds"].append(game_id)
+
+    for game in games_by_id.values():
+        game["expansionIds"] = sorted(set(game.get("expansionIds", [])))
 
 
 def build_payload(rows: list[dict[str, str]], name_overrides: dict[str, Any], token: str, download_images: bool, images_directory: Path, output_path: Path) -> dict[str, Any]:

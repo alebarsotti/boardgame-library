@@ -1,8 +1,8 @@
 # Expansion Grouping
 
-Status: Proposed
-Priority: Near-term
-Related docs: app-overview.md, 01-spec-game-content-enrichment.md
+Status: Implemented
+Priority: Completed
+Related docs: ../app-overview.md, ./01-spec-game-content-enrichment.md
 
 ## Problem / Opportunity
 
@@ -22,7 +22,7 @@ Grouping expansions under the base game would:
 
 ## Current State
 
-The current app lists games directly from the generated dataset. There is no visible concept of base game versus expansion grouping in the browsing UI, and the current dataset does not appear to include a clear parent-child relationship for expansions.
+The app now models expansion relationships in the generated dataset and uses them in the browse and detail experiences.
 
 ## Proposed Direction
 
@@ -49,13 +49,20 @@ This should be modeled as a data and presentation change together. The feature i
 - inventory management for expansion ownership beyond the current collection dataset
 - redesigning the entire detail view beyond what is needed to display grouped expansions
 
-## Open Questions
+## Implementation Outcome
 
-- What is the best source of truth for expansion relationships: BGG metadata, manual overrides, or a hybrid approach?
-- How should the app behave when an expansion cannot be matched confidently to a base game?
-- Should expansion presence influence the base game card or detail summary, such as showing an expansion count?
+- BGG enrichment now stores `bggItemType`, `dependencyType`, `requiresGameId`, and `expansionIds` in the generated dataset
+- top-level browse views hide expansions only when the base-game relationship is resolved confidently
+- unmatched expansions remain visible rather than being hidden speculatively
+- base-game details now include a dedicated expansions section with links to each related expansion
 
-## Notes for Future Implementation
+## Follow-up Debt
 
-- This likely depends on richer BoardGameGeek metadata or a manual mapping layer, so it may share groundwork with content enrichment.
-- The implementation should avoid hiding data irreversibly; unmatched expansions should remain traceable during data preparation even if they are not surfaced in the same way in the UI.
+- manual curation and fallback strategies for unresolved expansion relationships remain future work
+- builds without BGG token access do not infer expansion relationships heuristically
+- richer card-level cues for bases with expansions remain out of scope for this iteration
+
+## Notes
+
+- The current implementation uses BGG metadata as the source of truth and intentionally avoids weak title-based matching.
+- Follow-up work is tracked in `../08-spec-expansion-curation-fallbacks.md`.

@@ -254,6 +254,28 @@ body::before {
 .detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .detail-kv { padding: 14px; border-radius: 16px; background: rgba(255, 255, 255, 0.68); border: 1px solid rgba(88, 51, 31, 0.08); }
 .detail-kv strong { display: block; margin-bottom: 4px; font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.expansion-list { display: grid; gap: 12px; }
+.expansion-card {
+  display: grid;
+  gap: 6px;
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid rgba(88, 51, 31, 0.12);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.74);
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+.expansion-card:hover {
+  transform: translateY(-1px);
+  border-color: rgba(108, 40, 19, 0.28);
+  background: rgba(255, 252, 247, 0.92);
+}
+.expansion-card strong { font-size: 1rem; }
+.expansion-card span { color: var(--muted); }
 .random-card { display: grid; gap: 18px; }
 .random-card h2 { font-size: clamp(2rem, 4vw, 3rem); }
 .random-result { padding: 18px; border-radius: 22px; background: linear-gradient(135deg, rgba(255, 250, 244, 0.95), rgba(241, 225, 210, 0.82)); border: 1px solid rgba(88, 51, 31, 0.12); }

@@ -34,7 +34,7 @@ Core parts of the project:
 - `data/` contains generated collection data and optional supporting files
 - `scripts/build_data.py` transforms a BoardGameGeek collection CSV into the runtime dataset
 
-The current dataset model includes collection metadata plus per-game fields such as player counts, play time, weight, age guidance, ownership state, tags, ratings, and optional enrichment fields like summaries, descriptions, mechanics, categories, and images.
+The current dataset model includes collection metadata plus per-game fields such as player counts, play time, weight, age guidance, ownership state, tags, ratings, enrichment fields like summaries, descriptions, mechanics, categories, and images, plus expansion relationship metadata when BGG enrichment is available.
 
 ## Current User-Facing Capabilities
 
@@ -43,6 +43,7 @@ The current dataset model includes collection metadata plus per-game fields such
 - Switch between owned collection and archive views
 - Sort results by name, rating, rank, weight, or time
 - Toggle gallery and list views
+- Hide resolved expansions from top-level browsing while surfacing them within the base game detail
 - Use recommendation shortcuts such as quick, duo, teaching-friendly, and heavy
 - Open a detail dialog for each game
 - Pick a random game from the currently filtered result set
@@ -77,6 +78,7 @@ No backend service is required for the current product.
 - No backend, server-side storage, or authenticated user model
 - No live sync with BoardGameGeek at runtime
 - Data quality depends on the exported CSV and optional enrichment step
+- Expansion grouping depends on BGG metadata and currently degrades gracefully when that metadata is unavailable
 - Title curation such as name overrides is handled during data preparation and baked into the generated dataset
 - The app is oriented around a single personal collection rather than multiple users or shared libraries
 - Current product behavior is driven by generated local files, so data refresh is a manual workflow
