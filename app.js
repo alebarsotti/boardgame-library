@@ -869,7 +869,8 @@ function normalizeGame(game) {
     categories: Array.isArray(game.categories) ? game.categories : [],
     mechanics: Array.isArray(game.mechanics) ? game.mechanics : [],
     tags: Array.isArray(game.tags) ? game.tags : [],
-    summary: typeof game.summary === "string" ? game.summary : "",
+    summary: normalizeLocalizedContent(game.summary),
+    description: normalizeLocalizedContent(game.description),
     bggItemType: typeof game.bggItemType === "string" ? game.bggItemType : "",
     dependencyType: typeof game.dependencyType === "string" ? game.dependencyType : "",
     requiresGameId: Number.isFinite(Number(game.requiresGameId)) ? Number(game.requiresGameId) : null,
@@ -889,6 +890,17 @@ function toPlayerArray(value) {
   const normalized = Number(value);
   if (Number.isFinite(normalized)) return [normalized];
   return [];
+}
+
+function normalizeLocalizedContent(value) {
+  if (typeof value === "string") return { en: value, es: "" };
+  if (value && typeof value === "object") {
+    return {
+      en: typeof value.en === "string" ? value.en : "",
+      es: typeof value.es === "string" ? value.es : ""
+    };
+  }
+  return { en: "", es: "" };
 }
 
 function render() {
@@ -1141,6 +1153,26 @@ function getDisplayTags(game, options = {}) {
   return list.slice(0, compact ? 2 : 3);
 }
 
+function getLocalizedContentValue(node, language = state.language) {
+  if (typeof node === "string") {
+    return language === "en" ? node : "";
+  }
+  if (!node || typeof node !== "object") return "";
+  const preferred = typeof node[language] === "string" ? node[language].trim() : "";
+  if (preferred) return preferred;
+  const english = typeof node.en === "string" ? node.en.trim() : "";
+  if (english) return english;
+  return typeof node.es === "string" ? node.es.trim() : "";
+}
+
+function getGameContent(game, preferredField = "description") {
+  if (game.notes) return game.notes;
+  const primary = getLocalizedContentValue(game[preferredField]);
+  if (primary) return primary;
+  const alternateField = preferredField === "summary" ? "description" : "summary";
+  return getLocalizedContentValue(game[alternateField]);
+}
+
 function openDetails(game) {
   const copy = translations[state.language];
   const displayName = getDisplayName(game);
@@ -1192,7 +1224,7 @@ function openDetails(game) {
         </div>
         <div class="detail-section">
           <h3>${escapeHtml(copy.content)}</h3>
-          <p>${escapeHtml(game.notes || game.summary || game.description || copy.notAvailable)}</p>
+          <p>${escapeHtml(getGameContent(game, "description") || copy.notAvailable)}</p>
         </div>
         ${
           linkedExpansions.length
@@ -1362,7 +1394,7 @@ function renderRandomPage() {
         ${state.randomSelection
           .map((game, index) => {
             const displayName = getDisplayName(game);
-            const description = game.notes || game.summary || game.description || "";
+            const description = getGameContent(game, "summary");
             return `
               <article class="random-result-card">
                 <div class="random-result-card__header">

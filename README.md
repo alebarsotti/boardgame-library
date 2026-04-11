@@ -7,6 +7,7 @@ Static site for exploring a BoardGameGeek collection with:
 - tabs for current collection and archive
 - random picker based on the filtered set
 - ES/EN interface
+- optional local-first bilingual content generation with Ollama
 
 ## Main Files
 
@@ -56,6 +57,109 @@ This generates:
 - `data/games.json`
 - `data/games-data.js`
 - `data/images/` if `--download-images` is enabled
+
+## Localized Content With Ollama
+
+The build can optionally generate bilingual `summary` and `description` content offline with Ollama.
+
+This is local-first:
+
+- no paid API is required
+- nothing runs in the browser
+- generated content is cached outside `data/`
+- if Ollama or the model is unavailable, the build falls back to deterministic content
+
+### Prerequisites
+
+1. Install Ollama and make sure the local server is running.
+2. Pull a model for the profile you want to use.
+
+Recommended defaults:
+
+- `local-full`: `qwen3:14b`
+- `local-lite`: `qwen3:4b`
+
+Example model download:
+
+```bash
+ollama pull qwen3:14b
+```
+
+### Profiles
+
+- `local-full`: intended for the desktop build machine; generates bilingual summaries and long descriptions
+- `local-lite`: intended for lower-memory machines; still generates bilingual summaries and can generate shorter descriptions
+
+### Example Commands
+
+Desktop-oriented full localized build:
+
+```bash
+python scripts/build_data.py --csv-path "C:\path\your-collection.csv" --bgg-token "YOUR_TOKEN" --localized-content-mode local-full
+```
+
+Mac-friendly lighter localized build:
+
+```bash
+python scripts/build_data.py --csv-path "/path/your-collection.csv" --bgg-token "YOUR_TOKEN" --localized-content-mode local-lite
+```
+
+Use a specific model and refresh the localized cache:
+
+```bash
+python scripts/build_data.py --csv-path "/path/your-collection.csv" --localized-content-mode local-full --local-model "qwen3:14b" --refresh-localized-content
+```
+
+Skip long description generation:
+
+```bash
+python scripts/build_data.py --csv-path "/path/your-collection.csv" --localized-content-mode local-lite --skip-long-descriptions
+```
+
+### CLI Options
+
+- `--localized-content-mode off|local-full|local-lite`
+- `--local-model <name>`
+- `--localized-cache-path <path>`
+- `--refresh-localized-content`
+- `--skip-long-descriptions`
+- `--ollama-host <url>`
+- `--ollama-timeout-seconds <n>`
+- `--fail-on-localized-generation-error`
+
+### Cache And Fallback Behavior
+
+Localized content is cached by source text, field, language, profile, model, prompt version, and generation parameters.
+
+Default cache path:
+
+- `generated/localized-content-cache.json`
+
+If localized generation is not available:
+
+- the build prints a warning
+- the dataset still builds successfully by default
+- English deterministic content from the cleaned BGG description remains available
+- Spanish localized fields fall back to English at runtime when needed
+
+If you want the build to fail instead of warning, pass:
+
+```bash
+python scripts/build_data.py --csv-path "/path/your-collection.csv" --localized-content-mode local-full --fail-on-localized-generation-error
+```
+
+### Runtime Data Shape
+
+The generated dataset now stores content as localized objects:
+
+```json
+{
+  "summary": { "en": "...", "es": "..." },
+  "description": { "en": "...", "es": "..." }
+}
+```
+
+The frontend still accepts legacy string-based datasets during the transition.
 
 ## Name Overrides
 
