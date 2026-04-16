@@ -54,7 +54,7 @@ The intended product direction is:
 - generate short summaries and improved long descriptions locally when that produces better product copy than deterministic cleanup alone
 - support localized summary and description output in both English and Spanish
 - use cache entries keyed by game and source-content fingerprint so repeated builds do not regenerate unchanged content
-- optimize the default profile for a stronger desktop machine while keeping a lighter fallback profile for lower-memory hardware
+- optimize the default local model for a stronger desktop machine while keeping generation optional
 
 The app should remain static at runtime. All generation work should happen before publishing or local use, never in the browser.
 
@@ -77,8 +77,7 @@ The app should remain static at runtime. All generation work should happen befor
 
 ## Open Questions
 
-- Which local model should become the default `local-full` profile after practical quality testing on the desktop machine?
-- Should the `local-lite` profile generate shorter descriptions by default, or skip them unless explicitly enabled?
+- Which local model should become the default localized-generation model after practical quality testing on the desktop machine?
 - Should cache artifacts remain purely local, or should the repo eventually support committing selected generated content?
 - Should manual review or pinning of especially good generated summaries be supported later as a lightweight override layer?
 

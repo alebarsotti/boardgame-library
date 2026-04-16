@@ -6,6 +6,9 @@ Related docs: 07-spec-ai-assisted-localized-content.md, README.md
 ## What Landed
 
 - `scripts/build_data.py` now supports local-first localized generation through Ollama.
+- `scripts/build_data.py` now also supports narrow evaluation runs with:
+  - `--limit`
+  - repeatable `--game-id`
 - The generated dataset supports:
   - `summary: { en, es }`
   - `description: { en, es }`
@@ -16,6 +19,7 @@ Related docs: 07-spec-ai-assisted-localized-content.md, README.md
   4. alternate localized field when needed
 - Legacy datasets with string `summary` / `description` are still accepted.
 - Localized cache is stored outside `data/` under `generated/` and ignored by Git.
+- `scripts/evaluate_localized_content.py` now prints side-by-side source vs generated bilingual content for a small sample or selected ids.
 
 ## What Was Verified On The Mac
 
@@ -46,8 +50,11 @@ Use the Windows desktop as the primary evaluation machine.
 
 Suggested workflow:
 
-1. Install Ollama and one stronger candidate model for `local-full`.
-2. Keep `qwen3:4b` available only as the `local-lite` baseline.
+1. Install Ollama and keep one primary local model for the localized build workflow.
+2. Use very small batches as the default operating pattern:
+   - `--limit 1`
+   - `--limit 2`
+   - or explicit `--game-id`
 3. Evaluate a very small fixed sample before large runs:
    - `7 Wonders Duel`
    - `Arkham Horror`
@@ -59,25 +66,34 @@ Suggested workflow:
    - `description.en`
    - `description.es`
    - factual fidelity vs BGG text
-5. Once a stronger model is chosen, update the `local-full` default in `scripts/build_data.py`.
+5. Keep bilingual long descriptions as an explicit opt-in path, not the default batch workflow.
+6. Once a stronger model is chosen, update the default local model in `scripts/build_data.py`.
 
 ## Useful Commands
 
-Run localized build in lite mode:
+Run localized build:
 
 ```bash
 python scripts/build_data.py \
   --csv-path docs/reference/collection.csv \
-  --localized-content-mode local-lite \
-  --local-model qwen3:4b
+  --localized-content-mode local
 ```
 
-Run localized build in full mode:
+Run localized build in the recommended resilient pattern:
 
 ```bash
 python scripts/build_data.py \
   --csv-path docs/reference/collection.csv \
-  --localized-content-mode local-full \
+  --localized-content-mode local \
+  --limit 2
+```
+
+Run localized build with an explicit model:
+
+```bash
+python scripts/build_data.py \
+  --csv-path docs/reference/collection.csv \
+  --localized-content-mode local \
   --local-model "<desktop-model>"
 ```
 
@@ -86,22 +102,33 @@ Fail fast when local generation is not available:
 ```bash
 python scripts/build_data.py \
   --csv-path docs/reference/collection.csv \
-  --localized-content-mode local-full \
+  --localized-content-mode local \
   --fail-on-localized-generation-error
 ```
 
-Skip long descriptions during fast iteration:
+Include long descriptions explicitly:
 
 ```bash
 python scripts/build_data.py \
   --csv-path docs/reference/collection.csv \
-  --localized-content-mode local-lite \
-  --local-model qwen3:4b \
-  --skip-long-descriptions
+  --localized-content-mode local \
+  --include-long-descriptions
 ```
 
-## Suggested Follow-Up Improvements
+## Newly Landed Follow-Up Improvements
 
-- Add a `--limit` flag for quick sampling runs.
-- Add a `--game-id` or similar narrow-scope selector for model evaluation.
-- Add a small evaluation harness or script that prints side-by-side outputs for fixed sample titles.
+- Added `--limit` to support quick sampling runs from the main build script.
+- Added repeatable `--game-id` selection to support narrow model evaluation runs.
+- Localized cache now saves incrementally after each game instead of only at the end of the full run.
+- Localized generation now prints progress per game so long batches are observable while they run.
+- The default localized workflow now generates bilingual summaries only; long descriptions are explicit opt-in.
+- Added `scripts/evaluate_localized_content.py` to print side-by-side outputs for:
+  - source summary and description in English
+  - generated summary in English and Spanish
+  - generated description in English and Spanish
+  - default sample titles: `7 Wonders Duel`, `Arkham Horror`, `Azul`
+
+## Suggested Next Follow-Ups
+
+- Add a compact scoring or annotation step to record fidelity notes during model comparison.
+- Consider a CSV or Markdown export mode for evaluation results if we want to preserve comparisons outside the terminal.

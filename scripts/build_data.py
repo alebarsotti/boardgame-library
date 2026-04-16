@@ -26,12 +26,11 @@ DEFAULT_LOCALIZED_CACHE_PATH = PROJECT_ROOT / "generated" / "localized-content-c
 DEFAULT_TOKEN_PATH = PROJECT_ROOT / ".bgg-token"
 DEFAULT_OLLAMA_HOST = "http://127.0.0.1:11434"
 DEFAULT_LOCALIZED_MODE = "off"
-DEFAULT_FULL_MODEL = "qwen3:14b"
-DEFAULT_LITE_MODEL = "qwen3:4b"
+DEFAULT_LOCAL_MODEL = "mistral-small3.2:24b"
 LOCALIZED_LANGUAGES = ("en", "es")
 LOCALIZED_CACHE_VERSION = 1
-LOCALIZED_SUMMARY_PROMPT_VERSION = "v1"
-LOCALIZED_DESCRIPTION_PROMPT_VERSION = "v1"
+LOCALIZED_SUMMARY_PROMPT_VERSION = "v6"
+LOCALIZED_DESCRIPTION_PROMPT_VERSION = "v6"
 BGG_BATCH_SIZE = 20
 
 
@@ -142,6 +141,31 @@ def read_json_map(path: Path) -> dict[str, Any]:
         return {}
     parsed = json.loads(raw)
     return parsed if isinstance(parsed, dict) else {}
+
+
+def select_rows(
+    rows: list[dict[str, str]],
+    *,
+    game_ids: list[int] | None = None,
+    limit: int | None = None,
+) -> list[dict[str, str]]:
+    selected = rows
+
+    if game_ids:
+        requested_ids = list(dict.fromkeys(game_ids))
+        requested_set = set(requested_ids)
+        selected = [row for row in rows if to_nullable_int(row.get("objectid")) in requested_set]
+        found_ids = {to_nullable_int(row.get("objectid")) for row in selected}
+        missing_ids = [game_id for game_id in requested_ids if game_id not in found_ids]
+        if missing_ids:
+            raise ValueError(f"Requested game ids were not found in the CSV: {', '.join(str(game_id) for game_id in missing_ids)}")
+
+    if limit is not None:
+        if limit <= 0:
+            raise ValueError("--limit must be greater than 0.")
+        selected = selected[:limit]
+
+    return selected
 
 
 def resolve_bgg_token(explicit_token: str, token_path: Path) -> str:
@@ -745,6 +769,14 @@ def warn(message: str) -> None:
     print(f"Warning: {message}", file=sys.stderr)
 
 
+def info(message: str) -> None:
+    print(message)
+
+
+def format_seconds(value: float) -> str:
+    return f"{value:.1f}s"
+
+
 class LocalizedGenerationFailure(RuntimeError):
     pass
 
@@ -765,19 +797,24 @@ class OllamaClient:
                     names.append(name)
         return names
 
-    def generate_json(self, *, model: str, prompt: str, options: dict[str, Any]) -> dict[str, Any]:
-        payload = request_json(
+    def _generate(self, *, model: str, prompt: str, options: dict[str, Any], use_json_format: bool) -> dict[str, Any]:
+        payload = {
+            "model": model,
+            "prompt": prompt,
+            "stream": False,
+            "options": options,
+        }
+        if use_json_format:
+            payload["format"] = "json"
+        return request_json(
             f"{self.host}/api/generate",
             method="POST",
-            payload={
-                "model": model,
-                "prompt": prompt,
-                "stream": False,
-                "format": "json",
-                "options": options,
-            },
+            payload=payload,
             timeout=self.timeout_seconds,
         )
+
+    def generate_json(self, *, model: str, prompt: str, options: dict[str, Any]) -> dict[str, Any]:
+        payload = self._generate(model=model, prompt=prompt, options=options, use_json_format=True)
         response_text = str(payload.get("response", "") or "").strip() if isinstance(payload, dict) else ""
         if not response_text and isinstance(payload, dict):
             # Some local models expose the structured answer in `thinking` even when
@@ -789,24 +826,26 @@ class OllamaClient:
             parsed = json.loads(response_text)
         except json.JSONDecodeError as error:
             raise LocalizedGenerationFailure(f"Ollama returned invalid JSON: {error}") from error
+        if parsed == {}:
+            fallback_payload = self._generate(model=model, prompt=prompt, options=options, use_json_format=False)
+            fallback_text = str(fallback_payload.get("response", "") or "").strip() if isinstance(fallback_payload, dict) else ""
+            if not fallback_text and isinstance(fallback_payload, dict):
+                fallback_text = str(fallback_payload.get("thinking", "") or "").strip()
+            if fallback_text:
+                try:
+                    parsed = json.loads(fallback_text)
+                except json.JSONDecodeError as error:
+                    raise LocalizedGenerationFailure(f"Ollama returned invalid fallback JSON: {error}") from error
         if not isinstance(parsed, dict):
             raise LocalizedGenerationFailure("Ollama returned JSON that was not an object.")
         return parsed
 
 
 def get_profile_defaults(mode: str) -> dict[str, Any]:
-    if mode == "local-full":
-        return {
-            "model": DEFAULT_FULL_MODEL,
-            "summary_max_chars": 380,
-            "description_max_chars": 1200,
-            "options": {"temperature": 0.2},
-            "supports_long_descriptions": True,
-        }
     return {
-        "model": DEFAULT_LITE_MODEL,
-        "summary_max_chars": 280,
-        "description_max_chars": 780,
+        "model": DEFAULT_LOCAL_MODEL,
+        "summary_max_chars": 380,
+        "description_max_chars": 1200,
         "options": {"temperature": 0.2},
         "supports_long_descriptions": True,
     }
@@ -838,7 +877,21 @@ Requirements:
 - Write concise, natural catalog summaries.
 - Keep each summary under {max_chars} characters.
 - English should read like polished product copy, not marketing hype.
-- Spanish should be natural rioplatense-neutral product Spanish.
+- Spanish should be natural, clear, neutral-Rioplatense product Spanish.
+- Keep the Spanish text fully in Spanish unless the official game name must stay unchanged.
+- Translate generic game terms naturally into Spanish, for example:
+  - "tiles" -> "losetas"
+  - "Ancient One" -> "Antiguo" or "Primigenio" depending on context
+  - "draft" as a verb -> "elegir" or "seleccionar", not "draft"
+  - "display" -> "disposición", "mercado", or "fila" depending on context
+  - "bonus" -> "bonificación" or "ventaja"
+  - "timing" -> "momento oportuno" or "oportunidad"
+- Do not leave obvious English gameplay nouns inside the Spanish output.
+- Avoid literal calques that sound unnatural in Spanish catalog copy.
+- Prefer neutral descriptive prose in Spanish over commands to the reader.
+- Avoid second-person openings or promotional taglines in Spanish.
+- Do not start Spanish summaries with imperative verbs such as "mejora", "sumérgete", "trabaja", "descubrí", or "gana".
+- Prefer openings such as "Juego...", "Título...", "En este juego...", or "Los jugadores...".
 - Do not mention that this was translated or generated.
 - Do not include markdown.
 
@@ -872,7 +925,17 @@ Requirements:
 - Preserve key gameplay and victory details when present.
 - Keep each description under {max_chars} characters.
 - English should be polished and readable.
-- Spanish should be natural, clear, and faithful to the same content.
+- Spanish should be natural, clear, faithful to the same content, and fully written in Spanish unless the official game name must stay unchanged.
+- Translate generic tabletop terms into idiomatic Spanish instead of copying English nouns.
+- Avoid Spanglish such as "tiles", "draft", or mixed labels like "Ancient One" inside Spanish sentences.
+- Avoid residual English UI or rules words such as "display", "bonus", "pick", or "setup" in Spanish output.
+- Prefer neutral tabletop wording such as "losetas", "seleccionar", "disposición", "mercado", "bonificación", "criaturas", "objetos", "habilidades", or "Antiguo/Primigenio" when supported by context.
+- Prefer smooth catalog prose over literal sentence-by-sentence translation.
+- Prefer descriptive catalog prose in Spanish rather than instructional or promotional phrasing.
+- Avoid imperative openings such as "sumérgete", "trabaja", "gana", or "elige" unless the source text is explicitly instructional.
+- When useful, prefer forms like "los jugadores", "la partida", or "el juego" to keep the tone descriptive.
+- Replace lingering English gameplay words with natural Spanish equivalents, for example "bonus moves" -> "movimientos adicionales" or "bonificaciones".
+- Avoid jargon that sounds translated or overly technical in Spanish catalog copy, such as "gestión de manos", unless the source explicitly emphasizes that mechanic.
 - Do not invent rules, awards, or opinions.
 - Do not include markdown.
 
@@ -1012,17 +1075,33 @@ def apply_localized_content(
         return
 
     cache = load_localized_cache(cache_path)
-    cache_changed = False
-
+    eligible_games: list[dict[str, Any]] = []
     for game in games:
         game_id = game.get("id")
         if game_id is None:
             continue
-
         ensure_deterministic_localized_content(game)
         source_description = normalize_generation_source(get_localized_text(game.get("description"), "en"))
-        if not source_description:
-            continue
+        if source_description:
+            eligible_games.append(game)
+
+    if not eligible_games:
+        info("Localized generation skipped because no eligible games had source descriptions.")
+        return
+
+    info(
+        "Starting localized generation: "
+        f"{len(eligible_games)} games, model '{resolved_model}', "
+        f"{'summaries only' if skip_long_descriptions else 'summaries + long descriptions'}"
+    )
+
+    for index, game in enumerate(eligible_games, start=1):
+        game_id = game.get("id")
+        source_description = normalize_generation_source(get_localized_text(game.get("description"), "en"))
+        game_started_at = time.perf_counter()
+        game_cache_changed = False
+        game_name = game.get("name", "")
+        info(f"[{index}/{len(eligible_games)}] {game_name} [{game_id}]")
 
         summary_fingerprints = {
             language: content_fingerprint(
@@ -1064,6 +1143,7 @@ def apply_localized_content(
 
         if cached_summary_languages != set(LOCALIZED_LANGUAGES):
             try:
+                summary_started_at = time.perf_counter()
                 summary_payload = invoke_with_retries(
                     lambda: client.generate_json(
                         model=resolved_model,
@@ -1088,18 +1168,28 @@ def apply_localized_content(
                     parameters={**generation_options, "summary_max_chars": profile_defaults["summary_max_chars"]},
                     source_text=source_description,
                 )
-                cache_changed = True
+                game_cache_changed = True
+                info(f"  summary: generated in {format_seconds(time.perf_counter() - summary_started_at)}")
             except LocalizedGenerationFailure as error:
                 message = f"summary generation failed for game {game_id} ({game.get('name', '')}): {error}"
                 if fail_on_error:
                     raise LocalizedGenerationFailure(message) from error
                 warn(message)
+                info("  summary: failed")
+        else:
+            info("  summary: cache hit")
 
         if skip_long_descriptions:
+            info("  description: skipped")
+            if game_cache_changed:
+                save_localized_cache(cache_path, cache)
+                info("  cache: saved")
+            info(f"  done in {format_seconds(time.perf_counter() - game_started_at)}")
             continue
 
         if cached_description_languages != set(LOCALIZED_LANGUAGES):
             try:
+                description_started_at = time.perf_counter()
                 description_payload = invoke_with_retries(
                     lambda: client.generate_json(
                         model=resolved_model,
@@ -1124,15 +1214,21 @@ def apply_localized_content(
                     parameters={**generation_options, "description_max_chars": profile_defaults["description_max_chars"]},
                     source_text=source_description,
                 )
-                cache_changed = True
+                game_cache_changed = True
+                info(f"  description: generated in {format_seconds(time.perf_counter() - description_started_at)}")
             except LocalizedGenerationFailure as error:
                 message = f"description generation failed for game {game_id} ({game.get('name', '')}): {error}"
                 if fail_on_error:
                     raise LocalizedGenerationFailure(message) from error
                 warn(message)
+                info("  description: failed")
+        else:
+            info("  description: cache hit")
 
-    if cache_changed:
-        save_localized_cache(cache_path, cache)
+        if game_cache_changed:
+            save_localized_cache(cache_path, cache)
+            info("  cache: saved")
+        info(f"  done in {format_seconds(time.perf_counter() - game_started_at)}")
 
 
 def build_payload(
@@ -1208,10 +1304,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--localized-cache-path", default=str(DEFAULT_LOCALIZED_CACHE_PATH))
     parser.add_argument("--bgg-token", default="")
     parser.add_argument("--download-images", action="store_true")
-    parser.add_argument("--localized-content-mode", choices=["off", "local-full", "local-lite"], default=DEFAULT_LOCALIZED_MODE)
+    parser.add_argument("--limit", type=int, default=None)
+    parser.add_argument("--game-id", type=int, action="append", default=[])
+    parser.add_argument("--localized-content-mode", choices=["off", "local"], default=DEFAULT_LOCALIZED_MODE)
     parser.add_argument("--local-model", default="")
     parser.add_argument("--refresh-localized-content", action="store_true")
-    parser.add_argument("--skip-long-descriptions", action="store_true")
+    parser.add_argument("--include-long-descriptions", action="store_true")
     parser.add_argument("--ollama-host", default="")
     parser.add_argument("--ollama-timeout-seconds", type=float, default=60)
     parser.add_argument("--fail-on-localized-generation-error", action="store_true")
@@ -1241,6 +1339,11 @@ def main() -> int:
     token = resolve_bgg_token(args.bgg_token, DEFAULT_TOKEN_PATH)
     with csv_path.open("r", encoding="utf-8-sig", newline="") as handle:
         rows = list(csv.DictReader(handle))
+    try:
+        rows = select_rows(rows, game_ids=args.game_id, limit=args.limit)
+    except ValueError as error:
+        print(str(error), file=sys.stderr)
+        return 1
 
     name_overrides = read_json_map(name_overrides_path)
     try:
@@ -1255,7 +1358,7 @@ def main() -> int:
             local_model=args.local_model,
             localized_cache_path=localized_cache_path,
             refresh_localized_content=args.refresh_localized_content,
-            skip_long_descriptions=args.skip_long_descriptions,
+            skip_long_descriptions=not args.include_long_descriptions,
             ollama_host=resolved_ollama_host,
             ollama_timeout_seconds=args.ollama_timeout_seconds,
             fail_on_localized_generation_error=args.fail_on_localized_generation_error,
@@ -1280,7 +1383,8 @@ def main() -> int:
         print(
             "Localized content mode: "
             f"{localized_mode} using model '{payload['summary']['localizedContent'].get('model', '')}' "
-            f"with cache at {localized_cache_path}"
+            f"with cache at {localized_cache_path}; "
+            f"{'included long descriptions' if args.include_long_descriptions else 'generated summaries only by default'}"
         )
     return 0
 

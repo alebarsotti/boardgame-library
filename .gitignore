@@ -9,4 +9,5 @@ __pycache__/
 node_modules/
 playwright-report/
 test-results/
-generated/
+generated/*
+!generated/localized-content-cache.json
