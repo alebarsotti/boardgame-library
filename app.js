@@ -1165,7 +1165,7 @@ function getLocalizedContentValue(node, language = state.language) {
   return typeof node.es === "string" ? node.es.trim() : "";
 }
 
-function getGameContent(game, preferredField = "description") {
+function getGameContent(game, preferredField = "summary") {
   if (game.notes) return game.notes;
   const primary = getLocalizedContentValue(game[preferredField]);
   if (primary) return primary;
@@ -1224,7 +1224,7 @@ function openDetails(game) {
         </div>
         <div class="detail-section">
           <h3>${escapeHtml(copy.content)}</h3>
-          <p>${escapeHtml(getGameContent(game, "description") || copy.notAvailable)}</p>
+          <p>${escapeHtml(getGameContent(game, "summary") || copy.notAvailable)}</p>
         </div>
         ${
           linkedExpansions.length

@@ -60,7 +60,7 @@ This generates:
 
 ## Localized Content With Ollama
 
-The build can optionally generate bilingual `summary` and `description` content offline with Ollama.
+The build can optionally generate bilingual localized text offline with Ollama.
 
 This is local-first:
 
@@ -76,60 +76,103 @@ This is local-first:
 
 Recommended defaults:
 
-- `local-full`: `qwen3:14b`
-- `local-lite`: `qwen3:4b`
+- `local`: `mistral-small3.2:24b`
 
 Example model download:
 
 ```bash
-ollama pull qwen3:14b
+ollama pull mistral-small3.2:24b
 ```
 
-### Profiles
+### Local Mode
 
-- `local-full`: intended for the desktop build machine; generates bilingual summaries and long descriptions
-- `local-lite`: intended for lower-memory machines; still generates bilingual summaries and can generate shorter descriptions
+- `local`: intended for the primary desktop build machine
+- default behavior: generate bilingual summaries only
+- optional behavior: include bilingual long descriptions with an explicit flag
 
 ### Example Commands
 
-Desktop-oriented full localized build:
+Desktop-oriented localized build:
 
 ```bash
-python scripts/build_data.py --csv-path "C:\path\your-collection.csv" --bgg-token "YOUR_TOKEN" --localized-content-mode local-full
-```
-
-Mac-friendly lighter localized build:
-
-```bash
-python scripts/build_data.py --csv-path "/path/your-collection.csv" --bgg-token "YOUR_TOKEN" --localized-content-mode local-lite
+python scripts/build_data.py --csv-path "C:\path\your-collection.csv" --bgg-token "YOUR_TOKEN" --localized-content-mode local
 ```
 
 Use a specific model and refresh the localized cache:
 
 ```bash
-python scripts/build_data.py --csv-path "/path/your-collection.csv" --localized-content-mode local-full --local-model "qwen3:14b" --refresh-localized-content
+python scripts/build_data.py --csv-path "/path/your-collection.csv" --localized-content-mode local --local-model "mistral-small3.2:24b" --refresh-localized-content
 ```
 
-Skip long description generation:
+Limit a run to a tiny sample:
 
 ```bash
-python scripts/build_data.py --csv-path "/path/your-collection.csv" --localized-content-mode local-lite --skip-long-descriptions
+python scripts/build_data.py --csv-path "/path/your-collection.csv" --localized-content-mode local --limit 3
+```
+
+Run against specific games only:
+
+```bash
+python scripts/build_data.py --csv-path "/path/your-collection.csv" --localized-content-mode local --game-id 173346 --game-id 15987 --game-id 230802
+```
+
+Include bilingual long descriptions explicitly:
+
+```bash
+python scripts/build_data.py --csv-path "/path/your-collection.csv" --localized-content-mode local --include-long-descriptions
+```
+
+Recommended resilient workflow for larger libraries:
+
+```bash
+python scripts/build_data.py --csv-path "/path/your-collection.csv" --localized-content-mode local --limit 2
 ```
 
 ### CLI Options
 
-- `--localized-content-mode off|local-full|local-lite`
+- `--localized-content-mode off|local`
 - `--local-model <name>`
+- `--limit <n>`
+- `--game-id <id>` (repeatable)
 - `--localized-cache-path <path>`
 - `--refresh-localized-content`
-- `--skip-long-descriptions`
+- `--include-long-descriptions`
 - `--ollama-host <url>`
 - `--ollama-timeout-seconds <n>`
 - `--fail-on-localized-generation-error`
 
+### Evaluation Harness
+
+For quick model comparison on a very small sample, use:
+
+```bash
+python scripts/evaluate_localized_content.py --csv-path "/path/your-collection.csv" --localized-content-mode local
+```
+
+If no `--game-id` is passed, the harness uses this fixed trio by default:
+
+- `7 Wonders Duel`
+- `Arkham Horror`
+- `Azul`
+
+You can also narrow it explicitly:
+
+```bash
+python scripts/evaluate_localized_content.py --csv-path "/path/your-collection.csv" --localized-content-mode local --game-id 173346 --game-id 230802
+```
+
+The evaluator prints, for each selected title:
+
+- source summary in English
+- source description in English
+- generated summary in English and Spanish
+- generated description in English and Spanish when `--include-long-descriptions` is enabled
+
 ### Cache And Fallback Behavior
 
 Localized content is cached by source text, field, language, profile, model, prompt version, and generation parameters.
+
+The builder now saves localized cache incrementally after each game that produces new content, so long-running batches can resume without losing all progress.
 
 Default cache path:
 
@@ -145,7 +188,7 @@ If localized generation is not available:
 If you want the build to fail instead of warning, pass:
 
 ```bash
-python scripts/build_data.py --csv-path "/path/your-collection.csv" --localized-content-mode local-full --fail-on-localized-generation-error
+python scripts/build_data.py --csv-path "/path/your-collection.csv" --localized-content-mode local --fail-on-localized-generation-error
 ```
 
 ### Runtime Data Shape
