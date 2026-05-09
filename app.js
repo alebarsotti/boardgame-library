@@ -9,6 +9,8 @@ const THEME_KEYS = ["auto", "light", "dark"];
 const systemThemeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
 const PAGE_KEYS = ["home", "browse", "archive", "random", "settings"];
+let masonryLayoutFrame = 0;
+let gameCardResizeObserver = null;
 
 const translations = {
   es: {
@@ -148,14 +150,14 @@ const translations = {
     homeRandomShortcut: "Ir a azar",
     homeSettingsShortcut: "Ver ajustes",
     workspaceBrowseEyebrow: "Exploración guiada",
-    workspaceBrowseTitle: "Explorar la colección actual",
-    workspaceBrowseBody: "Este es el espacio para buscar en profundidad dentro de la ludoteca activa, con filtros, orden y vistas compactas.",
+    workspaceBrowseTitle: "Explorar la colección",
+    workspaceBrowseBody: "Buscá dentro de la ludoteca activa con filtros, orden y vistas compactas.",
     workspaceArchiveEyebrow: "Archivo histórico",
-    workspaceArchiveTitle: "Revisar el archivo histórico",
-    workspaceArchiveBody: "El archivo ahora tiene su propia pantalla para recorrer juegos que ya no están sin mezclarlos con la colección actual.",
+    workspaceArchiveTitle: "Revisar el archivo",
+    workspaceArchiveBody: "Recorré juegos que ya no están sin mezclarlos con la colección actual.",
     randomPageEyebrow: "Mesa de decisión",
-    randomPageTitle: "Azar ahora es una experiencia completa para destrabar la mesa",
-    randomPageBody: "Usa el workspace activo como fuente, revela una opción con un pequeño suspenso y conserva una memoria breve para comparar resultados recientes.",
+    randomPageTitle: "Azar para destrabar la mesa",
+    randomPageBody: "Usa el workspace activo como fuente, revela opciones y guarda una memoria breve de la sesión.",
     randomPageEmptyTitle: "Todavía no hay un sorteo",
     randomPageEmptyBody: "Entrá cuando quieras, revisá el scope actual y dispará un sorteo solo cuando la mesa esté lista para decidir.",
     randomPageRevealEyebrow: "Sorteando",
@@ -179,18 +181,18 @@ const translations = {
     randomHistoryBody: "Sirve para comparar opciones sin guardar nada de forma permanente.",
     randomHistoryEmpty: "Los sorteos de esta sesión aparecerán acá.",
     settingsEyebrow: "Preferencias",
-    settingsTitle: "Ajustes para una experiencia más cómoda",
-    settingsBody: "En esta primera etapa, el idioma pasa a un lugar estable y deja preparado el espacio para futuras preferencias.",
+    settingsTitle: "Ajustes de uso",
+    settingsBody: "Tema e idioma viven acá para que el resto de la biblioteca quede libre para elegir juegos.",
     settingsThemeEyebrow: "Tema",
-    settingsThemeTitle: "Elegi como queres ver la biblioteca",
-    settingsThemeBody: "Podes seguir el sistema o fijar una apariencia clara u oscura para toda la app.",
+    settingsThemeTitle: "Tema de la biblioteca",
+    settingsThemeBody: "Seguí el sistema o fijá modo claro u oscuro.",
     settingsLanguageEyebrow: "Idioma",
-    settingsLanguageTitle: "Elegí el idioma de la interfaz",
-    settingsLanguageBody: "El cambio impacta la navegación, los encabezados y el contenido visible de toda la app.",
+    settingsLanguageTitle: "Idioma de interfaz",
+    settingsLanguageBody: "Cambia navegación, encabezados y contenido visible.",
     settingsRoadmapEyebrow: "Próxima expansión",
     settingsRoadmapTitle: "Lo que puede venir",
     settingsRoadmapBody:
-      "Este espacio queda preparado para recibir temas, opciones visuales o preferencias adicionales sin volver a cargar el hero principal.",
+      "Queda espacio para preferencias futuras sin volver a cargar el inicio.",
     drawnFromBrowse: "Explorar",
     drawnFromArchive: "Archivo"
   },
@@ -330,14 +332,14 @@ const translations = {
     homeRandomShortcut: "Go to random",
     homeSettingsShortcut: "Open settings",
     workspaceBrowseEyebrow: "Guided exploration",
-    workspaceBrowseTitle: "Browse: explore the current collection",
-    workspaceBrowseBody: "This is the deep filtering workspace for the active shelf, keeping the controls and views you already had.",
+    workspaceBrowseTitle: "Browse the collection",
+    workspaceBrowseBody: "Search the active shelf with focused filters, sorting, and compact views.",
     workspaceArchiveEyebrow: "Historical archive",
-    workspaceArchiveTitle: "Archive: revisit games no longer on the shelf",
-    workspaceArchiveBody: "Archive is now a dedicated destination for browsing past titles without mixing them into the active collection flow.",
+    workspaceArchiveTitle: "Review the archive",
+    workspaceArchiveBody: "Browse past titles without mixing them into the active collection flow.",
     randomPageEyebrow: "Decision table",
-    randomPageTitle: "Random is now a full decision experience",
-    randomPageBody: "It uses the active workspace as its source, adds a short reveal, and keeps a lightweight session memory so the table can compare a few recent draws.",
+    randomPageTitle: "Random helps the table decide",
+    randomPageBody: "It uses the active workspace, reveals options, and keeps a lightweight session memory.",
     randomPageEmptyTitle: "No draw yet",
     randomPageEmptyBody: "Drop in whenever you want, review the current scope, and trigger a draw only when the table is ready to decide.",
     randomPageRevealEyebrow: "Drawing",
@@ -357,18 +359,18 @@ const translations = {
     randomHistoryBody: "Useful for comparing options without saving anything permanently.",
     randomHistoryEmpty: "Draws from this session will appear here.",
     settingsEyebrow: "Preferences",
-    settingsTitle: "Settings for a more comfortable experience",
-    settingsBody: "In this first step, language moves into a stable place and leaves room for future preferences.",
+    settingsTitle: "Usage settings",
+    settingsBody: "Theme and language live here so the rest of the library can stay focused on choosing games.",
     settingsThemeEyebrow: "Theme",
-    settingsThemeTitle: "Choose how the library should feel",
-    settingsThemeBody: "Let the app follow the system setting or pin a light or dark presentation across every section.",
+    settingsThemeTitle: "Library theme",
+    settingsThemeBody: "Follow the system or pin light or dark mode.",
     settingsLanguageEyebrow: "Language",
-    settingsLanguageTitle: "Choose the interface language",
-    settingsLanguageBody: "This updates navigation, section headers, and visible content labels across the app.",
+    settingsLanguageTitle: "Interface language",
+    settingsLanguageBody: "Updates navigation, headings, and visible content.",
     settingsRoadmapEyebrow: "Next layer",
     settingsRoadmapTitle: "What can come next",
     settingsRoadmapBody:
-      "This space is now ready for themes, visual settings, or additional preferences without overloading the main hero.",
+      "There is room for future preferences without overloading Home.",
     drawnFromBrowse: "Browse",
     drawnFromArchive: "Archive"
   }
@@ -529,6 +531,7 @@ function bindEvents() {
   document.querySelector("#toolbar-random").addEventListener("click", () => setActivePage("random"));
   document.querySelector("#random-browse-action").addEventListener("click", () => setActivePage(state.lastWorkspacePage));
   document.querySelector("#random-page-trigger").addEventListener("click", drawRandomFromCurrentScope);
+  window.addEventListener("resize", scheduleMasonryLayout);
 }
 
 function bindThemeMediaQuery() {
@@ -1118,6 +1121,55 @@ function renderGames() {
     fragment.append(node);
   });
   elements.gamesGrid.append(fragment);
+  observeGameCards();
+  scheduleMasonryLayout();
+}
+
+function scheduleMasonryLayout() {
+  if (masonryLayoutFrame) {
+    window.cancelAnimationFrame(masonryLayoutFrame);
+  }
+  masonryLayoutFrame = window.requestAnimationFrame(() => {
+    masonryLayoutFrame = 0;
+    applyMasonryLayout();
+  });
+}
+
+function observeGameCards() {
+  if (typeof ResizeObserver !== "function") return;
+  if (!gameCardResizeObserver) {
+    gameCardResizeObserver = new ResizeObserver(() => {
+      scheduleMasonryLayout();
+    });
+  }
+  gameCardResizeObserver.disconnect();
+  if (state.filters.view === "list") return;
+  elements.gamesGrid.querySelectorAll(".game-card__button").forEach((card) => {
+    gameCardResizeObserver.observe(card);
+  });
+}
+
+function applyMasonryLayout() {
+  if (!elements.gamesGrid) return;
+  const cards = elements.gamesGrid.querySelectorAll(".game-card");
+  if (state.filters.view === "list") {
+    cards.forEach((card) => {
+      card.style.gridRowEnd = "";
+    });
+    return;
+  }
+
+  const gridStyles = window.getComputedStyle(elements.gamesGrid);
+  const rowHeight = parseFloat(gridStyles.getPropertyValue("grid-auto-rows"));
+  const gap = parseFloat(gridStyles.getPropertyValue("gap"));
+  if (!rowHeight) return;
+
+  cards.forEach((card) => {
+    const content = card.querySelector(".game-card__button");
+    if (!content) return;
+    const span = Math.max(1, Math.ceil((content.getBoundingClientRect().height + gap) / (rowHeight + gap)));
+    card.style.gridRowEnd = `span ${span}`;
+  });
 }
 
 function buildCardSubtitle(game) {
@@ -1623,9 +1675,34 @@ function getAllowedRandomDrawCount(candidateCount) {
 function injectCover(container, game, width) {
   const displayName = getDisplayName(game);
   container.innerHTML = "";
+  container.style.removeProperty("--card-art-ratio");
   if (game.imageUrl) {
     container.classList.add("has-image");
     container.innerHTML = `<img src="${escapeAttribute(game.imageUrl)}" alt="${escapeAttribute(displayName)}" loading="lazy" width="${width}" />`;
+    const image = container.querySelector("img");
+    if (image) {
+      const syncCoverRatio = () => {
+        if (!image.naturalWidth || !image.naturalHeight) return;
+        const aspect = image.naturalWidth / image.naturalHeight;
+        if (aspect >= 1.24) {
+          container.style.setProperty("--card-art-ratio", "11 / 8");
+        } else if (aspect <= 0.76) {
+          container.style.setProperty("--card-art-ratio", "4 / 5");
+        } else {
+          container.style.setProperty("--card-art-ratio", "1 / 1");
+        }
+      };
+
+      if (image.complete) {
+        syncCoverRatio();
+        scheduleMasonryLayout();
+      } else {
+        image.addEventListener("load", () => {
+          syncCoverRatio();
+          scheduleMasonryLayout();
+        }, { once: true });
+      }
+    }
   } else {
     container.classList.remove("has-image");
     container.dataset.initials = getInitials(displayName);

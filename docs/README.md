@@ -15,7 +15,6 @@ The root project [`README.md`](../README.md) should stay focused on setup, data 
 - [`app-overview.md`](./app-overview.md): product overview, goals, current capabilities, and present limitations
 - [`07-spec-ai-assisted-localized-content.md`](./07-spec-ai-assisted-localized-content.md): add a cached AI-assisted layer for bilingual summaries and future localized content generation
 - [`08-spec-expansion-curation-fallbacks.md`](./08-spec-expansion-curation-fallbacks.md): add manual curation and non-token fallback strategies for unresolved expansion relationships
-- [`09-spec-post-ia-layout-polish.md`](./09-spec-post-ia-layout-polish.md): refine spacing, density, hierarchy, and page balance after the information-architecture split
 
 ## Technical References
 
@@ -35,6 +34,7 @@ Recently archived:
 - [`archive/03-spec-information-architecture-refresh.md`](./archive/03-spec-information-architecture-refresh.md): completed the Home, Browse, Archive, Random, and Settings split and moved durable preferences out of the hero
 - [`archive/04-spec-discovery-controls-refresh.md`](./archive/04-spec-discovery-controls-refresh.md): refreshed browse controls, expanded sorting, improved list density, and aligned view switching with the results workspace
 - [`archive/05-spec-random-picker-experience.md`](./archive/05-spec-random-picker-experience.md): shipped the dedicated Random page, reveal flow, ephemeral history, and richer multi-result decision surface
+- [`archive/09-spec-post-ia-layout-polish.md`](./archive/09-spec-post-ia-layout-polish.md): shipped the post-IA spacing, density, hierarchy, and page-balance polish pass
 - [`archive/10-spec-ui-ux-review-followups.md`](./archive/10-spec-ui-ux-review-followups.md): shipped the follow-up polish pass for browse controls, active-filter summaries, and view toggle clarity
 
 Archived specs should keep their numbered filename so the implementation history remains easy to follow.
