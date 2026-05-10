@@ -1126,7 +1126,6 @@ function renderGames() {
       metaPill("weight", labelForWeightBand(game.weightBand)),
       metaPill("age", game.ageText || translations[state.language].notAvailable)
     ].join("");
-    node.querySelector(".game-card__tags").innerHTML = getDisplayTags(game, { compact: isListView }).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("");
     button.addEventListener("click", () => openDetails(game));
     fragment.append(node);
   });
