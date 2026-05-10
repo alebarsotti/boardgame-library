@@ -412,6 +412,7 @@ const state = {
   },
   nameOverrides: {},
   data: null,
+  libraryRatingRange: null,
   filteredGames: [],
   randomSelection: [],
   randomHistory: [],
@@ -547,6 +548,7 @@ function bindThemeMediaQuery() {
 function handleSystemThemeChange() {
   if (state.preferences.theme !== "auto") return;
   applyThemePreference();
+  syncScoreBadges();
 }
 
 function ensureValidActivePage() {
@@ -580,6 +582,7 @@ function setTheme(theme) {
   state.preferences.theme = theme;
   savePreferences();
   applyThemePreference();
+  syncScoreBadges();
   renderThemeSegments();
 }
 
@@ -849,11 +852,13 @@ function handleFilterControlChange(event) {
 async function loadData() {
   if (window[INLINE_DATA_KEY]) {
     state.data = normalizeDataset(window[INLINE_DATA_KEY]);
+    state.libraryRatingRange = getLibraryRatingRange(state.data?.games || []);
     return;
   }
 
   const response = await fetch(DATA_URL);
   state.data = normalizeDataset(await response.json());
+  state.libraryRatingRange = getLibraryRatingRange(state.data?.games || []);
 }
 
 function normalizeDataset(data) {
@@ -1103,11 +1108,16 @@ function renderGames() {
     const node = elements.cardTemplate.content.firstElementChild.cloneNode(true);
     const button = node.querySelector(".game-card__button");
     const art = node.querySelector(".game-card__art");
+    const badge = node.querySelector(".game-card__badge");
     const displayName = getDisplayName(game);
     node.classList.toggle("game-card--list", isListView);
     node.querySelector(".game-card__title").textContent = displayName;
     node.querySelector(".game-card__subtitle").textContent = buildCardSubtitle(game);
-    node.querySelector(".game-card__badge").textContent = game.averageRating ? game.averageRating.toFixed(1) : "n/a";
+    badge.textContent = game.averageRating ? game.averageRating.toFixed(1) : "n/a";
+    badge.dataset.rating = typeof game.averageRating === "number" && Number.isFinite(game.averageRating)
+      ? String(game.averageRating)
+      : "";
+    applyScoreBadgeStyle(badge, game.averageRating);
     art.dataset.initials = getInitials(displayName);
     injectCover(art, game, 220);
     node.querySelector(".game-card__meta").innerHTML = [
@@ -1814,6 +1824,57 @@ function formatGameScore(game) {
     return game.averageRating.toFixed(1);
   }
   return translations[state.language].notAvailable;
+}
+
+function syncScoreBadges() {
+  document.querySelectorAll(".game-card__badge").forEach((badge) => {
+    const rating = Number(badge.dataset.rating);
+    applyScoreBadgeStyle(badge, Number.isFinite(rating) ? rating : null);
+  });
+}
+
+function getLibraryRatingRange(games) {
+  const ratings = games
+    .map((game) => game?.averageRating)
+    .filter((rating) => typeof rating === "number" && Number.isFinite(rating));
+
+  if (!ratings.length) return null;
+
+  const min = Math.min(...ratings);
+  const max = Math.max(...ratings);
+  return { min, max };
+}
+
+function applyScoreBadgeStyle(node, rating) {
+  if (!node) return;
+  if (typeof rating !== "number" || !Number.isFinite(rating)) {
+    node.style.setProperty("--rating-text", "var(--accent)");
+    node.style.setProperty("--rating-bg", "color-mix(in srgb, var(--surface-raised) 78%, var(--accent) 22%)");
+    node.style.setProperty("--rating-border", "color-mix(in srgb, var(--line) 74%, var(--accent) 26%)");
+    node.style.setProperty("--rating-shadow", "none");
+    return;
+  }
+
+  const range = state.libraryRatingRange;
+  const span = range && Number.isFinite(range.max - range.min) ? range.max - range.min : 0;
+  const normalized = span > 0
+    ? Math.max(0, Math.min(1, (rating - range.min) / span))
+    : 0.5;
+  const hue = 18 + normalized * 16;
+  const saturation = 52 + normalized * 18;
+  const textLightness = document.body.dataset.theme === "dark"
+    ? 58 + normalized * 18
+    : 36 + normalized * 10;
+  const bgLightness = document.body.dataset.theme === "dark"
+    ? 18 + normalized * 10
+    : 92 - normalized * 8;
+  const borderAlpha = 0.24 + normalized * 0.2;
+  const glowAlpha = 0.08 + normalized * 0.16;
+
+  node.style.setProperty("--rating-text", `hsl(${hue} ${saturation}% ${textLightness}%)`);
+  node.style.setProperty("--rating-bg", `hsla(${hue} ${Math.max(38, saturation - 10)}% ${bgLightness}% / 0.88)`);
+  node.style.setProperty("--rating-border", `hsla(${hue} ${Math.max(34, saturation - 14)}% ${textLightness}% / ${borderAlpha.toFixed(2)})`);
+  node.style.setProperty("--rating-shadow", `0 10px 22px hsla(${hue} ${saturation}% 20% / ${glowAlpha.toFixed(2)})`);
 }
 
 function joinPlayers(values) {

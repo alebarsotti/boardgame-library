@@ -1,8 +1,8 @@
 # Local-First Localized Content Cache
 
-Status: Proposed
-Priority: Later
-Related docs: app-overview.md, archive/01-spec-game-content-enrichment.md
+Status: Implemented and archived
+Priority: Completed
+Related docs: ../app-overview.md, ./01-spec-game-content-enrichment.md, ./11-localized-content-handoff.md
 
 ## Problem / Opportunity
 

@@ -1,8 +1,10 @@
 # Expansion Curation And Fallbacks
 
-Status: Proposed
-Priority: Later
+Status: Postponed
+Priority: Someday / maybe
 Related docs: app-overview.md, archive/02-spec-expansion-grouping.md
+
+This spec is intentionally deferred for now. The current BGG-driven grouping behavior remains acceptable, and near-term follow-up work is expected to focus on language and design polish instead.
 
 ## Problem / Opportunity
 
