@@ -68,8 +68,8 @@ const translations = {
     heroOwned: "hoy en estantería",
     heroPrev: "en archivo",
     heroQuick: "partidas rápidas",
-    bestAt: "mejor en",
-    recommendedAt: "recomendado en",
+    bestAt: "Ideal para",
+    recommendedAt: "Recomendado para",
     ageText: "Edad sugerida",
     ranking: "Ranking BGG",
     averageRating: "Rating promedio",
@@ -123,7 +123,7 @@ const translations = {
     recQuick: "Rápidos",
     recHeavy: "Pesados",
     recTeach: "Fáciles de enseñar",
-    recSolo: "Con modo solo",
+    recSolo: "Modo solitario",
     recGroup: "Para grupo grande",
     filterSearch: "Texto",
     filterPlayers: "Jugadores",
@@ -251,8 +251,8 @@ const translations = {
     heroOwned: "currently owned",
     heroPrev: "archived",
     heroQuick: "quick plays",
-    bestAt: "best at",
-    recommendedAt: "recommended at",
+    bestAt: "Ideal for",
+    recommendedAt: "Recommended with",
     ageText: "Recommended age",
     ranking: "BGG rank",
     averageRating: "Average rating",
@@ -1207,10 +1207,9 @@ function getDisplayTags(game, options = {}) {
   const bestPlayers = toPlayerArray(game.bestPlayers);
   const tags = Array.isArray(game.tags) ? game.tags : [];
   if (isExpansionGame(game)) list.push(translations[state.language].expansion);
-  if (bestPlayers.length) list.push(`${translations[state.language].bestAt} ${joinPlayers(bestPlayers)}`);
+  if (bestPlayers.length) list.push(formatBestPlayersTag(bestPlayers));
   if (tags.includes("teaching-friendly")) list.push(translations[state.language].recTeach);
   if (tags.includes("solo")) list.push(translations[state.language].recSolo);
-  if (tags.includes("great-at-2")) list.push(translations[state.language].recDuo);
   return list.slice(0, compact ? 2 : 3);
 }
 
@@ -1823,6 +1822,11 @@ function formatGameScore(game) {
     return game.averageRating.toFixed(1);
   }
   return translations[state.language].notAvailable;
+}
+
+function formatBestPlayersTag(values) {
+  if (!values.length) return translations[state.language].notAvailable;
+  return `${translations[state.language].bestAt} ${joinPlayers(values)}`;
 }
 
 function syncScoreBadges() {
