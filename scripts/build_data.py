@@ -227,6 +227,9 @@ def new_search_tokens(game: dict[str, Any]) -> str:
     for value in (
         game.get("name", ""),
         game.get("originalName", ""),
+        game.get("versionNickname", ""),
+        game.get("versionPublishers", ""),
+        game.get("versionLanguages", ""),
         game.get("notes", ""),
         game.get("summary", ""),
         game.get("description", ""),
@@ -600,6 +603,7 @@ def build_game_from_row(row: dict[str, str], name_overrides: dict[str, Any]) -> 
         "wantToPlay": want_to_play,
         "wantToBuy": want_to_buy,
         "wishlist": wishlist,
+        "acquisitionDate": (row.get("acquisitiondate", "") or "").strip(),
         "versionNickname": row.get("version_nickname", ""),
         "versionPublishers": row.get("version_publishers", ""),
         "versionLanguages": row.get("version_languages", ""),
