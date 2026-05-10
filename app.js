@@ -1277,7 +1277,7 @@ function openDetails(game) {
             ${detailKv(copy.ownership, game.own ? copy.owned : copy.prevOwned)}
             ${detailKv(copy.ranking, game.rank ? `#${game.rank}` : copy.notAvailable)}
             ${detailKv(copy.averageRating, game.averageRating ? game.averageRating.toFixed(2) : copy.notAvailable)}
-            ${detailKv(copy.languageDependence, game.languageDependence || copy.notAvailable)}
+            ${detailKv(copy.languageDependence, labelForLanguageKey(game.languageKey || "unknown"))}
             ${detailKv(copy.recommendedAt, game.recommendedPlayers.length ? joinPlayers(game.recommendedPlayers) : copy.notAvailable)}
             ${detailKv(copy.bestAt, game.bestPlayers.length ? joinPlayers(game.bestPlayers) : copy.notAvailable)}
           </div>
