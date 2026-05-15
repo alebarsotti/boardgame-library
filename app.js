@@ -59,6 +59,8 @@ const translations = {
     openFilters: "Filtros",
     close: "Cerrar",
     resultsEyebrow: "Resultados filtrados",
+    resultsSingle: "resultado",
+    resultsPlural: "resultados",
     resetFilters: "Limpiar filtros",
     emptyTitle: "No hay coincidencias para esta combinación.",
     emptyBody: "Probá aflojar algún filtro o dejar que la suerte elija desde otro conjunto.",
@@ -251,6 +253,8 @@ const translations = {
     openFilters: "Filters",
     close: "Close",
     resultsEyebrow: "Filtered results",
+    resultsSingle: "result",
+    resultsPlural: "results",
     resetFilters: "Reset filters",
     emptyTitle: "No games match this combination.",
     emptyBody: "Try relaxing a filter or let chance choose from a broader set.",
@@ -1266,8 +1270,9 @@ function renderHomePanel() {
 
 function renderResultsSummary() {
   const copy = translations[state.language];
-  const scope = getEffectiveSection() === "archive" ? copy.archiveCollection : copy.currentCollection;
-  elements.resultsCount.textContent = `${state.filteredGames.length} ${scope}`;
+  const count = state.filteredGames.length;
+  const label = count === 1 ? copy.resultsSingle : copy.resultsPlural;
+  elements.resultsCount.textContent = `${count} ${label}`;
 }
 
 function renderActiveFilters() {
