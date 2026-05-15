@@ -694,14 +694,46 @@ function renderLanguageSegment() {
     ["es", copy.languageSpanish],
     ["en", copy.languageEnglish]
   ];
-  elements.languageSegment.innerHTML = options
-    .map(
-      ([value, label]) =>
-        `<button class="segment-button ${state.language === value ? "is-active" : ""}" data-language="${value}" type="button">${escapeHtml(label)}</button>`
-    )
-    .join("");
+  const activeIndex = Math.max(0, options.findIndex(([value]) => value === state.language));
+  if (!elements.languageSegment.querySelector(".language-toggle__track")) {
+    elements.languageSegment.innerHTML = `
+      <div class="language-toggle__track" data-language-active="${escapeAttribute(String(activeIndex))}">
+        <span class="language-toggle__thumb" aria-hidden="true"></span>
+        ${options
+          .map(([value, label]) => {
+            const isActive = state.language === value;
+            return `
+              <button
+                class="language-toggle__button ${isActive ? "is-active" : ""}"
+                data-language="${escapeAttribute(value)}"
+                type="button"
+                aria-pressed="${isActive ? "true" : "false"}"
+                aria-label="${escapeAttribute(label)}"
+                title="${escapeAttribute(label)}"
+              >
+                ${escapeHtml(label)}
+              </button>
+            `;
+          })
+          .join("")}
+      </div>
+    `;
+    elements.languageSegment.querySelectorAll("[data-language]").forEach((button) => {
+      button.addEventListener("click", () => setLanguage(button.dataset.language));
+    });
+  }
+  const track = elements.languageSegment.querySelector(".language-toggle__track");
+  if (track) {
+    track.dataset.languageActive = String(activeIndex);
+  }
   elements.languageSegment.querySelectorAll("[data-language]").forEach((button) => {
-    button.addEventListener("click", () => setLanguage(button.dataset.language));
+    const value = button.dataset.language;
+    const label = options.find(([option]) => option === value)?.[1] || value;
+    const isActive = state.language === value;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", isActive ? "true" : "false");
+    button.setAttribute("aria-label", label);
+    button.setAttribute("title", label);
   });
 }
 
