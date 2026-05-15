@@ -24,10 +24,10 @@ const translations = {
     themeLight: "Claro",
     themeDark: "Oscuro",
     heroEyebrow: "Colección personal de juegos",
-    heroTitle: "Un catálogo más claro para elegir mejor.",
+    heroTitle: "Elegir mejor, más rápido.",
     heroLede:
-      "Explora la biblioteca, revisa el archivo y deja que Azar te ayude a decidir sin perder los filtros útiles del flujo original.",
-    openRandomAction: "Abrir Azar",
+      "Explorá la biblioteca, revisá el archivo y dejá que Azar resuelva cuando la mesa no se decide.",
+    openRandomAction: "Dejarlo al azar",
     randomAction: "Sortear ahora",
     exploreAction: "Explorar la colección",
     openArchiveAction: "Ver archivo",
@@ -68,10 +68,10 @@ const translations = {
     prevOwned: "Anteriormente poseído",
     currentCollection: "colección actual",
     archiveCollection: "archivo",
-    heroCount: "juegos cargados",
+    heroCount: "juegos catalogados",
     heroOwned: "hoy en estantería",
     heroPrev: "en archivo",
-    heroQuick: "partidas rápidas",
+    heroQuick: "juegos cortos",
     bestAt: "Ideal para",
     recommendedAt: "Recomendado para",
     ageText: "Edad sugerida",
@@ -144,20 +144,21 @@ const translations = {
     languageSpanish: "ES",
     languageEnglish: "EN",
     poweredBy: "Datos e imágenes provistos por",
-    homeCollectionEyebrow: "Estado de la biblioteca",
-    homeCollectionTitle: "Una vista general para arrancar sin vueltas.",
+    homeCollectionEyebrow: "Panorama rápido",
+    homeCollectionTitle: "Lo que quedó en archivo",
     homeCollectionBody:
-      "Acá ves rápido cómo está la biblioteca y elegís si querés explorar la colección activa, revisar el archivo o dejar que la app te sugiera una opción.",
+      "Entrá si querés revisar juegos que ya no están en estantería sin mezclarlos con la colección activa.",
     homeUtilityEyebrow: "Accesos directos",
-    homeUtilityTitle: "Cada tarea tiene su propio espacio",
+    homeUtilityTitle: "Ir directo a cada tarea",
     homeUtilityBody:
-      "Explorar queda para filtrar en serio, Archivo para revisar juegos que ya no están, Azar para desempatar y Ajustes para preferencias duraderas.",
-    homeBrowseShortcut: "Ir a explorar",
-    homeRandomShortcut: "Ir a azar",
-    homeSettingsShortcut: "Ver ajustes",
+      "Explorar para filtrar, Azar para resolver y Ajustes para ordenar preferencias.",
+    homeBrowseShortcut: "Explorar",
+    homeRandomShortcut: "Azar",
+    homeSettingsShortcut: "Ajustes",
     homeRecentEyebrow: "Incorporaciones recientes",
-    homeRecentTitle: "Lo nuevo en la biblioteca",
-    homeRecentBody: "Juegos incorporados dentro de la ventana reciente configurada, usando la fecha de adquisición registrada en la colección.",
+    homeRecentTitle: "Últimos ingresos",
+    homeRecentBody: "Los juegos que entraron hace poco a la biblioteca.",
+    homeRecentAddedOn: "Incorporado el",
     homeRecentEmpty: "No hay incorporaciones recientes con fecha registrada.",
     newTag: "Nuevo",
     workspaceBrowseEyebrow: "Exploración guiada",
@@ -218,10 +219,10 @@ const translations = {
     themeLight: "Light",
     themeDark: "Dark",
     heroEyebrow: "Personal board game collection",
-    heroTitle: "A clearer catalog for choosing better.",
+    heroTitle: "Choose better, faster.",
     heroLede:
-      "Browse the library, revisit the archive, and let Random help the table decide without losing the useful filter flow.",
-    openRandomAction: "Open Random",
+      "Browse the library, revisit the archive, and let Random break the tie when the table stalls.",
+    openRandomAction: "Leave it to Random",
     randomAction: "Draw now",
     exploreAction: "Browse collection",
     openArchiveAction: "Open archive",
@@ -262,10 +263,10 @@ const translations = {
     prevOwned: "Previously owned",
     currentCollection: "current collection",
     archiveCollection: "archive",
-    heroCount: "games loaded",
+    heroCount: "games cataloged",
     heroOwned: "currently owned",
     heroPrev: "archived",
-    heroQuick: "quick plays",
+    heroQuick: "short games",
     bestAt: "Ideal for",
     recommendedAt: "Recommended with",
     ageText: "Recommended age",
@@ -337,20 +338,21 @@ const translations = {
     languageSpanish: "ES",
     languageEnglish: "EN",
     poweredBy: "Data and images provided by",
-    homeCollectionEyebrow: "Library status",
-    homeCollectionTitle: "A simple landing area for quick orientation.",
+    homeCollectionEyebrow: "Quick view",
+    homeCollectionTitle: "What moved to the archive",
     homeCollectionBody:
-      "Home summarizes the collection and directs you to the right experience depending on whether you want to explore, revisit the archive, or let the app decide.",
+      "Open it when you want to revisit games that are no longer on the active shelf.",
     homeUtilityEyebrow: "Shortcuts",
-    homeUtilityTitle: "Clear entry points for each job",
+    homeUtilityTitle: "Jump straight to the task",
     homeUtilityBody:
-      "Browse is for deep filtering, Archive is for previously owned titles, Random is for tie-breakers, and Settings holds durable preferences.",
-    homeBrowseShortcut: "Go to browse",
-    homeRandomShortcut: "Go to random",
-    homeSettingsShortcut: "Open settings",
+      "Browse for filtering, Random for tie-breaks, and Settings for preferences.",
+    homeBrowseShortcut: "Browse",
+    homeRandomShortcut: "Random",
+    homeSettingsShortcut: "Settings",
     homeRecentEyebrow: "Recent additions",
-    homeRecentTitle: "What is new on the shelf",
-    homeRecentBody: "Titles added inside the configured recent window, using the acquisition date recorded in the collection.",
+    homeRecentTitle: "Recent arrivals",
+    homeRecentBody: "Games that joined the library recently.",
+    homeRecentAddedOn: "Added on",
     homeRecentEmpty: "No recent additions with a recorded acquisition date yet.",
     newTag: "New",
     workspaceBrowseEyebrow: "Guided exploration",
@@ -406,7 +408,11 @@ const icons = {
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 20h12l-1.5-8h-9z"/><path d="M9 8a3 3 0 1 1 6 0"/></svg>',
   age: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 4v5c0 5-3.5 8.74-8 9-4.5-.26-8-4-8-9V7z"/><path d="M9.5 12.5l1.8 1.8 3.7-4"/></svg>',
   language:
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h9"/><path d="M8.5 5c0 6-2.5 10-5.5 12"/><path d="M6 11c1.2 1.8 3 3.4 5.5 4.8"/><path d="M14 19l4-10 4 10"/><path d="M15.4 15.5h5.2"/></svg>'
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h9"/><path d="M8.5 5c0 6-2.5 10-5.5 12"/><path d="M6 11c1.2 1.8 3 3.4 5.5 4.8"/><path d="M14 19l4-10 4 10"/><path d="M15.4 15.5h5.2"/></svg>',
+  calendar:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>',
+  rating:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 3 2.9 5.9 6.5 1-4.7 4.6 1.1 6.5L12 18l-5.8 3 1.1-6.5L2.6 9.9l6.5-1z"/></svg>'
 };
 
 const state = {
@@ -480,9 +486,6 @@ async function init() {
 function cacheElements() {
   elements.pageNav = document.querySelector("#page-nav");
   elements.heroStats = document.querySelector("#hero-stats");
-  elements.homeOwnedCount = document.querySelector("#home-owned-count");
-  elements.homeArchiveCount = document.querySelector("#home-archive-count");
-  elements.homeShortcuts = document.querySelector("#home-shortcuts");
   elements.homeRecentList = document.querySelector("#home-recent-list");
   elements.searchInput = document.querySelector("#search-input");
   elements.playersFilter = document.querySelector("#players-filter");
@@ -550,7 +553,6 @@ function bindEvents() {
   document.querySelector("#close-filters").addEventListener("click", () => elements.filtersPanel.classList.remove("is-open"));
   document.querySelector("#home-browse-action").addEventListener("click", () => setActivePage("browse"));
   document.querySelector("#home-random-action").addEventListener("click", () => setActivePage("random"));
-  document.querySelector("#home-archive-action").addEventListener("click", () => setActivePage("archive"));
   document.querySelector("#toolbar-random").addEventListener("click", () => setActivePage("random"));
   document.querySelector("#random-browse-action").addEventListener("click", () => setActivePage(state.lastWorkspacePage));
   document.querySelector("#random-page-trigger").addEventListener("click", drawRandomFromCurrentScope);
@@ -1206,8 +1208,9 @@ function matchesRecommendation(game, recommendation) {
 
 function renderHeroStats() {
   const copy = translations[state.language];
+  const catalogCount = (state.data?.games || []).filter((game) => game.own || game.prevOwned).length;
   const stats = [
-    [state.data.summary.count, copy.heroCount],
+    [catalogCount, copy.heroCount],
     [state.data.summary.ownCount, copy.heroOwned],
     [state.data.summary.prevOwnedCount, copy.heroPrev],
     [state.data.summary.recommendations.quick, copy.heroQuick]
@@ -1218,36 +1221,28 @@ function renderHeroStats() {
 }
 
 function renderHomePanel() {
-  elements.homeOwnedCount.textContent = String(state.data.summary.ownCount);
-  elements.homeArchiveCount.textContent = String(state.data.summary.prevOwnedCount);
-
   const copy = translations[state.language];
-  const shortcuts = [
-    ["browse", copy.homeBrowseShortcut],
-    ["random", copy.homeRandomShortcut],
-    ["settings", copy.homeSettingsShortcut]
-  ];
-
-  elements.homeShortcuts.innerHTML = shortcuts
-    .map(([page, label]) => `<button class="chip chip--interactive" data-home-page="${page}" type="button">${escapeHtml(label)}</button>`)
-    .join("");
-
-  elements.homeShortcuts.querySelectorAll("[data-home-page]").forEach((button) => {
-    button.addEventListener("click", () => setActivePage(button.dataset.homePage));
-  });
-
   const recentGames = getRecentAcquisitions();
   elements.homeRecentList.innerHTML = recentGames.length
     ? recentGames
       .map(
         (game) => `
           <button class="home-recent-item" data-recent-game-id="${escapeAttribute(game.id)}" type="button">
-            <div class="home-recent-item__cover" id="home-recent-cover-${escapeAttribute(game.id)}"></div>
+            <div class="game-card__art home-recent-item__cover" id="home-recent-cover-${escapeAttribute(game.id)}"></div>
             <div class="home-recent-item__body">
-              <span class="home-recent-item__title">${escapeHtml(getDisplayName(game))}</span>
-              <span class="home-recent-item__meta">
-                ${escapeHtml([formatAcquisitionDate(game.acquisitionDate), formatPhysicalLanguages(game)].filter(Boolean).join(" · "))}
+              <div class="home-recent-item__header">
+                <div class="home-recent-item__copy">
+                  <span class="home-recent-item__title">${escapeHtml(getDisplayName(game))}</span>
+                  <span class="home-recent-item__year">${escapeHtml(game.yearPublished ? String(game.yearPublished) : copy.notAvailable)}</span>
+                </div>
+                <span class="game-card__badge home-recent-item__badge" data-rating="${typeof game.averageRating === "number" && Number.isFinite(game.averageRating) ? escapeAttribute(String(game.averageRating)) : ""}">
+                  ${escapeHtml(formatGameScore(game))}
+                </span>
+              </div>
+              <span class="home-recent-item__facts">
+                ${buildHomeRecentFacts(game).map(({ icon, label }) => metaPill(icon, label).replace('class="meta-pill"', 'class="meta-pill home-recent-item__fact"')).join("")}
               </span>
+              ${buildHomeRecentAcquisitionLine(game, copy)}
             </div>
           </button>
         `
@@ -1265,6 +1260,8 @@ function renderHomePanel() {
   recentGames.forEach((game) => {
     const cover = elements.homeRecentList.querySelector(`#home-recent-cover-${CSS.escape(String(game.id))}`);
     if (cover) injectCover(cover, game, 180);
+    const badge = elements.homeRecentList.querySelector(`[data-recent-game-id="${CSS.escape(String(game.id))}"] .home-recent-item__badge`);
+    if (badge) applyScoreBadgeStyle(badge, game.averageRating);
   });
 }
 
@@ -2042,6 +2039,23 @@ function formatAcquisitionDate(value) {
     month: "short",
     day: "numeric"
   }).format(new Date(timestamp));
+}
+
+function buildHomeRecentFacts(game) {
+  const facts = [];
+  const players = formatPlayers(game);
+  if (players && players !== translations[state.language].notAvailable) {
+    facts.push({ icon: "players", label: state.language === "es" ? `${players} jug.` : `${players} players` });
+  }
+  const time = formatPlayTime(game);
+  if (time && time !== translations[state.language].notAvailable) facts.push({ icon: "time", label: time });
+  return facts.slice(0, 3);
+}
+
+function buildHomeRecentAcquisitionLine(game, copy) {
+  const acquired = formatAcquisitionDate(game.acquisitionDate);
+  if (!acquired) return "";
+  return `<span class="home-recent-item__date">${escapeHtml(copy.homeRecentAddedOn)} ${escapeHtml(acquired)}</span>`;
 }
 
 function getRecentAcquisitions() {
