@@ -6,8 +6,7 @@ const RANDOM_HISTORY_LIMIT = 5;
 const RANDOM_REVEAL_MIN_MS = 900;
 const RANDOM_REVEAL_MAX_MS = 1400;
 const RECENT_ACQUISITION_WINDOW_MONTHS = 12;
-const THEME_KEYS = ["auto", "light", "dark"];
-const systemThemeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+const THEME_KEYS = ["light", "dark"];
 
 const PAGE_KEYS = ["home", "browse", "archive", "random", "settings"];
 let masonryLayoutFrame = 0;
@@ -22,7 +21,6 @@ const translations = {
     navRandom: "Azar",
     navSettings: "Ajustes",
     themeLabel: "Tema",
-    themeAuto: "Auto",
     themeLight: "Claro",
     themeDark: "Oscuro",
     heroEyebrow: "Colección personal de juegos",
@@ -195,7 +193,7 @@ const translations = {
     settingsBody: "Tema e idioma viven acá para que el resto de la biblioteca quede libre para elegir juegos.",
     settingsThemeEyebrow: "Tema",
     settingsThemeTitle: "Tema de la biblioteca",
-    settingsThemeBody: "Seguí el sistema o fijá modo claro u oscuro.",
+    settingsThemeBody: "Elegí entre modo claro y oscuro para toda la biblioteca.",
     settingsLanguageEyebrow: "Idioma",
     settingsLanguageTitle: "Idioma de interfaz",
     settingsLanguageBody: "Cambia navegación, encabezados y contenido visible.",
@@ -214,7 +212,6 @@ const translations = {
     navRandom: "Random",
     navSettings: "Settings",
     themeLabel: "Theme",
-    themeAuto: "Auto",
     themeLight: "Light",
     themeDark: "Dark",
     heroEyebrow: "Personal board game collection",
@@ -382,7 +379,7 @@ const translations = {
     settingsBody: "Theme and language live here so the rest of the library can stay focused on choosing games.",
     settingsThemeEyebrow: "Theme",
     settingsThemeTitle: "Library theme",
-    settingsThemeBody: "Follow the system or pin light or dark mode.",
+    settingsThemeBody: "Choose between light and dark mode for the whole library.",
     settingsLanguageEyebrow: "Language",
     settingsLanguageTitle: "Interface language",
     settingsLanguageBody: "Updates navigation, headings, and visible content.",
@@ -465,7 +462,6 @@ document.addEventListener("DOMContentLoaded", init);
 async function init() {
   cacheElements();
   loadPreferences();
-  bindThemeMediaQuery();
   applyThemePreference();
   bindEvents();
   applyTranslations();
@@ -527,7 +523,7 @@ function loadPreferences() {
   state.language = state.preferences.language || "es";
   state.filters.view = state.preferences.view || "grid";
   state.activePage = state.preferences.activePage || "home";
-  state.preferences.theme = THEME_KEYS.includes(state.preferences.theme) ? state.preferences.theme : "auto";
+  state.preferences.theme = THEME_KEYS.includes(state.preferences.theme) ? state.preferences.theme : "dark";
   state.lastWorkspacePage = state.activePage === "archive" ? "archive" : "browse";
 
   try {
@@ -558,22 +554,6 @@ function bindEvents() {
   document.querySelector("#random-browse-action").addEventListener("click", () => setActivePage(state.lastWorkspacePage));
   document.querySelector("#random-page-trigger").addEventListener("click", drawRandomFromCurrentScope);
   window.addEventListener("resize", scheduleMasonryLayout);
-}
-
-function bindThemeMediaQuery() {
-  if (typeof systemThemeMediaQuery.addEventListener === "function") {
-    systemThemeMediaQuery.addEventListener("change", handleSystemThemeChange);
-    return;
-  }
-  if (typeof systemThemeMediaQuery.addListener === "function") {
-    systemThemeMediaQuery.addListener(handleSystemThemeChange);
-  }
-}
-
-function handleSystemThemeChange() {
-  if (state.preferences.theme !== "auto") return;
-  applyThemePreference();
-  syncScoreBadges();
 }
 
 function ensureValidActivePage() {
@@ -612,17 +592,13 @@ function setTheme(theme) {
 }
 
 function getEffectiveTheme() {
-  if (state.preferences.theme === "light" || state.preferences.theme === "dark") {
-    return state.preferences.theme;
-  }
-  return systemThemeMediaQuery.matches ? "dark" : "light";
+  return state.preferences.theme === "light" ? "light" : "dark";
 }
 
 function applyThemePreference() {
-  const preference = THEME_KEYS.includes(state.preferences.theme) ? state.preferences.theme : "auto";
-  const effectiveTheme = preference === "auto" ? getEffectiveTheme() : preference;
+  const effectiveTheme = getEffectiveTheme();
   document.body.dataset.theme = effectiveTheme;
-  document.body.dataset.themePreference = preference;
+  document.body.dataset.themePreference = effectiveTheme;
   document.documentElement.style.colorScheme = effectiveTheme;
 }
 
@@ -731,22 +707,62 @@ function renderLanguageSegment() {
 function renderThemeSegments() {
   const copy = translations[state.language];
   const options = [
-    ["auto", copy.themeAuto],
     ["light", copy.themeLight],
     ["dark", copy.themeDark]
   ];
   [elements.themeSegmentHeader, elements.themeSegmentSettings].forEach((container) => {
     if (!container) return;
-    container.innerHTML = options
-      .map(
-        ([value, label]) =>
-          `<button class="segment-button ${state.preferences.theme === value ? "is-active" : ""}" data-theme="${value}" type="button">${escapeHtml(label)}</button>`
-      )
-      .join("");
+    const activeIndex = Math.max(0, options.findIndex(([value]) => value === state.preferences.theme));
+    if (!container.querySelector(".theme-toggle__track")) {
+      container.innerHTML = `
+        <div class="theme-toggle__track" data-theme-active="${escapeAttribute(String(activeIndex))}">
+          <span class="theme-toggle__thumb" aria-hidden="true"></span>
+          ${options
+            .map(([value, label]) => {
+              const icon = value === "light" ? themeIconSun() : themeIconMoon();
+              const isActive = state.preferences.theme === value;
+              return `
+                <button
+                  class="theme-toggle__button ${isActive ? "is-active" : ""}"
+                  data-theme="${escapeAttribute(value)}"
+                  type="button"
+                  aria-pressed="${isActive ? "true" : "false"}"
+                  aria-label="${escapeAttribute(label)}"
+                  title="${escapeAttribute(label)}"
+                >
+                  ${icon}
+                </button>
+              `;
+            })
+            .join("")}
+        </div>
+      `;
+      container.querySelectorAll("[data-theme]").forEach((button) => {
+        button.addEventListener("click", () => setTheme(button.dataset.theme));
+      });
+    }
+    const track = container.querySelector(".theme-toggle__track");
+    if (track) {
+      track.dataset.themeActive = String(activeIndex);
+    }
     container.querySelectorAll("[data-theme]").forEach((button) => {
-      button.addEventListener("click", () => setTheme(button.dataset.theme));
+      const value = button.dataset.theme;
+      const label = options.find(([option]) => option === value)?.[1] || value;
+      const isActive = state.preferences.theme === value;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-pressed", isActive ? "true" : "false");
+      button.setAttribute("aria-label", label);
+      button.setAttribute("title", label);
     });
   });
+}
+
+function themeIconSun() {
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"/></svg>';
+}
+
+function themeIconMoon() {
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M20 14.2A8 8 0 1 1 9.8 4a6.6 6.6 0 0 0 10.2 10.2Z"/></svg>';
 }
 
 function getFilterControlDefinitions() {
