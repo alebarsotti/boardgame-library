@@ -1285,6 +1285,7 @@ function renderGames() {
     const flag = node.querySelector(".game-card__flag");
     const displayName = getDisplayName(game);
     node.classList.toggle("game-card--list", isListView);
+    node.classList.toggle("game-card--new", game.isNew);
     node.querySelector(".game-card__title").textContent = displayName;
     node.querySelector(".game-card__subtitle").textContent = buildCardSubtitle(game);
     flag.textContent = translations[state.language].newTag;
