@@ -639,6 +639,10 @@ body[data-theme="dark"] .button--ghost {
   max-width: 16ch;
 }
 
+#random-panel .section-heading {
+  margin-bottom: 14px;
+}
+
 body[data-page="archive"] .filters,
 body[data-page="archive"] .toolbar,
 body[data-page="archive"] .game-card,

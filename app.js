@@ -478,9 +478,6 @@ function cacheElements() {
   elements.homeArchiveCount = document.querySelector("#home-archive-count");
   elements.homeShortcuts = document.querySelector("#home-shortcuts");
   elements.homeRecentList = document.querySelector("#home-recent-list");
-  elements.workspaceEyebrow = document.querySelector("#workspace-eyebrow");
-  elements.workspaceTitle = document.querySelector("#workspace-title");
-  elements.workspaceBody = document.querySelector("#workspace-body");
   elements.searchInput = document.querySelector("#search-input");
   elements.playersFilter = document.querySelector("#players-filter");
   elements.timeFilter = document.querySelector("#time-filter");
@@ -548,8 +545,6 @@ function bindEvents() {
   document.querySelector("#home-browse-action").addEventListener("click", () => setActivePage("browse"));
   document.querySelector("#home-random-action").addEventListener("click", () => setActivePage("random"));
   document.querySelector("#home-archive-action").addEventListener("click", () => setActivePage("archive"));
-  document.querySelector("#workspace-settings-action").addEventListener("click", () => setActivePage("settings"));
-  document.querySelector("#workspace-random-action").addEventListener("click", () => setActivePage("random"));
   document.querySelector("#toolbar-random").addEventListener("click", () => setActivePage("random"));
   document.querySelector("#random-browse-action").addEventListener("click", () => setActivePage(state.lastWorkspacePage));
   document.querySelector("#random-page-trigger").addEventListener("click", drawRandomFromCurrentScope);
@@ -1090,7 +1085,6 @@ function render() {
   renderPanelVisibility();
   renderHeroStats();
   renderHomePanel();
-  renderWorkspaceHeading();
   renderResultsSummary();
   renderActiveFilters();
   renderFilterControls();
@@ -1266,14 +1260,6 @@ function renderHomePanel() {
     const cover = elements.homeRecentList.querySelector(`#home-recent-cover-${CSS.escape(String(game.id))}`);
     if (cover) injectCover(cover, game, 180);
   });
-}
-
-function renderWorkspaceHeading() {
-  const copy = translations[state.language];
-  const isArchive = getEffectiveSection() === "archive";
-  elements.workspaceEyebrow.textContent = isArchive ? copy.workspaceArchiveEyebrow : copy.workspaceBrowseEyebrow;
-  elements.workspaceTitle.textContent = isArchive ? copy.workspaceArchiveTitle : copy.workspaceBrowseTitle;
-  elements.workspaceBody.textContent = isArchive ? copy.workspaceArchiveBody : copy.workspaceBrowseBody;
 }
 
 function renderResultsSummary() {
