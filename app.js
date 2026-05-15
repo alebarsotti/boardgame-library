@@ -661,6 +661,7 @@ function applyTranslations() {
   elements.themeSegmentHeader?.setAttribute("aria-label", copy.themeLabel);
   elements.themeSegmentSettings?.setAttribute("aria-label", copy.themeLabel);
   elements.languageSegment?.setAttribute("aria-label", copy.languageLabel);
+  elements.viewFilter?.setAttribute("aria-label", copy.viewLabel);
   renderPageNav();
   renderThemeSegments();
   renderLanguageSegment();
@@ -765,6 +766,14 @@ function themeIconMoon() {
   return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M20 14.2A8 8 0 1 1 9.8 4a6.6 6.6 0 0 0 10.2 10.2Z"/></svg>';
 }
 
+function viewIconGrid() {
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="1.4"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.4"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.4"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.4"/></svg>';
+}
+
+function viewIconList() {
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M8 6h12"/><path d="M8 12h12"/><path d="M8 18h12"/><circle cx="4.5" cy="6" r="1.1" fill="currentColor" stroke="none"/><circle cx="4.5" cy="12" r="1.1" fill="currentColor" stroke="none"/><circle cx="4.5" cy="18" r="1.1" fill="currentColor" stroke="none"/></svg>';
+}
+
 function getFilterControlDefinitions() {
   const copy = translations[state.language];
   return {
@@ -856,6 +865,10 @@ function renderFilterControls() {
       container.querySelector("select").value = state.filters[key];
       return;
     }
+    if (key === "view") {
+      renderViewToggle(container, definition.options);
+      return;
+    }
     container.className = definition.style === "segment" ? `${baseClass} segmented-control` : `${baseClass} chip-list`;
     container.innerHTML = definition.options
       .map(([value, label]) => {
@@ -864,6 +877,50 @@ function renderFilterControls() {
         return `<button class="${buttonClass} ${isActive ? "is-active chip--active" : ""}" data-filter-key="${escapeAttribute(key)}" data-filter-value="${escapeAttribute(value)}" type="button" aria-pressed="${isActive ? "true" : "false"}">${escapeHtml(label)}</button>`;
       })
       .join("");
+  });
+}
+
+function renderViewToggle(container, options) {
+  const activeIndex = Math.max(0, options.findIndex(([value]) => value === state.filters.view));
+  container.className = "toolbar__view filter-control";
+  if (!container.querySelector(".view-toggle__track")) {
+    container.innerHTML = `
+      <div class="view-toggle__track" data-view-active="${escapeAttribute(String(activeIndex))}">
+        <span class="view-toggle__thumb" aria-hidden="true"></span>
+        ${options
+          .map(([value, label]) => {
+            const icon = value === "grid" ? viewIconGrid() : viewIconList();
+            const isActive = state.filters.view === value;
+            return `
+              <button
+                class="view-toggle__button ${isActive ? "is-active" : ""}"
+                data-filter-key="view"
+                data-filter-value="${escapeAttribute(value)}"
+                type="button"
+                aria-pressed="${isActive ? "true" : "false"}"
+                aria-label="${escapeAttribute(label)}"
+                title="${escapeAttribute(label)}"
+              >
+                ${icon}
+              </button>
+            `;
+          })
+          .join("")}
+      </div>
+    `;
+  }
+  const track = container.querySelector(".view-toggle__track");
+  if (track) {
+    track.dataset.viewActive = String(activeIndex);
+  }
+  container.querySelectorAll("[data-filter-key='view']").forEach((button) => {
+    const value = button.dataset.filterValue || "grid";
+    const label = options.find(([option]) => option === value)?.[1] || value;
+    const isActive = state.filters.view === value;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", isActive ? "true" : "false");
+    button.setAttribute("aria-label", label);
+    button.setAttribute("title", label);
   });
 }
 
