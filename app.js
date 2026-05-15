@@ -52,6 +52,7 @@ const translations = {
     filterModeExplainUntil: "Incluye esta banda y cualquier opción más corta o más liviana",
     filterModeExplainFrom: "Incluye esta banda y cualquier opción más larga o más pesada",
     activeFiltersTitle: "Filtros activos",
+    activeFiltersEmpty: "Sin filtros activos.",
     activeFilterMode: "Modo",
     recommendEyebrow: "Atajos curados",
     recommendTitle: "Recomendaciones",
@@ -243,6 +244,7 @@ const translations = {
     filterModeExplainUntil: "Includes this band and anything shorter or lighter",
     filterModeExplainFrom: "Includes this band and anything longer or heavier",
     activeFiltersTitle: "Active filters",
+    activeFiltersEmpty: "No active filters.",
     activeFilterMode: "Mode",
     recommendEyebrow: "Curated shortcuts",
     recommendTitle: "Recommendations",
@@ -1270,7 +1272,7 @@ function renderResultsSummary() {
 
 function renderActiveFilters() {
   const copy = translations[state.language];
-  const tags = [[copy.filterSection, getEffectiveSection() === "archive" ? copy.sectionArchive : copy.sectionOwned]];
+  const tags = [];
   if (state.filters.search) tags.push([copy.filterSearch, state.filters.search]);
   if (state.filters.players) tags.push([copy.filterPlayers, getFilterValueLabel("players", state.filters.players)]);
   if (state.filters.duration) tags.push([copy.filterDuration, getRangeFilterSummary("duration")]);
@@ -1283,7 +1285,9 @@ function renderActiveFilters() {
   elements.activeFilters.innerHTML = `
     <p class="active-filters__title">${escapeHtml(copy.activeFiltersTitle)}</p>
     <div class="active-filters__list">
-      ${tags.map(([label, value]) => `<span class="chip">${escapeHtml(label)}: ${escapeHtml(String(value))}</span>`).join("")}
+      ${tags.length
+        ? tags.map(([label, value]) => `<span class="chip">${escapeHtml(label)}: ${escapeHtml(String(value))}</span>`).join("")
+        : `<span class="active-filters__empty">${escapeHtml(copy.activeFiltersEmpty)}</span>`}
     </div>
   `;
 }

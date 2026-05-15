@@ -1206,6 +1206,12 @@ body[data-theme="dark"] .toolbar__actions .button--ghost {
   flex-wrap: wrap;
   gap: 10px;
 }
+
+.active-filters__empty {
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.4;
+}
 .chip,
 .tag,
 .segment-button {
