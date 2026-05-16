@@ -351,6 +351,10 @@ body[data-theme="dark"] .theme-toggle__track {
   max-width: 12ch;
 }
 
+html[lang="es"] .brand-title {
+  max-width: 16ch;
+}
+
 .page-stack { display: grid; gap: 16px; margin-top: 16px; }
 .page-nav,
 .hero__actions,
