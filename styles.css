@@ -529,6 +529,7 @@ body[data-theme="dark"] .button--ghost {
   gap: 14px;
   margin-top: 10px;
   overflow-x: auto;
+  padding-top: 2px;
   padding-bottom: 4px;
   scroll-snap-type: x proximity;
 }
