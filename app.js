@@ -412,7 +412,9 @@ const icons = {
   calendar:
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>',
   rating:
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 3 2.9 5.9 6.5 1-4.7 4.6 1.1 6.5L12 18l-5.8 3 1.1-6.5L2.6 9.9l6.5-1z"/></svg>'
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 3 2.9 5.9 6.5 1-4.7 4.6 1.1 6.5L12 18l-5.8 3 1.1-6.5L2.6 9.9l6.5-1z"/></svg>',
+  broom:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>'
 };
 
 const state = {
@@ -547,7 +549,10 @@ function bindEvents() {
   elements.filtersPanel.addEventListener("click", handleFilterControlClick);
   elements.filtersPanel.addEventListener("change", handleFilterControlChange);
   elements.viewFilter.addEventListener("click", handleFilterControlClick);
-  document.querySelector("#reset-filters").addEventListener("click", resetFilters);
+  elements.activeFilters.addEventListener("click", (event) => {
+    const resetButton = event.target.closest("[data-reset-filters]");
+    if (resetButton && !resetButton.disabled) resetFilters();
+  });
   document.querySelector("#details-close").addEventListener("click", () => elements.detailsDialog.close());
   document.querySelector("#open-filters").addEventListener("click", () => elements.filtersPanel.classList.add("is-open"));
   document.querySelector("#close-filters").addEventListener("click", () => elements.filtersPanel.classList.remove("is-open"));
@@ -1284,13 +1289,26 @@ function renderActiveFilters() {
   if (state.filters.bestPlayers) tags.push([copy.filterBestPlayers, getFilterValueLabel("bestPlayers", state.filters.bestPlayers)]);
   if (state.filters.age) tags.push([copy.filterAge, getFilterValueLabel("age", state.filters.age)]);
   if (state.filters.recommendation) tags.push(["Rec", getFilterValueLabel("recommendation", state.filters.recommendation)]);
+  const hasFilters = tags.length > 0;
   elements.activeFilters.innerHTML = `
-    <p class="active-filters__title">${escapeHtml(copy.activeFiltersTitle)}</p>
-    <div class="active-filters__list">
-      ${tags.length
-        ? tags.map(([label, value]) => `<span class="chip">${escapeHtml(label)}: ${escapeHtml(String(value))}</span>`).join("")
-        : `<span class="active-filters__empty">${escapeHtml(copy.activeFiltersEmpty)}</span>`}
+    <div class="active-filters__content">
+      <p class="active-filters__title">${escapeHtml(copy.activeFiltersTitle)}</p>
+      <div class="active-filters__list">
+        ${hasFilters
+          ? tags.map(([label, value]) => `<span class="chip">${escapeHtml(label)}: ${escapeHtml(String(value))}</span>`).join("")
+          : `<span class="active-filters__empty">${escapeHtml(copy.activeFiltersEmpty)}</span>`}
+      </div>
     </div>
+    <button
+      class="button button--ghost button--small active-filters__reset"
+      type="button"
+      data-reset-filters
+      title="${escapeAttribute(copy.resetFilters)}"
+      aria-label="${escapeAttribute(copy.resetFilters)}"
+      ${hasFilters ? "" : "disabled"}
+    >
+      ${icons.broom}
+    </button>
   `;
 }
 
