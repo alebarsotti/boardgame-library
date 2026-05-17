@@ -29,7 +29,7 @@ const translations = {
     heroEyebrow: "Colección personal de juegos",
     heroTitle: "Elegir mejor, más rápido.",
     heroLede:
-      "Explorá la biblioteca, revisá el archivo y dejá que Azar resuelva cuando la mesa no se decide.",
+      "Explorá la biblioteca, revisá el archivo y dejá que el azar resuelva cuando la mesa no se decide.",
     openRandomAction: "Dejarlo al azar",
     randomAction: "Sortear ahora",
     exploreAction: "Explorar la colección",
