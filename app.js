@@ -37,11 +37,11 @@ const translations = {
     openSettingsAction: "Abrir ajustes",
     filterEyebrow: "Búsqueda guiada",
     filterTitle: "Encontrar el juego justo",
-    searchLabel: "Buscar por nombre, tag o nota",
+    searchLabel: "Buscar",
+    searchPlaceholder: "Por nombre, tag o nota",
     playersLabel: "Jugadores",
     durationLabel: "Duración",
     weightLabel: "Peso",
-    languageLabel: "Idioma / texto",
     editionLanguageLabel: "Idioma",
     editionLanguageShort: "Copia",
     bestPlayersLabel: "Mejor cantidad",
@@ -61,6 +61,7 @@ const translations = {
     recommendTitle: "Recomendaciones",
     openFilters: "Filtros",
     close: "Cerrar",
+    anyCompact: "Cualq.",
     resultsEyebrow: "Resultados filtrados",
     resultsSingle: "resultado",
     resultsPlural: "resultados",
@@ -117,10 +118,10 @@ const translations = {
     languageExtreme: "Muy dependiente del idioma",
     languageUnknown: "No informado",
     physicalLanguageUnknown: "No informado",
-    ageKids: "Hasta 8+",
-    ageFamily: "9+ a 12+",
-    ageTeen: "13+ a 15+",
-    ageAdult: "16+ o más",
+    ageKids: "8-",
+    ageFamily: "9-12",
+    ageTeen: "13-15",
+    ageAdult: "16+",
     sortName: "Nombre",
     sortRating: "Rating BGG",
     sortRank: "Ranking BGG",
@@ -233,11 +234,11 @@ const translations = {
     openSettingsAction: "Open settings",
     filterEyebrow: "Guided search",
     filterTitle: "Find the right game",
-    searchLabel: "Search by name, tag, or note",
+    searchLabel: "Search",
+    searchPlaceholder: "By name, tag, or note",
     playersLabel: "Players",
     durationLabel: "Duration",
     weightLabel: "Weight",
-    languageLabel: "Language / text",
     editionLanguageLabel: "Language",
     editionLanguageShort: "Edition",
     bestPlayersLabel: "Best count",
@@ -257,6 +258,7 @@ const translations = {
     recommendTitle: "Recommendations",
     openFilters: "Filters",
     close: "Close",
+    anyCompact: "Any",
     resultsEyebrow: "Filtered results",
     resultsSingle: "result",
     resultsPlural: "results",
@@ -312,9 +314,9 @@ const translations = {
     languageExtreme: "Language dependent",
     languageUnknown: "Unknown",
     physicalLanguageUnknown: "Unknown",
-    ageKids: "Up to 8+",
-    ageFamily: "9+ to 12+",
-    ageTeen: "13+ to 15+",
+    ageKids: "8-",
+    ageFamily: "9-12",
+    ageTeen: "13-15",
     ageAdult: "16+ or more",
     sortName: "Name",
     sortRating: "BGG rating",
@@ -428,10 +430,8 @@ const state = {
   filters: {
     search: "",
     players: "",
-    duration: "",
-    durationMode: "exact",
-    weight: "",
-    weightMode: "exact",
+    duration: [],
+    weight: [],
     languageKey: "",
     physicalLanguage: "",
     bestPlayers: "",
@@ -466,7 +466,6 @@ const CONTROL_CONTAINER_MAP = {
   players: "playersFilter",
   duration: "timeFilter",
   weight: "weightFilter",
-  languageKey: "languageFilter",
   physicalLanguage: "physicalLanguageFilter",
   bestPlayers: "bestPlayersFilter",
   age: "ageFilter",
@@ -490,6 +489,7 @@ async function init() {
 }
 
 function cacheElements() {
+  elements.topbarShell = document.querySelector(".topbar-shell");
   elements.pageNav = document.querySelector("#page-nav");
   elements.heroStats = document.querySelector("#hero-stats");
   elements.homeRecentList = document.querySelector("#home-recent-list");
@@ -553,6 +553,7 @@ function bindEvents() {
   elements.filtersPanel.addEventListener("click", handleFilterControlClick);
   elements.filtersPanel.addEventListener("change", handleFilterControlChange);
   elements.viewFilter.addEventListener("click", handleFilterControlClick);
+  elements.sortFilter?.addEventListener("change", handleFilterControlChange);
   elements.activeFilters.addEventListener("click", (event) => {
     const resetButton = event.target.closest("[data-reset-filters]");
     if (resetButton && !resetButton.disabled) resetFilters();
@@ -565,7 +566,11 @@ function bindEvents() {
   document.querySelector("#toolbar-random").addEventListener("click", () => setActivePage("random"));
   document.querySelector("#random-browse-action").addEventListener("click", () => setActivePage(state.lastWorkspacePage));
   document.querySelector("#random-page-trigger").addEventListener("click", drawRandomFromCurrentScope);
-  window.addEventListener("resize", scheduleMasonryLayout);
+  window.addEventListener("resize", () => {
+    syncStickyOffsets();
+    renderFilterControls();
+    scheduleMasonryLayout();
+  });
 }
 
 function ensureValidActivePage() {
@@ -645,10 +650,8 @@ function resetFilters() {
   state.filters = {
     search: "",
     players: "",
-    duration: "",
-    durationMode: "exact",
-    weight: "",
-    weightMode: "exact",
+    duration: [],
+    weight: [],
     languageKey: "",
     physicalLanguage: "",
     bestPlayers: "",
@@ -670,7 +673,7 @@ function applyTranslations() {
     const key = node.dataset.i18n;
     node.textContent = copy[key] || key;
   });
-  elements.searchInput.placeholder = copy.searchLabel;
+  elements.searchInput.placeholder = copy.searchPlaceholder || copy.searchLabel;
   elements.themeSegmentHeader?.setAttribute("aria-label", copy.themeLabel);
   elements.themeSegmentSettings?.setAttribute("aria-label", copy.themeLabel);
   elements.languageSegment?.setAttribute("aria-label", copy.languageLabel);
@@ -823,38 +826,30 @@ function getFilterControlDefinitions() {
   const copy = translations[state.language];
   return {
     players: {
-      style: "chips",
+      style: "choice",
       toggleable: true,
-      options: [["", copy.anyOption], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6+"]]
+      options: [["", copy.anyCompact], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5+"]]
     },
     duration: {
-      style: "range",
-      modeKey: "durationMode",
-      toggleable: true,
-      options: [["quick", "<=30"], ["standard", "31-60"], ["extended", "61-120"], ["epic", "120+"]]
+      style: "multi",
+      options: [["quick", "30-"], ["standard", "31-60"], ["extended", "61-120"], ["epic", "120+"]]
     },
     weight: {
-      style: "range",
-      modeKey: "weightMode",
-      toggleable: true,
+      style: "multi",
       options: [["light", copy.weightLight], ["medium-light", copy.weightMediumLight], ["medium-heavy", copy.weightMediumHeavy], ["heavy", copy.weightHeavy]]
     },
-    languageKey: {
-      style: "select",
-      options: [["", copy.anyOption], ["none", copy.languageNone], ["low", copy.languageLow], ["moderate", copy.languageModerate], ["high", copy.languageHigh], ["extreme", copy.languageExtreme], ["unknown", copy.languageUnknown]]
-    },
     physicalLanguage: {
-      style: "select",
-      options: getPhysicalLanguageOptions()
+      style: "choice",
+      options: getPhysicalLanguageFilterOptions()
     },
     bestPlayers: {
-      style: "chips",
+      style: "choice",
       toggleable: true,
-      options: [["", copy.anyOption], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6+"]]
+      options: [["", copy.anyCompact], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5+"]]
     },
     age: {
-      style: "select",
-      options: [["", copy.anyOption], ["kids", copy.ageKids], ["family", copy.ageFamily], ["teen", copy.ageTeen], ["adult", copy.ageAdult]]
+      style: "choice",
+      options: [["", copy.anyCompact], ["kids", copy.ageKids], ["family", copy.ageFamily], ["teen", copy.ageTeen], ["adult", copy.ageAdult]]
     },
     sort: {
       style: "select",
@@ -874,32 +869,25 @@ function getFilterControlDefinitions() {
 }
 
 function renderFilterControls() {
-  const copy = translations[state.language];
   const definitions = getFilterControlDefinitions();
   Object.entries(CONTROL_CONTAINER_MAP).forEach(([key, elementKey]) => {
     const container = elements[elementKey];
     const definition = definitions[key];
     if (!container || !definition) return;
-    const baseClass = key === "view" ? "toolbar__view filter-control" : "filter-control";
-    if (definition.style === "range") {
-      const modeValue = state.filters[definition.modeKey] || "exact";
-      container.className = `${baseClass} filter-control--range`;
-      container.innerHTML = `
-        <div class="segmented-control filter-control__modes">
-          ${renderRangeModeButton(key, "exact", copy.filterModeExact, modeValue)}
-          ${renderRangeModeButton(key, "until", copy.filterModeUntil, modeValue)}
-          ${renderRangeModeButton(key, "from", copy.filterModeFrom, modeValue)}
-        </div>
-        <p class="filter-control__hint">${escapeHtml(getRangeModeExplanation(modeValue))}</p>
-        <div class="chip-list filter-control__values">
-          ${definition.options
-            .map(([value, label]) => {
-              const isActive = state.filters[key] === value;
-              return `<button class="chip chip--interactive ${isActive ? "chip--active" : ""}" data-filter-key="${escapeAttribute(key)}" data-filter-value="${escapeAttribute(value)}" type="button" aria-pressed="${isActive ? "true" : "false"}">${escapeHtml(label)}</button>`;
-            })
-            .join("")}
-        </div>
-      `;
+    const baseClass = key === "view"
+      ? "toolbar__view filter-control"
+      : key === "sort"
+        ? "toolbar__sort filter-control"
+        : "filter-control";
+    if (definition.style === "multi") {
+      container.className = `${baseClass} chip-list filter-control--multi`;
+      const selectedValues = Array.isArray(state.filters[key]) ? state.filters[key] : [];
+      container.innerHTML = definition.options
+        .map(([value, label]) => {
+          const isActive = selectedValues.includes(value);
+          return `<button class="chip chip--interactive ${isActive ? "chip--active" : ""}" data-filter-key="${escapeAttribute(key)}" data-filter-value="${escapeAttribute(value)}" type="button" aria-pressed="${isActive ? "true" : "false"}">${escapeHtml(label)}</button>`;
+        })
+        .join("");
       return;
     }
     if (definition.style === "select") {
@@ -914,6 +902,10 @@ function renderFilterControls() {
       renderViewToggle(container, definition.options);
       return;
     }
+    if (definition.style === "choice") {
+      renderChoiceToggle(container, key, definition.options);
+      return;
+    }
     container.className = definition.style === "segment" ? `${baseClass} segmented-control` : `${baseClass} chip-list`;
     container.innerHTML = definition.options
       .map(([value, label]) => {
@@ -923,6 +915,57 @@ function renderFilterControls() {
       })
       .join("");
   });
+}
+
+function renderChoiceToggle(container, key, options) {
+  const activeIndex = Math.max(0, options.findIndex(([value]) => value === state.filters[key]));
+  container.className = "filter-control choice-toggle";
+  const optionsSignature = options.map(([value, label]) => `${value}:${label}`).join("|");
+  const currentTrack = container.querySelector(".choice-toggle__track");
+  if (!currentTrack || currentTrack.dataset.choiceOptions !== optionsSignature) {
+    container.innerHTML = `
+      <div
+        class="choice-toggle__track"
+        data-choice-active="${escapeAttribute(String(activeIndex))}"
+        data-choice-options="${escapeAttribute(optionsSignature)}"
+      >
+        <span class="choice-toggle__thumb" aria-hidden="true"></span>
+        ${options
+          .map(([value, label]) => {
+            const isActive = state.filters[key] === value;
+            return `
+              <button
+                class="choice-toggle__button ${isActive ? "is-active" : ""}"
+                data-filter-key="${escapeAttribute(key)}"
+                data-filter-value="${escapeAttribute(value)}"
+                type="button"
+                aria-pressed="${isActive ? "true" : "false"}"
+              >
+                ${escapeHtml(label)}
+              </button>
+            `;
+          })
+          .join("")}
+      </div>
+    `;
+  }
+  const track = container.querySelector(".choice-toggle__track");
+  const buttons = [...container.querySelectorAll("[data-filter-key]")];
+  const activeButton = buttons.find((button) => (button.dataset.filterValue || "") === (state.filters[key] || "")) || buttons[0];
+  buttons.forEach((button) => {
+    const value = button.dataset.filterValue || "";
+    const label = options.find(([optionValue]) => optionValue === value)?.[1] || value;
+    const isActive = button === activeButton;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", isActive ? "true" : "false");
+    button.setAttribute("aria-label", label);
+    button.setAttribute("title", label);
+  });
+  if (track && activeButton) {
+    track.dataset.choiceActive = String(Math.max(0, buttons.indexOf(activeButton)));
+    track.style.setProperty("--choice-toggle-x", `${activeButton.offsetLeft - 3}px`);
+    track.style.setProperty("--choice-toggle-width", `${activeButton.offsetWidth}px`);
+  }
 }
 
 function renderViewToggle(container, options) {
@@ -969,11 +1012,6 @@ function renderViewToggle(container, options) {
   });
 }
 
-function renderRangeModeButton(key, mode, label, currentMode) {
-  const isActive = currentMode === mode;
-  return `<button class="segment-button ${isActive ? "is-active" : ""}" data-filter-mode-key="${escapeAttribute(key)}" data-filter-mode-value="${escapeAttribute(mode)}" type="button" aria-pressed="${isActive ? "true" : "false"}">${escapeHtml(label)}</button>`;
-}
-
 function handleFilterControlClick(event) {
   const modeControl = event.target.closest("[data-filter-mode-key]");
   if (modeControl) {
@@ -987,6 +1025,16 @@ function handleFilterControlClick(event) {
   const value = control.dataset.filterValue || "";
   const definition = getFilterControlDefinitions()[key];
   if (!definition) return;
+  if (definition.style === "multi") {
+    const currentValues = Array.isArray(state.filters[key]) ? state.filters[key] : [];
+    const nextValue = currentValues.includes(value)
+      ? currentValues.filter((item) => item !== value)
+      : definition.options
+        .map(([optionValue]) => optionValue)
+        .filter((optionValue) => optionValue === value || currentValues.includes(optionValue));
+    setFilter(key, nextValue);
+    return;
+  }
   const nextValue = definition.toggleable && state.filters[key] === value ? "" : value;
   setFilter(key, nextValue);
 }
@@ -1090,6 +1138,7 @@ function render() {
   syncSectionWithPage();
   applyThemePreference();
   syncVisualContext();
+  syncStickyOffsets();
   syncControls();
   state.filteredGames = getFilteredGames();
   reconcileRandomSelection();
@@ -1109,6 +1158,11 @@ function syncVisualContext() {
   document.body.dataset.page = state.activePage;
 }
 
+function syncStickyOffsets() {
+  const shellHeight = elements.topbarShell?.offsetHeight || 0;
+  document.documentElement.style.setProperty("--topbar-sticky-offset", `${shellHeight}px`);
+}
+
 function syncControls() {
   elements.searchInput.value = state.filters.search;
   elements.gamesGrid.classList.toggle("list-view", state.filters.view === "list");
@@ -1125,9 +1179,6 @@ function getEffectiveSection() {
   return state.filters.section === "archive" ? "archive" : "owned";
 }
 
-const DURATION_ORDER = ["quick", "standard", "extended", "epic"];
-const WEIGHT_ORDER = ["light", "medium-light", "medium-heavy", "heavy"];
-
 function getFilteredGames() {
   const section = getEffectiveSection();
   return state.data.games
@@ -1137,12 +1188,11 @@ function getFilteredGames() {
       if (section === "archive" && !game.prevOwned) return false;
       if (state.filters.search && !game.searchText.includes(state.filters.search)) return false;
       if (state.filters.players) {
-        const requested = state.filters.players === "6" ? 6 : Number(state.filters.players);
+        const requested = Number(state.filters.players);
         if (!(game.minPlayers <= requested && game.maxPlayers >= requested)) return false;
       }
-      if (state.filters.duration && !matchesOrderedFilter(game.timeBand, state.filters.duration, state.filters.durationMode, DURATION_ORDER)) return false;
-      if (state.filters.weight && !matchesOrderedFilter(game.weightBand, state.filters.weight, state.filters.weightMode, WEIGHT_ORDER)) return false;
-      if (state.filters.languageKey && game.languageKey !== state.filters.languageKey) return false;
+      if (Array.isArray(state.filters.duration) && state.filters.duration.length && !state.filters.duration.includes(game.timeBand)) return false;
+      if (Array.isArray(state.filters.weight) && state.filters.weight.length && !state.filters.weight.includes(game.weightBand)) return false;
       if (state.filters.physicalLanguage) {
         if (state.filters.physicalLanguage === "unknown") {
           if (Array.isArray(game.physicalLanguages) && game.physicalLanguages.length) return false;
@@ -1151,9 +1201,9 @@ function getFilteredGames() {
         }
       }
       if (state.filters.bestPlayers) {
-        const requested = state.filters.bestPlayers === "6" ? 6 : Number(state.filters.bestPlayers);
+        const requested = Number(state.filters.bestPlayers);
         const bestValues = Array.isArray(game.bestPlayers) ? game.bestPlayers : [];
-        if (!bestValues.some((value) => (requested === 6 ? value >= 6 : value === requested))) return false;
+        if (!bestValues.some((value) => (requested === 5 ? value >= 5 : value === requested))) return false;
       }
       if (state.filters.age) {
         const age = game.age ?? 0;
@@ -1185,16 +1235,6 @@ function sortGames(left, right) {
     default:
       return getDisplayName(left).localeCompare(getDisplayName(right));
   }
-}
-
-function matchesOrderedFilter(actualValue, selectedValue, mode, order) {
-  if (!selectedValue) return true;
-  const actualIndex = order.indexOf(actualValue);
-  const selectedIndex = order.indexOf(selectedValue);
-  if (actualIndex === -1 || selectedIndex === -1) return false;
-  if (mode === "until") return actualIndex <= selectedIndex;
-  if (mode === "from") return actualIndex >= selectedIndex;
-  return actualIndex === selectedIndex;
 }
 
 function matchesRecommendation(game, recommendation) {
@@ -1281,12 +1321,11 @@ function renderActiveFilters() {
   const copy = translations[state.language];
   const tags = [];
   if (state.filters.search) tags.push([copy.filterSearch, state.filters.search]);
-  if (state.filters.players) tags.push([copy.filterPlayers, getFilterValueLabel("players", state.filters.players)]);
-  if (state.filters.duration) tags.push([copy.filterDuration, getRangeFilterSummary("duration")]);
-  if (state.filters.weight) tags.push([copy.filterWeight, getRangeFilterSummary("weight")]);
-  if (state.filters.languageKey) tags.push([copy.filterLanguage, getFilterValueLabel("languageKey", state.filters.languageKey)]);
-  if (state.filters.physicalLanguage) tags.push([copy.filterPhysicalLanguage, getFilterValueLabel("physicalLanguage", state.filters.physicalLanguage)]);
-  if (state.filters.bestPlayers) tags.push([copy.filterBestPlayers, getFilterValueLabel("bestPlayers", state.filters.bestPlayers)]);
+  if (state.filters.players) tags.push([copy.filterPlayers, state.filters.players === "5" ? "5+" : getFilterValueLabel("players", state.filters.players)]);
+  if (Array.isArray(state.filters.duration) && state.filters.duration.length) tags.push([copy.filterDuration, getMultiFilterSummary("duration", state.filters.duration)]);
+  if (Array.isArray(state.filters.weight) && state.filters.weight.length) tags.push([copy.filterWeight, getMultiFilterSummary("weight", state.filters.weight)]);
+  if (state.filters.physicalLanguage) tags.push([copy.filterPhysicalLanguage, labelForPhysicalLanguage(state.filters.physicalLanguage)]);
+  if (state.filters.bestPlayers) tags.push([copy.filterBestPlayers, state.filters.bestPlayers === "5" ? "5+" : getFilterValueLabel("bestPlayers", state.filters.bestPlayers)]);
   if (state.filters.age) tags.push([copy.filterAge, getFilterValueLabel("age", state.filters.age)]);
   if (state.filters.recommendation) tags.push(["Rec", getFilterValueLabel("recommendation", state.filters.recommendation)]);
   const hasFilters = tags.length > 0;
@@ -1791,12 +1830,11 @@ function getRandomSummary(filtersSnapshot = buildRandomFiltersSnapshot()) {
   const chips = [];
   const copy = translations[state.language];
   if (filtersSnapshot.search) chips.push(`<span class="chip">${escapeHtml(copy.filterSearch)}: ${escapeHtml(filtersSnapshot.search)}</span>`);
-  if (filtersSnapshot.players) chips.push(`<span class="chip">${escapeHtml(copy.filterPlayers)}: ${escapeHtml(filtersSnapshot.players === "6" ? "6+" : filtersSnapshot.players)}</span>`);
-  if (filtersSnapshot.duration) chips.push(`<span class="chip">${escapeHtml(copy.filterDuration)}: ${escapeHtml(getRangeFilterSummaryFromSnapshot("duration", filtersSnapshot))}</span>`);
-  if (filtersSnapshot.weight) chips.push(`<span class="chip">${escapeHtml(copy.filterWeight)}: ${escapeHtml(getRangeFilterSummaryFromSnapshot("weight", filtersSnapshot))}</span>`);
-  if (filtersSnapshot.languageKey) chips.push(`<span class="chip">${escapeHtml(copy.filterLanguage)}: ${escapeHtml(labelForLanguageKey(filtersSnapshot.languageKey))}</span>`);
+  if (filtersSnapshot.players) chips.push(`<span class="chip">${escapeHtml(copy.filterPlayers)}: ${escapeHtml(filtersSnapshot.players === "5" ? "5+" : filtersSnapshot.players)}</span>`);
+  if (Array.isArray(filtersSnapshot.duration) && filtersSnapshot.duration.length) chips.push(`<span class="chip">${escapeHtml(copy.filterDuration)}: ${escapeHtml(getMultiFilterSummary("duration", filtersSnapshot.duration))}</span>`);
+  if (Array.isArray(filtersSnapshot.weight) && filtersSnapshot.weight.length) chips.push(`<span class="chip">${escapeHtml(copy.filterWeight)}: ${escapeHtml(getMultiFilterSummary("weight", filtersSnapshot.weight))}</span>`);
   if (filtersSnapshot.physicalLanguage) chips.push(`<span class="chip">${escapeHtml(copy.filterPhysicalLanguage)}: ${escapeHtml(labelForPhysicalLanguage(filtersSnapshot.physicalLanguage))}</span>`);
-  if (filtersSnapshot.bestPlayers) chips.push(`<span class="chip">${escapeHtml(copy.filterBestPlayers)}: ${escapeHtml(filtersSnapshot.bestPlayers === "6" ? "6+" : filtersSnapshot.bestPlayers)}</span>`);
+  if (filtersSnapshot.bestPlayers) chips.push(`<span class="chip">${escapeHtml(copy.filterBestPlayers)}: ${escapeHtml(filtersSnapshot.bestPlayers === "5" ? "5+" : filtersSnapshot.bestPlayers)}</span>`);
   if (filtersSnapshot.age) chips.push(`<span class="chip">${escapeHtml(copy.filterAge)}: ${escapeHtml(labelForAgeBand(filtersSnapshot.age))}</span>`);
   if (filtersSnapshot.recommendation) chips.push(`<span class="chip">Rec: ${escapeHtml(getFilterValueLabel("recommendation", filtersSnapshot.recommendation))}</span>`);
   return chips.join("");
@@ -1817,11 +1855,8 @@ function buildRandomFiltersSnapshot(scope = state.lastWorkspacePage === "archive
     section: scope === "archive" ? "archive" : "owned",
     search: state.filters.search || "",
     players: state.filters.players || "",
-    duration: state.filters.duration || "",
-    durationMode: state.filters.durationMode || "exact",
-    weight: state.filters.weight || "",
-    weightMode: state.filters.weightMode || "exact",
-    languageKey: state.filters.languageKey || "",
+    duration: Array.isArray(state.filters.duration) ? [...state.filters.duration] : [],
+    weight: Array.isArray(state.filters.weight) ? [...state.filters.weight] : [],
     physicalLanguage: state.filters.physicalLanguage || "",
     bestPlayers: state.filters.bestPlayers || "",
     age: state.filters.age || "",
@@ -1836,10 +1871,7 @@ function serializeRandomContext(scope, filtersSnapshot) {
     search: filtersSnapshot.search,
     players: filtersSnapshot.players,
     duration: filtersSnapshot.duration,
-    durationMode: filtersSnapshot.durationMode,
     weight: filtersSnapshot.weight,
-    weightMode: filtersSnapshot.weightMode,
-    languageKey: filtersSnapshot.languageKey,
     physicalLanguage: filtersSnapshot.physicalLanguage,
     bestPlayers: filtersSnapshot.bestPlayers,
     age: filtersSnapshot.age,
@@ -2169,34 +2201,9 @@ function getFilterValueLabel(key, value) {
   return option ? option[1] : value;
 }
 
-function getRangeFilterSummary(key) {
-  return getRangeFilterSummaryFromSnapshot(key, state.filters);
-}
-
-function getRangeFilterSummaryFromSnapshot(key, snapshot) {
-  const copy = translations[state.language];
-  const value = snapshot[key];
-  if (!value) return "";
-  const mode = snapshot[`${key}Mode`] || "exact";
-  const valueLabel = getFilterValueLabel(key, value);
-  if (mode === "exact") return valueLabel;
-  return `${getModeLabel(mode).toLowerCase()} ${valueLabel}`;
-}
-
-function getModeLabel(mode) {
-  const copy = translations[state.language];
-  return {
-    exact: copy.filterModeExact,
-    until: copy.filterModeUntil,
-    from: copy.filterModeFrom
-  }[mode || "exact"] || copy.filterModeExact;
-}
-
-function getRangeModeExplanation(mode) {
-  const copy = translations[state.language];
-  if (mode === "until") return copy.filterModeExplainUntil;
-  if (mode === "from") return copy.filterModeExplainFrom;
-  return copy.filterModeExplainExact;
+function getMultiFilterSummary(key, values) {
+  if (!Array.isArray(values) || !values.length) return "";
+  return values.map((value) => getFilterValueLabel(key, value)).join(", ");
 }
 
 function labelForTimeBand(value) {
@@ -2280,6 +2287,44 @@ function getPhysicalLanguageOptions() {
     });
 
   if (hasUnknown) options.push(["unknown", copy.physicalLanguageUnknown]);
+  return options;
+}
+
+function getPhysicalLanguageFilterOptions() {
+  const copy = translations[state.language];
+  const values = new Set();
+  let hasUnknown = false;
+
+  (state.data?.games || []).forEach((game) => {
+    if (Array.isArray(game.physicalLanguages) && game.physicalLanguages.length) {
+      game.physicalLanguages.forEach((value) => values.add(value));
+    } else {
+      hasUnknown = true;
+    }
+  });
+
+  const shortLabel = (value) => {
+    if (value === "unknown") return state.language === "es" ? "Sin dato" : "Unknown";
+    const normalized = String(value || "").trim().toLowerCase();
+    return {
+      english: state.language === "es" ? "Inglés" : "English",
+      spanish: state.language === "es" ? "Español" : "Spanish",
+      portuguese: state.language === "es" ? "Portugués" : "Portuguese",
+      catalan: state.language === "es" ? "Catalán" : "Catalan",
+      french: state.language === "es" ? "Francés" : "French",
+      german: state.language === "es" ? "Alemán" : "German",
+      italian: state.language === "es" ? "Italiano" : "Italian"
+    }[normalized] || labelForPhysicalLanguage(value);
+  };
+
+  const options = [["", copy.anyCompact]];
+  [...values]
+    .sort((left, right) => labelForPhysicalLanguage(left).localeCompare(labelForPhysicalLanguage(right), state.language))
+    .forEach((value) => {
+      options.push([value, shortLabel(value)]);
+    });
+
+  if (hasUnknown) options.push(["unknown", shortLabel("unknown")]);
   return options;
 }
 
