@@ -5,7 +5,9 @@ const NAME_OVERRIDES_KEY = "bgg-library-name-overrides-v1";
 const RANDOM_HISTORY_LIMIT = 5;
 const RANDOM_REVEAL_MIN_MS = 900;
 const RANDOM_REVEAL_MAX_MS = 1400;
-const RECENT_ACQUISITION_WINDOW_MONTHS = 12;
+const RECENT_HIGHLIGHT_WINDOW_MONTHS = 6;
+const RECENT_HIGHLIGHT_MIN_ITEMS = 7;
+const RECENT_HIGHLIGHT_FILL_LIMIT_MONTHS = 18;
 const THEME_KEYS = ["light", "dark"];
 
 const PAGE_KEYS = ["home", "browse", "archive", "random", "settings"];
@@ -159,7 +161,7 @@ const translations = {
     homeRecentEyebrow: "Incorporaciones recientes",
     homeRecentTitle: "Últimos ingresos",
     homeRecentBody: "Lo último que se sumó a la biblioteca.",
-    homeRecentAddedOn: "Incorporado el",
+    homeRecentAddedOn: "Sumado el",
     homeRecentEmpty: "No hay incorporaciones recientes con fecha registrada.",
     newTag: "Nuevo",
     workspaceBrowseEyebrow: "Exploración guiada",
@@ -1009,9 +1011,14 @@ async function loadData() {
 
 function normalizeDataset(data) {
   if (!data || !Array.isArray(data.games)) return data;
+  const games = data.games.map(normalizeGame);
+  const recentIds = new Set(selectRecentHighlightGames(games).map((game) => game.id));
   return {
     ...data,
-    games: data.games.map(normalizeGame)
+    games: games.map((game) => ({
+      ...game,
+      isNew: recentIds.has(game.id)
+    }))
   };
 }
 
@@ -1035,7 +1042,7 @@ function normalizeGame(game) {
     acquisitionTimestamp: parseAcquisitionTimestamp(acquisitionDate),
     versionLanguages: typeof game.versionLanguages === "string" ? game.versionLanguages : "",
     physicalLanguages,
-    isNew: isRecentAcquisitionDate(acquisitionDate),
+    isNew: false,
     expansionIds: Array.isArray(game.expansionIds)
       ? game.expansionIds.map((item) => Number(item)).filter((item) => Number.isFinite(item))
       : []
@@ -1065,16 +1072,6 @@ function parseAcquisitionTimestamp(value) {
   if (!text) return null;
   const parsed = new Date(`${text}T00:00:00`);
   return Number.isFinite(parsed.getTime()) ? parsed.getTime() : null;
-}
-
-function isRecentAcquisitionDate(value) {
-  const timestamp = parseAcquisitionTimestamp(value);
-  if (!Number.isFinite(timestamp)) return false;
-  const acquiredAt = new Date(timestamp);
-  const cutoff = new Date();
-  cutoff.setHours(0, 0, 0, 0);
-  cutoff.setMonth(cutoff.getMonth() - RECENT_ACQUISITION_WINDOW_MONTHS);
-  return acquiredAt >= cutoff;
 }
 
 function normalizeLocalizedContent(value) {
@@ -2080,10 +2077,30 @@ function buildHomeRecentAcquisitionLine(game, copy) {
 }
 
 function getRecentAcquisitions() {
-  return (state.data?.games || [])
-    .filter((game) => game.own && game.isNew)
-    .sort((left, right) => (right.acquisitionTimestamp || 0) - (left.acquisitionTimestamp || 0) || getDisplayName(left).localeCompare(getDisplayName(right)))
-    .slice(0, 8);
+  return selectRecentHighlightGames(state.data?.games || []);
+}
+
+function selectRecentHighlightGames(games) {
+  const ownedWithDate = (games || [])
+    .filter((game) => game.own && Number.isFinite(game.acquisitionTimestamp))
+    .sort((left, right) => (right.acquisitionTimestamp || 0) - (left.acquisitionTimestamp || 0) || getDisplayName(left).localeCompare(getDisplayName(right)));
+
+  if (!ownedWithDate.length) return [];
+
+  const cutoff = new Date();
+  cutoff.setHours(0, 0, 0, 0);
+  cutoff.setMonth(cutoff.getMonth() - RECENT_HIGHLIGHT_WINDOW_MONTHS);
+  const cutoffTimestamp = cutoff.getTime();
+  const fillLimit = new Date();
+  fillLimit.setHours(0, 0, 0, 0);
+  fillLimit.setMonth(fillLimit.getMonth() - RECENT_HIGHLIGHT_FILL_LIMIT_MONTHS);
+  const fillLimitTimestamp = fillLimit.getTime();
+
+  const withinWindow = ownedWithDate.filter((game) => (game.acquisitionTimestamp || 0) >= cutoffTimestamp);
+  if (withinWindow.length >= RECENT_HIGHLIGHT_MIN_ITEMS) return withinWindow;
+
+  const eligibleFill = ownedWithDate.filter((game) => (game.acquisitionTimestamp || 0) >= fillLimitTimestamp);
+  return eligibleFill.slice(0, Math.min(RECENT_HIGHLIGHT_MIN_ITEMS, eligibleFill.length));
 }
 
 function formatBestPlayersTag(values) {
