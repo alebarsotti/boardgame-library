@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Ludoteca de Ale favicon</title>
+  <desc id="desc">A warm-toned board game die icon inside a rounded square.</desc>
+  <defs>
+    <linearGradient id="bg" x1="12" y1="8" x2="52" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#d3a784" />
+      <stop offset="0.55" stop-color="#975338" />
+      <stop offset="1" stop-color="#6e2d17" />
+    </linearGradient>
+    <linearGradient id="dieFace" x1="18" y1="16" x2="46" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff7ef" />
+      <stop offset="1" stop-color="#f0dcc7" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="url(#bg)" />
+  <rect x="17" y="15" width="30" height="30" rx="8.5" fill="url(#dieFace)" />
+  <rect x="17" y="15" width="30" height="30" rx="8.5" fill="none" stroke="#6e2d17" stroke-width="2.5" />
+  <circle cx="24" cy="22.5" r="3.1" fill="#975338" />
+  <circle cx="40" cy="22.5" r="3.1" fill="#975338" />
+  <circle cx="32" cy="30.5" r="3.1" fill="#975338" />
+  <circle cx="24" cy="38.5" r="3.1" fill="#975338" />
+  <circle cx="40" cy="38.5" r="3.1" fill="#975338" />
+</svg>
