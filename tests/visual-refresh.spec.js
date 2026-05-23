@@ -5,7 +5,7 @@ test("theme controls and section identities render across desktop and mobile", a
 
   await expect(page.locator("#theme-segment-header")).toBeVisible();
   await expect(page.locator("body")).toHaveAttribute("data-page", "home");
-  await expect(page.locator("body")).toHaveAttribute("data-theme", "light");
+  await expect(page.locator("body")).toHaveAttribute("data-theme", "dark");
 
   await page.getByRole("button", { name: "Explorar", exact: true }).click();
   await expect(page.locator("body")).toHaveAttribute("data-page", "browse");
