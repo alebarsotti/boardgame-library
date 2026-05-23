@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ale's Board Game Library</title>
+    <title>Ludoteca de Ale</title>
     <meta
       name="description"
       content="Coleccion de juegos de mesa con filtros avanzados, recomendaciones y seleccion aleatoria."
@@ -18,19 +18,20 @@
   </head>
   <body>
     <div class="page-shell">
-      <header class="topbar">
-        <div class="brand-block">
-          <p class="eyebrow" data-i18n="brandEyebrow"></p>
-          <h1 class="brand-title">Ale's Board Game Library</h1>
-        </div>
-        <div class="topbar__controls">
-          <div class="theme-switch theme-switch--topbar">
-            <span class="theme-switch__label" data-i18n="themeLabel"></span>
-            <div class="segmented-control segmented-control--compact" id="theme-segment-header" aria-label="Theme"></div>
+      <div class="topbar-shell">
+        <header class="topbar">
+          <div class="brand-block">
+            <p class="eyebrow" data-i18n="brandEyebrow"></p>
+            <h1 class="brand-title" data-i18n="brandTitle">Ludoteca de Ale</h1>
           </div>
-          <nav class="page-nav" id="page-nav" aria-label="Primary"></nav>
-        </div>
-      </header>
+          <div class="topbar__controls">
+            <div class="theme-switch theme-switch--topbar">
+              <div class="theme-toggle" id="theme-segment-header" aria-label="Theme"></div>
+            </div>
+            <nav class="page-nav" id="page-nav" aria-label="Primary"></nav>
+          </div>
+        </header>
+      </div>
 
       <main class="page-stack">
         <section class="page-panel page-panel--hero" id="home-panel" data-page="home">
@@ -49,45 +50,16 @@
           </header>
 
           <div class="home-grid">
-            <article class="info-card">
-              <p class="eyebrow" data-i18n="homeCollectionEyebrow"></p>
-              <h3 data-i18n="homeCollectionTitle"></h3>
-              <p data-i18n="homeCollectionBody"></p>
-              <div class="home-stat-list">
-                <div class="home-stat">
-                  <strong id="home-owned-count"></strong>
-                  <span data-i18n="heroOwned"></span>
-                </div>
-                <div class="home-stat">
-                  <strong id="home-archive-count"></strong>
-                  <span data-i18n="heroPrev"></span>
-                </div>
-              </div>
-              <button class="button button--ghost" id="home-archive-action" type="button" data-i18n="openArchiveAction"></button>
-            </article>
-
-            <article class="info-card">
-              <p class="eyebrow" data-i18n="homeUtilityEyebrow"></p>
-              <h3 data-i18n="homeUtilityTitle"></h3>
-              <p data-i18n="homeUtilityBody"></p>
-              <div class="home-shortcuts" id="home-shortcuts"></div>
+            <article class="info-card home-recent-card">
+              <p class="eyebrow" data-i18n="homeRecentEyebrow"></p>
+              <h3 data-i18n="homeRecentTitle"></h3>
+              <p data-i18n="homeRecentBody"></p>
+              <div class="home-recent-list" id="home-recent-list"></div>
             </article>
           </div>
         </section>
 
         <section class="page-panel hidden" id="workspace-panel" data-page="workspace">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow" id="workspace-eyebrow"></p>
-              <h2 id="workspace-title"></h2>
-              <p id="workspace-body"></p>
-            </div>
-            <div class="section-heading__actions">
-              <button class="button button--ghost" id="workspace-settings-action" type="button" data-i18n="openSettingsAction"></button>
-              <button class="button button--primary" id="workspace-random-action" type="button" data-i18n="openRandomAction"></button>
-            </div>
-          </div>
-
           <div class="layout" id="collection">
             <aside class="filters" id="filters-panel">
               <div class="filters__header">
@@ -122,8 +94,8 @@
                   <div class="filter-control" id="weight-filter"></div>
                 </label>
                 <label class="field">
-                  <span data-i18n="languageLabel"></span>
-                  <div class="filter-control" id="language-filter"></div>
+                  <span data-i18n="editionLanguageLabel"></span>
+                  <div class="filter-control" id="physical-language-filter"></div>
                 </label>
               </div>
 
@@ -138,17 +110,9 @@
                 </label>
               </div>
 
-              <div class="field-grid">
-                <label class="field">
-                  <span data-i18n="sortLabel"></span>
-                  <div class="filter-control" id="sort-filter"></div>
-                </label>
-              </div>
-
               <div class="recommendations-card">
                 <div class="recommendations-card__header">
                   <p class="eyebrow" data-i18n="recommendEyebrow"></p>
-                  <h3 data-i18n="recommendTitle"></h3>
                 </div>
                 <div class="chip-list" id="recommendation-chips"></div>
               </div>
@@ -163,13 +127,17 @@
                   <p class="eyebrow" data-i18n="resultsEyebrow"></p>
                   <h2 id="results-count"></h2>
                 </div>
-                <div class="toolbar__view-group">
-                  <span class="toolbar__view-label" data-i18n="viewLabel"></span>
-                  <div class="toolbar__view" id="view-filter"></div>
-                </div>
-                <div class="toolbar__actions">
-                  <button class="button button--ghost" id="reset-filters" type="button" data-i18n="resetFilters"></button>
-                  <button class="button button--primary" id="toolbar-random" type="button" data-i18n="openRandomAction"></button>
+                <div class="toolbar__utility">
+                  <div class="toolbar__sort-group">
+                    <span class="toolbar__sort-label" data-i18n="sortLabel"></span>
+                    <div class="toolbar__sort" id="sort-filter"></div>
+                  </div>
+                  <div class="toolbar__view-group">
+                    <div class="toolbar__view" id="view-filter" aria-label="View"></div>
+                  </div>
+                  <div class="toolbar__actions">
+                    <button class="button button--primary" id="toolbar-random" type="button" data-i18n="openRandomAction"></button>
+                  </div>
                 </div>
               </div>
 
@@ -188,7 +156,6 @@
             <div>
               <p class="eyebrow" data-i18n="randomPageEyebrow"></p>
               <h2 data-i18n="randomPageTitle"></h2>
-              <p data-i18n="randomPageBody"></p>
             </div>
             <div class="section-heading__actions">
               <button class="button button--ghost" id="random-browse-action" type="button" data-i18n="randomPageOpenWorkspace"></button>
@@ -217,25 +184,18 @@
         </section>
 
         <section class="page-panel hidden" id="settings-panel" data-page="settings">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow" data-i18n="settingsEyebrow"></p>
-              <h2 data-i18n="settingsTitle"></h2>
-              <p data-i18n="settingsBody"></p>
-            </div>
-          </div>
           <div class="settings-grid">
             <article class="info-card">
               <p class="eyebrow" data-i18n="settingsThemeEyebrow"></p>
               <h3 data-i18n="settingsThemeTitle"></h3>
               <p data-i18n="settingsThemeBody"></p>
-              <div class="segmented-control" id="theme-segment-settings" aria-label="Theme"></div>
+              <div class="theme-toggle theme-toggle--settings" id="theme-segment-settings" aria-label="Theme"></div>
             </article>
             <article class="info-card">
               <p class="eyebrow" data-i18n="settingsLanguageEyebrow"></p>
               <h3 data-i18n="settingsLanguageTitle"></h3>
               <p data-i18n="settingsLanguageBody"></p>
-              <div class="segmented-control" id="language-segment" aria-label="Language"></div>
+              <div class="language-toggle" id="language-segment" aria-label="Language"></div>
             </article>
             <article class="info-card">
               <p class="eyebrow" data-i18n="settingsRoadmapEyebrow"></p>
@@ -263,16 +223,16 @@
       <article class="game-card">
         <button class="game-card__button" type="button">
           <div class="game-card__art"></div>
+          <span class="game-card__flag hidden"></span>
           <div class="game-card__body">
             <div class="game-card__heading">
-              <div>
+              <div class="game-card__heading-copy">
                 <p class="game-card__title"></p>
                 <p class="game-card__subtitle"></p>
               </div>
               <span class="game-card__badge"></span>
             </div>
             <div class="game-card__meta"></div>
-            <div class="game-card__tags"></div>
           </div>
         </button>
       </article>

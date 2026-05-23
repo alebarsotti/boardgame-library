@@ -5,8 +5,10 @@ const NAME_OVERRIDES_KEY = "bgg-library-name-overrides-v1";
 const RANDOM_HISTORY_LIMIT = 5;
 const RANDOM_REVEAL_MIN_MS = 900;
 const RANDOM_REVEAL_MAX_MS = 1400;
-const THEME_KEYS = ["auto", "light", "dark"];
-const systemThemeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+const RECENT_HIGHLIGHT_WINDOW_MONTHS = 6;
+const RECENT_HIGHLIGHT_MIN_ITEMS = 7;
+const RECENT_HIGHLIGHT_FILL_LIMIT_MONTHS = 18;
+const THEME_KEYS = ["light", "dark"];
 
 const PAGE_KEYS = ["home", "browse", "archive", "random", "settings"];
 let masonryLayoutFrame = 0;
@@ -14,6 +16,7 @@ let gameCardResizeObserver = null;
 
 const translations = {
   es: {
+    brandTitle: "Ludoteca de Ale",
     brandEyebrow: "Biblioteca personal",
     navHome: "Inicio",
     navBrowse: "Explorar",
@@ -21,25 +24,26 @@ const translations = {
     navRandom: "Azar",
     navSettings: "Ajustes",
     themeLabel: "Tema",
-    themeAuto: "Auto",
     themeLight: "Claro",
     themeDark: "Oscuro",
     heroEyebrow: "Colección personal de juegos",
-    heroTitle: "Un catálogo más claro para elegir mejor.",
+    heroTitle: "Elegir mejor, más rápido.",
     heroLede:
-      "Explora la biblioteca, revisa el archivo y deja que Azar te ayude a decidir sin perder los filtros útiles del flujo original.",
-    openRandomAction: "Abrir Azar",
+      "Explorá la biblioteca, revisá el archivo y dejá que el azar resuelva cuando la mesa no se decide.",
+    openRandomAction: "Dejarlo al azar",
     randomAction: "Sortear ahora",
     exploreAction: "Explorar la colección",
     openArchiveAction: "Ver archivo",
     openSettingsAction: "Abrir ajustes",
     filterEyebrow: "Búsqueda guiada",
     filterTitle: "Encontrar el juego justo",
-    searchLabel: "Buscar por nombre, tag o nota",
+    searchLabel: "Buscar",
+    searchPlaceholder: "Por nombre, tag o nota",
     playersLabel: "Jugadores",
     durationLabel: "Duración",
     weightLabel: "Peso",
-    languageLabel: "Idioma / texto",
+    editionLanguageLabel: "Idioma",
+    editionLanguageShort: "Copia",
     bestPlayersLabel: "Mejor cantidad",
     ageLabel: "Edad",
     sortLabel: "Ordenar por",
@@ -51,25 +55,29 @@ const translations = {
     filterModeExplainUntil: "Incluye esta banda y cualquier opción más corta o más liviana",
     filterModeExplainFrom: "Incluye esta banda y cualquier opción más larga o más pesada",
     activeFiltersTitle: "Filtros activos",
+    activeFiltersEmpty: "Sin filtros activos.",
     activeFilterMode: "Modo",
     recommendEyebrow: "Atajos curados",
     recommendTitle: "Recomendaciones",
     openFilters: "Filtros",
     close: "Cerrar",
+    anyCompact: "Cualq.",
     resultsEyebrow: "Resultados filtrados",
+    resultsSingle: "resultado",
+    resultsPlural: "resultados",
     resetFilters: "Limpiar filtros",
     emptyTitle: "No hay coincidencias para esta combinación.",
-    emptyBody: "Probá aflojar algún filtro o dejar que la suerte elija desde otro conjunto.",
+    emptyBody: "Probá relajar algún filtro o dejar que la suerte elija desde otro conjunto.",
     owned: "En colección",
     prevOwned: "Anteriormente poseído",
     currentCollection: "colección actual",
     archiveCollection: "archivo",
-    heroCount: "juegos cargados",
+    heroCount: "juegos en la biblioteca",
     heroOwned: "hoy en estantería",
     heroPrev: "en archivo",
-    heroQuick: "partidas rápidas",
-    bestAt: "mejor en",
-    recommendedAt: "recomendado en",
+    heroQuick: "juegos cortos",
+    bestAt: "Ideal para",
+    recommendedAt: "Recomendado para",
     ageText: "Edad sugerida",
     ranking: "Ranking BGG",
     averageRating: "Rating promedio",
@@ -84,13 +92,13 @@ const translations = {
     expansionsEmpty: "No hay expansiones vinculadas.",
     notAvailable: "Sin dato",
     randomTitle: "La mesa acaba de decidir",
-    randomBody: "Sorteo hecho solo entre los juegos que cumplen tus filtros activos.",
+    randomBody: "Acá solo entran juegos que cumplen tus filtros activos.",
     reroll: "Volver a sortear",
     openDetails: "Abrir detalle",
-    randomSummaryTitle: "Scope activo",
-    randomSummaryCandidates: "Candidatos elegibles",
-    randomSummaryWorkspace: "Workspace fuente",
-    randomSummaryCount: "Títulos por sorteo",
+    randomSummaryTitle: "Contexto actual",
+    randomSummaryCandidates: "Opciones posibles",
+    randomSummaryWorkspace: "Tomado desde",
+    randomSummaryCount: "Juegos por sorteo",
     randomSummaryStale: "Los filtros cambiaron desde el último resultado. Hacé un nuevo sorteo para mantener el contexto alineado.",
     viewGridLabel: "Galería",
     viewListLabel: "Lista",
@@ -109,10 +117,11 @@ const translations = {
     languageHigh: "Mucho texto",
     languageExtreme: "Muy dependiente del idioma",
     languageUnknown: "No informado",
-    ageKids: "Hasta 8+",
-    ageFamily: "9+ a 12+",
-    ageTeen: "13+ a 15+",
-    ageAdult: "16+ o más",
+    physicalLanguageUnknown: "No informado",
+    ageKids: "8-",
+    ageFamily: "9-12",
+    ageTeen: "13-15",
+    ageAdult: "16+",
     sortName: "Nombre",
     sortRating: "Rating BGG",
     sortRank: "Ranking BGG",
@@ -123,13 +132,14 @@ const translations = {
     recQuick: "Rápidos",
     recHeavy: "Pesados",
     recTeach: "Fáciles de enseñar",
-    recSolo: "Con modo solo",
+    recSolo: "Modo solitario",
     recGroup: "Para grupo grande",
     filterSearch: "Texto",
     filterPlayers: "Jugadores",
     filterDuration: "Tiempo",
     filterWeight: "Peso",
     filterLanguage: "Idioma",
+    filterPhysicalLanguage: "Idioma de la copia",
     filterBestPlayers: "Mejor cantidad",
     filterAge: "Edad",
     filterSection: "Sección",
@@ -138,17 +148,23 @@ const translations = {
     languageSpanish: "ES",
     languageEnglish: "EN",
     poweredBy: "Datos e imágenes provistos por",
-    homeCollectionEyebrow: "Estado de la biblioteca",
-    homeCollectionTitle: "Una vista general para arrancar sin vueltas.",
+    homeCollectionEyebrow: "Panorama rápido",
+    homeCollectionTitle: "Lo que quedó en archivo",
     homeCollectionBody:
-      "Acá ves rápido cómo está la biblioteca y elegís si querés explorar la colección activa, revisar el archivo o dejar que la app te sugiera una opción.",
+      "Entrá si querés revisar juegos que ya no están en estantería sin mezclarlos con la colección activa.",
     homeUtilityEyebrow: "Accesos directos",
-    homeUtilityTitle: "Cada tarea tiene su propio espacio",
+    homeUtilityTitle: "Ir directo a cada tarea",
     homeUtilityBody:
-      "Explorar queda para filtrar en serio, Archivo para revisar juegos que ya no están, Azar para desempatar y Ajustes para preferencias duraderas.",
-    homeBrowseShortcut: "Ir a explorar",
-    homeRandomShortcut: "Ir a azar",
-    homeSettingsShortcut: "Ver ajustes",
+      "Explorar para filtrar, Azar para resolver y Ajustes para ordenar preferencias.",
+    homeBrowseShortcut: "Explorar",
+    homeRandomShortcut: "Azar",
+    homeSettingsShortcut: "Ajustes",
+    homeRecentEyebrow: "Incorporaciones recientes",
+    homeRecentTitle: "Últimos ingresos",
+    homeRecentBody: "Lo último que se sumó a la biblioteca.",
+    homeRecentAddedOn: "Sumado el",
+    homeRecentEmpty: "No hay incorporaciones recientes con fecha registrada.",
+    newTag: "Nuevo",
     workspaceBrowseEyebrow: "Exploración guiada",
     workspaceBrowseTitle: "Explorar la colección",
     workspaceBrowseBody: "Buscá dentro de la ludoteca activa con filtros, orden y vistas compactas.",
@@ -156,20 +172,20 @@ const translations = {
     workspaceArchiveTitle: "Revisar el archivo",
     workspaceArchiveBody: "Recorré juegos que ya no están sin mezclarlos con la colección actual.",
     randomPageEyebrow: "Mesa de decisión",
-    randomPageTitle: "Azar para destrabar la mesa",
-    randomPageBody: "Usa el workspace activo como fuente, revela opciones y guarda una memoria breve de la sesión.",
+    randomPageTitle: "Cuando la mesa no se decide",
+    randomPageBody: "Usa el contexto actual como punto de partida, revela opciones y guarda una memoria breve de la sesión.",
     randomPageEmptyTitle: "Todavía no hay un sorteo",
-    randomPageEmptyBody: "Entrá cuando quieras, revisá el scope actual y dispará un sorteo solo cuando la mesa esté lista para decidir.",
+    randomPageEmptyBody: "Entrá cuando quieras, revisá el contexto actual y dispará un sorteo solo cuando la mesa esté lista para decidir.",
     randomPageRevealEyebrow: "Sorteando",
     randomPageRevealTitle: "Barajando candidatos para esta mesa",
-    randomPageRevealBody: "El resultado va a respetar exactamente las restricciones activas del workspace actual.",
-    randomPageNoCandidatesTitle: "No hay candidatos con este scope",
-    randomPageNoCandidatesBody: "Ajustá filtros en el workspace anterior o volvé a intentar con un conjunto más amplio.",
-    randomPageStaleTitle: "El último resultado ya no coincide con este scope",
+    randomPageRevealBody: "El resultado va a respetar exactamente las restricciones activas del contexto actual.",
+    randomPageNoCandidatesTitle: "No hay opciones con este contexto",
+    randomPageNoCandidatesBody: "Ajustá filtros en el espacio anterior o volvé a intentar con un conjunto más amplio.",
+    randomPageStaleTitle: "El último resultado ya no coincide con este contexto",
     randomPageStaleBody: "Los filtros activos cambiaron desde el sorteo anterior. Lanzá uno nuevo para ver una opción válida para la situación actual.",
     randomPageScope: "Tomando filtros desde",
     randomPageOpenWorkspace: "Volver al espacio anterior",
-    randomPageScopeFallback: "Todavía no elegiste un workspace con filtros activos.",
+    randomPageScopeFallback: "Todavía no elegiste un espacio con filtros activos.",
     randomPageHistoryCurrent: "Resultado actual",
     randomPageHistoryOpenDetails: "Ver detalle",
     randomPageResultsEyebrow: "Selección actual",
@@ -179,13 +195,13 @@ const translations = {
     randomHistoryEyebrow: "Historial de sesión",
     randomHistoryTitle: "Resultados recientes",
     randomHistoryBody: "Sirve para comparar opciones sin guardar nada de forma permanente.",
-    randomHistoryEmpty: "Los sorteos de esta sesión aparecerán acá.",
+    randomHistoryEmpty: "Los resultados de esta sesión aparecerán acá.",
     settingsEyebrow: "Preferencias",
     settingsTitle: "Ajustes de uso",
-    settingsBody: "Tema e idioma viven acá para que el resto de la biblioteca quede libre para elegir juegos.",
+    settingsBody: "Acá definís tema e idioma para que el resto de la biblioteca quede libre para elegir juegos.",
     settingsThemeEyebrow: "Tema",
     settingsThemeTitle: "Tema de la biblioteca",
-    settingsThemeBody: "Seguí el sistema o fijá modo claro u oscuro.",
+    settingsThemeBody: "Elegí entre modo claro y oscuro para toda la biblioteca.",
     settingsLanguageEyebrow: "Idioma",
     settingsLanguageTitle: "Idioma de interfaz",
     settingsLanguageBody: "Cambia navegación, encabezados y contenido visible.",
@@ -197,6 +213,7 @@ const translations = {
     drawnFromArchive: "Archivo"
   },
   en: {
+    brandTitle: "Ale's Board Game Library",
     brandEyebrow: "Personal library",
     navHome: "Home",
     navBrowse: "Browse",
@@ -204,25 +221,26 @@ const translations = {
     navRandom: "Random",
     navSettings: "Settings",
     themeLabel: "Theme",
-    themeAuto: "Auto",
     themeLight: "Light",
     themeDark: "Dark",
     heroEyebrow: "Personal board game collection",
-    heroTitle: "A clearer catalog for choosing better.",
+    heroTitle: "Choose better, faster.",
     heroLede:
-      "Browse the library, revisit the archive, and let Random help the table decide without losing the useful filter flow.",
-    openRandomAction: "Open Random",
+      "Browse the library, revisit the archive, and let Random break the tie when the table stalls.",
+    openRandomAction: "Leave it to Random",
     randomAction: "Draw now",
     exploreAction: "Browse collection",
     openArchiveAction: "Open archive",
     openSettingsAction: "Open settings",
     filterEyebrow: "Guided search",
     filterTitle: "Find the right game",
-    searchLabel: "Search by name, tag, or note",
+    searchLabel: "Search",
+    searchPlaceholder: "By name, tag, or note",
     playersLabel: "Players",
     durationLabel: "Duration",
     weightLabel: "Weight",
-    languageLabel: "Language / text",
+    editionLanguageLabel: "Language",
+    editionLanguageShort: "Edition",
     bestPlayersLabel: "Best count",
     ageLabel: "Age",
     sortLabel: "Sort by",
@@ -234,12 +252,16 @@ const translations = {
     filterModeExplainUntil: "Includes this band and anything shorter or lighter",
     filterModeExplainFrom: "Includes this band and anything longer or heavier",
     activeFiltersTitle: "Active filters",
+    activeFiltersEmpty: "No active filters.",
     activeFilterMode: "Mode",
     recommendEyebrow: "Curated shortcuts",
     recommendTitle: "Recommendations",
     openFilters: "Filters",
     close: "Close",
+    anyCompact: "Any",
     resultsEyebrow: "Filtered results",
+    resultsSingle: "result",
+    resultsPlural: "results",
     resetFilters: "Reset filters",
     emptyTitle: "No games match this combination.",
     emptyBody: "Try relaxing a filter or let chance choose from a broader set.",
@@ -247,12 +269,12 @@ const translations = {
     prevOwned: "Previously owned",
     currentCollection: "current collection",
     archiveCollection: "archive",
-    heroCount: "games loaded",
+    heroCount: "games cataloged",
     heroOwned: "currently owned",
     heroPrev: "archived",
-    heroQuick: "quick plays",
-    bestAt: "best at",
-    recommendedAt: "recommended at",
+    heroQuick: "short games",
+    bestAt: "Ideal for",
+    recommendedAt: "Recommended with",
     ageText: "Recommended age",
     ranking: "BGG rank",
     averageRating: "Average rating",
@@ -291,9 +313,10 @@ const translations = {
     languageHigh: "Heavy text",
     languageExtreme: "Language dependent",
     languageUnknown: "Unknown",
-    ageKids: "Up to 8+",
-    ageFamily: "9+ to 12+",
-    ageTeen: "13+ to 15+",
+    physicalLanguageUnknown: "Unknown",
+    ageKids: "8-",
+    ageFamily: "9-12",
+    ageTeen: "13-15",
     ageAdult: "16+ or more",
     sortName: "Name",
     sortRating: "BGG rating",
@@ -312,6 +335,7 @@ const translations = {
     filterDuration: "Duration",
     filterWeight: "Weight",
     filterLanguage: "Language",
+    filterPhysicalLanguage: "Copy language",
     filterBestPlayers: "Best count",
     filterAge: "Age",
     filterSection: "Section",
@@ -320,17 +344,23 @@ const translations = {
     languageSpanish: "ES",
     languageEnglish: "EN",
     poweredBy: "Data and images provided by",
-    homeCollectionEyebrow: "Library status",
-    homeCollectionTitle: "A simple landing area for quick orientation.",
+    homeCollectionEyebrow: "Quick view",
+    homeCollectionTitle: "What moved to the archive",
     homeCollectionBody:
-      "Home summarizes the collection and directs you to the right experience depending on whether you want to explore, revisit the archive, or let the app decide.",
+      "Open it when you want to revisit games that are no longer on the active shelf.",
     homeUtilityEyebrow: "Shortcuts",
-    homeUtilityTitle: "Clear entry points for each job",
+    homeUtilityTitle: "Jump straight to the task",
     homeUtilityBody:
-      "Browse is for deep filtering, Archive is for previously owned titles, Random is for tie-breakers, and Settings holds durable preferences.",
-    homeBrowseShortcut: "Go to browse",
-    homeRandomShortcut: "Go to random",
-    homeSettingsShortcut: "Open settings",
+      "Browse for filtering, Random for tie-breaks, and Settings for preferences.",
+    homeBrowseShortcut: "Browse",
+    homeRandomShortcut: "Random",
+    homeSettingsShortcut: "Settings",
+    homeRecentEyebrow: "Recent additions",
+    homeRecentTitle: "Recent arrivals",
+    homeRecentBody: "Games that joined the library recently.",
+    homeRecentAddedOn: "Added on",
+    homeRecentEmpty: "No recent additions with a recorded acquisition date yet.",
+    newTag: "New",
     workspaceBrowseEyebrow: "Guided exploration",
     workspaceBrowseTitle: "Browse the collection",
     workspaceBrowseBody: "Search the active shelf with focused filters, sorting, and compact views.",
@@ -363,7 +393,7 @@ const translations = {
     settingsBody: "Theme and language live here so the rest of the library can stay focused on choosing games.",
     settingsThemeEyebrow: "Theme",
     settingsThemeTitle: "Library theme",
-    settingsThemeBody: "Follow the system or pin light or dark mode.",
+    settingsThemeBody: "Choose between light and dark mode for the whole library.",
     settingsLanguageEyebrow: "Language",
     settingsLanguageTitle: "Interface language",
     settingsLanguageBody: "Updates navigation, headings, and visible content.",
@@ -382,7 +412,15 @@ const icons = {
   time: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>',
   weight:
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 20h12l-1.5-8h-9z"/><path d="M9 8a3 3 0 1 1 6 0"/></svg>',
-  age: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 4v5c0 5-3.5 8.74-8 9-4.5-.26-8-4-8-9V7z"/><path d="M9.5 12.5l1.8 1.8 3.7-4"/></svg>'
+  age: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 4v5c0 5-3.5 8.74-8 9-4.5-.26-8-4-8-9V7z"/><path d="M9.5 12.5l1.8 1.8 3.7-4"/></svg>',
+  language:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h9"/><path d="M8.5 5c0 6-2.5 10-5.5 12"/><path d="M6 11c1.2 1.8 3 3.4 5.5 4.8"/><path d="M14 19l4-10 4 10"/><path d="M15.4 15.5h5.2"/></svg>',
+  calendar:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>',
+  rating:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 3 2.9 5.9 6.5 1-4.7 4.6 1.1 6.5L12 18l-5.8 3 1.1-6.5L2.6 9.9l6.5-1z"/></svg>',
+  broom:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>'
 };
 
 const state = {
@@ -392,11 +430,10 @@ const state = {
   filters: {
     search: "",
     players: "",
-    duration: "",
-    durationMode: "exact",
-    weight: "",
-    weightMode: "exact",
+    duration: [],
+    weight: [],
     languageKey: "",
+    physicalLanguage: "",
     bestPlayers: "",
     age: "",
     sort: "name",
@@ -412,6 +449,7 @@ const state = {
   },
   nameOverrides: {},
   data: null,
+  libraryRatingRange: null,
   filteredGames: [],
   randomSelection: [],
   randomHistory: [],
@@ -428,7 +466,7 @@ const CONTROL_CONTAINER_MAP = {
   players: "playersFilter",
   duration: "timeFilter",
   weight: "weightFilter",
-  languageKey: "languageFilter",
+  physicalLanguage: "physicalLanguageFilter",
   bestPlayers: "bestPlayersFilter",
   age: "ageFilter",
   sort: "sortFilter",
@@ -441,7 +479,6 @@ document.addEventListener("DOMContentLoaded", init);
 async function init() {
   cacheElements();
   loadPreferences();
-  bindThemeMediaQuery();
   applyThemePreference();
   bindEvents();
   applyTranslations();
@@ -452,19 +489,16 @@ async function init() {
 }
 
 function cacheElements() {
+  elements.topbarShell = document.querySelector(".topbar-shell");
   elements.pageNav = document.querySelector("#page-nav");
   elements.heroStats = document.querySelector("#hero-stats");
-  elements.homeOwnedCount = document.querySelector("#home-owned-count");
-  elements.homeArchiveCount = document.querySelector("#home-archive-count");
-  elements.homeShortcuts = document.querySelector("#home-shortcuts");
-  elements.workspaceEyebrow = document.querySelector("#workspace-eyebrow");
-  elements.workspaceTitle = document.querySelector("#workspace-title");
-  elements.workspaceBody = document.querySelector("#workspace-body");
+  elements.homeRecentList = document.querySelector("#home-recent-list");
   elements.searchInput = document.querySelector("#search-input");
   elements.playersFilter = document.querySelector("#players-filter");
   elements.timeFilter = document.querySelector("#time-filter");
   elements.weightFilter = document.querySelector("#weight-filter");
   elements.languageFilter = document.querySelector("#language-filter");
+  elements.physicalLanguageFilter = document.querySelector("#physical-language-filter");
   elements.bestPlayersFilter = document.querySelector("#best-players-filter");
   elements.ageFilter = document.querySelector("#age-filter");
   elements.sortFilter = document.querySelector("#sort-filter");
@@ -501,7 +535,7 @@ function loadPreferences() {
   state.language = state.preferences.language || "es";
   state.filters.view = state.preferences.view || "grid";
   state.activePage = state.preferences.activePage || "home";
-  state.preferences.theme = THEME_KEYS.includes(state.preferences.theme) ? state.preferences.theme : "auto";
+  state.preferences.theme = THEME_KEYS.includes(state.preferences.theme) ? state.preferences.theme : "dark";
   state.lastWorkspacePage = state.activePage === "archive" ? "archive" : "browse";
 
   try {
@@ -519,34 +553,24 @@ function bindEvents() {
   elements.filtersPanel.addEventListener("click", handleFilterControlClick);
   elements.filtersPanel.addEventListener("change", handleFilterControlChange);
   elements.viewFilter.addEventListener("click", handleFilterControlClick);
-  document.querySelector("#reset-filters").addEventListener("click", resetFilters);
+  elements.sortFilter?.addEventListener("change", handleFilterControlChange);
+  elements.activeFilters.addEventListener("click", (event) => {
+    const resetButton = event.target.closest("[data-reset-filters]");
+    if (resetButton && !resetButton.disabled) resetFilters();
+  });
   document.querySelector("#details-close").addEventListener("click", () => elements.detailsDialog.close());
   document.querySelector("#open-filters").addEventListener("click", () => elements.filtersPanel.classList.add("is-open"));
   document.querySelector("#close-filters").addEventListener("click", () => elements.filtersPanel.classList.remove("is-open"));
   document.querySelector("#home-browse-action").addEventListener("click", () => setActivePage("browse"));
   document.querySelector("#home-random-action").addEventListener("click", () => setActivePage("random"));
-  document.querySelector("#home-archive-action").addEventListener("click", () => setActivePage("archive"));
-  document.querySelector("#workspace-settings-action").addEventListener("click", () => setActivePage("settings"));
-  document.querySelector("#workspace-random-action").addEventListener("click", () => setActivePage("random"));
   document.querySelector("#toolbar-random").addEventListener("click", () => setActivePage("random"));
   document.querySelector("#random-browse-action").addEventListener("click", () => setActivePage(state.lastWorkspacePage));
   document.querySelector("#random-page-trigger").addEventListener("click", drawRandomFromCurrentScope);
-  window.addEventListener("resize", scheduleMasonryLayout);
-}
-
-function bindThemeMediaQuery() {
-  if (typeof systemThemeMediaQuery.addEventListener === "function") {
-    systemThemeMediaQuery.addEventListener("change", handleSystemThemeChange);
-    return;
-  }
-  if (typeof systemThemeMediaQuery.addListener === "function") {
-    systemThemeMediaQuery.addListener(handleSystemThemeChange);
-  }
-}
-
-function handleSystemThemeChange() {
-  if (state.preferences.theme !== "auto") return;
-  applyThemePreference();
+  window.addEventListener("resize", () => {
+    syncStickyOffsets();
+    renderFilterControls();
+    scheduleMasonryLayout();
+  });
 }
 
 function ensureValidActivePage() {
@@ -580,21 +604,18 @@ function setTheme(theme) {
   state.preferences.theme = theme;
   savePreferences();
   applyThemePreference();
+  syncScoreBadges();
   renderThemeSegments();
 }
 
 function getEffectiveTheme() {
-  if (state.preferences.theme === "light" || state.preferences.theme === "dark") {
-    return state.preferences.theme;
-  }
-  return systemThemeMediaQuery.matches ? "dark" : "light";
+  return state.preferences.theme === "light" ? "light" : "dark";
 }
 
 function applyThemePreference() {
-  const preference = THEME_KEYS.includes(state.preferences.theme) ? state.preferences.theme : "auto";
-  const effectiveTheme = preference === "auto" ? getEffectiveTheme() : preference;
+  const effectiveTheme = getEffectiveTheme();
   document.body.dataset.theme = effectiveTheme;
-  document.body.dataset.themePreference = preference;
+  document.body.dataset.themePreference = effectiveTheme;
   document.documentElement.style.colorScheme = effectiveTheme;
 }
 
@@ -629,11 +650,10 @@ function resetFilters() {
   state.filters = {
     search: "",
     players: "",
-    duration: "",
-    durationMode: "exact",
-    weight: "",
-    weightMode: "exact",
+    duration: [],
+    weight: [],
     languageKey: "",
+    physicalLanguage: "",
     bestPlayers: "",
     age: "",
     sort: "name",
@@ -648,14 +668,16 @@ function resetFilters() {
 function applyTranslations() {
   const copy = translations[state.language];
   document.documentElement.lang = state.language;
+  document.title = copy.brandTitle;
   document.querySelectorAll("[data-i18n]").forEach((node) => {
     const key = node.dataset.i18n;
     node.textContent = copy[key] || key;
   });
-  elements.searchInput.placeholder = copy.searchLabel;
+  elements.searchInput.placeholder = copy.searchPlaceholder || copy.searchLabel;
   elements.themeSegmentHeader?.setAttribute("aria-label", copy.themeLabel);
   elements.themeSegmentSettings?.setAttribute("aria-label", copy.themeLabel);
   elements.languageSegment?.setAttribute("aria-label", copy.languageLabel);
+  elements.viewFilter?.setAttribute("aria-label", copy.viewLabel);
   renderPageNav();
   renderThemeSegments();
   renderLanguageSegment();
@@ -688,70 +710,146 @@ function renderLanguageSegment() {
     ["es", copy.languageSpanish],
     ["en", copy.languageEnglish]
   ];
-  elements.languageSegment.innerHTML = options
-    .map(
-      ([value, label]) =>
-        `<button class="segment-button ${state.language === value ? "is-active" : ""}" data-language="${value}" type="button">${escapeHtml(label)}</button>`
-    )
-    .join("");
+  const activeIndex = Math.max(0, options.findIndex(([value]) => value === state.language));
+  if (!elements.languageSegment.querySelector(".language-toggle__track")) {
+    elements.languageSegment.innerHTML = `
+      <div class="language-toggle__track" data-language-active="${escapeAttribute(String(activeIndex))}">
+        <span class="language-toggle__thumb" aria-hidden="true"></span>
+        ${options
+          .map(([value, label]) => {
+            const isActive = state.language === value;
+            return `
+              <button
+                class="language-toggle__button ${isActive ? "is-active" : ""}"
+                data-language="${escapeAttribute(value)}"
+                type="button"
+                aria-pressed="${isActive ? "true" : "false"}"
+                aria-label="${escapeAttribute(label)}"
+                title="${escapeAttribute(label)}"
+              >
+                ${escapeHtml(label)}
+              </button>
+            `;
+          })
+          .join("")}
+      </div>
+    `;
+    elements.languageSegment.querySelectorAll("[data-language]").forEach((button) => {
+      button.addEventListener("click", () => setLanguage(button.dataset.language));
+    });
+  }
+  const track = elements.languageSegment.querySelector(".language-toggle__track");
+  if (track) {
+    track.dataset.languageActive = String(activeIndex);
+  }
   elements.languageSegment.querySelectorAll("[data-language]").forEach((button) => {
-    button.addEventListener("click", () => setLanguage(button.dataset.language));
+    const value = button.dataset.language;
+    const label = options.find(([option]) => option === value)?.[1] || value;
+    const isActive = state.language === value;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", isActive ? "true" : "false");
+    button.setAttribute("aria-label", label);
+    button.setAttribute("title", label);
   });
 }
 
 function renderThemeSegments() {
   const copy = translations[state.language];
   const options = [
-    ["auto", copy.themeAuto],
     ["light", copy.themeLight],
     ["dark", copy.themeDark]
   ];
   [elements.themeSegmentHeader, elements.themeSegmentSettings].forEach((container) => {
     if (!container) return;
-    container.innerHTML = options
-      .map(
-        ([value, label]) =>
-          `<button class="segment-button ${state.preferences.theme === value ? "is-active" : ""}" data-theme="${value}" type="button">${escapeHtml(label)}</button>`
-      )
-      .join("");
+    const activeIndex = Math.max(0, options.findIndex(([value]) => value === state.preferences.theme));
+    if (!container.querySelector(".theme-toggle__track")) {
+      container.innerHTML = `
+        <div class="theme-toggle__track" data-theme-active="${escapeAttribute(String(activeIndex))}">
+          <span class="theme-toggle__thumb" aria-hidden="true"></span>
+          ${options
+            .map(([value, label]) => {
+              const icon = value === "light" ? themeIconSun() : themeIconMoon();
+              const isActive = state.preferences.theme === value;
+              return `
+                <button
+                  class="theme-toggle__button ${isActive ? "is-active" : ""}"
+                  data-theme="${escapeAttribute(value)}"
+                  type="button"
+                  aria-pressed="${isActive ? "true" : "false"}"
+                  aria-label="${escapeAttribute(label)}"
+                  title="${escapeAttribute(label)}"
+                >
+                  ${icon}
+                </button>
+              `;
+            })
+            .join("")}
+        </div>
+      `;
+      container.querySelectorAll("[data-theme]").forEach((button) => {
+        button.addEventListener("click", () => setTheme(button.dataset.theme));
+      });
+    }
+    const track = container.querySelector(".theme-toggle__track");
+    if (track) {
+      track.dataset.themeActive = String(activeIndex);
+    }
     container.querySelectorAll("[data-theme]").forEach((button) => {
-      button.addEventListener("click", () => setTheme(button.dataset.theme));
+      const value = button.dataset.theme;
+      const label = options.find(([option]) => option === value)?.[1] || value;
+      const isActive = state.preferences.theme === value;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-pressed", isActive ? "true" : "false");
+      button.setAttribute("aria-label", label);
+      button.setAttribute("title", label);
     });
   });
+}
+
+function themeIconSun() {
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"/></svg>';
+}
+
+function themeIconMoon() {
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M20 14.2A8 8 0 1 1 9.8 4a6.6 6.6 0 0 0 10.2 10.2Z"/></svg>';
+}
+
+function viewIconGrid() {
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="1.4"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.4"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.4"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.4"/></svg>';
+}
+
+function viewIconList() {
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M8 6h12"/><path d="M8 12h12"/><path d="M8 18h12"/><circle cx="4.5" cy="6" r="1.1" fill="currentColor" stroke="none"/><circle cx="4.5" cy="12" r="1.1" fill="currentColor" stroke="none"/><circle cx="4.5" cy="18" r="1.1" fill="currentColor" stroke="none"/></svg>';
 }
 
 function getFilterControlDefinitions() {
   const copy = translations[state.language];
   return {
     players: {
-      style: "chips",
+      style: "choice",
       toggleable: true,
-      options: [["", copy.anyOption], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6+"]]
+      options: [["", copy.anyCompact], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5+"]]
     },
     duration: {
-      style: "range",
-      modeKey: "durationMode",
-      toggleable: true,
-      options: [["quick", "<=30"], ["standard", "31-60"], ["extended", "61-120"], ["epic", "120+"]]
+      style: "multi",
+      options: [["quick", "30-"], ["standard", "31-60"], ["extended", "61-120"], ["epic", "120+"]]
     },
     weight: {
-      style: "range",
-      modeKey: "weightMode",
-      toggleable: true,
+      style: "multi",
       options: [["light", copy.weightLight], ["medium-light", copy.weightMediumLight], ["medium-heavy", copy.weightMediumHeavy], ["heavy", copy.weightHeavy]]
     },
-    languageKey: {
-      style: "select",
-      options: [["", copy.anyOption], ["none", copy.languageNone], ["low", copy.languageLow], ["moderate", copy.languageModerate], ["high", copy.languageHigh], ["extreme", copy.languageExtreme], ["unknown", copy.languageUnknown]]
+    physicalLanguage: {
+      style: "choice",
+      options: getPhysicalLanguageFilterOptions()
     },
     bestPlayers: {
-      style: "chips",
+      style: "choice",
       toggleable: true,
-      options: [["", copy.anyOption], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6+"]]
+      options: [["", copy.anyCompact], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5+"]]
     },
     age: {
-      style: "select",
-      options: [["", copy.anyOption], ["kids", copy.ageKids], ["family", copy.ageFamily], ["teen", copy.ageTeen], ["adult", copy.ageAdult]]
+      style: "choice",
+      options: [["", copy.anyCompact], ["kids", copy.ageKids], ["family", copy.ageFamily], ["teen", copy.ageTeen], ["adult", copy.ageAdult]]
     },
     sort: {
       style: "select",
@@ -771,32 +869,25 @@ function getFilterControlDefinitions() {
 }
 
 function renderFilterControls() {
-  const copy = translations[state.language];
   const definitions = getFilterControlDefinitions();
   Object.entries(CONTROL_CONTAINER_MAP).forEach(([key, elementKey]) => {
     const container = elements[elementKey];
     const definition = definitions[key];
     if (!container || !definition) return;
-    const baseClass = key === "view" ? "toolbar__view filter-control" : "filter-control";
-    if (definition.style === "range") {
-      const modeValue = state.filters[definition.modeKey] || "exact";
-      container.className = `${baseClass} filter-control--range`;
-      container.innerHTML = `
-        <div class="segmented-control filter-control__modes">
-          ${renderRangeModeButton(key, "exact", copy.filterModeExact, modeValue)}
-          ${renderRangeModeButton(key, "until", copy.filterModeUntil, modeValue)}
-          ${renderRangeModeButton(key, "from", copy.filterModeFrom, modeValue)}
-        </div>
-        <p class="filter-control__hint">${escapeHtml(getRangeModeExplanation(modeValue))}</p>
-        <div class="chip-list filter-control__values">
-          ${definition.options
-            .map(([value, label]) => {
-              const isActive = state.filters[key] === value;
-              return `<button class="chip chip--interactive ${isActive ? "chip--active" : ""}" data-filter-key="${escapeAttribute(key)}" data-filter-value="${escapeAttribute(value)}" type="button" aria-pressed="${isActive ? "true" : "false"}">${escapeHtml(label)}</button>`;
-            })
-            .join("")}
-        </div>
-      `;
+    const baseClass = key === "view"
+      ? "toolbar__view filter-control"
+      : key === "sort"
+        ? "toolbar__sort filter-control"
+        : "filter-control";
+    if (definition.style === "multi") {
+      container.className = `${baseClass} chip-list filter-control--multi`;
+      const selectedValues = Array.isArray(state.filters[key]) ? state.filters[key] : [];
+      container.innerHTML = definition.options
+        .map(([value, label]) => {
+          const isActive = selectedValues.includes(value);
+          return `<button class="chip chip--interactive ${isActive ? "chip--active" : ""}" data-filter-key="${escapeAttribute(key)}" data-filter-value="${escapeAttribute(value)}" type="button" aria-pressed="${isActive ? "true" : "false"}">${escapeHtml(label)}</button>`;
+        })
+        .join("");
       return;
     }
     if (definition.style === "select") {
@@ -805,6 +896,14 @@ function renderFilterControls() {
         .map(([value, label]) => `<option value="${escapeAttribute(value)}">${escapeHtml(label)}</option>`)
         .join("")}</select>`;
       container.querySelector("select").value = state.filters[key];
+      return;
+    }
+    if (key === "view") {
+      renderViewToggle(container, definition.options);
+      return;
+    }
+    if (definition.style === "choice") {
+      renderChoiceToggle(container, key, definition.options);
       return;
     }
     container.className = definition.style === "segment" ? `${baseClass} segmented-control` : `${baseClass} chip-list`;
@@ -818,9 +917,99 @@ function renderFilterControls() {
   });
 }
 
-function renderRangeModeButton(key, mode, label, currentMode) {
-  const isActive = currentMode === mode;
-  return `<button class="segment-button ${isActive ? "is-active" : ""}" data-filter-mode-key="${escapeAttribute(key)}" data-filter-mode-value="${escapeAttribute(mode)}" type="button" aria-pressed="${isActive ? "true" : "false"}">${escapeHtml(label)}</button>`;
+function renderChoiceToggle(container, key, options) {
+  const activeIndex = Math.max(0, options.findIndex(([value]) => value === state.filters[key]));
+  container.className = "filter-control choice-toggle";
+  const optionsSignature = options.map(([value, label]) => `${value}:${label}`).join("|");
+  const currentTrack = container.querySelector(".choice-toggle__track");
+  if (!currentTrack || currentTrack.dataset.choiceOptions !== optionsSignature) {
+    container.innerHTML = `
+      <div
+        class="choice-toggle__track"
+        data-choice-active="${escapeAttribute(String(activeIndex))}"
+        data-choice-options="${escapeAttribute(optionsSignature)}"
+      >
+        <span class="choice-toggle__thumb" aria-hidden="true"></span>
+        ${options
+          .map(([value, label]) => {
+            const isActive = state.filters[key] === value;
+            return `
+              <button
+                class="choice-toggle__button ${isActive ? "is-active" : ""}"
+                data-filter-key="${escapeAttribute(key)}"
+                data-filter-value="${escapeAttribute(value)}"
+                type="button"
+                aria-pressed="${isActive ? "true" : "false"}"
+              >
+                ${escapeHtml(label)}
+              </button>
+            `;
+          })
+          .join("")}
+      </div>
+    `;
+  }
+  const track = container.querySelector(".choice-toggle__track");
+  const buttons = [...container.querySelectorAll("[data-filter-key]")];
+  const activeButton = buttons.find((button) => (button.dataset.filterValue || "") === (state.filters[key] || "")) || buttons[0];
+  buttons.forEach((button) => {
+    const value = button.dataset.filterValue || "";
+    const label = options.find(([optionValue]) => optionValue === value)?.[1] || value;
+    const isActive = button === activeButton;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", isActive ? "true" : "false");
+    button.setAttribute("aria-label", label);
+    button.setAttribute("title", label);
+  });
+  if (track && activeButton) {
+    track.dataset.choiceActive = String(Math.max(0, buttons.indexOf(activeButton)));
+    track.style.setProperty("--choice-toggle-x", `${activeButton.offsetLeft - 3}px`);
+    track.style.setProperty("--choice-toggle-width", `${activeButton.offsetWidth}px`);
+  }
+}
+
+function renderViewToggle(container, options) {
+  const activeIndex = Math.max(0, options.findIndex(([value]) => value === state.filters.view));
+  container.className = "toolbar__view filter-control";
+  if (!container.querySelector(".view-toggle__track")) {
+    container.innerHTML = `
+      <div class="view-toggle__track" data-view-active="${escapeAttribute(String(activeIndex))}">
+        <span class="view-toggle__thumb" aria-hidden="true"></span>
+        ${options
+          .map(([value, label]) => {
+            const icon = value === "grid" ? viewIconGrid() : viewIconList();
+            const isActive = state.filters.view === value;
+            return `
+              <button
+                class="view-toggle__button ${isActive ? "is-active" : ""}"
+                data-filter-key="view"
+                data-filter-value="${escapeAttribute(value)}"
+                type="button"
+                aria-pressed="${isActive ? "true" : "false"}"
+                aria-label="${escapeAttribute(label)}"
+                title="${escapeAttribute(label)}"
+              >
+                ${icon}
+              </button>
+            `;
+          })
+          .join("")}
+      </div>
+    `;
+  }
+  const track = container.querySelector(".view-toggle__track");
+  if (track) {
+    track.dataset.viewActive = String(activeIndex);
+  }
+  container.querySelectorAll("[data-filter-key='view']").forEach((button) => {
+    const value = button.dataset.filterValue || "grid";
+    const label = options.find(([option]) => option === value)?.[1] || value;
+    const isActive = state.filters.view === value;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", isActive ? "true" : "false");
+    button.setAttribute("aria-label", label);
+    button.setAttribute("title", label);
+  });
 }
 
 function handleFilterControlClick(event) {
@@ -836,6 +1025,16 @@ function handleFilterControlClick(event) {
   const value = control.dataset.filterValue || "";
   const definition = getFilterControlDefinitions()[key];
   if (!definition) return;
+  if (definition.style === "multi") {
+    const currentValues = Array.isArray(state.filters[key]) ? state.filters[key] : [];
+    const nextValue = currentValues.includes(value)
+      ? currentValues.filter((item) => item !== value)
+      : definition.options
+        .map(([optionValue]) => optionValue)
+        .filter((optionValue) => optionValue === value || currentValues.includes(optionValue));
+    setFilter(key, nextValue);
+    return;
+  }
   const nextValue = definition.toggleable && state.filters[key] === value ? "" : value;
   setFilter(key, nextValue);
 }
@@ -849,22 +1048,31 @@ function handleFilterControlChange(event) {
 async function loadData() {
   if (window[INLINE_DATA_KEY]) {
     state.data = normalizeDataset(window[INLINE_DATA_KEY]);
+    state.libraryRatingRange = getLibraryRatingRange(state.data?.games || []);
     return;
   }
 
   const response = await fetch(DATA_URL);
   state.data = normalizeDataset(await response.json());
+  state.libraryRatingRange = getLibraryRatingRange(state.data?.games || []);
 }
 
 function normalizeDataset(data) {
   if (!data || !Array.isArray(data.games)) return data;
+  const games = data.games.map(normalizeGame);
+  const recentIds = new Set(selectRecentHighlightGames(games).map((game) => game.id));
   return {
     ...data,
-    games: data.games.map(normalizeGame)
+    games: games.map((game) => ({
+      ...game,
+      isNew: recentIds.has(game.id)
+    }))
   };
 }
 
 function normalizeGame(game) {
+  const acquisitionDate = typeof game.acquisitionDate === "string" ? game.acquisitionDate.trim() : "";
+  const physicalLanguages = parseLanguageList(game.versionLanguages);
   return {
     ...game,
     recommendedPlayers: toPlayerArray(game.recommendedPlayers),
@@ -878,6 +1086,11 @@ function normalizeGame(game) {
     dependencyType: typeof game.dependencyType === "string" ? game.dependencyType : "",
     requiresGameId: Number.isFinite(Number(game.requiresGameId)) ? Number(game.requiresGameId) : null,
     requiresGameName: typeof game.requiresGameName === "string" ? game.requiresGameName : "",
+    acquisitionDate,
+    acquisitionTimestamp: parseAcquisitionTimestamp(acquisitionDate),
+    versionLanguages: typeof game.versionLanguages === "string" ? game.versionLanguages : "",
+    physicalLanguages,
+    isNew: false,
     expansionIds: Array.isArray(game.expansionIds)
       ? game.expansionIds.map((item) => Number(item)).filter((item) => Number.isFinite(item))
       : []
@@ -893,6 +1106,20 @@ function toPlayerArray(value) {
   const normalized = Number(value);
   if (Number.isFinite(normalized)) return [normalized];
   return [];
+}
+
+function parseLanguageList(value) {
+  return String(value || "")
+    .split(";")
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
+function parseAcquisitionTimestamp(value) {
+  const text = String(value || "").trim();
+  if (!text) return null;
+  const parsed = new Date(`${text}T00:00:00`);
+  return Number.isFinite(parsed.getTime()) ? parsed.getTime() : null;
 }
 
 function normalizeLocalizedContent(value) {
@@ -911,6 +1138,7 @@ function render() {
   syncSectionWithPage();
   applyThemePreference();
   syncVisualContext();
+  syncStickyOffsets();
   syncControls();
   state.filteredGames = getFilteredGames();
   reconcileRandomSelection();
@@ -919,7 +1147,6 @@ function render() {
   renderPanelVisibility();
   renderHeroStats();
   renderHomePanel();
-  renderWorkspaceHeading();
   renderResultsSummary();
   renderActiveFilters();
   renderFilterControls();
@@ -929,6 +1156,11 @@ function render() {
 
 function syncVisualContext() {
   document.body.dataset.page = state.activePage;
+}
+
+function syncStickyOffsets() {
+  const shellHeight = elements.topbarShell?.offsetHeight || 0;
+  document.documentElement.style.setProperty("--topbar-sticky-offset", `${shellHeight}px`);
 }
 
 function syncControls() {
@@ -947,9 +1179,6 @@ function getEffectiveSection() {
   return state.filters.section === "archive" ? "archive" : "owned";
 }
 
-const DURATION_ORDER = ["quick", "standard", "extended", "epic"];
-const WEIGHT_ORDER = ["light", "medium-light", "medium-heavy", "heavy"];
-
 function getFilteredGames() {
   const section = getEffectiveSection();
   return state.data.games
@@ -959,16 +1188,22 @@ function getFilteredGames() {
       if (section === "archive" && !game.prevOwned) return false;
       if (state.filters.search && !game.searchText.includes(state.filters.search)) return false;
       if (state.filters.players) {
-        const requested = state.filters.players === "6" ? 6 : Number(state.filters.players);
+        const requested = Number(state.filters.players);
         if (!(game.minPlayers <= requested && game.maxPlayers >= requested)) return false;
       }
-      if (state.filters.duration && !matchesOrderedFilter(game.timeBand, state.filters.duration, state.filters.durationMode, DURATION_ORDER)) return false;
-      if (state.filters.weight && !matchesOrderedFilter(game.weightBand, state.filters.weight, state.filters.weightMode, WEIGHT_ORDER)) return false;
-      if (state.filters.languageKey && game.languageKey !== state.filters.languageKey) return false;
+      if (Array.isArray(state.filters.duration) && state.filters.duration.length && !state.filters.duration.includes(game.timeBand)) return false;
+      if (Array.isArray(state.filters.weight) && state.filters.weight.length && !state.filters.weight.includes(game.weightBand)) return false;
+      if (state.filters.physicalLanguage) {
+        if (state.filters.physicalLanguage === "unknown") {
+          if (Array.isArray(game.physicalLanguages) && game.physicalLanguages.length) return false;
+        } else if (!Array.isArray(game.physicalLanguages) || !game.physicalLanguages.includes(state.filters.physicalLanguage)) {
+          return false;
+        }
+      }
       if (state.filters.bestPlayers) {
-        const requested = state.filters.bestPlayers === "6" ? 6 : Number(state.filters.bestPlayers);
+        const requested = Number(state.filters.bestPlayers);
         const bestValues = Array.isArray(game.bestPlayers) ? game.bestPlayers : [];
-        if (!bestValues.some((value) => (requested === 6 ? value >= 6 : value === requested))) return false;
+        if (!bestValues.some((value) => (requested === 5 ? value >= 5 : value === requested))) return false;
       }
       if (state.filters.age) {
         const age = game.age ?? 0;
@@ -1002,16 +1237,6 @@ function sortGames(left, right) {
   }
 }
 
-function matchesOrderedFilter(actualValue, selectedValue, mode, order) {
-  if (!selectedValue) return true;
-  const actualIndex = order.indexOf(actualValue);
-  const selectedIndex = order.indexOf(selectedValue);
-  if (actualIndex === -1 || selectedIndex === -1) return false;
-  if (mode === "until") return actualIndex <= selectedIndex;
-  if (mode === "from") return actualIndex >= selectedIndex;
-  return actualIndex === selectedIndex;
-}
-
 function matchesRecommendation(game, recommendation) {
   const bestPlayers = toPlayerArray(game.bestPlayers);
   const recommendedPlayers = toPlayerArray(game.recommendedPlayers);
@@ -1028,8 +1253,9 @@ function matchesRecommendation(game, recommendation) {
 
 function renderHeroStats() {
   const copy = translations[state.language];
+  const catalogCount = (state.data?.games || []).filter((game) => game.own || game.prevOwned).length;
   const stats = [
-    [state.data.summary.count, copy.heroCount],
+    [catalogCount, copy.heroCount],
     [state.data.summary.ownCount, copy.heroOwned],
     [state.data.summary.prevOwnedCount, copy.heroPrev],
     [state.data.summary.recommendations.quick, copy.heroQuick]
@@ -1040,55 +1266,88 @@ function renderHeroStats() {
 }
 
 function renderHomePanel() {
-  elements.homeOwnedCount.textContent = String(state.data.summary.ownCount);
-  elements.homeArchiveCount.textContent = String(state.data.summary.prevOwnedCount);
-
   const copy = translations[state.language];
-  const shortcuts = [
-    ["browse", copy.homeBrowseShortcut],
-    ["random", copy.homeRandomShortcut],
-    ["settings", copy.homeSettingsShortcut]
-  ];
+  const recentGames = getRecentAcquisitions();
+  elements.homeRecentList.innerHTML = recentGames.length
+    ? recentGames
+      .map(
+        (game) => `
+          <button class="home-recent-item" data-recent-game-id="${escapeAttribute(game.id)}" type="button">
+            <div class="game-card__art home-recent-item__cover" id="home-recent-cover-${escapeAttribute(game.id)}"></div>
+            <div class="home-recent-item__body">
+              <div class="home-recent-item__header">
+                <div class="home-recent-item__copy">
+                  <span class="home-recent-item__title">${escapeHtml(getDisplayName(game))}</span>
+                  <span class="home-recent-item__year">${escapeHtml(game.yearPublished ? String(game.yearPublished) : copy.notAvailable)}</span>
+                </div>
+                <span class="game-card__badge home-recent-item__badge" data-rating="${typeof game.averageRating === "number" && Number.isFinite(game.averageRating) ? escapeAttribute(String(game.averageRating)) : ""}">
+                  ${escapeHtml(formatGameScore(game))}
+                </span>
+              </div>
+              <span class="home-recent-item__facts">
+                ${buildHomeRecentFacts(game).map(({ icon, label }) => metaPill(icon, label).replace('class="meta-pill"', 'class="meta-pill home-recent-item__fact"')).join("")}
+              </span>
+              ${buildHomeRecentAcquisitionLine(game, copy)}
+            </div>
+          </button>
+        `
+      )
+      .join("")
+    : `<p class="home-recent-empty">${escapeHtml(copy.homeRecentEmpty)}</p>`;
 
-  elements.homeShortcuts.innerHTML = shortcuts
-    .map(([page, label]) => `<button class="chip chip--interactive" data-home-page="${page}" type="button">${escapeHtml(label)}</button>`)
-    .join("");
-
-  elements.homeShortcuts.querySelectorAll("[data-home-page]").forEach((button) => {
-    button.addEventListener("click", () => setActivePage(button.dataset.homePage));
+  elements.homeRecentList.querySelectorAll("[data-recent-game-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const game = getGameById(Number(button.dataset.recentGameId));
+      if (game) openDetails(game);
+    });
   });
-}
 
-function renderWorkspaceHeading() {
-  const copy = translations[state.language];
-  const isArchive = getEffectiveSection() === "archive";
-  elements.workspaceEyebrow.textContent = isArchive ? copy.workspaceArchiveEyebrow : copy.workspaceBrowseEyebrow;
-  elements.workspaceTitle.textContent = isArchive ? copy.workspaceArchiveTitle : copy.workspaceBrowseTitle;
-  elements.workspaceBody.textContent = isArchive ? copy.workspaceArchiveBody : copy.workspaceBrowseBody;
+  recentGames.forEach((game) => {
+    const cover = elements.homeRecentList.querySelector(`#home-recent-cover-${CSS.escape(String(game.id))}`);
+    if (cover) injectCover(cover, game, 180);
+    const badge = elements.homeRecentList.querySelector(`[data-recent-game-id="${CSS.escape(String(game.id))}"] .home-recent-item__badge`);
+    if (badge) applyScoreBadgeStyle(badge, game.averageRating);
+  });
 }
 
 function renderResultsSummary() {
   const copy = translations[state.language];
-  const scope = getEffectiveSection() === "archive" ? copy.archiveCollection : copy.currentCollection;
-  elements.resultsCount.textContent = `${state.filteredGames.length} ${scope}`;
+  const count = state.filteredGames.length;
+  const label = count === 1 ? copy.resultsSingle : copy.resultsPlural;
+  elements.resultsCount.textContent = `${count} ${label}`;
 }
 
 function renderActiveFilters() {
   const copy = translations[state.language];
-  const tags = [[copy.filterSection, getEffectiveSection() === "archive" ? copy.sectionArchive : copy.sectionOwned]];
+  const tags = [];
   if (state.filters.search) tags.push([copy.filterSearch, state.filters.search]);
-  if (state.filters.players) tags.push([copy.filterPlayers, getFilterValueLabel("players", state.filters.players)]);
-  if (state.filters.duration) tags.push([copy.filterDuration, getRangeFilterSummary("duration")]);
-  if (state.filters.weight) tags.push([copy.filterWeight, getRangeFilterSummary("weight")]);
-  if (state.filters.languageKey) tags.push([copy.filterLanguage, getFilterValueLabel("languageKey", state.filters.languageKey)]);
-  if (state.filters.bestPlayers) tags.push([copy.filterBestPlayers, getFilterValueLabel("bestPlayers", state.filters.bestPlayers)]);
+  if (state.filters.players) tags.push([copy.filterPlayers, state.filters.players === "5" ? "5+" : getFilterValueLabel("players", state.filters.players)]);
+  if (Array.isArray(state.filters.duration) && state.filters.duration.length) tags.push([copy.filterDuration, getMultiFilterSummary("duration", state.filters.duration)]);
+  if (Array.isArray(state.filters.weight) && state.filters.weight.length) tags.push([copy.filterWeight, getMultiFilterSummary("weight", state.filters.weight)]);
+  if (state.filters.physicalLanguage) tags.push([copy.filterPhysicalLanguage, labelForPhysicalLanguage(state.filters.physicalLanguage)]);
+  if (state.filters.bestPlayers) tags.push([copy.filterBestPlayers, state.filters.bestPlayers === "5" ? "5+" : getFilterValueLabel("bestPlayers", state.filters.bestPlayers)]);
   if (state.filters.age) tags.push([copy.filterAge, getFilterValueLabel("age", state.filters.age)]);
   if (state.filters.recommendation) tags.push(["Rec", getFilterValueLabel("recommendation", state.filters.recommendation)]);
+  const hasFilters = tags.length > 0;
   elements.activeFilters.innerHTML = `
-    <p class="active-filters__title">${escapeHtml(copy.activeFiltersTitle)}</p>
-    <div class="active-filters__list">
-      ${tags.map(([label, value]) => `<span class="chip">${escapeHtml(label)}: ${escapeHtml(String(value))}</span>`).join("")}
+    <div class="active-filters__content">
+      <p class="active-filters__title">${escapeHtml(copy.activeFiltersTitle)}</p>
+      <div class="active-filters__list">
+        ${hasFilters
+          ? tags.map(([label, value]) => `<span class="chip">${escapeHtml(label)}: ${escapeHtml(String(value))}</span>`).join("")
+          : `<span class="active-filters__empty">${escapeHtml(copy.activeFiltersEmpty)}</span>`}
+      </div>
     </div>
+    <button
+      class="button button--ghost button--small active-filters__reset"
+      type="button"
+      data-reset-filters
+      title="${escapeAttribute(copy.resetFilters)}"
+      aria-label="${escapeAttribute(copy.resetFilters)}"
+      ${hasFilters ? "" : "disabled"}
+    >
+      ${icons.broom}
+    </button>
   `;
 }
 
@@ -1103,11 +1362,20 @@ function renderGames() {
     const node = elements.cardTemplate.content.firstElementChild.cloneNode(true);
     const button = node.querySelector(".game-card__button");
     const art = node.querySelector(".game-card__art");
+    const badge = node.querySelector(".game-card__badge");
+    const flag = node.querySelector(".game-card__flag");
     const displayName = getDisplayName(game);
     node.classList.toggle("game-card--list", isListView);
+    node.classList.toggle("game-card--new", game.isNew);
     node.querySelector(".game-card__title").textContent = displayName;
     node.querySelector(".game-card__subtitle").textContent = buildCardSubtitle(game);
-    node.querySelector(".game-card__badge").textContent = game.averageRating ? game.averageRating.toFixed(1) : "n/a";
+    flag.textContent = translations[state.language].newTag;
+    flag.classList.toggle("hidden", !game.isNew);
+    badge.textContent = game.averageRating ? game.averageRating.toFixed(1) : "n/a";
+    badge.dataset.rating = typeof game.averageRating === "number" && Number.isFinite(game.averageRating)
+      ? String(game.averageRating)
+      : "";
+    applyScoreBadgeStyle(badge, game.averageRating);
     art.dataset.initials = getInitials(displayName);
     injectCover(art, game, 220);
     node.querySelector(".game-card__meta").innerHTML = [
@@ -1116,7 +1384,6 @@ function renderGames() {
       metaPill("weight", labelForWeightBand(game.weightBand)),
       metaPill("age", game.ageText || translations[state.language].notAvailable)
     ].join("");
-    node.querySelector(".game-card__tags").innerHTML = getDisplayTags(game, { compact: isListView }).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("");
     button.addEventListener("click", () => openDetails(game));
     fragment.append(node);
   });
@@ -1198,10 +1465,10 @@ function getDisplayTags(game, options = {}) {
   const bestPlayers = toPlayerArray(game.bestPlayers);
   const tags = Array.isArray(game.tags) ? game.tags : [];
   if (isExpansionGame(game)) list.push(translations[state.language].expansion);
-  if (bestPlayers.length) list.push(`${translations[state.language].bestAt} ${joinPlayers(bestPlayers)}`);
+  if (game.isNew) list.push(translations[state.language].newTag);
+  if (bestPlayers.length) list.push(formatBestPlayersTag(bestPlayers));
   if (tags.includes("teaching-friendly")) list.push(translations[state.language].recTeach);
   if (tags.includes("solo")) list.push(translations[state.language].recSolo);
-  if (tags.includes("great-at-2")) list.push(translations[state.language].recDuo);
   return list.slice(0, compact ? 2 : 3);
 }
 
@@ -1262,6 +1529,7 @@ function openDetails(game) {
           ${metaPill("time", formatPlayTime(game))}
           ${metaPill("weight", `${copy.weightLabel}: ${game.avgWeight ? game.avgWeight.toFixed(2) : copy.notAvailable}`)}
           ${metaPill("age", `${copy.ageText}: ${game.ageText || copy.notAvailable}`)}
+          ${metaPill("language", formatPhysicalLanguages(game))}
         </div>
         <div class="detail-section">
           <h3>${escapeHtml(copy.ownership)}</h3>
@@ -1269,7 +1537,8 @@ function openDetails(game) {
             ${detailKv(copy.ownership, game.own ? copy.owned : copy.prevOwned)}
             ${detailKv(copy.ranking, game.rank ? `#${game.rank}` : copy.notAvailable)}
             ${detailKv(copy.averageRating, game.averageRating ? game.averageRating.toFixed(2) : copy.notAvailable)}
-            ${detailKv(copy.languageDependence, game.languageDependence || copy.notAvailable)}
+            ${detailKv(copy.languageDependence, labelForLanguageKey(game.languageKey || "unknown"))}
+            ${detailKv(copy.editionLanguageLabel, formatPhysicalLanguages(game))}
             ${detailKv(copy.recommendedAt, game.recommendedPlayers.length ? joinPlayers(game.recommendedPlayers) : copy.notAvailable)}
             ${detailKv(copy.bestAt, game.bestPlayers.length ? joinPlayers(game.bestPlayers) : copy.notAvailable)}
           </div>
@@ -1561,11 +1830,11 @@ function getRandomSummary(filtersSnapshot = buildRandomFiltersSnapshot()) {
   const chips = [];
   const copy = translations[state.language];
   if (filtersSnapshot.search) chips.push(`<span class="chip">${escapeHtml(copy.filterSearch)}: ${escapeHtml(filtersSnapshot.search)}</span>`);
-  if (filtersSnapshot.players) chips.push(`<span class="chip">${escapeHtml(copy.filterPlayers)}: ${escapeHtml(filtersSnapshot.players === "6" ? "6+" : filtersSnapshot.players)}</span>`);
-  if (filtersSnapshot.duration) chips.push(`<span class="chip">${escapeHtml(copy.filterDuration)}: ${escapeHtml(getRangeFilterSummaryFromSnapshot("duration", filtersSnapshot))}</span>`);
-  if (filtersSnapshot.weight) chips.push(`<span class="chip">${escapeHtml(copy.filterWeight)}: ${escapeHtml(getRangeFilterSummaryFromSnapshot("weight", filtersSnapshot))}</span>`);
-  if (filtersSnapshot.languageKey) chips.push(`<span class="chip">${escapeHtml(copy.filterLanguage)}: ${escapeHtml(labelForLanguageKey(filtersSnapshot.languageKey))}</span>`);
-  if (filtersSnapshot.bestPlayers) chips.push(`<span class="chip">${escapeHtml(copy.filterBestPlayers)}: ${escapeHtml(filtersSnapshot.bestPlayers === "6" ? "6+" : filtersSnapshot.bestPlayers)}</span>`);
+  if (filtersSnapshot.players) chips.push(`<span class="chip">${escapeHtml(copy.filterPlayers)}: ${escapeHtml(filtersSnapshot.players === "5" ? "5+" : filtersSnapshot.players)}</span>`);
+  if (Array.isArray(filtersSnapshot.duration) && filtersSnapshot.duration.length) chips.push(`<span class="chip">${escapeHtml(copy.filterDuration)}: ${escapeHtml(getMultiFilterSummary("duration", filtersSnapshot.duration))}</span>`);
+  if (Array.isArray(filtersSnapshot.weight) && filtersSnapshot.weight.length) chips.push(`<span class="chip">${escapeHtml(copy.filterWeight)}: ${escapeHtml(getMultiFilterSummary("weight", filtersSnapshot.weight))}</span>`);
+  if (filtersSnapshot.physicalLanguage) chips.push(`<span class="chip">${escapeHtml(copy.filterPhysicalLanguage)}: ${escapeHtml(labelForPhysicalLanguage(filtersSnapshot.physicalLanguage))}</span>`);
+  if (filtersSnapshot.bestPlayers) chips.push(`<span class="chip">${escapeHtml(copy.filterBestPlayers)}: ${escapeHtml(filtersSnapshot.bestPlayers === "5" ? "5+" : filtersSnapshot.bestPlayers)}</span>`);
   if (filtersSnapshot.age) chips.push(`<span class="chip">${escapeHtml(copy.filterAge)}: ${escapeHtml(labelForAgeBand(filtersSnapshot.age))}</span>`);
   if (filtersSnapshot.recommendation) chips.push(`<span class="chip">Rec: ${escapeHtml(getFilterValueLabel("recommendation", filtersSnapshot.recommendation))}</span>`);
   return chips.join("");
@@ -1586,11 +1855,9 @@ function buildRandomFiltersSnapshot(scope = state.lastWorkspacePage === "archive
     section: scope === "archive" ? "archive" : "owned",
     search: state.filters.search || "",
     players: state.filters.players || "",
-    duration: state.filters.duration || "",
-    durationMode: state.filters.durationMode || "exact",
-    weight: state.filters.weight || "",
-    weightMode: state.filters.weightMode || "exact",
-    languageKey: state.filters.languageKey || "",
+    duration: Array.isArray(state.filters.duration) ? [...state.filters.duration] : [],
+    weight: Array.isArray(state.filters.weight) ? [...state.filters.weight] : [],
+    physicalLanguage: state.filters.physicalLanguage || "",
     bestPlayers: state.filters.bestPlayers || "",
     age: state.filters.age || "",
     recommendation: state.filters.recommendation || ""
@@ -1604,10 +1871,8 @@ function serializeRandomContext(scope, filtersSnapshot) {
     search: filtersSnapshot.search,
     players: filtersSnapshot.players,
     duration: filtersSnapshot.duration,
-    durationMode: filtersSnapshot.durationMode,
     weight: filtersSnapshot.weight,
-    weightMode: filtersSnapshot.weightMode,
-    languageKey: filtersSnapshot.languageKey,
+    physicalLanguage: filtersSnapshot.physicalLanguage,
     bestPlayers: filtersSnapshot.bestPlayers,
     age: filtersSnapshot.age,
     recommendation: filtersSnapshot.recommendation
@@ -1816,6 +2081,116 @@ function formatGameScore(game) {
   return translations[state.language].notAvailable;
 }
 
+function formatAcquisitionDate(value) {
+  const timestamp = parseAcquisitionTimestamp(value);
+  if (!Number.isFinite(timestamp)) return "";
+  return new Intl.DateTimeFormat(state.language === "es" ? "es-AR" : "en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric"
+  }).format(new Date(timestamp));
+}
+
+function buildHomeRecentFacts(game) {
+  const facts = [];
+  const players = formatPlayers(game);
+  if (players && players !== translations[state.language].notAvailable) {
+    facts.push({ icon: "players", label: state.language === "es" ? `${players} jug.` : `${players} players` });
+  }
+  const time = formatPlayTime(game);
+  if (time && time !== translations[state.language].notAvailable) facts.push({ icon: "time", label: time });
+  return facts.slice(0, 3);
+}
+
+function buildHomeRecentAcquisitionLine(game, copy) {
+  const acquired = formatAcquisitionDate(game.acquisitionDate);
+  if (!acquired) return "";
+  return `<span class="home-recent-item__date">${escapeHtml(copy.homeRecentAddedOn)} ${escapeHtml(acquired)}</span>`;
+}
+
+function getRecentAcquisitions() {
+  return selectRecentHighlightGames(state.data?.games || []);
+}
+
+function selectRecentHighlightGames(games) {
+  const ownedWithDate = (games || [])
+    .filter((game) => game.own && Number.isFinite(game.acquisitionTimestamp))
+    .sort((left, right) => (right.acquisitionTimestamp || 0) - (left.acquisitionTimestamp || 0) || getDisplayName(left).localeCompare(getDisplayName(right)));
+
+  if (!ownedWithDate.length) return [];
+
+  const cutoff = new Date();
+  cutoff.setHours(0, 0, 0, 0);
+  cutoff.setMonth(cutoff.getMonth() - RECENT_HIGHLIGHT_WINDOW_MONTHS);
+  const cutoffTimestamp = cutoff.getTime();
+  const fillLimit = new Date();
+  fillLimit.setHours(0, 0, 0, 0);
+  fillLimit.setMonth(fillLimit.getMonth() - RECENT_HIGHLIGHT_FILL_LIMIT_MONTHS);
+  const fillLimitTimestamp = fillLimit.getTime();
+
+  const withinWindow = ownedWithDate.filter((game) => (game.acquisitionTimestamp || 0) >= cutoffTimestamp);
+  if (withinWindow.length >= RECENT_HIGHLIGHT_MIN_ITEMS) return withinWindow;
+
+  const eligibleFill = ownedWithDate.filter((game) => (game.acquisitionTimestamp || 0) >= fillLimitTimestamp);
+  return eligibleFill.slice(0, Math.min(RECENT_HIGHLIGHT_MIN_ITEMS, eligibleFill.length));
+}
+
+function formatBestPlayersTag(values) {
+  if (!values.length) return translations[state.language].notAvailable;
+  return `${translations[state.language].bestAt} ${joinPlayers(values)}`;
+}
+
+function syncScoreBadges() {
+  document.querySelectorAll(".game-card__badge").forEach((badge) => {
+    const rating = Number(badge.dataset.rating);
+    applyScoreBadgeStyle(badge, Number.isFinite(rating) ? rating : null);
+  });
+}
+
+function getLibraryRatingRange(games) {
+  const ratings = games
+    .map((game) => game?.averageRating)
+    .filter((rating) => typeof rating === "number" && Number.isFinite(rating));
+
+  if (!ratings.length) return null;
+
+  const min = Math.min(...ratings);
+  const max = Math.max(...ratings);
+  return { min, max };
+}
+
+function applyScoreBadgeStyle(node, rating) {
+  if (!node) return;
+  if (typeof rating !== "number" || !Number.isFinite(rating)) {
+    node.style.setProperty("--rating-text", "var(--accent)");
+    node.style.setProperty("--rating-bg", "color-mix(in srgb, var(--surface-raised) 78%, var(--accent) 22%)");
+    node.style.setProperty("--rating-border", "color-mix(in srgb, var(--line) 74%, var(--accent) 26%)");
+    node.style.setProperty("--rating-shadow", "none");
+    return;
+  }
+
+  const range = state.libraryRatingRange;
+  const span = range && Number.isFinite(range.max - range.min) ? range.max - range.min : 0;
+  const normalized = span > 0
+    ? Math.max(0, Math.min(1, (rating - range.min) / span))
+    : 0.5;
+  const hue = 18 + normalized * 16;
+  const saturation = 52 + normalized * 18;
+  const textLightness = document.body.dataset.theme === "dark"
+    ? 58 + normalized * 18
+    : 36 + normalized * 10;
+  const bgLightness = document.body.dataset.theme === "dark"
+    ? 18 + normalized * 10
+    : 92 - normalized * 8;
+  const borderAlpha = 0.24 + normalized * 0.2;
+  const glowAlpha = 0.08 + normalized * 0.16;
+
+  node.style.setProperty("--rating-text", `hsl(${hue} ${saturation}% ${textLightness}%)`);
+  node.style.setProperty("--rating-bg", `hsla(${hue} ${Math.max(38, saturation - 10)}% ${bgLightness}% / 0.88)`);
+  node.style.setProperty("--rating-border", `hsla(${hue} ${Math.max(34, saturation - 14)}% ${textLightness}% / ${borderAlpha.toFixed(2)})`);
+  node.style.setProperty("--rating-shadow", `0 10px 22px hsla(${hue} ${saturation}% 20% / ${glowAlpha.toFixed(2)})`);
+}
+
 function joinPlayers(values) {
   return values.map((value) => (value >= 6 ? "6+" : value)).join(", ");
 }
@@ -1826,34 +2201,9 @@ function getFilterValueLabel(key, value) {
   return option ? option[1] : value;
 }
 
-function getRangeFilterSummary(key) {
-  return getRangeFilterSummaryFromSnapshot(key, state.filters);
-}
-
-function getRangeFilterSummaryFromSnapshot(key, snapshot) {
-  const copy = translations[state.language];
-  const value = snapshot[key];
-  if (!value) return "";
-  const mode = snapshot[`${key}Mode`] || "exact";
-  const valueLabel = getFilterValueLabel(key, value);
-  if (mode === "exact") return valueLabel;
-  return `${getModeLabel(mode).toLowerCase()} ${valueLabel}`;
-}
-
-function getModeLabel(mode) {
-  const copy = translations[state.language];
-  return {
-    exact: copy.filterModeExact,
-    until: copy.filterModeUntil,
-    from: copy.filterModeFrom
-  }[mode || "exact"] || copy.filterModeExact;
-}
-
-function getRangeModeExplanation(mode) {
-  const copy = translations[state.language];
-  if (mode === "until") return copy.filterModeExplainUntil;
-  if (mode === "from") return copy.filterModeExplainFrom;
-  return copy.filterModeExplainExact;
+function getMultiFilterSummary(key, values) {
+  if (!Array.isArray(values) || !values.length) return "";
+  return values.map((value) => getFilterValueLabel(key, value)).join(", ");
 }
 
 function labelForTimeBand(value) {
@@ -1882,6 +2232,100 @@ function labelForLanguageKey(value) {
     extreme: copy.languageExtreme,
     unknown: copy.languageUnknown
   }[value] || value;
+}
+
+function labelForPhysicalLanguage(value) {
+  const copy = translations[state.language];
+  if (value === "unknown") return copy.physicalLanguageUnknown;
+  const normalized = String(value || "").trim().toLowerCase();
+  const map = state.language === "es"
+    ? {
+        english: "Inglés",
+        spanish: "Español",
+        portuguese: "Portugués",
+        catalan: "Catalán",
+        french: "Francés",
+        german: "Alemán",
+        italian: "Italiano"
+      }
+    : {
+        english: "English",
+        spanish: "Spanish",
+        portuguese: "Portuguese",
+        catalan: "Catalan",
+        french: "French",
+        german: "German",
+        italian: "Italian"
+      };
+  return map[normalized] || value;
+}
+
+function formatPhysicalLanguages(game) {
+  const values = Array.isArray(game?.physicalLanguages) ? game.physicalLanguages : [];
+  if (!values.length) return translations[state.language].physicalLanguageUnknown;
+  return values.map((value) => labelForPhysicalLanguage(value)).join(", ");
+}
+
+function getPhysicalLanguageOptions() {
+  const copy = translations[state.language];
+  const values = new Set();
+  let hasUnknown = false;
+
+  (state.data?.games || []).forEach((game) => {
+    if (Array.isArray(game.physicalLanguages) && game.physicalLanguages.length) {
+      game.physicalLanguages.forEach((value) => values.add(value));
+    } else {
+      hasUnknown = true;
+    }
+  });
+
+  const options = [["", copy.anyOption]];
+  [...values]
+    .sort((left, right) => labelForPhysicalLanguage(left).localeCompare(labelForPhysicalLanguage(right), state.language))
+    .forEach((value) => {
+      options.push([value, labelForPhysicalLanguage(value)]);
+    });
+
+  if (hasUnknown) options.push(["unknown", copy.physicalLanguageUnknown]);
+  return options;
+}
+
+function getPhysicalLanguageFilterOptions() {
+  const copy = translations[state.language];
+  const values = new Set();
+  let hasUnknown = false;
+
+  (state.data?.games || []).forEach((game) => {
+    if (Array.isArray(game.physicalLanguages) && game.physicalLanguages.length) {
+      game.physicalLanguages.forEach((value) => values.add(value));
+    } else {
+      hasUnknown = true;
+    }
+  });
+
+  const shortLabel = (value) => {
+    if (value === "unknown") return state.language === "es" ? "Sin dato" : "Unknown";
+    const normalized = String(value || "").trim().toLowerCase();
+    return {
+      english: state.language === "es" ? "Inglés" : "English",
+      spanish: state.language === "es" ? "Español" : "Spanish",
+      portuguese: state.language === "es" ? "Portugués" : "Portuguese",
+      catalan: state.language === "es" ? "Catalán" : "Catalan",
+      french: state.language === "es" ? "Francés" : "French",
+      german: state.language === "es" ? "Alemán" : "German",
+      italian: state.language === "es" ? "Italiano" : "Italian"
+    }[normalized] || labelForPhysicalLanguage(value);
+  };
+
+  const options = [["", copy.anyCompact]];
+  [...values]
+    .sort((left, right) => labelForPhysicalLanguage(left).localeCompare(labelForPhysicalLanguage(right), state.language))
+    .forEach((value) => {
+      options.push([value, shortLabel(value)]);
+    });
+
+  if (hasUnknown) options.push(["unknown", shortLabel("unknown")]);
+  return options;
 }
 
 function labelForAgeBand(value) {

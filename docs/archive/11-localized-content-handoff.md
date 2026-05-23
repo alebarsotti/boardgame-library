@@ -1,7 +1,7 @@
 # Localized Content Implementation Checklist
 
-Status: Landed checklist
-Related docs: 07-spec-ai-assisted-localized-content.md, README.md
+Status: Implemented reference note
+Related docs: ./07-spec-ai-assisted-localized-content.md, ../README.md
 
 This note records the localized-content work that has already landed. It is kept as a reference checklist, not as an active roadmap spec.
 

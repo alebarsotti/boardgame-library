@@ -13,8 +13,7 @@ The root project [`README.md`](../README.md) should stay focused on setup, data 
 ## Current Specs
 
 - [`app-overview.md`](./app-overview.md): product overview, goals, current capabilities, and present limitations
-- [`07-spec-ai-assisted-localized-content.md`](./07-spec-ai-assisted-localized-content.md): add a cached AI-assisted layer for bilingual summaries and future localized content generation
-- [`08-spec-expansion-curation-fallbacks.md`](./08-spec-expansion-curation-fallbacks.md): add manual curation and non-token fallback strategies for unresolved expansion relationships
+- [`08-spec-expansion-curation-fallbacks.md`](./08-spec-expansion-curation-fallbacks.md): postponed follow-up for manual curation and non-token fallback strategies for unresolved expansion relationships
 
 ## Technical References
 
@@ -27,6 +26,7 @@ Completed specs should be moved out of the active roadmap and into [`archive/`](
 
 Recently archived:
 
+- [`archive/07-spec-ai-assisted-localized-content.md`](./archive/07-spec-ai-assisted-localized-content.md): shipped the local-first localized-content generation and bilingual dataset model
 - [`archive/06-spec-visual-design-system-refresh.md`](./archive/06-spec-visual-design-system-refresh.md): shipped the broader visual refresh with theme preferences, section identity, and refreshed typography hierarchy
 - [`archive/00-spec-remove-name-overrides-ui.md`](./archive/00-spec-remove-name-overrides-ui.md): removed the current game-detail controls for editing names and importing or exporting overrides
 - [`archive/01-spec-game-content-enrichment.md`](./archive/01-spec-game-content-enrichment.md): shipped the generated summary, description, categories, mechanics, and cover-art enrichment baseline
@@ -36,6 +36,7 @@ Recently archived:
 - [`archive/05-spec-random-picker-experience.md`](./archive/05-spec-random-picker-experience.md): shipped the dedicated Random page, reveal flow, ephemeral history, and richer multi-result decision surface
 - [`archive/09-spec-post-ia-layout-polish.md`](./archive/09-spec-post-ia-layout-polish.md): shipped the post-IA spacing, density, hierarchy, and page-balance polish pass
 - [`archive/10-spec-ui-ux-review-followups.md`](./archive/10-spec-ui-ux-review-followups.md): shipped the follow-up polish pass for browse controls, active-filter summaries, and view toggle clarity
+- [`archive/11-localized-content-handoff.md`](./archive/11-localized-content-handoff.md): captured the landed localized-content checklist and follow-up evaluation notes
 
 Archived specs should keep their numbered filename so the implementation history remains easy to follow.
 
