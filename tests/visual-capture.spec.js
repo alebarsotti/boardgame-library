@@ -8,6 +8,8 @@ async function openPageByNav(page, label) {
 test("capture representative PR screenshots", async ({ browser, page }, testInfo) => {
   await page.goto("/index.html", { waitUntil: "networkidle" });
   await expect(page.locator("#theme-segment-header")).toBeVisible();
+  await page.getByRole("button", { name: "Claro", exact: true }).first().click();
+  await expect(page.locator("body")).toHaveAttribute("data-theme", "light");
 
   await page.screenshot({ path: testInfo.outputPath("home-light.png"), fullPage: true });
 
