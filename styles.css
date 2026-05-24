@@ -2041,8 +2041,7 @@ body[data-theme="dark"] .game-card__badge {
   cursor: pointer;
 }
 
-body[data-theme="dark"] .modal__close,
-body[data-theme="dark"] .site-footer a {
+body[data-theme="dark"] .modal__close {
   color: var(--accent);
 }
 
@@ -2076,8 +2075,45 @@ body[data-theme="dark"] .site-footer a {
 .expansion-card strong { font-size: 1rem; }
 .expansion-card span { color: var(--muted); }
 .mobile-only { display: none; }
-.site-footer { padding: 20px 8px 0; text-align: center; color: var(--muted); font-size: 0.92rem; }
-.site-footer a { color: var(--accent-strong); font-weight: 800; }
+.site-footer {
+  padding: 20px 8px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.site-footer__attribution {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+.site-footer__brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.site-footer__brand img {
+  display: block;
+  width: 200px;
+  max-width: min(200px, 70vw);
+  height: auto;
+}
+
+.site-footer__brand:hover {
+  transform: translateY(-1px);
+}
+
+.site-footer__brand:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent) 56%, white 44%);
+  outline-offset: 3px;
+}
 
 @media (max-width: 1080px) {
   .layout,
@@ -2114,6 +2150,14 @@ body[data-theme="dark"] .site-footer a {
 
   #settings-panel .settings-grid {
     grid-template-columns: 1fr;
+  }
+
+  .site-footer__attribution {
+    gap: 8px;
+  }
+
+  .site-footer__brand img {
+    max-width: min(180px, 72vw);
   }
 }
 
