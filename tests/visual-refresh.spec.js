@@ -12,6 +12,8 @@ test("theme controls and section identities render across desktop and mobile", a
   await expect(page.locator("#theme-segment-header")).toBeVisible();
   await expect(page.locator("body")).toHaveAttribute("data-page", "home");
   await expect(page.locator("body")).toHaveAttribute("data-theme", "dark");
+  await expect(page.locator(".site-footer__brand img")).toBeVisible();
+  await expect(page.locator(".site-footer__brand")).toHaveAttribute("href", "https://boardgamegeek.com/");
 
   await page.getByRole("button", { name: "Explorar", exact: true }).click();
   await expect(page.locator("body")).toHaveAttribute("data-page", "browse");
@@ -45,6 +47,8 @@ test("theme controls and section identities render across desktop and mobile", a
   });
   const mobilePage = await mobile.newPage();
   await mobilePage.goto("http://127.0.0.1:4173/index.html", { waitUntil: "networkidle" });
+  await expect(mobilePage.locator(".site-footer__brand img")).toBeVisible();
+  await expect(mobilePage.locator(".site-footer__brand")).toHaveAttribute("href", "https://boardgamegeek.com/");
   await mobilePage.getByRole("button", { name: "Ajustes", exact: true }).click();
   await expect(mobilePage.locator(".theme-switch")).toBeVisible();
   await expect(mobilePage.locator("#theme-segment-settings")).toBeVisible();
