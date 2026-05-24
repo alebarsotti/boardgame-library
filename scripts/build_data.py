@@ -143,6 +143,21 @@ def read_json_map(path: Path) -> dict[str, Any]:
     return parsed if isinstance(parsed, dict) else {}
 
 
+def read_existing_payload(path: Path) -> dict[str, Any] | None:
+    if not path.exists():
+        return None
+    try:
+        parsed = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return None
+    if not isinstance(parsed, dict):
+        return None
+    games = parsed.get("games")
+    if not isinstance(games, list):
+        return None
+    return parsed
+
+
 def select_rows(
     rows: list[dict[str, str]],
     *,
@@ -727,6 +742,57 @@ def ensure_deterministic_localized_content(game: dict[str, Any]) -> None:
     game["summary"] = summary
 
 
+PRESERVED_ENRICHMENT_FIELDS = (
+    "originalName",
+    "description",
+    "summary",
+    "categories",
+    "mechanics",
+    "bggItemType",
+    "dependencyType",
+    "requiresGameId",
+    "requiresGameName",
+    "expansionIds",
+    "thumbnailUrl",
+    "imageUrl",
+)
+
+
+def preserve_existing_enrichment(
+    games: list[dict[str, Any]],
+    *,
+    existing_payload: dict[str, Any] | None,
+) -> None:
+    if not existing_payload:
+        return
+
+    existing_games = existing_payload.get("games", [])
+    if not isinstance(existing_games, list):
+        return
+
+    existing_by_id = {
+        game.get("id"): game
+        for game in existing_games
+        if isinstance(game, dict) and game.get("id") is not None
+    }
+
+    for game in games:
+        game_id = game.get("id")
+        if game_id is None:
+            continue
+        existing = existing_by_id.get(game_id)
+        if not isinstance(existing, dict):
+            continue
+        for field in PRESERVED_ENRICHMENT_FIELDS:
+            if field not in existing:
+                continue
+            value = existing[field]
+            if isinstance(value, (dict, list)):
+                game[field] = json.loads(json.dumps(value))
+            else:
+                game[field] = value
+
+
 def content_fingerprint(source_text: str, *, field: str, language: str, model: str, profile: str, prompt_version: str, parameters: dict[str, Any]) -> str:
     payload = json.dumps(
         {
@@ -989,6 +1055,7 @@ def populate_from_cache(
     game_id: int,
     field: str,
     fingerprints: dict[str, str],
+    allow_stale: bool = False,
 ) -> set[str]:
     resolved: set[str] = set()
     node = normalize_localized_text(game.get(field))
@@ -997,9 +1064,9 @@ def populate_from_cache(
         entry = entries.get(cache_key(game_id, field, language))
         if (
             isinstance(entry, dict)
-            and entry.get("fingerprint") == fingerprints[language]
             and isinstance(entry.get("content"), str)
             and entry["content"].strip()
+            and (allow_stale or entry.get("fingerprint") == fingerprints[language])
         ):
             node[language] = entry["content"].strip()
             resolved.add(language)
@@ -1058,40 +1125,67 @@ def apply_localized_content(
     generation_options = dict(profile_defaults["options"])
     profile = mode
 
-    try:
-        client = OllamaClient(ollama_host, ollama_timeout_seconds)
-        model_names = client.list_models()
-    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, json.JSONDecodeError) as error:
-        message = f"localized content generation skipped because Ollama is not available at {ollama_host}: {error}"
-        if fail_on_error:
-            raise LocalizedGenerationFailure(message) from error
-        warn(message)
-        return
-
-    if resolved_model not in model_names:
-        message = (
-            f"localized content generation skipped because model '{resolved_model}' is not installed in Ollama. "
-            f"Run: ollama pull {resolved_model}"
-        )
-        if fail_on_error:
-            raise LocalizedGenerationFailure(message)
-        warn(message)
-        return
-
     cache = load_localized_cache(cache_path)
     eligible_games: list[dict[str, Any]] = []
+    cache_entries = cache.get("entries", {})
     for game in games:
         game_id = game.get("id")
         if game_id is None:
             continue
         ensure_deterministic_localized_content(game)
         source_description = normalize_generation_source(get_localized_text(game.get("description"), "en"))
-        if source_description:
+        has_cached_summary = any(
+            isinstance(cache_entries.get(cache_key(int(game_id), "summary", language)), dict)
+            and str(cache_entries[cache_key(int(game_id), "summary", language)].get("content", "") or "").strip()
+            for language in LOCALIZED_LANGUAGES
+        )
+        has_cached_description = any(
+            isinstance(cache_entries.get(cache_key(int(game_id), "description", language)), dict)
+            and str(cache_entries[cache_key(int(game_id), "description", language)].get("content", "") or "").strip()
+            for language in LOCALIZED_LANGUAGES
+        )
+        if source_description or has_cached_summary or has_cached_description:
             eligible_games.append(game)
 
     if not eligible_games:
         info("Localized generation skipped because no eligible games had source descriptions.")
         return
+
+    client: OllamaClient | None = None
+    generation_ready = False
+    generation_checked = False
+
+    def ensure_generation_client() -> bool:
+        nonlocal client, generation_ready, generation_checked
+        if generation_checked:
+            return generation_ready
+
+        generation_checked = True
+        try:
+            candidate = OllamaClient(ollama_host, ollama_timeout_seconds)
+            model_names = candidate.list_models()
+        except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, json.JSONDecodeError) as error:
+            message = f"localized content generation skipped because Ollama is not available at {ollama_host}: {error}"
+            if fail_on_error:
+                raise LocalizedGenerationFailure(message) from error
+            warn(message)
+            generation_ready = False
+            return False
+
+        if resolved_model not in model_names:
+            message = (
+                f"localized content generation skipped because model '{resolved_model}' is not installed in Ollama. "
+                f"Run: ollama pull {resolved_model}"
+            )
+            if fail_on_error:
+                raise LocalizedGenerationFailure(message)
+            warn(message)
+            generation_ready = False
+            return False
+
+        client = candidate
+        generation_ready = True
+        return True
 
     info(
         "Starting localized generation: "
@@ -1106,6 +1200,7 @@ def apply_localized_content(
         game_cache_changed = False
         game_name = game.get("name", "")
         info(f"[{index}/{len(eligible_games)}] {game_name} [{game_id}]")
+        allow_stale_cache = not source_description
 
         summary_fingerprints = {
             language: content_fingerprint(
@@ -1142,11 +1237,32 @@ def apply_localized_content(
             cached_summary_languages: set[str] = set()
             cached_description_languages: set[str] = set()
         else:
-            cached_summary_languages = populate_from_cache(game, cache=cache, game_id=int(game_id), field="summary", fingerprints=summary_fingerprints)
-            cached_description_languages = populate_from_cache(game, cache=cache, game_id=int(game_id), field="description", fingerprints=description_fingerprints)
+            cached_summary_languages = populate_from_cache(
+                game,
+                cache=cache,
+                game_id=int(game_id),
+                field="summary",
+                fingerprints=summary_fingerprints,
+                allow_stale=allow_stale_cache,
+            )
+            cached_description_languages = populate_from_cache(
+                game,
+                cache=cache,
+                game_id=int(game_id),
+                field="description",
+                fingerprints=description_fingerprints,
+                allow_stale=allow_stale_cache,
+            )
 
         if cached_summary_languages != set(LOCALIZED_LANGUAGES):
             try:
+                if not ensure_generation_client():
+                    info("  summary: skipped")
+                    if game_cache_changed:
+                        save_localized_cache(cache_path, cache)
+                        info("  cache: saved")
+                    info(f"  done in {format_seconds(time.perf_counter() - game_started_at)}")
+                    continue
                 summary_started_at = time.perf_counter()
                 summary_payload = invoke_with_retries(
                     lambda: client.generate_json(
@@ -1193,6 +1309,13 @@ def apply_localized_content(
 
         if cached_description_languages != set(LOCALIZED_LANGUAGES):
             try:
+                if not ensure_generation_client():
+                    info("  description: skipped")
+                    if game_cache_changed:
+                        save_localized_cache(cache_path, cache)
+                        info("  cache: saved")
+                    info(f"  done in {format_seconds(time.perf_counter() - game_started_at)}")
+                    continue
                 description_started_at = time.perf_counter()
                 description_payload = invoke_with_retries(
                     lambda: client.generate_json(
@@ -1242,6 +1365,7 @@ def build_payload(
     download_images: bool,
     images_directory: Path,
     output_path: Path,
+    existing_payload: dict[str, Any] | None,
     *,
     localized_mode: str,
     local_model: str,
@@ -1257,6 +1381,8 @@ def build_payload(
 
     if token and games_by_id:
         enrich_games(games_by_id, token, download_images, images_directory, output_path)
+    else:
+        preserve_existing_enrichment(games, existing_payload=existing_payload)
 
     for game in games:
         ensure_deterministic_localized_content(game)
@@ -1350,6 +1476,9 @@ def main() -> int:
         return 1
 
     name_overrides = read_json_map(name_overrides_path)
+    existing_payload = read_existing_payload(output_path)
+    if existing_payload is None and output_path != DEFAULT_OUTPUT_PATH:
+        existing_payload = read_existing_payload(DEFAULT_OUTPUT_PATH)
     try:
         payload = build_payload(
             rows,
@@ -1358,6 +1487,7 @@ def main() -> int:
             args.download_images,
             images_directory,
             output_path,
+            existing_payload,
             localized_mode=localized_mode,
             local_model=args.local_model,
             localized_cache_path=localized_cache_path,
