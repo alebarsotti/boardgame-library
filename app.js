@@ -47,6 +47,7 @@ const translations = {
     bestPlayersLabel: "Mejor cantidad",
     ageLabel: "Edad",
     sortLabel: "Ordenar por",
+    sortDirectionLabel: "Dirección",
     viewLabel: "Vista",
     filterModeExact: "Exacto",
     filterModeUntil: "Hasta",
@@ -128,6 +129,8 @@ const translations = {
     sortWeight: "Peso",
     sortTime: "Duración",
     sortMaxPlayers: "Máx. jugadores",
+    sortAscending: "Ascendente",
+    sortDescending: "Descendente",
     recDuo: "Ideal para 2",
     recQuick: "Rápidos",
     recHeavy: "Pesados",
@@ -244,6 +247,7 @@ const translations = {
     bestPlayersLabel: "Best count",
     ageLabel: "Age",
     sortLabel: "Sort by",
+    sortDirectionLabel: "Direction",
     viewLabel: "View",
     filterModeExact: "Exact",
     filterModeUntil: "Up to",
@@ -324,6 +328,8 @@ const translations = {
     sortWeight: "Weight",
     sortTime: "Duration",
     sortMaxPlayers: "Max players",
+    sortAscending: "Ascending",
+    sortDescending: "Descending",
     recDuo: "Great at 2",
     recQuick: "Quick games",
     recHeavy: "Heavy games",
@@ -437,6 +443,7 @@ const state = {
     bestPlayers: "",
     age: "",
     sort: "name",
+    sortDirection: "asc",
     view: "grid",
     recommendation: "",
     section: "owned"
@@ -470,6 +477,7 @@ const CONTROL_CONTAINER_MAP = {
   bestPlayers: "bestPlayersFilter",
   age: "ageFilter",
   sort: "sortFilter",
+  sortDirection: "sortDirectionFilter",
   view: "viewFilter",
   recommendation: "recommendationChips"
 };
@@ -502,6 +510,7 @@ function cacheElements() {
   elements.bestPlayersFilter = document.querySelector("#best-players-filter");
   elements.ageFilter = document.querySelector("#age-filter");
   elements.sortFilter = document.querySelector("#sort-filter");
+  elements.sortDirectionFilter = document.querySelector("#sort-direction-filter");
   elements.viewFilter = document.querySelector("#view-filter");
   elements.resultsCount = document.querySelector("#results-count");
   elements.gamesGrid = document.querySelector("#games-grid");
@@ -554,6 +563,7 @@ function bindEvents() {
   elements.filtersPanel.addEventListener("change", handleFilterControlChange);
   elements.viewFilter.addEventListener("click", handleFilterControlClick);
   elements.sortFilter?.addEventListener("change", handleFilterControlChange);
+  elements.sortDirectionFilter?.addEventListener("click", handleFilterControlClick);
   elements.activeFilters.addEventListener("click", (event) => {
     const resetButton = event.target.closest("[data-reset-filters]");
     if (resetButton && !resetButton.disabled) resetFilters();
@@ -657,6 +667,7 @@ function resetFilters() {
     bestPlayers: "",
     age: "",
     sort: "name",
+    sortDirection: "asc",
     view: state.preferences.view || "grid",
     recommendation: "",
     section: getEffectiveSection()
@@ -822,6 +833,12 @@ function viewIconList() {
   return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M8 6h12"/><path d="M8 12h12"/><path d="M8 18h12"/><circle cx="4.5" cy="6" r="1.1" fill="currentColor" stroke="none"/><circle cx="4.5" cy="12" r="1.1" fill="currentColor" stroke="none"/><circle cx="4.5" cy="18" r="1.1" fill="currentColor" stroke="none"/></svg>';
 }
 
+function sortDirectionIcon(direction) {
+  return direction === "asc"
+    ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 18V6"/><path d="m7.5 10.5 4.5-4.5 4.5 4.5"/></svg>'
+    : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 6v12"/><path d="m7.5 13.5 4.5 4.5 4.5-4.5"/></svg>';
+}
+
 function getFilterControlDefinitions() {
   const copy = translations[state.language];
   return {
@@ -855,6 +872,10 @@ function getFilterControlDefinitions() {
       style: "select",
       options: [["name", copy.sortName], ["rating", copy.sortRating], ["rank", copy.sortRank], ["weight", copy.sortWeight], ["time", copy.sortTime], ["maxPlayers", copy.sortMaxPlayers]]
     },
+    sortDirection: {
+      style: "choice",
+      options: [["asc", copy.sortAscending], ["desc", copy.sortDescending]]
+    },
     view: {
       style: "segment",
       toggleable: false,
@@ -878,6 +899,8 @@ function renderFilterControls() {
       ? "toolbar__view filter-control"
       : key === "sort"
         ? "toolbar__sort filter-control"
+        : key === "sortDirection"
+          ? "toolbar__sort-direction filter-control"
         : "filter-control";
     if (definition.style === "multi") {
       container.className = `${baseClass} chip-list filter-control--multi`;
@@ -902,8 +925,12 @@ function renderFilterControls() {
       renderViewToggle(container, definition.options);
       return;
     }
+    if (key === "sortDirection") {
+      renderSortDirectionToggle(container, definition.options);
+      return;
+    }
     if (definition.style === "choice") {
-      renderChoiceToggle(container, key, definition.options);
+      renderChoiceToggle(container, key, definition.options, baseClass);
       return;
     }
     container.className = definition.style === "segment" ? `${baseClass} segmented-control` : `${baseClass} chip-list`;
@@ -917,9 +944,9 @@ function renderFilterControls() {
   });
 }
 
-function renderChoiceToggle(container, key, options) {
+function renderChoiceToggle(container, key, options, baseClass = "filter-control") {
   const activeIndex = Math.max(0, options.findIndex(([value]) => value === state.filters[key]));
-  container.className = "filter-control choice-toggle";
+  container.className = `${baseClass} choice-toggle`;
   const optionsSignature = options.map(([value, label]) => `${value}:${label}`).join("|");
   const currentTrack = container.querySelector(".choice-toggle__track");
   if (!currentTrack || currentTrack.dataset.choiceOptions !== optionsSignature) {
@@ -1005,6 +1032,49 @@ function renderViewToggle(container, options) {
     const value = button.dataset.filterValue || "grid";
     const label = options.find(([option]) => option === value)?.[1] || value;
     const isActive = state.filters.view === value;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", isActive ? "true" : "false");
+    button.setAttribute("aria-label", label);
+    button.setAttribute("title", label);
+  });
+}
+
+function renderSortDirectionToggle(container, options) {
+  const activeIndex = Math.max(0, options.findIndex(([value]) => value === state.filters.sortDirection));
+  container.className = "toolbar__sort-direction filter-control";
+  if (!container.querySelector(".sort-direction-toggle__track")) {
+    container.innerHTML = `
+      <div class="sort-direction-toggle__track" data-sort-direction-active="${escapeAttribute(String(activeIndex))}">
+        <span class="sort-direction-toggle__thumb" aria-hidden="true"></span>
+        ${options
+          .map(([value, label]) => {
+            const isActive = state.filters.sortDirection === value;
+            return `
+              <button
+                class="sort-direction-toggle__button ${isActive ? "is-active" : ""}"
+                data-filter-key="sortDirection"
+                data-filter-value="${escapeAttribute(value)}"
+                type="button"
+                aria-pressed="${isActive ? "true" : "false"}"
+                aria-label="${escapeAttribute(label)}"
+                title="${escapeAttribute(label)}"
+              >
+                ${sortDirectionIcon(value)}
+              </button>
+            `;
+          })
+          .join("")}
+      </div>
+    `;
+  }
+  const track = container.querySelector(".sort-direction-toggle__track");
+  if (track) {
+    track.dataset.sortDirectionActive = String(activeIndex);
+  }
+  container.querySelectorAll("[data-filter-key='sortDirection']").forEach((button) => {
+    const value = button.dataset.filterValue || "asc";
+    const label = options.find(([option]) => option === value)?.[1] || value;
+    const isActive = state.filters.sortDirection === value;
     button.classList.toggle("is-active", isActive);
     button.setAttribute("aria-pressed", isActive ? "true" : "false");
     button.setAttribute("aria-label", label);
@@ -1221,20 +1291,28 @@ function getFilteredGames() {
     .sort(sortGames);
 }
 function sortGames(left, right) {
+  let comparison = 0;
   switch (state.filters.sort) {
     case "rating":
-      return (right.averageRating ?? -1) - (left.averageRating ?? -1) || getDisplayName(left).localeCompare(getDisplayName(right));
+      comparison = (right.averageRating ?? -1) - (left.averageRating ?? -1) || getDisplayName(left).localeCompare(getDisplayName(right));
+      break;
     case "rank":
-      return (left.rank ?? Number.MAX_SAFE_INTEGER) - (right.rank ?? Number.MAX_SAFE_INTEGER) || getDisplayName(left).localeCompare(getDisplayName(right));
+      comparison = (left.rank ?? Number.MAX_SAFE_INTEGER) - (right.rank ?? Number.MAX_SAFE_INTEGER) || getDisplayName(left).localeCompare(getDisplayName(right));
+      break;
     case "weight":
-      return (right.avgWeight ?? -1) - (left.avgWeight ?? -1) || getDisplayName(left).localeCompare(getDisplayName(right));
+      comparison = (right.avgWeight ?? -1) - (left.avgWeight ?? -1) || getDisplayName(left).localeCompare(getDisplayName(right));
+      break;
     case "time":
-      return (left.playingTime ?? Number.MAX_SAFE_INTEGER) - (right.playingTime ?? Number.MAX_SAFE_INTEGER) || getDisplayName(left).localeCompare(getDisplayName(right));
+      comparison = (left.playingTime ?? Number.MAX_SAFE_INTEGER) - (right.playingTime ?? Number.MAX_SAFE_INTEGER) || getDisplayName(left).localeCompare(getDisplayName(right));
+      break;
     case "maxPlayers":
-      return (right.maxPlayers ?? -1) - (left.maxPlayers ?? -1) || getDisplayName(left).localeCompare(getDisplayName(right));
+      comparison = (right.maxPlayers ?? -1) - (left.maxPlayers ?? -1) || getDisplayName(left).localeCompare(getDisplayName(right));
+      break;
     default:
-      return getDisplayName(left).localeCompare(getDisplayName(right));
+      comparison = getDisplayName(left).localeCompare(getDisplayName(right));
+      break;
   }
+  return state.filters.sortDirection === "desc" ? comparison * -1 : comparison;
 }
 
 function matchesRecommendation(game, recommendation) {

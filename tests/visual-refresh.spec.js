@@ -1,5 +1,11 @@
 const { test, expect, devices } = require("@playwright/test");
 
+async function getVisibleTitles(page) {
+  return page.locator(".game-card__title").evaluateAll((nodes) =>
+    nodes.map((node) => node.textContent?.trim() || "").filter(Boolean)
+  );
+}
+
 test("theme controls and section identities render across desktop and mobile", async ({ browser, page }) => {
   await page.goto("/index.html", { waitUntil: "networkidle" });
 
@@ -43,4 +49,22 @@ test("theme controls and section identities render across desktop and mobile", a
   await expect(mobilePage.locator(".theme-switch")).toBeVisible();
   await expect(mobilePage.locator("#theme-segment-settings")).toBeVisible();
   await mobile.close();
+});
+
+test("browse supports ascending and descending sort direction", async ({ page }) => {
+  await page.goto("/index.html", { waitUntil: "networkidle" });
+  await page.getByRole("button", { name: "Explorar", exact: true }).click();
+  await expect(page.locator("body")).toHaveAttribute("data-page", "browse");
+
+  const sortSelect = page.locator("#sort-filter select");
+  await sortSelect.selectOption("name");
+
+  await page.getByRole("button", { name: "Ascending", exact: true }).click();
+  const ascendingTitles = await getVisibleTitles(page);
+  expect(ascendingTitles.length).toBeGreaterThan(1);
+  expect(ascendingTitles).toEqual([...ascendingTitles].sort((left, right) => left.localeCompare(right, "es")));
+
+  await page.getByRole("button", { name: "Descending", exact: true }).click();
+  const descendingTitles = await getVisibleTitles(page);
+  expect(descendingTitles).toEqual([...descendingTitles].sort((left, right) => right.localeCompare(left, "es")));
 });
