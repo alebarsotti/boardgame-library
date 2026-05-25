@@ -440,6 +440,31 @@ html[lang="es"] .brand-title {
 }
 
 .hero__actions { margin-top: 4px; }
+.inline-icon-label,
+.field__label,
+.chip__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.inline-icon-label__icon,
+.field__label__icon,
+.chip__label__icon,
+.chip__icon {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  display: block;
+}
+
+.page-nav .inline-icon-label__icon,
+.button .inline-icon-label__icon {
+  width: 15px;
+  height: 15px;
+}
+
 .button {
   display: inline-flex;
   align-items: center;
@@ -458,6 +483,10 @@ html[lang="es"] .brand-title {
     border-color var(--transition-fast),
     box-shadow var(--transition-fast);
   text-decoration: none;
+}
+
+.button .inline-icon-label {
+  justify-content: center;
 }
 
 .button:hover { transform: translateY(-1px); }
@@ -1129,6 +1158,9 @@ body[data-page="random"] .random-history-card {
 .recommendations-card { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
 .field { display: grid; gap: 8px; width: 100%; margin-top: 14px; }
 .field span { font-size: 0.92rem; font-weight: 700; }
+.field__label {
+  color: inherit;
+}
 .field input {
   width: 100%;
   min-height: 48px;
@@ -1424,6 +1456,10 @@ body[data-theme="dark"] .toolbar__actions .button--ghost {
   gap: 10px;
 }
 
+.active-filters__list .chip--with-icon {
+  gap: 8px;
+}
+
 .active-filters__empty {
   color: var(--muted);
   font-size: 0.86rem;
@@ -1479,6 +1515,9 @@ body[data-theme="dark"] .segment-button {
 }
 
 .segment-button { min-height: 38px; padding: 0 14px; cursor: pointer; }
+.page-nav .segment-button {
+  justify-content: center;
+}
 .segment-button.is-active,
 .chip--active {
   color: #fffaf6;
@@ -2233,6 +2272,10 @@ body[data-theme="dark"] .modal__close {
   .button {
     min-height: 40px;
     padding: 0 14px;
+  }
+  .button .inline-icon-label,
+  .page-nav .inline-icon-label {
+    gap: 7px;
   }
   .segment-button {
     min-height: 34px;
