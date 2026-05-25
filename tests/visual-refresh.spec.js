@@ -14,10 +14,17 @@ test("theme controls and section identities render across desktop and mobile", a
   await expect(page.locator("body")).toHaveAttribute("data-theme", "dark");
   await expect(page.locator(".site-footer__brand img")).toBeVisible();
   await expect(page.locator(".site-footer__brand")).toHaveAttribute("href", "https://boardgamegeek.com/");
+  await expect(page.locator(".page-nav .segment-button svg")).toHaveCount(5);
+  await expect(page.locator("#home-browse-action svg")).toBeVisible();
+  await expect(page.locator("#home-random-action svg")).toBeVisible();
 
   await page.getByRole("button", { name: "Explorar", exact: true }).click();
   await expect(page.locator("body")).toHaveAttribute("data-page", "browse");
   await expect(page.locator("#workspace-panel")).toBeVisible();
+  await expect(page.locator("[data-i18n='searchLabel'] svg")).toBeVisible();
+  await expect(page.locator("#recommendation-chips .chip svg").first()).toBeVisible();
+  await page.getByRole("button", { name: "Rápidos", exact: true }).click();
+  await expect(page.locator(".active-filters__list .chip svg").first()).toBeVisible();
 
   await page.getByRole("button", { name: "Archivo", exact: true }).click();
   await expect(page.locator("body")).toHaveAttribute("data-page", "archive");
@@ -26,6 +33,8 @@ test("theme controls and section identities render across desktop and mobile", a
   await page.getByRole("button", { name: "Azar", exact: true }).click();
   await expect(page.locator("body")).toHaveAttribute("data-page", "random");
   await expect(page.locator("#random-panel")).toBeVisible();
+  await expect(page.locator("#random-browse-action svg")).toBeVisible();
+  await expect(page.locator("#random-page-trigger svg")).toBeVisible();
 
   await page.getByRole("button", { name: "Ajustes", exact: true }).click();
   await expect(page.locator("body")).toHaveAttribute("data-page", "settings");
@@ -49,6 +58,8 @@ test("theme controls and section identities render across desktop and mobile", a
   await mobilePage.goto("http://127.0.0.1:4173/index.html", { waitUntil: "networkidle" });
   await expect(mobilePage.locator(".site-footer__brand img")).toBeVisible();
   await expect(mobilePage.locator(".site-footer__brand")).toHaveAttribute("href", "https://boardgamegeek.com/");
+  await mobilePage.getByRole("button", { name: "Explorar", exact: true }).click();
+  await expect(mobilePage.locator("#open-filters svg")).toBeVisible();
   await mobilePage.getByRole("button", { name: "Ajustes", exact: true }).click();
   await expect(mobilePage.locator(".theme-switch")).toBeVisible();
   await expect(mobilePage.locator("#theme-segment-settings")).toBeVisible();

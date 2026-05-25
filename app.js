@@ -413,6 +413,18 @@ const translations = {
 };
 
 const icons = {
+  home:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m3 11 9-7 9 7"/><path d="M5 10.5V20h14v-9.5"/><path d="M9 20v-6h6v6"/></svg>',
+  browse:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>',
+  archive:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="4" rx="1.4"/><path d="M5 9.5h14V19a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2Z"/><path d="M10 13h4"/></svg>',
+  random:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="9" cy="9" r="1.2" fill="currentColor" stroke="none"/><circle cx="15" cy="15" r="1.2" fill="currentColor" stroke="none"/><circle cx="9" cy="15" r="1.2" fill="currentColor" stroke="none"/><circle cx="15" cy="9" r="1.2" fill="currentColor" stroke="none"/></svg>',
+  settings:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 8.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Z"/><path d="M4.8 13.2a1 1 0 0 1-.2-1.1l.8-1.9a1 1 0 0 0-.2-1.1l-1.2-1.3 1.8-3.1 1.7.5a1 1 0 0 0 1-.3l1.4-1.2h3.6l1.4 1.2a1 1 0 0 0 1 .3l1.7-.5 1.8 3.1-1.2 1.3a1 1 0 0 0-.2 1.1l.8 1.9a1 1 0 0 1-.2 1.1l-1.4 1.4a1 1 0 0 0-.3 1l.3 1.9-3.1 1.8-1.3-1.2a1 1 0 0 0-1.1-.2l-1.9.8a1 1 0 0 1-1.1 0l-1.9-.8a1 1 0 0 0-1.1.2l-1.3 1.2-3.1-1.8.3-1.9a1 1 0 0 0-.3-1Z"/></svg>',
+  search:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>',
   players:
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
   time: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>',
@@ -425,6 +437,24 @@ const icons = {
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>',
   rating:
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 3 2.9 5.9 6.5 1-4.7 4.6 1.1 6.5L12 18l-5.8 3 1.1-6.5L2.6 9.9l6.5-1z"/></svg>',
+  close:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><path d="M6 6 18 18M18 6 6 18"/></svg>',
+  filter:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16"/><path d="M7 12h10"/><path d="M10 17h4"/></svg>',
+  back:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 6.5-5 5 5 5"/><path d="M19.5 11.5h-10"/></svg>',
+  duo:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8.5" cy="9" r="2.6"/><circle cx="15.5" cy="9" r="2.6"/><path d="M4.5 18a4 4 0 0 1 4-4h0"/><path d="M19.5 18a4 4 0 0 0-4-4h0"/></svg>',
+  quick:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M13 2 6 13h5l-1 9 8-12h-5z"/></svg>',
+  heavy:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 10v4"/><path d="M7 8v8"/><path d="M10 7.5v9"/><path d="M14 7.5v9"/><path d="M17 8v8"/><path d="M20 10v4"/><path d="M10 12h4"/></svg>',
+  teach:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="m3 8.5 9-4 9 4-9 4z"/><path d="M7 10.3v4.2c0 1.5 2.2 3 5 3s5-1.5 5-3v-4.2"/><path d="M21 9v5"/></svg>',
+  solo:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.5"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/></svg>',
+  group:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.2"/><circle cx="5.8" cy="10" r="2.4"/><circle cx="18.2" cy="10" r="2.4"/><path d="M7 19a5 5 0 0 1 10 0"/><path d="M1.8 19a4 4 0 0 1 4-4"/><path d="M22.2 19a4 4 0 0 0-4-4"/></svg>',
   broom:
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>'
 };
@@ -693,21 +723,22 @@ function applyTranslations() {
   renderThemeSegments();
   renderLanguageSegment();
   renderFilterControls();
+  renderStaticIconLabels();
 }
 
 function renderPageNav() {
   const copy = translations[state.language];
   const items = [
-    ["home", copy.navHome],
-    ["browse", copy.navBrowse],
-    ["archive", copy.navArchive],
-    ["random", copy.navRandom],
-    ["settings", copy.navSettings]
+    ["home", copy.navHome, "home"],
+    ["browse", copy.navBrowse, "browse"],
+    ["archive", copy.navArchive, "archive"],
+    ["random", copy.navRandom, "random"],
+    ["settings", copy.navSettings, "settings"]
   ];
   elements.pageNav.innerHTML = items
     .map(
-      ([value, label]) =>
-        `<button class="segment-button ${state.activePage === value ? "is-active" : ""}" data-page="${value}" type="button">${escapeHtml(label)}</button>`
+      ([value, label, icon]) =>
+        `<button class="segment-button ${state.activePage === value ? "is-active" : ""}" data-page="${value}" type="button">${renderIconLabel(label, icon)}</button>`
     )
     .join("");
   elements.pageNav.querySelectorAll("[data-page]").forEach((button) => {
@@ -839,6 +870,48 @@ function sortDirectionIcon(direction) {
     : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 6v12"/><path d="m7.5 13.5 4.5 4.5 4.5-4.5"/></svg>';
 }
 
+function iconMarkup(iconKey, className = "inline-icon-label__icon") {
+  const icon = icons[iconKey];
+  if (!icon) return "";
+  return icon.replace("<svg ", `<svg class="${escapeAttribute(className)}" aria-hidden="true" `);
+}
+
+function renderIconLabel(label, iconKey, className = "inline-icon-label") {
+  return iconKey
+    ? `<span class="${escapeAttribute(className)}">${iconMarkup(iconKey, `${className}__icon`)}<span>${escapeHtml(label)}</span></span>`
+    : escapeHtml(label);
+}
+
+function renderStaticIconLabels() {
+  const copy = translations[state.language];
+  const actionButtons = [
+    ["#home-browse-action", copy.exploreAction, "browse"],
+    ["#home-random-action", copy.openRandomAction, "random"],
+    ["#open-filters", copy.openFilters, "filter"],
+    ["#close-filters", copy.close, "close"],
+    ["#toolbar-random", copy.openRandomAction, "random"],
+    ["#random-browse-action", copy.randomPageOpenWorkspace, "back"],
+    ["#random-page-trigger", copy.randomAction, "random"]
+  ];
+  actionButtons.forEach(([selector, label, icon]) => {
+    const element = document.querySelector(selector);
+    if (element) element.innerHTML = renderIconLabel(label, icon);
+  });
+
+  const filterLabels = [
+    [elements.searchInput?.closest(".field")?.querySelector("[data-i18n='searchLabel']"), copy.searchLabel, "search"],
+    [elements.playersFilter?.closest(".field")?.querySelector("[data-i18n='playersLabel']"), copy.playersLabel, "players"],
+    [elements.timeFilter?.closest(".field")?.querySelector("[data-i18n='durationLabel']"), copy.durationLabel, "time"],
+    [elements.weightFilter?.closest(".field")?.querySelector("[data-i18n='weightLabel']"), copy.weightLabel, "weight"],
+    [elements.physicalLanguageFilter?.closest(".field")?.querySelector("[data-i18n='editionLanguageLabel']"), copy.editionLanguageLabel, "language"],
+    [elements.bestPlayersFilter?.closest(".field")?.querySelector("[data-i18n='bestPlayersLabel']"), copy.bestPlayersLabel, "players"],
+    [elements.ageFilter?.closest(".field")?.querySelector("[data-i18n='ageLabel']"), copy.ageLabel, "age"]
+  ];
+  filterLabels.forEach(([node, label, icon]) => {
+    if (node) node.innerHTML = renderIconLabel(label, icon, "field__label");
+  });
+}
+
 function getFilterControlDefinitions() {
   const copy = translations[state.language];
   return {
@@ -884,7 +957,7 @@ function getFilterControlDefinitions() {
     recommendation: {
       style: "chips",
       toggleable: true,
-      options: [["duo", copy.recDuo], ["quick", copy.recQuick], ["heavy", copy.recHeavy], ["teach", copy.recTeach], ["solo", copy.recSolo], ["group", copy.recGroup]]
+      options: [["duo", copy.recDuo, "duo"], ["quick", copy.recQuick, "quick"], ["heavy", copy.recHeavy, "heavy"], ["teach", copy.recTeach, "teach"], ["solo", copy.recSolo, "solo"], ["group", copy.recGroup, "group"]]
     }
   };
 }
@@ -935,10 +1008,10 @@ function renderFilterControls() {
     }
     container.className = definition.style === "segment" ? `${baseClass} segmented-control` : `${baseClass} chip-list`;
     container.innerHTML = definition.options
-      .map(([value, label]) => {
+      .map(([value, label, icon]) => {
         const isActive = state.filters[key] === value;
         const buttonClass = definition.style === "segment" ? "segment-button" : "chip chip--interactive";
-        return `<button class="${buttonClass} ${isActive ? "is-active chip--active" : ""}" data-filter-key="${escapeAttribute(key)}" data-filter-value="${escapeAttribute(value)}" type="button" aria-pressed="${isActive ? "true" : "false"}">${escapeHtml(label)}</button>`;
+        return `<button class="${buttonClass} ${isActive ? "is-active chip--active" : ""}" data-filter-key="${escapeAttribute(key)}" data-filter-value="${escapeAttribute(value)}" type="button" aria-pressed="${isActive ? "true" : "false"}">${renderIconLabel(label, icon, "chip__label")}</button>`;
       })
       .join("");
   });
@@ -1398,21 +1471,21 @@ function renderResultsSummary() {
 function renderActiveFilters() {
   const copy = translations[state.language];
   const tags = [];
-  if (state.filters.search) tags.push([copy.filterSearch, state.filters.search]);
-  if (state.filters.players) tags.push([copy.filterPlayers, state.filters.players === "5" ? "5+" : getFilterValueLabel("players", state.filters.players)]);
-  if (Array.isArray(state.filters.duration) && state.filters.duration.length) tags.push([copy.filterDuration, getMultiFilterSummary("duration", state.filters.duration)]);
-  if (Array.isArray(state.filters.weight) && state.filters.weight.length) tags.push([copy.filterWeight, getMultiFilterSummary("weight", state.filters.weight)]);
-  if (state.filters.physicalLanguage) tags.push([copy.filterPhysicalLanguage, labelForPhysicalLanguage(state.filters.physicalLanguage)]);
-  if (state.filters.bestPlayers) tags.push([copy.filterBestPlayers, state.filters.bestPlayers === "5" ? "5+" : getFilterValueLabel("bestPlayers", state.filters.bestPlayers)]);
-  if (state.filters.age) tags.push([copy.filterAge, getFilterValueLabel("age", state.filters.age)]);
-  if (state.filters.recommendation) tags.push(["Rec", getFilterValueLabel("recommendation", state.filters.recommendation)]);
+  if (state.filters.search) tags.push({ icon: "search", label: copy.filterSearch, value: state.filters.search });
+  if (state.filters.players) tags.push({ icon: "players", label: copy.filterPlayers, value: state.filters.players === "5" ? "5+" : getFilterValueLabel("players", state.filters.players) });
+  if (Array.isArray(state.filters.duration) && state.filters.duration.length) tags.push({ icon: "time", label: copy.filterDuration, value: getMultiFilterSummary("duration", state.filters.duration) });
+  if (Array.isArray(state.filters.weight) && state.filters.weight.length) tags.push({ icon: "weight", label: copy.filterWeight, value: getMultiFilterSummary("weight", state.filters.weight) });
+  if (state.filters.physicalLanguage) tags.push({ icon: "language", label: copy.filterPhysicalLanguage, value: labelForPhysicalLanguage(state.filters.physicalLanguage) });
+  if (state.filters.bestPlayers) tags.push({ icon: "players", label: copy.filterBestPlayers, value: state.filters.bestPlayers === "5" ? "5+" : getFilterValueLabel("bestPlayers", state.filters.bestPlayers) });
+  if (state.filters.age) tags.push({ icon: "age", label: copy.filterAge, value: getFilterValueLabel("age", state.filters.age) });
+  if (state.filters.recommendation) tags.push({ icon: getRecommendationIconKey(state.filters.recommendation), label: copy.recommendTitle, value: getFilterValueLabel("recommendation", state.filters.recommendation) });
   const hasFilters = tags.length > 0;
   elements.activeFilters.innerHTML = `
     <div class="active-filters__content">
       <p class="active-filters__title">${escapeHtml(copy.activeFiltersTitle)}</p>
       <div class="active-filters__list">
         ${hasFilters
-          ? tags.map(([label, value]) => `<span class="chip">${escapeHtml(label)}: ${escapeHtml(String(value))}</span>`).join("")
+          ? tags.map(({ icon, label, value }) => `<span class="chip chip--with-icon">${iconMarkup(icon, "chip__icon")}<span>${escapeHtml(label)}: ${escapeHtml(String(value))}</span></span>`).join("")
           : `<span class="active-filters__empty">${escapeHtml(copy.activeFiltersEmpty)}</span>`}
       </div>
     </div>
@@ -2277,6 +2350,17 @@ function getFilterValueLabel(key, value) {
   const definition = getFilterControlDefinitions()[key];
   const option = definition?.options.find(([optionValue]) => optionValue === value);
   return option ? option[1] : value;
+}
+
+function getRecommendationIconKey(value) {
+  return {
+    duo: "duo",
+    quick: "quick",
+    heavy: "heavy",
+    teach: "teach",
+    solo: "solo",
+    group: "group"
+  }[value] || "random";
 }
 
 function getMultiFilterSummary(key, values) {
