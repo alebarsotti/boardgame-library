@@ -1,4 +1,7 @@
+const path = require("path");
+const { pathToFileURL } = require("url");
 const { test, expect, devices } = require("@playwright/test");
+const appUrl = pathToFileURL(path.resolve(__dirname, "../index.html")).href;
 
 async function openPageByNav(page, label) {
   await page.getByRole("button", { name: label, exact: true }).click();
@@ -6,7 +9,7 @@ async function openPageByNav(page, label) {
 }
 
 test("capture representative PR screenshots", async ({ browser, page }, testInfo) => {
-  await page.goto("/index.html", { waitUntil: "networkidle" });
+  await page.goto(appUrl, { waitUntil: "load" });
   await expect(page.locator("#theme-segment-header")).toBeVisible();
   await page.getByRole("button", { name: "Claro", exact: true }).first().click();
   await expect(page.locator("body")).toHaveAttribute("data-theme", "light");
@@ -44,7 +47,7 @@ test("capture representative PR screenshots", async ({ browser, page }, testInfo
     colorScheme: "dark"
   });
   const mobilePage = await mobile.newPage();
-  await mobilePage.goto("http://127.0.0.1:4173/index.html", { waitUntil: "networkidle" });
+  await mobilePage.goto(appUrl, { waitUntil: "load" });
   await mobilePage.getByRole("button", { name: "Ajustes", exact: true }).click();
   await expect(mobilePage.locator(".theme-switch")).toBeVisible();
   await mobilePage.screenshot({ path: testInfo.outputPath("settings-mobile-dark.png"), fullPage: true });

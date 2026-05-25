@@ -22,6 +22,7 @@ DEFAULT_OUTPUT_PATH = PROJECT_ROOT / "data" / "games.json"
 DEFAULT_SCRIPT_OUTPUT_PATH = PROJECT_ROOT / "data" / "games-data.js"
 DEFAULT_IMAGES_DIRECTORY = PROJECT_ROOT / "data" / "images"
 DEFAULT_NAME_OVERRIDES_PATH = PROJECT_ROOT / "data" / "name-overrides.json"
+DEFAULT_IMAGE_OVERRIDES_PATH = PROJECT_ROOT / "data" / "image-overrides.json"
 DEFAULT_LOCALIZED_CACHE_PATH = PROJECT_ROOT / "generated" / "localized-content-cache.json"
 DEFAULT_TOKEN_PATH = PROJECT_ROOT / ".bgg-token"
 DEFAULT_OLLAMA_HOST = "http://127.0.0.1:11434"
@@ -520,6 +521,34 @@ def trim_generated_text(text: str, max_chars: int) -> str:
 def as_relative_image_path(downloaded_path: Path, output_path: Path) -> str:
     images_root = output_path.resolve().parent
     return Path(os.path.relpath(downloaded_path.resolve(), images_root)).as_posix()
+
+
+def normalize_image_override_value(value: Any) -> str:
+    candidate = ""
+    if isinstance(value, str):
+        candidate = value
+    elif isinstance(value, dict):
+        candidate = str(value.get("imageUrl", "") or "")
+    candidate = candidate.strip()
+    if not candidate:
+        return ""
+
+    parsed = urllib.parse.urlparse(candidate)
+    if parsed.scheme in {"http", "https"}:
+        return candidate
+    if parsed.scheme or candidate.startswith("/") or candidate.startswith("//"):
+        return ""
+    return Path(candidate).as_posix()
+
+
+def apply_image_overrides(games: list[dict[str, Any]], image_overrides: dict[str, Any]) -> None:
+    for game in games:
+        game_id = game.get("id")
+        if game_id is None:
+            continue
+        override_value = normalize_image_override_value(image_overrides.get(str(game_id)))
+        if override_value:
+            game["imageUrl"] = override_value
 
 
 def build_game_from_row(row: dict[str, str], name_overrides: dict[str, Any]) -> dict[str, Any]:
@@ -1361,6 +1390,7 @@ def apply_localized_content(
 def build_payload(
     rows: list[dict[str, str]],
     name_overrides: dict[str, Any],
+    image_overrides: dict[str, Any],
     token: str,
     download_images: bool,
     images_directory: Path,
@@ -1383,6 +1413,8 @@ def build_payload(
         enrich_games(games_by_id, token, download_images, images_directory, output_path)
     else:
         preserve_existing_enrichment(games, existing_payload=existing_payload)
+
+    apply_image_overrides(games, image_overrides)
 
     for game in games:
         ensure_deterministic_localized_content(game)
@@ -1431,6 +1463,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--script-output-path", default=str(DEFAULT_SCRIPT_OUTPUT_PATH))
     parser.add_argument("--images-directory", default=str(DEFAULT_IMAGES_DIRECTORY))
     parser.add_argument("--name-overrides-path", default=str(DEFAULT_NAME_OVERRIDES_PATH))
+    parser.add_argument("--image-overrides-path", default=str(DEFAULT_IMAGE_OVERRIDES_PATH))
     parser.add_argument("--localized-cache-path", default=str(DEFAULT_LOCALIZED_CACHE_PATH))
     parser.add_argument("--bgg-token", default="")
     parser.add_argument("--download-images", action="store_true")
@@ -1458,6 +1491,7 @@ def main() -> int:
     script_output_path = Path(args.script_output_path)
     images_directory = Path(args.images_directory)
     name_overrides_path = Path(args.name_overrides_path)
+    image_overrides_path = Path(args.image_overrides_path)
     localized_cache_path = Path(args.localized_cache_path)
     localized_mode = args.localized_content_mode
     resolved_ollama_host = get_ollama_host(args.ollama_host)
@@ -1476,6 +1510,7 @@ def main() -> int:
         return 1
 
     name_overrides = read_json_map(name_overrides_path)
+    image_overrides = read_json_map(image_overrides_path)
     existing_payload = read_existing_payload(output_path)
     if existing_payload is None and output_path != DEFAULT_OUTPUT_PATH:
         existing_payload = read_existing_payload(DEFAULT_OUTPUT_PATH)
@@ -1483,6 +1518,7 @@ def main() -> int:
         payload = build_payload(
             rows,
             name_overrides,
+            image_overrides,
             token,
             args.download_images,
             images_directory,

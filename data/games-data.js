@@ -1,6 +1,6 @@
 window.__BGG_LIBRARY_DATA__ = {
   "summary": {
-    "generatedAt": "2026-05-10T01:03:03",
+    "generatedAt": "2026-05-25T11:37:35",
     "count": 134,
     "ownCount": 118,
     "prevOwnedCount": 15,
@@ -63,8 +63,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "7 Wonders Duel is a two-player card game where players build civilizations over three ages by acquiring cards for resources, military, or scientific development. Unlike the original, players draft from a shared display of face-up and face-down cards, with timing and bonuses affecting card selection....",
-        "es": "Juego de cartas para dos jugadores donde los participantes desarrollan civilizaciones en tres edades al adquirir cartas para recursos, desarrollo militar o científico. A diferencia del original, los jugadores eligen cartas de una disposición compartida de cartas boca arriba y boca abajo, con el momento oportuno y bonificaciones que afectan la selección...."
+        "en": "In many ways 7 Wonders Duel resembles its parent game 7 Wonders. Over three ages, players acquire cards that provide resources or advance their military or scientific development in order to develop a civilization and complete wonders. What's different about 7 Wonders Duel is that, as the title suggests, the game is solely for two players.",
+        "es": ""
       },
       "description": {
         "en": "In many ways 7 Wonders Duel resembles its parent game 7 Wonders. Over three ages, players acquire cards that provide resources or advance their military or scientific development in order to develop a civilization and complete wonders. What's different about 7 Wonders Duel is that, as the title suggests, the game is solely for two players.\n\nPlayers do not draft cards simultaneously from decks of cards, but from a display of face-down and face-up cards arranged at the start of a round. A player can take a card only if it's not covered by any others, so timing comes into play, as it can with bonus moves that allow the player to take a second card immediately. As in the original game, each acquired card can be built, discarded for coins, or used to construct a wonder. Each player also starts with four wonder cards, and the construction of a wonder provides its owner with a special ability. Only seven wonders can be built, though, so one player will end up short.\n\nPlayers can purchase resources at any time from the bank, or they can gain cards during the game that provide them with resources for future building; as they are acquired, the cost for those resources increases for the opponent, representing the owner's dominance in this area.\n\nYou can win 7 Wonders Duel in one of three ways: each time you acquire a military card, you advance the military marker toward your opponent's capital (also giving you a bonus at certain positions). If you reach the opponent's capital, you win the game immediately. Or if you acquire six of seven different scientific symbols, you achieve scientific dominance and win immediately. If none of these situations occurs, then the player with the most points at the end of the game wins.",
@@ -160,8 +160,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Adventure Games: Monochrome Inc. is a cooperative narrative game where players work together to unravel a mysterious story. Explore a research building, gather clues, and make decisions that shape the outcome. Each of the three chapters takes about 75 minutes to play, with multiple paths and resolutions to discover.",
-        "es": "Juego cooperativo de narrativa en el que los jugadores trabajan juntos para resolver un misterio. Exploran un edificio de investigación, buscan pistas y toman decisiones que influyen en el desenlace. Cada una de las tres partes dura aproximadamente 75 minutos, con múltiples caminos y finales posibles."
+        "en": "Explore places, combine items, and experience stories in Adventure Games, a series of co-operative games from German publisher KOSMOS. In each of these titles, players are presented with a mysterious story that they must unravel over the course of play. Working together, players explore common areas, talk to people, look for clues, and combine various items to reveal the secret of the story. Depending on what decisions the players make, the course of history changes and there is no going back!",
+        "es": ""
       },
       "description": {
         "en": "Explore places, combine items, and experience stories in Adventure Games, a series of co-operative games from German publisher KOSMOS. In each of these titles, players are presented with a mysterious story that they must unravel over the course of play. Working together, players explore common areas, talk to people, look for clues, and combine various items to reveal the secret of the story. Depending on what decisions the players make, the course of history changes and there is no going back!\n\nUnlike the co-operative EXIT: The Game series, titles in this series focus on the telling and discovery of the story with no time pressure. That said, many different paths can be experienced during play, with more than one correct resolution to the story waiting to be discovered. Each title consists of three chapters, each taking about 75 minutes to play. Nothing is destroyed, so the games can be played multiple times.\n\nIn Monochrome Inc., players have been instructed to break into the research building named in the game's title, and once they get inside this tower's mirrored windows, they are left on their own. What they find there, what conclusions they draw from these items, and how this nerve-wracking story ends is entirely in their hands. Only by co-ordinating their team will they avoid potential pitfalls, carry out their mission, and solve the mystery of this building.",
@@ -179,7 +179,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "expansionIds": [],
       "bggUrl": "https://boardgamegeek.com/boardgame/267814",
       "thumbnailUrl": "https://cf.geekdo-images.com/43pBOAx1RiVj4CB9twXErw__small/img/0FemvM2YohBC0RZGQfc7s5c2Of4=/fit-in/200x150/filters:strip_icc()/pic4597112.jpg",
-      "imageUrl": "https://cf.geekdo-images.com/43pBOAx1RiVj4CB9twXErw__original/img/dtYEpl1Y1puccA5qkuR3zkCwLKQ=/0x0/filters:format(jpeg)/pic4597112.jpg",
+      "imageUrl": "https://cf.geekdo-images.com/43pBOAx1RiVj4CB9twXErw__small/img/0FemvM2YohBC0RZGQfc7s5c2Of4=/fit-in/200x150/filters:strip_icc()/pic4597112.jpg",
       "imageHint": "Adventure Games: Monochrome Inc. (2019)",
       "tags": [
         "owned",
@@ -238,8 +238,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Adventure Games: The Dungeon is a cooperative storytelling experience where players work together to unravel a medieval prison mystery. Over three chapters, they explore dungeon rooms, combine items, and make decisions that shape the story. Each playthrough offers multiple paths and resolutions.",
-        "es": "Juego de exploración y fantasía cooperativo donde los jugadores resuelven un misterio en una prisión medieval. A lo largo de tres capítulos, exploran habitaciones, combinan objetos y toman decisiones que influyen en la historia. Cada partida ofrece múltiples caminos y desenlaces posibles."
+        "en": "Explore places, combine items, and experience stories in Adventure Games, a series of co-operative games from German publisher KOSMOS. In each of these titles, players are presented with a mysterious story that they must unravel over the course of play. Working together, players explore common areas, talk to people, look for clues, and combine various items to reveal the secret of the story. Depending on what decisions the players make, the course of history changes and there is no going back!",
+        "es": ""
       },
       "description": {
         "en": "Explore places, combine items, and experience stories in Adventure Games, a series of co-operative games from German publisher KOSMOS. In each of these titles, players are presented with a mysterious story that they must unravel over the course of play. Working together, players explore common areas, talk to people, look for clues, and combine various items to reveal the secret of the story. Depending on what decisions the players make, the course of history changes and there is no going back!\n\nUnlike the co-operative EXIT: The Game series, titles in this series focus on the telling and discovery of the story with no time pressure. That said, many different paths can be experienced during play, with more than one correct resolution to the story waiting to be discovered. Each title consists of three chapters, each taking about 75 minutes to play. Nothing is destroyed, so the games can be played multiple times.\n\nIn The Dungeon, the players awaken in a prison cell in the middle ages with no memory of how they got there. What happened? What strange things are taking place in this dungeon? And most importantly, how can they get out? Over three chapters, players will jointly explore rooms, combine objects, and perhaps even encounter creatures that lurk in the dark rooms of the old castle...",
@@ -321,8 +321,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Adventure Games: The Grand Hotel Abaddon is a cooperative mystery game where players work together to unravel a story. Explore locations, gather clues, and make decisions that shape the narrative. Each of the three chapters takes about 75 minutes to play, with multiple possible resolutions.",
-        "es": "Juego de misterio cooperativo donde los jugadores trabajan juntos para descubrir una historia. Exploran lugares, buscan pistas y toman decisiones que influyen en el relato. Cada una de las tres partes dura aproximadamente 75 minutos, con múltiples resoluciones posibles."
+        "en": "Explore places, combine items, and experience stories in Adventure Games, a series of cooperative games from German publisher KOSMOS. In each of these titles, players are presented with a mysterious story that they must unravel over the course of play. Working together, players explore common areas, talk to people, look for clues, and combine various items to reveal the secret of the story. Depending on what decisions the players make, the course of history changes and there is no going back!",
+        "es": ""
       },
       "description": {
         "en": "Explore places, combine items, and experience stories in Adventure Games, a series of cooperative games from German publisher KOSMOS. In each of these titles, players are presented with a mysterious story that they must unravel over the course of play. Working together, players explore common areas, talk to people, look for clues, and combine various items to reveal the secret of the story. Depending on what decisions the players make, the course of history changes and there is no going back!\n\nUnlike the EXIT: The Game series, titles in this series focus on the telling and discovery of the story with no time pressure. That said, many different paths can be experienced during play, with more than one correct resolution to the story waiting to be discovered. Each title consists of three chapters, each taking about 75 minutes to play. Nothing is destroyed, so the games can be played multiple times.\n\nIn Adventure Games: Grand Hotel Abaddon, you want to discover what strange events are happening in the old building, slipping into your role on the team to follow tracks and decide how the adventure game should proceed.",
@@ -403,8 +403,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Adventure Games: The Volcanic Island is a cooperative puzzle game where players work together to unravel a mysterious story on a volcanic island. As four students, they explore, solve puzzles, and make decisions that shape the narrative. Each of the three chapters takes about 75 minutes to play, with multiple paths and resolutions.",
-        "es": "Juego cooperativo de puzzles donde los jugadores resuelven un misterio en una isla volcánica. Asumiendo el rol de cuatro estudiantes, exploran, analizan pistas y toman decisiones que influyen en la historia. Cada una de las tres partes dura aproximadamente 75 minutos, con múltiples caminos y desenlaces posibles."
+        "en": "Explore places, combine items, and experience stories in Adventure Games, a series of co-operative games from German publisher KOSMOS. In each of these titles, players are presented with a mysterious story that they must unravel over the course of play. Working together, players explore common areas, talk to people, look for clues, and combine various items to reveal the secret of the story. Depending on what decisions the players make, the course of history changes and there is no going back!",
+        "es": ""
       },
       "description": {
         "en": "Explore places, combine items, and experience stories in Adventure Games, a series of co-operative games from German publisher KOSMOS. In each of these titles, players are presented with a mysterious story that they must unravel over the course of play. Working together, players explore common areas, talk to people, look for clues, and combine various items to reveal the secret of the story. Depending on what decisions the players make, the course of history changes and there is no going back!\n\nUnlike the co-operative EXIT: The Game series, titles in this series focus on the telling and discovery of the story with no time pressure. That said, many different paths can be experienced during play, with more than one correct resolution to the story waiting to be discovered. Each title consists of three chapters, each taking about 75 minutes to play. Nothing is destroyed, so the games can be played multiple times.\n\nIn The Volcanic Island, you slip into the roles of four students on a volcanic island who face mysterious events. Like a thriller, you need to solve puzzles, make decisions, track traces, and analyze and use objects. You will experience a story together. Gameplay is variable and different in each group.\n\nAdmin note: The first edition of the German edition of The Volcanic Island contains an error for which KOSMOS has released a PDF correction that you'll find in the files.",
@@ -481,8 +481,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Arcadia Quest is a campaign-driven adventure where players lead guilds of heroes to reclaim Arcadia from a vampire lord. Battle other players and monsters through modular scenarios, upgrading heroes with new gear and abilities.",
-        "es": "Juego de campaña en el que los jugadores lideran gremios de héroes para recuperar Arcadia del señor vampiro. Combaten contra otros jugadores y monstruos en escenarios modulares, mejorando a los héroes con nuevo equipo y habilidades."
+        "en": "Arcadia Quest is a campaign-based game for 2 to 4 players, where each player controls a guild of three unique heroes, facing off against the other players and the various monsters controlled by the game. Players need to accomplish a series of quests in order to win each scenario and choose where to go next in the campaign.",
+        "es": ""
       },
       "description": {
         "en": "In Arcadia Quest, players lead guilds of intrepid heroes on an epic campaign to dethrone the vampire lord and reclaim the mighty Arcadia for their own. But only one guild may lead in the end, so players must battle against each other as well as against the monstrous occupying forces.\n\nArcadia Quest is a campaign-based game for 2 to 4 players, where each player controls a guild of three unique heroes, facing off against the other players and the various monsters controlled by the game. Players need to accomplish a series of quests in order to win each scenario and choose where to go next in the campaign.\n\nPlayers are able to choose the path their campaign takes, navigating through six out of eleven available scenarios, so each time the campaign is played it can have a different configuration of scenarios. As the campaign progresses, the heroes are able to acquire new weapons, equipment and abilities that give them powerful options to tackle the obstacles ahead. Furthermore, by fulfilling specific quests in a scenario, players unlock exclusive features in subsequent scenarios.",
@@ -572,8 +572,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Arkham Horror is a cooperative adventure game set in 1926 Arkham, where players take on the roles of investigators battling cosmic horrors from H.P. Lovecraft's Cthulhu Mythos. Work together to close interdimensional gates and defeat the Ancient One before it destroys the world.",
-        "es": "Juego de aventura cooperativo ambientado en Arkham en 1926, donde los jugadores asumen el rol de investigadores enfrentando horrores cósmicos del Mitos de Cthulhu de H.P. Lovecraft. Trabajen juntos para cerrar las puertas interdimensionales y derrotar al Primigenio antes de que destruya el mundo."
+        "en": "Arkham Horror is a cooperative adventure game themed around H.P Lovecraft's Cthulhu Mythos. Players choose from 16 Investigators and take to the streets of Arkham. Before the game, one of the eight Ancient Ones is chosen and it's up to the Investigators to prevent it from breaking into our world. During the course of the game, players will upgrade their characters by acquiring skills, allies, items, weapons, and spells....",
+        "es": ""
       },
       "description": {
         "en": "The year is 1926, and it is the height of the Roaring Twenties. Flappers dance till dawn in smoke-filled speakeasies drinking alcohol supplied by rum runners and the mob. It's a celebration to end all celebrations in the aftermath of the war to end all wars.\n\nYet a dark shadow grows in the city of Arkham. Alien entities known as Ancient Ones lurk in the emptiness beyond space and time, writhing at the gates between worlds. These gates have begun to open and must be closed before the Ancient Ones make our world their ruined domination.\n\nOnly a handful of investigators stand against the Arkham Horror. Will they Prevail?\n\nArkham Horror is a cooperative adventure game themed around H.P Lovecraft's Cthulhu Mythos. Players choose from 16 Investigators and take to the streets of Arkham. Before the game, one of the eight Ancient Ones is chosen and it's up to the Investigators to prevent it from breaking into our world. During the course of the game, players will upgrade their characters by acquiring skills, allies, items, weapons, and spells. It's up to the players to clean out the streets of Arkham by fighting many different types of monsters, but their main goal is to close gates to other dimensions that are opening up around town. With too many gates open the Ancient One awakens and the players only have one last chance to save the world - defeat the Ancient One in combat!",
@@ -665,8 +665,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Azul is a tile-drafting and placement game set in Renaissance Portugal. Players compete to decorate the Royal Palace of Evora by selecting colored tiles and arranging them on their boards. Points are earned for creating patterns and completing sets, while wasted tiles reduce the score. The player with the highest score wins.",
-        "es": "Juego de colocación de losetas ambientado en la Portugal renacentista. Los jugadores compiten para decorar el Palacio Real de Evora seleccionando y disponiendo losetas de colores en sus tableros. Se obtienen puntos por crear patrones y completar conjuntos, mientras que las losetas desperdiciadas restan puntos. Gana el jugador con mayor puntuación al final de la partida."
+        "en": "In the game Azul, players take turns drafting colored tiles from suppliers to their player board. Later in the round, players score points based on how they've placed their tiles to decorate the palace. Extra points are scored for specific patterns and completing sets; wasted supplies harm the player's score. The player with the most points at the end of the game wins.",
+        "es": ""
       },
       "description": {
         "en": "Introduced by the Moors, azulejos (originally white and blue ceramic tiles) were fully embraced by the Portuguese when their king Manuel I, on a visit to the Alhambra palace in Southern Spain, was mesmerized by the stunning beauty of the Moorish decorative tiles. The king, awestruck by the interior beauty of the Alhambra, immediately ordered that his own palace in Portugal be decorated with similar wall tiles. As a tile-laying artist, you have been challenged to embellish the walls of the Royal Palace of Evora.\n\nIn the game Azul, players take turns drafting colored tiles from suppliers to their player board. Later in the round, players score points based on how they've placed their tiles to decorate the palace. Extra points are scored for specific patterns and completing sets; wasted supplies harm the player's score. The player with the most points at the end of the game wins.",
@@ -752,8 +752,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Azul: Queen's Garden is a tile-drafting strategy game where players design a garden for Queen Maria of Aragon. Using the innovative drafting mechanism of the Azul series, players select colorful tiles to arrange plants, trees, and ornamental features. The most impressive garden earns the Queen's blessing.",
-        "es": "Juego de estrategia y colocación de losetas donde los jugadores diseñan un jardín para la reina María de Aragón. Usando el mecanismo de selección de losetas característico de la serie Azul, los jugadores eligen losetas coloridas para colocar plantas, árboles y elementos decorativos. El jardín más impresionante recibe la bendición de la reina."
+        "en": "In Azul: Queen's Garden, players are tasked with arranging a magnificent garden for the King's lovely wife by arranging beautiful plants, trees, and ornamental features.\n\nUsing an innovative drafting mechanism, the signature of the Azul series, players must carefully select colorful tiles to decorate their garden. Only the most incredible garden designers will flourish and win the Queen's blessing.",
+        "es": ""
       },
       "description": {
         "en": "Welcome back to the palace of Sintra! King Manuel I has commissioned the best garden designers of Portugal to construct the most extraordinary garden for his wife, Queen Maria of Aragon.\n\nIn Azul: Queen's Garden, players are tasked with arranging a magnificent garden for the King's lovely wife by arranging beautiful plants, trees, and ornamental features.\n\nUsing an innovative drafting mechanism, the signature of the Azul series, players must carefully select colorful tiles to decorate their garden. Only the most incredible garden designers will flourish and win the Queen's blessing.\n\n—description from the publisher",
@@ -834,8 +834,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Azul: Stained Glass of Sintra is a strategic tile-drafting game where players carefully select and place colored glass tiles to complete their stained glass windows. The double-sided window panels and translucent tiles add dynamic variability to gameplay. Players score points for patterns and set collections, with end-round color bonuses adding extra strategy....",
-        "es": "Juego de estrategia y colocación de losetas en el que los jugadores seleccionan y colocan vidrios de colores para completar sus vitrales. Los paneles de ventanas dobles y las losetas translúcidas aportan gran variabilidad. Se suman puntos por patrones y colecciones de conjuntos, con bonificaciones por colores al final de cada ronda...."
+        "en": "Azul: Stained Glass of Sintra challenges players to carefully select glass panes to complete their windows while being careful not to damage or waste supplies in the process. The window panels are double-sided, providing players with a dynamic player board that affords nearly infinite variability!\n\nAzul: Stained Glass of Sintra has new components including translucent window pane pieces, a tower to hold discarded glass panes, and double-sided player boards and window pane panels.",
+        "es": ""
       },
       "description": {
         "en": "Azul: Stained Glass of Sintra challenges players to carefully select glass panes to complete their windows while being careful not to damage or waste supplies in the process. The window panels are double-sided, providing players with a dynamic player board that affords nearly infinite variability!\n\nGameplay is similar to Azul. Players draft colored glass tiles to their player board. Later in the round, players score points based on how they've placed their window pane pieces pieces. Extra points are scored for specific patterns and completing sets. There's also a new Colour Bonus mechanic at the end of every round for additional scoring strategy. The game will come to an end after 6 rounds. The player with the most points at the end of the game wins.\n\nAzul: Stained Glass of Sintra has new components including translucent window pane pieces, a tower to hold discarded glass panes, and double-sided player boards and window pane panels.\n\n—description from the publisher",
@@ -920,8 +920,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Azul: Summer Pavilion is a tile-drafting and placement game where players compete as master artisans building a summer pavilion for the Portuguese royal family. Over six rounds, draft tiles, place them strategically on your board to score points, and avoid wasting supplies....",
-        "es": "Juego de losetas en el que los jugadores compiten como artesanos maestros para construir un pabellón de verano para la familia real portuguesa. En seis rondas, seleccionan losetas, las colocan estratégicamente en su tablero para sumar puntos y evitan desperdiciar materiales...."
+        "en": "Azul: Summer Pavilion lasts six rounds, and in each round players draft tiles, then place them on their individual player board to score points. Each of the six colors of tiles is wild during one of the rounds.\n\nIn Azul: Summer Pavilion, players return to Portugal to accomplish the task that never began. As a master artisan, you must use the finest materials to create the summer pavilion while carefully avoiding wasting supplies. Only the best will rise to the challenge to honor the Portuguese royal family.",
+        "es": ""
       },
       "description": {
         "en": "At the turn of the 16th Century, King Manuel I commissioned Portugal's greatest artisans to construct grandiose buildings. After completing the Palaces of Evora and Sintra, the king sought to build a summer pavilion to honor the most famous members of the royal family. This construction was intended for the most talented artisans — whose skills meet the splendor that the royal family deserves. Sadly, King Manuel I died before construction ever began.\n\nIn Azul: Summer Pavilion, players return to Portugal to accomplish the task that never began. As a master artisan, you must use the finest materials to create the summer pavilion while carefully avoiding wasting supplies. Only the best will rise to the challenge to honor the Portuguese royal family.\n\nAzul: Summer Pavilion lasts six rounds, and in each round players draft tiles, then place them on their individual player board to score points. Each of the six colors of tiles is wild during one of the rounds.\n\nAt the start of each round, draw tiles at random from the bag to refill each of the five, seven, or nine factories with four tiles each. Draw tiles as needed to refill the ten supply spaces on the central scoring board. Players then take turns drafting tiles. You can choose to take all of the tiles of a non-wild color on a factory and place them next to your board; if any wild tiles are on this factory, you must take one of them. Place all remaining tiles in the center of the table. Alternatively, you can take all tiles of a non-wild color from the center of play; you must also take one wild tile, if present.\n\nAfter all tiles have been claimed, players then take turns placing tiles on their individual boards. Each board depicts seven stars that would be composed of six tiles; each space on a star shows a number from 1-6, and six of the stars are for tiles of a single color while the seventh will be composed of one tile of each color. To place a tile on the blue 5, for example, you must discard five blue or wild tiles from next to your player board (with at least one blue being required), placing one blue tile in the blue 5 space and the rest in the discard tower. You score 1 point for this tile and 1 point for each tile within this star connected to the newly placed tile.\n\nIf you completely surround a pillar, statue, or window on your game board with tiles, you get an immediate bonus, taking 1-3 tiles from the central supply spaces and placing them next to your board. At the end of the round, you can carry over at most four tiles to the next round; discard any others, losing 1 point for each such tile.\n\nAfter six rounds, you score a bonus for each of the seven stars that you've filled completely. Additionally, you score a bonus for having covered all seven spaces of value 1, 2, 3 or 4. You lose 1 point for each remaining tile unused, then whoever has the most points wins.\n\n—description from the publisher",
@@ -1003,8 +1003,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Beez is a competitive strategy game where players plan flight paths as bees to collect nectar for their hive. Compete over public and private goals while navigating a modular hexagon grid. Optimize your flight plans to maximize your score.",
-        "es": "Juego de estrategia donde los jugadores planifican rutas de vuelo como abejas para recolectar néctar para su colmena. Compiten por objetivos públicos y privados mientras navegan por un tablero hexagonal modular. Optimizan sus planes de vuelo para maximizar su puntuación."
+        "en": "In Beez, players compete to optimize their flight plans to secure nectar for their hive. Be careful of the other bees as you will compete with them over a set of public and private scoring goals. The challenge in planning and storing the nectar will make your brain buzz!",
+        "es": ""
       },
       "description": {
         "en": "Prepare yourself to take flight as a bee!\n\nIn Beez, players compete to optimize their flight plans to secure nectar for their hive. Be careful of the other bees as you will compete with them over a set of public and private scoring goals. The challenge in planning and storing the nectar will make your brain buzz!\n\n—description from the publisher",
@@ -1068,7 +1068,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "averageRating": 8.04,
       "bayesAverage": 7.58,
       "rank": 105,
-      "avgWeight": 2,
+      "avgWeight": 2.0,
       "weightBand": "medium-light",
       "timeBand": "quick",
       "playerBand": "mid-group",
@@ -1087,8 +1087,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "1",
       "summary": {
-        "en": "Bomb Busters is a real-time cooperative deduction game where players work together to defuse a bomb. Each player has a set of wire tiles, and the team must deduce and cut matching wires before time runs out. Cutting a red wire ends the game instantly. With 66 unique missions, the challenge escalates as players progress.",
-        "es": "Juego de deducción y cooperación en tiempo real donde los jugadores colaboran para desactivar una bomba. Cada uno tiene un conjunto de losetas de cables, y el equipo debe deducir y cortar los cables coincidentes antes de que se acabe el tiempo. Cortar un cable rojo termina la partida al instante. Con 66 misiones distintas, el desafío aumenta a medida que los jugadores avanzan."
+        "en": "In Bomb Busters, there is a set of 48 normal wire cards numbered 1-12 (4 of each value) with some yellow and red wire cards. These are dealt out. Each mission is different, but your goal is always the same: go through all 12 numbers without blowing up!",
+        "es": ""
       },
       "description": {
         "en": "There is a bomb full of wires and the countdown has started... Who are you gonna call? YOU! To clear the bomb, you need to collaborate with your team of bomb disposal experts! Using the wires on the tile holder in front of you, try and figure out your teammates’ wires. Find and cut identical wires, but watch out, if you cut a red wire: BOOM! Use your equipment wisely to meet the varied challenges which get harder and harder. Tick tock tick tock... Will you figure it out before it’s too late?\n\nIn Bomb Busters, there is a set of 48 normal wire cards numbered 1-12 (4 of each value) with some yellow and red wire cards. These are dealt out. Each mission is different, but your goal is always the same: go through all 12 numbers without blowing up!\n\nPlayers place the tiles on their stands and then take turns pointing at each others’ wires and guessing their values. If the guess is correct, the wires are cut. If not — the detonator advances! If you manage to cut all wires without blowing up — good job, the mission is completed! But if the bomb goes off - Try again!\n\nWith 66 missions, there will be: => 66 different ways to play depending on your moods (in order, by level of difficulty, favorite configuration) => 66 challenges to play over and over (even if you already blew your top!) => Plenty of tricky bombs which become more and more dangerous (but don’t get cut up about it!)",
@@ -1174,8 +1174,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "1",
       "summary": {
-        "en": "Brass: Birmingham is an economic strategy game set in industrial revolution Birmingham. Players compete as entrepreneurs, developing industries and networks to exploit market demands. Played over two eras (canal and rail), players score VPs by building industries, expanding networks, and selling goods.",
-        "es": "Juego de estrategia económica ambientado en la revolución industrial de Birmingham. Los jugadores compiten como emprendedores, desarrollando industrias y redes para aprovechar las demandas del mercado. Se juega en dos eras (canal y ferrocarril), puntuando con VPs por construir industrias, expandir redes y vender productos."
+        "en": "Brass: Birmingham is an economic strategy game sequel to Martin Wallace's 2007 masterpiece, Brass. Brass: Birmingham tells the story of competing entrepreneurs in Birmingham during the industrial revolution between the years of 1770 and 1870.",
+        "es": ""
       },
       "description": {
         "en": "Brass: Birmingham is an economic strategy game sequel to Martin Wallace's 2007 masterpiece, Brass. Brass: Birmingham tells the story of competing entrepreneurs in Birmingham during the industrial revolution between the years of 1770 and 1870.\n\nIt offers a very different story arc and experience from its predecessor. As in its predecessor, you must develop, build and establish your industries and network in an effort to exploit low or high market demands. The game is played over two halves: the canal era (years 1770-1830) and the rail era (years 1830-1870). To win the game, score the most VPs. VPs are counted at the end of each half for the canals, rails and established (flipped) industry tiles.\n\nEach round, players take turns according to the turn order track, receiving two actions to perform any of the following actions (found in the original game):\n\n1) Build - Pay required resources and place an industry tile. 2) Network - Add a rail / canal link, expanding your network. 3) Develop - Increase the VP value of an industry. 4) Sell - Sell your cotton, manufactured goods and pottery. 5) Loan - Take a £30 loan and reduce your income.\n\nBrass: Birmingham also features a new sixth action:\n\n6) Scout - Discard three cards and take a wild location and wild industry card. (This action replaces Double Action Build in original Brass.)",
@@ -1272,8 +1272,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Bravo! is a dice-rolling and writing game in the Noch mal! family. Players roll dice and mark numbers on a grid, aiming to complete rows and columns for points. A seventh dice adds new actions like bombs, hearts, and stars, offering extra scoring opportunities.",
-        "es": "Bravo! es un juego de dados y escritura en la familia Noch mal!. Los jugadores lanzan dados y marcan números en una cuadrícula, buscando completar filas y columnas para sumar puntos. Un séptimo dado introduce nuevas acciones como bombas, corazones y estrellas, ofreciendo bonificaciones adicionales."
+        "en": "Noch mal so gut! is a roll and write dice game in the Noch mal! family, adding further rules and possibilities of the popular predecessor. New elements include a seventh dice that can be chosen instead of the other ones (and a row and extra scoring for these dice) with new elements included on this dice - like a bomb (cross 4 fields anywhere), a heart (if crossed, it brings bonuses for completed columns), two stars (cross two stars anywhere) etc....",
+        "es": ""
       },
       "description": {
         "en": "Noch mal so gut! is a roll and write dice game in the Noch mal! family, adding further rules and possibilities of the popular predecessor. New elements include a seventh dice that can be chosen instead of the other ones (and a row and extra scoring for these dice) with new elements included on this dice - like a bomb (cross 4 fields anywhere), a heart (if crossed, it brings bonuses for completed columns), two stars (cross two stars anywhere) etc. Another new element is the rows also being scored besides columns.",
@@ -1354,8 +1354,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "A logical deduction game where players guess each other's hidden number tiles. Use question cards to narrow down possibilities and deduce the correct sequence.",
-        "es": "Juego de deducción lógica donde los jugadores adivinan los números ocultos de sus oponentes. Usan cartas de preguntas para reducir las posibilidades y descubrir la secuencia correcta."
+        "en": "Break the Code is a logical deduction game played with number tiles and question cards. You win if you can guess all of your opponent's tiles in a two-player game or if you can guess the face-down tiles in the center for a three- or four-player game. Put on your thinking cap!",
+        "es": ""
       },
       "description": {
         "en": "Break the Code is a logical deduction game played with number tiles and question cards. You win if you can guess all of your opponent's tiles in a two-player game or if you can guess the face-down tiles in the center for a three- or four-player game. Put on your thinking cap!\n\nPlace all of the number tiles face down and shuffle them. Place your game screen in front of you, then randomly take your tiles. Place them face up behind your screen in numerically ascending order starting from the left. If you have two tiles with the same number, place the black tile on the left. Once you have placed your tiles, removed any unused number tiles from the game. Lastly, shuffle the question cards and place them in a pile face down. Draw the top six cards from the pile and place them in the center of the table.\n\nDeduce all of your opponent's tiles (or the center tiles) and correctly guess their colors and numbers in order from left to right.",
@@ -1421,7 +1421,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "averageRating": 8.23,
       "bayesAverage": 6.33,
       "rank": 0,
-      "avgWeight": 2,
+      "avgWeight": 2.0,
       "weightBand": "medium-light",
       "timeBand": "standard",
       "playerBand": "mid-group",
@@ -1440,8 +1440,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Carcassonne Big Box 7 combines the classic base game with 11 expansions, offering endless replayability. Over 180 tiles let players create custom game combinations. Expansions include Inns & Cathedrals, Traders & Builders, The River, and more, adding strategic depth and variety.",
-        "es": "Juego de construcción territorial donde los jugadores colocan losetas para crear ciudades, caminos y campos. Incluye el juego base y 11 expansiones que añaden mecánicas como bonificaciones por construcciones completadas, comercio de bienes, y maquinas voladoras. Con más de 180 losetas, permite diseñar partidas personalizadas."
+        "en": "Inns & Cathedrals - These make cities and roads more valuable - but only if they are completed at the end of the game! Each player gains a large meeple to allow them to claim features quickly.\n\nCarcassonne basic game including 11 expansions! The game of the year from 2001 and 11 expansions are combined in this new Carcassonne BigBox - the perfect starter set for Carcassonne fans and anyone who wants to get to know the best-selling game in all its diversity.",
+        "es": ""
       },
       "description": {
         "en": "Carcassonne basic game including 11 expansions! The game of the year from 2001 and 11 expansions are combined in this new Carcassonne BigBox - the perfect starter set for Carcassonne fans and anyone who wants to get to know the best-selling game in all its diversity.\n\nNow with a new cardboard inlay. It is perfect for sorting the included expansions more easily and finding them again quickly. The tiles of the new BigBox are still unchanged and compatible with the other games and expansions.\n\nYou can combine all expansions and with over 180 tiles you can design your own combination of games as you like and experience endless fun.\n\nThe included expansions:\n\nInns & Cathedrals - These make cities and roads more valuable - but only if they are completed at the end of the game! Each player gains a large meeple to allow them to claim features quickly.\n\nTraders & Builders - Traders vie for goods in the cities, while builders allow players to take multiple turns and accelerate the construction of roads and cities. Pigs on a farm can increase a farmer's yield.\n\nThe Abbot - The abbot likes to spend his day in the monastery, but he likes to pass the time in gardens in the countryside even more.\n\nThe River - The river creates varied setups at the beginning of each game, and winds through the landscape in a beautiful blue course.\n\nThe Flying Machine - Resourceful tinkerers have made their dreams of flight come true, and it's time to test their magnificent flying machines. How long the can fly, and they'll land, is still quite unpredictable.\n\nThe Messengers - The Queen sends dispatches to her loyal subjects which, if used skillfully, can be the key to attaining wealth and prestige.\n\nThe Ferries - There are many small lakes with ferries all around Carcassonne, giving travelers a great deal more variety.\n\nThe Gold Mines - We've struck gold! it's a thrilling time, and everyone wants to secure the precious metals. However, you won't know how much each gold bar is worth until the end of the game.\n\nMage & Witch - Magic spreads across the land! The mage causes cities and other features to flourish, while the witch can curse your opponents' favors.\n\nThe Robbers - Robbers are on the prowl, ready to steal points from your high-scoring opponents.\n\nThe Crop Circles - Mysterious circles appear in the fields, influencing the lives of knights and farmers in bizarre ways.",
@@ -1525,8 +1525,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "A team-based trivia race game where players answer questions from six categories to advance on a colorful board. Correct answers earn tokens, with the first to collect one from each category winning.",
-        "es": "Juego de trivia por equipos donde los jugadores responden preguntas de seis categorías para avanzar en un tablero de colores. Las respuestas correctas otorgan fichas, y gana quien consiga una de cada categoría primero."
+        "en": "The game consists of a race through a board with coloured spaces and 6 books with questions of 6 categories (Science, entertainment, history / geography, sports, art and trade). The player / team roll the dice to get 3 numbers, for example 3-1-6. Then, from the book with the color of the space landed, other player reads the question number 316. If the player answers correctly, he can continue playing, otherwise the next player continues....",
+        "es": ""
       },
       "description": {
         "en": "The game consists of a race through a board with coloured spaces and 6 books with questions of 6 categories (Science, entertainment, history / geography, sports, art and trade). The player / team roll the dice to get 3 numbers, for example 3-1-6. Then, from the book with the color of the space landed, other player reads the question number 316. If the player answers correctly, he can continue playing, otherwise the next player continues. When a player guesses the answer of a space with a star, he receives a token of the color associated with the topic answered correctly. The first to get a token from each category wins!",
@@ -1609,8 +1609,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Cartographers is a fantasy territory-building game where players map the northern lands for Queen Gimnax. Compete to earn reputation stars by fulfilling the queen's edicts and reducing Dragul influence. The player with the most stars after four seasons wins.",
-        "es": "Juego de construcción de territorios en un mundo fantástico. Los jugadores cartografían las tierras del norte para la reina Gimnax. Ganan reputación cumpliendo los edictos de la reina y reduciendo la influencia de los Dragul. El jugador con más estrellas de reputación al final del invierno gana."
+        "en": "In Cartographers: A Roll Player Tale, players compete to earn the most reputation stars by the time four seasons have passed. Each season, players draw on their map sheets and earn reputation by carrying out the queen's edicts before the season is over. The player with the most reputation stars at the end of winter wins!",
+        "es": ""
       },
       "description": {
         "en": "Queen Gimnax has ordered the reclamation of the northern lands. As a cartographer in her service, you are sent to map this territory, claiming it for the Kingdom of Nalos. Through official edicts, the queen announces which lands she prizes most, and you will increase your reputation by meeting her demands. But you are not alone in this wilderness. The Dragul contest your claims with their outposts, so you must draw your lines carefully to reduce their influence. Reclaim the greatest share of the queen’s desired lands and you will be declared the greatest cartographer in the kingdom.\n\nIn Cartographers: A Roll Player Tale, players compete to earn the most reputation stars by the time four seasons have passed. Each season, players draw on their map sheets and earn reputation by carrying out the queen's edicts before the season is over. The player with the most reputation stars at the end of winter wins!\n\n—description from the publisher",
@@ -1699,8 +1699,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Catan is a strategic board game where players build settlements, cities, and roads on the island of Catan. By rolling dice, they collect resources like wood, brick, and wheat, which they trade or use to expand their holdings. The goal is to accumulate 10 victory points through construction, development, and special achievements.",
-        "es": "Juego en el que los jugadores construyen asentamientos, ciudades y caminos en la isla de Catan. Al lanzar dados, obtienen recursos como madera, ladrillos y trigo, que pueden intercambiar o usar para expandir sus posesiones. El objetivo es acumular 10 puntos de victoria mediante la construcción, el desarrollo y logros especiales."
+        "en": "In CATAN (formerly The Settlers of Catan), players try to be the dominant force on the island of Catan by building settlements, cities and roads. On each turn dice are rolled to determine which resources the island produces....",
+        "es": ""
       },
       "description": {
         "en": "In CATAN (formerly The Settlers of Catan), players try to be the dominant force on the island of Catan by building settlements, cities and roads. On each turn dice are rolled to determine which resources the island produces. Players build structures by 'spending' resources (sheep, wheat, wood, brick and ore) which are represented by the relevant resource cards; each land type, with the exception of the unproductive desert, produces a specific resource: hills produce brick, forests produce wood, mountains produce ore, fields produce wheat, and pastures produce sheep.\n\nSet-up includes randomly placing large hexagonal tiles (each depicting one of the five resource-producing terrain types--or the desert) in a honeycomb shape and surrounding them with water tiles, some of which contain ports of exchange. A number disk, the value of which will correspond to the roll of two 6-sided dice, are placed on each terrain tile. Each player is given two settlements (think: houses) and roads (sticks) which are placed on intersections and borders of the terrain tiles. Players collect a hand of resource cards based on which terrain tiles their last-placed settlement is adjacent to. A robber pawn is placed on the desert tile.\n\nA turn consists of rolling the dice, collecting resource cards based on this dice roll and the position of settlements (or upgraded cities—think: hotels), turning in resource cards (if possible and desired) for improvements, trading cards at a port, possibly playing a development card, or trading resource cards with other players. If the dice roll is a 7, the active player moves the robber to a new terrain tile and steals a resource card from another player who has a settlement adjacent to that tile.\n\nPoints are accumulated by building settlements and cities, having the longest road or the largest army (from some of the development cards), and gathering certain development cards that simply award victory points. When a player has gathered 10 points (some of which may be held in secret), s/he announces this and claims the win.",
@@ -1788,8 +1788,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Century: A New World is the third installment in the Century series. Players explore the Americas in the 16th century, trading with locals, gathering resources, and documenting discoveries. The game blends resource trading with a unique worker placement twist.",
-        "es": "Juego de estrategia en el que los jugadores exploran las Américas en el siglo XVI. Comerciar con los habitantes locales, recolectar recursos y registrar hallazgos son las claves para sobrevivir. Combina mecanismos de comercio de recursos con un sistema de colocación de trabajadores con un giro original."
+        "en": "Century: A New World sends players to the Americas at the dawn of the 16th century. Braving the wilderness, players are forced to explore new lands, trade with local inhabitants, journal their findings, and hunt/gather to survive! The game integrates the compelling and incredibly fun resource trading mechanisms found in the Century series with a worker placement mechanism with a twist!\n\nCentury: A New World is the third and final installment of the Century series from designer Emerson Matsuuchi.",
+        "es": ""
       },
       "description": {
         "en": "Century: A New World is the third and final installment of the Century series from designer Emerson Matsuuchi.\n\nCentury: A New World sends players to the Americas at the dawn of the 16th century. Braving the wilderness, players are forced to explore new lands, trade with local inhabitants, journal their findings, and hunt/gather to survive! The game integrates the compelling and incredibly fun resource trading mechanisms found in the Century series with a worker placement mechanism with a twist!\n\nCentury: A New World may be combined with Century: Spice Road or Century: Eastern Wonders or both for all new mixable games.",
@@ -1869,8 +1869,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Century: Eastern Wonders is a nautical trading game where players take on the roles of merchants and privateers navigating the high seas in search of exotic spices. Set in the Far East, the game features contracts, modular boards, and strategic point-to-point movement as players compete to control valuable trade routes....",
-        "es": "Juego de comercio marítimo donde los jugadores asumen el rol de mercaderes y corsarios que navegan en busca de especias exóticas. Ambientado en el Lejano Oriente, incluye contratos, tableros modulares y movimiento estratégico entre puntos. Con nuevas mecánicas y gran variedad de estrategias, ofrece una experiencia renovada en la serie Century."
+        "en": "Designed by Emerson Matsuuchi, Century: Eastern Wonders invites fans to return to the exciting world of spice trading as players take to the high seas in the role of merchants seeking to prosper in the exotic Indonesian islands. Century: Eastern Wonders offers new, satisfying game mechanisms that provide infinite replayability and countless strategies.\n\nCentury: Eastern Wonders can be combined with Century: Spice Road to create a new gaming experience called Sand To Sea!",
+        "es": ""
       },
       "description": {
         "en": "Centuries ago, the lucrative spice trade compelled the prosperous nations of the world to explore alternate routes to the sources of these precious goods. These nations took to the seas to seek out exotic lands. This led to the discovery of the famed Spice Islands where the most valuable spices of the world were found. This discovery also led to further exploration, competition....and later, war! During this time of prosperity and opportunity, you find yourself traveling on the high seas in search of these exotic wonders. As a merchant and privateer representing your nation, you seek to control this region for glory and profit. Your journey continues in the Far East...\n\nDesigned by Emerson Matsuuchi, Century: Eastern Wonders invites fans to return to the exciting world of spice trading as players take to the high seas in the role of merchants seeking to prosper in the exotic Indonesian islands. Century: Eastern Wonders offers new, satisfying game mechanisms that provide infinite replayability and countless strategies.\n\nCentury: Eastern Wonders can be combined with Century: Spice Road to create a new gaming experience called Sand To Sea!\n\nCentury: Eastern Wonders FAQ",
@@ -1953,8 +1953,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Century: Spice Road is a card-driven economic game where players lead caravans along the Silk Road, trading spices for victory points. Each turn, choose to establish trade routes, make trades, fulfill demands, or rest. The game ends when a player claims their fifth victory point card.",
-        "es": "Juego de cartas y economía en el que los jugadores lideran caravanas por la Ruta de la Seda, comerciando especias para ganar puntos de victoria. Cada turno, se puede establecer una ruta comercial, realizar un intercambio, cumplir una demanda o descansar. La partida termina cuando un jugador reclama su quinta carta de puntos de victoria."
+        "en": "The last round is triggered once a player has claimed their fifth victory point card, then whoever has the most victory points wins.\n\nCentury: Spice Road is the first in a series of games that explores the history of each century with spice-trading as the theme for the first installment. In Century: Spice Road, players are caravan leaders who travel the famed silk road to deliver spices to the far reaches of the continent for fame and glory....",
+        "es": ""
       },
       "description": {
         "en": "Century: Spice Road is the first in a series of games that explores the history of each century with spice-trading as the theme for the first installment. In Century: Spice Road, players are caravan leaders who travel the famed silk road to deliver spices to the far reaches of the continent for fame and glory. Each turn, players perform one of four actions:\n\nEstablish a trade route (by taking a market card) Make a trade or harvest spices (by playing a card from hand) Fulfill a demand (by meeting a victory point card's requirements and claiming it) Rest (by taking back into your hand all of the cards you've played)\n\nThe last round is triggered once a player has claimed their fifth victory point card, then whoever has the most victory points wins.",
@@ -2023,7 +2023,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "averageRating": 6.38,
       "bayesAverage": 5.53,
       "rank": 16235,
-      "avgWeight": 2,
+      "avgWeight": 2.0,
       "weightBand": "medium-light",
       "timeBand": "standard",
       "playerBand": "large-group",
@@ -2042,8 +2042,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "El Cinéfilo is a trivia party game for movie lovers. Players answer questions about 448 drawn movie scenes, earning chips to fill their board. The first to complete their board wins.",
-        "es": "Juego de trivia para amantes del cine. Los jugadores responden preguntas sobre 448 escenas de películas, ganando fichas para completar su tablero. Quien lo llena primero gana."
+        "en": "El Cinéfilo (The movie buff) is a Spanish language board game for lovers of movies. It features a questions + answers mechanic with 448 drawn movie scenes and over 1700 questions.\n\nPlayers take turns picking question cards at random, gaining chips to place in their (or their group) board for correct answers. Whoever gets their board filled with chips first is declared the winner.",
+        "es": ""
       },
       "description": {
         "en": "El Cinéfilo (The movie buff) is a Spanish language board game for lovers of movies. It features a questions + answers mechanic with 448 drawn movie scenes and over 1700 questions.\n\nPlayers take turns picking question cards at random, gaining chips to place in their (or their group) board for correct answers. Whoever gets their board filled with chips first is declared the winner.\n\nContents: 448 question cards 4 boards 36 chips 1 rulebook 1 sandglass",
@@ -2121,8 +2121,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Clank! is a deck-building adventure where players sneak into a dragon's lair to steal artifacts. Acquire cards to enhance your deck, fight monsters, and move strategically. Be quick and quiet—each noise attracts the dragon's wrath. Retrieve an artifact and escape to claim the title of Greatest Thief.",
-        "es": "Juego de construcción de mazo donde los jugadores se infiltran en la guarida de un dragón para robar artefactos. Adquieren cartas para mejorar su mazo, combatir monstruos y moverse estratégicamente. Sean rápidos y silenciosos, cada ruido atrae la ira del dragón. Recuperan un artefacto y escapan para ganar el título de Mayor Ladrón del Reino."
+        "en": "Burgle your way to adventure in the deck-building board game Clank! Sneak into an angry dragon's mountain lair to steal precious artifacts. Delve deeper to find more valuable loot. Acquire cards for your deck and watch your thievish abilities grow. Be quick and be quiet. One false step and CLANK! Each careless sound draws the attention of the dragon, and each artifact stolen increases its rage. You can enjoy your plunder only if you make it out of the depths alive!",
+        "es": ""
       },
       "description": {
         "en": "Burgle your way to adventure in the deck-building board game Clank! Sneak into an angry dragon's mountain lair to steal precious artifacts. Delve deeper to find more valuable loot. Acquire cards for your deck and watch your thievish abilities grow. Be quick and be quiet. One false step and CLANK! Each careless sound draws the attention of the dragon, and each artifact stolen increases its rage. You can enjoy your plunder only if you make it out of the depths alive!\n\nClank! is a deck-building game. Each player has their own deck, and building yours up is part of playing the game. You start each of your turns with five cards in your hand, and you'll play them all in any order you choose. Most cards will generate resources, of which there are three different kinds:\n\nSkill, which is used to acquire new cards for your deck. Swords, which are used to fight the monsters that infest the dungeon. Boots, which are used to move around the board.\n\nEvery time you acquire a new card, you put it face up in your discard pile. Whenever you need to draw a card and find your deck empty, you shuffle your discard pile and turn it face down to form a new deck. With each shuffle, your newest cards become part of a bigger and better deck! Each player starts with the same cards in their deck, but they’ll acquire different cards during their turns. Because cards can do many different things, each player’s deck (and strategy) will become more and more different as the game unfolds.\n\nDuring the game, you have two goals:\n\nRetrieve an Artifact token and escape the dragon by returning to the place you started, outside of the dungeon. Accumulate enough points with your Artifact and other loot to beat out your opponents and earn the title of Greatest Thief in the Realm!",
@@ -2209,8 +2209,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Clank!: The Mummy's Curse is an expansion for Clank!: A Deck-Building Adventure. Players explore ancient pyramids filled with treasures and dangers, including a cursed mummy and a dragon. New artifacts and pathways add fresh challenges to the deck-building experience.",
-        "es": "Juego de expansión para Clank!: A Deck-Building Adventure. Los jugadores exploran pirámides antiguas llenas de tesoros y peligros, como una momia maldita y un dragón. Nuevos artefactos y caminos ofrecen desafíos adicionales a la experiencia de construcción de mazo."
+        "en": "Untold riches await inside the pyramids of the Ancients — but they are well protected. An undying Mummy guardian spreads a vile curse to those who would rob its tomb. And, inevitably, the treasure has attracted a dragon. Can you escape the fearsome Croxobek?\n\nClank! The Mummy's Curse, an expansion for Clank!: A Deck-Building Adventure, adds a wandering mummy to the pathways that players will explore as well as new artifacts to acquire in the depths of the pyramid!",
+        "es": ""
       },
       "description": {
         "en": "Untold riches await inside the pyramids of the Ancients — but they are well protected. An undying Mummy guardian spreads a vile curse to those who would rob its tomb. And, inevitably, the treasure has attracted a dragon. Can you escape the fearsome Croxobek?\n\nClank! The Mummy's Curse, an expansion for Clank!: A Deck-Building Adventure, adds a wandering mummy to the pathways that players will explore as well as new artifacts to acquire in the depths of the pyramid!",
@@ -2298,8 +2298,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "In Coffee Rush, players race to fulfill coffee orders during peak hours. Move on the ingredient grid to collect what you need, complete orders to boost your rating, and avoid penalties. Upgrade your barista skills to work more efficiently. The player with the highest rating after all orders are fulfilled wins.",
-        "es": "Juego de simulación en el que los jugadores cumplen pedidos de café durante las horas pico. Moverse en el tablero de ingredientes para recolectar lo necesario, completar pedidos para mejorar la calificación y evitar penalizaciones. Mejorar las habilidades del barista para trabajar con mayor eficiencia. Gana quien tenga la mayor calificación al finalizar."
+        "en": "A cup of coffee sure is relaxing — for the customer. For the coffee shop, however, orders tend to pile up during peak hours, and it is no different today at Coffee Rush. Your goal: Complete customer orders to increase your ratings and be recognized as the best barista!",
+        "es": ""
       },
       "description": {
         "en": "A cup of coffee sure is relaxing — for the customer. For the coffee shop, however, orders tend to pile up during peak hours, and it is no different today at Coffee Rush. Your goal: Complete customer orders to increase your ratings and be recognized as the best barista!\n\nIn more detail, each player moves on the ingredient board to collect the ingredients that they need to fulfill orders — and fulfilling orders boosts your rating. Orders that are not fulfilled in time become penalties, which subtract from your rating. If a player has fulfilled three orders, they may activate an upgrade that lets them acquire ingredients more easily.\n\nThe game ends once all order cards have run out or after a barista collects their fifth penalty card. The player with the highest rating wins!\n\n—description from the publisher",
@@ -2377,8 +2377,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "A strategic deck-building game for 2 or 4 players where you summon warriors from four factions to battle as a powerful Sage. Level up, gain abilities, and protect your Sage while defeating opponents to earn the title of Master of the Elements.",
-        "es": "Juego de construcción de mazo estratégico para 2 o 4 jugadores donde convocás guerreros de cuatro facciones para luchar como un Sabio poderoso. Subís de nivel, ganás habilidades y protegés a tu Sabio mientras derrotás a los rivales para ganar el título de Maestro de los Elementos."
+        "en": "Harness the magic of the forest and go head-to-head with your rivals in this strategic deck-building game for 2 or 4 players. You’ll play as a powerful Sage, summoning warriors from the Twig, Leaf, Droplet, and Pebble factions and fighting to prove your prowess. As the battle continues, you’ll level up and gain access to extraordinary abilities and fierce new recruits. Protect your Sage at all costs and vanquish your opponents to earn the title of Master of the Elements!",
+        "es": ""
       },
       "description": {
         "en": "Harness the magic of the forest and go head-to-head with your rivals in this strategic deck-building game for 2 or 4 players. You’ll play as a powerful Sage, summoning warriors from the Twig, Leaf, Droplet, and Pebble factions and fighting to prove your prowess. As the battle continues, you’ll level up and gain access to extraordinary abilities and fierce new recruits. Protect your Sage at all costs and vanquish your opponents to earn the title of Master of the Elements!\n\nHow to PlayYour turn is divided into four phases:\n\nPhase 1 During Phase I, you’ll use daybreak effects denoted on the cards in your formation! You may use those effects in any order during Phase I of your turn. If you continue to Phase II without using a daybreak effect, you may not use it later in your turn.\n\nPhase 2 During Phase II, you'll have 4 Action Points (AP) to spend doing any of the following: - Summon an Elemental from your hand to the formation - Play a Command card from your hand - Swap the positions of 2 connected Elementals in your formation - Draw a card from your deck\n\nAs the game progresses, you'll be able to unlock special Faction Actions after you've defeated 4, 6, and 8 of your opponents Elementals! Faction Actions are powerful abilities that give you a leg up during the game.\n\nPhase 3 During Phase III, you may use your gold to buy cards from the markets, sell cards to collect more gold, and refresh the markets.\n\nPhase 4 During Phase IV, you’ll clean up your hand before ending your turn. Do this by discarding any number of cards from your hand, then draw from your deck until you have 5 cards in your hand. If you have more than 5 cards in your hand when you reach Phase IV of your turn, you must discard cards until you have no more than 5.\n\nThe game ends when your opponent's Sage has been defeated!\n\n-description from publisher",
@@ -2464,8 +2464,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "A light Eurogame where players control two rabbits competing to harvest vegetables from a modular garden board. Plan movements and timing to gather the most valuable crops before the dog interferes.",
-        "es": "Juego de mesa en el que los jugadores controlan una pareja de conejos que compiten por cosechar hortalizas de un tablero modular. Planifiquen movimientos y momentos oportunos para recolectar las hortalizas más valiosas antes de que el perro lo impida."
+        "en": "In Conejos en el huerto (Rabbits in the Garden) players control two rabbits, competing to harvest the 5 species of vegetables grown in the garden. The game is played in a randomly configured modular board.\n\nConejos en el huerto (Rabbits in the Garden) is a light Eurogame that is played in half an hour. Stripped completely of the random factor, it requires players to plan and make good decisions to win.",
+        "es": ""
       },
       "description": {
         "en": "ENGLISH\n\nThe watchdog should do his job better, the harvest time has come and the vegetable garden has been invaded by rabbits!!!\n\nIn Conejos en el huerto (Rabbits in the Garden) players control two rabbits, competing to harvest the 5 species of vegetables grown in the garden. The game is played in a randomly configured modular board.\n\nInitially, the rabbits are placed in their burrows and then they begin to move through the board, the possible destinations are given by the position of both rabbits. When the turn ends, and also according to the position of the rabbits, the player harvests the vegetables, unless the corresponding variety is out of stock or if the dog prevents it. At the end of the game players convert the vegetables obtained to victory points according to the scoring system used, taking into account that those varieties of vegetables that were emptied give fewer points. The player who wins the most victory points wins the game.\n\nConejos en el huerto (Rabbits in the Garden) is a light Eurogame that is played in half an hour. Stripped completely of the random factor, it requires players to plan and make good decisions to win.\n\nESPAÑOL El perro guardián debería hacer mejor su trabajo, la época de la cosecha ha llegado y el huerto ha sido invadido por conejos!!! En Conejos en el huerto los jugadores controlan una pareja de conejos, que compiten por cosechar las 5 especies de hortalizas allí cultivadas. Se juega sobre un tablero modular configurado aleatoriamente. Inicialmente los conejos se ubican en sus madrigueras y luego comienzan a moverse por turnos a través del rondell. Cuando termina su turno, de acuerdo a la posición de los conejos, el jugador cosecha las hortalizas, excepto que la variedad correspondiente se encuentre agotada o el perro se lo impida. Al finalizar la partida los jugadores convierten las hortalizas obtenidas a puntos de victoria de acuerdo al sistema de puntuación utilizado, teniendo en cuenta que aquellas variedades de hortalizas que fueron vaciadas dan menos puntos. El jugador que obtenga más puntos de victoria gana el juego. Conejos es un eurogame liviano que se juega en media hora. Despojado completamente del factor azar, requiere que los jugadores planifiquen y tomen buenas decisiones para ganar.",
@@ -2543,8 +2543,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Cryptid is a deduction game where cryptozoologists race to uncover an elusive creature. Players gather clues and strategically share information to locate the cryptid first, but revealing too much risks letting others win. Features a modular board, clue books, and optional digital companion for varied setups.",
-        "es": "Juego de deducción en el que los jugadores interpretan el rol de criptozoólogos que compiten por descubrir una criatura esquiva. Cada uno tiene una pista inicial y, en su turno, puede intentar obtener más información de los demás. La clave está en no revelar demasiado, o los rivales podrían ganar antes...."
+        "en": "Cryptid is a unique deduction game of honest misdirection in which players must try to uncover information about their opponents' clues while throwing them off the scent of their own. Each player holds one piece of evidence to help them find the creature, and on their turn they can try to gain more information from their opponents. Be warned; give too much away and your opponents might beat you to the mysterious animal and claim the glory for themselves!",
+        "es": ""
       },
       "description": {
         "en": "You've studied the footage, connected the dots, and gathered what meager evidence you could. You're close — soon the whole world will know the truth behind the Cryptid. A group of like-minded cryptozoologists have come together to finally uncover the elusive creature, but the glory of discovery is too rich to share. Without giving away some of what you know you will never succeed in locating the beast, but reveal too much and your name will be long forgotten!\n\nCryptid is a unique deduction game of honest misdirection in which players must try to uncover information about their opponents' clues while throwing them off the scent of their own. Each player holds one piece of evidence to help them find the creature, and on their turn they can try to gain more information from their opponents. Be warned; give too much away and your opponents might beat you to the mysterious animal and claim the glory for themselves!\n\nThe game includes a modular board, five clue books, and a deck of set-up cards with hundreds of possible set-ups across two difficulty levels. It is also supported by an entirely optional digital companion, allowing for faster game set-up and a near-infinite range of puzzles.\n\n—description from the publisher\n\nNote: some copies have a delta clue booklet with misprints in eight clues:\n\n2,#9,#13,#64 states cougar, should be bear 3,#63,#72,#95 states bear, should be cougar",
@@ -2623,8 +2623,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Dark Souls: The Card Game is a cooperative deck-building game for 1-4 players. Explore encounters, defeat enemies, and collect Souls and Treasure to evolve your deck. Challenge powerful bosses while managing your health and resources. Adapt your strategy and prepare for a deadly journey.",
-        "es": "Juego cooperativo de construcción de mazo para 1 a 4 jugadores. Los jugadores exploran encuentros, derrotan enemigos y recolectan Almas y Tesoros para evolucionar su mazo. Desafían a poderosos jefes mientras gestionan su salud y recursos. Adaptan su estrategia y se preparan para un viaje mortal."
+        "en": "Dark Souls: The Card Game is a cooperative deck evolution card game for 1-4 players. Players must explore the Encounters around them, defeating a myriad of enemies to gain Souls and Treasure.\n\nThey must use these to evolve and adapt their deck to better fight their enemies. When the players are ready, they must challenge the powerful bosses that lie within.",
+        "es": ""
       },
       "description": {
         "en": "Dark Souls: The Card Game is a cooperative deck evolution card game for 1-4 players. Players must explore the Encounters around them, defeating a myriad of enemies to gain Souls and Treasure.\n\nThey must use these to evolve and adapt their deck to better fight their enemies. When the players are ready, they must challenge the powerful bosses that lie within.\n\nThe players must walk a narrow path, however, since their decks allow them to attack their enemies, but also represent their health. Decks are only refreshed when the players rest at the bonfire, so players must defeat their enemies while husbanding their strength for the greater challenges ahead.\n\nThinking quickly and adapting to the enemy’s attacks is key for survival. A misstep can be fatal, but the rewards of success are great. Adapt your deck, evolve your strategy, and prepare to die.\n\n—description from the publisher",
@@ -2707,8 +2707,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Deckscape: Test Time is a cooperative card game where players work together to solve puzzles and escape a locked laboratory. As Doctor Thyme's students, you must use your skills to unlock the exit before time runs out.",
-        "es": "Juego de cartas cooperativo donde los jugadores resuelven acertijos para escapar de un laboratorio cerrado. Como estudiantes del Doctor Thyme, deben usar sus habilidades para abrir la salida antes de que se acabe el tiempo."
+        "en": "Deckscape: Test Time is the first title in a series of cooperative games inspired by real escape rooms in which a group of people are \"trapped\" inside a room full of puzzles and odd items. The goal of the game is to solve puzzles, understand the plot of the story, and make intelligent use of the items provided in order to exit from the room as quickly as possible.",
+        "es": ""
       },
       "description": {
         "en": "Deckscape: Test Time is the first title in a series of cooperative games inspired by real escape rooms in which a group of people are \"trapped\" inside a room full of puzzles and odd items. The goal of the game is to solve puzzles, understand the plot of the story, and make intelligent use of the items provided in order to exit from the room as quickly as possible.\n\nIn Deckscape: Test Time, you have been selected from Doctor Thyme's most brilliant students for a special project. He'll test your skills, and if you succeed, you'll get a unique chance to help him on his newest and greatest invention. While he's explaining his project, he distractedly pushes a button: an alarm cries loudly and heavy gratings shut all the windows and the exit door. The laboratory is locked! Doc Thyme falls through a trapdoor below his feet and the lights turn off. Will you be able to pass Doctor Thyme's exam and exit his laboratory? Using just sixty cards, you will take part in a hectic adventure, without leaving home.\n\n—description from the publisher",
@@ -2792,8 +2792,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "A cooperative puzzle game where players work together to solve challenges and defuse hidden devices before time runs out.",
-        "es": "Juego de cooperación y acertijos en el que los jugadores deben resolver desafíos y desactivar dispositivos ocultos antes de que se acabe el tiempo."
+        "en": "Deckscape: The Fate of London is the second title in a series of cooperative games inspired by real escape rooms in which a group of people is \"trapped\" inside a room full of puzzles and odd items. The goal of the game is to solve puzzles, understand the plot of the story, and make intelligent use of the items provided in order to exit from the room as quickly as possible.",
+        "es": ""
       },
       "description": {
         "en": "Deckscape: The Fate of London is the second title in a series of cooperative games inspired by real escape rooms in which a group of people is \"trapped\" inside a room full of puzzles and odd items. The goal of the game is to solve puzzles, understand the plot of the story, and make intelligent use of the items provided in order to exit from the room as quickly as possible.\n\nIn this title, a terrible threat hangs over London, and the Crown of England needs your help! Your mission is to find four devices hidden in secret locations and defuse them before midnight. A single mistake, and the situation could degenerate quickly…\n\n—description from the publisher",
@@ -2874,8 +2874,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Dice Throne is a fast-paced 2-6 player combat game with unique heroes, each featuring distinct dice mechanics and abilities. Players roll custom dice to attack opponents, spend combat points on powerful cards, and upgrade their heroes. The game supports various team configurations and includes expansions with cooperative campaigns and themed characters.",
-        "es": "Dice Throne es un juego de combate rápido para 2 a 6 jugadores, con héroes únicos que tienen mecánicas de dados y habilidades distintas. Los jugadores lanzan dados personalizados para atacar a los oponentes, gastan puntos de combate en cartas poderosas y mejoran a sus héroes...."
+        "en": "Dice Throne is a fast-paced 2-6 player combat game, whether 1v1, 2v2, 3v3, 2v2v2, or free-for-all. Select from a variety of heroes that play and feel completely distinct from one another. Attack opponents and activate abilities by rolling your hero's unique set of five dice. Accumulate combat points and spend them on cards that have a large range of effects, such as granting permanent hero upgrades, applying status effects, and manipulating dice directly whether yours, your teammate's, or even your opponent's.",
+        "es": ""
       },
       "description": {
         "en": "GAME SYSTEM\n\nThis entry is to allow for discussion/rating of the game system as a whole. It is not for a specific product or release. Versions will appear on the individual item pages.\n\nDice Throne is a fast-paced 2-6 player combat game, whether 1v1, 2v2, 3v3, 2v2v2, or free-for-all. Select from a variety of heroes that play and feel completely distinct from one another. Attack opponents and activate abilities by rolling your hero's unique set of five dice. Accumulate combat points and spend them on cards that have a large range of effects, such as granting permanent hero upgrades, applying status effects, and manipulating dice directly whether yours, your teammate's, or even your opponent's.\n\nEach player needs their own hero to play Dice Throne, and all heroes are cross-compatible.\n\nThe very first release, Season One, was a single box that contained components for six heroes and basic art and components. When Season Two was released, it overhauled the component and card design into what is now the standard, and following that, Season One - Rerolled was released to update and rebalance the original six heroes into the new standard format, as well as adding two additional heroes. These releases are available as 8 character \"Battle Chests\" or as two character \"Battle Boxes\". Dice Throne than released several major Marvel-themed sets (Marvel Dice Throne, Marvel Dice Throne: X-Men, and Deadpool), as well as smaller themed sets (Santa vs. Krampus, Outcasts, and Vanguard).\n\nIn 2026, Dice Throne announced a pivot to offering single characters for sale, which will mostly replace the \"Battle Chest\" and \"Battle Box\" releases. The first stand-alone character in this new packaging is the Alchemist, but all non-Marvel characters are planned to be released in the single character format.\n\nCooperative expansions have also been released. Dice Throne Adventures was the first, a dungeon crawl/boss battler campaign game for 1-4 heroes through 8 scenarios, allowing players to upgrade their decks throughout the campaign using loot cards. An expansion, Dice Throne Adventures: Unchained, offered a new boss and the ability to run \"One-Shot Adventures\" using the same loot card system but without the campaign element. Marvel Dice Throne: Missions was also released alongside the Marvel Dice Throne: X-Men set, allowing 1-4 players to battle villains from the Marvel universe in one-shot missions.\n\nLinked entries in the BGG database:\n\nCharacters and Character Sets:\n\nDice Throne: Season One Dice Throne: Season One ReRolled Dice Throne: Season One Rerolled – Battle 1: Barbarian v. Moon Elf Dice Throne: Season One ReRolled – Monk v. Paladin Dice Throne: Season One ReRolled – Pyromancer v. Shadow Thief Dice Throne: Season One ReRolled – Treant v. Ninja\n\nDice Throne: Season Two – Battle Chest Dice Throne: Season Two – Seraph v. Vampire Lord Dice Throne: Season Two – Tactician v. Huntress Dice Throne: Season Two – Gunslinger v. Samurai Dice Throne: Season Two – Cursed Pirate v. Artificer\n\nDice Throne: Santa v. Krampus Marvel Dice Throne Marvel Dice Throne: Black Widow v. Doctor Strange Marvel Dice Throne: Captain Marvel v. Black Panther Marvel Dice Throne: Scarlet Witch v. Thor v. Loki v. Spider-Man\n\nMarvel Dice Throne: X-Men Marvel Dice Throne: X-Men – Cyclops v. Gambit v. Rogue v. Jean Grey Marvel Dice Throne: X-Men – Iceman v. Psylocke v. Storm v. Wolverine\n\nMarvel Dice Throne: Deadpool Dice Throne: Outcasts Dice Throne Vanguard Dice Throne: Alchemist\n\nCooperative Expansions\n\nDice Throne Adventures Dice Throne Adventures: Unchained\n\nMarvel Dice Throne Missions",
@@ -2960,8 +2960,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Dinosaur World is a city-building game where players construct and manage prehistoric parks. Draft workers, build attractions, and collect DNA to create thrilling exhibits. Navigate your jeep through the park, earning victory points while balancing safety and excitement....",
-        "es": "Juego de construcción de ciudades donde los jugadores crean y gestionan parques prehistóricos. Seleccionan trabajadores, construyen atracciones y recolectan ADN para crear exhibiciones emocionantes. Conducen su jeep por el parque, ganando puntos de victoria mientras equilibran seguridad y diversión...."
+        "en": "The triumph of science that led to dinosaurs returning to the world once more has become public knowledge. New parks spring up regularly, often beginning operations even before everything has been finalized. There is no shortage of patrons eager to be entertained by these returned species in new and exciting ways. However, as with any form of entertainment, elements of triumph are often accompanied by elements of tragedy....",
+        "es": ""
       },
       "description": {
         "en": "The triumph of science that led to dinosaurs returning to the world once more has become public knowledge. New parks spring up regularly, often beginning operations even before everything has been finalized. There is no shortage of patrons eager to be entertained by these returned species in new and exciting ways. However, as with any form of entertainment, elements of triumph are often accompanied by elements of tragedy. This means it is of the utmost importance that you take every precaution by ensuring each visitor signs the safety waiver before enjoying the wonders of Dinosaur World!\n\nEach round in Dinosaur World, you draft a new résumé card to acquire new workers; spend workers to take public actions building your park and acquiring DNA; spend further workers to take private actions improving that park; then drive your jeep around experiencing the wonder and excitement of what you have built! Throughout the game you acquire victory points through a variety of means — and possibly a few visitor deaths as a natural consequence of overly enthusiastic dinosaur encounters. At the end of the game, you lose points if you accumulated too many deaths, then the player with the most points wins!",
@@ -3044,8 +3044,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Dragon Slayer is a push-your-luck dice game where players compete as fearless dragon hunters. Each turn, you roll dice to track your progress in slaying dragons, but you can also challenge others to prove your valor....",
-        "es": "Juego de dados y suerte en el que los jugadores compiten como valientes cazadores de dragones. Cada turno, se lanzan dados para rastrear el progreso en la caza de dragones, pero también se pueden desafiar a otros para probar su valor...."
+        "en": "Dragon Slayer is a new push-your-luck game that's a deceptively difficult challenge. Like all great PYL games, the rules are simple, with you repeating the Dragon Hunt until you decide to stop. The very interesting twist is the player challenges. The ability to challenge — and rewards for passing or failing when challenged — add a dimension to everything that you do on your turn. What order do you go after dragons? When do you stop?...",
+        "es": ""
       },
       "description": {
         "en": "You are the world's most fearless dragon slayers, competing to be crowned the master slayer. Your brave warrior must search far and wide for these ferocious beasts, defend yourself against its attacks and be ever ready to strike them down. Even in victory your companions may challenge your courage, demanding that you prove your valor with foolhardy audacity or cower in their mocking taunts.\n\nDragon Slayer is a new push-your-luck game that's a deceptively difficult challenge. Like all great PYL games, the rules are simple, with you repeating the Dragon Hunt until you decide to stop. The very interesting twist is the player challenges. The ability to challenge — and rewards for passing or failing when challenged — add a dimension to everything that you do on your turn. What order do you go after dragons? When do you stop? When do you challenge? Who do you challenge? How do you get others not to challenge you?!",
@@ -3128,8 +3128,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Elder Sign is a fast-paced cooperative dice game set in 1926. Players take on the roles of investigators racing to seal portals before an Ancient One invades. Using tools, allies, and occult knowledge, they must locate Elder Signs while battling monsters and maintaining their sanity.",
-        "es": "Juego de dados cooperativo y rápido ambientado en 1926. Los jugadores asumen el rol de investigadores que deben sellar portales antes de que un Primigenio invada la Tierra. Con herramientas, aliados y conocimientos ocultos, buscan símbolos eldritch mientras combaten monstruos y preservan su cordura."
+        "en": "Elder Sign is a fast-paced, cooperative dice game of supernatural intrigue for one to eight players by Richard Launius and Kevin Wilson, the designers of Arkham Horror. Players take the roles of investigators racing against time to stave off the imminent return of the Ancient One. Armed with tools, allies, and occult knowledge, investigators must put their sanity and stamina to the test as they adventure to locate Elder Signs, the eldritch symbols used to seal away the Ancient Ones and win the game.",
+        "es": ""
       },
       "description": {
         "en": "Game description from the publisher:\n\nIt is 1926, and the museum's extensive collection of exotic curios and occult artifacts poses a threat to the barriers between our world and the elder evils lurking between dimensions. Gates to the beyond begin to leak open, and terrifying creatures of increasing strength steal through them. Animals, the mad, and those of more susceptible minds are driven to desperation by the supernatural forces the portals unleash. Only a handful of investigators race against time to locate the eldritch symbols necessary to seal the portals forever. Only they can stop the Ancient One beyond from finding its way to Earth and reducing humanity to cinders.\n\nElder Sign is a fast-paced, cooperative dice game of supernatural intrigue for one to eight players by Richard Launius and Kevin Wilson, the designers of Arkham Horror. Players take the roles of investigators racing against time to stave off the imminent return of the Ancient One. Armed with tools, allies, and occult knowledge, investigators must put their sanity and stamina to the test as they adventure to locate Elder Signs, the eldritch symbols used to seal away the Ancient Ones and win the game.\n\nTo locate Elder Signs, investigators must successfully endure Adventures within the museum and its environs. A countdown mechanism makes an Ancient One appear if the investigators are not quick enough. The investigators must then battle the Ancient One. A clever and thematic dice mechanism pits their exploration against monsters and the sheer difficulty of staying sane and healthy, all within the standard game duration of one to two hours.",
@@ -3222,8 +3222,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Elder Sign: Gates of Arkham expands the struggle against the Ancient Ones into the haunted city of Arkham. Play in over 20 locations, including Velma's Diner and Arkham Asylum, while gates to Other Worlds destabilize time and space. New investigators, skills, and factions like the Sheldon Gang join the fight.",
-        "es": "Juego de expansión de Elder Sign donde la lucha contra los Primigenios se extiende por la ciudad embrujada de Arkham. Las aventuras ocurren en más de veinte lugares, incluyendo el restaurante de Velma y el Asilo de Arkham, mientras puertas a otros mundos alteran el tiempo y el espacio. Nuevos investigadores, habilidades y facciones como la banda Sheldon se unen a la batalla."
+        "en": "The struggle against the Ancient Ones spreads out of the museum and into the haunted city of Arkham in Elder Sign: Gates of Arkham. Adventures take place in over twenty locations including Velma's Diner and the Curiositie Shoppe, Arkham Asylum, and the Uninvited Isle. Meanwhile, gates to Other Worlds open throughout Arkham, destabilizing time and space.\n\nElder Sign: Gates of Arkham fan Elder Sign: Gates of Arkham fan - yellow gate Elder Sign: Gates of Arkham fan - blue gate Elder Sign: Gates of Arkham fan - red gate",
+        "es": ""
       },
       "description": {
         "en": "Description from the Publisher\n\nThe struggle against the Ancient Ones spreads out of the museum and into the haunted city of Arkham in Elder Sign: Gates of Arkham. Adventures take place in over twenty locations including Velma's Diner and the Curiositie Shoppe, Arkham Asylum, and the Uninvited Isle. Meanwhile, gates to Other Worlds open throughout Arkham, destabilizing time and space.\n\nIn this expansion for Elder Sign, four new Ancient Ones threaten humanity and eight new investigators join the quest for elder signs. Investigators can also now acquire skills that give them lasting advantages. Memberships in either the brutal Sheldon Gang or the mysterious Silver Twilight Lodge help investigators complete tasks and grant them added rewards. It will take all the skills, resources, strength, and sanity you can muster to prevent the Ancient Ones from awakening – and to stay alive in the rough streets of Arkham.\n\nMicrobadges\n\nElder Sign: Gates of Arkham fan Elder Sign: Gates of Arkham fan - yellow gate Elder Sign: Gates of Arkham fan - blue gate Elder Sign: Gates of Arkham fan - red gate",
@@ -3312,8 +3312,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Eldritch Horror is a cooperative adventure game where 1-8 players take on the roles of investigators traveling the world to solve mysteries and stop an Ancient One from destroying humanity. Each game features unique mysteries, encounters, and challenges as players battle monsters, uncover clues, and face personal trials....",
-        "es": "Juego de terror y aventura cooperativo en el que los jugadores asumen el rol de investigadores que viajan por el mundo para resolver misterios y evitar que un Primigenio destruya la humanidad. Cada partida presenta misterios, encuentros y desafíos únicos, con batallas contra monstruos, descubrimiento de pistas y pruebas personales...."
+        "en": "Eldritch Horror is a co-operative game of terror and adventure in which one to eight players take the roles of globetrotting investigators working to solve mysteries, gather clues, and protect the world from an Ancient One – that is, an elder being intent on destroying our world. Each Ancient One comes with its own unique decks of Mystery and Research cards, which draw you deeper into the lore surrounding each loathsome creature....",
+        "es": ""
       },
       "description": {
         "en": "Across the globe, ancient evil is stirring. Now, you and your trusted circle of colleagues must travel around the world, working against all odds to hold back the approaching horror. Foul monsters, brutal encounters, and obscure mysteries will take you to your limit and beyond. All the while, you and your fellow investigators must unravel the otherworldy mysteries scattered around the globe in order to push back the gathering mayhem that threatens to overwhelm humanity. The end draws near! Do you have the courage to prevent global destruction?\n\nEldritch Horror is a co-operative game of terror and adventure in which one to eight players take the roles of globetrotting investigators working to solve mysteries, gather clues, and protect the world from an Ancient One – that is, an elder being intent on destroying our world. Each Ancient One comes with its own unique decks of Mystery and Research cards, which draw you deeper into the lore surrounding each loathsome creature. Discover the true name of Azathoth or battle Cthulhu on the high seas.\n\nWhile the tasks on these Mystery cards (along with the locations of otherworldly gates, menacing monsters, and helpful clues) will often inform both your travel plans and the dangers you confront, you can find adventure anywhere in the world...even where you least expect it. It is during the Encounter Phase of each turn that players resolve combat or, alternatively, build their investigators' personal stories by reading an encounter narrative from one of several types of Encounter cards. You might go head to head with a monster in Istanbul or find yourself in a tough spot with the crime syndicate in a major city. Maybe you will embark on an expedition to the Pyramids or research a clue you uncover in the unnamed wilderness. You may even find your way through a gate and explore a dimension beyond time and space.\n\nShould you fail an encounter, the cost is steep. If you are fortunate, you will merely incur physical or mental trauma. However, you might also be compelled to take a Condition card, which represents a specific injury or restriction gained throughout your journey, such as a Leg Injury or Amnesia. You could find yourself getting in over your head to acquire assets and receive a Debt condition – or maybe you'll owe a favor to something far more insidious than a debt collector, and enter into a Dark Pact! Whatever your condition, you would be wise to find a resolution with haste; many conditions have a \"reckoning effect\" which, if triggered, ensure a much more sinister fate.\n\nAll the while, the arrival of the Ancient One approaches. Its malign influence is manifested in Eldritch Horror as you draw Mythos Cards, which govern the appearance of otherworldly gates, fearsome monsters, and other ominous elements. Mythos cards keep your investigators under pressure, introducing new threats, even as the arrival of the Great Old One draws nearer! Since the investigators draw a new Mythos card each round, they're certain to have their hands full battling foul creatures and following up on strange rumors, even as they work to solve their three all-important mysteries.\n\nWith twelve unique investigators, two hundred-fifty tokens, and over three hundred cards, Eldritch Horror presents an epic, world-spanning adventure with each and every game.",
@@ -3406,8 +3406,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Encore! is a dice-driven grid coverage game where players mark off spaces on their sheets based on dice rolls. The starting player can remove two dice, altering choices. Points are earned by completing columns and color groups first, with bonuses for speed and color completion. The game ends when a player finishes two color groups, but an Encore! allows one final round.",
-        "es": "Juego de dados y losetas donde los jugadores marcan casillas en sus hojas según los resultados de los dados. El jugador inicial puede retirar dos dados, cambiando las opciones. Se obtienen puntos al completar primero columnas y grupos de color, con bonificaciones por velocidad y color completo...."
+        "en": "Make sure to complete columns before other players do! the first to complete a column earns more points than those who complete them later. In addition to points for completed columns, a player can receive a bonus if they checked all the boxes of the same color. The game is over when a player has checked off all boxes of two colors, but you couldhave an Encore! by playing once more!",
+        "es": ""
       },
       "description": {
         "en": "In Encore!, first published as Noch mal!, the dice determine which color and how many spaces you can mark off on your playing sheet — but the starting player may first evaluate what everyone's doing, then remove two dice, leaving everyone else to make their choices with the dice that remain...\n\nPlayers earn points by being the first to check off all boxes in a column, and all boxes of the same color. Players pick a combination of a Color die and a Number die, and check the respective boxes. Only boxes connected to other boxes can be checked.\n\nMake sure to complete columns before other players do! the first to complete a column earns more points than those who complete them later. In addition to points for completed columns, a player can receive a bonus if they checked all the boxes of the same color. The game is over when a player has checked off all boxes of two colors, but you couldhave an Encore! by playing once more!",
@@ -3492,8 +3492,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "A real-time cooperative adventure where players work together to escape a collapsing temple. Roll dice to explore rooms, uncover magical gems, and avoid deadly countdowns. The more gems you find, the easier your escape. Includes expansions for added challenges and treasures.",
-        "es": "Juego de cooperación en tiempo real donde los jugadores deben escapar de un templo que se derrumba. Usan dados para explorar habitaciones, descubrir gemas mágicas y evitar los conteos regresivos mortales. Cuantas más gemas encuentren, más fácil será la huida. Incluye módulos de expansión para desafíos y tesoros adicionales."
+        "en": "Escape: The Curse of the Temple is a cooperative game in which players must escape (yes...) from a temple (yes...) which is cursed (yes...) before the temple collapses and kills one or more explorers, thereby causing everyone to lose.",
+        "es": ""
       },
       "description": {
         "en": "Escape: The Curse of the Temple is a cooperative game in which players must escape (yes...) from a temple (yes...) which is cursed (yes...) before the temple collapses and kills one or more explorers, thereby causing everyone to lose.\n\nThe initial game board consists of a row of three square tiles, each showing a combination of two symbols, say, two green adventurers or one green adventurer and one blue key in one corner of the tile. All of the explorers start in the center tile – the safe room – and each player starts with a hand of five dice. Escape is played in real-time, with all players rolling dice and taking actions simultaneously. You must roll the right symbols to enter a room, and if you're at an open doorway, you can roll to reveal the next tile in the stack and add it to that doorway. Some rooms contain combinations of red and blue symbols, and if you (possibly working with other players in the same room) roll enough red or blue symbols, you \"discover\" magic gems, moving them from a separate gem depot onto that tile. The real-time aspect is enforced by a soundtrack to be played during the game. At certain points, a countdown starts, and if players aren't back in the safe room when time is up, they lose one of their dice.\n\nOnce the exit tile is revealed, players can attempt to escape the temple by moving to that tile, then rolling a number of blue dice equal to the magic gems that haven't been removed from the gem depot. Thus, the more gems you find, the easier it is to escape the temple. When a player escapes, he gives one die to a player of his choice. If all players escape before the third countdown, everyone wins; if not, everyone loses, no matter how many players did escape.\n\nEscape: The Curse of the Temple includes two expansion modules that can be used individually or together. With the \"Treasures\" module, some rooms contain treasure, and when you reveal such a room, you place a face-down treasure chest on the tile. Roll the symbols on that chest tile, and you claim the treasure for use later: a key lets you teleport anywhere, a path lets you connect two rooms that otherwise have no door between them, and a medic kit heals all players instantly (putting black dice back into play). With the \"Curses\" module, some tiles \"curse\" players by forcing them to place one hand on their head, keep mute during play, or otherwise do what you wouldn't want to do while escaping a temple!",
@@ -3589,8 +3589,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Evergreen is a puzzle game where players build a lush ecosystem by planting seeds, growing trees, and placing natural elements. Choose biome cards to develop regions, with unselected cards increasing fertility. Strategically grow forests, plant bushes, and place lakes to maximize light and fertility.",
-        "es": "Juego de rompecabezas en el que los jugadores crean un ecosistema exuberante plantando semillas, cultivando árboles y colocando elementos naturales. Seleccionan cartas de bioma para desarrollar regiones, mientras que las no elegidas aumentan la fertilidad. Estrategicamente, se cultivan bosques, se plantan arbustos y se colocan lagos para maximizar la luz y la fertilidad."
+        "en": "In Evergreen, your goal is to build a lush ecosystem by planting seeds, growing trees, and placing other natural elements on your planet, trying to make it the greenest and most fertile of all.",
+        "es": ""
       },
       "description": {
         "en": "In Evergreen, your goal is to build a lush ecosystem by planting seeds, growing trees, and placing other natural elements on your planet, trying to make it the greenest and most fertile of all.\n\nYou choose biome cards from a common pool to determine which area of your planet you'll develop in a round. The cards not chosen make those regions more fertile, and thus more valuable. To create a huge forest, you want to grow trees, plant bushes, and place lakes, while using the power of nature to gain extra actions. Ideally you can concentrate your trees in the most fertile areas, but without them overshadowing one another as you also want them to collect as much light as possible.",
@@ -3671,8 +3671,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "A cooperative puzzle game modeled after escape rooms. Solve a murder mystery on the Orient Express by deciphering clues from a detective's documents before reaching Constantinople. Features unique, write-on materials for diverse puzzles. Hard difficulty level.",
-        "es": "Juego de deducción cooperativo inspirado en salas de escape. Resuelven un asesinato en el Orient Express usando documentos de un detective antes de llegar a Constantinopla. Incluye materiales para escribir, doblar y cortar, permitiendo acertijos variados. Nivel de dificultad alto."
+        "en": "Exit: The Game – Dead Man on the Orient Express is a puzzle game modeled after escape rooms.\n\nStarting with season 3, the Exit series is divided into difficulty levels. \"Dead Man on the Orient Express\" is categorized at hard level.",
+        "es": ""
       },
       "description": {
         "en": "Exit: The Game – Dead Man on the Orient Express is a puzzle game modeled after escape rooms.\n\nOne murder, eight suspects. By chance, the world-famous private detective Achilles Pussot happens to be on board the train - but he has been knocked out. Can you use his documents to solve the case before the Orient Express reaches Constantinople?\n\nAn unforgettable, unique gaming experience. Solve all of the puzzles as fast as you can! Can you solve the case before it's too late?\n\nStarting with season 3, the Exit series is divided into difficulty levels. \"Dead Man on the Orient Express\" is categorized at hard level.\n\nThis game can only be played once. To solve the riddles, you will have to write on, fold, and cut the game materials. This makes it possible to have especially diverse riddles. The paper and cardboard components are recyclable!",
@@ -3753,8 +3753,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "A cooperative puzzle game where players work together to escape a locked cabin. Using clues from a mysterious book and a spinning code dial, teams solve puzzles and crack codes to unlock the door.",
-        "es": "Juego de cooperación y acertijos donde los jugadores deben escapar de una cabaña cerrada. Usando pistas de un libro misterioso y un dial de código giratorio, resuelven acertijos y descifran códigos para abrir la puerta."
+        "en": "In Exit: The Game – The Abandoned Cabin, players must use their team spirit, creativity, and powers of deduction to crack codes, solve puzzles, collect objects, and earn their freedom bit by bit.",
+        "es": ""
       },
       "description": {
         "en": "Everyone meant to use the cabin only as a shelter for the night, but come the morning the door has been secured by a combination lock, with no one knowing the combination of numbers that will let them leave. The windows are barred as well. An enigmatic spinning code dial and a mysterious book is all that you have to go on. Can you escape from this abandoned cottage?\n\nIn Exit: The Game – The Abandoned Cabin, players must use their team spirit, creativity, and powers of deduction to crack codes, solve puzzles, collect objects, and earn their freedom bit by bit.",
@@ -3834,8 +3834,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "A cooperative puzzle game where players search the Paris catacombs for a missing friend. Solve riddles and navigate dark mysteries to escape before time runs out.",
-        "es": "Juego de deducción y horror en el que los jugadores exploran las catacombas de París en busca de un amigo desaparecido. Resuelven acertijos y enfrentan misterios oscuros para escapar a tiempo."
+        "en": "Gloomy vaults lie under the city of lights. The catacombs of Paris swallow the light, secrets, and — apparently — also people. After the mysterious disappearance of a friend in the catacombs, players in Exit: The Game – The Catacombs of Horror embark on a mysterious search through the underground labyrinth. Will players be able to find their friend in time and escape this cavernous world full of dark mysteries?",
+        "es": ""
       },
       "description": {
         "en": "Gloomy vaults lie under the city of lights. The catacombs of Paris swallow the light, secrets, and — apparently — also people. After the mysterious disappearance of a friend in the catacombs, players in Exit: The Game – The Catacombs of Horror embark on a mysterious search through the underground labyrinth. Will players be able to find their friend in time and escape this cavernous world full of dark mysteries?\n\nLike other titles in the series, Exit: The Game – The Catacombs of Horror includes components meant to be folded, written upon, or torn, so it's marketed as a single-use game. What's different in this game is that it consists of two parts, with each part being its own challenge.",
@@ -3914,8 +3914,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "A cooperative puzzle game modeled after escape rooms. Players solve riddles and manipulate physical components to uncover a hidden ruby in a knight's tomb. Designed for a single use with foldable, writable, and tearable elements.",
-        "es": "Juego de rompecabezas cooperativo inspirado en las salas de escape. Los jugadores resuelven acertijos y manipulan componentes físicos para descubrir una rubí escondida en la tumba de un caballero. Diseñado para un solo uso con elementos plegables, escribibles y desgarrables."
+        "en": "Exit: The Game – The Cemetery of the Knight is a puzzle game modeled after escape rooms, and it includes components meant to be folded, written upon, or torn, so it's marketed as a single-use game.\n\nAccording to legend, tonight's moon is at the right angle to find a priceless red ruby hidden in the tomb of Sir Reginald Wreston. No one has succeeded in finding it yet. Will you triumph tonight?",
+        "es": ""
       },
       "description": {
         "en": "According to legend, tonight's moon is at the right angle to find a priceless red ruby hidden in the tomb of Sir Reginald Wreston. No one has succeeded in finding it yet. Will you triumph tonight?\n\nExit: The Game – The Cemetery of the Knight is a puzzle game modeled after escape rooms, and it includes components meant to be folded, written upon, or torn, so it's marketed as a single-use game.",
@@ -3994,8 +3994,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "A cooperative puzzle game where players work together to solve riddles and escape a mysterious castle. The game features real-time challenges and deduction mechanics, offering an immersive escape room experience.",
-        "es": "Juego de rompecabezas cooperativo donde los jugadores resuelven acertijos para escapar de un castillo misterioso. Incluye desafíos en tiempo real y mecánicas de deducción, recreando la experiencia de una sala de escape."
+        "en": "The castle is the highlight of the hike, but hardly have the hikers entered the old walls, when the squeaky doors close. Escape appears impossible — but strange hints may lead players in a new direction. Can they solve the riddles and find the way to freedom?\n\nExit: The Game – The Forbidden Castle is a puzzle game modeled after escape rooms.",
+        "es": ""
       },
       "description": {
         "en": "The castle is the highlight of the hike, but hardly have the hikers entered the old walls, when the squeaky doors close. Escape appears impossible — but strange hints may lead players in a new direction. Can they solve the riddles and find the way to freedom?\n\nExit: The Game – The Forbidden Castle is a puzzle game modeled after escape rooms.",
@@ -4074,8 +4074,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "A cooperative puzzle game where players work together to solve real-time challenges and escape a mysterious island. Unlock the chained boat by deciphering puzzles scattered across the shore.",
-        "es": "Juego de rompecabezas cooperativo donde los jugadores resuelven desafíos en tiempo real para escapar de una isla misteriosa. Liberan el bote encadenado al descifrar los acertijos dispersos por la playa."
+        "en": "Exit: The Game – The Forgotten Island is a puzzle game modeled after escape rooms.\n\nFor those shipwrecked on the beach of this forgotten island, a chained boat is the only hope — but the mysterious owner has left puzzles over the whole island. Will the team solve them, free the boat, and escape?",
+        "es": ""
       },
       "description": {
         "en": "For those shipwrecked on the beach of this forgotten island, a chained boat is the only hope — but the mysterious owner has left puzzles over the whole island. Will the team solve them, free the boat, and escape?\n\nExit: The Game – The Forgotten Island is a puzzle game modeled after escape rooms.",
@@ -4153,8 +4153,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "A cooperative puzzle game modeled after escape rooms. Players work together to solve riddles and navigate through mysterious worlds after discovering a gate to another dimension. The game includes components designed to be modified, making it a single-use experience.",
-        "es": "Juego de rompecabezas cooperativo inspirado en las salas de escape. Los jugadores colaboran para resolver acertijos y viajar entre mundos extraños tras encontrar una puerta a otra dimensión. Incluye componentes para modificar, por lo que es de un solo uso."
+        "en": "Exit: The Game – The Gate Between Worlds is a puzzle game modeled after escape rooms, and it includes components meant to be folded, written upon, or torn, so it's marketed as a single-use game.",
+        "es": ""
       },
       "description": {
         "en": "You have followed an ancient map to a hidden cave which purportedly contains some kind of mysterious gate. Inside the cave, you find a large metal circle made of concentric rings embedded in the rock wall. You approach the gate hesitantly and touch it. To your astonishment, the metal rings can be rotated. Suddenly, everything goes dark around you. When you regain consciousness some time later, you are no longer in the cave, but in a bizarre new world. Where are you? And how are you supposed to find your way back to the world you know? Only by working together as a team, solving riddles as you travel from world to world, will you be able to make it home safely.\n\nDifficulty level: 3 of 5\n\nExit: The Game – The Gate Between Worlds is a puzzle game modeled after escape rooms, and it includes components meant to be folded, written upon, or torn, so it's marketed as a single-use game.",
@@ -4233,8 +4233,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "A cooperative puzzle game where players explore an ancient Egyptian tomb. Trapped with limited time, they must solve riddles, crack codes, and work together to escape before the door seals permanently.",
-        "es": "Juego de cooperación y acertijos donde los jugadores exploran una tumba egipcia. Atrapados con tiempo limitado, deben resolver enigmas, descifrar códigos y trabajar en equipo para escapar antes de que la puerta se cierre para siempre."
+        "en": "In Exit: The Game – The Pharaoh's Tomb, players must use their team spirit, creativity, and powers of deduction to crack codes, solve puzzles, collect objects, and earn their freedom bit by bit.",
+        "es": ""
       },
       "description": {
         "en": "On an Egyptian holiday, players are visiting the highlight of the entire journey: the stone pyramids! But after rising through the narrow, labyrinthine corridors, they discover that they've lost the rest of the group. After wandering for hours, they end up in a mysterious grave chamber — and suddenly the stone door closes behind them. The players are caught. On the floor is a sand-covered notebook and an ancient spinning code dial. Will the players escape in time or be forever buried under stone?\n\nIn Exit: The Game – The Pharaoh's Tomb, players must use their team spirit, creativity, and powers of deduction to crack codes, solve puzzles, collect objects, and earn their freedom bit by bit.",
@@ -4315,8 +4315,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "A cooperative puzzle game where players work together to solve challenges and escape a locked polar station within 60 minutes.",
-        "es": "Juego de rompecabezas cooperativo en el que los jugadores resuelven desafíos para escapar de una estación polar cerrada en una hora."
+        "en": "Exit: The Game – The Polar Station is a puzzle game modeled after escape rooms.\n\nAn alarm sounded in the eternal ice, so the polar station has been evacuated and foreclosed, but a small group of researchers has remained behind by mistake — and they have only one hour to find the code that will crack the lock program.",
+        "es": ""
       },
       "description": {
         "en": "An alarm sounded in the eternal ice, so the polar station has been evacuated and foreclosed, but a small group of researchers has remained behind by mistake — and they have only one hour to find the code that will crack the lock program.\n\nExit: The Game – The Polar Station is a puzzle game modeled after escape rooms.",
@@ -4373,7 +4373,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "minPlayTime": 45,
       "maxPlayTime": 90,
       "averageRating": 7.59,
-      "bayesAverage": 6,
+      "bayesAverage": 6.0,
       "rank": 3152,
       "avgWeight": 3.1,
       "weightBand": "medium-heavy",
@@ -4394,8 +4394,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "A sequel to EXIT: The Abandoned Cabin, this escape room game sends players back to the infamous cabin to stop the escaped Dr. Funbeq. Solve puzzles and crack codes to escape.",
-        "es": "Juego de escape en el que los jugadores regresan a la cabaña abandonada para detener al fugitivo Dr. Funbeq. Resuelven acertijos y descifran códigos para escapar."
+        "en": "EXIT: The Game is a series of escape room games for the home. Players must solve riddles and puzzles and crack codes to escape from an imaginary room or environment. … One-time use: Each game can only be played once, because you must mark up, fold, and tear the game materials to crack the codes.",
+        "es": ""
       },
       "description": {
         "en": "EXIT The Game: The Return to the Abandoned Cabin is a sequel to EXIT: The Game – The Abandoned Cabin with lots of new puzzles and tools.\n\nOne ordinary morning, a police detective rings your doorbell. He asks you to come with him — to a cabin in the woods. You instantly know it’s the same cabin in which the sinister riddle master Dr. Arthur Funbeq locked you up a few years ago. Apparently, he has just escaped from prison. Now you’re headed back to the infamous cabin where it all began to help bring Funbeq down. The adventure begins … again!\n\nA celebration of 5 years since the initial Exit game, The Abandoned Cabin!\n\nDifficulty Level 3 / 5\n\nEXIT: The Game is a series of escape room games for the home. Players must solve riddles and puzzles and crack codes to escape from an imaginary room or environment. … One-time use: Each game can only be played once, because you must mark up, fold, and tear the game materials to crack the codes.",
@@ -4474,8 +4474,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Players are locked in a lab and must work together to solve puzzles and escape. Use teamwork and deduction to crack codes and find hidden objects.",
-        "es": "Los jugadores quedan atrapados en un laboratorio y deben resolver acertijos para escapar. Usan trabajo en equipo y deducción para descifrar códigos y encontrar objetos ocultos."
+        "en": "In Exit: The Game – The Secret Lab, players must use their team spirit, creativity, and powers of deduction to crack codes, solve puzzles, collect objects, and earn their freedom bit by bit.",
+        "es": ""
       },
       "description": {
         "en": "As the subjects of a medical study, the players have checked into a lab, but while they're on time at the site, no one else seems to be there — then they realize that something seems wrong here. Steam has started emerging from one of the test tubes, and they've all gotten dizzy to the point of passing out. When they awaken, they discover that the door is locked and no other way out seems possible. Only a notebook and an enigmatic spinning code dial seem to offer any clues for how to escape the lab...\n\nIn Exit: The Game – The Secret Lab, players must use their team spirit, creativity, and powers of deduction to crack codes, solve puzzles, collect objects, and earn their freedom bit by bit.\n\nExtra material: It is highly recommended that you have pens/pencils, writing paper and scissors at hand when you play the game. Note: There is a printing error in the first English Edition on the 2nd 'Star' clue card. Please refer to the forums if you are confused after using that clue card.",
@@ -4555,8 +4555,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "A cooperative puzzle game modeled after escape rooms. Players work together to solve riddles and escape the sinister mansion. Part of the Exit series, this intermediate-level game offers challenging puzzles and immersive gameplay.",
-        "es": "Juego de rompecabezas cooperativo inspirado en las salas de escape. Los jugadores resuelven acertijos para escapar de la mansión siniestra. Parte de la serie Exit, este título de nivel intermedio ofrece desafíos y una experiencia inmersiva."
+        "en": "Exit: The Game – The Sinister Mansion is a puzzle game modeled after escape rooms.\n\nStarting with season 3, the Exit series is divided into difficulty levels. The Sinister Mansion is categorized at intermediate level.",
+        "es": ""
       },
       "description": {
         "en": "Exit: The Game – The Sinister Mansion is a puzzle game modeled after escape rooms.\n\nStarting with season 3, the Exit series is divided into difficulty levels. The Sinister Mansion is categorized at intermediate level.",
@@ -4632,8 +4632,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "A cooperative puzzle game modeled after escape rooms. Players work together in real-time to solve riddles and navigate through a sunken ship to find a hidden treasure.",
-        "es": "Juego de rompecabezas cooperativo inspirado en las salas de escape. Los jugadores colaboran en tiempo real para resolver acertijos y explorar un barco hundido en busca de un tesoro oculto."
+        "en": "Exit: The Game – The Sunken Treasure is a puzzle game modeled after escape rooms.\n\nStarting with season 3, the Exit series is divided into difficulty levels. \"The Sunken Treasure\" is categorized at beginners level.",
+        "es": ""
       },
       "description": {
         "en": "Exit: The Game – The Sunken Treasure is a puzzle game modeled after escape rooms.\n\nStarting with season 3, the Exit series is divided into difficulty levels. \"The Sunken Treasure\" is categorized at beginners level.",
@@ -4717,8 +4717,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "A cooperative deduction game where 1-4 players investigate a robbery on a Mississippi steamboat. Solve puzzles and uncover clues to catch the thief before reaching New Orleans.",
-        "es": "Juego de deducción cooperativo donde 1-4 jugadores investigan un robo en un barco de vapor del Mississippi. Resuelven acertijos y descubren pistas para atrapar al ladrón antes de llegar a Nueva Orleans."
+        "en": "In Exit: The Game – Theft on the Mississippi, 1-4 players find themselves in a tense story again. A robbery takes place while you're traveling down the Mississippi on a steamboat. Can your team of investigators find the culprit before the riverboat docks in New Orleans and the thief escapes?",
+        "es": ""
       },
       "description": {
         "en": "In Exit: The Game – Theft on the Mississippi, 1-4 players find themselves in a tense story again. A robbery takes place while you're traveling down the Mississippi on a steamboat. Can your team of investigators find the culprit before the riverboat docks in New Orleans and the thief escapes?\n\nThe escape-room feeling for the home! With \"Exit: The Game\", players with a bit of dedication, team spirit and creativity gradually discover more and more items, crack codes, solve puzzles and come closer to their goal little by little. It also unusual ways must be followed: So the material may be kinked, labeled or cut. Just changing the material allows a particularly exciting, unique and amazing gaming experience.",
@@ -4797,8 +4797,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Race against time to solve puzzles and reactivate a lighthouse's beacon in this cooperative escape game. Assemble four 88-piece jigsaw puzzles to uncover hidden riddles and obstacles. Difficulty level 4 of 5.",
-        "es": "Juego cooperativo donde los jugadores deben resolver acertijos y armar cuatro rompecabezas de 88 piezas para reactivar el faro y salvar un barco. Nivel de dificultad 4 de 5."
+        "en": "In Exit: The Game + Puzzle – The Deserted Lighthouse, there are riddles within riddles, hidden within four 88-piece jigsaw puzzles. Like other Exit titles, The Deserted Lighthouse has no game board, but it also has no riddle cards. Instead, there are four jigsaw puzzles that you will find and assemble, one at a time. Each completed puzzle reveals a location containing more riddles to decipher.",
+        "es": ""
       },
       "description": {
         "en": "You trudge along the dark, rocky coast seeking shelter from the raging storm. Drenched to the bone, you look up to see a brilliant beam of light pierce the curtains of rain. A lighthouse! But suddenly and inexplicably, the light goes out. You glance out into the water and spot a ship. It is heading straight for the cliffs! You realize that it is up to you to race to the top of the lighthouse and turn it on again before the ship crashes on the cliffs! But many puzzling obstacles stand in your way...\n\nIn Exit: The Game + Puzzle – The Deserted Lighthouse, there are riddles within riddles, hidden within four 88-piece jigsaw puzzles. Like other Exit titles, The Deserted Lighthouse has no game board, but it also has no riddle cards. Instead, there are four jigsaw puzzles that you will find and assemble, one at a time. Each completed puzzle reveals a location containing more riddles to decipher.\n\nIn EXIT The Game: The Deserted Lighthouse, you must work to solve the riddles and reach the lighthouse’s top to activate its beacon, saving the approaching ship before it smashes against the rocks and sinks to the bottom of the sea.\n\nAt the start of the game, all you have available to you are the puzzle bag containing pieces with a grayish-blue back and no pattern, and the decoder disk. But there are also strange items to be found within the game that may be used to help solve the riddles found in each of the puzzles.\n\nThe game ends when you have solved the last riddle and reactivated the lighthouse beacon to save the ship from sinking.\n\nDifficulty Level: 4 of 5.\n\n—description from the publisher",
@@ -4876,8 +4876,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "A fast-paced card game where players draw until someone pulls an exploding kitten and loses. Use strategy cards to avoid explosions, force opponents to draw, or shuffle the deck.",
-        "es": "Juego de cartas donde los jugadores van sacando cartas hasta que alguien extrae un gatito explosivo y pierde. Se usan cartas estratégicas para evitar explosiones, obligar a otros a sacar cartas o barajar el mazo."
+        "en": "Exploding Kittens is a kitty-powered version of Russian Roulette. Players take turns drawing cards until someone draws an exploding kitten and loses the game. The deck is made up of cards that let you avoid exploding by peeking at cards before you draw, forcing your opponent to draw multiple cards, or shuffling the deck.\n\nThe game gets more and more intense with each card you draw because fewer cards left in the deck means a greater chance of drawing the kitten and exploding in a fiery ball of feline hyperbole.",
+        "es": ""
       },
       "description": {
         "en": "Exploding Kittens is a kitty-powered version of Russian Roulette. Players take turns drawing cards until someone draws an exploding kitten and loses the game. The deck is made up of cards that let you avoid exploding by peeking at cards before you draw, forcing your opponent to draw multiple cards, or shuffling the deck.\n\nThe game gets more and more intense with each card you draw because fewer cards left in the deck means a greater chance of drawing the kitten and exploding in a fiery ball of feline hyperbole.",
@@ -4964,8 +4964,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "¡Extinción! is a card game where players explore the Lost World to rescue dinosaurs from extinction. Collect dinosaur cards, use their skills to survive, and place them in safe environments. But beware: each rescue triggers a Butterfly Effect that may hasten the game's end. The player who saves the most dinosaurs wins.",
-        "es": "Juego de cartas en el que los jugadores exploran el Mundo Perdido para rescatar dinosaurios de la extinción. Recolectan cartas de dinosaurios, usan sus habilidades para sobrevivir y los colocan en entornos seguros. Sin embargo, cada rescate produce un Efecto Mariposa que puede acelerar el final del juego...."
+        "en": "¡El Mundo Perdido existe! El legendario lugar en el que sobrevivieron los dinosaurios se ha mantenido en secreto durante siglos. Sin embargo, su intensa actividad volcánica amenaza con su fin. Únete a la partida de rescate, explora el lugar y salva el mayor número de animales de esta nueva ¡Extinción!",
+        "es": ""
       },
       "description": {
         "en": "The Lost World exists! The legendary place where dinosaurs survived has been kept in secret for centuries. However, its intense volcanic activity threatens with its end. Join the rescue party, explore the place and save as many animals as you can from… Extinction!\n\nExplore the 73 \"Lost World\" cards and discover up to 23 different species of dinosaurs. Use their skills to survive in \"your territory\" and save them in one of the 22 safe environments that you will discover during the game. But caution! Because every time you save dinosaurs, a \"Butterfly Effect\" can affect everyone and accelerate the end of the game. The explorer who has saved the most dinosaurs at the end will be the winner.\n\n—description from the designer\n\n¡El Mundo Perdido existe! El legendario lugar en el que sobrevivieron los dinosaurios se ha mantenido en secreto durante siglos. Sin embargo, su intensa actividad volcánica amenaza con su fin. Únete a la partida de rescate, explora el lugar y salva el mayor número de animales de esta nueva ¡Extinción!\n\nExplora las 73 cartas de Mundo Perdido y descubre hasta 23 especies distintas de dinosaurios. Usa sus habilidades para que sobrevivan en \"tu terreno\" y ponlos a salvo en uno de los 22 entornos seguros que iréis descubriendo durante la partida. Pero ¡cuidado!, porque cada vez que salves dinosaurios, se producirá un Efecto Mariposa, que puede afectar a todos y acelerar el final del juego. El explorador que más dinosaurios haya rescatado cuando el Mundo Perdido se extinga, será el ganador.\n\n—description from the designer (Spanish)",
@@ -5046,8 +5046,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "In Fall of Rome, players work together to defend the crumbling Roman Empire from invading barbarian tribes. Recruit armies, forge alliances, and fortify cities to stop the incursions and secure peace. Each player takes on a unique role with special abilities to improve their team's chances. Includes a solitaire mode where one player commands multiple roles.",
-        "es": "Juego cooperativo en el que los jugadores defienden el Imperio Romano de las invasiones de tribus bárbaras. Reclutan ejércitos, forman alianzas y fortifican ciudades para detener las incursiones y lograr la paz. Cada jugador asume un rol único con habilidades especiales para mejorar las posibilidades del equipo. Incluye modo solitario donde un jugador controla múltiples roles."
+        "en": "Pandemic: Fall of Rome includes a solitaire mode in which the player takes on the burden of being the Emperor and commands three different roles to try to protect the city from the invading hordes. Players who want a more difficult game can try the \"Roma Caput Mundi\" challenge by adding more Revolt cards to the deck; they must also respect the law in Rome that Roman legions are not allowed in the city.",
+        "es": ""
       },
       "description": {
         "en": "At the height of its power, the Roman Empire held more than two million square miles of territory containing over a hundred million people. Throughout the centuries of its existence, the Empire brought major advancements in engineering, architecture, science, art, and literature. By the beginning of the 5th Century, decades of political corruption, economic crisis, and an overburdened military had exacted a severe toll on the stability of the Empire. This paved the way for severe incursions from aggressive barbarian tribes, leading to a decline from which Rome would not recover. Now citizens, soldiers, and allies of Rome must unite to protect the Empire.\n\nCombining the cooperative gameplay of Pandemic with innovative new mechanisms, Pandemic: Fall of Rome takes players back in history to the time of the world's greatest empire: Rome. A weakened military has left the borders open to invasion from countless tribes such as the Anglo-Saxons, Goths, Vandals, and Huns. As you march through the Roman Empire, you must recruit armies, fortify cities, forge alliances, and face off against the invading hordes in battle.\n\nSimply defending Rome is not enough; players must find a way to stop the incursions and find peace with their neighboring peoples. Players collect sets of matching-colored cards to forge an alliance with the different tribes. In doing so, they gain the ability to use cards matching the tribe to convert other members of that tribe into Roman soldiers, furthering their ability to hold the line against other invaders.\n\nTake on unique roles with special abilities to improve your team's chances to protect against the invaders. Work together, use your skills wisely, and stop the fall of Rome!\n\nPandemic: Fall of Rome includes a solitaire mode in which the player takes on the burden of being the Emperor and commands three different roles to try to protect the city from the invading hordes. Players who want a more difficult game can try the \"Roma Caput Mundi\" challenge by adding more Revolt cards to the deck; they must also respect the law in Rome that Roman legions are not allowed in the city.\n\n—description from the publisher",
@@ -5132,8 +5132,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Galaxy Trucker is a fast-paced, humorous family game where players race to build the best spaceship by grabbing component tiles in real-time. Once launched, they navigate hazards and seek profit by delivering cargo, defeating pirates, and reaching their destination intact....",
-        "es": "Juego de mesa rápido y divertido donde los jugadores compiten por construir la nave espacial más eficiente al elegir losetas de componentes en tiempo real. Una vez lanzadas, deben sortear peligros y buscar ganancias entregando carga, derrotando piratas y llegando a destino con la nave intacta...."
+        "en": "Once the ships are launched, players encounter dangerous situations while vying for financial opportunities, each hoping to gain the most valuable cargo and finish with as much of their ship still intact as possible. Of course, that's easier said than done since many hazards will send pieces of your ship, your cargo, and your crew hurling into the depths of space.",
+        "es": ""
       },
       "description": {
         "en": "In the fast and goofy family game Galaxy Trucker, players begin by simultaneously rummaging through the common warehouse, frantically trying to grab the most useful component tiles to build their spaceship — all in real-time.\n\nOnce the ships are launched, players encounter dangerous situations while vying for financial opportunities, each hoping to gain the most valuable cargo and finish with as much of their ship still intact as possible. Of course, that's easier said than done since many hazards will send pieces of your ship, your cargo, and your crew hurling into the depths of space.\n\nThe goal is to survive the trek — hopefully with at least some of your crew and ship intact — and have at least one credit by the end of the game. (Profit, yay!) Players earn credits by delivering goods, defeating pirates, having the best-looking ship, and reaching their destination before the others.\n\nThis version of Galaxy Trucker is a relaunch of the original 2007 release by Vlaada Chvátil that features new art, more ship tiles, tweaked card effects, and streamlined gameplay that consists of only a single flight through space. That said, should you want a longer, more challenging experience, you can play a three-flight game known as the \"Transgalactic Trek\".",
@@ -5224,8 +5224,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Galaxy Trucker: Keep on Trucking is an expansion for the base game, introducing new ships, challenges, and tactical options. Test your skills with new adventures, alien crew members, and 'Rough Roads' cards that turn simple flights into chaotic spatiotemporal nightmares....",
-        "es": "Juego de expansión para Galaxy Trucker que añade nuevas naves, desafíos y opciones tácticas. Prueba tus habilidades con aventuras nuevas, tripulantes alienígenas y cartas 'Rough Roads' que transforman vuelos sencillos en pesadillas espaciotemporales. Combina componentes para personalizar la partida, ideal para veteranos o principiantes."
+        "en": "Do you laugh at pirates, shrug off combat zones, and meet every meteor with cannons blazing? If you've mastered the basics of Galaxy Trucker, then you're ready for Galaxy Trucker: Keep on Trucking!\n\nIn this expansion, Corp Inc has new ships they would like you to try, ships that will challenge you, ships that will make you ask, \"What were they thinking?!\"",
+        "es": ""
       },
       "description": {
         "en": "Do you laugh at pirates, shrug off combat zones, and meet every meteor with cannons blazing? If you've mastered the basics of Galaxy Trucker, then you're ready for Galaxy Trucker: Keep on Trucking!\n\nIn this expansion, Corp Inc has new ships they would like you to try, ships that will challenge you, ships that will make you ask, \"What were they thinking?!\"\n\nYour ships will be thoroughly tested by new adventures, and if your flights still seem easy, \"Rough Roads\" cards can turn a humdrum milk run into a twisted spatiotemporal nightmare.\n\nTo meet these challenges, you'll have access to new components offering new tactical options, and you'll be able to fly with new aliens who each have a unique ability.\n\nThe different parts of this expansion can be mixed and matched, allowing you to choose the combination that will be the most fun for you, so whether you're flying with grizzled veterans who miss the thrill of exploding spaceships or teaching newbies who just survived their first flight, this expansion will help you keep on trucking!\n\n– Relaunched edition of Galaxy Trucker and its expansion Keep on Trucking keep the best gaming elements from the original while contains something extra. –\n\n—description from the publisher",
@@ -5313,8 +5313,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Genial is a strategic tile-placement game where players score by building lines of colored symbols. The twist: your score equals your worst-performing color, not your best, so balancing all six colors is key. Place domino-style tiles on a hex grid, earn points for adjacent matches, and aim for the highest lowest score to win.",
-        "es": "Juego de colocación de losetas donde los jugadores anotan puntos al formar líneas de símbolos de colores. La particularidad es que el puntaje se basa en el color con menor puntuación, no en el mejor, por lo que equilibrar los seis colores es fundamental...."
+        "en": "In Ingenious, a.k.a. Einfach Genial, players take turns placing colored domino-style tiles on a game board, scoring for each line of colored symbols that they enlarge. The trick, however, is that a player's score is equal to their worst-scoring color, not their best, so they need to score for all colors instead of specializing in only one or two.",
+        "es": ""
       },
       "description": {
         "en": "In Ingenious, a.k.a. Einfach Genial, players take turns placing colored domino-style tiles on a game board, scoring for each line of colored symbols that they enlarge. The trick, however, is that a player's score is equal to their worst-scoring color, not their best, so they need to score for all colors instead of specializing in only one or two.\n\nIn more detail, the game includes 120 domino-style tiles, each consisting of two conjoined hexes; each hex has one of six colors in it, with most tiles having different-colored hexes. Each player has a rack with six tiles on it, and on a turn a player places one tile from their rack onto two hexes of the game board. For each hex on this tile, they score one point in that color for each hex of the same color that lies adjacent to it and each hex in a straight line from it. If a player brings the score of a color to 18, they immediately take another turn. At the end of their turn, they refill their rack to six tiles. (Before refilling their rack, if they have no tiles on it that contain hexes in their lowest-scoring color, they can discard all of their tiles, then draw six new tiles from the bag.)\n\nWhen no more tiles can be placed on the game board or when one player scores 18 in each color, the game ends. Players then compare their lowest scores, and whoever has the highest low score wins.\n\nIngenious includes rules for solitaire and team play; in the latter case, two teams of two play, with each player not being able to see their partner's tiles and teams keeping a combined score that maxes out at 36 instead of 18.",
@@ -5400,8 +5400,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "A fast-paced reflex game where players race to grab the correct object based on color and shape clues. Features five wooden items and a deck of cards with mismatched colors.",
-        "es": "Juego de reflejos donde los jugadores compiten por tomar el objeto correcto según pistas de color y forma. Incluye cinco piezas de madera y un mazo de cartas con colores cambiados."
+        "en": "The lightning fast shape and color recognition game that is sure to test the reflexes of kids, families and gamers alike. In Ghost Blitz, five wooden items sit on the table waiting to be caught: a white ghost, a green bottle, a cute grey mouse, a blue book, and a comfortable red chair. Each card in the deck shows pictures of two objects, with one or both objects colored the wrong way. With all players playing at the same time, someone reveals a card, then players grab for the \"right\" object – but which object is right?",
+        "es": ""
       },
       "description": {
         "en": "Balduin, the house ghost, found an old camera in the castle cellar. Immediately he photographed everything that he loves to make disappear when he is haunting – including himself, of course. Unfortunately, the enchanted camera takes many photos in the wrong colors. Sometimes the green bottle is white, at other times it's blue. Looking at the photos, Balduin doesn't really remember any more what he wanted to make disappear next. Can you help him with his haunting and quickly name the right item, or even make it disappear by yourself? If you grab the right items quickly, you have a good chance of winning...\n\nThe lightning fast shape and color recognition game that is sure to test the reflexes of kids, families and gamers alike. In Ghost Blitz, five wooden items sit on the table waiting to be caught: a white ghost, a green bottle, a cute grey mouse, a blue book, and a comfortable red chair. Each card in the deck shows pictures of two objects, with one or both objects colored the wrong way. With all players playing at the same time, someone reveals a card, then players grab for the \"right\" object – but which object is right?\n\nIf one object is colored correctly – say, a green bottle and a red mouse – then players need to grab that correctly colored object.\n\nIf both objects are colored incorrectly – say, a green ghost and a red mouse – then you look for the object and color not represented among the four details shown. In this case you see green, red, ghost and mouse, so players need to grab the blue book.\n\nThe first player to grab the correct object keeps the card, then reveals the next card from the deck. If a player grabs the wrong object, she must discard one card previously collected. Once the card deck runs out, the game ends and whoever has collected the most cards wins!\n\nReimplements:\n\nKnapp daneben, released in 2004 by HABA.",
@@ -5489,8 +5489,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "1",
       "summary": {
-        "en": "Ghost Blitz 2 is a fast-paced dexterity game where players race to grab the correct object based on colored card prompts. The new version introduces special rules for the frog, towel, and color-matching challenges.",
-        "es": "Juego de destreza y acción en el que los jugadores deben tomar rápidamente el objeto correcto según las instrucciones de las cartas. La versión incluye reglas especiales para la rana, la toalla y los desafíos de colores."
+        "en": "Ghost Blitz 2.0 – The new version of Ghost Blitz with different items – five wooden items sit on the table waiting to be caught: a white female ghost, a green frog, a grey bathtub, a blue hairbrush, and a red bath towel. Each card in the deck shows pictures of two objects, with one or both objects colored the wrong way. With all players playing at the same time, someone reveals a card, then players grab for the \"right\" object – but which object is right?",
+        "es": ""
       },
       "description": {
         "en": "Ghost Blitz 2.0 – The new version of Ghost Blitz with different items – five wooden items sit on the table waiting to be caught: a white female ghost, a green frog, a grey bathtub, a blue hairbrush, and a red bath towel. Each card in the deck shows pictures of two objects, with one or both objects colored the wrong way. With all players playing at the same time, someone reveals a card, then players grab for the \"right\" object – but which object is right?\n\nIf one object is colored correctly – say, a green bathtub and a red rug – then players need to grab that correctly colored object.\n\nIf both objects are colored incorrectly – say, a green bathtub and a red ghost – then you look for the object and color not represented among the four details shown. In this case you see green, red, ghost and bathtub, so players need to grab the blue brush.\n\nThe new version of Ghost Blitz functions similarly to the original but includes the following new rules: - If the frog appears, you have to call out the item. - If the frog or the other item is in its original colour, you have to call out the correct item in a foreign language. - If the towel appears on a card, the item of the towel`s colour is the one to grab for.\n\nThe first player to grab the correct object keeps the card, then reveals the next card from the deck. If a player grabs the wrong object, she must discard one card previously collected. Once the card deck runs out, the game ends and whoever has collected the most cards wins!",
@@ -5575,8 +5575,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Hadara is a civilization-building game where players develop their societies over three epochs. Populate your world with diverse people from different cultures and ages, balancing agriculture, culture, and military power. Strategically choose individuals and accomplishments to bring glory and honor to your civilization. The first to create a thriving high culture wins.",
-        "es": "Juego de construcción de civilizaciones donde los jugadores desarrollan sus sociedades en tres épocas. Pueblan su mundo con personas de distintas culturas y edades, equilibrando agricultura, cultura y poder militar. Seleccionan estratégicamente individuos y logros para dar honor y gloria a su civilización. Gana quien primero cree una alta cultura próspera."
+        "en": "Hadara carries you off into the world of cultures and countries of this earth. Over three epochs, you will experience the transformation of your new world from a small settlement to a high culture. You want to populate this world with people who come from different cultures and continents as well as different ages. To bring glory and honor to your world, you should choose the persons and accomplishments skillfully....",
+        "es": ""
       },
       "description": {
         "en": "Hadara carries you off into the world of cultures and countries of this earth. Over three epochs, you will experience the transformation of your new world from a small settlement to a high culture. You want to populate this world with people who come from different cultures and continents as well as different ages. To bring glory and honor to your world, you should choose the persons and accomplishments skillfully. But you should not ignore agriculture, culture, and military power, otherwise one of your competitors might get bigger and more successful than you. Who will succeed first in creating a new flourishing high culture?\n\n—description from the publisher\n\n•••\n\nHadara entführt dich in die Welt der Kulturen und Länder dieser Erde.\n\nÜber 3 Epochen hinweg erlebst du die Verwandlung deiner neuen Welt von einer kleinen Siedlung zu einer Hochkultur. Du willst diese Welt mit Personen besiedeln, die dabei aus verschiedenen Kulturkreisen, Kontinenten aber auch Zeitaltern stammen. Um deiner Welt zu viel Ruhm und Ehre zu verhelfen, solltest du die Personen und Errungenschaften geschickt aussuchen. Dabei solltest du aber die Landwirtschaft, die Kultur und die militärische Macht nicht außer Acht lassen, sonst kann es passieren, dass einer deiner Mitkonkurrenten größer und erfolgreicher wird. Wem gelingt es zuerst, eine neue blühende Hochkultur zu erschaffen? —description from the publisher (German)",
@@ -5655,8 +5655,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "English",
       "notes": "",
       "summary": {
-        "en": "A chaotic, humorous card game where players dodge disasters as dinosaurs. Collect points with weapons and trinkets, avoid matching disasters, and be the last dino standing to win.",
-        "es": "Juego de cartas caótico y divertido donde los jugadores evitan desastres como dinosaurios. Recogen puntos con armas y amuletos, evitan desastres coincidentes y ganan siendo el último dinosaurio en pie."
+        "en": "In Happy Little Dinosaurs, the first person to reach 50 points, or be the last Dinosaur standing, wins the game! During each round, you’ll flip a Disaster card featuring a Natural, Predatory, or Emotional disaster. Each player will play a Point card in hopes of collecting points and avoiding the disaster.",
+        "es": ""
       },
       "description": {
         "en": "Lately, it feels like we’re all just dinosaurs trying to avoid the falling meteors. In this game, you’ll try to dodge all of life’s little disasters. You might fall into a pit of hot lava or get ghosted by your dino date, but the dino who survives it all wins the game!\n\nIn Happy Little Dinosaurs, the first person to reach 50 points, or be the last Dinosaur standing, wins the game! During each round, you’ll flip a Disaster card featuring a Natural, Predatory, or Emotional disaster. Each player will play a Point card in hopes of collecting points and avoiding the disaster.\n\nYou will work to avoid all of life’s little disasters and laugh as they happen to your friends. If you collect 3 Disaster cards of the same type OR 3 different types of Disaster cards, you will be out of the game. Point cards feature weapons, trinkets, and good luck charms that you use to collect points and avoid disasters. Each card has a point value between 0 and 9 that you will use when scoring a round. You can use Instant cards at different points during the game to tip the odds in your favor or save your Dinosaur from certain death.\n\nPlayer boards include your Dinosaur's traits, an Escape Route you use to track your score, and a Disaster Area where you will collect Disaster cards. You'll move your Dinosaur meeple along the Escape Route on your player board to track your score. Will you successfully dodge the disasters or get eaten by a prehistoric whale? Only the cards can decide.\n\n- description from the publisher",
@@ -5746,8 +5746,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "A fast-paced, silly card game where players call out actions on their cards. Match with another player to celebrate with the action and discard your card. First to empty their hand wins.",
-        "es": "Juego de cartas rápido y divertido donde los jugadores gritan las acciones de sus cartas. Al coincidir con otro jugador, celebran realizando la acción y descartan una carta. Gana quien se queda sin cartas primero."
+        "en": "There are no turns. Players call out the action shown on their cards as fast as they can. When two players have a match, they celebrate by performing the action. Actions include the classic \"High 5\", the unifying \"Pound It\", the frantic \"Switcheroo\", and the delightful and bizarre \"Happy Salmon\".\n\nHappy Salmon is a simple, ultra-fast, very silly card game.",
+        "es": ""
       },
       "description": {
         "en": "Happy Salmon is a simple, ultra-fast, very silly card game.\n\nThere are no turns. Players call out the action shown on their cards as fast as they can. When two players have a match, they celebrate by performing the action. Actions include the classic \"High 5\", the unifying \"Pound It\", the frantic \"Switcheroo\", and the delightful and bizarre \"Happy Salmon\".\n\nEach time a player celebrates a match, they quickly discard a card. The first person to get rid of all their cards wins.",
@@ -5826,8 +5826,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Hive is a two-player abstract strategy game played without a board. The 22 hexagonal tiles, each representing a different creature, form the playing surface as they are placed. The goal is to surround your opponent's queen while blocking them from doing the same.",
-        "es": "Hive es un juego de estrategia abstracta para dos jugadores que no requiere tablero. Las 22 losetas hexagonales, cada una con un movimiento único, forman el área de juego al colocarse. El objetivo es rodear la reina del rival mientras se impide que haga lo mismo con la propia."
+        "en": "Hive is a strategic game for two players that is not restricted by a board and can be played anywhere on any flat surface. Hive is made up of twenty two pieces, eleven black and eleven white, resembling a variety of creatures each with a unique way of moving.",
+        "es": ""
       },
       "description": {
         "en": "Hive is a strategic game for two players that is not restricted by a board and can be played anywhere on any flat surface. Hive is made up of twenty two pieces, eleven black and eleven white, resembling a variety of creatures each with a unique way of moving.\n\nWith no setting up to do, the game begins when the first piece is placed down. As the subsequent pieces are placed this forms a pattern that becomes the playing surface (the pieces themselves become the board). Unlike other such games, the pieces are never eliminated and not all have to be played. The object of the game is to totally surround your opponent's queen, while at the same time trying to block your opponent from doing likewise to your queen. The player to totally surround his opponent's queen wins the game.\n\n•••\n\nHive FAQ - please read before posting questions in the forum!",
@@ -5908,8 +5908,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Hive Pocket is a compact, strategic two-player game with 26 hexagonal tiles representing different creatures. Played without a board, pieces form the playing surface as they are placed. The goal is to surround your opponent's queen while blocking theirs. Includes the Mosquito and Ladybug expansions.",
-        "es": "Juego de estrategia para dos jugadores sin tablero, donde las piezas hexagonales forman el área de juego. El objetivo es rodear la reina del rival mientras se impide que rodee la propia. Incluye las expansiones Mosquito y Mariquita."
+        "en": "Hive is a strategic game for two players that is not restricted by a board and can be played anywhere on any flat surface. The base game of Hive is made up of twenty two pieces, eleven black and eleven white, resembling a variety of creatures each with a unique way of moving. Hive Carbon and Hive Pocket include the Mosquito and Ladybug expansions, for a total of 26 pieces.",
+        "es": ""
       },
       "description": {
         "en": "Hive is a strategic game for two players that is not restricted by a board and can be played anywhere on any flat surface. The base game of Hive is made up of twenty two pieces, eleven black and eleven white, resembling a variety of creatures each with a unique way of moving. Hive Carbon and Hive Pocket include the Mosquito and Ladybug expansions, for a total of 26 pieces.\n\nWith no setting up to do, the game begins when the first piece is placed down. As the subsequent pieces are placed this forms a pattern that becomes the playing surface. (The pieces themselves become the board.) Unlike other such games, the pieces are never eliminated and not all have to be played. The object of the game is to totally surround your opponent's queen, while at the same time trying to block your opponent from doing likewise to your queen. The first player to totally surround the opponent's queen wins the game.",
@@ -5995,8 +5995,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Imaginarium is a strategy game where players repair, combine, and dismantle machines in a dream factory. Use resources and workshop space to complete projects and earn Victory points.",
-        "es": "Juego de estrategia en el que los jugadores reparan, combinan y desarman máquinas en una fábrica de sueños. Utilizan recursos y espacio en el taller para completar proyectos y ganar puntos de victoria."
+        "en": "Imaginarium is a strategy, combination and development game.",
+        "es": ""
       },
       "description": {
         "en": "Imaginarium is a strategy, combination and development game.\n\nFrom its Kickstarter description:\n\nThrough the mist, you can just about see the gigantic form of the factory. This is where the essence of dreams is shaped! We will enter the factory through the grand entrance. Here are the famous machines! You can repair, combine or dismantle them. They will produce the resources needed to repair more powerful machines. I am sure that you will quickly make the best use of your resources and the space available in your workshop to carry out the projects of the design office and gain Victory points!",
@@ -6075,8 +6075,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Imperial Settlers: Empires of the North is a standalone card game set in the far north, featuring three distinct factions: Scotsmen, Inuits, and Vikings. Each faction offers two unique decks, providing six pre-constructed playstyles. Develop your economy, defend against opponents, and fight for dominance in this strategic civilization-building game.",
-        "es": "Juego de cartas independiente ambientado en el lejano norte, con tres facciones distintas: escoceses, inuit y vikingos. Cada facción incluye dos mazos únicos, ofreciendo seis estilos de juego preconstruidos. Desarrolla tu economía, defiende tu territorio y lucha por la supremacía en este juego de construcción de civilizaciones."
+        "en": "Imperial Settlers: Empires of the North is a new, standalone card game in the established Imperial Settlers universe, with players heading to the far north where three different factions live: Scotsmen, Inuits, and Vikings. Take on the role of leader, and make your faction into the best empire in the world!",
+        "es": ""
       },
       "description": {
         "en": "Imperial Settlers: Empires of the North is a new, standalone card game in the established Imperial Settlers universe, with players heading to the far north where three different factions live: Scotsmen, Inuits, and Vikings. Take on the role of leader, and make your faction into the best empire in the world!\n\nChoosing the faction is only the first step, though, as each faction can be played using one of the two separate and unique decks. Yes, in the base game, players will find six pre-constructed decks ready to use straight out of the box. Each one offers a completely different gameplay style!\n\nDevelop your economy, deflect your opponent, and fight for dominance in the north. Learn new mechanisms, and experience a unique style of Imperial Settlers. Will you be able to create the most successful civilization in Imperial Settlers: Empires of the North?",
@@ -6162,8 +6162,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Jamaica is a tactical pirate race game where players balance speed and strategy to collect the most gold. Each year, Captain Morgan hosts a race around Jamaica, inviting retired pirates to compete. Players manage their ship's holds, choose action cards, and roll dice to move or load goods....",
-        "es": "Juego de carreras tácticas con temática pirata donde los jugadores equilibran velocidad y estrategia para recolectar la mayor cantidad de oro. Cada año, el Capitán Morgan organiza una carrera alrededor de Jamaica, invitando a piratas retirados a competir. Los jugadores gestionan las bodegas de su barco, eligen cartas de acción y lanzan dados para moverse o cargar bienes...."
+        "en": "Goal: The game ends on the turn when at least one player's ship reaches the finish line, completing one circuit around the island of Jamaica. At that point, players are awarded different amounts of gold in accordance with how far away from the finish line they were when the race concluded. This gold is added to any gold a player gathered along the way by detouring from the race to search for valuable treasure, by stealing gold or treasure from other players, or just by loading gold as directed by the cards the player played during the race....",
+        "es": ""
       },
       "description": {
         "en": "Summary: This is a pirate-themed tactical race game with player interaction and side goals (e.g. detouring for treasure). The winner is the player who best balances their position in the race with their success at the side goals.\n\nSetting: Jamaica, 1675. After a long career in piracy, Captain Henry Morgan skillfully gets appointed to be Governor of Jamaica, with the explicit order to cleanse the Caribbean of pirates and buccaneers! Instead, he invites all of his former \"colleagues\" to join him in his retirement, to enjoy the fruits of their looting with impunity. Each year, in remembrance of the \"good old days,\" Morgan organizes the Great Challenge, a race around the island, and at its end, the Captain with the most gold is declared Grand Winner.\n\nGoal: The game ends on the turn when at least one player's ship reaches the finish line, completing one circuit around the island of Jamaica. At that point, players are awarded different amounts of gold in accordance with how far away from the finish line they were when the race concluded. This gold is added to any gold a player gathered along the way by detouring from the race to search for valuable treasure, by stealing gold or treasure from other players, or just by loading gold as directed by the cards the player played during the race. The player with the most total gold acquired through all these means is then declared the winner.\n\nGameplay: The game is played in rounds. Each player always has a hand of three cards, and a personal board depicting the five \"holds\" of their ship, into which goods can be loaded during the game. Each round, one player is designated as \"captain,\" with the next clockwise player being captain in the following round, and so on. The captain rolls two standard D6 dice, examines her cards, then announces which die will correspond to the \"day\" and which to the \"night.\" Each player then simultaneously selects a card from their hand and places it face down in front of them. Each card has two symbols on it, one on the left - corresponding to \"day\" - and one on the right (\"night\"). The symbols indicate either ship movement (forward or backward) or the loading of a type of good. After every player has selected a card, all cards are revealed simultaneously and then resolved clockwise one by one, starting with the captain's. When it is a player's turn to resolve her card, for first the left symbol on her card and then for the right symbol, the player will load a number of goods or move a number of spaces equal to the number of pips showing on the corresponding day or night die for that round. Thus the main decision each player makes during the game is which of their current three cards would best serve them on a particular turn, given the values of the day and night dice. Finally, during the race, when a player lands on a spot already occupied by another player, there is a battle. Battles are mainly resolved by rolling a \"combat\" die, but players may improve their chances by using \"gunpowder\" tokens from their holds, if they loaded any on previous turns. The winner of a battle may steal some goods or treasure from the loser.",
@@ -6252,8 +6252,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Kitchen Rush is a cooperative real-time game where players work together to manage a restaurant. Hire staff, order ingredients, and serve customers efficiently using hourglass timers as workers. Each decision matters as time is limited. Play for 4 rounds of 4 minutes each.",
-        "es": "Juego cooperativo en tiempo real donde los jugadores gestionan un restaurante. Contratan personal, compran ingredientes y atienden a los clientes usando relojes de arena como trabajadores. Cada decisión cuenta, ya que el tiempo es limitado. Se juega en 4 rondas de 4 minutos cada una."
+        "en": "Kitchen Rush is an innovative real-time cooperative game that simulates the excitement of a high-pressure kitchen environment. It does so through worker placement, using hourglasses as your workers. These hourglasses are used to take orders from customers, prepare their dishes, serve them on time, buy groceries, clean plates and make sure enough money is made each round to cover wages, expenses, upgrades and hopefully, leave a profit....",
+        "es": ""
       },
       "description": {
         "en": "You've just inherited an old restaurant and you must turn it into a successful business! Hire personnel, order the right ingredients and be ready to serve the customers that enter your restaurant. The success will depend entirely on your efficiency in the kitchen!\n\nKitchen Rush is an innovative real-time cooperative game that simulates the excitement of a high-pressure kitchen environment. It does so through worker placement, using hourglasses as your workers. These hourglasses are used to take orders from customers, prepare their dishes, serve them on time, buy groceries, clean plates and make sure enough money is made each round to cover wages, expenses, upgrades and hopefully, leave a profit. Any worker placed on an action space may not be used elsewhere before the sand within the hourglass runs out, making each decision important as time is limited.\n\nThe game is for 1-4 players and plays for 4 rounds of 4 minutes. The fun, excitement and rush it brings to the table offers a full course for gamers and family members alike.",
@@ -6336,8 +6336,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Grow a thriving forest as caretakers of Kodama, the tree spirits. Over three seasons, arrange cards to create the perfect mix of flowers, insects, and branches to keep your Kodama happy. The player who nurtures their tree best wins.",
-        "es": "Juego de estrategia y colocación de losetas en el que los jugadores cultivan un bosque para los Kodama, los espíritus del árbol. Durante tres estaciones, colocan cartas para crear combinaciones de flores, insectos y ramas que hagan felices a sus Kodama. Gana quien mejor cuide su árbol."
+        "en": "From the designer of the hit game Kigi, Kodama: The Tree Spirits branches out into a fun new way to play! Grow your tree by placing cards in clever arrangements, being careful to leave room for future growth. At the end of each season, one Kodama will award you points for how well your tree suits its needs. With beautiful art and innovative mechanics, Kodama is an inTREEguing game for the whole family.",
+        "es": ""
       },
       "description": {
         "en": "The forest is growing fast! As caretakers for Kodama, the tree spirits, you must keep the forest a healthy and lush home for your little friends. Over three growing seasons, you must cultivate trees with the right mix of flowers, insects, and branch arrangements to make your Kodama as happy as possible. Whoever cares for their Kodama best will be remembered for generations!\n\nFrom the designer of the hit game Kigi, Kodama: The Tree Spirits branches out into a fun new way to play! Grow your tree by placing cards in clever arrangements, being careful to leave room for future growth. At the end of each season, one Kodama will award you points for how well your tree suits its needs. With beautiful art and innovative mechanics, Kodama is an inTREEguing game for the whole family.",
@@ -6419,8 +6419,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Little Town is a medieval city-building game where players act as architects developing a town over four rounds. Dispatch workers to gather resources, construct buildings, and earn victory points through strategic placements and contracts.",
-        "es": "Juego de construcción de ciudades medievales en el que los jugadores dirigen un equipo de arquitectos para desarrollar un pueblo en cuatro rondas. Envían trabajadores para recolectar recursos, construir edificios y ganar puntos de victoria mediante colocaciones estratégicas y contratos."
+        "en": "In Little Town, you lead a team of architects and must dispatch workers to the town, collect resources and money, build buildings, and develop this little town.\n\nIn the game, which lasts four rounds, you can acquire resources such as wood, stones, fish, and wheat from the surrounding squares by putting workers on the board, with three workers being placed each round. When you place a worker, you acquire the resources available in all eight surrounding spaces....",
+        "es": ""
       },
       "description": {
         "en": "In Little Town, you lead a team of architects and must dispatch workers to the town, collect resources and money, build buildings, and develop this little town.\n\nIn the game, which lasts four rounds, you can acquire resources such as wood, stones, fish, and wheat from the surrounding squares by putting workers on the board, with three workers being placed each round. When you place a worker, you acquire the resources available in all eight surrounding spaces. You can build buildings by using these resources, and you — or any other player — can gain the effect of the building when place a worker next to it; if you place next to a building owned by another, however, you must pay them a coin before you can collect those resources.\n\nPlayers collect victory points by using the powers of buildings, by constructing buildings, and by achieving goals dealt to them at the beginning of the game. After four rounds, whoever has the most victory points wins.\n\n—description from the publisher",
@@ -6501,8 +6501,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Explore an uncharted island in search of lost artifacts and ancient secrets. Lost Ruins of Arnak blends deck-building and worker placement as players manage resources, place workers, and uncover new actions. With strategic choices and unique setups, each game offers fresh challenges.",
-        "es": "Juego de exploración y gestión de recursos en una isla desconocida. Los jugadores lideran una expedición para descubrir artefactos y secretos antiguos. Combina construcción de mazo y colocación de trabajadores, con acciones que cambian según las cartas y losetas. Cada partida ofrece estrategias distintas."
+        "en": "Lost Ruins of Arnak combines deck-building and worker placement in a game of exploration, resource management, and discovery. In addition to traditional deck-builder effects, cards can also be used to place workers, and new worker actions become available as players explore the island. Some of these actions require resources instead of workers, so building a solid resource base will be essential. You are limited to only one action per turn, so make your choice carefully... what action will benefit you most now?...",
+        "es": ""
       },
       "description": {
         "en": "On an uninhabited island in uncharted seas, explorers have found traces of a great civilization. Now you will lead an expedition to explore the island, find lost artifacts, and face fearsome guardians, all in a quest to learn the island's secrets.\n\nLost Ruins of Arnak combines deck-building and worker placement in a game of exploration, resource management, and discovery. In addition to traditional deck-builder effects, cards can also be used to place workers, and new worker actions become available as players explore the island. Some of these actions require resources instead of workers, so building a solid resource base will be essential. You are limited to only one action per turn, so make your choice carefully... what action will benefit you most now? And what can you afford to do later... assuming someone else doesn't take the action first!?\n\nDecks are small, and randomness in the game is heavily mitigated by the wealth of tactical decisions offered on the game board. With a variety of worker actions, artifacts, and equipment cards, the set-up for each game will be unique, encouraging players to explore new strategies to meet the challenge.\n\nDiscover the Lost Ruins of Arnak!\n\n—description from the publisher",
@@ -6592,8 +6592,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "A fast-paced solo board game where you navigate office corridors to complete tasks before escaping. Avoid your boss's AI-driven movements while collecting reports and rewards.",
-        "es": "Juego de mesa rápido para un solo jugador en el que avanzas por los pasillos de la oficina para completar tareas y escapar sin ser atrapado por tu jefe. Usa informes y objetos útiles para lograr tu objetivo."
+        "en": "Lunes (\"Monday\") is a fast-paced, single-player board game in which you must avoid being caught by your boss and cut out of the office once you finish the essentials for the day.",
+        "es": ""
       },
       "description": {
         "en": "Second edition includes Lunes: Recorte de Personal.\n\nLunes (\"Monday\") is a fast-paced, single-player board game in which you must avoid being caught by your boss and cut out of the office once you finish the essentials for the day.\n\nIn each round, you move your peg through the corridors of the office (which is a modular board), and your boss will perform movements through an AI comprised of action cards and automated movement. Before you can leave the building, you have to reach the printers and get reports to deliver to your colleagues, who will then cover your escape and reward you with useful objects to achieve your goal.\n\nYou may play on predetermined office maps with specific difficulty levels, or you can let chance be the architect of your next office. Good luck, and drink as much coffee as you can!\n\n—description from the designer\n\nLunes es un juego de mesa rápido para un solo jugador en el cual deberás escapar del trabajo, evitando ser atrapado por tu jefe. En cada ronda avanzarás con tu ficha por los pasillos de la oficina (tablero modular), y el jefe realizará sus movimientos con su inteligencia artificial (cartas de acción y movimiento predeterminado). Deberás pasar por las impresoras y obtener los informes para entregar a tus colegas, quienes van a cubrir tu huida y recompensarte con objetos útiles para lograr tu cometido. Podrás jugar en mapas predeterminados con distintas dificultades, o dejar que el azar sea el arquitecto de tu próxima oficina. Buena suerte, y... ¡bebe todo el café que puedas!\n\n—description from the designer (Spanish)",
@@ -6680,8 +6680,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Explore the temple of Luxor with a team of adventurers in search of treasure and the pharaoh's tomb. Players move through a modular board, collecting artifacts and keys to unlock the final prize. The path changes each game, offering varied strategies and challenges.",
-        "es": "Juego de exploración en el que los jugadores guían a sus aventureros por el templo de Luxor en busca de tesoros y la tumba del faraón. Mueven sus piezas por un tablero modular, recolectando artefactos y llaves para acceder a la cámara final. La ruta varía en cada partida, ofreciendo estrategias y desafíos distintos."
+        "en": "On the hunt for priceless treasures, groups of adventurers explore the legendary temple at Luxor. Their ultimate goal is the tomb of the pharaoh, but many treasures can be collected as they search. As they explore, the challenge unfolds: The player who manages to quickly get their team of adventurers to the tomb, while salvaging as many treasures as possible, will be the winner.",
+        "es": ""
       },
       "description": {
         "en": "On the hunt for priceless treasures, groups of adventurers explore the legendary temple at Luxor. Their ultimate goal is the tomb of the pharaoh, but many treasures can be collected as they search. As they explore, the challenge unfolds: The player who manages to quickly get their team of adventurers to the tomb, while salvaging as many treasures as possible, will be the winner.\n\nLuxor offers variable game play as the path that leads to the tomb is different for every game — and will even change during play!\n\n—description from the publisher\n\nIn Luxor, players move their adventurers through the temple with the goal of reaching the tomb in the middle of the game board. At the start of the game each player gets dealt 5 cards, which he is not allowed to change the order of.\n\nIn each round players take turns that consist of 3 actions:\n\n1. Choose either the left or right most card to play to the discard pile.\n\nAccording to the played card move, one adventurer that many tiles forward towards the tomb. An adventurer only moves from tile to tile, jumping over empty spaces and not counting them.\n\n2. When the adventurer has completed his movement, he performs the action of that tile, if possible. Depending on the tile this can have various effects:\n\nTreasure tile - If enough of a players adventurers player are placed on a tile, the player can collect that tile and earn points for it. Additionally he keeps the tile, trying to collect treasure sets consisting of the three different treasure kinds, vase, statue and necklace.\n\nHorus tile - The player can either gain a key or a Horus Card. He will need the key to enter the tomb and the special Horus card offers unique and strong ways to move his adventurers once he plays that card.\n\nOsiris tile - The tile acts as an catapult instantly moving the adventurer a certain amount of tiles forward.\n\nTemple tile - On these tiles players get special bonuses, like scarabs that are worth victory points or joker tiles, which complete treasure sets. The most unique tile is the tunnel. If an adventurer lands on a tunnel he instantly gets teleported to the next tunnel in play, creating a shortcut through the temple.\n\n3. After performing the action of the tile, players draw one card from the draw pile to refill their hand to five cards. The drawn card is placed in the middle of the hand.\n\nAt the start of the game, players can chose to move one of 2 adventurers. Every time an adventurer crosses over an Anubis statue for the first time he gains a new adventurer which is placed at the start.\n\nThe game ends once two adventurers reach the tomb. But in order to get in the tomb and collect the valuable sarcophagi, players need to have a key, which they collect from landing on Horus tiles. One key is needed for each adventurer wanting to enter the tomb.\n\nThe round is finished and then the game ends with a final scoring.\n\nThe player who now has the most points is the winner!",
@@ -6765,8 +6765,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Marco Polo II: In the Service of the Khan is a standalone strategy game where players embark on a journey west from Beijing, serving the Khan. Explore the empire, collect resources, and seek wealth and fame. New mechanics include contracts, dice workers, and the valuable resource of Chinese jade.",
-        "es": "Juego de estrategia en el que los jugadores viajan hacia el oeste desde Beijing, sirviendo al Khan. Exploren el imperio, recolecten recursos y busquen riqueza y fama. Incluye nuevos mecanismos como contratos, trabajadores con dados y el recurso valioso del jade chino."
+        "en": "The journeys of Marco Polo continue in Marco Polo II: In the Service of the Khan, an epic follow-up to The Voyages of Marco Polo. After traveling to Beijing, your travels now take you back to the West in the service of the Khan, sending you to the farthest reaches of his empire in search of wealth and fame.",
+        "es": ""
       },
       "description": {
         "en": "The journeys of Marco Polo continue in Marco Polo II: In the Service of the Khan, an epic follow-up to The Voyages of Marco Polo. After traveling to Beijing, your travels now take you back to the West in the service of the Khan, sending you to the farthest reaches of his empire in search of wealth and fame.\n\nMarco Polo II is a standalone game based on The Voyages of Marco Polo, and you don't need the original game to play this one. This new journey will present unique challenges, with new and different actions, new scoring rules, and a new good: rare and valuable Chinese jade.\n\nRetread old paths with renewed purpose, or find new ones as you explore farther west, continuing to build the immortal legacy of Marco Polo!\n\n—description from the publisher",
@@ -6830,7 +6830,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "averageRating": 6.55,
       "bayesAverage": 5.53,
       "rank": 15629,
-      "avgWeight": 2,
+      "avgWeight": 2.0,
       "weightBand": "medium-light",
       "timeBand": "quick",
       "playerBand": "solo-only",
@@ -6849,8 +6849,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Mazescape XP: Cryo-C is a solo maze game with modular maps and increasing difficulty. Use the included stylus to navigate intricate pathways, solve puzzles, and uncover hidden treasures across seven unique challenges.",
-        "es": "Juego de laberinto para un jugador con mapas modulares y dificultad creciente. Usa el estiló incluido para navegar por caminos intrincados, resolver acertijos y descubrir tesoros ocultos en siete desafíos distintos."
+        "en": "Mazescape is a clever and fascinating maze game for one player that will challenge even the most active minds. The Cryo-C version is designed by Pablo Céspedes and Victor Hugo Cisternas, authors of Tesoros del Rey Pirata, and illustrated by David Yuyo Correa.\n\nEach Mazescape box contains seven different challenges to face. The first maze is a relatively accessible challenge, and little by little the mazes become increasingly difficult until the final elegant explosion of pathways, which can only be untangled by the sharpest minds.",
+        "es": ""
       },
       "description": {
         "en": "Mazescape is a clever and fascinating maze game for one player that will challenge even the most active minds. The Cryo-C version is designed by Pablo Céspedes and Victor Hugo Cisternas, authors of Tesoros del Rey Pirata, and illustrated by David Yuyo Correa.\n\nWhen the mainframe computer of the supply ship unexpectedly awakens from suspended animation, something’s probably going to go wrong. You’re still in outer space, there’s nobody by your side, and the central reactor’s alarm won’t stop sounding. Upon exiting your capsule you realize that everyone else has disappeared. Who, or better yet, what has taken them? To find out, sharpen your wits, patience and powers of observation.\n\nThe Mazescape saga introduces a completely unique concept that fans of logic and puzzles will love. In this original game from Devir, you will place a map on the table and look for the compass rose as the starting point of the maze. Using the wooden stylus that comes with the game, you’ll trace the white pathways, maintaining contact with the maze at all times, and you’ll open and close sections of the map while looking for the exit point of the Impossible Triangle. Pass under bridges, climb staircases, and keep your head from spinning until the exit point takes you to the next scenario.\n\nEach Mazescape box contains seven different challenges to face. The first maze is a relatively accessible challenge, and little by little the mazes become increasingly difficult until the final elegant explosion of pathways, which can only be untangled by the sharpest minds.\n\nMoreover, each map includes a series of secondary challenges that allow you to travel through a second time, giving each set of maps a high degree of re-playability. Look for all of the hidden treasures in the seven maps. And the portable format is easy to play anywhere; all you need is a place to set the map and the stylus to start your journey. But beware, nobody said that escaping from the labyrinth would be easy!\n\nMazescape Cryo-C offers the most advanced challenges of the Mazescape saga, including the most complex mazes to date. Are you up for the challenge?",
@@ -6928,8 +6928,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Mazescape: Ariadne is a solo labyrinth game where players navigate intricate maps to find the exit. Each of the seven maps offers unique challenges, including bridges, ladders, and hidden paths. The goal is to locate the Impossible Triangle to escape, with the final challenge being a battle against the minotaur. Players can revisit maps to uncover hidden treasures.",
-        "es": "Juego de laberintos para un jugador donde los participantes navegan por mapas complejos en busca de la salida. Cada uno de los siete mapas presenta desafíos únicos, como puentes, escaleras y senderos ocultos. El objetivo es encontrar el Triángulo Imposible para escapar, con el desafío final siendo un enfrentamiento contra el minotauro...."
+        "en": "Mazescape is a fascinating and intriguing game of labyrinths for one player that guarantees intense brain racking moments as you search for the exit. It is a game you can take anywhere and play time and time again to discover all the different nooks and crannies of the seven maps included.",
+        "es": ""
       },
       "description": {
         "en": "Mazescape is a fascinating and intriguing game of labyrinths for one player that guarantees intense brain racking moments as you search for the exit. It is a game you can take anywhere and play time and time again to discover all the different nooks and crannies of the seven maps included.\n\nIt is a completely unique concept that promises to equally surprise and create headaches in equal measure. In this original game from Devir, you will unfold a map on the table, where you will start at the compass rose with the pointer you will find in the box, moving it along the labyrinth paths marked in white without ever lifting it from the map. You will have to open and close different parts of the map in search of the Impossible Triangle that will allow you to escape the maze. You can go under bridges, climb up ladders and run around in circles in the maze and in your own head until the exit finally leads you to… the next map!\n\nMazescape Ariadne places you in the ancient Crete of legend, where you must enter the famous labyrinth of Daedalus. You can rely solely on your wits to overcome the ordeals this box of maps provides, to reach the final challenge against the minotaur and help Ariadne escape. And when you have gotten out the first time, then you can dare to go back in and find all the hidden treasures that exist in the accursed maze.\n\n—description from the publisher",
@@ -6985,7 +6985,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "minPlayTime": 30,
       "maxPlayTime": 60,
       "averageRating": 7.58,
-      "bayesAverage": 6,
+      "bayesAverage": 6.0,
       "rank": 3132,
       "avgWeight": 2.24,
       "weightBand": "medium-light",
@@ -7006,8 +7006,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Medical Mysteries: NYC Emergency Room is a cooperative deduction game where players work as emergency room doctors to diagnose and treat patients with mysterious conditions. Each of the four included cases presents a unique medical mystery to solve before time runs out....",
-        "es": "Juego de deducción cooperativo donde los jugadores asumen el rol de médicos de emergencia para diagnosticar y tratar pacientes con condiciones médicas misteriosas. Cada uno de los cuatro casos incluidos presenta un misterio médico único por resolver antes de que se acabe el tiempo...."
+        "en": "NO PRIOR MEDICAL KNOWLEDGE NECESSARY, EASY TO LEARN AND PLAY: Medical Mysteries game includes a full case tutorial to walk you through how to play. Tutorial helps players navigate through their patient's treatment plan, and no prior medical knowledge is necessary. Each patient includes an intake interview, and an Electronic Medical Record to review and assess the case. From there, you’ll have the information you need to start treating and diagnosing....",
+        "es": ""
       },
       "description": {
         "en": "Your patients' lives are in your hands. Will they survive the night? Work as a team to solve real life medical cases. Each patient has a mysterious medical condition and it is your job to diagnose and treat before its too late. Do you have what it takes to save their lives?\n\nBE A NEW YORK CITY EMERGENCY ROOM DOCTOR: Medical Mysteries puts you in the shoes of an Emergency Room doctor, tasked with ensuring your patient survives the night - their lives are in your hands. Can you work with your team to examine, diagnose and treat your patient, before it’s too late?\n\nINCLUDES 4 PATIENTS AND A TUTORIAL: This Medical Mysteries game includes 4 patient files to solve. Each patient comes into the Emergency Room with mysterious medical condition that you’ll need to unravel before it’s too late. Also includes a Tutorial which walks you through a patient case so you feel prepared to treat and diagnose patients on your own before moving to the 4 main patients. Each case has a varying level of difficulty.\n\nEXAMINE, DIAGNOSE AND TREAT: As an Emergency Room Doctors, it is your job to examine your patients’ mysterious symptoms, review their medical history and uncover hidden clues. Work together to diagnose the conditions. Follow clues, run tests, consult specialists and use your instincts to diagnose the patient, and finally make the right treatment decisions to help your patient survive the night. Then, work to determine the underlying cause of their condition. Earn points along the way for making the right treatment decisions and helping your patient survive the night.\n\nNO PRIOR MEDICAL KNOWLEDGE NECESSARY, EASY TO LEARN AND PLAY: Medical Mysteries game includes a full case tutorial to walk you through how to play. Tutorial helps players navigate through their patient's treatment plan, and no prior medical knowledge is necessary. Each patient includes an intake interview, and an Electronic Medical Record to review and assess the case. From there, you’ll have the information you need to start treating and diagnosing. Research Sheets will provide details on possible conditions that your patient might have, and additional information will unfold as you start treating the patient. Gather more information by running tests and consulting specialist as you narrow down the options.\n\nIT’S A RACE AGAINST THE CLOCK: Each action you take progresses the game, and the clock. Your goal is to get your patient to survive the night. Continue testing and diagnosing until time runs out.\n\n—description from the publisher",
@@ -7087,8 +7087,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Mille Fiori is a strategic card game where players act as glass manufacturers and traders. Compete to maximize profits by placing tokens in workshops, residences, townspeople areas, trade shops, and harbors. Score points through area control, pattern building, and strategic timing. Bonus cards and area-specific goals add depth to the gameplay.",
-        "es": "Juego de cartas en el que los jugadores asumen el rol de fabricantes y comerciantes de vidrio. Compiten para maximizar ganancias colocando fichas en talleres, residencias, áreas de habitantes, tiendas de comercio y puertos. Se anotan puntos mediante control de zonas, construcción de patrones y momentos oportunos...."
+        "en": "In Reiner Knizia's Mille Fiori (millefiori is a glasswork technique for decorative patterns, the name means Thousand Flowers), you take the role of glass manufacturers and traders who want to profit as much as they can from their role in the production of fine glass art.",
+        "es": ""
       },
       "description": {
         "en": "In Reiner Knizia's Mille Fiori (millefiori is a glasswork technique for decorative patterns, the name means Thousand Flowers), you take the role of glass manufacturers and traders who want to profit as much as they can from their role in the production of fine glass art.\n\nThe game board features different aspects of the glass production cycle: workshops where the glass is created, houses where it's installed, people who support your work, trade shops where it's sold, and the harbor where ships take the glass to faraway locations. You want to be present in all of these areas, preferably at just the right time to maximize your earnings. The gameboard features 109 spaces, with one card in the deck for each of those spaces.\n\nAt the start of a round, each player receives a hand of five cards. Each player chooses a card from hand, then passes the remaining cards to the next player, then each player plays their card in turn, beginning with the round's start player and typically placing a diamond-shaped token of their color in the location depicted on that card:\n\nIn the Workshops, you score 1 point for each of your tokens in a connected group with the newly placed token, doubling that score if you played on a pigment field. In the Residences, you score the listed number of points, and if your token is preceded in the line by one or more tokens of your color, you score those previously played tokens again. In the Townspeople area, you score 1, 3 or 6 points based on the height of your token in the pyramids, but you can only place at higher levels if the lower spaces are filled. Double your points if the card symbol matches the space your filled. Supporting tokens score again as higher tokens are placed. In the Trade shops, four types of goods are present, and when you place a token, each token on that goods type scores for its owner points equal to the number of goods of that type now covered. In the Harbor, you move your ship equal to the number on the played card, scoring points based on the space where you land, then place a token in one of the five rows. When that row is filled with three ships, each token in that row scores for its owner 1/3/6/10 points depending on the number of trade goods in that row.\n\nAlternatively, you can play a card for ship movement points and not place a token on the game board.\n\nEach player plays four cards in a round (in a 3 or 4 player game), then adds the last card in hand to those displayed beside the game board, then the start player marker rotates and you begin a new round.\n\nFor each of the five areas, you can meet a certain condition that allows you to play a bonus card from those beside the game board, e.g., in the Workshops when you place the third card that surrounds a bonus card symbol, or in the Trade shops when you score a goods type that gives someone else more points than you. When you play a bonus card, you might trigger another bonus card... and then another!\n\nAdditionally, there are five different ways to score substantial bonus points for the areas, e.g., in the Residences you need to place tokens on houses of four different values, and in the Townspeople area you need to place tokens on all three types in a pyramid. You can only score each area's bonus once, and importantly each time a bonus is claimed then the value available for later players is reduced.\n\nWhen someone has placed their final diamond token or when you can't deal a new hand of five cards to each player, then the game ends and the player with the most successful glass dynasty (most points) is declared the winner.",
@@ -7166,8 +7166,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "A fast-paced, humorous card game where players battle monsters, steal treasure, and backstab each other to reach level 10 first. Features silly magic items and chaotic gameplay.",
-        "es": "Juego de cartas rápido y divertido donde los jugadores combaten monstruos, roban tesoros y se traicionan para ser los primeros en alcanzar el nivel 10. Incluye objetos mágicos absurdos y partidas caóticas."
+        "en": "Munchkin is a satirical card game based on the clichés and oddities of Dungeons and Dragons and other role-playing games. Each player starts at level 1 and the winner is the first player to reach level 10. Players can acquire familiar D&D style character classes during the game which determine to some extent the cards they can play.\n\nAnd it's illustrated by John Kovalic! Fast-playing and silly, Munchkin can reduce any roleplaying group to hysteria. And, while they're laughing, you can steal their stuff.",
+        "es": ""
       },
       "description": {
         "en": "Publisher's DescriptionGo down in the dungeon. Kill everything you meet. Backstab your friends and steal their stuff. Grab the treasure and run.\n\nAdmit it. You love it.\n\nThis award-winning card game, designed by Steve Jackson, captures the essence of the dungeon experience... with none of that stupid roleplaying stuff. You and your friends compete to kill monsters and grab magic items. And what magic items! Don the Horny Helmet and the Boots of Butt-Kicking. Wield the Staff of Napalm... or maybe the Chainsaw of Bloody Dismemberment. Start by slaughtering the Potted Plant and the Drooling Slime, and work your way up to the Plutonium Dragon...\n\nAnd it's illustrated by John Kovalic! Fast-playing and silly, Munchkin can reduce any roleplaying group to hysteria. And, while they're laughing, you can steal their stuff.\n\nOtherPart of the Munchkin series.\n\nMunchkin is a satirical card game based on the clichés and oddities of Dungeons and Dragons and other role-playing games. Each player starts at level 1 and the winner is the first player to reach level 10. Players can acquire familiar D&D style character classes during the game which determine to some extent the cards they can play.\n\nThere are two types of cards - treasure and encounters. Each turn the current players 'kicks down the door' - drawing an encounter card from the deck. Usually this will involve battling a monster. Monsters have their own levels and players must try and overcome it using the levels, weapons and powers they have acquired during the game or run away. Other players can chose to help the player or hinder by adding extra monsters to the encounter. Defeating a monster will usually result in drawing treasure cards and acquiring levels. Being defeated by a monster results in \"bad stuff\" which usually involves losing levels and treasure.\n\nIn May 2010, Steve Jackson Games made the \"big announcement.\" Many rules and cards were changed. See The Great 2010 Munchkin Changeover for details. Of note to Munchkin fans, the Kneepads of Allure card, which had been removed in the 14th printing, was added back to the game but modified to be less powerful.\n\nSequels: The Good, the Bad, and the Munchkin Munchkin Apocalypse Munchkin Axe Cop Munchkin Bites! Munchkin Booty Munchkin Conan Munchkin Cthulhu Munchkin Fu Munchkin Impossible Munchkin Legends Munchkin Pathfinder Munchkin Zombies Star Munchkin Super Munchkin\n\nRelated Board Games Munchkin Quest\n\nOnline play Vassal does not support Munchkin anymore. Former link: Vassal Module\n\nPegasus Expansions Munchkin Sammlerbox Munchkin Sammlerkoffer Munchkin Promotional Bookmarks Munchkin Weihnachtsedition - The same as Munchkin, but with a promotional button that grants the wearer extra treasure (when worn in December).\n\nOnline PlaythroughThere's a great YouTube playthrough with Will Wheaton and Steve Jackson (yes, the Steve Jackson) found here LINK",
@@ -7254,8 +7254,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Munchkin 2: Unnatural Axe is a 2002 expansion for the Munchkin card game, adding 112 new cards. Play as Orcs, face quirky foes, and wield absurd weapons like the Unnatural Axe. Includes new races, allies, and gear.",
-        "es": "Juego de cartas Munchkin 2: Unnatural Axe es una expansión de 2002 que añade 112 cartas nuevas. Permite jugar como Orcos, enfrentar enemigos inusuales y equiparse con armas absurdas como el Hacha Antinatural. Incluye nuevas razas, aliados y equipo."
+        "en": "Publisher's DescriptionYou demanded it, and here it is. Created by Steve Jackson and illustrated by John Kovalic... 112 more cards for the game of killing monsters and taking their stuff. Play a new race: Orcs! Face foes like the Hydrant and the Tentacle Demons. Equip yourself with dread armor like the Spiked Codpiece. Recruit allies like the Shoulder Dragon. Wield mighty weapons like Druid Fluid, the Catapult and, of course, the dread Unnatural Axe... and show them who's the greatest munchkin of all.",
+        "es": ""
       },
       "description": {
         "en": "Publisher's DescriptionYou demanded it, and here it is. Created by Steve Jackson and illustrated by John Kovalic... 112 more cards for the game of killing monsters and taking their stuff. Play a new race: Orcs! Face foes like the Hydrant and the Tentacle Demons. Equip yourself with dread armor like the Spiked Codpiece. Recruit allies like the Shoulder Dragon. Wield mighty weapons like Druid Fluid, the Catapult and, of course, the dread Unnatural Axe... and show them who's the greatest munchkin of all.\n\nMunchkin 2 - Unnatural Axe is a supplement to Munchkin; you will need the original game to play. Or you could add it to a game of Munchkin, Munchkin Fu, or Munchkin Bites! instead, or mix them all together for a Munchkin-fest of truly mind-bending proportions!\n\nOtherPart of the Munchkin series.",
@@ -7340,8 +7340,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Munchkin 3: Clerical Errors is an expansion for the popular card game Munchkin, adding 112 new cards. Players can explore new races like Gnomes, try the Bard class, and face unique monsters. The set includes special cards designed by comic artists and introduces powerful items. Requires the base game or other Munchkin expansions to play.",
-        "es": "Juego de cartas Munchkin 3: Clerical Errors es una expansión que añade 112 cartas nuevas. Los jugadores pueden probar nuevas razas como los Gnomes, la clase de Bardo y enfrentar monstruos únicos. Incluye cartas especiales diseñadas por artistas de cómics y poderosos objetos. Requiere el juego base o expansiones de Munchkin para jugar."
+        "en": "Munchkin 3 - Clerical Errors is a supplement to Munchkin; you will need the original game to play. Or you could add it to a game of Munchkin, Munchkin Fu, or Munchkin Bites! instead, or mix them all together for a Munchkin-fest of truly mind-bending proportions!\n\nPhil Foglio's Magnificent Hat Pete Abrams' Perfectly Ordinary Rabbit Tom Ricket's Stick Figure Jon Rosenberg's Fowl Fiend and Randy Milholland's Redneck Tree!",
+        "es": ""
       },
       "description": {
         "en": "Publisher's DescriptionYou wanted more Munchkin, so here it is! Created by Steve Jackson and illustrated by John Kovalic... Munchkin 3 - Clerical Errors has 112 more cards for the best-selling game of killing monsters and taking their stuff. Play a new race: Gnomes! Try on the Bard class. Face the Tequila Mockingbird, the Bad Ass, and the dreaded Auntie Paladin! Equip yourself with amazing items like the Chainmail Bikini and the Stab-A-Matic... and show them who's the mightiest, munchkinest dungeon delver of them all.\n\nAnd this set has a special treat. We asked five of our favorite Comic Guys to do one card each. So in this set you'll find:\n\nPhil Foglio's Magnificent Hat Pete Abrams' Perfectly Ordinary Rabbit Tom Ricket's Stick Figure Jon Rosenberg's Fowl Fiend and Randy Milholland's Redneck Tree!\n\nMunchkin 3 - Clerical Errors is a supplement to Munchkin; you will need the original game to play. Or you could add it to a game of Munchkin, Munchkin Fu, or Munchkin Bites! instead, or mix them all together for a Munchkin-fest of truly mind-bending proportions!\n\nOtherPart of the Munchkin series.",
@@ -7425,8 +7425,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Four wanderers seek the Last Ruin, a legendary city holding an artifact that grants deepest desires. Explore diverse maps, recruit adventurers, and gather resources while facing challenges and making narrative choices. Compete to become the most storied traveler in this adventure game with multiple maps and a book of encounters.",
-        "es": "Cuatro viajeros buscan la Última Ruina, una ciudad legendaria que contiene un artefacto capaz de conceder los deseos más profundos. Explorar mapas diversos, reclutar aventureros y recolectar recursos mientras enfrentan desafíos y toman decisiones narrativas...."
+        "en": "Near and Far is a sequel to Above and Below and includes a book of encounters. This time players read over ten game sessions to reach the end of the story. Each chapter is played on a completely new map with unique art and adventures.",
+        "es": ""
       },
       "description": {
         "en": "Four wanderers search for the Last Ruin, a city that legends say contains an artifact that will grant the greatest desires of the heart. A lost love, redemption, acceptance, a family rejoined-- these are the fires that fuel the wanderers' journeys, but can they overcome their own greed and inner demons on the way?\n\nIn Near and Far, you and up to three friends explore many different maps in a search for the Last Ruin, recruiting adventurers, hunting for treasure, and competing to be the most storied traveler. You must collect food and equipment at town for long journeys to mysterious locales, making sure not to forget enough weapons to fight off bandits, living statues, and rusty robots! Sometimes in your travels you'll run into something unique and one of your friends will read what happens to you from a book of stories, giving you a choice of how to react, creating a new and memorable tale each time you play.\n\nNear and Far is a sequel to Above and Below and includes a book of encounters. This time players read over ten game sessions to reach the end of the story. Each chapter is played on a completely new map with unique art and adventures.\n\nAnswer the call of the ruins and begin your journey.\n\nErrata",
@@ -7523,8 +7523,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Pandemic is a cooperative game where players work as disease-fighting specialists to treat outbreaks and research cures for four deadly plagues. Each turn, players use action points to travel between cities, treat infections, and build research stations. The game features unique roles with special abilities and a race against time as diseases spread....",
-        "es": "Juego cooperativo en el que los jugadores asumen el rol de especialistas en la lucha contra enfermedades. Su misión es tratar brotes y descubrir curas para cuatro plagas mortales. Cada turno, los jugadores usan puntos de acción para viajar entre ciudades, tratar infecciones y construir estaciones de investigación...."
+        "en": "In Pandemic, several virulent diseases have broken out simultaneously all over the world! The players are disease-fighting specialists whose mission is to treat disease hotspots while researching cures for each of four plagues before they get out of hand.\n\nThe 2013 edition of Pandemic includes two new characters—the Contingency Planner and the Quarantine Specialist—not available in earlier editions of the game.",
+        "es": ""
       },
       "description": {
         "en": "In Pandemic, several virulent diseases have broken out simultaneously all over the world! The players are disease-fighting specialists whose mission is to treat disease hotspots while researching cures for each of four plagues before they get out of hand.\n\nThe game board depicts several major population centers on Earth. On each turn, a player can use up to four actions to travel between cities, treat infected populaces, discover a cure, or build a research station. A deck of cards provides the players with these abilities, but sprinkled throughout this deck are Epidemic! cards that accelerate and intensify the diseases' activity. A second, separate deck of cards controls the \"normal\" spread of the infections.\n\nTaking a unique role within the team, players must plan their strategy to mesh with their specialists' strengths in order to conquer the diseases. For example, the Operations Expert can build research stations which are needed to find cures for the diseases and which allow for greater mobility between cities; the Scientist needs only four cards of a particular disease to cure it instead of the normal five—but the diseases are spreading quickly and time is running out. If one or more diseases spreads beyond recovery or if too much time elapses, the players all lose. If they cure the four diseases, they all win!\n\nThe 2013 edition of Pandemic includes two new characters—the Contingency Planner and the Quarantine Specialist—not available in earlier editions of the game.\n\nPandemic is the first game in the Pandemic series.",
@@ -7618,8 +7618,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Pandemic: On the Brink is an expansion for the base game that adds new event and role cards, support for five players, and optional challenges to increase difficulty. New challenges include unpredictable disease behavior, a fifth disease, and a Bio-Terrorist mode where one player opposes the others.",
-        "es": "Juego de expansión para Pandemic que incluye nuevas cartas de eventos y roles, reglas para cinco jugadores y desafíos opcionales para aumentar la dificultad. Los desafíos introducen comportamientos impredecibles de enfermedades, una quinta enfermedad y un modo Bio-Terrorista donde un jugador se opone a los demás."
+        "en": "Pandemic: On the Brink includes new event cards, new role cards, rules for five players, and optional game challenges to increase the difficulty of the Pandemic base game....\n\nThe Virulent Strain challenge makes one disease become particularly deadly in unpredictable ways.",
+        "es": ""
       },
       "description": {
         "en": "Pandemic: On the Brink includes new event cards, new role cards, rules for five players, and optional game challenges to increase the difficulty of the Pandemic base game. These new challenges, which can be used individually or combined for even more difficult play, are as follows:\n\nThe Virulent Strain challenge makes one disease become particularly deadly in unpredictable ways.\n\nThe Mutation challenge adds a fifth (purple) disease that behaves differently than the original four.\n\nThe Bio-Terrorist challenge pits one player against the others!\n\nPart of the Pandemic series.",
@@ -7705,8 +7705,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Perplexus is a 3-D maze game where players navigate a marble through a transparent sphere filled with 100 barriers. Choose a track and carefully tilt, flip, and twist the sphere to guide the marble around challenging obstacles.",
-        "es": "Juego de laberinto en 3D donde los jugadores guían una bola a través de una esfera transparente con 100 obstáculos. Se elige una pista y se inclina, gira y voltea la esfera para superar los desafíos."
+        "en": "Perplexus is a 3-D maze game where players must maneuver a small marble around challenging barriers inside a transparent sphere.\n\nUnlike traditional flat-surface mazes that are composed of one path, Perplexus houses various exhilarating tracks with 100 barriers and provides a three dimensional experience. Players select which track they would like to attempt, and then must work with gravity and carefully shift, flip, and twist the sphere to guide the marble.",
+        "es": ""
       },
       "description": {
         "en": "Perplexus is a 3-D maze game where players must maneuver a small marble around challenging barriers inside a transparent sphere.\n\nUnlike traditional flat-surface mazes that are composed of one path, Perplexus houses various exhilarating tracks with 100 barriers and provides a three dimensional experience. Players select which track they would like to attempt, and then must work with gravity and carefully shift, flip, and twist the sphere to guide the marble.",
@@ -7783,8 +7783,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Potion Explosion is a fast-paced puzzle game where players collect ingredient marbles by causing color matches. Brew potions to gain magical powers and aim for the most valuable combinations to win.",
-        "es": "Juego de fantasía y rompecabezas donde los jugadores recolectan losetas de ingredientes al hacer coincidir colores. Preparan pociones para obtener poderes mágicos y buscan las combinaciones más valiosas para ganar."
+        "en": "Potion Explosion is a game for 2 to 4 players by Horrible Games. It was designed by Lorenzo Silva, Andrea Crespi and Stefano Castelli.",
+        "es": ""
       },
       "description": {
         "en": "Potion Explosion is a game for 2 to 4 players by Horrible Games. It was designed by Lorenzo Silva, Andrea Crespi and Stefano Castelli.\n\nDear students, it's time for the final exams of the Potions class! The rules are always the same: Take an ingredient marble from the dispenser and watch the others fall. If you connect marbles of the same color, they explode and you can take them, too! Complete your potions using the marbles you collect, and drink them to unleash their magical power. Remember, though, that to win the Student of the Year award, being quick won't be enough: you'll also need to brew the most valuable potions in Potion Explosion!",
@@ -7868,8 +7868,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Quacks is a fantasy game where players act as quack doctors brewing potions. Draw ingredients from your bag and add them to your pot, balancing risk and reward. Higher-value ingredients increase your potion's worth, but too many cherry bombs cause an explosion. Manage your brews wisely over nine rounds to earn the most victory points.",
-        "es": "Juego de fantasía en el que los jugadores interpretan a médicos charlatanes que preparan pociones. Extraen ingredientes de su bolsa y los añaden a su olla, equilibrando riesgo y recompensa. Los ingredientes de mayor valor aumentan el valor de la poción, pero demasiadas bombas de cereza provocan una explosión...."
+        "en": "In Quacks, which was first released as The Quacks of Quedlinburg, players are charlatans — or quack doctors — each making their own secret brew by adding ingredients one at a time. Take care with what you add, though, for a pinch too much of this or that will spoil the whole mixture!",
+        "es": ""
       },
       "description": {
         "en": "In Quacks, which was first released as The Quacks of Quedlinburg, players are charlatans — or quack doctors — each making their own secret brew by adding ingredients one at a time. Take care with what you add, though, for a pinch too much of this or that will spoil the whole mixture!\n\nEach player has their own bag of ingredient chips. During each round, they simultaneously draw chips from their bags and add them to their pots. The higher the face value of the drawn chip, the further it is placed in the pot's swirling pattern, increasing how much the potion will be worth. Push your luck as far as you can, but if you add too many cherry bombs, your pot will explode!\n\nAt the end of each round, players gain victory points and coins to spend on new ingredients, depending on how well they managed to fill up their pots. But players whose pots have exploded must choose points or coins — not both! The player with the most victory points at the end of nine rounds wins the game.",
@@ -7941,7 +7941,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 45,
       "minPlayTime": 45,
       "maxPlayTime": 45,
-      "averageRating": 8,
+      "averageRating": 8.0,
       "bayesAverage": 7.36,
       "rank": 0,
       "avgWeight": 2.02,
@@ -7963,8 +7963,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "The Quacks of Quedlinburg: The Herb Witches is an expansion that adds four new item sets to the base game. It introduces new witch characters with unique abilities, a variable-value ingredient called Locoweed, updated ingredient books for existing types, and components for a fifth player.",
-        "es": "Juego de expansión para The Quacks of Quedlinburg. Incluye cuatro nuevos conjuntos de elementos: brujas con habilidades especiales, Locoweed como ingrediente de valor variable, libros de ingredientes actualizados y componentes para un quinto jugador."
+        "en": "The Witches - new characters with special abilities that players may use once per game Locoweed - a new ingredient whose value is determined by its ability rather than being fixed New ingredient books for each existing ingredient type, increasing variety even further Player components in black color - increasing the number of players to 5",
+        "es": ""
       },
       "description": {
         "en": "The Quacks of Quedlinburg: The Herb Witches expands the town of Quedlinburg with four new sets of items:\n\nThe Witches - new characters with special abilities that players may use once per game Locoweed - a new ingredient whose value is determined by its ability rather than being fixed New ingredient books for each existing ingredient type, increasing variety even further Player components in black color - increasing the number of players to 5",
@@ -8040,8 +8040,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Quarto is an abstract strategy game for two players. The 4×4 board features 16 unique pieces, each with four attributes: color, height, shape, and consistency. Players take turns placing pieces, but the opponent chooses which piece to place. The goal is to create a row of four pieces sharing at least one common attribute.",
-        "es": "Juego abstracto de estrategia para dos jugadores. El tablero de 4×4 incluye 16 piezas con cuatro atributos: color, altura, forma y consistencia. Los jugadores colocan piezas por turnos, pero el rival elige cuál colocar. El objetivo es formar una fila de cuatro piezas con al menos un atributo en común."
+        "en": "Quarto has a 4×4 board and 16 pieces. Each piece has four dichotomous attributes — color, height, shape, and consistency — so each piece is either black or white, tall or short, square or round, and hollow or solid. The object is to place the fourth piece in a row in which all four pieces have at least one attribute in common. The twist is that your opponent gets to choose the piece you place on the board each turn.",
+        "es": ""
       },
       "description": {
         "en": "Quarto has a 4×4 board and 16 pieces. Each piece has four dichotomous attributes — color, height, shape, and consistency — so each piece is either black or white, tall or short, square or round, and hollow or solid. The object is to place the fourth piece in a row in which all four pieces have at least one attribute in common. The twist is that your opponent gets to choose the piece you place on the board each turn.\n\nA winner of the 1985 Concours International de Créateurs de Jeux de Société.",
@@ -8125,8 +8125,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "A classic strategy game of global conquest. Players build armies, attack opponents, and aim to control all territories. Reinforcements are gained through territory control and bonus cards.",
-        "es": "Juego de estrategia donde los jugadores conquistan territorios controlando ejércitos y atacando a los rivales. Las bonificaciones se obtienen mediante el control de territorios y cartas especiales."
+        "en": "Possibly the most popular, mass market war game. The goal is conquest of the world.\n\nEach player's turn consists of: - gaining reinforcements through number of territories held, control of every territory on each continent, and turning sets of bonus cards. - Attacking other players using a simple combat rule of comparing the highest dice rolled for each side. Players may attack as often as desired. If one enemy territory is successfully taken, the player is awarded with a bonus card. - Moving a group of armies to another adjacent territory.",
+        "es": ""
       },
       "description": {
         "en": "Possibly the most popular, mass market war game. The goal is conquest of the world.\n\nEach player's turn consists of: - gaining reinforcements through number of territories held, control of every territory on each continent, and turning sets of bonus cards. - Attacking other players using a simple combat rule of comparing the highest dice rolled for each side. Players may attack as often as desired. If one enemy territory is successfully taken, the player is awarded with a bonus card. - Moving a group of armies to another adjacent territory.",
@@ -8211,8 +8211,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Sagrada is a dice-drafting puzzle game where players build stained glass windows by arranging dice on a grid. Each player board has restrictions on color and shade placement. Dice of the same shade or color cannot be adjacent. Players draft dice in turn order, with the start player rotating each round....",
-        "es": "Juego de losetas y dados en el que los jugadores construyen vitrales de vidrieras colocando dados en una cuadrícula. Cada tablero tiene restricciones sobre el color y tono de los dados que se pueden colocar. No se pueden poner dados del mismo tono o color adyacentes. Los jugadores eligen dados por turnos, rotando el jugador inicial cada ronda...."
+        "en": "Draft dice and use the tools-of-the-trade in Sagrada to carefully construct your stained glass window masterpiece.\n\nIn more detail, each player builds a stained glass window by building up a grid of dice on their player board. Each board has some restrictions on which color or shade (value) of die can be placed there. Dice of the same shade or color may never be placed next to each other. Dice are drafted in player order, with the start player rotating each round, snaking back around after the last player drafts two dice....",
+        "es": ""
       },
       "description": {
         "en": "Draft dice and use the tools-of-the-trade in Sagrada to carefully construct your stained glass window masterpiece.\n\nIn more detail, each player builds a stained glass window by building up a grid of dice on their player board. Each board has some restrictions on which color or shade (value) of die can be placed there. Dice of the same shade or color may never be placed next to each other. Dice are drafted in player order, with the start player rotating each round, snaking back around after the last player drafts two dice. Scoring is variable per game based on achieving various patterns and varieties of placement...as well as bonus points for dark shades of a particular hidden goal color.\n\nSpecial tools can be used to help you break the rules by spending skill tokens; once a tool is used, it then requires more skill tokens for the other players to use them.\n\nThe highest scoring window artisan wins!",
@@ -8305,8 +8305,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Expand your Sagrada experience with this 5-6 player expansion. Includes private dice pool boards, new objectives, tools, and window pattern cards for smooth gameplay with up to six players. Requires the Sagrada base game.",
-        "es": "Juego de expansión para Sagrada que permite agregar hasta dos jugadores más. Incluye tableros de reserva de dados privados, nuevos objetivos, herramientas y cartas de patrones de ventanas para partidas fluidas con hasta seis jugadores. Requiere el juego base Sagrada."
+        "en": "You can now enjoy more Sagrada by adding up to 2 extra players! This expansion introduces the Private Dice Pool boards for smooth gameplay through 6 players. Also includes new private objectives, tools, and window pattern cards.",
+        "es": ""
       },
       "description": {
         "en": "Add to your Sagrada experience with the 5-6 Player Expansion!\n\nYou can now enjoy more Sagrada by adding up to 2 extra players! This expansion introduces the Private Dice Pool boards for smooth gameplay through 6 players. Also includes new private objectives, tools, and window pattern cards.\n\nThis expansion is not standalone. The Sagrada base game is required to play.",
@@ -8389,8 +8389,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Sand is a strategic pick-up-and-deliver game set in a vast desert where players take on the role of travelers transporting goods on caterpillars. Earn gold by delivering plants and completing missions across six rounds, while caring for your caterpillar to enhance its abilities. A game of exploration, resource management, and gradual desert revival for 1-4 players.",
-        "es": "Juego de transporte y entrega en un desierto donde los jugadores asumen el rol de viajeros que llevan mercancías en orugas. Ganan oro entregando plantas y completando misiones en seis rondas, mientras cuidan de su oruga para mejorar sus habilidades. Una experiencia de exploración, gestión de recursos y revitalización del desierto para 1 a 4 jugadores."
+        "en": "Designed by Ariel Di Costanzo and Javier Pelizzari and illustrated by Ernest Sala, Sand is a game with a main mechanism of pick-up-and-deliver that can be enjoyed alone or in groups of up to four players in games of about 120 minutes long. Players have to earn as much gold as possible after six rounds (five in a four-player game) to win.",
+        "es": ""
       },
       "description": {
         "en": "People refer to this vast place only as the desert since no one remembers what was here before. The golden age of human beings has long passed. Now there is only sand, and the only hope is in the humidity.\n\nTravelers cross the desert that stretches from the slopes of the Akaishi Mountains to the cliffs of Seaclaw. Half-ruined ancient cities are home to the last human communities struggling to survive by foraging for what little green remains standing. These desert travelers transport goods on the backs of their caterpillars. Although their only goal is to make as much money as they can, at the same time and in a more or less deliberate way, they are helping to bring life back to the desert by carrying small plants from the artificial greenhouses of the cities to the most remote corners of this ocean of sand.\n\nDesigned by Ariel Di Costanzo and Javier Pelizzari and illustrated by Ernest Sala, Sand is a game with a main mechanism of pick-up-and-deliver that can be enjoyed alone or in groups of up to four players in games of about 120 minutes long. Players have to earn as much gold as possible after six rounds (five in a four-player game) to win.\n\nIn Sand, players put themselves in the shoes of these intrepid desert travelers who travel the paths of the board and visit the different towns. They collect goods to take them to other places and thus earn gold for the transport service. They cross the dunes on the backs of their faithful caterpillars, which, cared for, will grow and help players complete their tasks more effectively. Along the way they will be joined by helpful companions and be entrusted with missions that, if completed, will bring good benefits at the end of the journey. Help the plants take root again, and perhaps there is still some hope for this desolate place...\n\n—description from the publisher",
@@ -8473,8 +8473,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Santorini is a strategic game where players move builders and construct levels on a grid. Win by reaching the third level with a builder. Features 40 god and hero powers that add depth to the abstract gameplay.",
-        "es": "Juego de estrategia en el que los jugadores mueven constructores y edifican niveles en una cuadrícula. Se gana al llegar al tercer nivel con un constructor. Incluye 40 poderes de dioses y héroes que añaden profundidad al juego abstracto."
+        "en": "Santorini is an accessible strategy game, simple enough for an elementary school classroom while aiming to provide gameplay depth and content for hardcore gamers to explore. Santorini features variable player powers layered over an otherwise abstract game, with 40 thematic god and hero powers that fundamentally change the way the game is played.\n\nSantorini is a re-imagining of the purely abstract 2004 edition.",
+        "es": ""
       },
       "description": {
         "en": "Santorini is a re-imagining of the purely abstract 2004 edition.\n\nSantorini is an accessible strategy game, simple enough for an elementary school classroom while aiming to provide gameplay depth and content for hardcore gamers to explore. Santorini features variable player powers layered over an otherwise abstract game, with 40 thematic god and hero powers that fundamentally change the way the game is played.\n\nThe rules are simple. Each turn consists of 2 steps:\n\n1. Move - move one of your builders into a neighboring space. You may move your Builder Pawn on the same level, step-up one level, or step down any number of levels.\n\n2. Build - Then construct a building level adjacent to the builder you moved. When building on top of the third level, place a dome instead, removing that space from play.\n\nIf either of your builders moves up to the third level, you win.",
@@ -8560,8 +8560,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "A fast-paced card game where players collect sets and strategically end rounds. Assemble your hand, play effect cards, and decide when to stop—risk letting others catch up or secure your lead. Ends at 30/35/40 points.",
-        "es": "Juego de cartas de colección de conjuntos donde los jugadores forman manos, activan efectos y deciden cuándo finalizar la ronda. ¿Aprovechar el momento o dejar que los rivales intenten alcanzar la ventaja? La partida termina al llegar a 30/35/40 puntos."
+        "en": "During your turn, you assemble your hand, maybe place cards for their effect, and decide if you want to end the round. But do you think you are the one with the most points in hand? You will have to choose: stop the round immediately or give the others an extra turn to try to extend the gap? Is it worth taking the risk? The game ends when you reach 30/35/40 points (4/3/2 players).\n\nIt's a set collection card game like Rummy. The origami created especially for the game is just the illustrations on the cards.",
+        "es": ""
       },
       "description": {
         "en": "During your turn, you assemble your hand, maybe place cards for their effect, and decide if you want to end the round. But do you think you are the one with the most points in hand? You will have to choose: stop the round immediately or give the others an extra turn to try to extend the gap? Is it worth taking the risk? The game ends when you reach 30/35/40 points (4/3/2 players).\n\nThe excitement of ending the round to catch your opponents off guard\n\nThe pleasure of playing your effect cards and making combos\n\nIt's a set collection card game like Rummy. The origami created especially for the game is just the illustrations on the cards.",
@@ -8647,8 +8647,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Step into Victorian London and solve mysteries alongside Sherlock Holmes. Investigate crimes, interview suspects, and piece together clues to uncover the truth in this immersive deduction game.",
-        "es": "Juego de deducción donde los jugadores investigan crímenes en el Londres victoriano. Entrevistan sospechosos, buscan pistas en los periódicos y reconstruyen los hechos para resolver casos desafiantes."
+        "en": "Have you ever had the desire to walk the streets of Victorian London with Sherlock Holmes in search of Professor Moriarty? To search the docks for the giant rat of Sumatra? To walk up Baker Street as the fog is rolling in and hear Holmes cry out, \"Come, Watson, come! The game is afoot!\"? Now you can! You can enter the opium den beneath the Bar of Gold, but beware, that may be Colonel Sebastian Moran lurking around the corner....",
+        "es": ""
       },
       "description": {
         "en": "Have you ever had the desire to walk the streets of Victorian London with Sherlock Holmes in search of Professor Moriarty? To search the docks for the giant rat of Sumatra? To walk up Baker Street as the fog is rolling in and hear Holmes cry out, \"Come, Watson, come! The game is afoot!\"? Now you can! You can enter the opium den beneath the Bar of Gold, but beware, that may be Colonel Sebastian Moran lurking around the corner. You can capture the mystery and excitement of Holmes' London in this challenging and informative game. You, the player, will match your deductive abilities against your opponents and the master sleuth himself, Sherlock Holmes.\n\nIn Sherlock Holmes Consulting Detective, you are presented with a mystery to solve, and it is then up to you to trace the threads of evidence through the byways and mansions of nineteenth century London. You will interview suspects, search the newspapers for clues, and put together the facts to reach a solution.\n\nWhy were two lions murdered in Hyde Park? Who is responsible for the missing paintings from the National Gallery? Who murdered Oswald Mason and why? These are just a few of the cases that will challenge your ingenuity and deductive abilities.\n\nThis is not a board game: No dice, no luck, but a challenge to your mental ability. The game has been thoroughly researched for Holmesian and Victorian accuracy so as to capture a feeling of that bygone era.",
@@ -8733,8 +8733,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Sherlock: Last Call is a cooperative card game where players solve a mystery by revealing clues one at a time. Each player must choose whether to reveal a card from their hand or keep it hidden. Shared information helps build theories, but irrelevant clues cost points. At the end, players collaborate to answer a questionnaire based on the revealed clues.",
-        "es": "Juego de cartas cooperativo en el que los jugadores resuelven un misterio revelando pistas una por una. Cada jugador debe elegir si mostrar una carta de su mano o mantenerla oculta. La información compartida ayuda a construir teorías, pero las pistas irrelevantes restan puntos. Al final, los jugadores colaboran para responder un cuestionario basado en las pistas reveladas."
+        "en": "A) Reveal information: Choose a card from your hand and place it on the table, so all players can read or see the entire information. We recomend you read out loud all shared info when you place it on the table. If you play a clue that happens to be irrelevant to the case, you lose points at the end of the game, but be careful! Some clues are vital to resolve the case.",
+        "es": ""
       },
       "description": {
         "en": "In each Q case, you try to solve a mystery case with 32 clues, with players revealing one clue at a time until all cards have been revealed or discarded. During your turn, each player must perform one of the following actions:\n\nA) Reveal information: Choose a card from your hand and place it on the table, so all players can read or see the entire information. We recomend you read out loud all shared info when you place it on the table. If you play a clue that happens to be irrelevant to the case, you lose points at the end of the game, but be careful! Some clues are vital to resolve the case.\n\nYou can share and expose your theories at any moment and talk about the cards you have in your hand but you cannot show them to the other players and you may only read out loud the words written in bold or the text framed inside an image:\n\nAt the end of the game, when all clue cards have been revealed or discarded, you must check carefully all the available information and prepare a theory of what happened, working all together. Then, open the questionnaire and answer all questions. During this phase of the game, you can speak freely about your discarded cards, or the information you remember of them. Each right answer will add two points.\n\nIn Q: Last Call, a man has suffered a heart attack during a flight.\n\n\"Commander: Commander of flight TJ1309 asking for priority to land. CT: South Indian Lake control tower. Request received. What’s the emergency? Commander: One of our passengers suffered a heart attack at 7 hours 30 minutes after the take-off. His companion suffered an anxiety crisis. CT: Roger, TC1309, we’ll initiate the standard CPR protocol. We’ll send a resuscitation team, a forensic doctor and an investigation team. We’ll enable passengers’ transfer and custody. Commander: Affirmative, CT. Requesting vectors as soon as possible. CT: CT to flight TJ1309, you are lucky. Runway is clear right now. Authorized to South Indian Lake, six thousand feet transponder two-one-five-seven. Commander: Flight TJ1309 to South Indian Lake. Six thousand feet transponder two-one-five-seven. Thanks you.\"\n\n—description from the publisher",
@@ -8802,7 +8802,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "averageRating": 5.89,
       "bayesAverage": 5.53,
       "rank": 16007,
-      "avgWeight": 1,
+      "avgWeight": 1.0,
       "weightBand": "light",
       "timeBand": "quick",
       "playerBand": "mid-group",
@@ -8821,8 +8821,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "A fast-paced card game where players search the seas for matching shrimp. Collect cards by recognizing shared traits like size, color, and origin across three fishing zones.",
-        "es": "Juego de cartas donde los jugadores buscan en el mar camarones que coincidan. Recolectan cartas al reconocer características compartidas como tamaño, color y origen en tres zonas de pesca."
+        "en": "In Shrimp Cocktail, players want to search the seas for matching shrimp for only when uniformly-sized shrimp are used in a dish does that dish taste its most exquisite.\n\nThe shrimp on the cards have four characteristics – quantity, origin, size and color – and shrimp on different cards may share these characteristics. Whenever you catch a matching shrimp trait between the three fishing zones, act fast to squeeze the starfish so that you can haul in that catch and collect the cards.",
+        "es": ""
       },
       "description": {
         "en": "In Shrimp Cocktail, players want to search the seas for matching shrimp for only when uniformly-sized shrimp are used in a dish does that dish taste its most exquisite.\n\nThe shrimp on the cards have four characteristics – quantity, origin, size and color – and shrimp on different cards may share these characteristics. Whenever you catch a matching shrimp trait between the three fishing zones, act fast to squeeze the starfish so that you can haul in that catch and collect the cards.",
@@ -8903,8 +8903,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Spirit Island is a cooperative fantasy game where players embody spirits defending their island home from colonial invaders. Each spirit has unique elemental powers, and players must strategically choose when to use them. The invaders spread across the island in phases, building towns and cities before ravaging the land....",
-        "es": "Juego cooperativo de fantasía donde los jugadores encarnan espíritus que defienden su isla natal de invasores coloniales. Cada espíritu tiene poderes elementales únicos, y los jugadores deben elegir estratégicamente cuándo usarlos. Los invasores se expanden por la isla en fases, construyendo pueblos y ciudades antes de devastar el terreno...."
+        "en": "Spirit Island is a complex and thematic co-operative game about defending your island home from colonizing Invaders. Players are different spirits of the land, each with its own unique elemental powers. Every turn, players simultaneously choose which of their power cards to play, paying energy to do so. Using combinations of power cards that match a spirit's elemental affinities can grant free bonus effects....",
+        "es": ""
       },
       "description": {
         "en": "In the most distant reaches of the world, magic still exists, embodied by spirits of the land, of the sky, and of every natural thing. As the great powers of Europe stretch their colonial empires further and further, they will inevitably lay claim to a place where spirits still hold power - and when they do, the land itself will fight back alongside the islanders who live there.\n\nSpirit Island is a complex and thematic co-operative game about defending your island home from colonizing Invaders. Players are different spirits of the land, each with its own unique elemental powers. Every turn, players simultaneously choose which of their power cards to play, paying energy to do so. Using combinations of power cards that match a spirit's elemental affinities can grant free bonus effects. Faster powers take effect immediately, before the Invaders spread and ravage, but other magics are slower, requiring forethought and planning to use effectively. In the Spirit phase, spirits gain energy, and choose how / whether to Grow: to reclaim used power cards, to seek new power, or to spread their presence into new areas of the island.\n\nThe Invaders expand across the island map in a semi-predictable fashion. Each turn they explore into some lands (portions of the island); the next turn, they build in those lands, forming towns and cities. The turn after that, they ravage there, bringing blight to the land and attacking any native islanders present. The islanders fight back against the Invaders when attacked, and lend the spirits some other aid, but may not always do so exactly as you'd hoped. Some Powers work through the islanders, helping them, for example, to drive out the Invaders or clean the land of blight.\n\nThe game escalates as it progresses: spirits spread their presence to new parts of the island and seek out new and more potent powers, while the Invaders step up their colonization efforts. Each turn represents 1-3 years of alternate history. At game start, winning requires destroying every last explorer, town and city on the board - but as you frighten the Invaders more and more, victory becomes easier: they'll run away even if explorers or even towns and cities remain. Defeat comes if any spirit is destroyed, if the island is overrun by blight, or if the Invader deck is depleted before achieving victory.\n\nThe game includes different adversaries to fight against (eg., a Swedish Mining Colony, or a Remote British Colony). Each changes play in different ways, and offers a different path of difficulty boosts to keep the game challenging as you gain skill.",
@@ -9000,8 +9000,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Spot it! is a fast-paced pattern recognition game where players race to find matching symbols on cards. Each card has eight unique symbols, with any two cards sharing exactly one common image. Players claim cards by spotting the match, and the one with the most cards when the deck runs out wins. Multiple themed versions are available.",
-        "es": "Juego de reconocimiento de patrones donde los jugadores buscan símbolos coincidentes en las cartas. Cada carta tiene ocho símbolos únicos, con un símbolo compartido entre cualquier par. Los jugadores ganan cartas al encontrar coincidencias, y quien más tenga al terminar el mazo gana. Existen versiones con diferentes temáticas."
+        "en": "Spot it!, a.k.a. Dobble, is a simple pattern recognition game in which players try to find an image shown on two cards.",
+        "es": ""
       },
       "description": {
         "en": "Spot it!, a.k.a. Dobble, is a simple pattern recognition game in which players try to find an image shown on two cards.\n\nEach card in original Spot it! features eight different symbols, with the symbols varying in size from one card to the next. Any two cards have exactly one symbol in common. For the basic Spot it! game, reveal one card, then another. Whoever spots the symbol in common on both cards claims the first card, then another card is revealed for players to search, and so on. Whoever has collected the most cards when the 55-card deck runs out wins!\n\nRules for different games – each an observation game with a speed element – are included with Spot it!, with the first player to find a match either gaining or getting rid of a card. Multiple versions of Spot it! have been published, with images in each version ranging from Halloween to hockey to baseball to San Francisco.\n\nThe game is sold as Spot it! in the USA and Dobble in Europe, with slight differences between the two editions.\n\nNote: some versions have fewer cards and fewer symbols per card. (E.g. 30 cards with 6 symbols each.): Spot it! 1,2,3",
@@ -9085,8 +9085,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Star Realms is a fast-paced deck-building game where players command spaceship fleets in tactical combat. Using Ships and Bases, players generate Trade to acquire new cards or Combat to attack opponents, aiming to reduce their Authority to zero. With four factions and strategic choices at every turn, the game offers depth and replayability....",
-        "es": "Juego de construcción de mazo donde los jugadores controlan flotas de naves espaciales en combates tácticos. Usando Naves y Bases, los jugadores generan Comercio para adquirir nuevas cartas o Combate para atacar a los oponentes, con el objetivo de reducir su Autoridad a cero...."
+        "en": "Star Realms is a spaceship combat deck-building game by Magic Hall of Famers Darwin Kastle (The Battle for Hill 218) and Rob Dougherty (Ascension Co-designer). It combines the fun of a deck-building game with the speed and interactivity of Trading Card Game style combat. In Star Realms, players make use of Ships and Bases to generate Trade to acquire new Ships and Bases or to generate Combat to attack their opponent to reduce their Authority or destroy their Bases....",
+        "es": ""
       },
       "description": {
         "en": "Star Realms is a spaceship combat deck-building game by Magic Hall of Famers Darwin Kastle (The Battle for Hill 218) and Rob Dougherty (Ascension Co-designer). It combines the fun of a deck-building game with the speed and interactivity of Trading Card Game style combat. In Star Realms, players make use of Ships and Bases to generate Trade to acquire new Ships and Bases or to generate Combat to attack their opponent to reduce their Authority or destroy their Bases. When you reduce your opponent’s Authority to zero, you win!\n\nThe Ships and Bases in Star Realms come in four factions. You may acquire and use cards of any faction, but many cards have powerful Ally abilities that reward you for using cards of the same faction together. As you acquire cards using Trade, you put them into your discard pile, to be later shuffled into your personal deck. When you play a Ship, you do what it says and then place it into your discard pile at the end of your turn. When you play a Base, you place it face up in front of you and may use its abilities once every turn. In addition to Combat being the way you reduce your opponent’s Authority to zero and win the game, it’s also useful for destroying your opponent’s Bases. Some Bases are designated as Outposts. Your opponent’s Outposts must be destroyed before you can use Combat to attack your opponent’s Authority directly.\n\nStar Realms is easy to learn, especially if you’re familiar with deck-building games, but takes time to master. Each time you play, the game is filled with various strategic decision points. Should I take the best card for me or the best card for my opponent? Should I focus on taking cards of a particular faction or on taking the best card available? Should I be focusing on acquiring more Trade or more Combat? Should I attack my opponent’s Base or their Authority? These are just some of the many choices you’ll be faced with. New players needn’t agonize over these choices just to play, but as they become more advanced players, they will find this depth of strategy leads to great replayability.\n\nThe Star Realms set contains everything you need for two players. Including multiple copies (one copy for every two players) of the game and/or its standalone expansions, Star Realms: Colony Wars and Star Realms: Frontiers, allows up to six players to play a variety of multiplayer formats, including free-for-all and team play.\n\nThis is the first game of the Star Realms series.",
@@ -9175,8 +9175,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Star Realms: Colony Wars is a deck-building card game for 2-4 players. Build a fleet of powerful ships and bases, attacking opponents to reduce their Authority to zero. Playable as a standalone game or an expansion to the base Star Realms set.",
-        "es": "Juego de construcción de mazo en el que los jugadores forman una flota de naves y bases poderosas para atacar al rival y reducir su Autoridad a cero. Se puede jugar como título independiente o como expansión del juego base Star Realms."
+        "en": "Colony Wars is a deckbuilding game in the Star Realms series which is both a standalone box set for two players (featuring an 80-card trade deck, as in the original) and an expansion for the base Star Realms set that allows it to be played as a four-player game.",
+        "es": ""
       },
       "description": {
         "en": "Colony Wars is a deckbuilding game in the Star Realms series which is both a standalone box set for two players (featuring an 80-card trade deck, as in the original) and an expansion for the base Star Realms set that allows it to be played as a four-player game.\n\nIn Colony Wars, as in Star Realms, players will start with a fleet (deck) of 10 basic ships, and can spend Trade to acquire more powerful ships and bases from a central trade row of 5 cards. This row is continuously replenished by random draws from the trade deck. Many ships and bases deal Combat damage which you can use to attack your opponent and/or destroy their bases. When you reduce your opponent's Authority to zero, you win.",
@@ -9265,8 +9265,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Summit: The Board Game is a survival adventure where players race up and down a deadly mountain, managing resources and overcoming obstacles. Play competitively, cooperatively, or solo with variable mechanisms and a unique karma system that affects end-game scoring. Features over 190 unique cards, nearly 100 tiles, and customizable difficulty for endless replayability.",
-        "es": "Juego de supervivencia en el que los jugadores compiten por ascender y descender una montaña peligrosa, gestionando recursos y superando obstáculos. Se puede jugar de forma competitiva, cooperativa o en solitario con mecanismos variables y un sistema de karma único que afecta la puntuación final...."
+        "en": "Summit: The Board Game is a survival game which, thanks to its two-sided game board and variable mechanisms, can be played competitively, cooperatively or solo.",
+        "es": ""
       },
       "description": {
         "en": "Summit: The Board Game is a survival game which, thanks to its two-sided game board and variable mechanisms, can be played competitively, cooperatively or solo.\n\nIn a competitive game, players race up and down the deadly mountain while managing their resources, building their path, overcoming obstacles, and attempting to survive their competition. Summit uses a unique karma system that allows players to actively help or hinder their opponents — but it also affects end game scoring. For a few extra points, you could share some of your valuable food or oxygen, or maybe you can afford to lose some points so you choose to cut their rope and watch them disappear down the mountain.\n\nIn a cooperative or solo game, players must now work together to overcome the mountain and survive the expedition. Summit is a game so grueling you need only one team member to survive the ascent and descent, so players may sacrifice themselves for the good of the team. The mountain has a \"Sherpa Track\" and a \"Time of Day Track\" added, as well as a whole new deck of cards. It is unlikely everyone will be returning from this expedition.\n\nWith over 190 unique cards, nearly 100 tiles, unique resource management and tracking on dual-layer asymmetrical player mats and the ability to customize your difficulty and game length, Summit guarantees you will never play the same game twice!",
@@ -9332,10 +9332,10 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 30,
       "minPlayTime": 20,
       "maxPlayTime": 30,
-      "averageRating": 0,
-      "bayesAverage": 0,
+      "averageRating": 0.0,
+      "bayesAverage": 0.0,
       "rank": 0,
-      "avgWeight": 2,
+      "avgWeight": 2.0,
       "weightBand": "medium-light",
       "timeBand": "quick",
       "playerBand": "duo",
@@ -9354,8 +9354,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Super Meat Boy: Rival Rush is a fast-paced, competitive card game for two players. Build a deck of 20 cards featuring actions, skills, and tricks to outmaneuver your opponent. Characters from the Super Meat Boy universe appear as unique cards with special abilities. Race through randomly generated levels, blocking your rival's moves with clever timing and strategy.",
-        "es": "Juego de cartas competitivo para dos jugadores donde los rivales compiten por llegar primero al final. Cada jugador construye un mazo de 20 cartas con acciones, habilidades y trucos para superar los niveles. Los personajes del universo Super Meat Boy aparecen como cartas con habilidades únicas...."
+        "en": "Super Meat Boy Rival Rush is a one versus one competitive card game where Players race to the finish. Players assemble twenty card decks comprised of actions and skills that will get them to the end, along with some nasty tricks to trip up their opponent. Beloved characters from the Super Meat Boy Cinematic Universe make appearances for the first time as trading cards, each with their own unique abilities and powers to help navigate the levels ahead at breakneck speeds....",
+        "es": ""
       },
       "description": {
         "en": "Super Meat Boy Rival Rush is a one versus one competitive card game where Players race to the finish. Players assemble twenty card decks comprised of actions and skills that will get them to the end, along with some nasty tricks to trip up their opponent. Beloved characters from the Super Meat Boy Cinematic Universe make appearances for the first time as trading cards, each with their own unique abilities and powers to help navigate the levels ahead at breakneck speeds. Rival Rush is a nonstop fast paced no holds barred finger blistering every card for themselves showdown where only the swiftest and smartest survive.\n\nTaking heavy influence in the micro-deck builder genre, the game puts the players in the task of creating a deck of cards that matches the symbols that pop up in the \"stages\" in front of us. The trick? Your rival might guess which card you have chosen for this turn and could block your moves through the stages; and in Rival Rush there will be only ONE winner.\n\nTaking in consideration that the game offers the possibility of a fresh experience every time it's played thanks to it's random generated levels (constructed from the cards themselves), Rival Rush seems like a very fun and competitive way of enjoying Super Meat Boy; hopefully not as frustrating as it's digital counterpart.",
@@ -9435,8 +9435,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Survive The Island is a tense adventure game where players race to evacuate their adventurers from a sinking island. The island's hex-tile board shrinks as tiles are removed, forcing players to navigate perils like sea serpents and kaiju while moving their high-value adventurers to safety.",
-        "es": "Juego de aventura y fantasía en el que los jugadores intentan evacuar a sus aventureros de una isla que se hunde. La isla, compuesta por losetas hexagonales, se reduce a medida que se retiran losetas. Los jugadores deben mover a sus personajes de alto valor hacia islas seguras, evitando peligros como serpientes marinas y kaijus en el camino."
+        "en": "Survive The Island is a cutthroat game in which players seek to evacuate their adventurers — especially those of a high value — from a sinking island to maximize their score.",
+        "es": ""
       },
       "description": {
         "en": "Survive The Island is a cutthroat game in which players seek to evacuate their adventurers — especially those of a high value — from a sinking island to maximize their score.\n\nAn island made up of forty hex-tiles is slowly sinking into the ocean as tiles are removed from the board. Each player controls ten people (valued 1-5) that they try to move towards the safety of the surrounding islands before the main island's volcanoes finally erupt. Players can either swim or use rafts to travel, but must avoid sea serpents, kaiju, and sharks on their way to safety.\n\n—description from the publisher",
@@ -9528,8 +9528,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Sushi Go Party! is a lively card game where players collect sushi combos for points. This expanded version offers over 20 customizable dishes and supports up to eight players.",
-        "es": "Juego de cartas donde los jugadores seleccionan combinaciones de sushi para sumar puntos. Esta versión ampliada incluye más de 20 platos personalizables y permite hasta ocho jugadores."
+        "en": "Sushi Go Party! expands Sushi Go! with a party platter of mega maki, super sashimi, and endless edamame. You still earn points by picking winning sushi combos, but now you can customize each game by choosing à la carte from a menu of more than twenty delectable dishes. What's more, up to eight players can join in on the sushi-feast. Let the good times roll!",
+        "es": ""
       },
       "description": {
         "en": "Sushi Go Party! expands Sushi Go! with a party platter of mega maki, super sashimi, and endless edamame. You still earn points by picking winning sushi combos, but now you can customize each game by choosing à la carte from a menu of more than twenty delectable dishes. What's more, up to eight players can join in on the sushi-feast. Let the good times roll!\n\n—description from the publisher",
@@ -9615,8 +9615,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "That's Pretty Clever! is a strategic dice game where players cleverly choose which dice to use on their score sheet, creating chain-scoring opportunities. Unused dice with lower values become available to opponents, ensuring constant engagement.",
-        "es": "Juego de dados en el que los jugadores eligen con astucia qué dados usar en su hoja de puntuación, creando oportunidades de puntuación encadenada. Los dados no utilizados con valores más bajos quedan disponibles para los rivales, manteniendo a todos en la partida."
+        "en": "Choose your dice cleverly in Ganz schön clever (German for \"That's Pretty Clever\") to enter them into the matching colored areas on your score sheet, putting together tricky chain-scoring opportunities, and racking up the points! The dice you don't use are as important as those you do, because every die with a lower value than the chosen one can be used by the other players, keeping everyone in the game at all times.",
+        "es": ""
       },
       "description": {
         "en": "Choose your dice cleverly in Ganz schön clever (German for \"That's Pretty Clever\") to enter them into the matching colored areas on your score sheet, putting together tricky chain-scoring opportunities, and racking up the points! The dice you don't use are as important as those you do, because every die with a lower value than the chosen one can be used by the other players, keeping everyone in the game at all times.",
@@ -9700,8 +9700,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Ticket to Ride is a strategic board game where players collect train cards to claim railway routes across North America. Earn points by building long routes, fulfilling destination tickets, or creating the longest continuous route. Simple rules and engaging gameplay make it ideal for both new and experienced players.",
-        "es": "Juego de estrategia en el que los jugadores recolectan cartas de trenes para reclamar rutas ferroviarias en Norteamérica. Se obtienen puntos al construir rutas largas, cumplir boletos de destino o crear la ruta continua más larga. Las reglas sencillas y el entretenido juego lo hacen ideal para principiantes y jugadores experimentados."
+        "en": "With elegantly simple gameplay, Ticket to Ride can be learned in under 15 minutes. Players collect cards of various types of train cars they then use to claim railway routes in North America. The longer the routes, the more points they earn. Additional points come to those who fulfill Destination Tickets – goal cards that connect distant cities; and to the player who builds the longest continuous route.",
+        "es": ""
       },
       "description": {
         "en": "With elegantly simple gameplay, Ticket to Ride can be learned in under 15 minutes. Players collect cards of various types of train cars they then use to claim railway routes in North America. The longer the routes, the more points they earn. Additional points come to those who fulfill Destination Tickets – goal cards that connect distant cities; and to the player who builds the longest continuous route.\n\n\"The rules are simple enough to write on a train ticket – each turn you either draw more cards, claim a route, or get additional Destination Tickets,\" says Ticket to Ride author, Alan R. Moon. \"The tension comes from being forced to balance greed – adding more cards to your hand, and fear – losing a critical route to a competitor.\"\n\nTicket to Ride continues in the tradition of Days of Wonder's big format board games featuring high-quality illustrations and components including: an oversize board map of North America, 225 custom-molded train cars, 144 illustrated cards, and wooden scoring markers.\n\nSince its introduction and numerous subsequent awards, Ticket to Ride has become the BoardGameGeek epitome of a \"gateway game\" -- simple enough to be taught in a few minutes, and with enough action and tension to keep new players involved and in the game for the duration.\n\nPart of the Ticket to Ride series.",
@@ -9786,8 +9786,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Twice as Clever! is a fast-paced dice game where players roll, mark, and re-roll dice to score points on their personal grids. The white die acts as a joker, adding flexibility. Players can also use set-aside dice from others' turns, creating strategic opportunities. With new challenges and actions, it offers fresh twists on the original's mechanics.",
-        "es": "Juego de dados en el que los jugadores lanzan, marcan y relanzan dados para anotar puntos en sus tablas personales. El dado blanco funciona como comodín, ofreciendo mayor flexibilidad. También pueden usar dados descartados por otros jugadores, generando oportunidades estratégicas. Con nuevos desafíos y acciones, presenta variaciones interesantes respecto al juego original."
+        "en": "Doppelt so clever follows the model of 2018's Ganz schön clever. Each turn the active player rolls six dice, chooses one of them to mark off a space on their scoring grid, places any dice with lower numbers aside, then re-rolls any remaining dice. The white die is a joker and can be used as any one of the other five colors. After the active player chooses at most three dice, then the other players each choose one of the set-aside dice for use on their scoring sheet.",
+        "es": ""
       },
       "description": {
         "en": "Doppelt so clever follows the model of 2018's Ganz schön clever. Each turn the active player rolls six dice, chooses one of them to mark off a space on their scoring grid, places any dice with lower numbers aside, then re-rolls any remaining dice. The white die is a joker and can be used as any one of the other five colors. After the active player chooses at most three dice, then the other players each choose one of the set-aside dice for use on their scoring sheet.\n\nDoppelt so clever has five new dice-marking challenges and a new action beyond the re-roll and \"use one more die\" actions of the earlier game.",
@@ -9866,8 +9866,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Twilight Struggle is a two-player card-driven game simulating the Cold War rivalry between the U.S. and Soviet Union from 1945 to 1989. Players use influence markers, event cards, and strategic decisions to gain global control, balancing diplomacy, espionage, and occasional military conflict....",
-        "es": "Juego de dos jugadores que simula la rivalidad de la Guerra Fría entre Estados Unidos y la Unión Soviética desde 1945 hasta 1989. Los jugadores usan fichas de influencia, cartas de eventos y decisiones estratégicas para ganar control global, combinando diplomacia, espionaje y conflictos militares ocasionales...."
+        "en": "Twilight Struggle is a two-player game simulating the forty-five year dance of intrigue, prestige, and occasional flares of warfare between the Soviet Union and the United States. The entire world is the stage on which these two titans fight to make the world safe for their own ideologies and ways of life. The game begins amidst the ruins of Europe as the two new \"superpowers\" scramble over the wreckage of the Second World War, and ends in 1989, when only the United States remained standing.",
+        "es": ""
       },
       "description": {
         "en": "Now the trumpet summons us again, not as a call to bear arms, though arms we need; not as a call to battle, though embattled we are – but a call to bear the burden of a long twilight struggle. – John F. Kennedy\n\nIn 1945, unlikely allies toppled Hitler's war machine, while humanity's most devastating weapons forced the Japanese Empire to its knees in a storm of fire. Where once there stood many great powers, there then stood only two. The world had scant months to sigh its collective relief before a new conflict threatened. Unlike the titanic struggles of the preceding decades, this conflict would be waged not primarily by soldiers and tanks, but by spies and politicians, scientists and intellectuals, artists and traitors.\n\nTwilight Struggle is a two-player game simulating the forty-five year dance of intrigue, prestige, and occasional flares of warfare between the Soviet Union and the United States. The entire world is the stage on which these two titans fight to make the world safe for their own ideologies and ways of life. The game begins amidst the ruins of Europe as the two new \"superpowers\" scramble over the wreckage of the Second World War, and ends in 1989, when only the United States remained standing.\n\nTwilight Struggle inherits its fundamental systems from the card-driven classics We the People and Hannibal: Rome vs. Carthage. It is a quick-playing, low-complexity game in that tradition. The game map is a world map of the period, whereon players move units and exert influence in attempts to gain allies and control for their superpower. As with GMT's other card-driven games, decision-making is a challenge; how to best use one's cards and units given consistently limited resources? Event cards add detail and flavor to the game. They cover a vast array of historical happenings, from the Arab-Israeli conflicts of 1948 and 1967, to Vietnam and the U.S. peace movement, to the Cuban Missile Crisis and other such incidents that brought the world to the brink of nuclear annihilation. Subsystems capture the prestige-laden Space Race as well as nuclear tensions, with the possibility of game-ending nuclear war.\n\nTIME SCALE: approx. 3-5 years per turn MAP SCALE: Point-to-point system UNIT SCALE: Influence markers",
@@ -9961,8 +9961,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Unlock! Epic Adventures is a cooperative card game featuring three escape room-style scenarios. Players work together in real-time to solve puzzles, combine objects, and uncover clues using cards and a companion app. Embark on adventures like a horror movie premiere, a dragon temple's trials, or a secret organization's mole hunt.",
-        "es": "Juego de cartas cooperativo con tres escenarios de escape room. Los jugadores colaboran en tiempo real para resolver acertijos, combinar objetos y descubrir pistas usando cartas y una aplicación acompañante. Las aventuras incluyen el estreno de una película de terror, las pruebas de un templo de dragones y la búsqueda de un infiltrado en una organización secreta."
+        "en": "Unlock! Epic Adventures is the seventh release of the series and features three new \"escape room\" scenarios that you can play on your tabletop.\n\n• The Seventh Screening - Grab your popcorn! Tonight, the horror movie \"The Werewolf's Final Night\" premiers. Will you get through unharmed?",
+        "es": ""
       },
       "description": {
         "en": "Unlock! Epic Adventures is the seventh release of the series and features three new \"escape room\" scenarios that you can play on your tabletop.\n\nUnlock! is a co-operative card game inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. Play Unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc. The three scenarios are:\n\n• The Seventh Screening - Grab your popcorn! Tonight, the horror movie \"The Werewolf's Final Night\" premiers. Will you get through unharmed?\n\n• The Dragon's Seven Tests - The Gold Dragons temple welcomes every seven years new disciples. Be worthy of Mater Li's teachings.\n\n• Mission #07 - EAGLE, the secret organization, has been infiltrated. Agents, it's up to you to identify the mole!",
@@ -10046,8 +10046,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Unlock! Legendary Adventures offers three new escape room-style scenarios. Players work together to solve puzzles, combine objects, and uncover clues using cards and a companion app. Embark on thrilling adventures like stopping a thief, rescuing Robin Hood, or helping Sherlock Holmes solve a murder.",
-        "es": "Juego cooperativo de cartas inspirado en salas de escape. Los jugadores exploran escenas, combinan objetos y resuelven acertijos usando cartas y una aplicación acompañante. Incluye tres aventuras: perseguir a una ladrona, liberar a Robin Hood y ayudar a Sherlock Holmes a resolver un crimen."
+        "en": "Unlock! Legendary Adventures features three new \"escape room\" scenarios that you can play on your tabletop.",
+        "es": ""
       },
       "description": {
         "en": "Unlock! Legendary Adventures features three new \"escape room\" scenarios that you can play on your tabletop.\n\nUnlock! is a co-operative card game inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. Play Unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc. The three scenarios are:\n\nAction Story - The elusive Stella has stolen the world's most expensive gem! Stop her and take away her precious haul. Robin Hood: Dead or Alive - Robin has fallen into the clutches of the Sheriff of Nottingham. Call upon his companions to free him from the dungeon. Sherlock Holmes: The Case of the Burnt Angels - The most famous detective ever needs your help in solving a strange murder case.",
@@ -10129,8 +10129,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Unlock!: Mythic Adventures is a cooperative card game for 2-6 players. Solve puzzles and escape scenarios in 60 minutes using the companion app. This set includes three mythic adventures.",
-        "es": "Juego de cartas cooperativo para 2 a 6 jugadores. Resuelven acertijos y escapan de escenarios en 60 minutos usando la aplicación acompañante. Este set incluye tres aventuras míticas."
+        "en": "Unlock! is a series of escape adventures for up to six players. With one hour on the clock, players work through a deck of sixty cards as a team, searching for clues, combining objects, and solving puzzles. The free Unlock! companion app runs the timer while also providing clues, offering hints, and confirming successes. Once the team has reached a solution and entered the correct code into the app, they will escape and win the game!\n\nUnlock!: Mythic Adventures contains three scenarios revolving around these themes.",
+        "es": ""
       },
       "description": {
         "en": "Unlock! is a series of escape adventures for up to six players. With one hour on the clock, players work through a deck of sixty cards as a team, searching for clues, combining objects, and solving puzzles. The free Unlock! companion app runs the timer while also providing clues, offering hints, and confirming successes. Once the team has reached a solution and entered the correct code into the app, they will escape and win the game!\n\nUnlock!: Mythic Adventures contains three scenarios revolving around these themes.\n\n• In the Clutches of Hades - You are Alix, a slave in Greece during antiquity. Gaining your freedom will not be an easy task unless you ask the Gods for help.\n\n• Professor Noside's Animal-O-Matic - \"The Animal-O-Matic transfers you into the body of any animal. It's not dangerous, I'm telling you! Will you stop moving James!\"\n\n• Around the World in 80 Minutes - \"I made the bet with these gentlemen from the Reform Club that we will travel around the world in 80 days. Passepartout! Hurry! The world awaits Phileas Fogg's masterstroke!\"\n\n—description from the publisher",
@@ -10217,8 +10217,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Unlock! Secret Adventures is a cooperative card game featuring three escape room scenarios. Players work together to search scenes, combine objects, and solve puzzles using cards and a companion app. Embark on adventures like 'A Noside Story', 'Tombstone Express', and 'The Adventurers of Oz' with real-time challenges and clues.",
-        "es": "Juego cooperativo de cartas con tres escenarios de escape room. Los jugadores buscan pistas, combinan objetos y resuelven acertijos usando cartas y una aplicación complementaria. Incluye aventuras como 'A Noside Story', 'Tombstone Express' y 'The Adventurers of Oz' con desafíos en tiempo real y ayuda disponible."
+        "en": "Unlock! is a cooperative card game inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. Play Unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc. The three scenarios are...\n\nUnlock! Secret Adventures features three \"escape room\" scenarios that you can play on your tabletop.",
+        "es": ""
       },
       "description": {
         "en": "Unlock! Secret Adventures features three \"escape room\" scenarios that you can play on your tabletop.\n\nUnlock! is a cooperative card game inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. Play Unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc. The three scenarios are...\n\n\"A Noside Story\" \"Tombstone Express\" \"The Adventurers of Oz\"",
@@ -10281,7 +10281,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "averageRating": 6.9,
       "bayesAverage": 5.82,
       "rank": 4594,
-      "avgWeight": 2,
+      "avgWeight": 2.0,
       "weightBand": "medium-light",
       "timeBand": "quick",
       "playerBand": "mid-group",
@@ -10300,8 +10300,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "A 24-card mini adventure for Unlock! where players explore a cave in search of a gold statue. Requires the free companion app.",
-        "es": "Juego de cartas de 24 losetas donde los jugadores exploran una cueva en busca de una estatua de oro. Necesita la aplicación gratuita de acompañamiento."
+        "en": "In Pursuit of Cabrakan is a 24-card (4 cards are advertisements or information cards not used in-game) mini adventure for Unlock!, the card-driven escape room game from Space Cowboys. At the beginning of the adventure, you are at the mouth of a cave in search of a gold statue.",
+        "es": ""
       },
       "description": {
         "en": "In Pursuit of Cabrakan is a 24-card (4 cards are advertisements or information cards not used in-game) mini adventure for Unlock!, the card-driven escape room game from Space Cowboys. At the beginning of the adventure, you are at the mouth of a cave in search of a gold statue.\n\nIn Pursuit of Cabrakan was produced as a special scenario for Gen Con 2018 events.\n\nIt also requires a free companion app to play.",
@@ -10386,8 +10386,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Unlock! Short Adventures: Red Mask is a 30-minute cooperative card game inspired by escape rooms. Players search a location map for hidden objects and solve visual and audio puzzles in real-time. The free Unlock! app enhances the experience with dedicated music, audio puzzles, and a countdown timer.",
-        "es": "Juego de cartas cooperativo inspirado en las salas de escape. Los jugadores exploran un mapa de ubicación en busca de objetos ocultos y resuelven acertijos visuales y de audio en tiempo real. La aplicación gratuita Unlock! mejora la experiencia con música dedicada, acertijos de audio y un temporizador de cuenta regresiva."
+        "en": "Unlock! Short Adventures: it's Unlock, only shorter! Unlock Short Adventures are 30 to 45 minute Unlocks in a small format, ideal for pocketing or giving as a gift. Unlock! is a cooperative card game inspired by escape rooms. Unlock! brings these experiences into your home, around a table. After familiarizing yourself with the context of the scenario, you begin your adventure in a room (a location map showing various numbers)....",
+        "es": ""
       },
       "description": {
         "en": "Unlock! Short Adventures: it's Unlock, only shorter! Unlock Short Adventures are 30 to 45 minute Unlocks in a small format, ideal for pocketing or giving as a gift. Unlock! is a cooperative card game inspired by escape rooms. Unlock! brings these experiences into your home, around a table. After familiarizing yourself with the context of the scenario, you begin your adventure in a room (a location map showing various numbers). Search the room for objects! Beware: some may be hidden! Visual and audio puzzles slow your progress. It's up to you to cooperate with your partners to advance and finish on time.\n\nUnlock!, an interactive game combining traditional hardware and mobile application To play, you need the free Unlock! app, compatible with Android and iOS phones and tablets. It allows you to obtain clues, locate hidden objects and enter the codes you discover. The app makes the game very real. It adds to the atmosphere, with music dedicated to each adventure, audio puzzles, terrible penalties and a fatal countdown.\n\nUnlock ! Short Adventures : Red Mask ! An Escape room in your living room! The app sets the pace and mood for 30-minute games. The puzzles, the app, the clues, the timer - all from Unlock!\n\nUnlock ! Short Adventures : c'est Unlock mais en plus court ! Unlock Short Adventures, ce sont des Unlock de 30 à 45 minutes en petit format, pratique à mettre dans la poche ou à offrir pour faire découvrir le jeu. Unlock ! est un jeu de carte coopératif inspiré des escape rooms. Unlock! vous fait vivre ces expériences chez vous, autour d'une table. Après avoir pris connaissance du contexte du scénario, vous commencez votre aventure dans une pièce (une carte de lieu qui indique divers numéros). Fouillez-la pour trouver des objets ! Attention : certains peuvent être cachés ! Des énigmes visuelles ou audio ralentissent votre progression. À vous de coopérer avec vos partenaires pour avancer et terminer dans les temps. Unlock !, un jeu interactif qui combine matériel traditionnel et application mobile L'application gratuite Unlock !, compatible avec les téléphones et tablettes Android et iOS, est nécessaire pour jouer. Elle permet d'obtenir des indices, de repérer des objets cachés, mais aussi d'entrer les codes découverts. L'application rend le jeu très concret. Elle contribue à l'ambiance avec ses musiques dédiées à chaque aventure, ses énigmes audio, ses terribles pénalités et son compte à rebours fatal. Unlock ! Short Adventures : Red Mask ! Une Escape room dans votre salon ! Devenez un justicier masqué au Mexique en 1811 pour délivrer un ami prisonnier ! L’application donne le rythme et pose d’ambiance pour des parties de 30 minutes. Les énigmes, l’app, les indices, le timer, du concentré de Unlock!\n\nUnlock ! Short Adventures : Red Mask est une aventure de niveau de difficulté 2 (sur 3). Il contient 30 cartes d'aventures et 2 cartes de règles.",
@@ -10448,7 +10448,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "averageRating": 6.72,
       "bayesAverage": 5.7,
       "rank": 6297,
-      "avgWeight": 2,
+      "avgWeight": 2.0,
       "weightBand": "medium-light",
       "timeBand": "standard",
       "playerBand": "mid-group",
@@ -10467,8 +10467,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Unlock! Short Adventures – Schrödinger's Cat is a 30-45 minute cooperative card game inspired by escape rooms. Players solve visual and audio puzzles in real-time using a free mobile app that provides clues, hidden objects, and a countdown timer. The game includes 30 adventure cards and 2 rule cards, offering a compact escape room experience at home.",
-        "es": "Juego de cartas cooperativo inspirado en salas de escape. Los jugadores resuelven acertijos visuales y de audio en tiempo real con ayuda de una aplicación móvil gratuita que brinda pistas, objetos ocultos y un temporizador. Incluye 30 cartas de aventura y 2 de reglas, ofreciendo una experiencia de escape room en casa en formato compacto."
+        "en": "Unlock Short Adventures are 30 to 45 minute Unlocks in a small format, ideal for pocketing or giving as a gift. Unlock! is a cooperative card game inspired by escape rooms. Unlock! brings these experiences into your home, around a table. After familiarizing yourself with the context of the scenario, you begin your adventure in a room (a location map showing various numbers). Search the room for objects! Beware: some may be hidden!...",
+        "es": ""
       },
       "description": {
         "en": "Unlock! Short Adventures: it's Unlock, only shorter!\n\nUnlock Short Adventures are 30 to 45 minute Unlocks in a small format, ideal for pocketing or giving as a gift. Unlock! is a cooperative card game inspired by escape rooms. Unlock! brings these experiences into your home, around a table. After familiarizing yourself with the context of the scenario, you begin your adventure in a room (a location map showing various numbers). Search the room for objects! Beware: some may be hidden! Visual and audio puzzles slow your progress. It's up to you to cooperate with your partners to advance and finish on time.\n\nUnlock!, an interactive game combining traditional hardware and mobile application\n\nTo play, you need the free Unlock! app, compatible with Android and iOS phones and tablets. It allows you to obtain clues, locate hidden objects and enter the codes you discover. The app makes the game very real. It adds to the atmosphere, with music dedicated to each adventure, audio puzzles, terrible penalties and a fatal countdown.\n\nUnlock! Short Adventures: Le Chat de M. Schrödinger! An Escape room in your living room! The app sets the pace and mood for 30-minute games. The puzzles, the app, the clues, the timer - all from Unlock!\n\n—description from the publisher\n\nUnlock ! Short Adventures : Le Chat de M. Schrödinger ! Une Escape room dans votre salon !\n\nL’application donne le rythme et pose d’ambiance pour des parties de 30 minutes. Les énigmes, l’app, les indices, le timer, du concentré de Unlock! Unlock ! Short Adventures : Le Chat de M. Schrödinger est une aventure de niveau de difficulté 2 (sur 3). Il contient 30 cartes d'aventures et 2 cartes de règles.\n\n—description from the publisher (French)",
@@ -10551,8 +10551,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Unlock! Short Adventures – The Awakening of the Mummy is a real-time cooperative card game for up to six players. Teams solve puzzles and find clues within 30-45 minutes using a deck of 30 cards. The free Unlock! app tracks time, provides hints, and confirms solutions. Escape the pyramid by unlocking the cursed sarcophagus!",
-        "es": "Juego de cartas cooperativo y de tiempo real para hasta seis jugadores. Los equipos resuelven acertijos y buscan pistas en 30 a 45 minutos con un mazo de 30 cartas. La app gratuita Unlock! controla el tiempo, ofrece pistas y confirma las soluciones. El objetivo es escapar de la pirámide abriendo el sarcófago maldito."
+        "en": "Unlock! Short adventures is a series of escape adventures for up to six players. With 30 to 45 minutes on the clock, players work through a deck of 30 cards as a team, searching for clues, combining objects, and solving puzzles. The free Unlock! companion app runs the timer while also providing clues, offering hints, and confirming successes. Once the team has reached a solution and entered the correct code into the app, they will escape and win the game!",
+        "es": ""
       },
       "description": {
         "en": "Unlock! Short adventures is a series of escape adventures for up to six players. With 30 to 45 minutes on the clock, players work through a deck of 30 cards as a team, searching for clues, combining objects, and solving puzzles. The free Unlock! companion app runs the timer while also providing clues, offering hints, and confirming successes. Once the team has reached a solution and entered the correct code into the app, they will escape and win the game!\n\nWith this adventure, try to find a way to the cursed sarcophagus in a labyrinth filled with traps! Can you find your way out of the Pyramid before it is too late?",
@@ -10615,7 +10615,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "averageRating": 7.22,
       "bayesAverage": 5.76,
       "rank": 5240,
-      "avgWeight": 2,
+      "avgWeight": 2.0,
       "weightBand": "medium-light",
       "timeBand": "standard",
       "playerBand": "mid-group",
@@ -10634,8 +10634,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Unlock! Short Adventures – The Birmingham Murder is a 30-45 minute cooperative card game inspired by escape rooms. Players investigate Birmingham's underworld in 1920, solving visual and audio puzzles with the help of a free mobile app. The app enhances immersion with music, clues, and a countdown timer. Ideal for quick, portable gameplay.",
-        "es": "Juego de cartas cooperativo inspirado en salas de escape. Los jugadores investigan el submundo de Birmingham en 1920, resolviendo acertijos visuales y de audio con ayuda de una aplicación móvil gratuita. La app mejora la inmersión con música, pistas y un temporizador. Ideal para partidas rápidas y portátiles."
+        "en": "Unlock! Short Adventures: it's Unlock, only shorter! Unlock Short Adventures are 30 to 45 minute Unlocks in a small format, ideal for pocketing or giving as a gift. Unlock! is a cooperative card game inspired by escape rooms. Unlock! brings these experiences into your home, around a table. After familiarizing yourself with the context of the scenario, you begin your adventure in a room (a location map showing various numbers)....",
+        "es": ""
       },
       "description": {
         "en": "Unlock! Short Adventures: it's Unlock, only shorter! Unlock Short Adventures are 30 to 45 minute Unlocks in a small format, ideal for pocketing or giving as a gift. Unlock! is a cooperative card game inspired by escape rooms. Unlock! brings these experiences into your home, around a table. After familiarizing yourself with the context of the scenario, you begin your adventure in a room (a location map showing various numbers). Search the room for objects! Beware: some may be hidden! Visual and audio puzzles slow your progress. It's up to you to cooperate with your partners to advance and finish on time. Unlock!, an interactive game combining traditional hardware and mobile application To play, you need the free Unlock! app, compatible with Android and iOS phones and tablets. It allows you to obtain clues, locate hidden objects and enter the codes you discover. The app makes the game very real. It adds to the atmosphere, with music dedicated to each adventure, audio puzzles, terrible penalties and a fatal countdown.\n\nUnlock! Short Adventures: Murder in Birmingham! An Escape room in your living room! Investigate Birmingham's underworld in 1920! The app sets the pace and mood for 30-minute games. The puzzles, the app, the clues, the timer - all from Unlock!\n\nUnlock! Short Adventures : Meurtre à Birmingham ! Une Escape room dans votre salon ! Enquêtez dans les bas-fonds de Birmingham en 1920 ! L’application donne le rythme et pose d’ambiance pour des parties de 30 minutes. Les énigmes, l’app, les indices, le timer, du concentré de Unlock! Unlock! Short Adventures : Meurtre à Birmingham est une aventure de niveau de difficulté 3 (sur 3). Il contient 30 cartes d'aventures et 2 cartes de règles.",
@@ -10717,8 +10717,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Unlock! Short Adventures – The Flight of the Angel is a real-time cooperative card game for up to six players. Solve puzzles and uncover clues within 30-45 minutes using the free companion app to track time and confirm solutions. Infiltrate Venice's carnival to complete your mission before time runs out.",
-        "es": "Juego de cartas cooperativo y de tiempo real para hasta seis jugadores. Resuelven acertijos y descubren pistas en 30 a 45 minutos con la app gratuita que controla el tiempo y confirma las soluciones. Infiltrarse en el carnaval de Venecia para cumplir la misión antes de que se acabe el tiempo."
+        "en": "Unlock! Short adventures is a series of escape adventures for up to six players. With 30 to 45 minutes on the clock, players work through a deck of 30 cards as a team, searching for clues, combining objects, and solving puzzles. The free Unlock! companion app runs the timer while also providing clues, offering hints, and confirming successes. Once the team has reached a solution and entered the correct code into the app, they will escape and win the game!",
+        "es": ""
       },
       "description": {
         "en": "Unlock! Short adventures is a series of escape adventures for up to six players. With 30 to 45 minutes on the clock, players work through a deck of 30 cards as a team, searching for clues, combining objects, and solving puzzles. The free Unlock! companion app runs the timer while also providing clues, offering hints, and confirming successes. Once the team has reached a solution and entered the correct code into the app, they will escape and win the game!\n\nWith this adventure, infiltrate the carnival of Venice and fulfill your secret mission before the time runs out! Be careful, behind every mask there may be an enemy!",
@@ -10802,8 +10802,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Unlock! Short Adventures – The Secrets of the Octopus is a real-time cooperative puzzle game for up to six players. Teams work together to solve puzzles and find clues within 30-45 minutes using a deck of cards and the free Unlock! app. This adventure follows a legendary pirate's treasure hunt while evading the Baron Samedi.",
-        "es": "Juego de cartas cooperativo y de rompecabezas en tiempo real para hasta seis jugadores. Los equipos colaboran para resolver acertijos y encontrar pistas en 30-45 minutos usando un mazo de cartas y la aplicación gratuita Unlock!. Esta aventura sigue el rastro de un pirata legendario en busca de un tesoro, pero con cuidado del Baron Samedi."
+        "en": "Unlock! Short adventures is a series of escape adventures for up to six players. With 30 to 45 minutes on the clock, players work through a deck of 30 cards as a team, searching for clues, combining objects, and solving puzzles. The free Unlock! companion app runs the timer while also providing clues, offering hints, and confirming successes. Once the team has reached a solution and entered the correct code into the app, they will escape and win the game!",
+        "es": ""
       },
       "description": {
         "en": "Unlock! Short adventures is a series of escape adventures for up to six players. With 30 to 45 minutes on the clock, players work through a deck of 30 cards as a team, searching for clues, combining objects, and solving puzzles. The free Unlock! companion app runs the timer while also providing clues, offering hints, and confirming successes. Once the team has reached a solution and entered the correct code into the app, they will escape and win the game!\n\nWith this adventure, follow in the footsteps of a legendary pirate and discover his treasure. But beware the Baron Samedi!",
@@ -10884,8 +10884,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Unlock! Supernatural Adventures is a cooperative card game inspired by escape rooms. Players work together to solve puzzles, combine objects, and uncover clues using cards and a companion app. This set includes three distinct scenarios: Nova City under Threat, Dia de Los Muertos, and Ragnarök....",
-        "es": "Juego cooperativo de cartas inspirado en las salas de escape. Los jugadores colaboran para resolver acertijos, combinar objetos y descubrir pistas usando cartas y una aplicación acompañante. Incluye tres escenarios distintos: Nova City bajo Amenaza, Día de los Muertos y Ragnarök...."
+        "en": "Unlock! is a cooperative card game inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. Play Unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc.",
+        "es": ""
       },
       "description": {
         "en": "Unlock! is a cooperative card game inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. Play Unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc.\n\nUnlock! Supernatural Adventures includes three separate scenarios for you to explore:\n\nNova City under Threat Dia de Los Muertos Ragnarök\n\nNote: Unlock! requires a free application to be downloaded from the App Store or Google Play. Once downloaded, an internet connection is not required during game play.\n\n—description from the publisher",
@@ -10967,8 +10967,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Unlock!: Timeless Adventures offers three new escape room-style scenarios for cooperative play. Solve puzzles, combine objects, and search scenes using cards and a companion app. Embark on adventures like The Noside Show, Arsène Lupin and the Great White Diamond, and Lost in the ChronoWarp.",
-        "es": "Juego cooperativo de cartas inspirado en salas de escape. Resuelve acertijos, combina objetos y explora escenas usando cartas y una aplicación complementaria. Incluye tres aventuras: El espectáculo Noside, Arsène Lupin y el gran diamante blanco, y Perdido en el remolino del tiempo."
+        "en": "Unlock! Timeless Adventures features three new \"escape room\" scenarios that you can play on your tabletop.",
+        "es": ""
       },
       "description": {
         "en": "Unlock! Timeless Adventures features three new \"escape room\" scenarios that you can play on your tabletop.\n\nUnlock! is a co-operative card game inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. Play Unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc. The three scenarios are\n\nThe Noside Show Arsène Lupin and the Great White Diamond Lost in the ChronoWarp\n\nNote: Each of these has been released separately in the German market in addition to the box set. Unlock!: Timeless Adventures – Die Noside-Show, Unlock!: Timeless Adventures – Arsène Lupin und der große weiße Diamant, and Unlock!: Timeless Adventures – Verloren im Zeitstrudel!",
@@ -11050,8 +11050,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Virus! is a competitive card game where players race to eradicate a deadly virus by isolating healthy organs. Using hand management and strategic card play, players must outmaneuver rivals while managing outbreaks. Play organs, viruses, and pills to protect your own organs while sabotaging others' efforts.",
-        "es": "Juego de cartas en el que los jugadores compiten por erradicar un virus mortal aislando órganos sanos. Con gestión de mano y jugadas estratégicas, deben superar a los rivales mientras controlan brotes. Se juegan órganos, virus y pastillas para proteger los propios órganos y sabotear los esfuerzos de los demás."
+        "en": "You can play only one of each organs in your player area. Pills and viruses can be played on any player's organs, but only on the same color organ. A second pill on any organ immunizes it against infection. Your goal is to be the first to have four healthy organs in front of you.",
+        "es": ""
       },
       "description": {
         "en": "Experimental virus outbreaks have escaped the lab and only you can stop them! Face the pandemic and compete to be the first to eradicate the virus by isolating a healthy body. Ethical or not, all means at your reach are valid to achieve victory. Use your wits to boycott your rivals' efforts and win.\n\nEach turn in Virus! you either play a card or discard any number of cards, then you replenish your hand to three cards. Cards can be:\n\nOne of four organs (or the joker organ) One of four viruses (specific to each organ or the joker virus) One of four pills (specific to each organ or the joker pill) A special action card\n\nYou can play only one of each organs in your player area. Pills and viruses can be played on any player's organs, but only on the same color organ. A second pill on any organ immunizes it against infection. Your goal is to be the first to have four healthy organs in front of you.",
@@ -11136,8 +11136,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Virus! 2 Evolution is an expansion for the card game Virus, introducing new viruses and action cards. It also adds variants, including a 2-player mode and a way to permanently eliminate viruses.",
-        "es": "Virus! 2 Evolution es una expansión para el juego de cartas Virus que incluye nuevos virus y cartas de acción. También presenta variantes, como una para 2 jugadores y otra para eliminar virus de forma permanente."
+        "en": "Virus! 2 Evolution is an expansion for the card game Virus that adds new content to the game based on new viruses and action cards.\n\nVirus! 2 Evolution es una expansión para el juego de cartas Virus que añade nuevo contenido al juego en base a nuevos virus y cartas de acción.",
+        "es": ""
       },
       "description": {
         "en": "Virus! 2 Evolution is an expansion for the card game Virus that adds new content to the game based on new viruses and action cards.\n\nVirus! 2 Evolution es una expansión para el juego de cartas Virus que añade nuevo contenido al juego en base a nuevos virus y cartas de acción.\n\nAdemás con esta expansión, nos encontraremos con nuevas variantes, como una para 2 jugadores y otra mediante la cual podremos eliminar a los virus de forma permanente, por lo que así no daremos vueltas sin parar al mazo.",
@@ -11221,8 +11221,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "The Voyages of Marco Polo is a strategic dice game where players recreate Marco Polo's historic journey from Venice to China. Each player takes on a unique historical character with special abilities. Over five rounds, players roll dice and use them to perform actions like collecting resources, acquiring contracts, and traveling along the Silk Road....",
-        "es": "Juego de dados estratégico en el que los jugadores recrean el viaje histórico de Marco Polo desde Venecia hasta China. Cada jugador asume el rol de un personaje histórico único con habilidades especiales. A lo largo de cinco rondas, los jugadores lanzan dados y los usan para realizar acciones como recolectar recursos, adquirir contratos y viajar por la Ruta de la Seda...."
+        "en": "In The Voyages of Marco Polo, players recreate this journey, with each player having a different character from history with a special power in the game. The game is played over five rounds. Each round, the players roll their five personal dice and take turns performing actions by placing their dice onto the board. Players may choose from a variety of actions, each require the use of one or more dice: collecting resources or money, acquiring contracts, traveling on the map or using a special action granted by a city....",
+        "es": ""
       },
       "description": {
         "en": "In 1271, 17-year-old Marco Polo started on a journey to China with his father and older brother. After a long and grueling journey that led through Jerusalem and Mesopotamia and over the \"Silk Road\", they reached the court of Kublai Khan in 1275.\n\nIn The Voyages of Marco Polo, players recreate this journey, with each player having a different character from history with a special power in the game. The game is played over five rounds. Each round, the players roll their five personal dice and take turns performing actions by placing their dice onto the board. Players may choose from a variety of actions, each require the use of one or more dice: collecting resources or money, acquiring contracts, traveling on the map or using a special action granted by a city. When traveling, each player begins at Venice and can decide between several routes eastward, all the way to Beijing. When a player stops at a city, they place a trading post there, giving them access to extra actions or resources for the rest of the game. The higher the value of the dice used for an action, the better the options that may be chosen, but also the more money the player must pay if an opponent has already chosen the same action.\n\nAfter five rounds, the game ends with players receiving extra victory points for having trading posts in Beijing, fulfilling the most contracts, and having trading posts in the cities on secret goal cards that each player gets at the start of the game.\n\nThis game should not be confused with Marco Polo Expedition, which has the same German title.",
@@ -11287,7 +11287,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 70,
       "minPlayTime": 40,
       "maxPlayTime": 70,
-      "averageRating": 8,
+      "averageRating": 8.0,
       "bayesAverage": 7.85,
       "rank": 38,
       "avgWeight": 2.48,
@@ -11309,8 +11309,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "English",
       "notes": "",
       "summary": {
-        "en": "Wingspan is a competitive, medium-weight engine-building game where players attract birds to wildlife preserves. Using bird cards, dice, and eggs, players build habitats to maximize points over four rounds.",
-        "es": "Juego de construcción de motores donde los jugadores atraen aves a reservas naturales. Usando cartas de aves, dados y huevos, crean hábitats para maximizar puntos en cuatro rondas."
+        "en": "Wingspan is a competitive, medium-weight, card-driven, engine-building board game from Stonemaier Games. It's designed by Elizabeth Hargrave and features 180 birds illustrated by Natalia Rojas and Ana Maria Martinez.\n\nFrom the 7th printing on, the base game box includes Wingspan: Swift-Start Promo Pack.",
+        "es": ""
       },
       "description": {
         "en": "Wingspan is a competitive, medium-weight, card-driven, engine-building board game from Stonemaier Games. It's designed by Elizabeth Hargrave and features 180 birds illustrated by Natalia Rojas and Ana Maria Martinez.\n\nYou are bird enthusiasts—researchers, bird watchers, ornithologists, and collectors—seeking to discover and attract the best birds to your network of wildlife preserves. Each bird extends a chain of powerful combinations in one of your habitats (actions). These habitats focus on several key aspects of growth:\n\nGain food tokens via custom dice in a birdfeeder dice tower Lay eggs using egg miniatures in a variety of colors Draw from hundreds of unique bird cards and play them\n\nThe winner is the player with the most points after 4 rounds.\n\n—description from the publisher\n\nFrom the 7th printing on, the base game box includes Wingspan: Swift-Start Promo Pack.",
@@ -11394,8 +11394,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "YINSH is an abstract strategy game where players move rings on a board, leaving color-changing markers. The goal is to form rows of five markers in your color while managing your rings strategically.",
-        "es": "Juego abstracto de estrategia donde los jugadores mueven anillos en el tablero, dejando fichas que cambian de color. El objetivo es formar filas de cinco fichas de tu color mientras administras estratégicamente tus anillos."
+        "en": "In YINSH, the players each start with five rings on the board. Every time a ring is moved, it leaves a marker behind. Markers are white on one side and black on the other. When markers are jumped over by a ring they must be flipped, so their color is constantly changing. The players must try to form a row of five markers with their own color face up. If a player succeeds in doing so, he removes one of his rings as an indication that he has formed such a row....",
+        "es": ""
       },
       "description": {
         "en": "In YINSH, the players each start with five rings on the board. Every time a ring is moved, it leaves a marker behind. Markers are white on one side and black on the other. When markers are jumped over by a ring they must be flipped, so their color is constantly changing. The players must try to form a row of five markers with their own color face up. If a player succeeds in doing so, he removes one of his rings as an indication that he has formed such a row. The first player to remove three of his rings wins the game. In other words, each row you make brings you closer to victory-but also makes you weaker, because you have one fewer ring to play with. Very tricky!",
