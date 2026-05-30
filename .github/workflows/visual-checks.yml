@@ -23,6 +23,9 @@ jobs:
     name: Visual smoke test
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    container:
+      image: mcr.microsoft.com/playwright:v1.59.1-noble
+      options: --user 1001
 
     steps:
       - name: Check out repository
@@ -34,16 +37,8 @@ jobs:
           node-version: 24
           cache: npm
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.x"
-
       - name: Install dependencies
         run: npm ci
-
-      - name: Install Playwright browser
-        run: npx playwright install --with-deps chromium
 
       - name: Run visual smoke test
         run: npm run test:visual
@@ -54,6 +49,9 @@ jobs:
     timeout-minutes: 15
     needs: visual-smoke
     if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
+    container:
+      image: mcr.microsoft.com/playwright:v1.59.1-noble
+      options: --user 1001
 
     steps:
       - name: Check out repository
@@ -65,16 +63,8 @@ jobs:
           node-version: 24
           cache: npm
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.x"
-
       - name: Install dependencies
         run: npm ci
-
-      - name: Install Playwright browser
-        run: npx playwright install --with-deps chromium
 
       - name: Generate representative captures
         run: npm run test:visual:capture
