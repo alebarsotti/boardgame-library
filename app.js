@@ -13,6 +13,7 @@ const THEME_KEYS = ["light", "dark"];
 const PAGE_KEYS = ["home", "browse", "archive", "random", "settings"];
 let masonryLayoutFrame = 0;
 let gameCardResizeObserver = null;
+let bodyScrollLockY = 0;
 
 const translations = {
   es: {
@@ -84,7 +85,7 @@ const translations = {
     averageRating: "Rating promedio",
     languageDependence: "Dependencia del idioma",
     ownership: "Estado",
-    content: "Contenido",
+    content: "Resumen",
     links: "Enlaces",
     openBgg: "Abrir en BGG",
     expansion: "Expansión",
@@ -199,6 +200,7 @@ const translations = {
     randomHistoryTitle: "Resultados recientes",
     randomHistoryBody: "Sirve para comparar opciones sin guardar nada de forma permanente.",
     randomHistoryEmpty: "Los resultados de esta sesión aparecerán acá.",
+    detailQuickFacts: "Datos clave",
     settingsEyebrow: "Preferencias",
     settingsTitle: "Ajustes de uso",
     settingsBody: "Acá definís tema e idioma para que el resto de la biblioteca quede libre para elegir juegos.",
@@ -284,7 +286,7 @@ const translations = {
     averageRating: "Average rating",
     languageDependence: "Language dependence",
     ownership: "Ownership",
-    content: "Content",
+    content: "Summary",
     links: "Links",
     openBgg: "Open on BGG",
     expansion: "Expansion",
@@ -394,6 +396,7 @@ const translations = {
     randomHistoryTitle: "Recent draws",
     randomHistoryBody: "Useful for comparing options without saving anything permanently.",
     randomHistoryEmpty: "Draws from this session will appear here.",
+    detailQuickFacts: "Quick facts",
     settingsEyebrow: "Preferences",
     settingsTitle: "Usage settings",
     settingsBody: "Theme and language live here so the rest of the library can stay focused on choosing games.",
@@ -443,6 +446,8 @@ const icons = {
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16"/><path d="M7 12h10"/><path d="M10 17h4"/></svg>',
   back:
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 6.5-5 5 5 5"/><path d="M19.5 11.5h-10"/></svg>',
+  external:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5h5v5"/><path d="M10 14 19 5"/><path d="M19 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></svg>',
   duo:
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8.5" cy="9" r="2.6"/><circle cx="15.5" cy="9" r="2.6"/><path d="M4.5 18a4 4 0 0 1 4-4h0"/><path d="M19.5 18a4 4 0 0 0-4-4h0"/></svg>',
   quick:
@@ -587,6 +592,21 @@ function loadPreferences() {
 function savePreferences() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state.preferences));
 }
+
+function lockBodyScroll() {
+  if (document.body.classList.contains("modal-open")) return;
+  bodyScrollLockY = window.scrollY || window.pageYOffset || 0;
+  document.body.style.top = `-${bodyScrollLockY}px`;
+  document.body.classList.add("modal-open");
+}
+
+function unlockBodyScroll() {
+  if (!document.body.classList.contains("modal-open")) return;
+  document.body.classList.remove("modal-open");
+  document.body.style.top = "";
+  window.scrollTo(0, bodyScrollLockY);
+}
+
 function bindEvents() {
   elements.searchInput.addEventListener("input", (event) => setFilter("search", event.target.value.trim().toLowerCase()));
   elements.filtersPanel.addEventListener("click", handleFilterControlClick);
@@ -599,6 +619,7 @@ function bindEvents() {
     if (resetButton && !resetButton.disabled) resetFilters();
   });
   document.querySelector("#details-close").addEventListener("click", () => elements.detailsDialog.close());
+  elements.detailsDialog?.addEventListener("close", unlockBodyScroll);
   document.querySelector("#open-filters").addEventListener("click", () => elements.filtersPanel.classList.add("is-open"));
   document.querySelector("#close-filters").addEventListener("click", () => elements.filtersPanel.classList.remove("is-open"));
   document.querySelector("#home-browse-action").addEventListener("click", () => setActivePage("browse"));
@@ -1643,12 +1664,24 @@ function getGameContent(game, preferredField = "summary") {
   return getLocalizedContentValue(game[alternateField]);
 }
 
+function renderDetailParagraphs(text, fallback) {
+  const source = typeof text === "string" ? text.trim() : "";
+  const paragraphs = (source || fallback)
+    .split(/\n{2,}/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean);
+  return paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("");
+}
+
 function openDetails(game) {
   const copy = translations[state.language];
   const displayName = getDisplayName(game);
   const secondaryName = getSecondaryName(game);
+  const detailSubtitle = [secondaryName, buildDetailSubtitle(game)].filter(Boolean).join(" - ");
+  const heroBadges = [game.own ? copy.owned : copy.prevOwned].concat(getDisplayTags(game, { compact: true })).slice(0, 3);
   const tags = getDisplayTags(game).concat(game.categories || [], game.mechanics || []).slice(0, 10);
   const linkedExpansions = getExpansionGames(game);
+  const content = getGameContent(game, "summary");
   const linkedExpansionsMarkup = linkedExpansions.length
     ? `
         <div class="expansion-list">
@@ -1670,51 +1703,59 @@ function openDetails(game) {
     <div class="detail-layout">
       <div class="detail-cover" id="detail-cover"></div>
       <div class="detail-copy">
-        <div>
-          <p class="eyebrow">${escapeHtml(game.yearPublished ? String(game.yearPublished) : copy.notAvailable)}</p>
-          <h2>${escapeHtml(displayName)}</h2>
-          <p>${escapeHtml([secondaryName, buildDetailSubtitle(game)].filter(Boolean).join(" - "))}</p>
+        <div class="detail-hero" id="detail-hero">
+          <div class="detail-hero-copy">
+            <div class="detail-heading">
+              <p class="eyebrow detail-eyebrow">${escapeHtml(game.yearPublished ? String(game.yearPublished) : copy.notAvailable)}</p>
+              <h2 id="detail-title">${escapeHtml(displayName)}</h2>
+              ${detailSubtitle ? `<p class="detail-subtitle">${escapeHtml(detailSubtitle)}</p>` : ""}
+            </div>
+            <div class="detail-hero-badges">
+              ${heroBadges.map((label) => `<span class="detail-badge">${escapeHtml(label)}</span>`).join("")}
+            </div>
+          </div>
+          <div class="detail-summary-row detail-meta" id="detail-summary-row">
+            ${metaPill("players", formatPlayers(game))}
+            ${metaPill("time", formatPlayTime(game))}
+            ${metaPill("weight", `${copy.weightLabel}: ${game.avgWeight ? game.avgWeight.toFixed(2) : copy.notAvailable}`)}
+            ${metaPill("age", `${copy.ageText}: ${game.ageText || copy.notAvailable}`)}
+            ${metaPill("language", formatPhysicalLanguages(game))}
+          </div>
         </div>
-        <div class="detail-meta">
-          ${metaPill("players", formatPlayers(game))}
-          ${metaPill("time", formatPlayTime(game))}
-          ${metaPill("weight", `${copy.weightLabel}: ${game.avgWeight ? game.avgWeight.toFixed(2) : copy.notAvailable}`)}
-          ${metaPill("age", `${copy.ageText}: ${game.ageText || copy.notAvailable}`)}
-          ${metaPill("language", formatPhysicalLanguages(game))}
-        </div>
-        <div class="detail-section">
-          <h3>${escapeHtml(copy.ownership)}</h3>
-          <div class="detail-grid">
+        <div class="detail-section detail-section--facts">
+          <h3>${escapeHtml(copy.detailQuickFacts)}</h3>
+          <div class="detail-grid detail-grid--facts" id="detail-quick-facts">
             ${detailKv(copy.ownership, game.own ? copy.owned : copy.prevOwned)}
             ${detailKv(copy.ranking, game.rank ? `#${game.rank}` : copy.notAvailable)}
             ${detailKv(copy.averageRating, game.averageRating ? game.averageRating.toFixed(2) : copy.notAvailable)}
             ${detailKv(copy.languageDependence, labelForLanguageKey(game.languageKey || "unknown"))}
-            ${detailKv(copy.editionLanguageLabel, formatPhysicalLanguages(game))}
             ${detailKv(copy.recommendedAt, game.recommendedPlayers.length ? joinPlayers(game.recommendedPlayers) : copy.notAvailable)}
             ${detailKv(copy.bestAt, game.bestPlayers.length ? joinPlayers(game.bestPlayers) : copy.notAvailable)}
           </div>
         </div>
-        <div class="detail-section">
+        <div class="detail-section detail-section--content">
           <h3>${escapeHtml(copy.content)}</h3>
-          <p>${escapeHtml(getGameContent(game, "summary") || copy.notAvailable)}</p>
+          <div class="detail-prose">
+            ${renderDetailParagraphs(content, copy.notAvailable)}
+          </div>
         </div>
         ${
           linkedExpansions.length
             ? `
-        <div class="detail-section">
+        <div class="detail-section detail-section--expansions">
           <h3>${escapeHtml(copy.expansionsTitle)}</h3>
           ${linkedExpansionsMarkup}
         </div>
         `
             : ""
         }
-        <div class="detail-section">
+        <div class="detail-section detail-section--links">
           <h3>${escapeHtml(copy.links)}</h3>
-          <div class="random-actions">
-            <a class="button button--primary" href="${escapeAttribute(game.bggUrl)}" target="_blank" rel="noreferrer">${escapeHtml(copy.openBgg)}</a>
+          <div class="detail-actions">
+            <a class="button button--ghost" href="${escapeAttribute(game.bggUrl)}" target="_blank" rel="noreferrer">${renderIconLabel(copy.openBgg, "external")}</a>
           </div>
         </div>
-        <div class="detail-tags">${tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}</div>
+        <div class="detail-tags detail-tags--soft">${tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}</div>
       </div>
     </div>
   `;
@@ -1727,11 +1768,14 @@ function openDetails(game) {
     });
   });
 
-  if (!elements.detailsDialog.open) elements.detailsDialog.showModal();
+  if (!elements.detailsDialog.open) {
+    lockBodyScroll();
+    elements.detailsDialog.showModal();
+  }
 }
 
 function detailKv(label, value) {
-  return `<div class="detail-kv"><strong>${escapeHtml(label)}</strong><span>${escapeHtml(value)}</span></div>`;
+  return `<div class="detail-kv"><strong>${escapeHtml(label)}</strong><span class="detail-kv__value">${escapeHtml(value)}</span></div>`;
 }
 function drawRandomFromCurrentScope() {
   if (state.randomRevealState === "revealing") return;
@@ -2102,7 +2146,9 @@ function injectCover(container, game, width) {
         const aspect = image.naturalWidth / image.naturalHeight;
         if (aspect >= 1.24) {
           container.style.setProperty("--card-art-ratio", "11 / 8");
-        } else if (aspect <= 0.76) {
+        } else if (aspect <= 0.68) {
+          container.style.setProperty("--card-art-ratio", "2 / 3");
+        } else if (aspect <= 0.84) {
           container.style.setProperty("--card-art-ratio", "4 / 5");
         } else {
           container.style.setProperty("--card-art-ratio", "1 / 1");

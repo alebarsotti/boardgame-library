@@ -16,6 +16,13 @@ async function openPageByNav(page, label) {
   await page.getByRole("button", { name: label, exact: true }).click();
 }
 
+async function openFirstDetail(page) {
+  await page.locator(".game-card__button").first().click();
+  await expect(page.locator("#details-dialog")).toBeVisible();
+  await expect(page.locator("#detail-hero")).toBeVisible();
+  await expect(page.locator("#detail-summary-row")).toBeVisible();
+}
+
 test("desktop smoke covers theme, nav, browse, random, and footer", async ({ page }) => {
   await page.goto(appUrl, { waitUntil: "load" });
 
@@ -35,6 +42,13 @@ test("desktop smoke covers theme, nav, browse, random, and footer", async ({ pag
   await expect(page.locator("#recommendation-chips .chip svg").first()).toBeVisible();
   await page.getByRole("button", { name: "Rápidos", exact: true }).click();
   await expect(page.locator(".active-filters__list .chip svg").first()).toBeVisible();
+  await openFirstDetail(page);
+  await expect(page.locator("#detail-title")).toBeVisible();
+  await expect(page.locator("#detail-cover")).toBeVisible();
+  await expect(page.locator("#detail-quick-facts")).toBeVisible();
+  await expect(page.locator("#details-dialog")).toHaveJSProperty("open", true);
+  await page.locator("#details-close").click();
+  await expect(page.locator("#details-dialog")).not.toBeVisible();
 
   await openPageByNav(page, "Archivo");
   await expect(page.locator("body")).toHaveAttribute("data-page", "archive");
@@ -73,6 +87,16 @@ test.describe("mobile smoke", () => {
     await expect(page.locator(".site-footer__brand")).toHaveAttribute("href", "https://boardgamegeek.com/");
     await openPageByNav(page, "Explorar");
     await expect(page.locator("#open-filters svg")).toBeVisible();
+    await openFirstDetail(page);
+    await expect(page.locator("#detail-summary-row")).toBeVisible();
+    const dialogBox = await page.locator("#details-dialog").boundingBox();
+    expect(dialogBox?.width || 0).toBeGreaterThan(360);
+    const mobileColumns = await page.locator(".detail-layout").evaluate((node) =>
+      window.getComputedStyle(node).gridTemplateColumns.split(" ").filter(Boolean).length
+    );
+    expect(mobileColumns).toBe(1);
+    await page.locator("#details-close").click();
+    await expect(page.locator("#details-dialog")).not.toBeVisible();
     await openPageByNav(page, "Ajustes");
     await expect(page.locator(".theme-switch")).toBeVisible();
     await expect(page.locator("#theme-segment-settings")).toBeVisible();

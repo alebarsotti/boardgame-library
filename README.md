@@ -184,6 +184,7 @@ If localized generation is not available:
 - the dataset still builds successfully by default
 - English deterministic content from the cleaned BGG description remains available
 - Spanish localized fields fall back to English at runtime when needed
+- cached localized entries are still applied during normal builds, even when `--localized-content-mode=off`
 
 If you want the build to fail instead of warning, pass:
 
