@@ -2293,7 +2293,52 @@ function getSecondaryName(game) {
   const primary = getDisplayName(game);
   const secondary = state.language === "en" ? game.name || "" : game.originalName || "";
   if (!secondary || secondary === primary) return "";
+  const normalizedPrimary = normalizeNameForComparison(primary);
+  const normalizedSecondary = normalizeNameForComparison(secondary);
+  if (
+    normalizedPrimary &&
+    normalizedSecondary &&
+    getNormalizedEditDistanceRatio(normalizedPrimary, normalizedSecondary) < 0.12
+  ) {
+    return "";
+  }
   return secondary;
+}
+
+function normalizeNameForComparison(value) {
+  return String(value || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .replace(/[^\p{Letter}\p{Number}]+/gu, " ")
+    .trim()
+    .replace(/\s+/g, " ");
+}
+
+function getNormalizedEditDistanceRatio(left, right) {
+  const leftValue = String(left || "");
+  const rightValue = String(right || "");
+  const maxLength = Math.max(leftValue.length, rightValue.length, 1);
+  const distances = Array.from({ length: leftValue.length + 1 }, (_, rowIndex) =>
+    Array.from({ length: rightValue.length + 1 }, (_, columnIndex) => {
+      if (rowIndex === 0) return columnIndex;
+      if (columnIndex === 0) return rowIndex;
+      return 0;
+    })
+  );
+
+  for (let rowIndex = 1; rowIndex <= leftValue.length; rowIndex += 1) {
+    for (let columnIndex = 1; columnIndex <= rightValue.length; columnIndex += 1) {
+      const cost = leftValue[rowIndex - 1] === rightValue[columnIndex - 1] ? 0 : 1;
+      distances[rowIndex][columnIndex] = Math.min(
+        distances[rowIndex - 1][columnIndex] + 1,
+        distances[rowIndex][columnIndex - 1] + 1,
+        distances[rowIndex - 1][columnIndex - 1] + cost
+      );
+    }
+  }
+
+  return distances[leftValue.length][rightValue.length] / maxLength;
 }
 
 function getNameOverride(gameId) {

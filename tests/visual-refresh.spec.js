@@ -178,3 +178,14 @@ test("expansion detail links back to its base game", async ({ page }) => {
   await page.locator(`[data-base-game-id="${fixture.baseId}"]`).click();
   await expect(page.locator("#detail-title")).toContainText(fixture.baseName);
 });
+
+test("detail subtitle avoids near-duplicate secondary names", async ({ page }) => {
+  await page.goto(appUrl, { waitUntil: "load" });
+  await openPageByNav(page, "Explorar");
+  await page.locator("#search-input").fill("Virus! 2");
+  await openFirstDetail(page);
+  await expect(page.locator("#detail-title")).toContainText("Virus! 2 Evolución");
+  await expect(page.locator(".detail-subtitle")).not.toContainText("Virus! 2 Evolution");
+  await expect(page.locator(".detail-subtitle")).toContainText("Expansión");
+  await expect(page.locator(".detail-subtitle")).toContainText("Requiere juego base: Virus!");
+});
