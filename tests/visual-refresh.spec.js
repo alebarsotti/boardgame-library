@@ -23,6 +23,37 @@ async function openFirstDetail(page) {
   await expect(page.locator("#detail-summary-row")).toBeVisible();
 }
 
+async function getBaseGameWithExpansionFixture(page) {
+  return page.evaluate(() => {
+    const games = window.__BGG_LIBRARY_DATA__?.games || [];
+    const findGameById = (id) => games.find((game) => game.id === id);
+    const baseGame = games.find((game) =>
+      game.own &&
+      Array.isArray(game.expansionIds) &&
+      game.expansionIds.some((expansionId) => {
+        const expansion = findGameById(expansionId);
+        return expansion?.requiresGameId === game.id;
+      })
+    );
+
+    if (!baseGame) return null;
+
+    const expansionId = baseGame.expansionIds.find((candidateId) => {
+      const expansion = findGameById(candidateId);
+      return expansion?.requiresGameId === baseGame.id;
+    });
+    const expansion = findGameById(expansionId);
+    if (!expansion) return null;
+
+    return {
+      baseId: baseGame.id,
+      baseName: baseGame.name,
+      expansionId: expansion.id,
+      expansionName: expansion.name
+    };
+  });
+}
+
 test("desktop smoke covers theme, nav, browse, random, and footer", async ({ page }) => {
   await page.goto(appUrl, { waitUntil: "load" });
 
@@ -130,4 +161,20 @@ test("browse supports ascending and descending sort direction", async ({ page })
   await page.locator("[data-filter-key='sortDirection'][data-filter-value='desc']").click();
   const descendingTitles = await getVisibleTitles(page);
   expect(descendingTitles).toEqual([...descendingTitles].sort((left, right) => right.localeCompare(left, "es")));
+});
+
+test("expansion detail links back to its base game", async ({ page }) => {
+  await page.goto(appUrl, { waitUntil: "load" });
+  const fixture = await getBaseGameWithExpansionFixture(page);
+  expect(fixture).not.toBeNull();
+
+  await openPageByNav(page, "Explorar");
+  await page.locator("#search-input").fill(fixture.baseName);
+  await openFirstDetail(page);
+  await page.locator(`[data-expansion-id="${fixture.expansionId}"]`).click();
+  await expect(page.locator("#detail-title")).toContainText(fixture.expansionName);
+  await expect(page.locator(".detail-subtitle")).toContainText(`Requiere juego base: ${fixture.baseName}`);
+  await expect(page.locator(".detail-subtitle [data-base-game-id]")).toContainText(fixture.baseName);
+  await page.locator(`[data-base-game-id="${fixture.baseId}"]`).click();
+  await expect(page.locator("#detail-title")).toContainText(fixture.baseName);
 });

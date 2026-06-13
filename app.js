@@ -1645,6 +1645,26 @@ function buildDetailSubtitle(game) {
   return bits.join(" - ");
 }
 
+function buildDetailSubtitleMarkup(game, secondaryName = "") {
+  const parts = [];
+  if (secondaryName) parts.push(escapeHtml(secondaryName));
+  if (isExpansionGame(game)) {
+    parts.push(escapeHtml(translations[state.language].expansion));
+    const requiredBase = getRequiredBaseGame(game);
+    if (requiredBase) {
+      parts.push(
+        `${escapeHtml(translations[state.language].expansionRequiresBase)}: ` +
+          `<button class="detail-subtitle__link" type="button" data-base-game-id="${escapeAttribute(requiredBase.id)}">` +
+          `${escapeHtml(getDisplayName(requiredBase))}` +
+          `</button>`
+      );
+    } else if (game.requiresGameName) {
+      parts.push(`${escapeHtml(translations[state.language].expansionRequiresBase)}: <strong>${escapeHtml(game.requiresGameName)}</strong>`);
+    }
+  }
+  return parts.join(" - ");
+}
+
 function metaPill(icon, label) {
   return `<span class="meta-pill">${icons[icon]}<span>${escapeHtml(label)}</span></span>`;
 }
@@ -1695,7 +1715,7 @@ function openDetails(game) {
   const copy = translations[state.language];
   const displayName = getDisplayName(game);
   const secondaryName = getSecondaryName(game);
-  const detailSubtitle = [secondaryName, buildDetailSubtitle(game)].filter(Boolean).join(" - ");
+  const detailSubtitle = buildDetailSubtitleMarkup(game, secondaryName);
   const heroBadges = [game.own ? copy.owned : copy.prevOwned].concat(getDisplayTags(game, { compact: true })).slice(0, 3);
   const tags = getDisplayTags(game).concat(game.categories || [], game.mechanics || []).slice(0, 10);
   const linkedExpansions = getExpansionGames(game);
@@ -1738,7 +1758,7 @@ function openDetails(game) {
             <div class="detail-heading">
               <p class="eyebrow detail-eyebrow">${escapeHtml(game.yearPublished ? String(game.yearPublished) : copy.notAvailable)}</p>
               <h2 id="detail-title">${escapeHtml(displayName)}</h2>
-              ${detailSubtitle ? `<p class="detail-subtitle">${escapeHtml(detailSubtitle)}</p>` : ""}
+              ${detailSubtitle ? `<p class="detail-subtitle">${detailSubtitle}</p>` : ""}
             </div>
             <div class="detail-hero-badges">
               ${heroBadges.map((label) => `<span class="detail-badge">${escapeHtml(label)}</span>`).join("")}
@@ -1785,6 +1805,12 @@ function openDetails(game) {
     button.addEventListener("click", () => {
       const expansion = findGameById(Number(button.dataset.expansionId));
       if (expansion) openDetails(expansion);
+    });
+  });
+  elements.detailsContent.querySelectorAll("[data-base-game-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const baseGame = findGameById(Number(button.dataset.baseGameId));
+      if (baseGame) openDetails(baseGame);
     });
   });
 

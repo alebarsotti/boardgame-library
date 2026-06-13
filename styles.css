@@ -2232,6 +2232,25 @@ body[data-theme="dark"] .modal__close {
   font-size: 1rem;
   color: var(--muted);
 }
+.detail-subtitle__link {
+  display: inline;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.detail-subtitle__link:hover,
+.detail-subtitle__link:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}
+.detail-subtitle strong {
+  color: var(--text);
+  font-weight: 700;
+}
 .detail-hero-badges,
 .detail-summary-row,
 .detail-actions,
