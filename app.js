@@ -607,6 +607,18 @@ function unlockBodyScroll() {
   window.scrollTo(0, bodyScrollLockY);
 }
 
+function animateDetailsDialogIn() {
+  if (!elements.detailsDialog) return;
+  elements.detailsDialog.classList.remove("is-visible");
+  elements.detailsDialog.classList.add("is-entering");
+  window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(() => {
+      elements.detailsDialog.classList.add("is-visible");
+      elements.detailsDialog.classList.remove("is-entering");
+    });
+  });
+}
+
 function bindEvents() {
   elements.searchInput.addEventListener("input", (event) => setFilter("search", event.target.value.trim().toLowerCase()));
   elements.filtersPanel.addEventListener("click", handleFilterControlClick);
@@ -619,7 +631,10 @@ function bindEvents() {
     if (resetButton && !resetButton.disabled) resetFilters();
   });
   document.querySelector("#details-close").addEventListener("click", () => elements.detailsDialog.close());
-  elements.detailsDialog?.addEventListener("close", unlockBodyScroll);
+  elements.detailsDialog?.addEventListener("close", () => {
+    elements.detailsDialog.classList.remove("is-visible", "is-entering");
+    unlockBodyScroll();
+  });
   document.querySelector("#open-filters").addEventListener("click", () => elements.filtersPanel.classList.add("is-open"));
   document.querySelector("#close-filters").addEventListener("click", () => elements.filtersPanel.classList.remove("is-open"));
   document.querySelector("#home-browse-action").addEventListener("click", () => setActivePage("browse"));
@@ -1771,6 +1786,7 @@ function openDetails(game) {
   if (!elements.detailsDialog.open) {
     lockBodyScroll();
     elements.detailsDialog.showModal();
+    animateDetailsDialogIn();
   }
 }
 

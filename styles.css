@@ -2069,7 +2069,13 @@ body[data-theme="dark"] .game-card__badge {
 .empty-state { padding: 44px 24px; text-align: center; }
 .hidden { display: none !important; }
 .modal { width: min(920px, calc(100vw - 20px)); padding: 0; border: 0; background: transparent; }
-.modal::backdrop { background: var(--backdrop); backdrop-filter: blur(10px); }
+.modal::backdrop {
+  background: transparent;
+  backdrop-filter: blur(0);
+  transition:
+    background-color 220ms ease,
+    backdrop-filter 220ms ease;
+}
 #details-dialog {
   width: min(1080px, calc(100vw - 28px));
   max-height: min(92vh, 980px);
@@ -2082,6 +2088,11 @@ body[data-theme="dark"] .game-card__badge {
   box-shadow:
     0 36px 90px rgba(15, 10, 8, 0.18),
     0 0 0 1px color-mix(in srgb, white 5%, transparent);
+}
+
+#details-dialog[open]::backdrop {
+  background: var(--backdrop);
+  backdrop-filter: blur(10px);
 }
 
 .modal__close {
@@ -2111,7 +2122,22 @@ body[data-theme="dark"] .modal__close {
   color: var(--accent);
 }
 
-.modal__content { overflow: auto; padding: 28px; max-height: inherit; }
+.modal__content {
+  overflow: auto;
+  padding: 28px;
+  max-height: inherit;
+}
+#details-dialog .modal__content {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 240ms ease,
+    transform 240ms ease;
+}
+#details-dialog.is-visible .modal__content {
+  opacity: 1;
+  transform: translateY(0);
+}
 .detail-layout { display: grid; grid-template-columns: minmax(280px, 360px) minmax(0, 1fr); gap: 28px; align-items: start; }
 .detail-cover {
   display: grid;
@@ -2145,6 +2171,17 @@ body[data-theme="dark"] .modal__close {
   gap: 18px;
   padding-bottom: 20px;
   border-bottom: 1px solid color-mix(in srgb, var(--line) 94%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal::backdrop,
+  #details-dialog,
+  #details-dialog .modal__content {
+    transition: none;
+  }
+
+  #details-dialog .modal__content,
+  #details-dialog.is-visible .modal__content { transform: none; opacity: 1; }
 }
 .detail-hero-copy {
   display: grid;
