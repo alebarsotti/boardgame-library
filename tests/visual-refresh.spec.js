@@ -95,6 +95,17 @@ test.describe("mobile smoke", () => {
       window.getComputedStyle(node).gridTemplateColumns.split(" ").filter(Boolean).length
     );
     expect(mobileColumns).toBe(1);
+    const closeBox = await page.locator("#details-close").boundingBox();
+    expect((closeBox?.x || 0) + (closeBox?.width || 0)).toBeGreaterThan((dialogBox?.width || 0) - 24);
+    await page.locator("#details-content").evaluate((node) => {
+      node.scrollTop = node.scrollHeight;
+    });
+    const scrollState = await page.locator("#details-content").evaluate((node) => ({
+      scrollTop: node.scrollTop,
+      clientHeight: node.clientHeight,
+      scrollHeight: node.scrollHeight
+    }));
+    expect(scrollState.scrollTop + scrollState.clientHeight).toBeGreaterThanOrEqual(scrollState.scrollHeight - 4);
     await page.locator("#details-close").click();
     await expect(page.locator("#details-dialog")).not.toBeVisible();
     await openPageByNav(page, "Ajustes");

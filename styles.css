@@ -2556,17 +2556,21 @@ body[data-theme="dark"] .site-footer__brand img {
     border-radius: 0;
     border: 0;
   }
+  #details-dialog[open] {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+  }
   #details-dialog .modal__content {
-    height: 100dvh;
+    min-height: 0;
     padding: max(18px, env(safe-area-inset-top)) 16px max(20px, env(safe-area-inset-bottom)) 16px;
     overflow: auto;
   }
   #details-dialog .modal__close {
-    position: sticky;
-    top: max(12px, env(safe-area-inset-top));
+    position: relative;
+    top: auto;
     right: auto;
-    margin-left: auto;
-    margin-bottom: 8px;
+    justify-self: end;
+    margin: max(12px, env(safe-area-inset-top)) 16px 8px 0;
   }
   .detail-layout {
     gap: 18px;
