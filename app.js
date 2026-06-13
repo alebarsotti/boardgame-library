@@ -1719,7 +1719,19 @@ function openDetails(game) {
 
   elements.detailsContent.innerHTML = `
     <div class="detail-layout">
-      <div class="detail-cover" id="detail-cover"></div>
+      <div class="detail-media-column">
+        <div class="detail-cover" id="detail-cover"></div>
+        <div class="detail-aside">
+          <div class="detail-aside-metrics">
+            ${detailAsideMetric(copy.ranking, game.rank ? `#${game.rank}` : copy.notAvailable)}
+            ${detailAsideMetric(copy.averageRating, game.averageRating ? game.averageRating.toFixed(2) : copy.notAvailable)}
+          </div>
+          <div class="detail-actions detail-actions--aside">
+            <a class="button button--ghost" href="${escapeAttribute(game.bggUrl)}" target="_blank" rel="noreferrer">${renderIconLabel(copy.openBgg, "external")}</a>
+          </div>
+          <div class="detail-tags detail-tags--soft">${tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}</div>
+        </div>
+      </div>
       <div class="detail-copy">
         <div class="detail-hero" id="detail-hero">
           <div class="detail-hero-copy">
@@ -1743,9 +1755,6 @@ function openDetails(game) {
         <div class="detail-section detail-section--facts">
           <h3>${escapeHtml(copy.detailQuickFacts)}</h3>
           <div class="detail-grid detail-grid--facts" id="detail-quick-facts">
-            ${detailKv(copy.ownership, game.own ? copy.owned : copy.prevOwned)}
-            ${detailKv(copy.ranking, game.rank ? `#${game.rank}` : copy.notAvailable)}
-            ${detailKv(copy.averageRating, game.averageRating ? game.averageRating.toFixed(2) : copy.notAvailable)}
             ${detailKv(copy.languageDependence, labelForLanguageKey(game.languageKey || "unknown"))}
             ${detailKv(copy.recommendedAt, game.recommendedPlayers.length ? joinPlayers(game.recommendedPlayers) : copy.notAvailable)}
             ${detailKv(copy.bestAt, game.bestPlayers.length ? joinPlayers(game.bestPlayers) : copy.notAvailable)}
@@ -1767,13 +1776,6 @@ function openDetails(game) {
         `
             : ""
         }
-        <div class="detail-section detail-section--links">
-          <h3>${escapeHtml(copy.links)}</h3>
-          <div class="detail-actions">
-            <a class="button button--ghost" href="${escapeAttribute(game.bggUrl)}" target="_blank" rel="noreferrer">${renderIconLabel(copy.openBgg, "external")}</a>
-          </div>
-        </div>
-        <div class="detail-tags detail-tags--soft">${tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}</div>
       </div>
     </div>
   `;
@@ -1795,6 +1797,10 @@ function openDetails(game) {
 
 function detailKv(label, value) {
   return `<div class="detail-kv"><strong>${escapeHtml(label)}</strong><span class="detail-kv__value">${escapeHtml(value)}</span></div>`;
+}
+
+function detailAsideMetric(label, value) {
+  return `<div class="detail-aside-metric"><strong>${escapeHtml(label)}</strong><span>${escapeHtml(value)}</span></div>`;
 }
 function drawRandomFromCurrentScope() {
   if (state.randomRevealState === "revealing") return;
