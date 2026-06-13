@@ -604,7 +604,12 @@ function unlockBodyScroll() {
   if (!document.body.classList.contains("modal-open")) return;
   document.body.classList.remove("modal-open");
   document.body.style.top = "";
+  const previousScrollBehavior = document.documentElement.style.scrollBehavior;
+  document.documentElement.style.scrollBehavior = "auto";
   window.scrollTo(0, bodyScrollLockY);
+  window.requestAnimationFrame(() => {
+    document.documentElement.style.scrollBehavior = previousScrollBehavior;
+  });
 }
 
 function animateDetailsDialogIn() {
