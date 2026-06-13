@@ -1,7 +1,13 @@
 import unittest
 from pathlib import Path
 
-from scripts.build_data import apply_image_overrides, build_payload, normalize_image_override_value
+from scripts.build_data import (
+    apply_image_overrides,
+    build_payload,
+    hydrate_localized_content_from_cache,
+    normalize_image_override_value,
+    save_localized_cache,
+)
 
 
 class ImageOverrideSupportTests(unittest.TestCase):
@@ -80,6 +86,43 @@ class ImageOverrideSupportTests(unittest.TestCase):
             fail_on_localized_generation_error=False,
         )
         self.assertEqual(payload["games"][0]["imageUrl"], "assets/custom-cover.png")
+
+    def test_hydrate_localized_content_from_cache_populates_summary_in_off_mode(self):
+        cache_path = Path("generated/test-localized-cache.json")
+        save_localized_cache(
+            cache_path,
+            {
+                "version": 1,
+                "entries": {
+                    "42:summary:en": {
+                        "content": "English summary",
+                        "fingerprint": "",
+                    },
+                    "42:summary:es": {
+                        "content": "Resumen en espanol",
+                        "fingerprint": "",
+                    },
+                },
+            },
+        )
+        try:
+            games = [
+                {
+                    "id": 42,
+                    "name": "Sample Game",
+                    "summary": {"en": "English summary", "es": ""},
+                    "description": {"en": "", "es": ""},
+                }
+            ]
+            hydrate_localized_content_from_cache(
+                games,
+                cache_path=cache_path,
+                skip_long_descriptions=True,
+            )
+            self.assertEqual(games[0]["summary"]["es"], "Resumen en espanol")
+        finally:
+            if cache_path.exists():
+                cache_path.unlink()
 
 
 if __name__ == "__main__":

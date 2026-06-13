@@ -1103,6 +1103,73 @@ def populate_from_cache(
     return resolved
 
 
+def hydrate_localized_content_from_cache(
+    games: list[dict[str, Any]],
+    *,
+    cache_path: Path,
+    skip_long_descriptions: bool,
+) -> None:
+    cache = load_localized_cache(cache_path)
+    cache_entries = cache.get("entries", {})
+    if not isinstance(cache_entries, dict) or not cache_entries:
+        return
+
+    for game in games:
+        game_id = game.get("id")
+        if game_id is None:
+            continue
+        ensure_deterministic_localized_content(game)
+        source_description = normalize_generation_source(get_localized_text(game.get("description"), "en"))
+        summary_fingerprints = {
+            language: content_fingerprint(
+                source_description,
+                field="summary",
+                language=language,
+                model=DEFAULT_LOCAL_MODEL,
+                profile="local",
+                prompt_version=LOCALIZED_SUMMARY_PROMPT_VERSION,
+                parameters={
+                    **get_profile_defaults("local")["options"],
+                    "summary_max_chars": get_profile_defaults("local")["summary_max_chars"],
+                },
+            )
+            for language in LOCALIZED_LANGUAGES
+        }
+        populate_from_cache(
+            game,
+            cache=cache,
+            game_id=int(game_id),
+            field="summary",
+            fingerprints=summary_fingerprints,
+            allow_stale=not source_description,
+        )
+        if skip_long_descriptions:
+            continue
+        description_fingerprints = {
+            language: content_fingerprint(
+                source_description,
+                field="description",
+                language=language,
+                model=DEFAULT_LOCAL_MODEL,
+                profile="local",
+                prompt_version=LOCALIZED_DESCRIPTION_PROMPT_VERSION,
+                parameters={
+                    **get_profile_defaults("local")["options"],
+                    "description_max_chars": get_profile_defaults("local")["description_max_chars"],
+                },
+            )
+            for language in LOCALIZED_LANGUAGES
+        }
+        populate_from_cache(
+            game,
+            cache=cache,
+            game_id=int(game_id),
+            field="description",
+            fingerprints=description_fingerprints,
+            allow_stale=not source_description,
+        )
+
+
 def update_cache_entries(
     cache: dict[str, Any],
     *,
@@ -1147,6 +1214,11 @@ def apply_localized_content(
     fail_on_error: bool,
 ) -> None:
     if mode == "off":
+        hydrate_localized_content_from_cache(
+            games,
+            cache_path=cache_path,
+            skip_long_descriptions=skip_long_descriptions,
+        )
         return
 
     profile_defaults = get_profile_defaults(mode)
@@ -1548,7 +1620,10 @@ def main() -> int:
     if not token:
         print("BGG enrichment skipped because no token was provided.")
     if localized_mode == "off":
-        print("Localized content generation skipped because --localized-content-mode=off.")
+        print(
+            "Localized content generation skipped because --localized-content-mode=off. "
+            "Cached localized entries were still applied when available."
+        )
     else:
         print(
             "Localized content mode: "
