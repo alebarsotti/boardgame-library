@@ -2355,6 +2355,7 @@ body[data-theme="dark"] .modal__close {
 }
 
 .site-footer__brand {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2376,6 +2377,16 @@ body[data-theme="dark"] .modal__close {
 .site-footer__brand:focus-visible {
   outline: 2px solid color-mix(in srgb, var(--accent) 56%, white 44%);
   outline-offset: 3px;
+}
+
+body[data-theme="dark"] .site-footer__brand {
+  filter: drop-shadow(0 0 16px color-mix(in srgb, var(--accent-soft) 18%, transparent));
+}
+
+body[data-theme="dark"] .site-footer__brand img {
+  filter:
+    drop-shadow(0 0 14px color-mix(in srgb, var(--accent-soft) 22%, transparent))
+    drop-shadow(0 10px 24px rgba(0, 0, 0, 0.24));
 }
 
 @media (max-width: 1080px) {

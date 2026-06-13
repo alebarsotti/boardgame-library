@@ -151,7 +151,6 @@ const translations = {
     sectionArchive: "Archivo",
     languageSpanish: "ES",
     languageEnglish: "EN",
-    poweredBy: "Powered by",
     homeCollectionEyebrow: "Panorama rápido",
     homeCollectionTitle: "Lo que quedó en archivo",
     homeCollectionBody:
@@ -351,7 +350,6 @@ const translations = {
     sectionArchive: "Archive",
     languageSpanish: "ES",
     languageEnglish: "EN",
-    poweredBy: "Powered by",
     homeCollectionEyebrow: "Quick view",
     homeCollectionTitle: "What moved to the archive",
     homeCollectionBody:
