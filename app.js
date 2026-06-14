@@ -10,7 +10,7 @@ const RECENT_HIGHLIGHT_MIN_ITEMS = 7;
 const RECENT_HIGHLIGHT_FILL_LIMIT_MONTHS = 18;
 const THEME_KEYS = ["light", "dark"];
 
-const PAGE_KEYS = ["home", "browse", "archive", "random", "settings"];
+const PAGE_KEYS = ["home", "browse", "archive", "random", "history", "settings"];
 let masonryLayoutFrame = 0;
 let gameCardResizeObserver = null;
 let bodyScrollLockY = 0;
@@ -23,6 +23,7 @@ const translations = {
     navBrowse: "Explorar",
     navArchive: "Archivo",
     navRandom: "Azar",
+    navHistory: "Historial",
     navSettings: "Ajustes",
     themeLabel: "Tema",
     themeLight: "Claro",
@@ -199,6 +200,31 @@ const translations = {
     randomHistoryTitle: "Resultados recientes",
     randomHistoryBody: "Sirve para comparar opciones sin guardar nada de forma permanente.",
     randomHistoryEmpty: "Los resultados de esta sesión aparecerán acá.",
+    historyEyebrow: "Adquisiciones en el tiempo",
+    historyTitle: "Historial de adquisiciones",
+    historyBody: "Una vista histórica de cuándo fueron entrando juegos a la biblioteca, con foco en años, cobertura y títulos concretos.",
+    historyScopeLabel: "Alcance",
+    historyScopeOwned: "Colección",
+    historyScopeArchive: "Archivo",
+    historyScopeAll: "Total",
+    historyMetricRecorded: "Con fecha registrada",
+    historyMetricRange: "Rango cubierto",
+    historyMetricPeak: "Año más activo",
+    historyMetricSelected: "Año seleccionado",
+    historyChartEyebrow: "Histograma anual",
+    historyChartTitle: "Adquisiciones por año",
+    historyChartBody: "Tocá o enfocá una barra para comparar años y bajar al detalle.",
+    historyCoverageTitle: "Cobertura de datos",
+    historyCoverageBody: "Las métricas de esta sección contemplan solo juegos con fecha de adquisición cargada.",
+    historyCoverageSummary: "{dated} de {total} títulos en este alcance tienen fecha registrada.",
+    historyEmptyTitle: "No hay adquisiciones fechadas en este alcance",
+    historyEmptyBody: "Cambiá el alcance o cargá más fechas en la fuente de datos para habilitar esta vista.",
+    historySelectedYearFallback: "Elegí un año",
+    historySelectedYearLabel: "Año",
+    historyListTitle: "Títulos del año",
+    historyListEmpty: "No hay títulos para el año seleccionado.",
+    historyAcquisitionsLabel: "adquisiciones",
+    historyBarHint: "Cada barra representa juegos con fecha registrada para ese año.",
     detailQuickFacts: "Datos clave",
     settingsEyebrow: "Preferencias",
     settingsTitle: "Ajustes de uso",
@@ -223,6 +249,7 @@ const translations = {
     navBrowse: "Browse",
     navArchive: "Archive",
     navRandom: "Random",
+    navHistory: "History",
     navSettings: "Settings",
     themeLabel: "Theme",
     themeLight: "Light",
@@ -394,6 +421,31 @@ const translations = {
     randomHistoryTitle: "Recent draws",
     randomHistoryBody: "Useful for comparing options without saving anything permanently.",
     randomHistoryEmpty: "Draws from this session will appear here.",
+    historyEyebrow: "Acquisitions over time",
+    historyTitle: "Acquisition history",
+    historyBody: "A historical view of when games entered the library, centered on years, data coverage, and concrete titles.",
+    historyScopeLabel: "Scope",
+    historyScopeOwned: "Collection",
+    historyScopeArchive: "Archive",
+    historyScopeAll: "All",
+    historyMetricRecorded: "With recorded date",
+    historyMetricRange: "Covered range",
+    historyMetricPeak: "Most active year",
+    historyMetricSelected: "Selected year",
+    historyChartEyebrow: "Yearly histogram",
+    historyChartTitle: "Acquisitions by year",
+    historyChartBody: "Tap or focus a bar to compare years and drill into the titles below.",
+    historyCoverageTitle: "Data coverage",
+    historyCoverageBody: "Metrics in this view only include games with a recorded acquisition date.",
+    historyCoverageSummary: "{dated} of {total} titles in this scope have a recorded date.",
+    historyEmptyTitle: "No dated acquisitions in this scope",
+    historyEmptyBody: "Switch scope or add more acquisition dates in the source data to unlock this view.",
+    historySelectedYearFallback: "Pick a year",
+    historySelectedYearLabel: "Year",
+    historyListTitle: "Titles in year",
+    historyListEmpty: "No titles for the selected year.",
+    historyAcquisitionsLabel: "acquisitions",
+    historyBarHint: "Each bar represents games with a recorded acquisition date for that year.",
     detailQuickFacts: "Quick facts",
     settingsEyebrow: "Preferences",
     settingsTitle: "Usage settings",
@@ -422,6 +474,8 @@ const icons = {
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="4" rx="1.4"/><path d="M5 9.5h14V19a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2Z"/><path d="M10 13h4"/></svg>',
   random:
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="9" cy="9" r="1.2" fill="currentColor" stroke="none"/><circle cx="15" cy="15" r="1.2" fill="currentColor" stroke="none"/><circle cx="9" cy="15" r="1.2" fill="currentColor" stroke="none"/><circle cx="15" cy="9" r="1.2" fill="currentColor" stroke="none"/></svg>',
+  history:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 19h16"/><path d="M7 17V9"/><path d="M12 17V5"/><path d="M17 17v-6"/></svg>',
   settings:
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 8.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Z"/><path d="M4.8 13.2a1 1 0 0 1-.2-1.1l.8-1.9a1 1 0 0 0-.2-1.1l-1.2-1.3 1.8-3.1 1.7.5a1 1 0 0 0 1-.3l1.4-1.2h3.6l1.4 1.2a1 1 0 0 0 1 .3l1.7-.5 1.8 3.1-1.2 1.3a1 1 0 0 0-.2 1.1l.8 1.9a1 1 0 0 1-.2 1.1l-1.4 1.4a1 1 0 0 0-.3 1l.3 1.9-3.1 1.8-1.3-1.2a1 1 0 0 0-1.1-.2l-1.9.8a1 1 0 0 1-1.1 0l-1.9-.8a1 1 0 0 0-1.1.2l-1.3 1.2-3.1-1.8.3-1.9a1 1 0 0 0-.3-1Z"/></svg>',
   search:
@@ -498,7 +552,9 @@ const state = {
   randomLastAttemptContext: null,
   currentRandomEntryIds: [],
   randomDrawCount: 1,
-  randomRevealTimer: null
+  randomRevealTimer: null,
+  historyScope: "owned",
+  historySelectedYear: null
 };
 
 const elements = {};
@@ -555,6 +611,7 @@ function cacheElements() {
   elements.randomPageSummary = document.querySelector("#random-page-summary");
   elements.randomPageContent = document.querySelector("#random-page-content");
   elements.randomPageHistory = document.querySelector("#random-page-history");
+  elements.historyPageContent = document.querySelector("#history-page-content");
   elements.filtersPanel = document.querySelector("#filters-panel");
   elements.cardTemplate = document.querySelector("#game-card-template");
   elements.themeSegmentHeader = document.querySelector("#theme-segment-header");
@@ -563,6 +620,7 @@ function cacheElements() {
   elements.homePanel = document.querySelector("#home-panel");
   elements.workspacePanel = document.querySelector("#workspace-panel");
   elements.randomPanel = document.querySelector("#random-panel");
+  elements.historyPanel = document.querySelector("#history-panel");
   elements.settingsPanel = document.querySelector("#settings-panel");
 }
 
@@ -772,6 +830,7 @@ function renderPageNav() {
     ["browse", copy.navBrowse, "browse"],
     ["archive", copy.navArchive, "archive"],
     ["random", copy.navRandom, "random"],
+    ["history", copy.navHistory, "history"],
     ["settings", copy.navSettings, "settings"]
   ];
   elements.pageNav.innerHTML = items
@@ -1344,6 +1403,7 @@ function render() {
   renderFilterControls();
   renderGames();
   renderRandomPage();
+  renderAcquisitionHistoryPage();
 }
 
 function syncVisualContext() {
@@ -1364,6 +1424,7 @@ function renderPanelVisibility() {
   elements.homePanel.classList.toggle("hidden", state.activePage !== "home");
   elements.workspacePanel.classList.toggle("hidden", !(state.activePage === "browse" || state.activePage === "archive"));
   elements.randomPanel.classList.toggle("hidden", state.activePage !== "random");
+  elements.historyPanel.classList.toggle("hidden", state.activePage !== "history");
   elements.settingsPanel.classList.toggle("hidden", state.activePage !== "settings");
 }
 
@@ -1508,6 +1569,295 @@ function renderHomePanel() {
     const badge = elements.homeRecentList.querySelector(`[data-recent-game-id="${CSS.escape(String(game.id))}"] .home-recent-item__badge`);
     if (badge) applyScoreBadgeStyle(badge, game.averageRating);
   });
+}
+
+function setHistoryScope(scope) {
+  if (!["owned", "archive", "all"].includes(scope)) return;
+  state.historyScope = scope;
+  state.historySelectedYear = null;
+  render();
+}
+
+function setHistorySelectedYear(year) {
+  const normalized = Number(year);
+  if (!Number.isFinite(normalized)) return;
+  state.historySelectedYear = normalized;
+  render();
+}
+
+function getAcquisitionHistoryScopeGames(scope = state.historyScope) {
+  const games = state.data?.games || [];
+  if (scope === "archive") return games.filter((game) => game.prevOwned);
+  if (scope === "all") return games.filter((game) => game.own || game.prevOwned);
+  return games.filter((game) => game.own);
+}
+
+function getAcquisitionHistory(scope = state.historyScope) {
+  const scopedGames = getAcquisitionHistoryScopeGames(scope);
+  const datedGames = scopedGames
+    .filter((game) => Number.isFinite(game.acquisitionTimestamp))
+    .map((game) => ({
+      ...game,
+      acquisitionYear: new Date(game.acquisitionTimestamp).getFullYear()
+    }));
+
+  const yearsMap = new Map();
+  datedGames.forEach((game) => {
+    if (!yearsMap.has(game.acquisitionYear)) {
+      yearsMap.set(game.acquisitionYear, []);
+    }
+    yearsMap.get(game.acquisitionYear).push(game);
+  });
+
+  const years = [...yearsMap.entries()]
+    .map(([year, games]) => ({
+      year,
+      count: games.length,
+      games: [...games].sort(
+        (left, right) =>
+          (right.acquisitionTimestamp || 0) - (left.acquisitionTimestamp || 0) ||
+          getDisplayName(left).localeCompare(getDisplayName(right))
+      )
+    }))
+    .sort((left, right) => left.year - right.year);
+
+  return {
+    scope,
+    totalScopeCount: scopedGames.length,
+    datedCount: datedGames.length,
+    missingCount: Math.max(0, scopedGames.length - datedGames.length),
+    years
+  };
+}
+
+function getAcquisitionHistorySummary(history) {
+  const years = Array.isArray(history?.years) ? history.years : [];
+  const firstYear = years.length ? years[0].year : null;
+  const lastYear = years.length ? years[years.length - 1].year : null;
+  const peakEntry = years.reduce((best, entry) => {
+    if (!best) return entry;
+    if (entry.count > best.count) return entry;
+    if (entry.count === best.count && entry.year > best.year) return entry;
+    return best;
+  }, null);
+
+  return {
+    firstYear,
+    lastYear,
+    peakYear: peakEntry?.year ?? null,
+    peakCount: peakEntry?.count ?? 0
+  };
+}
+
+function getHistoryScopeLabel(scope) {
+  const copy = translations[state.language];
+  return {
+    owned: copy.historyScopeOwned,
+    archive: copy.historyScopeArchive,
+    all: copy.historyScopeAll
+  }[scope] || copy.historyScopeOwned;
+}
+
+function ensureValidHistorySelection(history) {
+  const availableYears = new Set((history?.years || []).map((entry) => entry.year));
+  if (!availableYears.size) {
+    state.historySelectedYear = null;
+    return null;
+  }
+  if (availableYears.has(state.historySelectedYear)) {
+    return state.historySelectedYear;
+  }
+  const fallbackYear = history.years[history.years.length - 1].year;
+  state.historySelectedYear = fallbackYear;
+  return fallbackYear;
+}
+
+function renderAcquisitionHistoryPage() {
+  if (!elements.historyPageContent) return;
+
+  const copy = translations[state.language];
+  const history = getAcquisitionHistory(state.historyScope);
+  const summary = getAcquisitionHistorySummary(history);
+  const selectedYear = ensureValidHistorySelection(history);
+  const selectedEntry = history.years.find((entry) => entry.year === selectedYear) || null;
+  const rangeLabel = summary.firstYear && summary.lastYear
+    ? summary.firstYear === summary.lastYear
+      ? String(summary.firstYear)
+      : `${summary.firstYear}-${summary.lastYear}`
+    : copy.notAvailable;
+  const peakLabel = summary.peakYear ? `${summary.peakYear} (${summary.peakCount})` : copy.notAvailable;
+  const coverageSummary = formatTemplate(copy.historyCoverageSummary, {
+    dated: String(history.datedCount),
+    total: String(history.totalScopeCount)
+  });
+  const maxCount = Math.max(...history.years.map((entry) => entry.count), 1);
+
+  elements.historyPageContent.innerHTML = `
+    <div class="history-page">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">${escapeHtml(copy.historyEyebrow)}</p>
+          <h2>${escapeHtml(copy.historyTitle)}</h2>
+          <p>${escapeHtml(copy.historyBody)}</p>
+        </div>
+        <div class="section-heading__actions">
+          <div class="history-scope-picker">
+            <span class="history-scope-picker__label">${escapeHtml(copy.historyScopeLabel)}</span>
+            <div class="segmented-control segmented-control--compact" role="group" aria-label="${escapeAttribute(copy.historyScopeLabel)}">
+              ${[
+                ["owned", copy.historyScopeOwned],
+                ["archive", copy.historyScopeArchive],
+                ["all", copy.historyScopeAll]
+              ]
+                .map(
+                  ([value, label]) => `
+                    <button
+                      class="segment-button ${state.historyScope === value ? "is-active" : ""}"
+                      data-history-scope="${escapeAttribute(value)}"
+                      type="button"
+                      aria-pressed="${state.historyScope === value ? "true" : "false"}"
+                    >
+                      ${escapeHtml(label)}
+                    </button>
+                  `
+                )
+                .join("")}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="history-kpis">
+        ${historyKpiCard(copy.historyMetricRecorded, `${history.datedCount}/${history.totalScopeCount}`)}
+        ${historyKpiCard(copy.historyMetricRange, rangeLabel)}
+        ${historyKpiCard(copy.historyMetricPeak, peakLabel)}
+      </div>
+
+      <div class="history-layout">
+        <article class="info-card history-card history-chart-card">
+          <p class="eyebrow">${escapeHtml(copy.historyChartEyebrow)}</p>
+          <div class="history-chart-card__header">
+            <div>
+              <h3>${escapeHtml(copy.historyChartTitle)}</h3>
+              <p>${escapeHtml(copy.historyChartBody)}</p>
+            </div>
+            <div class="history-chart-card__legend">
+              <span>${escapeHtml(copy.historySelectedYearLabel)}</span>
+              <strong>${escapeHtml(selectedEntry ? String(selectedEntry.year) : copy.historySelectedYearFallback)}</strong>
+              <small>${escapeHtml(
+                selectedEntry
+                  ? `${selectedEntry.count} ${copy.historyAcquisitionsLabel}`
+                  : copy.historyBarHint
+              )}</small>
+            </div>
+          </div>
+          ${
+            history.years.length
+              ? `
+                <div class="history-chart" role="list" aria-label="${escapeAttribute(copy.historyChartTitle)}">
+                  ${history.years
+                    .map((entry) => {
+                      const height = Math.max(10, Math.round((entry.count / maxCount) * 100));
+                      const isActive = entry.year === selectedYear;
+                      return `
+                        <button
+                          class="history-bar-button ${isActive ? "is-active" : ""}"
+                          data-history-year="${escapeAttribute(entry.year)}"
+                          type="button"
+                          role="listitem"
+                          aria-pressed="${isActive ? "true" : "false"}"
+                          aria-label="${escapeAttribute(`${entry.year}: ${entry.count} ${copy.historyAcquisitionsLabel}`)}"
+                          title="${escapeAttribute(`${entry.year}: ${entry.count} ${copy.historyAcquisitionsLabel}`)}"
+                        >
+                          <span class="history-bar-button__count">${escapeHtml(String(entry.count))}</span>
+                          <span class="history-bar-button__track">
+                            <span class="history-bar-button__fill" style="height: ${height}%"></span>
+                          </span>
+                          <span class="history-bar-button__year">${escapeHtml(String(entry.year))}</span>
+                        </button>
+                      `;
+                    })
+                    .join("")}
+                </div>
+                <p class="history-chart__hint">${escapeHtml(copy.historyBarHint)}</p>
+              `
+              : `
+                <div class="history-empty-state">
+                  <h3>${escapeHtml(copy.historyEmptyTitle)}</h3>
+                  <p>${escapeHtml(copy.historyEmptyBody)}</p>
+                </div>
+              `
+          }
+        </article>
+
+        <aside class="history-sidebar">
+          <article class="info-card history-card">
+            <p class="eyebrow">${escapeHtml(copy.historyCoverageTitle)}</p>
+            <h3>${escapeHtml(getHistoryScopeLabel(state.historyScope))}</h3>
+            <p>${escapeHtml(copy.historyCoverageBody)}</p>
+            <p class="history-coverage-note">${escapeHtml(coverageSummary)}</p>
+          </article>
+
+          <article class="info-card history-card history-list-card">
+            <p class="eyebrow">${escapeHtml(copy.historyListTitle)}</p>
+            <h3>${escapeHtml(selectedEntry ? String(selectedEntry.year) : copy.historySelectedYearFallback)}</h3>
+            <div class="history-detail-list">
+              ${
+                selectedEntry?.games?.length
+                  ? selectedEntry.games
+                    .map(
+                      (game) => `
+                        <button class="history-detail-item" data-history-game-id="${escapeAttribute(game.id)}" type="button">
+                          <div class="game-card__art history-detail-item__cover" id="history-detail-cover-${escapeAttribute(game.id)}"></div>
+                          <div class="history-detail-item__body">
+                            <div class="history-detail-item__header">
+                              <strong>${escapeHtml(getDisplayName(game))}</strong>
+                              <span class="history-detail-item__date">${escapeHtml(formatAcquisitionDate(game.acquisitionDate))}</span>
+                            </div>
+                            <div class="detail-meta">
+                              ${metaPill("players", formatPlayers(game))}
+                              ${metaPill("time", formatPlayTime(game))}
+                            </div>
+                          </div>
+                        </button>
+                      `
+                    )
+                    .join("")
+                  : `<p class="history-list-empty">${escapeHtml(copy.historyListEmpty)}</p>`
+              }
+            </div>
+          </article>
+        </aside>
+      </div>
+    </div>
+  `;
+
+  elements.historyPageContent.querySelectorAll("[data-history-scope]").forEach((button) => {
+    button.addEventListener("click", () => setHistoryScope(button.dataset.historyScope));
+  });
+  elements.historyPageContent.querySelectorAll("[data-history-year]").forEach((button) => {
+    button.addEventListener("click", () => setHistorySelectedYear(button.dataset.historyYear));
+  });
+  elements.historyPageContent.querySelectorAll("[data-history-game-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const game = getGameById(Number(button.dataset.historyGameId));
+      if (game) openDetails(game);
+    });
+  });
+
+  (selectedEntry?.games || []).forEach((game) => {
+    const cover = elements.historyPageContent.querySelector(`#history-detail-cover-${CSS.escape(String(game.id))}`);
+    if (cover) injectCover(cover, game, 128);
+  });
+}
+
+function historyKpiCard(label, value) {
+  return `
+    <article class="history-kpi-card">
+      <span>${escapeHtml(label)}</span>
+      <strong>${escapeHtml(value)}</strong>
+    </article>
+  `;
 }
 
 function renderResultsSummary() {
@@ -2661,6 +3011,13 @@ function labelForAgeBand(value) {
 
 function getGameById(gameId) {
   return state.data?.games?.find((game) => game.id === gameId) || null;
+}
+
+function formatTemplate(template, replacements) {
+  return Object.entries(replacements || {}).reduce(
+    (result, [key, value]) => result.replaceAll(`{${key}}`, String(value)),
+    String(template || "")
+  );
 }
 
 function labelForRecommendation(value) {

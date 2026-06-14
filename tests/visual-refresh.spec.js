@@ -62,7 +62,7 @@ test("desktop smoke covers theme, nav, browse, random, and footer", async ({ pag
   await expect(page.locator("body")).toHaveAttribute("data-theme", "dark");
   await expect(page.locator(".site-footer__brand img")).toBeVisible();
   await expect(page.locator(".site-footer__brand")).toHaveAttribute("href", "https://boardgamegeek.com/");
-  await expect(page.locator(".page-nav .segment-button svg")).toHaveCount(5);
+  await expect(page.locator(".page-nav .segment-button svg")).toHaveCount(6);
   await expect(page.locator("#home-browse-action svg")).toBeVisible();
   await expect(page.locator("#home-random-action svg")).toBeVisible();
 
@@ -90,6 +90,11 @@ test("desktop smoke covers theme, nav, browse, random, and footer", async ({ pag
   await expect(page.locator("#random-panel")).toBeVisible();
   await expect(page.locator("#random-browse-action svg")).toBeVisible();
   await expect(page.locator("#random-page-trigger svg")).toBeVisible();
+
+  await openPageByNav(page, "Historial");
+  await expect(page.locator("body")).toHaveAttribute("data-page", "history");
+  await expect(page.locator("#history-panel")).toBeVisible();
+  await expect(page.locator(".history-chart")).toBeVisible();
 
   await openPageByNav(page, "Ajustes");
   await expect(page.locator("body")).toHaveAttribute("data-page", "settings");
@@ -139,10 +144,36 @@ test.describe("mobile smoke", () => {
     expect(scrollState.scrollTop + scrollState.clientHeight).toBeGreaterThanOrEqual(scrollState.scrollHeight - 4);
     await page.locator("#details-close").click();
     await expect(page.locator("#details-dialog")).not.toBeVisible();
+    await openPageByNav(page, "Historial");
+    await expect(page.locator("#history-panel")).toBeVisible();
+    await expect(page.locator(".history-chart")).toBeVisible();
     await openPageByNav(page, "Ajustes");
     await expect(page.locator(".theme-switch")).toBeVisible();
     await expect(page.locator("#theme-segment-settings")).toBeVisible();
   });
+});
+
+test("history page updates scope, selected year, and detail drill-in", async ({ page }) => {
+  await page.goto(appUrl, { waitUntil: "load" });
+  await openPageByNav(page, "Historial");
+
+  await expect(page.locator("body")).toHaveAttribute("data-page", "history");
+  await expect(page.locator(".history-kpis")).toBeVisible();
+  expect(await page.locator(".history-chart .history-bar-button").count()).toBeGreaterThan(0);
+
+  await page.locator("[data-history-scope='all']").click();
+  await expect(page.locator("[data-history-scope='all']")).toHaveAttribute("aria-pressed", "true");
+
+  const lastBar = page.locator(".history-chart .history-bar-button").last();
+  await lastBar.click();
+  const selectedYear = await lastBar.locator(".history-bar-button__year").textContent();
+  await expect(page.locator(".history-list-card h3")).toContainText((selectedYear || "").trim());
+
+  const firstHistoryItem = page.locator(".history-detail-item").first();
+  await expect(firstHistoryItem).toBeVisible();
+  await firstHistoryItem.click();
+  await expect(page.locator("#details-dialog")).toBeVisible();
+  await expect(page.locator("#detail-title")).toBeVisible();
 });
 
 test("browse supports ascending and descending sort direction", async ({ page }) => {
