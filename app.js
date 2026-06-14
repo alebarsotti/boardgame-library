@@ -1291,10 +1291,20 @@ function toPlayerArray(value) {
 }
 
 function parseLanguageList(value) {
-  return String(value || "")
+  const allowedLanguages = new Set();
+  String(value || "")
     .split(";")
     .map((item) => item.trim())
-    .filter(Boolean);
+    .filter(Boolean)
+    .forEach((item) => {
+      const normalized = normalizeNameForComparison(item);
+      if (normalized === "english" || normalized === "ingles") {
+        allowedLanguages.add("english");
+      } else if (normalized === "spanish" || normalized === "espanol" || normalized === "espanol latino") {
+        allowedLanguages.add("spanish");
+      }
+    });
+  return ["english", "spanish"].filter((language) => allowedLanguages.has(language));
 }
 
 function parseAcquisitionTimestamp(value) {
@@ -1371,7 +1381,7 @@ function getFilteredGames() {
       if (state.filters.search && !game.searchText.includes(state.filters.search)) return false;
       if (state.filters.players) {
         const requested = Number(state.filters.players);
-        if (!(game.minPlayers <= requested && game.maxPlayers >= requested)) return false;
+        if (!(game.minPlayers <= requested && getEffectiveMaxPlayers(game) >= requested)) return false;
       }
       if (Array.isArray(state.filters.duration) && state.filters.duration.length && !state.filters.duration.includes(game.timeBand)) return false;
       if (Array.isArray(state.filters.weight) && state.filters.weight.length && !state.filters.weight.includes(game.weightBand)) return false;
@@ -1418,7 +1428,7 @@ function sortGames(left, right) {
       comparison = (left.playingTime ?? Number.MAX_SAFE_INTEGER) - (right.playingTime ?? Number.MAX_SAFE_INTEGER) || getDisplayName(left).localeCompare(getDisplayName(right));
       break;
     case "maxPlayers":
-      comparison = (right.maxPlayers ?? -1) - (left.maxPlayers ?? -1) || getDisplayName(left).localeCompare(getDisplayName(right));
+      comparison = getEffectiveMaxPlayers(right) - getEffectiveMaxPlayers(left) || getDisplayName(left).localeCompare(getDisplayName(right));
       break;
     default:
       comparison = getDisplayName(left).localeCompare(getDisplayName(right));
@@ -1436,7 +1446,7 @@ function matchesRecommendation(game, recommendation) {
     heavy: game.weightBand === "heavy",
     teach: (game.tags || []).includes("teaching-friendly"),
     solo: (game.tags || []).includes("solo"),
-    group: game.maxPlayers >= 6
+    group: getEffectiveMaxPlayers(game) >= 6
   };
   return Boolean(map[recommendation]);
 }
@@ -1645,6 +1655,26 @@ function buildDetailSubtitle(game) {
   return bits.join(" - ");
 }
 
+function buildDetailSubtitleMarkup(game, secondaryName = "") {
+  const parts = [];
+  if (secondaryName) parts.push(escapeHtml(secondaryName));
+  if (isExpansionGame(game)) {
+    parts.push(escapeHtml(translations[state.language].expansion));
+    const requiredBase = getRequiredBaseGame(game);
+    if (requiredBase) {
+      parts.push(
+        `${escapeHtml(translations[state.language].expansionRequiresBase)}: ` +
+          `<button class="detail-subtitle__link" type="button" data-base-game-id="${escapeAttribute(requiredBase.id)}">` +
+          `${escapeHtml(getDisplayName(requiredBase))}` +
+          `</button>`
+      );
+    } else if (game.requiresGameName) {
+      parts.push(`${escapeHtml(translations[state.language].expansionRequiresBase)}: <strong>${escapeHtml(game.requiresGameName)}</strong>`);
+    }
+  }
+  return parts.join(" - ");
+}
+
 function metaPill(icon, label) {
   return `<span class="meta-pill">${icons[icon]}<span>${escapeHtml(label)}</span></span>`;
 }
@@ -1695,7 +1725,7 @@ function openDetails(game) {
   const copy = translations[state.language];
   const displayName = getDisplayName(game);
   const secondaryName = getSecondaryName(game);
-  const detailSubtitle = [secondaryName, buildDetailSubtitle(game)].filter(Boolean).join(" - ");
+  const detailSubtitle = buildDetailSubtitleMarkup(game, secondaryName);
   const heroBadges = [game.own ? copy.owned : copy.prevOwned].concat(getDisplayTags(game, { compact: true })).slice(0, 3);
   const tags = getDisplayTags(game).concat(game.categories || [], game.mechanics || []).slice(0, 10);
   const linkedExpansions = getExpansionGames(game);
@@ -1738,7 +1768,7 @@ function openDetails(game) {
             <div class="detail-heading">
               <p class="eyebrow detail-eyebrow">${escapeHtml(game.yearPublished ? String(game.yearPublished) : copy.notAvailable)}</p>
               <h2 id="detail-title">${escapeHtml(displayName)}</h2>
-              ${detailSubtitle ? `<p class="detail-subtitle">${escapeHtml(detailSubtitle)}</p>` : ""}
+              ${detailSubtitle ? `<p class="detail-subtitle">${detailSubtitle}</p>` : ""}
             </div>
             <div class="detail-hero-badges">
               ${heroBadges.map((label) => `<span class="detail-badge">${escapeHtml(label)}</span>`).join("")}
@@ -1785,6 +1815,12 @@ function openDetails(game) {
     button.addEventListener("click", () => {
       const expansion = findGameById(Number(button.dataset.expansionId));
       if (expansion) openDetails(expansion);
+    });
+  });
+  elements.detailsContent.querySelectorAll("[data-base-game-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const baseGame = findGameById(Number(button.dataset.baseGameId));
+      if (baseGame) openDetails(baseGame);
     });
   });
 
@@ -2222,6 +2258,17 @@ function getExpansionGames(game) {
     .sort((left, right) => getDisplayName(left).localeCompare(getDisplayName(right)));
 }
 
+function getEffectiveMaxPlayers(game) {
+  const baseMaxPlayers = Number.isFinite(game?.maxPlayers) ? game.maxPlayers : 0;
+  if (isExpansionGame(game)) return baseMaxPlayers;
+  return getExpansionGames(game)
+    .filter((expansion) => expansion.own)
+    .reduce((currentMax, expansion) => {
+      const expansionMaxPlayers = Number.isFinite(expansion?.maxPlayers) ? expansion.maxPlayers : currentMax;
+      return Math.max(currentMax, expansionMaxPlayers);
+    }, baseMaxPlayers);
+}
+
 function buildExpansionSummary(game) {
   return [formatPlayers(game), formatPlayTime(game), labelForWeightBand(game.weightBand)].filter(Boolean).join(" - ");
 }
@@ -2267,7 +2314,52 @@ function getSecondaryName(game) {
   const primary = getDisplayName(game);
   const secondary = state.language === "en" ? game.name || "" : game.originalName || "";
   if (!secondary || secondary === primary) return "";
+  const normalizedPrimary = normalizeNameForComparison(primary);
+  const normalizedSecondary = normalizeNameForComparison(secondary);
+  if (
+    normalizedPrimary &&
+    normalizedSecondary &&
+    getNormalizedEditDistanceRatio(normalizedPrimary, normalizedSecondary) < 0.12
+  ) {
+    return "";
+  }
   return secondary;
+}
+
+function normalizeNameForComparison(value) {
+  return String(value || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .replace(/[^\p{Letter}\p{Number}]+/gu, " ")
+    .trim()
+    .replace(/\s+/g, " ");
+}
+
+function getNormalizedEditDistanceRatio(left, right) {
+  const leftValue = String(left || "");
+  const rightValue = String(right || "");
+  const maxLength = Math.max(leftValue.length, rightValue.length, 1);
+  const distances = Array.from({ length: leftValue.length + 1 }, (_, rowIndex) =>
+    Array.from({ length: rightValue.length + 1 }, (_, columnIndex) => {
+      if (rowIndex === 0) return columnIndex;
+      if (columnIndex === 0) return rowIndex;
+      return 0;
+    })
+  );
+
+  for (let rowIndex = 1; rowIndex <= leftValue.length; rowIndex += 1) {
+    for (let columnIndex = 1; columnIndex <= rightValue.length; columnIndex += 1) {
+      const cost = leftValue[rowIndex - 1] === rightValue[columnIndex - 1] ? 0 : 1;
+      distances[rowIndex][columnIndex] = Math.min(
+        distances[rowIndex - 1][columnIndex] + 1,
+        distances[rowIndex][columnIndex - 1] + 1,
+        distances[rowIndex - 1][columnIndex - 1] + cost
+      );
+    }
+  }
+
+  return distances[leftValue.length][rightValue.length] / maxLength;
 }
 
 function getNameOverride(gameId) {
@@ -2286,8 +2378,9 @@ function getInitials(name) {
 }
 
 function formatPlayers(game) {
-  if (!game.minPlayers || !game.maxPlayers) return translations[state.language].notAvailable;
-  return game.minPlayers === game.maxPlayers ? `${game.minPlayers}` : `${game.minPlayers}-${game.maxPlayers}`;
+  const maxPlayers = getEffectiveMaxPlayers(game);
+  if (!game.minPlayers || !maxPlayers) return translations[state.language].notAvailable;
+  return game.minPlayers === maxPlayers ? `${game.minPlayers}` : `${game.minPlayers}-${maxPlayers}`;
 }
 
 function formatPlayTime(game) {

@@ -8001,7 +8001,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "expansionIds": [],
       "bggUrl": "https://boardgamegeek.com/boardgame/160477",
       "thumbnailUrl": "https://cf.geekdo-images.com/GJKuOCy5HGAYgVH_Rei5mA__small/img/Q3W4poMS4btD-HZLervgqbSCtmE=/fit-in/200x150/filters:strip_icc()/pic7070194.jpg",
-      "imageUrl": "https://cf.geekdo-images.com/GJKuOCy5HGAYgVH_Rei5mA__original/img/oRsIxp72iv58128KFdqvjG6Gz64=/0x0/filters:format(jpeg)/pic7070194.jpg",
+      "imageUrl": "assets/covers/onitama-front.png",
       "imageHint": "Onitama (2014)",
       "tags": [
         "owned",
@@ -8431,7 +8431,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "expansionIds": [],
       "bggUrl": "https://boardgamegeek.com/boardgame/72644",
       "thumbnailUrl": "https://cf.geekdo-images.com/rEI2KGdKIJGiI7rsSaDwfg__small/img/N4a64HKwg-3QnYDB31PwlgEQJYo=/fit-in/200x150/filters:strip_icc()/pic2513050.jpg",
-      "imageUrl": "https://cf.geekdo-images.com/rEI2KGdKIJGiI7rsSaDwfg__original/img/5ZSwFvpUeJCpqVdg4RDfOc-FoCs=/0x0/filters:format(jpeg)/pic2513050.jpg",
+      "imageUrl": "assets/covers/perplexus-original-front.png",
       "imageHint": "Perplexus Original (2001)",
       "tags": [
         "owned",
@@ -8780,7 +8780,7 @@ window.__BGG_LIBRARY_DATA__ = {
       ],
       "bggUrl": "https://boardgamegeek.com/boardgame/244521",
       "thumbnailUrl": "https://cf.geekdo-images.com/B1bLRWzTASZ-xx9NoAE79A__small/img/deG3pr-ORZ3JrGvQA-oQNrwh0l0=/fit-in/200x150/filters:strip_icc()/pic8780293.png",
-      "imageUrl": "https://cf.geekdo-images.com/B1bLRWzTASZ-xx9NoAE79A__original/img/HulJk6gFzp_bxl0wzc2XEMq8NLM=/0x0/filters:format(png)/pic8780293.png",
+      "imageUrl": "assets/covers/pocimas-y-brebajes-front.png",
       "imageHint": "Pócimas y Brebajes (2019)",
       "tags": [
         "owned",
@@ -9291,7 +9291,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "expansionIds": [],
       "bggUrl": "https://boardgamegeek.com/boardgame/181",
       "thumbnailUrl": "https://cf.geekdo-images.com/Oem1TTtSgxOghRFCoyWRPw__small/img/5cltSV60oVvjL3Ag_KTJbmTdU6w=/fit-in/200x150/filters:strip_icc()/pic4916782.jpg",
-      "imageUrl": "https://cf.geekdo-images.com/Oem1TTtSgxOghRFCoyWRPw__original/img/Nu3eXPyOkhtnR3hhpUrtgqRMAfs=/0x0/filters:format(jpeg)/pic4916782.jpg",
+      "imageUrl": "assets/covers/risk-front.png",
       "imageHint": "Risk (2016)",
       "tags": [
         "owned",
@@ -9570,7 +9570,7 @@ window.__BGG_LIBRARY_DATA__ = {
       ],
       "bggUrl": "https://boardgamegeek.com/boardgame/199561",
       "thumbnailUrl": "https://cf.geekdo-images.com/77OxPP4ckbOgK9sPg-6KDw__small/img/zCe7i6vc7LoJZDDnVUQQlU-uw4w=/fit-in/200x150/filters:strip_icc()/pic9374520.png",
-      "imageUrl": "https://cf.geekdo-images.com/77OxPP4ckbOgK9sPg-6KDw__original/img/oh6s7_lx_jMP0zvHK7RttbhQd5I=/0x0/filters:format(png)/pic9374520.png",
+      "imageUrl": "assets/covers/sagrada-front.webp",
       "imageHint": "Sagrada (2018)",
       "tags": [
         "owned",

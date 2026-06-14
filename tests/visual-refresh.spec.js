@@ -23,6 +23,37 @@ async function openFirstDetail(page) {
   await expect(page.locator("#detail-summary-row")).toBeVisible();
 }
 
+async function getBaseGameWithExpansionFixture(page) {
+  return page.evaluate(() => {
+    const games = window.__BGG_LIBRARY_DATA__?.games || [];
+    const findGameById = (id) => games.find((game) => game.id === id);
+    const baseGame = games.find((game) =>
+      game.own &&
+      Array.isArray(game.expansionIds) &&
+      game.expansionIds.some((expansionId) => {
+        const expansion = findGameById(expansionId);
+        return expansion?.requiresGameId === game.id;
+      })
+    );
+
+    if (!baseGame) return null;
+
+    const expansionId = baseGame.expansionIds.find((candidateId) => {
+      const expansion = findGameById(candidateId);
+      return expansion?.requiresGameId === baseGame.id;
+    });
+    const expansion = findGameById(expansionId);
+    if (!expansion) return null;
+
+    return {
+      baseId: baseGame.id,
+      baseName: baseGame.name,
+      expansionId: expansion.id,
+      expansionName: expansion.name
+    };
+  });
+}
+
 test("desktop smoke covers theme, nav, browse, random, and footer", async ({ page }) => {
   await page.goto(appUrl, { waitUntil: "load" });
 
@@ -95,6 +126,17 @@ test.describe("mobile smoke", () => {
       window.getComputedStyle(node).gridTemplateColumns.split(" ").filter(Boolean).length
     );
     expect(mobileColumns).toBe(1);
+    const closeBox = await page.locator("#details-close").boundingBox();
+    expect((closeBox?.x || 0) + (closeBox?.width || 0)).toBeGreaterThan((dialogBox?.width || 0) - 24);
+    await page.locator("#details-content").evaluate((node) => {
+      node.scrollTop = node.scrollHeight;
+    });
+    const scrollState = await page.locator("#details-content").evaluate((node) => ({
+      scrollTop: node.scrollTop,
+      clientHeight: node.clientHeight,
+      scrollHeight: node.scrollHeight
+    }));
+    expect(scrollState.scrollTop + scrollState.clientHeight).toBeGreaterThanOrEqual(scrollState.scrollHeight - 4);
     await page.locator("#details-close").click();
     await expect(page.locator("#details-dialog")).not.toBeVisible();
     await openPageByNav(page, "Ajustes");
@@ -119,4 +161,65 @@ test("browse supports ascending and descending sort direction", async ({ page })
   await page.locator("[data-filter-key='sortDirection'][data-filter-value='desc']").click();
   const descendingTitles = await getVisibleTitles(page);
   expect(descendingTitles).toEqual([...descendingTitles].sort((left, right) => right.localeCompare(left, "es")));
+});
+
+test("expansion detail links back to its base game", async ({ page }) => {
+  await page.goto(appUrl, { waitUntil: "load" });
+  const fixture = await getBaseGameWithExpansionFixture(page);
+  expect(fixture).not.toBeNull();
+
+  await openPageByNav(page, "Explorar");
+  await page.locator("#search-input").fill(fixture.baseName);
+  await openFirstDetail(page);
+  await page.locator(`[data-expansion-id="${fixture.expansionId}"]`).click();
+  await expect(page.locator("#detail-title")).toContainText(fixture.expansionName);
+  await expect(page.locator(".detail-subtitle")).toContainText(`Requiere juego base: ${fixture.baseName}`);
+  await expect(page.locator(".detail-subtitle [data-base-game-id]")).toContainText(fixture.baseName);
+  await page.locator(`[data-base-game-id="${fixture.baseId}"]`).click();
+  await expect(page.locator("#detail-title")).toContainText(fixture.baseName);
+});
+
+test("detail subtitle avoids near-duplicate secondary names", async ({ page }) => {
+  await page.goto(appUrl, { waitUntil: "load" });
+  await page.evaluate(() => {
+    const targetGame = typeof findGameById === "function" ? findGameById(266667) : null;
+    if (!targetGame || typeof openDetails !== "function") throw new Error("Virus! 2 fixture unavailable");
+    openDetails(targetGame);
+  });
+  await expect(page.locator("#details-dialog")).toBeVisible();
+  await expect(page.locator("#detail-title")).toContainText("Virus! 2 Evolución");
+  await expect(page.locator(".detail-subtitle")).not.toContainText("Virus! 2 Evolution");
+  await expect(page.locator(".detail-subtitle")).toContainText("Expansión");
+  await expect(page.locator(".detail-subtitle")).toContainText("Requiere juego base: Virus!");
+});
+
+test("physical language UI only keeps English and Spanish", async ({ page }) => {
+  await page.goto(appUrl, { waitUntil: "load" });
+  await openPageByNav(page, "Explorar");
+  await expect(page.locator("#physical-language-filter")).not.toContainText("Portugués");
+  await expect(page.locator("#physical-language-filter")).not.toContainText("Francés");
+  await expect(page.locator("#physical-language-filter")).not.toContainText("Alemán");
+
+  await page.evaluate(() => {
+    const targetGame = typeof findGameById === "function" ? findGameById(182078) : null;
+    if (!targetGame || typeof openDetails !== "function") throw new Error("Ticket to Ride Map Collection 5 fixture unavailable");
+    openDetails(targetGame);
+  });
+  await expect(page.locator("#details-dialog")).toBeVisible();
+  await expect(page.locator("#detail-title")).toContainText("Ticket to Ride Map Collection 5");
+  await expect(page.locator("#detail-summary-row")).toContainText("Inglés, Español");
+  await expect(page.locator("#detail-summary-row")).not.toContainText("Portugués");
+  await expect(page.locator("#detail-summary-row")).not.toContainText("Francés");
+  await expect(page.locator("#detail-summary-row")).not.toContainText("Alemán");
+});
+
+test("owned expansions can raise the base game's max players", async ({ page }) => {
+  await page.goto(appUrl, { waitUntil: "load" });
+  await openPageByNav(page, "Explorar");
+  await page.locator("#search-input").fill("Pócimas y Brebajes");
+  await page.locator("[data-filter-key='players'][data-filter-value='5']").click();
+  await expect(page.locator(".game-card__title")).toContainText(["Pócimas y Brebajes"]);
+  await openFirstDetail(page);
+  await expect(page.locator("#detail-title")).toContainText("Pócimas y Brebajes");
+  await expect(page.locator("#detail-summary-row")).toContainText("2-5");
 });
