@@ -189,3 +189,23 @@ test("detail subtitle avoids near-duplicate secondary names", async ({ page }) =
   await expect(page.locator(".detail-subtitle")).toContainText("Expansión");
   await expect(page.locator(".detail-subtitle")).toContainText("Requiere juego base: Virus!");
 });
+
+test("physical language UI only keeps English and Spanish", async ({ page }) => {
+  await page.goto(appUrl, { waitUntil: "load" });
+  await openPageByNav(page, "Explorar");
+  await expect(page.locator("#physical-language-filter")).not.toContainText("Portugués");
+  await expect(page.locator("#physical-language-filter")).not.toContainText("Francés");
+  await expect(page.locator("#physical-language-filter")).not.toContainText("Alemán");
+
+  await page.evaluate(() => {
+    const targetGame = typeof findGameById === "function" ? findGameById(182078) : null;
+    if (!targetGame || typeof openDetails !== "function") throw new Error("Ticket to Ride Map Collection 5 fixture unavailable");
+    openDetails(targetGame);
+  });
+  await expect(page.locator("#details-dialog")).toBeVisible();
+  await expect(page.locator("#detail-title")).toContainText("Ticket to Ride Map Collection 5");
+  await expect(page.locator("#detail-summary-row")).toContainText("Inglés, Español");
+  await expect(page.locator("#detail-summary-row")).not.toContainText("Portugués");
+  await expect(page.locator("#detail-summary-row")).not.toContainText("Francés");
+  await expect(page.locator("#detail-summary-row")).not.toContainText("Alemán");
+});

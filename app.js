@@ -1291,10 +1291,20 @@ function toPlayerArray(value) {
 }
 
 function parseLanguageList(value) {
-  return String(value || "")
+  const allowedLanguages = new Set();
+  String(value || "")
     .split(";")
     .map((item) => item.trim())
-    .filter(Boolean);
+    .filter(Boolean)
+    .forEach((item) => {
+      const normalized = normalizeNameForComparison(item);
+      if (normalized === "english" || normalized === "ingles") {
+        allowedLanguages.add("english");
+      } else if (normalized === "spanish" || normalized === "espanol" || normalized === "espanol latino") {
+        allowedLanguages.add("spanish");
+      }
+    });
+  return ["english", "spanish"].filter((language) => allowedLanguages.has(language));
 }
 
 function parseAcquisitionTimestamp(value) {
