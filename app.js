@@ -1381,7 +1381,7 @@ function getFilteredGames() {
       if (state.filters.search && !game.searchText.includes(state.filters.search)) return false;
       if (state.filters.players) {
         const requested = Number(state.filters.players);
-        if (!(game.minPlayers <= requested && game.maxPlayers >= requested)) return false;
+        if (!(game.minPlayers <= requested && getEffectiveMaxPlayers(game) >= requested)) return false;
       }
       if (Array.isArray(state.filters.duration) && state.filters.duration.length && !state.filters.duration.includes(game.timeBand)) return false;
       if (Array.isArray(state.filters.weight) && state.filters.weight.length && !state.filters.weight.includes(game.weightBand)) return false;
@@ -1428,7 +1428,7 @@ function sortGames(left, right) {
       comparison = (left.playingTime ?? Number.MAX_SAFE_INTEGER) - (right.playingTime ?? Number.MAX_SAFE_INTEGER) || getDisplayName(left).localeCompare(getDisplayName(right));
       break;
     case "maxPlayers":
-      comparison = (right.maxPlayers ?? -1) - (left.maxPlayers ?? -1) || getDisplayName(left).localeCompare(getDisplayName(right));
+      comparison = getEffectiveMaxPlayers(right) - getEffectiveMaxPlayers(left) || getDisplayName(left).localeCompare(getDisplayName(right));
       break;
     default:
       comparison = getDisplayName(left).localeCompare(getDisplayName(right));
@@ -1446,7 +1446,7 @@ function matchesRecommendation(game, recommendation) {
     heavy: game.weightBand === "heavy",
     teach: (game.tags || []).includes("teaching-friendly"),
     solo: (game.tags || []).includes("solo"),
-    group: game.maxPlayers >= 6
+    group: getEffectiveMaxPlayers(game) >= 6
   };
   return Boolean(map[recommendation]);
 }
@@ -2258,6 +2258,17 @@ function getExpansionGames(game) {
     .sort((left, right) => getDisplayName(left).localeCompare(getDisplayName(right)));
 }
 
+function getEffectiveMaxPlayers(game) {
+  const baseMaxPlayers = Number.isFinite(game?.maxPlayers) ? game.maxPlayers : 0;
+  if (isExpansionGame(game)) return baseMaxPlayers;
+  return getExpansionGames(game)
+    .filter((expansion) => expansion.own)
+    .reduce((currentMax, expansion) => {
+      const expansionMaxPlayers = Number.isFinite(expansion?.maxPlayers) ? expansion.maxPlayers : currentMax;
+      return Math.max(currentMax, expansionMaxPlayers);
+    }, baseMaxPlayers);
+}
+
 function buildExpansionSummary(game) {
   return [formatPlayers(game), formatPlayTime(game), labelForWeightBand(game.weightBand)].filter(Boolean).join(" - ");
 }
@@ -2367,8 +2378,9 @@ function getInitials(name) {
 }
 
 function formatPlayers(game) {
-  if (!game.minPlayers || !game.maxPlayers) return translations[state.language].notAvailable;
-  return game.minPlayers === game.maxPlayers ? `${game.minPlayers}` : `${game.minPlayers}-${game.maxPlayers}`;
+  const maxPlayers = getEffectiveMaxPlayers(game);
+  if (!game.minPlayers || !maxPlayers) return translations[state.language].notAvailable;
+  return game.minPlayers === maxPlayers ? `${game.minPlayers}` : `${game.minPlayers}-${maxPlayers}`;
 }
 
 function formatPlayTime(game) {

@@ -209,3 +209,14 @@ test("physical language UI only keeps English and Spanish", async ({ page }) => 
   await expect(page.locator("#detail-summary-row")).not.toContainText("Francés");
   await expect(page.locator("#detail-summary-row")).not.toContainText("Alemán");
 });
+
+test("owned expansions can raise the base game's max players", async ({ page }) => {
+  await page.goto(appUrl, { waitUntil: "load" });
+  await openPageByNav(page, "Explorar");
+  await page.locator("#search-input").fill("Pócimas y Brebajes");
+  await page.locator("[data-filter-key='players'][data-filter-value='5']").click();
+  await expect(page.locator(".game-card__title")).toContainText(["Pócimas y Brebajes"]);
+  await openFirstDetail(page);
+  await expect(page.locator("#detail-title")).toContainText("Pócimas y Brebajes");
+  await expect(page.locator("#detail-summary-row")).toContainText("2-5");
+});
