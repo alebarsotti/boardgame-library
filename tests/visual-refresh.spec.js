@@ -181,9 +181,12 @@ test("expansion detail links back to its base game", async ({ page }) => {
 
 test("detail subtitle avoids near-duplicate secondary names", async ({ page }) => {
   await page.goto(appUrl, { waitUntil: "load" });
-  await openPageByNav(page, "Explorar");
-  await page.locator("#search-input").fill("Virus! 2");
-  await openFirstDetail(page);
+  await page.evaluate(() => {
+    const targetGame = typeof findGameById === "function" ? findGameById(266667) : null;
+    if (!targetGame || typeof openDetails !== "function") throw new Error("Virus! 2 fixture unavailable");
+    openDetails(targetGame);
+  });
+  await expect(page.locator("#details-dialog")).toBeVisible();
   await expect(page.locator("#detail-title")).toContainText("Virus! 2 Evolución");
   await expect(page.locator(".detail-subtitle")).not.toContainText("Virus! 2 Evolution");
   await expect(page.locator(".detail-subtitle")).toContainText("Expansión");
