@@ -210,13 +210,30 @@ const translations = {
     historyMetricRecorded: "Con fecha registrada",
     historyMetricRange: "Rango cubierto",
     historyMetricPeak: "Año más activo",
-    historyMetricSelected: "Año seleccionado",
+    historyMetricStillOwned: "Siguen en colección",
+    historyMetricAverageRating: "Rating promedio",
+    historyMetricExpansionMix: "Mix expansión/base",
     historyChartEyebrow: "Histograma anual",
     historyChartTitle: "Adquisiciones por año",
     historyChartBody: "Tocá o enfocá una barra para comparar años y bajar al detalle.",
     historyCoverageTitle: "Cobertura de datos",
     historyCoverageBody: "Las métricas de esta sección contemplan solo juegos con fecha de adquisición cargada.",
     historyCoverageSummary: "{dated} de {total} títulos en este alcance tienen fecha registrada.",
+    historyInsightsEyebrow: "Resumen y curiosidades",
+    historyInsightsTitle: "Lo más llamativo del total registrado",
+    historyInsightTopMonth: "Mes más activo",
+    historyInsightLongestGap: "Mayor pausa",
+    historyInsightBestStreak: "Racha más larga",
+    historyInsightTopMechanic: "Top mecánica",
+    historyInsightTopCategory: "Top categoría",
+    historyInsightGapSuffix: "{days} días sin compras",
+    historyInsightStreakSuffixSingle: "1 día seguido con compras",
+    historyInsightStreakSuffixPlural: "{count} días seguidos con compras",
+    historyInsightNoStreak: "Sin rachas consecutivas",
+    historyInsightCountSuffix: "{count} juegos",
+    historyMetricStillOwnedSuffix: "{count} de {total}",
+    historyMetricAverageRatingSuffix: "{count} juegos con rating",
+    historyMetricExpansionMixSuffix: "{expansions} exp. / {base} base",
     historyEmptyTitle: "No hay adquisiciones fechadas en este alcance",
     historyEmptyBody: "Cambiá el alcance o cargá más fechas en la fuente de datos para habilitar esta vista.",
     historySelectedYearFallback: "Elegí un año",
@@ -431,13 +448,30 @@ const translations = {
     historyMetricRecorded: "With recorded date",
     historyMetricRange: "Covered range",
     historyMetricPeak: "Most active year",
-    historyMetricSelected: "Selected year",
+    historyMetricStillOwned: "Still owned",
+    historyMetricAverageRating: "Average rating",
+    historyMetricExpansionMix: "Expansion/base mix",
     historyChartEyebrow: "Yearly histogram",
     historyChartTitle: "Acquisitions by year",
     historyChartBody: "Tap or focus a bar to compare years and drill into the titles below.",
     historyCoverageTitle: "Data coverage",
     historyCoverageBody: "Metrics in this view only include games with a recorded acquisition date.",
     historyCoverageSummary: "{dated} of {total} titles in this scope have a recorded date.",
+    historyInsightsEyebrow: "Summary and curiosities",
+    historyInsightsTitle: "What stands out across the full record",
+    historyInsightTopMonth: "Busiest month",
+    historyInsightLongestGap: "Longest gap",
+    historyInsightBestStreak: "Longest streak",
+    historyInsightTopMechanic: "Top mechanic",
+    historyInsightTopCategory: "Top category",
+    historyInsightGapSuffix: "{days} days without purchases",
+    historyInsightStreakSuffixSingle: "1 straight day with purchases",
+    historyInsightStreakSuffixPlural: "{count} straight days with purchases",
+    historyInsightNoStreak: "No consecutive streaks",
+    historyInsightCountSuffix: "{count} games",
+    historyMetricStillOwnedSuffix: "{count} of {total}",
+    historyMetricAverageRatingSuffix: "{count} rated games",
+    historyMetricExpansionMixSuffix: "{expansions} exp. / {base} base",
     historyEmptyTitle: "No dated acquisitions in this scope",
     historyEmptyBody: "Switch scope or add more acquisition dates in the source data to unlock this view.",
     historySelectedYearFallback: "Pick a year",
@@ -1649,6 +1683,137 @@ function getAcquisitionHistorySummary(history) {
   };
 }
 
+function getAcquisitionHistoryInsights(history) {
+  const datedGames = (history?.years || []).flatMap((entry) => entry.games || [])
+    .filter((game) => Number.isFinite(game?.acquisitionTimestamp))
+    .sort((left, right) => (left.acquisitionTimestamp || 0) - (right.acquisitionTimestamp || 0));
+
+  if (!datedGames.length) {
+    return {
+      topMonthKey: "",
+      topMonthCount: 0,
+      longestGapDays: 0,
+      longestGapFrom: "",
+      longestGapTo: "",
+      bestStreakCount: 0,
+      bestStreakStart: "",
+      bestStreakEnd: "",
+      stillOwnedCount: 0,
+      averageRating: 0,
+      averageRatingSamples: 0,
+      expansionCount: 0,
+      baseCount: 0,
+      topMechanic: "",
+      topMechanicCount: 0,
+      topCategory: "",
+      topCategoryCount: 0
+    };
+  }
+
+  const monthCounts = new Map();
+  const mechanicCounts = new Map();
+  const categoryCounts = new Map();
+  let totalRating = 0;
+  let totalRatingSamples = 0;
+  let stillOwnedCount = 0;
+  let expansionCount = 0;
+  datedGames.forEach((game) => {
+    const date = new Date(game.acquisitionTimestamp);
+    const key = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
+    monthCounts.set(key, (monthCounts.get(key) || 0) + 1);
+    if (game.own) stillOwnedCount += 1;
+    if (isExpansionGame(game)) expansionCount += 1;
+    if (Number.isFinite(game.averageRating)) {
+      totalRating += Number(game.averageRating);
+      totalRatingSamples += 1;
+    }
+    (Array.isArray(game.mechanics) ? game.mechanics : []).forEach((item) => {
+      const value = String(item || "").trim();
+      if (!value) return;
+      mechanicCounts.set(value, (mechanicCounts.get(value) || 0) + 1);
+    });
+    (Array.isArray(game.categories) ? game.categories : []).forEach((item) => {
+      const value = String(item || "").trim();
+      if (!value) return;
+      categoryCounts.set(value, (categoryCounts.get(value) || 0) + 1);
+    });
+  });
+
+  const topMonthEntry = [...monthCounts.entries()].reduce((best, current) => {
+    if (!best) return current;
+    if (current[1] > best[1]) return current;
+    if (current[1] === best[1] && current[0] > best[0]) return current;
+    return best;
+  }, null);
+
+  const topMechanicEntry = [...mechanicCounts.entries()].reduce((best, current) => {
+    if (!best) return current;
+    if (current[1] > best[1]) return current;
+    if (current[1] === best[1] && current[0].localeCompare(best[0], state.language) < 0) return current;
+    return best;
+  }, null);
+
+  const topCategoryEntry = [...categoryCounts.entries()].reduce((best, current) => {
+    if (!best) return current;
+    if (current[1] > best[1]) return current;
+    if (current[1] === best[1] && current[0].localeCompare(best[0], state.language) < 0) return current;
+    return best;
+  }, null);
+
+  let longestGapDays = 0;
+  let longestGapFrom = "";
+  let longestGapTo = "";
+  let bestStreakCount = 1;
+  let bestStreakStart = datedGames[0].acquisitionDate || "";
+  let bestStreakEnd = datedGames[0].acquisitionDate || "";
+  let currentStreakCount = 1;
+  let currentStreakStart = datedGames[0].acquisitionDate || "";
+
+  for (let index = 1; index < datedGames.length; index += 1) {
+    const previous = datedGames[index - 1];
+    const current = datedGames[index];
+    const gapDays = Math.round(((current.acquisitionTimestamp || 0) - (previous.acquisitionTimestamp || 0)) / 86400000);
+
+    if (gapDays > longestGapDays) {
+      longestGapDays = gapDays;
+      longestGapFrom = previous.acquisitionDate || "";
+      longestGapTo = current.acquisitionDate || "";
+    }
+
+    if (gapDays === 1) {
+      currentStreakCount += 1;
+      if (currentStreakCount > bestStreakCount) {
+        bestStreakCount = currentStreakCount;
+        bestStreakStart = currentStreakStart;
+        bestStreakEnd = current.acquisitionDate || "";
+      }
+    } else {
+      currentStreakCount = 1;
+      currentStreakStart = current.acquisitionDate || "";
+    }
+  }
+
+  return {
+    topMonthKey: topMonthEntry?.[0] || "",
+    topMonthCount: topMonthEntry?.[1] || 0,
+    longestGapDays,
+    longestGapFrom,
+    longestGapTo,
+    bestStreakCount,
+    bestStreakStart,
+    bestStreakEnd,
+    stillOwnedCount,
+    averageRating: totalRatingSamples ? totalRating / totalRatingSamples : 0,
+    averageRatingSamples: totalRatingSamples,
+    expansionCount,
+    baseCount: Math.max(0, datedGames.length - expansionCount),
+    topMechanic: topMechanicEntry?.[0] || "",
+    topMechanicCount: topMechanicEntry?.[1] || 0,
+    topCategory: topCategoryEntry?.[0] || "",
+    topCategoryCount: topCategoryEntry?.[1] || 0
+  };
+}
+
 function getHistoryScopeLabel(scope) {
   const copy = translations[state.language];
   return {
@@ -1677,7 +1842,9 @@ function renderAcquisitionHistoryPage() {
 
   const copy = translations[state.language];
   const history = getAcquisitionHistory(state.historyScope);
-  const summary = getAcquisitionHistorySummary(history);
+  const globalHistory = getAcquisitionHistory("all");
+  const summary = getAcquisitionHistorySummary(globalHistory);
+  const insights = getAcquisitionHistoryInsights(globalHistory);
   const selectedYear = ensureValidHistorySelection(history);
   const selectedEntry = history.years.find((entry) => entry.year === selectedYear) || null;
   const rangeLabel = summary.firstYear && summary.lastYear
@@ -1686,6 +1853,16 @@ function renderAcquisitionHistoryPage() {
       : `${summary.firstYear}-${summary.lastYear}`
     : copy.notAvailable;
   const peakLabel = summary.peakYear ? `${summary.peakYear} (${summary.peakCount})` : copy.notAvailable;
+  const stillOwnedLabel = globalHistory.datedCount
+    ? `${Math.round((insights.stillOwnedCount / globalHistory.datedCount) * 100)}%`
+    : copy.notAvailable;
+  const averageRatingRounded = insights.averageRating ? Math.round(insights.averageRating * 10) / 10 : 0;
+  const averageRatingLabel = averageRatingRounded
+    ? `${averageRatingRounded}`.replace(".", state.language === "es" ? "," : ".")
+    : copy.notAvailable;
+  const expansionMixLabel = globalHistory.datedCount
+    ? `${Math.round((insights.expansionCount / globalHistory.datedCount) * 100)}%`
+    : copy.notAvailable;
   const coverageSummary = formatTemplate(copy.historyCoverageSummary, {
     dated: String(history.datedCount),
     total: String(history.totalScopeCount)
@@ -1728,10 +1905,53 @@ function renderAcquisitionHistoryPage() {
       </div>
 
       <div class="history-kpis">
-        ${historyKpiCard(copy.historyMetricRecorded, `${history.datedCount}/${history.totalScopeCount}`)}
+        ${historyKpiCard(copy.historyMetricRecorded, `${globalHistory.datedCount}/${globalHistory.totalScopeCount}`)}
         ${historyKpiCard(copy.historyMetricRange, rangeLabel)}
         ${historyKpiCard(copy.historyMetricPeak, peakLabel)}
+        ${historyKpiCard(copy.historyMetricStillOwned, stillOwnedLabel, formatTemplate(copy.historyMetricStillOwnedSuffix, { count: String(insights.stillOwnedCount), total: String(globalHistory.datedCount) }))}
+        ${historyKpiCard(copy.historyMetricAverageRating, averageRatingLabel, formatTemplate(copy.historyMetricAverageRatingSuffix, { count: String(insights.averageRatingSamples) }))}
+        ${historyKpiCard(copy.historyMetricExpansionMix, expansionMixLabel, formatTemplate(copy.historyMetricExpansionMixSuffix, { expansions: String(insights.expansionCount), base: String(insights.baseCount) }))}
       </div>
+
+      <article class="info-card history-card history-insights-card">
+        <div class="history-insights-card__header">
+          <div>
+            <p class="eyebrow">${escapeHtml(copy.historyInsightsEyebrow)}</p>
+            <h3>${escapeHtml(copy.historyInsightsTitle)}</h3>
+          </div>
+        </div>
+        <div class="history-insights-grid">
+          ${historyInsightCard(
+            copy.historyInsightTopMonth,
+            insights.topMonthKey ? formatMonthKey(insights.topMonthKey) : copy.notAvailable,
+            insights.topMonthCount ? `${insights.topMonthCount} ${copy.historyAcquisitionsLabel}` : copy.notAvailable
+          )}
+          ${historyInsightCard(
+            copy.historyInsightLongestGap,
+            insights.longestGapFrom && insights.longestGapTo ? `${formatAcquisitionDate(insights.longestGapFrom)} - ${formatAcquisitionDate(insights.longestGapTo)}` : copy.notAvailable,
+            insights.longestGapDays
+              ? formatTemplate(copy.historyInsightGapSuffix, { days: String(insights.longestGapDays) })
+              : copy.notAvailable
+          )}
+          ${historyInsightCard(
+            copy.historyInsightBestStreak,
+            insights.bestStreakStart && insights.bestStreakEnd ? `${formatAcquisitionDate(insights.bestStreakStart)} - ${formatAcquisitionDate(insights.bestStreakEnd)}` : copy.notAvailable,
+            insights.bestStreakCount <= 1
+              ? copy.historyInsightNoStreak
+              : formatTemplate(copy.historyInsightStreakSuffixPlural, { count: String(insights.bestStreakCount) })
+          )}
+          ${historyInsightCard(
+            copy.historyInsightTopMechanic,
+            insights.topMechanic || copy.notAvailable,
+            insights.topMechanicCount ? formatTemplate(copy.historyInsightCountSuffix, { count: String(insights.topMechanicCount) }) : copy.notAvailable
+          )}
+          ${historyInsightCard(
+            copy.historyInsightTopCategory,
+            insights.topCategory || copy.notAvailable,
+            insights.topCategoryCount ? formatTemplate(copy.historyInsightCountSuffix, { count: String(insights.topCategoryCount) }) : copy.notAvailable
+          )}
+        </div>
+      </article>
 
       <div class="history-layout">
         <article class="info-card history-card history-chart-card">
@@ -1851,11 +2071,22 @@ function renderAcquisitionHistoryPage() {
   });
 }
 
-function historyKpiCard(label, value) {
+function historyKpiCard(label, value, note = "") {
   return `
     <article class="history-kpi-card">
       <span>${escapeHtml(label)}</span>
       <strong>${escapeHtml(value)}</strong>
+      ${note ? `<small>${escapeHtml(note)}</small>` : ""}
+    </article>
+  `;
+}
+
+function historyInsightCard(label, value, note) {
+  return `
+    <article class="history-insight-card">
+      <span>${escapeHtml(label)}</span>
+      <strong>${escapeHtml(value)}</strong>
+      <small>${escapeHtml(note)}</small>
     </article>
   `;
 }
@@ -2754,6 +2985,17 @@ function formatAcquisitionDate(value) {
     month: "short",
     day: "numeric"
   }).format(new Date(timestamp));
+}
+
+function formatMonthKey(value) {
+  const [yearText, monthText] = String(value || "").split("-");
+  const year = Number(yearText);
+  const month = Number(monthText);
+  if (!Number.isFinite(year) || !Number.isFinite(month) || month < 1 || month > 12) return "";
+  return new Intl.DateTimeFormat(state.language === "es" ? "es-AR" : "en-US", {
+    year: "numeric",
+    month: "long"
+  }).format(new Date(year, month - 1, 1));
 }
 
 function buildHomeRecentFacts(game) {
