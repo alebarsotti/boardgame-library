@@ -829,6 +829,17 @@ body[data-theme="dark"] .button--ghost {
   align-items: start;
 }
 
+.history-main-column {
+  display: grid;
+  gap: 14px;
+}
+
+.history-chart-card__side {
+  display: grid;
+  justify-items: end;
+  gap: 8px;
+}
+
 .history-insights-card {
   display: grid;
   gap: 14px;
@@ -937,80 +948,89 @@ body[data-theme="dark"] .button--ghost {
   line-height: 1.45;
 }
 
-.history-chart {
+.history-chart-mode-control {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
-  gap: 10px;
-  align-items: end;
+  justify-items: end;
+}
+
+.history-chart-mode-control__group {
+  gap: 3px;
+  padding: 3px;
+}
+
+.history-chart-mode-button {
+  min-width: 34px;
+  min-height: 34px;
+  padding: 0;
+  border-radius: 999px;
+}
+
+.history-chart-mode-button__icon {
+  width: 15px;
+  height: 15px;
+  display: block;
+}
+
+.history-chart {
+  position: relative;
   min-height: 280px;
   margin-top: 16px;
 }
 
-.history-bar-button {
-  display: grid;
-  gap: 8px;
-  align-content: end;
-  justify-items: center;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-  color: inherit;
+.history-month-chart {
+  min-height: 220px;
+  margin-top: 16px;
 }
 
-.history-bar-button__count {
-  font-size: 0.82rem;
-  font-weight: 800;
-  color: var(--accent-strong);
+.history-chart__canvas,
+.history-month-chart__canvas {
+  min-height: inherit;
 }
 
-.history-bar-button__track {
-  position: relative;
-  display: flex;
-  align-items: end;
-  justify-content: center;
-  width: 100%;
-  min-height: 200px;
-  padding: 8px;
-  border-radius: 24px;
-  background: linear-gradient(180deg, color-mix(in srgb, var(--surface-inset) 88%, transparent), color-mix(in srgb, var(--surface-strong) 96%, transparent));
+.history-chart__canvas .apexcharts-canvas,
+.history-month-chart__canvas .apexcharts-canvas {
+  margin-inline: auto;
+}
+
+.history-chart__canvas .apexcharts-gridline,
+.history-month-chart__canvas .apexcharts-gridline {
+  opacity: 0.55;
+}
+
+.history-chart__canvas .apexcharts-xaxis line,
+.history-month-chart__canvas .apexcharts-xaxis line,
+.history-chart__canvas .apexcharts-yaxis line,
+.history-month-chart__canvas .apexcharts-yaxis line {
+  display: none;
+}
+
+.history-chart__canvas .apexcharts-bar-area:hover,
+.history-month-chart__canvas .apexcharts-bar-area:hover,
+.history-chart__canvas .apexcharts-marker:hover,
+.history-month-chart__canvas .apexcharts-marker:hover {
+  filter: drop-shadow(0 14px 26px color-mix(in srgb, var(--accent) 22%, transparent));
+}
+
+.history-chart__canvas .apexcharts-tooltip,
+.history-month-chart__canvas .apexcharts-tooltip {
   border: 1px solid var(--line);
-  transition:
-    transform 220ms ease,
-    border-color 220ms ease,
-    box-shadow 220ms ease,
-    background 220ms ease;
-}
-
-.history-bar-button__fill {
-  display: block;
-  width: 100%;
   border-radius: 16px;
-  background: linear-gradient(180deg, color-mix(in srgb, var(--accent-soft) 62%, white 38%), var(--accent), var(--accent-strong));
-  box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 24%, transparent);
+  background: color-mix(in srgb, var(--surface-strong) 96%, transparent);
+  box-shadow: var(--shadow);
+  color: var(--text);
 }
 
-.history-bar-button__year {
-  font-size: 0.82rem;
-  font-weight: 800;
-  color: var(--muted);
-}
-
-.history-bar-button:hover .history-bar-button__track,
-.history-bar-button:focus-visible .history-bar-button__track,
-.history-bar-button.is-active .history-bar-button__track {
-  transform: translateY(-4px);
-  border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
-  box-shadow: 0 16px 26px color-mix(in srgb, var(--accent) 16%, transparent);
-}
-
-.history-bar-button.is-active .history-bar-button__fill {
-  background: linear-gradient(180deg, color-mix(in srgb, #fff7f0 48%, var(--accent-soft) 52%), var(--accent), var(--accent-strong));
-}
-
-.history-bar-button.is-active .history-bar-button__year,
-.history-bar-button.is-active .history-bar-button__count {
+.history-chart__canvas .apexcharts-tooltip-title,
+.history-month-chart__canvas .apexcharts-tooltip-title {
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--surface-inset) 88%, transparent);
   color: var(--accent-strong);
+  font-weight: 800;
+}
+
+.history-chart__canvas .apexcharts-xaxistooltip,
+.history-month-chart__canvas .apexcharts-xaxistooltip {
+  display: none;
 }
 
 .history-empty-state {
@@ -2798,9 +2818,10 @@ body[data-theme="dark"] .modal__close {
 
 .site-footer__brand img {
   display: block;
-  width: 200px;
-  max-width: min(200px, 70vw);
+  width: 198px;
+  max-width: min(198px, 72vw);
   height: auto;
+  image-rendering: auto;
 }
 
 .site-footer__brand:hover {
@@ -2813,13 +2834,15 @@ body[data-theme="dark"] .modal__close {
 }
 
 body[data-theme="dark"] .site-footer__brand {
-  filter: drop-shadow(0 0 16px color-mix(in srgb, var(--accent-soft) 18%, transparent));
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--accent-soft) 10%, transparent));
 }
 
 body[data-theme="dark"] .site-footer__brand img {
   filter:
-    drop-shadow(0 0 14px color-mix(in srgb, var(--accent-soft) 22%, transparent))
-    drop-shadow(0 10px 24px rgba(0, 0, 0, 0.24));
+    contrast(1.05)
+    saturate(1.02)
+    drop-shadow(0 0 8px color-mix(in srgb, var(--accent-soft) 12%, transparent))
+    drop-shadow(0 6px 16px rgba(0, 0, 0, 0.18));
 }
 
 @media (max-width: 1080px) {
@@ -2883,7 +2906,7 @@ body[data-theme="dark"] .site-footer__brand img {
   }
 
   .site-footer__brand img {
-    max-width: min(180px, 72vw);
+    max-width: min(182px, 76vw);
   }
 }
 
@@ -3181,15 +3204,20 @@ body[data-theme="dark"] .site-footer__brand img {
   .history-chart-card__header {
     display: grid;
   }
+  .history-chart-card__side {
+    justify-items: start;
+  }
   .history-chart-card__legend {
     min-width: 0;
   }
+  .history-chart-mode-control {
+    justify-items: start;
+  }
   .history-chart {
-    grid-template-columns: repeat(auto-fit, minmax(62px, 1fr));
     min-height: 240px;
   }
-  .history-bar-button__track {
-    min-height: 180px;
+  .history-month-chart {
+    min-height: 220px;
   }
   .history-detail-list {
     max-height: none;
