@@ -10,10 +10,14 @@ const RECENT_HIGHLIGHT_MIN_ITEMS = 7;
 const RECENT_HIGHLIGHT_FILL_LIMIT_MONTHS = 18;
 const THEME_KEYS = ["light", "dark"];
 
-const PAGE_KEYS = ["home", "browse", "archive", "random", "settings"];
+const PAGE_KEYS = ["home", "browse", "archive", "random", "history", "settings"];
 let masonryLayoutFrame = 0;
 let gameCardResizeObserver = null;
 let bodyScrollLockY = 0;
+let historyCharts = {
+  yearly: null,
+  monthly: null
+};
 
 const translations = {
   es: {
@@ -23,6 +27,7 @@ const translations = {
     navBrowse: "Explorar",
     navArchive: "Archivo",
     navRandom: "Azar",
+    navHistory: "Historial",
     navSettings: "Ajustes",
     themeLabel: "Tema",
     themeLight: "Claro",
@@ -199,6 +204,63 @@ const translations = {
     randomHistoryTitle: "Resultados recientes",
     randomHistoryBody: "Sirve para comparar opciones sin guardar nada de forma permanente.",
     randomHistoryEmpty: "Los resultados de esta sesión aparecerán acá.",
+    historyEyebrow: "Adquisiciones en el tiempo",
+    historyTitle: "Historial de adquisiciones",
+    historyBody: "Una vista histórica de cuándo fueron entrando juegos a la biblioteca, con foco en años, cobertura y títulos concretos.",
+    historyScopeLabel: "Alcance",
+    historyScopeOwned: "Colección",
+    historyScopeArchive: "Archivo",
+    historyScopeAll: "Total",
+    historyChartModeLabel: "Visualización",
+    historyChartModeBar: "Barras",
+    historyChartModeLine: "Línea",
+    historyMetricRecorded: "Con fecha registrada",
+    historyMetricRange: "Rango cubierto",
+    historyMetricPeak: "Año más activo",
+    historyMetricStillOwned: "Siguen en colección",
+    historyMetricAverageRating: "Rating promedio",
+    historyMetricExpansionMix: "Mix expansión/base",
+    historyChartEyebrow: "Histograma anual",
+    historyChartTitle: "Adquisiciones por año",
+    historyChartBody: "Tocá o enfocá una barra para comparar años y bajar al detalle.",
+    historyMonthChartEyebrow: "Detalle mensual",
+    historyMonthChartTitle: "Cómo se repartió el año",
+    historyMonthChartBody: "Desglosa el año seleccionado en meses para ver concentraciones y meses en blanco.",
+    historyMonthChartPeak: "Mes más activo del año",
+    historyMonthChartEmpty: "No hay meses con adquisiciones para este año.",
+    historyMonthBarHint: "Cada barra representa adquisiciones registradas en ese mes del año elegido.",
+    historyCoverageTitle: "Cobertura de datos",
+    historyCoverageBody: "Las métricas de esta sección contemplan solo juegos con fecha de adquisición cargada.",
+    historyCoverageSummary: "{dated} de {total} títulos en este alcance tienen fecha registrada.",
+    historyInsightsEyebrow: "Resumen y curiosidades",
+    historyInsightsTitle: "Lo más llamativo del total registrado",
+    historyInsightTopMonth: "Mes más activo",
+    historyInsightLongestGap: "Mayor pausa",
+    historyInsightBestStreak: "Racha más larga",
+    historyInsightTopMechanic: "Top mecánica",
+    historyInsightTopCategory: "Top categoría",
+    historyInsightGapSuffix: "{days} días sin compras",
+    historyInsightStreakSuffixSingle: "1 día seguido con compras",
+    historyInsightStreakSuffixPlural: "{count} días seguidos con compras",
+    historyInsightNoStreak: "Sin rachas consecutivas",
+    historyInsightCountSuffix: "{count} juegos",
+    historyMetricStillOwnedSuffix: "{count} de {total}",
+    historyMetricAverageRatingSuffix: "{count} juegos con rating",
+    historyMetricExpansionMixSuffix: "{expansions} exp. / {base} base",
+    historyEmptyTitle: "No hay adquisiciones fechadas en este alcance",
+    historyEmptyBody: "Cambiá el alcance o cargá más fechas en la fuente de datos para habilitar esta vista.",
+    historySelectedYearFallback: "Elegí un año",
+    historySelectedYearLabel: "Año",
+    historySelectedMonthLabel: "Mes",
+    historySelectedMonthFallback: "Todo el año",
+    historyListTitle: "Títulos del año",
+    historyListEmpty: "No hay títulos para el año seleccionado.",
+    historyListEmptyMonth: "No hay títulos para el mes seleccionado.",
+    historyAcquisitionsLabel: "adquisiciones",
+    historyBarHint: "Cada barra representa juegos con fecha registrada para ese año.",
+    historyLineHint: "La línea conecta la cantidad registrada de cada año y mantiene la selección por punto.",
+    historyMonthLineHint: "La línea conecta las adquisiciones registradas mes a mes dentro del año elegido.",
+    historyMonthSelectionHint: "Tocá un mes para filtrar la lista; tocá de nuevo para volver al año completo.",
     detailQuickFacts: "Datos clave",
     settingsEyebrow: "Preferencias",
     settingsTitle: "Ajustes de uso",
@@ -223,6 +285,7 @@ const translations = {
     navBrowse: "Browse",
     navArchive: "Archive",
     navRandom: "Random",
+    navHistory: "History",
     navSettings: "Settings",
     themeLabel: "Theme",
     themeLight: "Light",
@@ -394,6 +457,63 @@ const translations = {
     randomHistoryTitle: "Recent draws",
     randomHistoryBody: "Useful for comparing options without saving anything permanently.",
     randomHistoryEmpty: "Draws from this session will appear here.",
+    historyEyebrow: "Acquisitions over time",
+    historyTitle: "Acquisition history",
+    historyBody: "A historical view of when games entered the library, centered on years, data coverage, and concrete titles.",
+    historyScopeLabel: "Scope",
+    historyScopeOwned: "Collection",
+    historyScopeArchive: "Archive",
+    historyScopeAll: "All",
+    historyChartModeLabel: "View",
+    historyChartModeBar: "Bars",
+    historyChartModeLine: "Line",
+    historyMetricRecorded: "With recorded date",
+    historyMetricRange: "Covered range",
+    historyMetricPeak: "Most active year",
+    historyMetricStillOwned: "Still owned",
+    historyMetricAverageRating: "Average rating",
+    historyMetricExpansionMix: "Expansion/base mix",
+    historyChartEyebrow: "Yearly histogram",
+    historyChartTitle: "Acquisitions by year",
+    historyChartBody: "Tap or focus a bar to compare years and drill into the titles below.",
+    historyMonthChartEyebrow: "Monthly detail",
+    historyMonthChartTitle: "How the year was distributed",
+    historyMonthChartBody: "Breaks the selected year into months to reveal clustering and quiet periods.",
+    historyMonthChartPeak: "Busiest month in year",
+    historyMonthChartEmpty: "No monthly acquisitions for this year.",
+    historyMonthBarHint: "Each bar represents recorded acquisitions in that month of the selected year.",
+    historyCoverageTitle: "Data coverage",
+    historyCoverageBody: "Metrics in this view only include games with a recorded acquisition date.",
+    historyCoverageSummary: "{dated} of {total} titles in this scope have a recorded date.",
+    historyInsightsEyebrow: "Summary and curiosities",
+    historyInsightsTitle: "What stands out across the full record",
+    historyInsightTopMonth: "Busiest month",
+    historyInsightLongestGap: "Longest gap",
+    historyInsightBestStreak: "Longest streak",
+    historyInsightTopMechanic: "Top mechanic",
+    historyInsightTopCategory: "Top category",
+    historyInsightGapSuffix: "{days} days without purchases",
+    historyInsightStreakSuffixSingle: "1 straight day with purchases",
+    historyInsightStreakSuffixPlural: "{count} straight days with purchases",
+    historyInsightNoStreak: "No consecutive streaks",
+    historyInsightCountSuffix: "{count} games",
+    historyMetricStillOwnedSuffix: "{count} of {total}",
+    historyMetricAverageRatingSuffix: "{count} rated games",
+    historyMetricExpansionMixSuffix: "{expansions} exp. / {base} base",
+    historyEmptyTitle: "No dated acquisitions in this scope",
+    historyEmptyBody: "Switch scope or add more acquisition dates in the source data to unlock this view.",
+    historySelectedYearFallback: "Pick a year",
+    historySelectedYearLabel: "Year",
+    historySelectedMonthLabel: "Month",
+    historySelectedMonthFallback: "Full year",
+    historyListTitle: "Titles in year",
+    historyListEmpty: "No titles for the selected year.",
+    historyListEmptyMonth: "No titles for the selected month.",
+    historyAcquisitionsLabel: "acquisitions",
+    historyBarHint: "Each bar represents games with a recorded acquisition date for that year.",
+    historyLineHint: "The line connects the recorded count for each year and keeps point-based selection.",
+    historyMonthLineHint: "The line connects recorded acquisitions month by month within the selected year.",
+    historyMonthSelectionHint: "Tap a month to filter the list; tap it again to return to the full year.",
     detailQuickFacts: "Quick facts",
     settingsEyebrow: "Preferences",
     settingsTitle: "Usage settings",
@@ -422,6 +542,8 @@ const icons = {
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="4" rx="1.4"/><path d="M5 9.5h14V19a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2Z"/><path d="M10 13h4"/></svg>',
   random:
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="9" cy="9" r="1.2" fill="currentColor" stroke="none"/><circle cx="15" cy="15" r="1.2" fill="currentColor" stroke="none"/><circle cx="9" cy="15" r="1.2" fill="currentColor" stroke="none"/><circle cx="15" cy="9" r="1.2" fill="currentColor" stroke="none"/></svg>',
+  history:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 19h16"/><path d="M7 17V9"/><path d="M12 17V5"/><path d="M17 17v-6"/></svg>',
   settings:
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 8.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Z"/><path d="M4.8 13.2a1 1 0 0 1-.2-1.1l.8-1.9a1 1 0 0 0-.2-1.1l-1.2-1.3 1.8-3.1 1.7.5a1 1 0 0 0 1-.3l1.4-1.2h3.6l1.4 1.2a1 1 0 0 0 1 .3l1.7-.5 1.8 3.1-1.2 1.3a1 1 0 0 0-.2 1.1l.8 1.9a1 1 0 0 1-.2 1.1l-1.4 1.4a1 1 0 0 0-.3 1l.3 1.9-3.1 1.8-1.3-1.2a1 1 0 0 0-1.1-.2l-1.9.8a1 1 0 0 1-1.1 0l-1.9-.8a1 1 0 0 0-1.1.2l-1.3 1.2-3.1-1.8.3-1.9a1 1 0 0 0-.3-1Z"/></svg>',
   search:
@@ -458,6 +580,10 @@ const icons = {
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.5"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/></svg>',
   group:
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.2"/><circle cx="5.8" cy="10" r="2.4"/><circle cx="18.2" cy="10" r="2.4"/><path d="M7 19a5 5 0 0 1 10 0"/><path d="M1.8 19a4 4 0 0 1 4-4"/><path d="M22.2 19a4 4 0 0 0-4-4"/></svg>',
+  chartBar:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 20h16"/><path d="M7 20V12"/><path d="M12 20V6"/><path d="M17 20v-9"/></svg>',
+  chartLine:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17.5 9 12l4 3 7-8"/><circle cx="4" cy="17.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="9" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="13" cy="15" r="1.2" fill="currentColor" stroke="none"/><circle cx="20" cy="7" r="1.2" fill="currentColor" stroke="none"/></svg>',
   broom:
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>'
 };
@@ -498,7 +624,11 @@ const state = {
   randomLastAttemptContext: null,
   currentRandomEntryIds: [],
   randomDrawCount: 1,
-  randomRevealTimer: null
+  randomRevealTimer: null,
+  historyScope: "all",
+  historySelectedYear: null,
+  historySelectedMonth: null,
+  historyChartMode: "bar"
 };
 
 const elements = {};
@@ -555,6 +685,7 @@ function cacheElements() {
   elements.randomPageSummary = document.querySelector("#random-page-summary");
   elements.randomPageContent = document.querySelector("#random-page-content");
   elements.randomPageHistory = document.querySelector("#random-page-history");
+  elements.historyPageContent = document.querySelector("#history-page-content");
   elements.filtersPanel = document.querySelector("#filters-panel");
   elements.cardTemplate = document.querySelector("#game-card-template");
   elements.themeSegmentHeader = document.querySelector("#theme-segment-header");
@@ -563,6 +694,7 @@ function cacheElements() {
   elements.homePanel = document.querySelector("#home-panel");
   elements.workspacePanel = document.querySelector("#workspace-panel");
   elements.randomPanel = document.querySelector("#random-panel");
+  elements.historyPanel = document.querySelector("#history-panel");
   elements.settingsPanel = document.querySelector("#settings-panel");
 }
 
@@ -772,6 +904,7 @@ function renderPageNav() {
     ["browse", copy.navBrowse, "browse"],
     ["archive", copy.navArchive, "archive"],
     ["random", copy.navRandom, "random"],
+    ["history", copy.navHistory, "history"],
     ["settings", copy.navSettings, "settings"]
   ];
   elements.pageNav.innerHTML = items
@@ -1344,6 +1477,7 @@ function render() {
   renderFilterControls();
   renderGames();
   renderRandomPage();
+  renderAcquisitionHistoryPage();
 }
 
 function syncVisualContext() {
@@ -1364,6 +1498,7 @@ function renderPanelVisibility() {
   elements.homePanel.classList.toggle("hidden", state.activePage !== "home");
   elements.workspacePanel.classList.toggle("hidden", !(state.activePage === "browse" || state.activePage === "archive"));
   elements.randomPanel.classList.toggle("hidden", state.activePage !== "random");
+  elements.historyPanel.classList.toggle("hidden", state.activePage !== "history");
   elements.settingsPanel.classList.toggle("hidden", state.activePage !== "settings");
 }
 
@@ -1508,6 +1643,941 @@ function renderHomePanel() {
     const badge = elements.homeRecentList.querySelector(`[data-recent-game-id="${CSS.escape(String(game.id))}"] .home-recent-item__badge`);
     if (badge) applyScoreBadgeStyle(badge, game.averageRating);
   });
+}
+
+function setHistoryScope(scope) {
+  if (!["owned", "archive", "all"].includes(scope)) return;
+  state.historyScope = scope;
+  state.historySelectedYear = null;
+  state.historySelectedMonth = null;
+  render();
+}
+
+function setHistorySelectedYear(year) {
+  const normalized = Number(year);
+  if (!Number.isFinite(normalized)) return;
+  state.historySelectedYear = normalized;
+  state.historySelectedMonth = null;
+  render();
+}
+
+function setHistorySelectedMonth(month) {
+  const normalized = Number(month);
+  if (!Number.isFinite(normalized) || normalized < 1 || normalized > 12) return;
+  state.historySelectedMonth = state.historySelectedMonth === normalized ? null : normalized;
+  render();
+}
+
+function setHistoryChartMode(mode) {
+  if (!["bar", "line"].includes(mode)) return;
+  state.historyChartMode = mode;
+  render();
+}
+
+function getAcquisitionHistoryScopeGames(scope = state.historyScope) {
+  const games = state.data?.games || [];
+  if (scope === "archive") return games.filter((game) => game.prevOwned);
+  if (scope === "all") return games.filter((game) => game.own || game.prevOwned);
+  return games.filter((game) => game.own);
+}
+
+function getAcquisitionHistory(scope = state.historyScope) {
+  const scopedGames = getAcquisitionHistoryScopeGames(scope);
+  const datedGames = scopedGames
+    .filter((game) => Number.isFinite(game.acquisitionTimestamp))
+    .map((game) => ({
+      ...game,
+      acquisitionYear: new Date(game.acquisitionTimestamp).getFullYear()
+    }));
+
+  const yearsMap = new Map();
+  datedGames.forEach((game) => {
+    if (!yearsMap.has(game.acquisitionYear)) {
+      yearsMap.set(game.acquisitionYear, []);
+    }
+    yearsMap.get(game.acquisitionYear).push(game);
+  });
+
+  const years = [...yearsMap.entries()]
+    .map(([year, games]) => ({
+      year,
+      count: games.length,
+      games: [...games].sort(
+        (left, right) =>
+          (right.acquisitionTimestamp || 0) - (left.acquisitionTimestamp || 0) ||
+          getDisplayName(left).localeCompare(getDisplayName(right))
+      )
+    }))
+    .sort((left, right) => left.year - right.year);
+
+  return {
+    scope,
+    totalScopeCount: scopedGames.length,
+    datedCount: datedGames.length,
+    missingCount: Math.max(0, scopedGames.length - datedGames.length),
+    years
+  };
+}
+
+function getAcquisitionHistorySummary(history) {
+  const years = Array.isArray(history?.years) ? history.years : [];
+  const firstYear = years.length ? years[0].year : null;
+  const lastYear = years.length ? years[years.length - 1].year : null;
+  const peakEntry = years.reduce((best, entry) => {
+    if (!best) return entry;
+    if (entry.count > best.count) return entry;
+    if (entry.count === best.count && entry.year > best.year) return entry;
+    return best;
+  }, null);
+
+  return {
+    firstYear,
+    lastYear,
+    peakYear: peakEntry?.year ?? null,
+    peakCount: peakEntry?.count ?? 0
+  };
+}
+
+function getAcquisitionHistoryInsights(history) {
+  const datedGames = (history?.years || []).flatMap((entry) => entry.games || [])
+    .filter((game) => Number.isFinite(game?.acquisitionTimestamp))
+    .sort((left, right) => (left.acquisitionTimestamp || 0) - (right.acquisitionTimestamp || 0));
+
+  if (!datedGames.length) {
+    return {
+      topMonthKey: "",
+      topMonthCount: 0,
+      longestGapDays: 0,
+      longestGapFrom: "",
+      longestGapTo: "",
+      bestStreakCount: 0,
+      bestStreakStart: "",
+      bestStreakEnd: "",
+      stillOwnedCount: 0,
+      averageRating: 0,
+      averageRatingSamples: 0,
+      expansionCount: 0,
+      baseCount: 0,
+      topMechanic: "",
+      topMechanicCount: 0,
+      topCategory: "",
+      topCategoryCount: 0
+    };
+  }
+
+  const monthCounts = new Map();
+  const mechanicCounts = new Map();
+  const categoryCounts = new Map();
+  let totalRating = 0;
+  let totalRatingSamples = 0;
+  let stillOwnedCount = 0;
+  let expansionCount = 0;
+  datedGames.forEach((game) => {
+    const date = new Date(game.acquisitionTimestamp);
+    const key = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
+    monthCounts.set(key, (monthCounts.get(key) || 0) + 1);
+    if (game.own) stillOwnedCount += 1;
+    if (isExpansionGame(game)) expansionCount += 1;
+    if (Number.isFinite(game.averageRating)) {
+      totalRating += Number(game.averageRating);
+      totalRatingSamples += 1;
+    }
+    (Array.isArray(game.mechanics) ? game.mechanics : []).forEach((item) => {
+      const value = String(item || "").trim();
+      if (!value) return;
+      mechanicCounts.set(value, (mechanicCounts.get(value) || 0) + 1);
+    });
+    (Array.isArray(game.categories) ? game.categories : []).forEach((item) => {
+      const value = String(item || "").trim();
+      if (!value) return;
+      categoryCounts.set(value, (categoryCounts.get(value) || 0) + 1);
+    });
+  });
+
+  const topMonthEntry = [...monthCounts.entries()].reduce((best, current) => {
+    if (!best) return current;
+    if (current[1] > best[1]) return current;
+    if (current[1] === best[1] && current[0] > best[0]) return current;
+    return best;
+  }, null);
+
+  const topMechanicEntry = [...mechanicCounts.entries()].reduce((best, current) => {
+    if (!best) return current;
+    if (current[1] > best[1]) return current;
+    if (current[1] === best[1] && current[0].localeCompare(best[0], state.language) < 0) return current;
+    return best;
+  }, null);
+
+  const topCategoryEntry = [...categoryCounts.entries()].reduce((best, current) => {
+    if (!best) return current;
+    if (current[1] > best[1]) return current;
+    if (current[1] === best[1] && current[0].localeCompare(best[0], state.language) < 0) return current;
+    return best;
+  }, null);
+
+  let longestGapDays = 0;
+  let longestGapFrom = "";
+  let longestGapTo = "";
+  let bestStreakCount = 1;
+  let bestStreakStart = datedGames[0].acquisitionDate || "";
+  let bestStreakEnd = datedGames[0].acquisitionDate || "";
+  let currentStreakCount = 1;
+  let currentStreakStart = datedGames[0].acquisitionDate || "";
+
+  for (let index = 1; index < datedGames.length; index += 1) {
+    const previous = datedGames[index - 1];
+    const current = datedGames[index];
+    const gapDays = Math.round(((current.acquisitionTimestamp || 0) - (previous.acquisitionTimestamp || 0)) / 86400000);
+
+    if (gapDays > longestGapDays) {
+      longestGapDays = gapDays;
+      longestGapFrom = previous.acquisitionDate || "";
+      longestGapTo = current.acquisitionDate || "";
+    }
+
+    if (gapDays === 1) {
+      currentStreakCount += 1;
+      if (currentStreakCount > bestStreakCount) {
+        bestStreakCount = currentStreakCount;
+        bestStreakStart = currentStreakStart;
+        bestStreakEnd = current.acquisitionDate || "";
+      }
+    } else {
+      currentStreakCount = 1;
+      currentStreakStart = current.acquisitionDate || "";
+    }
+  }
+
+  return {
+    topMonthKey: topMonthEntry?.[0] || "",
+    topMonthCount: topMonthEntry?.[1] || 0,
+    longestGapDays,
+    longestGapFrom,
+    longestGapTo,
+    bestStreakCount,
+    bestStreakStart,
+    bestStreakEnd,
+    stillOwnedCount,
+    averageRating: totalRatingSamples ? totalRating / totalRatingSamples : 0,
+    averageRatingSamples: totalRatingSamples,
+    expansionCount,
+    baseCount: Math.max(0, datedGames.length - expansionCount),
+    topMechanic: topMechanicEntry?.[0] || "",
+    topMechanicCount: topMechanicEntry?.[1] || 0,
+    topCategory: topCategoryEntry?.[0] || "",
+    topCategoryCount: topCategoryEntry?.[1] || 0
+  };
+}
+
+function getHistoryScopeLabel(scope) {
+  const copy = translations[state.language];
+  return {
+    owned: copy.historyScopeOwned,
+    archive: copy.historyScopeArchive,
+    all: copy.historyScopeAll
+  }[scope] || copy.historyScopeOwned;
+}
+
+function getMonthlyAcquisitionBreakdown(yearEntry) {
+  const months = Array.from({ length: 12 }, (_, index) => ({
+    month: index + 1,
+    count: 0,
+    games: []
+  }));
+
+  if (!yearEntry?.games?.length) {
+    return { year: null, months, peakMonth: null, peakCount: 0 };
+  }
+
+  yearEntry.games.forEach((game) => {
+    const timestamp = game.acquisitionTimestamp || parseAcquisitionTimestamp(game.acquisitionDate);
+    if (!Number.isFinite(timestamp)) return;
+    const monthIndex = new Date(timestamp).getMonth();
+    const target = months[monthIndex];
+    if (!target) return;
+    target.count += 1;
+    target.games.push(game);
+  });
+
+  const peakMonthEntry = months.reduce((best, entry) => {
+    if (!best) return entry;
+    if (entry.count > best.count) return entry;
+    if (entry.count === best.count && entry.month > best.month) return entry;
+    return best;
+  }, null);
+
+  return {
+    year: yearEntry.year,
+    months,
+    peakMonth: peakMonthEntry?.count ? peakMonthEntry.month : null,
+    peakCount: peakMonthEntry?.count || 0
+  };
+}
+
+function destroyHistoryCharts() {
+  Object.values(historyCharts).forEach((chart) => {
+    if (chart && typeof chart.destroy === "function") {
+      chart.destroy();
+    }
+  });
+  historyCharts = {
+    yearly: null,
+    monthly: null
+  };
+}
+
+function getHistoryChartTokens() {
+  const styles = getComputedStyle(document.body);
+  return {
+    accent: styles.getPropertyValue("--accent").trim() || "#975338",
+    accentStrong: styles.getPropertyValue("--accent-strong").trim() || "#6e2d17",
+    accentSoft: styles.getPropertyValue("--accent-soft").trim() || "#d3a784",
+    muted: styles.getPropertyValue("--muted").trim() || "#6f594b",
+    text: styles.getPropertyValue("--text").trim() || "#24160f",
+    line: styles.getPropertyValue("--line").trim() || "rgba(83, 52, 34, 0.13)",
+    surfaceStrong: styles.getPropertyValue("--surface-strong").trim() || "rgba(255, 252, 248, 0.93)",
+    fontSans: styles.getPropertyValue("--font-sans").trim() || "Manrope, sans-serif",
+    isDark: document.body.dataset.theme === "dark"
+  };
+}
+
+function buildHistoryChartOptions({
+  entries,
+  labels,
+  longLabels,
+  selectedIndex = -1,
+  highlightIndex = -1,
+  height,
+  mode,
+  interactive = false,
+  onSelect,
+  copy
+}) {
+  const tokens = getHistoryChartTokens();
+  const isLine = mode === "line";
+  const data = entries.map((entry, index) => ({
+    x: labels[index],
+    y: entry.count,
+    fillColor:
+      !isLine && index === selectedIndex
+        ? tokens.accentSoft
+        : !isLine && index === highlightIndex
+          ? tokens.accentStrong
+          : tokens.accent
+  }));
+  const discreteMarkers = [];
+  if (isLine && highlightIndex >= 0) {
+    discreteMarkers.push({
+      seriesIndex: 0,
+      dataPointIndex: highlightIndex,
+      fillColor: tokens.accentStrong,
+      strokeColor: tokens.surfaceStrong,
+      size: selectedIndex === highlightIndex ? 9 : 7
+    });
+  }
+  if (isLine && selectedIndex >= 0 && selectedIndex !== highlightIndex) {
+    discreteMarkers.push({
+      seriesIndex: 0,
+      dataPointIndex: selectedIndex,
+      fillColor: tokens.accentSoft,
+      strokeColor: tokens.surfaceStrong,
+      size: 8
+    });
+  }
+
+  return {
+    chart: {
+      type: isLine ? "line" : "bar",
+      height,
+      fontFamily: tokens.fontSans,
+      background: "transparent",
+      foreColor: tokens.muted,
+      toolbar: {
+        show: false
+      },
+      zoom: {
+        enabled: false
+      },
+      animations: {
+        enabled: true,
+        easing: "easeinout",
+        speed: 320
+      },
+      events: interactive
+        ? {
+            dataPointSelection(_event, _chartContext, config) {
+              if (typeof onSelect !== "function") return;
+              if (!Number.isInteger(config?.dataPointIndex) || config.dataPointIndex < 0) return;
+              onSelect(config.dataPointIndex);
+            }
+          }
+        : {}
+    },
+    series: [
+      {
+        name: copy.historyAcquisitionsLabel,
+        data
+      }
+    ],
+    theme: {
+      mode: tokens.isDark ? "dark" : "light"
+    },
+    colors: [tokens.accent],
+    dataLabels: {
+      enabled: false
+    },
+    stroke: {
+      show: true,
+      width: isLine ? 5 : 0,
+      curve: "straight",
+      lineCap: "round",
+      colors: [tokens.accentSoft]
+    },
+    fill: {
+      type: "gradient",
+      gradient: {
+        shade: tokens.isDark ? "dark" : "light",
+        shadeIntensity: 0.45,
+        inverseColors: false,
+        opacityFrom: isLine ? 0.34 : 0.96,
+        opacityTo: isLine ? 0.08 : 0.72,
+        stops: [0, 100]
+      }
+    },
+    markers: {
+      size: isLine ? 4.5 : 0,
+      strokeWidth: 3,
+      strokeColors: tokens.surfaceStrong,
+      colors: [tokens.accent],
+      hover: {
+        sizeOffset: 4
+      },
+      discrete: discreteMarkers
+    },
+    grid: {
+      borderColor: tokens.line,
+      strokeDashArray: 4,
+      xaxis: {
+        lines: {
+          show: false
+        }
+      },
+      padding: {
+        top: 8,
+        right: 8,
+        bottom: 0,
+        left: 0
+      }
+    },
+    plotOptions: {
+      bar: {
+        horizontal: false,
+        distributed: true,
+        columnWidth: entries.length >= 10 ? "46%" : "58%",
+        borderRadius: 12,
+        borderRadiusApplication: "end"
+      }
+    },
+    xaxis: {
+      type: "category",
+      categories: labels,
+      axisBorder: {
+        show: false
+      },
+      axisTicks: {
+        show: false
+      },
+      tooltip: {
+        enabled: false
+      },
+      labels: {
+        trim: false,
+        hideOverlappingLabels: false,
+        style: {
+          colors: labels.map(() => tokens.muted),
+          fontSize: "12px",
+          fontWeight: 700
+        }
+      }
+    },
+    yaxis: {
+      min: 0,
+      forceNiceScale: true,
+      labels: {
+        show: false
+      }
+    },
+    tooltip: {
+      theme: tokens.isDark ? "dark" : "light",
+      shared: false,
+      intersect: isLine,
+      x: {
+        formatter(_value, { dataPointIndex }) {
+          return longLabels[dataPointIndex] || labels[dataPointIndex] || "";
+        }
+      },
+      y: {
+        formatter(value) {
+          return `${value} ${copy.historyAcquisitionsLabel}`;
+        }
+      },
+      marker: {
+        show: false
+      }
+    },
+    states: {
+      hover: {
+        filter: {
+          type: "none"
+        }
+      },
+      active: {
+        allowMultipleDataPointsSelection: false,
+        filter: {
+          type: "none"
+        }
+      }
+    },
+    legend: {
+      show: false
+    }
+  };
+}
+
+function renderHistoryCharts({ history, selectedYear, selectedEntry, selectedMonth, monthlyBreakdown, copy }) {
+  destroyHistoryCharts();
+
+  const ApexChartsCtor = window.ApexCharts;
+  if (typeof ApexChartsCtor !== "function") return;
+
+  const yearTarget = elements.historyPageContent?.querySelector("#history-year-chart");
+  const monthTarget = elements.historyPageContent?.querySelector("#history-month-chart");
+
+  if (yearTarget && history.years.length) {
+    const yearEntries = history.years.map((entry) => ({ count: entry.count }));
+    const yearLabels = history.years.map((entry) => String(entry.year));
+    const selectedIndex = history.years.findIndex((entry) => entry.year === selectedYear);
+    historyCharts.yearly = new ApexChartsCtor(
+      yearTarget,
+      buildHistoryChartOptions({
+        entries: yearEntries,
+        labels: yearLabels,
+        longLabels: yearLabels,
+        selectedIndex,
+        height: 320,
+        mode: state.historyChartMode,
+        interactive: true,
+        onSelect(dataPointIndex) {
+          const nextYear = history.years[dataPointIndex]?.year;
+          if (Number.isFinite(nextYear)) {
+            setHistorySelectedYear(nextYear);
+          }
+        },
+        copy
+      })
+    );
+    historyCharts.yearly.render();
+  }
+
+  if (monthTarget && selectedEntry) {
+    const monthLabels = monthlyBreakdown.months.map((entry) => formatMonthNumber(entry.month, "short"));
+    const monthLongLabels = monthlyBreakdown.months.map((entry) => formatMonthNumber(entry.month, "long"));
+    const selectedIndex = monthlyBreakdown.months.findIndex((entry) => entry.month === selectedMonth);
+    const highlightIndex = monthlyBreakdown.months.findIndex((entry) => entry.month === monthlyBreakdown.peakMonth);
+    historyCharts.monthly = new ApexChartsCtor(
+      monthTarget,
+      buildHistoryChartOptions({
+        entries: monthlyBreakdown.months.map((entry) => ({ count: entry.count })),
+        labels: monthLabels,
+        longLabels: monthLongLabels,
+        selectedIndex,
+        highlightIndex,
+        height: 280,
+        mode: state.historyChartMode,
+        interactive: true,
+        onSelect(dataPointIndex) {
+          const nextMonth = monthlyBreakdown.months[dataPointIndex]?.month;
+          if (Number.isFinite(nextMonth)) {
+            setHistorySelectedMonth(nextMonth);
+          }
+        },
+        copy
+      })
+    );
+    historyCharts.monthly.render();
+  }
+}
+
+function ensureValidHistorySelection(history) {
+  const availableYears = new Set((history?.years || []).map((entry) => entry.year));
+  if (!availableYears.size) {
+    state.historySelectedYear = null;
+    state.historySelectedMonth = null;
+    return null;
+  }
+  if (availableYears.has(state.historySelectedYear)) {
+    return state.historySelectedYear;
+  }
+  const fallbackYear = history.years[history.years.length - 1].year;
+  state.historySelectedYear = fallbackYear;
+  return fallbackYear;
+}
+
+function renderAcquisitionHistoryPage() {
+  if (!elements.historyPageContent) return;
+
+  const copy = translations[state.language];
+  const history = getAcquisitionHistory(state.historyScope);
+  const globalHistory = getAcquisitionHistory("all");
+  const summary = getAcquisitionHistorySummary(globalHistory);
+  const insights = getAcquisitionHistoryInsights(globalHistory);
+  const selectedYear = ensureValidHistorySelection(history);
+  const selectedEntry = history.years.find((entry) => entry.year === selectedYear) || null;
+  const monthlyBreakdown = getMonthlyAcquisitionBreakdown(selectedEntry);
+  const selectedMonthEntry = monthlyBreakdown.months.find((entry) => entry.month === state.historySelectedMonth) || null;
+  const listGames = selectedMonthEntry ? selectedMonthEntry.games : selectedEntry?.games || [];
+  const listHeading = selectedEntry
+    ? state.historySelectedMonth
+      ? `${selectedEntry.year} · ${formatMonthNumber(state.historySelectedMonth, "long")}`
+      : String(selectedEntry.year)
+    : copy.historySelectedYearFallback;
+  const listEmptyLabel = state.historySelectedMonth ? copy.historyListEmptyMonth : copy.historyListEmpty;
+  const rangeLabel = summary.firstYear && summary.lastYear
+    ? summary.firstYear === summary.lastYear
+      ? String(summary.firstYear)
+      : `${summary.firstYear}-${summary.lastYear}`
+    : copy.notAvailable;
+  const peakLabel = summary.peakYear ? `${summary.peakYear} (${summary.peakCount})` : copy.notAvailable;
+  const stillOwnedLabel = globalHistory.datedCount
+    ? `${Math.round((insights.stillOwnedCount / globalHistory.datedCount) * 100)}%`
+    : copy.notAvailable;
+  const averageRatingRounded = insights.averageRating ? Math.round(insights.averageRating * 10) / 10 : 0;
+  const averageRatingLabel = averageRatingRounded
+    ? `${averageRatingRounded}`.replace(".", state.language === "es" ? "," : ".")
+    : copy.notAvailable;
+  const expansionMixLabel = globalHistory.datedCount
+    ? `${Math.round((insights.expansionCount / globalHistory.datedCount) * 100)}%`
+    : copy.notAvailable;
+  const coverageSummary = formatTemplate(copy.historyCoverageSummary, {
+    dated: String(history.datedCount),
+    total: String(history.totalScopeCount)
+  });
+
+  elements.historyPageContent.innerHTML = `
+    <div class="history-page">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">${escapeHtml(copy.historyEyebrow)}</p>
+          <h2>${escapeHtml(copy.historyTitle)}</h2>
+          <p>${escapeHtml(copy.historyBody)}</p>
+        </div>
+        <div class="section-heading__actions">
+          <div class="history-scope-picker">
+            <span class="history-scope-picker__label">${escapeHtml(copy.historyScopeLabel)}</span>
+            <div class="segmented-control segmented-control--compact" role="group" aria-label="${escapeAttribute(copy.historyScopeLabel)}">
+              ${[
+                ["owned", copy.historyScopeOwned],
+                ["archive", copy.historyScopeArchive],
+                ["all", copy.historyScopeAll]
+              ]
+                .map(
+                  ([value, label]) => `
+                    <button
+                      class="segment-button ${state.historyScope === value ? "is-active" : ""}"
+                      data-history-scope="${escapeAttribute(value)}"
+                      type="button"
+                      aria-pressed="${state.historyScope === value ? "true" : "false"}"
+                    >
+                      ${escapeHtml(label)}
+                    </button>
+                  `
+                )
+                .join("")}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="history-kpis">
+        ${historyKpiCard(copy.historyMetricRecorded, `${globalHistory.datedCount}/${globalHistory.totalScopeCount}`)}
+        ${historyKpiCard(copy.historyMetricRange, rangeLabel)}
+        ${historyKpiCard(copy.historyMetricPeak, peakLabel)}
+        ${historyKpiCard(copy.historyMetricStillOwned, stillOwnedLabel, formatTemplate(copy.historyMetricStillOwnedSuffix, { count: String(insights.stillOwnedCount), total: String(globalHistory.datedCount) }))}
+        ${historyKpiCard(copy.historyMetricAverageRating, averageRatingLabel, formatTemplate(copy.historyMetricAverageRatingSuffix, { count: String(insights.averageRatingSamples) }))}
+        ${historyKpiCard(copy.historyMetricExpansionMix, expansionMixLabel, formatTemplate(copy.historyMetricExpansionMixSuffix, { expansions: String(insights.expansionCount), base: String(insights.baseCount) }))}
+      </div>
+
+      <article class="info-card history-card history-insights-card">
+        <div class="history-insights-card__header">
+          <div>
+            <p class="eyebrow">${escapeHtml(copy.historyInsightsEyebrow)}</p>
+            <h3>${escapeHtml(copy.historyInsightsTitle)}</h3>
+          </div>
+        </div>
+        <div class="history-insights-grid">
+          ${historyInsightCard(
+            copy.historyInsightTopMonth,
+            insights.topMonthKey ? formatMonthKey(insights.topMonthKey) : copy.notAvailable,
+            insights.topMonthCount ? `${insights.topMonthCount} ${copy.historyAcquisitionsLabel}` : copy.notAvailable
+          )}
+          ${historyInsightCard(
+            copy.historyInsightLongestGap,
+            insights.longestGapFrom && insights.longestGapTo ? `${formatAcquisitionDate(insights.longestGapFrom)} - ${formatAcquisitionDate(insights.longestGapTo)}` : copy.notAvailable,
+            insights.longestGapDays
+              ? formatTemplate(copy.historyInsightGapSuffix, { days: String(insights.longestGapDays) })
+              : copy.notAvailable
+          )}
+          ${historyInsightCard(
+            copy.historyInsightBestStreak,
+            insights.bestStreakStart && insights.bestStreakEnd ? `${formatAcquisitionDate(insights.bestStreakStart)} - ${formatAcquisitionDate(insights.bestStreakEnd)}` : copy.notAvailable,
+            insights.bestStreakCount <= 1
+              ? copy.historyInsightNoStreak
+              : formatTemplate(copy.historyInsightStreakSuffixPlural, { count: String(insights.bestStreakCount) })
+          )}
+          ${historyInsightCard(
+            copy.historyInsightTopMechanic,
+            insights.topMechanic || copy.notAvailable,
+            insights.topMechanicCount ? formatTemplate(copy.historyInsightCountSuffix, { count: String(insights.topMechanicCount) }) : copy.notAvailable
+          )}
+          ${historyInsightCard(
+            copy.historyInsightTopCategory,
+            insights.topCategory || copy.notAvailable,
+            insights.topCategoryCount ? formatTemplate(copy.historyInsightCountSuffix, { count: String(insights.topCategoryCount) }) : copy.notAvailable
+          )}
+        </div>
+      </article>
+
+      <div class="history-layout">
+        <div class="history-main-column">
+          <article class="info-card history-card history-chart-card">
+            <p class="eyebrow">${escapeHtml(copy.historyChartEyebrow)}</p>
+            <div class="history-chart-card__header">
+              <div>
+                <h3>${escapeHtml(copy.historyChartTitle)}</h3>
+                <p>${escapeHtml(copy.historyChartBody)}</p>
+              </div>
+              <div class="history-chart-card__side">
+                <div class="history-chart-mode-control">
+                  <span class="sr-only">${escapeHtml(copy.historyChartModeLabel)}</span>
+                  <div class="segmented-control segmented-control--compact history-chart-mode-control__group" role="group" aria-label="${escapeAttribute(copy.historyChartModeLabel)}">
+                    ${[
+                      ["bar", copy.historyChartModeBar, "chartBar"],
+                      ["line", copy.historyChartModeLine, "chartLine"]
+                    ]
+                      .map(
+                        ([value, label, icon]) => `
+                          <button
+                            class="segment-button history-chart-mode-button ${state.historyChartMode === value ? "is-active" : ""}"
+                            data-history-chart-mode="${escapeAttribute(value)}"
+                            type="button"
+                            aria-pressed="${state.historyChartMode === value ? "true" : "false"}"
+                            aria-label="${escapeAttribute(label)}"
+                            title="${escapeAttribute(label)}"
+                          >
+                            ${iconMarkup(icon, "history-chart-mode-button__icon")}
+                          </button>
+                        `
+                      )
+                      .join("")}
+                  </div>
+                </div>
+                <div class="history-chart-card__legend">
+                  <span>${escapeHtml(copy.historySelectedYearLabel)}</span>
+                  <strong>${escapeHtml(selectedEntry ? String(selectedEntry.year) : copy.historySelectedYearFallback)}</strong>
+                  <small>${escapeHtml(
+                    selectedEntry
+                      ? `${selectedEntry.count} ${copy.historyAcquisitionsLabel}`
+                      : copy.historyBarHint
+                  )}</small>
+                </div>
+              </div>
+            </div>
+            ${
+              history.years.length
+                ? `
+                  <div class="history-chart" data-chart-mode="${escapeAttribute(state.historyChartMode)}" aria-label="${escapeAttribute(copy.historyChartTitle)}">
+                    <div class="history-chart__canvas" id="history-year-chart"></div>
+                    <div class="sr-only" id="history-year-selector" aria-hidden="true">
+                      ${history.years
+                        .map(
+                          (entry) => `
+                            <button
+                              data-history-year="${escapeAttribute(entry.year)}"
+                              type="button"
+                              aria-label="${escapeAttribute(`${entry.year}: ${entry.count} ${copy.historyAcquisitionsLabel}`)}"
+                            >
+                              ${escapeHtml(String(entry.year))}
+                            </button>
+                          `
+                        )
+                        .join("")}
+                    </div>
+                  </div>
+                  <p class="history-chart__hint">${escapeHtml(state.historyChartMode === "line" ? copy.historyLineHint : copy.historyBarHint)}</p>
+                `
+                : `
+                  <div class="history-empty-state">
+                    <h3>${escapeHtml(copy.historyEmptyTitle)}</h3>
+                    <p>${escapeHtml(copy.historyEmptyBody)}</p>
+                  </div>
+                `
+            }
+          </article>
+
+          <article class="info-card history-card history-month-chart-card">
+            <p class="eyebrow">${escapeHtml(copy.historyMonthChartEyebrow)}</p>
+            <div class="history-chart-card__header">
+              <div>
+                <h3>${escapeHtml(copy.historyMonthChartTitle)}</h3>
+                <p>${escapeHtml(copy.historyMonthChartBody)}</p>
+              </div>
+              <div class="history-chart-card__legend">
+                <span>${escapeHtml(state.historySelectedMonth ? copy.historySelectedMonthLabel : copy.historyMonthChartPeak)}</span>
+                <strong>${escapeHtml(
+                  state.historySelectedMonth
+                    ? formatMonthNumber(state.historySelectedMonth, "long")
+                    : monthlyBreakdown.peakMonth
+                      ? formatMonthNumber(monthlyBreakdown.peakMonth, "long")
+                      : copy.notAvailable
+                )}</strong>
+                <small>${escapeHtml(
+                  state.historySelectedMonth
+                    ? selectedMonthEntry
+                      ? `${selectedMonthEntry.count} ${copy.historyAcquisitionsLabel}`
+                      : copy.historyMonthChartEmpty
+                    : monthlyBreakdown.peakCount
+                      ? `${monthlyBreakdown.peakCount} ${copy.historyAcquisitionsLabel}`
+                      : copy.historyMonthChartEmpty
+                )}</small>
+              </div>
+            </div>
+            ${
+              selectedEntry
+                ? `
+                  <div class="history-month-chart" data-chart-mode="${escapeAttribute(state.historyChartMode)}" aria-label="${escapeAttribute(`${copy.historyMonthChartTitle} ${selectedEntry.year}`)}">
+                    <div class="history-month-chart__canvas" id="history-month-chart"></div>
+                    <div class="sr-only" id="history-month-selector" aria-hidden="true">
+                      ${monthlyBreakdown.months
+                        .map(
+                          (entry) => `
+                            <button
+                              data-history-month="${escapeAttribute(entry.month)}"
+                              type="button"
+                              aria-label="${escapeAttribute(`${formatMonthNumber(entry.month, "long")}: ${entry.count} ${copy.historyAcquisitionsLabel}`)}"
+                            >
+                              ${escapeHtml(formatMonthNumber(entry.month, "long"))}
+                            </button>
+                          `
+                        )
+                        .join("")}
+                    </div>
+                  </div>
+                  <p class="history-chart__hint">${escapeHtml(`${state.historyChartMode === "line" ? copy.historyMonthLineHint : copy.historyMonthBarHint} ${copy.historyMonthSelectionHint}`)}</p>
+                `
+                : `
+                  <div class="history-empty-state">
+                    <h3>${escapeHtml(copy.historyMonthChartTitle)}</h3>
+                    <p>${escapeHtml(copy.historyMonthChartEmpty)}</p>
+                  </div>
+                `
+            }
+          </article>
+        </div>
+
+        <aside class="history-sidebar">
+          <article class="info-card history-card">
+            <p class="eyebrow">${escapeHtml(copy.historyCoverageTitle)}</p>
+            <h3>${escapeHtml(getHistoryScopeLabel(state.historyScope))}</h3>
+            <p>${escapeHtml(copy.historyCoverageBody)}</p>
+            <p class="history-coverage-note">${escapeHtml(coverageSummary)}</p>
+          </article>
+
+          <article class="info-card history-card history-list-card">
+            <p class="eyebrow">${escapeHtml(copy.historyListTitle)}</p>
+            <h3>${escapeHtml(listHeading)}</h3>
+            <div class="history-detail-list">
+              ${
+                listGames.length
+                  ? listGames
+                    .map(
+                      (game) => `
+                        <button class="history-detail-item" data-history-game-id="${escapeAttribute(game.id)}" type="button">
+                          <div class="game-card__art history-detail-item__cover" id="history-detail-cover-${escapeAttribute(game.id)}"></div>
+                          <div class="history-detail-item__body">
+                            <div class="history-detail-item__header">
+                              <strong>${escapeHtml(getDisplayName(game))}</strong>
+                              <span class="history-detail-item__date">${escapeHtml(formatAcquisitionDate(game.acquisitionDate))}</span>
+                            </div>
+                            <div class="detail-meta">
+                              ${metaPill("players", formatPlayers(game))}
+                              ${metaPill("time", formatPlayTime(game))}
+                            </div>
+                          </div>
+                        </button>
+                      `
+                    )
+                    .join("")
+                  : `<p class="history-list-empty">${escapeHtml(listEmptyLabel)}</p>`
+              }
+            </div>
+          </article>
+        </aside>
+      </div>
+    </div>
+  `;
+
+  elements.historyPageContent.querySelectorAll("[data-history-scope]").forEach((button) => {
+    button.addEventListener("click", () => setHistoryScope(button.dataset.historyScope));
+  });
+  elements.historyPageContent.querySelectorAll("[data-history-chart-mode]").forEach((button) => {
+    button.addEventListener("click", () => setHistoryChartMode(button.dataset.historyChartMode));
+  });
+  elements.historyPageContent.querySelectorAll("[data-history-year]").forEach((button) => {
+    button.addEventListener("click", () => setHistorySelectedYear(button.dataset.historyYear));
+  });
+  elements.historyPageContent.querySelectorAll("[data-history-month]").forEach((button) => {
+    button.addEventListener("click", () => setHistorySelectedMonth(button.dataset.historyMonth));
+  });
+  elements.historyPageContent.querySelectorAll("[data-history-game-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const game = getGameById(Number(button.dataset.historyGameId));
+      if (game) openDetails(game);
+    });
+  });
+
+  (selectedEntry?.games || []).forEach((game) => {
+    const cover = elements.historyPageContent.querySelector(`#history-detail-cover-${CSS.escape(String(game.id))}`);
+    if (cover) injectCover(cover, game, 128);
+  });
+
+  renderHistoryCharts({
+    history,
+    selectedYear,
+    selectedEntry,
+    selectedMonth: state.historySelectedMonth,
+    monthlyBreakdown,
+    copy
+  });
+}
+
+function historyKpiCard(label, value, note = "") {
+  return `
+    <article class="history-kpi-card">
+      <span>${escapeHtml(label)}</span>
+      <strong>${escapeHtml(value)}</strong>
+      ${note ? `<small>${escapeHtml(note)}</small>` : ""}
+    </article>
+  `;
+}
+
+function historyInsightCard(label, value, note) {
+  return `
+    <article class="history-insight-card">
+      <span>${escapeHtml(label)}</span>
+      <strong>${escapeHtml(value)}</strong>
+      <small>${escapeHtml(note)}</small>
+    </article>
+  `;
 }
 
 function renderResultsSummary() {
@@ -2406,6 +3476,25 @@ function formatAcquisitionDate(value) {
   }).format(new Date(timestamp));
 }
 
+function formatMonthKey(value) {
+  const [yearText, monthText] = String(value || "").split("-");
+  const year = Number(yearText);
+  const month = Number(monthText);
+  if (!Number.isFinite(year) || !Number.isFinite(month) || month < 1 || month > 12) return "";
+  return new Intl.DateTimeFormat(state.language === "es" ? "es-AR" : "en-US", {
+    year: "numeric",
+    month: "long"
+  }).format(new Date(year, month - 1, 1));
+}
+
+function formatMonthNumber(month, style = "short") {
+  const value = Number(month);
+  if (!Number.isFinite(value) || value < 1 || value > 12) return "";
+  return new Intl.DateTimeFormat(state.language === "es" ? "es-AR" : "en-US", {
+    month: style
+  }).format(new Date(2026, value - 1, 1));
+}
+
 function buildHomeRecentFacts(game) {
   const facts = [];
   const players = formatPlayers(game);
@@ -2661,6 +3750,13 @@ function labelForAgeBand(value) {
 
 function getGameById(gameId) {
   return state.data?.games?.find((game) => game.id === gameId) || null;
+}
+
+function formatTemplate(template, replacements) {
+  return Object.entries(replacements || {}).reduce(
+    (result, [key, value]) => result.replaceAll(`{${key}}`, String(value)),
+    String(template || "")
+  );
 }
 
 function labelForRecommendation(value) {
