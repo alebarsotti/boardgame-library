@@ -88,6 +88,9 @@ const translations = {
     content: "Resumen",
     links: "Enlaces",
     openBgg: "Abrir en BGG",
+    openRules: "Leer resumen de reglas",
+    rulesAvailable: "Reglas disponibles",
+    rulesFromBase: "Reglas del juego base",
     expansion: "Expansión",
     expansionRequiresBase: "Requiere juego base",
     expansionsTitle: "Expansiones",
@@ -288,6 +291,9 @@ const translations = {
     content: "Summary",
     links: "Links",
     openBgg: "Open on BGG",
+    openRules: "Read rules summary",
+    rulesAvailable: "Rules available",
+    rulesFromBase: "Base game rules",
     expansion: "Expansion",
     expansionRequiresBase: "Requires base game",
     expansionsTitle: "Expansions",
@@ -446,6 +452,8 @@ const icons = {
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 6.5-5 5 5 5"/><path d="M19.5 11.5h-10"/></svg>',
   external:
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5h5v5"/><path d="M10 14 19 5"/><path d="M19 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></svg>',
+  rules:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4.5A2.5 2.5 0 0 1 7.5 2H19v17H7.5A2.5 2.5 0 0 0 5 21.5z"/><path d="M5 4.5v17M9 7h6M9 11h6"/></svg>',
   duo:
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8.5" cy="9" r="2.6"/><circle cx="15.5" cy="9" r="2.6"/><path d="M4.5 18a4 4 0 0 1 4-4h0"/><path d="M19.5 18a4 4 0 0 0-4-4h0"/></svg>',
   quick:
@@ -1564,6 +1572,8 @@ function renderGames() {
     const art = node.querySelector(".game-card__art");
     const badge = node.querySelector(".game-card__badge");
     const flag = node.querySelector(".game-card__flag");
+    const rulesBadge = node.querySelector(".game-card__rules");
+    const rulesGuide = getRulesGuide(game);
     const displayName = getDisplayName(game);
     node.classList.toggle("game-card--list", isListView);
     node.classList.toggle("game-card--new", game.isNew);
@@ -1571,6 +1581,10 @@ function renderGames() {
     node.querySelector(".game-card__subtitle").textContent = buildCardSubtitle(game);
     flag.textContent = translations[state.language].newTag;
     flag.classList.toggle("hidden", !game.isNew);
+    rulesBadge.textContent = rulesGuide?.inherited
+      ? translations[state.language].rulesFromBase
+      : translations[state.language].rulesAvailable;
+    rulesBadge.classList.toggle("hidden", !rulesGuide);
     badge.textContent = game.averageRating ? game.averageRating.toFixed(1) : "n/a";
     badge.dataset.rating = typeof game.averageRating === "number" && Number.isFinite(game.averageRating)
       ? String(game.averageRating)
@@ -1729,6 +1743,7 @@ function openDetails(game) {
   const heroBadges = [game.own ? copy.owned : copy.prevOwned].concat(getDisplayTags(game, { compact: true })).slice(0, 3);
   const tags = getDisplayTags(game).concat(game.categories || [], game.mechanics || []).slice(0, 10);
   const linkedExpansions = getExpansionGames(game);
+  const rulesGuide = getRulesGuide(game);
   const content = getGameContent(game, "summary");
   const linkedExpansionsMarkup = linkedExpansions.length
     ? `
@@ -1757,6 +1772,11 @@ function openDetails(game) {
             ${detailAsideMetric(copy.averageRating, game.averageRating ? game.averageRating.toFixed(2) : copy.notAvailable)}
           </div>
           <div class="detail-actions detail-actions--aside">
+            ${
+              rulesGuide
+                ? `<a class="button button--primary" href="${escapeAttribute(rulesGuide.url)}">${renderIconLabel(copy.openRules, "rules")}</a>`
+                : ""
+            }
             <a class="button button--ghost" href="${escapeAttribute(game.bggUrl)}" target="_blank" rel="noreferrer">${renderIconLabel(copy.openBgg, "external")}</a>
           </div>
           <div class="detail-tags detail-tags--soft">${tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}</div>
@@ -1837,6 +1857,15 @@ function detailKv(label, value) {
 
 function detailAsideMetric(label, value) {
   return `<div class="detail-aside-metric"><strong>${escapeHtml(label)}</strong><span>${escapeHtml(value)}</span></div>`;
+}
+
+function getRulesGuide(game) {
+  const registry = window.BOARDGAME_RULES || {};
+  const directGuide = registry[game?.id];
+  if (directGuide) return { ...directGuide, inherited: false };
+  const baseGame = getRequiredBaseGame(game);
+  const baseGuide = baseGame ? registry[baseGame.id] : null;
+  return baseGuide ? { ...baseGuide, inherited: true, sourceGameId: baseGame.id } : null;
 }
 function drawRandomFromCurrentScope() {
   if (state.randomRevealState === "revealing") return;

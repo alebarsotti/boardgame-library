@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Resumen no oficial en español de las reglas de Munchkin, preparado a partir del reglamento versión 1.8." />
+    <title>Munchkin · Resumen de reglas · Ludoteca de Ale</title>
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&amp;icon_names=info&amp;display=block" rel="stylesheet" />
+    <link rel="stylesheet" href="../../styles.css" />
+    <link rel="stylesheet" href="../rules.css?v=20260723-1" />
+    <script>
+      try {
+        const preferences = JSON.parse(localStorage.getItem("bgg-library-preferences-v4") || "{}");
+        document.documentElement.style.colorScheme = preferences.theme === "light" ? "light" : "dark";
+        document.addEventListener("DOMContentLoaded", () => {
+          document.body.dataset.theme = preferences.theme === "light" ? "light" : "dark";
+        });
+      } catch (_) {}
+    </script>
+  </head>
+  <body class="rules-page" data-page="browse" data-game-id="1927">
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+    <div class="rules-shell">
+      <nav class="rules-topbar" aria-label="Navegación de la guía">
+        <a class="rules-brand" href="../../" aria-label="Volver a la Ludoteca de Ale">
+          <span class="eyebrow">Biblioteca personal</span>
+          <strong>Ludoteca de Ale</strong>
+        </a>
+        <div class="rules-topbar__actions">
+          <a class="button button--ghost" href="../../">
+            <span aria-hidden="true">←</span><span class="rules-topbar__label">Volver</span>
+          </a>
+          <a class="button button--ghost" href="https://boardgamegeek.com/boardgame/1927" target="_blank" rel="noreferrer">Ver en BGG</a>
+          <details class="rules-manuals-menu">
+            <summary class="button button--ghost">Ver reglamento</summary>
+            <div class="rules-manuals-menu__panel">
+              <a href="https://www.dropbox.com/scl/fo/a4v9ti3qhbn2se98zh24g/AHSo6ZWXfO15DzypG9HSFDE?dl=0&amp;e=1&amp;preview=Munchkin_Reglamento_Web.pdf&amp;rlkey=piqt8coebkd9d4gyoxcps4wtp&amp;st=wljhfcb2" target="_blank" rel="noreferrer">Juego base</a>
+              <a href="https://www.dropbox.com/scl/fo/a4v9ti3qhbn2se98zh24g/ALmkcwUAs-ZsOrtdkS5Tjmo/Munchkin2_Reglamento_Web.pdf?rlkey=piqt8coebkd9d4gyoxcps4wtp&amp;e=1&amp;dl=0" target="_blank" rel="noreferrer">Munchkin 2 · Hacha Sobrenatural</a>
+              <a href="https://www.dropbox.com/scl/fo/a4v9ti3qhbn2se98zh24g/AIWts6oHLGQr2EJLpW0O79Q/Munchkin3_Reglamento_Web.pdf?rlkey=piqt8coebkd9d4gyoxcps4wtp&amp;e=1&amp;dl=0" target="_blank" rel="noreferrer">Munchkin 3 · Errores Clericales</a>
+            </div>
+          </details>
+        </div>
+      </nav>
+
+      <header class="rules-game-summary">
+        <div class="rules-game-summary__cover">
+          <img
+            data-rules-game-cover
+            src="https://cf.geekdo-images.com/J-ts3MW0UhDzs621TR6cog__original/img/FbqPPCilgZKND2xmhWJgkfjZiYE=/0x0/filters:format(jpeg)/pic1871016.jpg"
+            alt="Portada de Munchkin"
+          />
+        </div>
+        <div class="rules-game-summary__copy">
+          <p class="eyebrow">Resumen de reglas</p>
+          <h1 data-rules-game-title>Munchkin</h1>
+          <div class="rules-game-summary__meta" aria-label="Datos principales">
+            <span><strong data-rules-game-players>3–6</strong> jugadores</span>
+            <span><strong data-rules-game-time>60–120 min</strong> de juego</span>
+          </div>
+          <p class="rules-game-summary__description" data-rules-game-summary data-rules-summary-override>Matá a los monstruos · Robá los tesoros · Traicioná a tus amigos</p>
+        </div>
+      </header>
+
+      <div class="rules-layout">
+        <nav class="rules-toc" aria-label="Índice de reglas">
+          <strong>Contenido</strong>
+          <a href="#objetivo">Objetivo</a><a href="#preparacion">Preparación</a><a href="#turno">Tu turno</a>
+          <a href="#combate">Combate</a><a href="#personaje">Personaje</a>
+          <a href="#items">Ítems y tesoros</a><a href="#cartas">Cartas especiales</a><a href="#momentos">Cuándo jugar cartas</a>
+          <a href="#expansiones">Expansiones</a><a href="#reglas-clave">Reglas clave</a>
+        </nav>
+
+        <main class="rules-content" id="contenido">
+          <section class="rules-section" id="objetivo">
+            <h2>Objetivo de la partida</h2>
+            <div class="rules-grid rules-grid--two">
+              <article class="rule-card"><span class="rule-kicker">Meta</span><h3>Nivel 10</h3><p>Sé la primera persona en alcanzarlo.</p></article>
+              <article class="rule-card"><span class="rule-kicker">Victoria</span><h3>Matá un monstruo</h3><p>El último nivel debe ganarse así, salvo que una carta diga lo contrario.</p></article>
+            </div>
+          </section>
+
+          <section class="rules-section" id="preparacion">
+            <h2>Preparación</h2>
+            <div class="rules-grid">
+              <article class="rule-card rule-card--with-info">
+                <span class="rule-step">1</span>
+                <h3>Formá dos mazos: Puertas y Tesoros</h3>
+                <p>Mezclá cada uno y dejá su descarte boca arriba por separado.</p>
+                <button class="rule-info-button" type="button" aria-label="Más información sobre los mazos" aria-expanded="false" aria-controls="mazos-info">
+                  <span class="material-symbols-outlined" aria-hidden="true">info</span>
+                </button>
+                <div class="rule-info-tooltip" id="mazos-info" role="tooltip" hidden>
+                  <p>No se pueden revisar las cartas descartadas, a menos que una carta diga lo contrario.</p>
+                </div>
+              </article>
+              <article class="rule-card"><span class="rule-step">2</span><h3>Repartí</h3><p>Cada jugador recibe <strong>4 Puertas y 4 Tesoros</strong>. Conservá las cartas de la mano ocultas.</p></article>
+              <article class="rule-card"><span class="rule-step">3</span><h3>Creá tu personaje</h3><p>Todos comienzan como <strong>humanos de nivel 1, sin clase</strong>. Podés bajar una carta de Raza, una de Clase y los Ítems utilizables.</p></article>
+            </div>
+          </section>
+
+          <section class="rules-section" id="turno">
+            <h2>Fases del turno</h2>
+            <div class="rules-grid">
+              <article class="rule-card"><span class="rule-step">1</span><h3>Patear la puerta</h3><p>Robá una Puerta <strong>boca arriba</strong>. Si es:</p><ul class="rule-compact-list"><li><strong>Monstruo</strong> → combatilo.</li><li><strong>Maldición</strong> → resolvela.</li><li><strong>Otra</strong> → conservala o jugala.</li></ul></article>
+              <article class="rule-card"><span class="rule-step">2</span><h3>Buscar problemas o saquear</h3><p>Si no apareció un monstruo, jugá uno de tu mano para combatirlo o robá otra Puerta <strong>boca abajo</strong> y añadila a tu mano.</p></article>
+              <article class="rule-card rule-card--with-info">
+                <span class="rule-step">3</span>
+                <h3>Caridad</h3>
+                <p>Terminá con un máximo de <strong>5 cartas</strong> en la mano, ya sea jugando o dándole el exceso al jugador de menor nivel.</p>
+                <button class="rule-info-button" type="button" aria-label="Más información sobre Caridad" aria-expanded="false" aria-controls="caridad-info">
+                  <span class="material-symbols-outlined" aria-hidden="true">info</span>
+                </button>
+                <div class="rule-info-tooltip" id="caridad-info" role="tooltip" hidden>
+                  <ul><li>Si hay empate, dividí las cartas equitativamente.</li><li>Si vos sos el de menor nivel (solo o en empate), descartá las cartas.</li></ul>
+                </div>
+              </article>
+            </div>
+            <div class="rule-callout"><strong>Importante:</strong> si combatiste al monstruo que apareció al abrir la puerta, omití la fase 2 y pasá directamente a Caridad.</div>
+          </section>
+
+          <details class="rules-section rules-section--collapsible" id="combate" open>
+            <summary><span><strong>Combate</strong><small>Cómo comparar fuerzas, pedir ayuda y recibir recompensas.</small></span></summary>
+            <div class="rules-section__body">
+            <div class="combat-flow">
+              <section class="combat-stage" aria-labelledby="combat-stage-strength">
+                <header class="combat-stage__heading">
+                  <div><h3 id="combat-stage-strength">Compará las fuerzas</h3><p>Calculá ambos bandos antes de resolver el combate.</p></div>
+                </header>
+                <div class="rule-formula">Tu fuerza = Nivel + bonificaciones − penalizaciones</div>
+                <div class="rules-grid rules-grid--two">
+                  <article class="rule-card"><span class="rule-kicker">Tu bando</span><h3>Debe superar al monstruo</h3></article>
+                  <article class="rule-card"><span class="rule-kicker">Monstruos</span><h3>Ganan los empates</h3></article>
+                </div>
+              </section>
+
+              <section class="combat-stage" aria-labelledby="combat-stage-before">
+                <header class="combat-stage__heading">
+                  <div><h3 id="combat-stage-before">Antes de resolver</h3><p>Pedí ayuda y dejá que los demás intervengan.</p></div>
+                </header>
+                <div class="rule-callout"><strong>Dales unos segundos:</strong> los demás pueden jugar cartas para alterar el combate antes de que reclames la victoria.</div>
+                <details class="rule-disclosure" id="pedir-ayuda"><summary>Pedir ayuda</summary><div><p>Si tu fuerza no alcanza, podés pedir ayuda a <strong>un solo jugador</strong>. Sumá su fuerza a la tuya: sus capacidades afectan a todo el bando, y las fortalezas o debilidades del monstruo también se aplican al ayudante.</p><ul><li>Para convencerlo, podés ofrecerle Ítems que transportás, parte de los Tesoros —acordando quién elige primero— o jugar cartas en su beneficio.</li></ul></div></details>
+                <details class="rule-disclosure" id="interferencias-combate"><summary>Interferencias y varios monstruos</summary><div><p>Cualquier jugador puede usar cartas de un solo uso, Maldiciones, potenciadores de monstruo o capacidades permitidas para ayudar o perjudicar. <em>Monstruo Errante</em> puede añadir un monstruo desde la mano; un monstruo No Muerto puede añadirse a otro No Muerto sin esa carta.</p><p>Contra varios monstruos, compará las fuerzas totales de ambos bandos. Tenés que derrotarlos a todos. Si eliminás uno pero escapás de otro, <strong>no recibís niveles ni Tesoros</strong>.</p></div></details>
+              </section>
+
+              <section class="combat-stage" aria-labelledby="combat-stage-result">
+                <header class="combat-stage__heading">
+                  <div><h3 id="combat-stage-result">Resolvé el resultado</h3><p>Aplicá la victoria o el escape una vez cerradas las intervenciones.</p></div>
+                </header>
+                <div class="rules-grid rules-grid--two combat-outcomes">
+                  <article class="rule-card combat-outcome combat-outcome--success"><span class="rule-kicker">Ganaste</span><h3>Matás a los monstruos</h3><p>Si tu bando tiene más fuerza, normalmente subís 1 nivel por cada monstruo y robás los Tesoros indicados.</p><ul class="rule-compact-list"><li>El ayudante no gana nivel por defecto, pero puede recibir los Tesoros que hayan acordado.</li><li>Si vencieron juntos, robá los Tesoros boca arriba. Si venciste solo, robalos boca abajo.</li></ul></article>
+                  <article class="rule-card combat-outcome combat-outcome--escape"><span class="rule-kicker">No pudiste vencer</span><h3>Pedí ayuda, escapá o usá una carta</h3><p>Si los monstruos igualan o superan tu fuerza, buscá ayuda. Si aun así no alcanza, escapá.</p><p><strong>Vencer sin matar:</strong> si una carta te permite eliminar o ahuyentar al monstruo, terminás el combate sin escapar. No subís de nivel y solo recibís Tesoros si el efecto lo indica.</p></article>
+                </div>
+                <details class="rule-disclosure combat-escape-disclosure" id="escape-combate" open>
+                  <summary>Escape, Cosas Malas y muerte</summary>
+                  <div><div class="rules-grid rules-grid--two rules-grid--escape">
+              <article class="rule-card rule-card--with-info">
+                <span class="rule-kicker">Escapar</span>
+                <h3>Sacá 5 o más</h3>
+                <button class="rule-info-button" type="button" aria-label="Más información sobre escapar" aria-expanded="false" aria-controls="escapar-info">
+                  <span class="material-symbols-outlined" aria-hidden="true">info</span>
+                </button>
+                <div class="rule-info-tooltip" id="escapar-info" role="tooltip" hidden>
+                  <p>Si no podés ganar, tirá el dado. Con <strong>5 o 6</strong> escapás. Si fallás, sufrís las Cosas Malas del monstruo.</p>
+                  <p>No se sube de nivel ni se obtienen Tesoros. Tampoco se puede saquear la sala.</p>
+                </div>
+              </article>
+              <article class="rule-card rule-card--with-info">
+                <span class="rule-kicker">Varios monstruos</span>
+                <h3>Tirá por cada uno</h3>
+                <button class="rule-info-button" type="button" aria-label="Más información sobre escapar de varios monstruos" aria-expanded="false" aria-controls="varios-monstruos-info"><span class="material-symbols-outlined" aria-hidden="true">info</span></button>
+                <div class="rule-info-tooltip" id="varios-monstruos-info" role="tooltip" hidden><p>Elegí el orden y realizá una tirada de escape por cada monstruo. Sufrí las Cosas Malas de cada uno del que no logres escapar.</p></div>
+              </article>
+              <article class="rule-card rule-card--with-info">
+                <span class="rule-kicker">Si colaboraron</span>
+                <h3>Ambos deben escapar</h3>
+                <button class="rule-info-button" type="button" aria-label="Más información sobre escapar con ayuda" aria-expanded="false" aria-controls="colaboracion-escape-info"><span class="material-symbols-outlined" aria-hidden="true">info</span></button>
+                <div class="rule-info-tooltip" id="colaboracion-escape-info" role="tooltip" hidden><p>Cada jugador tira por separado para escapar de cada monstruo. Cada uno puede atrapar a ninguno, a uno o a ambos jugadores.</p></div>
+              </article>
+              <article class="rule-card rule-card--with-info">
+                <span class="rule-kicker">Si morís</span>
+                <h3>Perdés tus cosas</h3>
+                <button class="rule-info-button" type="button" aria-label="Más información sobre morir" aria-expanded="false" aria-controls="muerte-info"><span class="material-symbols-outlined" aria-hidden="true">info</span></button>
+                <div class="rule-info-tooltip" id="muerte-info" role="tooltip" hidden><p>Conservás nivel, Raza, Clase y Maldiciones persistentes. Los demás saquean una carta cada uno, empezando por el de mayor nivel; los empates se resuelven con el dado. El resto se descarta.</p><p><strong>Revivís</strong> al comenzar el turno del siguiente jugador. En tu próximo turno, robá 4 Puertas y 4 Tesoros antes de jugar normalmente.</p><p>Mientras estés muerto, no recibís cartas ni niveles y no podés ganar.</p></div>
+              </article>
+                  </div></div>
+                </details>
+              </section>
+            </div>
+            </div>
+          </details>
+
+          <details class="rules-section rules-section--collapsible" id="personaje">
+            <summary><span><strong>Tu personaje</strong><small>Nivel, Clase, Raza y habilidades.</small></span></summary>
+            <div class="rules-section__body">
+            <div class="rules-grid">
+              <article class="rule-card"><h3>Nivel</h3><p>Nunca baja de 1, aunque tu fuerza de combate sí puede ser negativa. Matar monstruos y ciertas cartas te hacen subir.</p></article>
+              <article class="rule-card"><h3>Clase</h3><p>Guerrero, Mago, Ladrón o Clérigo. Solo podés tener una, salvo con <em>Súper Munchkin</em>. Podés descartarla en cualquier momento.</p></article>
+              <article class="rule-card"><h3>Raza</h3><p>Humano, Elfo, Enano o Mediano. Sin carta sos Humano. Solo podés tener una, salvo con <em>Mestizo</em>.</p></article>
+            </div>
+            <details class="rule-disclosure" id="super-munchkin"><summary>Súper Munchkin</summary><div><p>Jugala si ya tenés una Clase en juego. Podés combinar <strong>dos Clases distintas</strong>, pero nunca dos copias de la misma. Con dos Clases, aplicá las reglas de ambas. Si la usás con una sola, obtenés sus ventajas e ignorás sus desventajas. Los costos de sus habilidades se siguen pagando.</p></div></details>
+            <details class="rule-disclosure" id="mestizo"><summary>Mestizo</summary><div><p>Jugala si ya tenés una Raza en juego. Podés combinar <strong>dos Razas distintas</strong>, pero nunca dos copias de la misma. Con dos Razas, aplicá las reglas de ambas. Si la usás con una sola, obtenés sus ventajas e ignorás sus desventajas.</p></div></details>
+            <p>Las habilidades se activan al bajar la carta y se pierden al descartarla. Si una habilidad exige descartar, podés usar cartas de la mano o en juego, salvo que se indique lo contrario.</p>
+            </div>
+          </details>
+
+          <details class="rules-section rules-section--collapsible" id="items">
+            <summary><span><strong>Ítems, Equipo y Tesoros</strong><small>Qué podés llevar, equipar, vender e intercambiar.</small></span></summary>
+            <div class="rules-section__body">
+            <div class="rules-grid rules-grid--two">
+              <article class="rule-card"><ul><li>Todo Ítem bajado se considera <strong>transportado</strong>.</li><li>Solo el equipo activo aporta bonificaciones.</li><li>Máximo: 1 Yelmo, 1 Armadura, 1 Calzado y 2 Manos.</li><li>Podés transportar muchos Ítems Pequeños, pero solo <strong>1 Grande</strong>. Si no dice “Grande”, es Pequeño.</li></ul></article>
+              <article class="rule-card"><ul><li>Podés vender Ítems de la mano o de la mesa: subís <strong>1 nivel por cada 1.000</strong> piezas de oro. Por ejemplo, 2.000 permiten subir 2 niveles.</li><li>No hay cambio y no podés comprar el nivel 10.</li><li>Solo se intercambian Ítems que estén en la mesa.</li><li>No podés comerciar, vender ni cambiar equipo durante el combate o mientras escapás.</li></ul></article>
+            </div>
+            <div class="rule-callout"><strong>Ítems Grandes:</strong> no podés descartar uno simplemente para bajar otro. Si perdés la capacidad de transportar varios, resolvé el exceso de inmediato: vendelos si podés; si no, entregalos a los jugadores de menor nivel que puedan cargarlos y descartá lo que todavía sobre.</div>
+            <div class="rule-callout rule-callout--success">Los Tesoros de “un solo uso” suelen poder jugarse desde la mano o la mesa durante un combate. Revisá siempre el momento indicado por la propia carta.</div>
+            </div>
+          </details>
+
+          <details class="rules-section rules-section--collapsible" id="cartas">
+            <summary><span><strong>Cartas especiales</strong><small>Maldiciones, niveles, monstruos y Mercenarios.</small></span></summary>
+            <div class="rules-section__body">
+            <details class="rule-disclosure" open><summary>Maldiciones</summary><div><p>Si sale boca arriba al abrir la puerta, te afecta a vos. Si la obtenés boca abajo, va a tu mano y podés jugarla sobre cualquier jugador en el momento permitido. Si no puede afectarte, normalmente se descarta sin efecto. Las Maldiciones persistentes permanecen delante de la víctima.</p></div></details>
+            <details class="rule-disclosure"><summary>Sube un nivel</summary><div><p>Puede jugarse sobre vos u otra persona, incluso durante un combate, pero <strong>no puede otorgar el nivel ganador</strong>.</p></div></details>
+            <details class="rule-disclosure"><summary>Potenciadores de monstruo</summary><div><p>Modifican su fuerza y normalmente también la cantidad de Tesoros. Cualquier jugador puede usarlos en un combate. Si hay varios monstruos, quien juega la carta elige a cuál afecta.</p></div></details>
+            <details class="rule-disclosure"><summary>Mercenario</summary><div><p>Podés jugarlo en cualquier momento, en cualquier turno. Puede transportar y usar un Ítem según su carta, pero no podés dárselo mientras estés en combate.</p></div></details>
+            </div>
+          </details>
+
+          <details class="rules-section rules-section--collapsible" id="momentos">
+            <summary><span><strong>¿Cuándo puedo hacer cada cosa?</strong><small>Momentos permitidos para cartas, equipo y comercio.</small></span></summary>
+            <div class="rules-section__body">
+            <div class="rules-grid">
+              <article class="rule-card"><h3>En cualquier momento</h3><ul><li>Descartá una Raza o Clase.</li><li>Jugá una Maldición.</li><li>Jugá <em>Sube un nivel</em> o un Mercenario.</li></ul></article>
+              <article class="rule-card"><h3>Fuera de combate</h3><ul><li>Intercambiá Ítems.</li><li>Cambiá el equipo activo.</li><li>Jugá una carta recién recibida, si es legal.</li></ul></article>
+              <article class="rule-card"><h3>En tu turno</h3><ul><li>Bajá Raza o Clase.</li><li>Jugá la mayoría de Ítems.</li><li>Vendé Ítems para subir niveles.</li></ul></article>
+            </div>
+            </div>
+          </details>
+
+          <details class="rules-section rules-section--collapsible" id="expansiones">
+            <summary><span><strong>Reglas de las expansiones</strong><small>Solo necesitás esta sección si mezclás estas cartas con el juego base.</small></span></summary>
+            <div class="rules-section__body">
+              <div class="rules-grid rules-grid--two">
+                <article class="rule-card">
+                  <span class="rule-kicker">Munchkin 2 · Hacha Sobrenatural</span>
+                  <h3>Potenciadores de Ítem</h3>
+                  <p>Jugá el Potenciador sobre un Ítem que ya tengas en juego: no puede jugarse solo. Suma su bonus de combate o le otorga nuevas habilidades. Una vez jugado, <strong>no podés moverlo</strong> a otro Ítem.</p>
+                </article>
+                <article class="rule-card">
+                  <span class="rule-kicker">Munchkin 3 · Errores Clericales</span>
+                  <h3>Sin reglas generales nuevas</h3>
+                  <p>El reglamento de esta expansión no incorpora una regla general adicional. Aplicá las reglas del juego base y resolvé cada carta según su propio texto.</p>
+                </article>
+              </div>
+            </div>
+          </details>
+
+          <details class="rules-section rules-section--collapsible" id="reglas-clave">
+            <summary><span><strong>Cuatro reglas que evitan discusiones</strong><small>Recordatorios y prioridad del texto de las cartas.</small></span></summary>
+            <div class="rules-section__body">
+            <ol><li>Nadie puede bajar del <strong>nivel 1</strong>, aunque la fuerza de combate sí puede caer por debajo de 1.</li><li>Solo subís de nivel por un combate si <strong>matás</strong> al monstruo.</li><li>Los niveles y Tesoros se reciben <strong>después</strong> de resolver por completo el combate.</li><li>Para alcanzar el nivel 10 tenés que matar un monstruo, a menos que una carta permita ganar de otra forma.</li></ol>
+            <div class="rule-callout"><strong class="rule-callout__title"><span class="rule-card-icon" aria-hidden="true"></span>Prioridad de reglas</strong><p>En general, si el texto de una carta contradice este resumen o el reglamento, <strong>manda la carta</strong>. Las reglas anteriores solo se ignoran si una carta declara expresamente que las reemplaza.</p></div>
+            </div>
+          </details>
+        </main>
+      </div>
+
+      <footer class="rules-footer">
+        <p><strong>Resumen no oficial en español</strong>, elaborado a partir del reglamento base y los reglamentos de <em>Munchkin 2: Hacha Sobrenatural</em> y <em>Munchkin 3: Errores Clericales</em>.</p>
+        <p>Esta guía condensa las reglas para consulta rápida; ante casos particulares, leé el texto exacto de la carta y el reglamento original.</p>
+      </footer>
+    </div>
+    <script src="../../data/games-data.js"></script>
+    <script src="../rules-page.js?v=20260723-1"></script>
+  </body>
+</html>
