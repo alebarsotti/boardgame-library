@@ -294,7 +294,6 @@ test("Munchkin and its expansions expose the rules guide", async ({ page }) => {
   await page.locator("#search-input").fill("Munchkin");
 
   const baseCard = page.locator(".game-card").filter({ has: page.getByText("Munchkin", { exact: true }) });
-  await expect(baseCard.locator(".game-card__rules")).toHaveText("Reglas disponibles");
   await baseCard.locator(".game-card__button").click();
   await expect(page.getByRole("link", { name: "Leer resumen de reglas" })).toBeVisible();
   await page.locator('[data-expansion-id="3943"]').click();

@@ -94,8 +94,6 @@ const translations = {
     links: "Enlaces",
     openBgg: "Abrir en BGG",
     openRules: "Leer resumen de reglas",
-    rulesAvailable: "Reglas disponibles",
-    rulesFromBase: "Reglas del juego base",
     expansion: "Expansión",
     expansionRequiresBase: "Requiere juego base",
     expansionsTitle: "Expansiones",
@@ -355,8 +353,6 @@ const translations = {
     links: "Links",
     openBgg: "Open on BGG",
     openRules: "Read rules summary",
-    rulesAvailable: "Rules available",
-    rulesFromBase: "Base game rules",
     expansion: "Expansion",
     expansionRequiresBase: "Requires base game",
     expansionsTitle: "Expansions",
@@ -2642,8 +2638,6 @@ function renderGames() {
     const art = node.querySelector(".game-card__art");
     const badge = node.querySelector(".game-card__badge");
     const flag = node.querySelector(".game-card__flag");
-    const rulesBadge = node.querySelector(".game-card__rules");
-    const rulesGuide = getRulesGuide(game);
     const displayName = getDisplayName(game);
     node.classList.toggle("game-card--list", isListView);
     node.classList.toggle("game-card--new", game.isNew);
@@ -2651,10 +2645,6 @@ function renderGames() {
     node.querySelector(".game-card__subtitle").textContent = buildCardSubtitle(game);
     flag.textContent = translations[state.language].newTag;
     flag.classList.toggle("hidden", !game.isNew);
-    rulesBadge.textContent = rulesGuide?.inherited
-      ? translations[state.language].rulesFromBase
-      : translations[state.language].rulesAvailable;
-    rulesBadge.classList.toggle("hidden", !rulesGuide);
     badge.textContent = game.averageRating ? game.averageRating.toFixed(1) : "n/a";
     badge.dataset.rating = typeof game.averageRating === "number" && Number.isFinite(game.averageRating)
       ? String(game.averageRating)
