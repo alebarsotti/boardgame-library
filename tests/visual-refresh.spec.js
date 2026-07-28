@@ -270,6 +270,30 @@ test("hash route supports browser back and forward across sections", async ({ pa
   await expect(page.locator("[data-filter-key='recommendation'][data-filter-value='quick']")).toHaveAttribute("aria-pressed", "true");
 });
 
+test("detail modal syncs with hash routing and survives reload", async ({ page }) => {
+  await page.goto(`${appUrl}#/browse?search=munchkin&sort=name&dir=asc&view=grid`, { waitUntil: "load" });
+
+  const baseCard = page.locator(".game-card").filter({ has: page.getByText("Munchkin", { exact: true }) });
+  await baseCard.locator(".game-card__button").click();
+  await expect(page.locator("#details-dialog")).toBeVisible();
+  await expect(page.locator("#detail-title")).toContainText("Munchkin");
+  await expect(page).toHaveURL(/#\/browse\?.*game=\d+/);
+
+  const detailUrl = page.url();
+
+  await page.goBack();
+  await expect(page.locator("#details-dialog")).not.toBeVisible();
+  await expect(page).not.toHaveURL(/game=\d+/);
+
+  await page.goForward();
+  await expect(page.locator("#details-dialog")).toBeVisible();
+  await expect(page.locator("#detail-title")).toContainText("Munchkin");
+
+  await page.goto(detailUrl, { waitUntil: "load" });
+  await expect(page.locator("#details-dialog")).toBeVisible();
+  await expect(page.locator("#detail-title")).toContainText("Munchkin");
+});
+
 test("browse supports ascending and descending sort direction", async ({ page }) => {
   await page.goto(appUrl, { waitUntil: "load" });
   await page.getByRole("button", { name: "Explorar", exact: true }).click();

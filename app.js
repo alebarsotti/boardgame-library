@@ -22,6 +22,7 @@ const ROUTE_FILTER_PARAM_MAP = {
   view: "view",
   recommendation: "rec"
 };
+const ROUTE_DETAIL_PARAM = "game";
 const ROUTE_FILTER_DEFAULT_REPLACE_KEYS = new Set(["search"]);
 
 const PAGE_KEYS = ["home", "browse", "archive", "random", "history", "settings"];
@@ -789,10 +790,15 @@ function bindEvents() {
     const resetButton = event.target.closest("[data-reset-filters]");
     if (resetButton && !resetButton.disabled) resetFilters();
   });
-  document.querySelector("#details-close").addEventListener("click", () => elements.detailsDialog.close());
+  document.querySelector("#details-close").addEventListener("click", () => closeDetails());
   elements.detailsDialog?.addEventListener("close", () => {
     elements.detailsDialog.classList.remove("is-visible", "is-entering");
+    elements.detailsContent.dataset.gameId = "";
     unlockBodyScroll();
+    if (state.activeDetailGameId) {
+      state.activeDetailGameId = null;
+      writeRouteFromState();
+    }
   });
   document.querySelector("#open-filters").addEventListener("click", () => elements.filtersPanel.classList.add("is-open"));
   document.querySelector("#close-filters").addEventListener("click", () => elements.filtersPanel.classList.remove("is-open"));
@@ -884,6 +890,13 @@ function sanitizeRouteFilterList(key, value) {
   return allowedValues.filter((item) => requested.has(item));
 }
 
+function getValidRouteGameId(value) {
+  const normalizedId = Number(value);
+  if (!Number.isFinite(normalizedId)) return null;
+  const game = getGameById(normalizedId);
+  return game ? game.id : null;
+}
+
 function readBrowseRouteParams(params, page) {
   const nextFilters = getDefaultFilters(page === "archive" ? "archive" : "owned");
   nextFilters.search = sanitizeRouteFilterValue("search", params.get(ROUTE_FILTER_PARAM_MAP.search));
@@ -919,6 +932,11 @@ function normalizeRoute(route) {
     });
   }
 
+  const detailGameId = getValidRouteGameId(baseRoute.params?.get(ROUTE_DETAIL_PARAM));
+  if (detailGameId) {
+    params.set(ROUTE_DETAIL_PARAM, String(detailGameId));
+  }
+
   return { page, params };
 }
 
@@ -944,6 +962,11 @@ function buildRouteFromState() {
     });
   }
 
+  const detailGameId = getValidRouteGameId(state.activeDetailGameId);
+  if (detailGameId) {
+    params.set(ROUTE_DETAIL_PARAM, String(detailGameId));
+  }
+
   return {
     page: PAGE_KEYS.includes(state.activePage) ? state.activePage : "home",
     params
@@ -962,6 +985,7 @@ function applyRouteToState(route, options = {}) {
   } else {
     state.filters.section = state.lastWorkspacePage === "archive" ? "archive" : "owned";
   }
+  state.activeDetailGameId = getValidRouteGameId(normalizedRoute.params.get(ROUTE_DETAIL_PARAM));
 
   if (updatePreferences) {
     state.preferences.activePage = nextPage;
@@ -1706,6 +1730,7 @@ function render() {
   renderGames();
   renderRandomPage();
   renderAcquisitionHistoryPage();
+  syncDetailsDialogState();
 }
 
 function syncVisualContext() {
@@ -3019,7 +3044,35 @@ function renderDetailParagraphs(text, fallback) {
   return paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("");
 }
 
-function openDetails(game) {
+function syncDetailsDialogState() {
+  const game = getGameById(state.activeDetailGameId);
+  if (game) {
+    openDetails(game, { syncRoute: false });
+    return;
+  }
+  if (elements.detailsDialog?.open) {
+    closeDetails({ syncRoute: false });
+  }
+}
+
+function closeDetails(options = {}) {
+  const {
+    syncRoute = true,
+    replace = false
+  } = options;
+  state.activeDetailGameId = null;
+  if (elements.detailsDialog?.open) {
+    elements.detailsDialog.close();
+  }
+  if (syncRoute) writeRouteFromState({ replace });
+}
+
+function openDetails(game, options = {}) {
+  const {
+    syncRoute = true,
+    replace = false
+  } = options;
+  state.activeDetailGameId = game.id;
   const copy = translations[state.language];
   const displayName = getDisplayName(game);
   const secondaryName = getSecondaryName(game);
@@ -3113,6 +3166,7 @@ function openDetails(game) {
       </div>
     </div>
   `;
+  elements.detailsContent.dataset.gameId = String(game.id);
 
   injectCover(document.querySelector("#detail-cover"), game, 420);
   elements.detailsContent.querySelectorAll("[data-expansion-id]").forEach((button) => {
@@ -3133,6 +3187,7 @@ function openDetails(game) {
     elements.detailsDialog.showModal();
     animateDetailsDialogIn();
   }
+  if (syncRoute) writeRouteFromState({ replace });
 }
 
 function detailKv(label, value) {
