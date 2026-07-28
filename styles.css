@@ -2325,6 +2325,24 @@ body[data-theme="dark"] .game-card--new {
   text-transform: uppercase;
   text-shadow: 0 1px 1px rgba(52, 22, 8, 0.28);
 }
+
+.game-card__rules {
+  justify-self: start;
+  max-width: 100%;
+  min-height: 28px;
+  padding: 6px 10px;
+  border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  border-radius: 999px;
+  color: #fffaf6;
+  background: color-mix(in srgb, var(--accent-strong) 90%, transparent);
+  box-shadow: 0 8px 22px color-mix(in srgb, var(--accent-strong) 18%, transparent);
+  font-size: 0.68rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
 .game-card__title {
   margin: 0;
   font-size: 1.12rem;
@@ -2754,6 +2772,10 @@ body[data-theme="dark"] .modal__close {
   padding: 0 16px;
   justify-content: center;
   align-self: start;
+}
+
+.detail-actions--aside {
+  display: grid;
 }
 .detail-tags--soft {
   gap: 8px;
