@@ -1,6 +1,6 @@
 window.__BGG_LIBRARY_DATA__ = {
   "summary": {
-    "generatedAt": "2026-07-27T21:04:16",
+    "generatedAt": "2026-07-27T21:18:16",
     "count": 171,
     "ownCount": 140,
     "prevOwnedCount": 31,
@@ -11931,7 +11931,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "expansionIds": [],
       "bggUrl": "https://boardgamegeek.com/boardgame/202564",
       "thumbnailUrl": "https://cf.geekdo-images.com/SYxaVBHoKAAh_S_lRS3kVA__small/img/TTFpws-BZn3Tl9tc4vZloECbYTs=/fit-in/200x150/filters:strip_icc()/pic3165677.jpg",
-      "imageUrl": "https://cf.geekdo-images.com/SYxaVBHoKAAh_S_lRS3kVA__original/img/o3ls9idmJNMu9P06toQSX_WidJA=/0x0/filters:format(jpeg)/pic3165677.jpg",
+      "imageUrl": "assets/covers/sushi-express-front.png",
       "imageHint": "Sushi Express (2025)",
       "tags": [
         "owned",
