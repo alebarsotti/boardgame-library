@@ -24,6 +24,12 @@ const ROUTE_FILTER_PARAM_MAP = {
 };
 const ROUTE_DETAIL_PARAM = "game";
 const ROUTE_FILTER_DEFAULT_REPLACE_KEYS = new Set(["search"]);
+const ROUTE_HISTORY_PARAM_MAP = {
+  scope: "scope",
+  mode: "mode",
+  year: "year",
+  month: "month"
+};
 
 const PAGE_KEYS = ["home", "browse", "archive", "random", "history", "settings"];
 let masonryLayoutFrame = 0;
@@ -897,6 +903,27 @@ function getValidRouteGameId(value) {
   return game ? game.id : null;
 }
 
+function readHistoryRouteParams(params) {
+  const scope = ["owned", "archive", "all"].includes(params.get(ROUTE_HISTORY_PARAM_MAP.scope))
+    ? params.get(ROUTE_HISTORY_PARAM_MAP.scope)
+    : "all";
+  const mode = ["bar", "line"].includes(params.get(ROUTE_HISTORY_PARAM_MAP.mode))
+    ? params.get(ROUTE_HISTORY_PARAM_MAP.mode)
+    : "bar";
+  const availableYears = new Set(getAcquisitionHistory(scope).years.map((entry) => entry.year));
+  const parsedYear = Number(params.get(ROUTE_HISTORY_PARAM_MAP.year));
+  const year = Number.isFinite(parsedYear) && availableYears.has(parsedYear) ? parsedYear : null;
+  const parsedMonth = Number(params.get(ROUTE_HISTORY_PARAM_MAP.month));
+  const month = year && Number.isFinite(parsedMonth) && parsedMonth >= 1 && parsedMonth <= 12 ? parsedMonth : null;
+
+  return {
+    scope,
+    mode,
+    year,
+    month
+  };
+}
+
 function readBrowseRouteParams(params, page) {
   const nextFilters = getDefaultFilters(page === "archive" ? "archive" : "owned");
   nextFilters.search = sanitizeRouteFilterValue("search", params.get(ROUTE_FILTER_PARAM_MAP.search));
@@ -932,6 +959,22 @@ function normalizeRoute(route) {
     });
   }
 
+  if (page === "history") {
+    const historyRoute = readHistoryRouteParams(baseRoute.params || new URLSearchParams());
+    if (historyRoute.scope !== "all") {
+      params.set(ROUTE_HISTORY_PARAM_MAP.scope, historyRoute.scope);
+    }
+    if (historyRoute.mode !== "bar") {
+      params.set(ROUTE_HISTORY_PARAM_MAP.mode, historyRoute.mode);
+    }
+    if (historyRoute.year) {
+      params.set(ROUTE_HISTORY_PARAM_MAP.year, String(historyRoute.year));
+    }
+    if (historyRoute.month) {
+      params.set(ROUTE_HISTORY_PARAM_MAP.month, String(historyRoute.month));
+    }
+  }
+
   const detailGameId = getValidRouteGameId(baseRoute.params?.get(ROUTE_DETAIL_PARAM));
   if (detailGameId) {
     params.set(ROUTE_DETAIL_PARAM, String(detailGameId));
@@ -962,6 +1005,21 @@ function buildRouteFromState() {
     });
   }
 
+  if (state.activePage === "history") {
+    if (state.historyScope !== "all") {
+      params.set(ROUTE_HISTORY_PARAM_MAP.scope, state.historyScope);
+    }
+    if (state.historyChartMode !== "bar") {
+      params.set(ROUTE_HISTORY_PARAM_MAP.mode, state.historyChartMode);
+    }
+    if (Number.isFinite(state.historySelectedYear)) {
+      params.set(ROUTE_HISTORY_PARAM_MAP.year, String(state.historySelectedYear));
+    }
+    if (Number.isFinite(state.historySelectedMonth) && Number.isFinite(state.historySelectedYear)) {
+      params.set(ROUTE_HISTORY_PARAM_MAP.month, String(state.historySelectedMonth));
+    }
+  }
+
   const detailGameId = getValidRouteGameId(state.activeDetailGameId);
   if (detailGameId) {
     params.set(ROUTE_DETAIL_PARAM, String(detailGameId));
@@ -984,6 +1042,13 @@ function applyRouteToState(route, options = {}) {
     state.filters = readBrowseRouteParams(normalizedRoute.params, nextPage);
   } else {
     state.filters.section = state.lastWorkspacePage === "archive" ? "archive" : "owned";
+  }
+  if (nextPage === "history") {
+    const historyRoute = readHistoryRouteParams(normalizedRoute.params);
+    state.historyScope = historyRoute.scope;
+    state.historyChartMode = historyRoute.mode;
+    state.historySelectedYear = historyRoute.year;
+    state.historySelectedMonth = historyRoute.month;
   }
   state.activeDetailGameId = getValidRouteGameId(normalizedRoute.params.get(ROUTE_DETAIL_PARAM));
 
@@ -1898,33 +1963,57 @@ function renderHomePanel() {
   });
 }
 
-function setHistoryScope(scope) {
+function setHistoryScope(scope, options = {}) {
+  const {
+    syncRoute = true,
+    replace = false,
+    renderNow = true
+  } = options;
   if (!["owned", "archive", "all"].includes(scope)) return;
   state.historyScope = scope;
   state.historySelectedYear = null;
   state.historySelectedMonth = null;
-  render();
+  if (renderNow) render();
+  if (syncRoute) writeRouteFromState({ replace });
 }
 
-function setHistorySelectedYear(year) {
+function setHistorySelectedYear(year, options = {}) {
+  const {
+    syncRoute = true,
+    replace = false,
+    renderNow = true
+  } = options;
   const normalized = Number(year);
   if (!Number.isFinite(normalized)) return;
   state.historySelectedYear = normalized;
   state.historySelectedMonth = null;
-  render();
+  if (renderNow) render();
+  if (syncRoute) writeRouteFromState({ replace });
 }
 
-function setHistorySelectedMonth(month) {
+function setHistorySelectedMonth(month, options = {}) {
+  const {
+    syncRoute = true,
+    replace = false,
+    renderNow = true
+  } = options;
   const normalized = Number(month);
   if (!Number.isFinite(normalized) || normalized < 1 || normalized > 12) return;
   state.historySelectedMonth = state.historySelectedMonth === normalized ? null : normalized;
-  render();
+  if (renderNow) render();
+  if (syncRoute) writeRouteFromState({ replace });
 }
 
-function setHistoryChartMode(mode) {
+function setHistoryChartMode(mode, options = {}) {
+  const {
+    syncRoute = true,
+    replace = false,
+    renderNow = true
+  } = options;
   if (!["bar", "line"].includes(mode)) return;
   state.historyChartMode = mode;
-  render();
+  if (renderNow) render();
+  if (syncRoute) writeRouteFromState({ replace });
 }
 
 function getAcquisitionHistoryScopeGames(scope = state.historyScope) {

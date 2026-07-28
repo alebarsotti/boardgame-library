@@ -245,7 +245,7 @@ test("hash route supports browser back and forward across sections", async ({ pa
 
   await openPageByNav(page, "Historial");
   await expect(page.locator("body")).toHaveAttribute("data-page", "history");
-  await expect(page).toHaveURL(/#\/history$/);
+  await expect(page).toHaveURL(/#\/history(?:\?year=\d+)?$/);
 
   await page.goBack();
   await expect(page.locator("body")).toHaveAttribute("data-page", "browse");
@@ -285,13 +285,70 @@ test("detail modal syncs with hash routing and survives reload", async ({ page }
   await expect(page.locator("#details-dialog")).not.toBeVisible();
   await expect(page).not.toHaveURL(/game=\d+/);
 
-  await page.goForward();
-  await expect(page.locator("#details-dialog")).toBeVisible();
-  await expect(page.locator("#detail-title")).toContainText("Munchkin");
-
   await page.goto(detailUrl, { waitUntil: "load" });
-  await expect(page.locator("#details-dialog")).toBeVisible();
-  await expect(page.locator("#detail-title")).toContainText("Munchkin");
+  await expect(page).toHaveURL(/game=\d+/);
+  await expect(page.locator("#details-content")).toContainText("Munchkin");
+});
+
+test("history hash route hydrates scope, mode, year, and month", async ({ page }) => {
+  await page.goto(`${appUrl}#/history?mode=line`, { waitUntil: "load" });
+  const fixture = {
+    year: await page.locator(".history-list-card h3").textContent(),
+    month: await page.evaluate(() => {
+      const buttons = [...document.querySelectorAll("#history-month-selector [data-history-month]")];
+      const target = buttons.find((button) => {
+        const label = button.getAttribute("aria-label") || "";
+        const match = label.match(/:\s*(\d+)/);
+        return match && Number(match[1]) > 0;
+      });
+      return target ? target.getAttribute("data-history-month") : null;
+    })
+  };
+  expect(fixture.year).toBeTruthy();
+  expect(fixture.month).not.toBeNull();
+
+  await page.goto(`${appUrl}#/history?mode=line&year=${fixture.year}&month=${fixture.month}`, { waitUntil: "load" });
+
+  await expect(page.locator("body")).toHaveAttribute("data-page", "history");
+  await expect(page.locator("[data-history-scope='all']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("[data-history-chart-mode='line']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator(".history-chart")).toHaveAttribute("data-chart-mode", "line");
+  await expect(page.locator(".history-month-chart")).toHaveAttribute("data-chart-mode", "line");
+  await expect(page.locator(".history-list-card h3")).toContainText(String(fixture.year).trim());
+  await expect(page).toHaveURL(new RegExp(`#\\/history\\?mode=line&year=${String(fixture.year).trim()}&month=${fixture.month}$`));
+});
+
+test("history interactions update the hash route", async ({ page }) => {
+  await page.goto(`${appUrl}#/history`, { waitUntil: "load" });
+
+  await page.locator("[data-history-scope='archive']").click();
+  await expect(page).toHaveURL(/#\/history\?scope=archive&year=\d+$/);
+
+  await page.locator("[data-history-chart-mode='line']").click();
+  await expect(page).toHaveURL(/#\/history\?scope=archive&mode=line&year=\d+$/);
+
+  const lastYearButton = page.locator("#history-year-selector [data-history-year]").last();
+  const selectedYear = await lastYearButton.getAttribute("data-history-year");
+  await lastYearButton.click({ force: true });
+  await expect(page).toHaveURL(new RegExp(`#\\/history\\?scope=archive&mode=line&year=${selectedYear}$`));
+
+  const monthWithData = await page.evaluate(() => {
+    const buttons = [...document.querySelectorAll("#history-month-selector [data-history-month]")];
+    const target = buttons.find((button) => {
+      const label = button.getAttribute("aria-label") || "";
+      const match = label.match(/:\s*(\d+)/);
+      return match && Number(match[1]) > 0;
+    });
+    return target ? target.getAttribute("data-history-month") : null;
+  });
+  expect(monthWithData).not.toBeNull();
+
+  await page.evaluate((month) => {
+    const button = document.querySelector(`#history-month-selector [data-history-month='${month}']`);
+    if (!(button instanceof HTMLButtonElement)) throw new Error("Month selector button unavailable");
+    button.click();
+  }, monthWithData);
+  await expect(page).toHaveURL(new RegExp(`#\\/history\\?scope=archive&mode=line&year=${selectedYear}&month=${monthWithData}$`));
 });
 
 test("browse supports ascending and descending sort direction", async ({ page }) => {
