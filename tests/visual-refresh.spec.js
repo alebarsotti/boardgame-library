@@ -209,6 +209,67 @@ test("history page updates scope, selected year, and detail drill-in", async ({ 
   await expect(page.locator("#detail-title")).toBeVisible();
 });
 
+test("hash route hydrates archive filters with a canonical URL", async ({ page }) => {
+  await page.goto(
+    `${appUrl}#/archive?search=munchkin&players=2&duration=standard,quick&weight=heavy,light&lang=english&best=2&age=adult&sort=rating&dir=desc&view=list&rec=duo`,
+    { waitUntil: "load" }
+  );
+
+  await expect(page.locator("body")).toHaveAttribute("data-page", "archive");
+  await expect(page.locator("#workspace-panel")).toBeVisible();
+  await expect(page.locator("#search-input")).toHaveValue("munchkin");
+  await expect(page.locator("#games-grid")).toHaveClass(/list-view/);
+  await expect(page.locator("#sort-filter select")).toHaveValue("rating");
+  await expect(page.locator("[data-filter-key='sortDirection'][data-filter-value='desc']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("[data-filter-key='players'][data-filter-value='2']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("[data-filter-key='bestPlayers'][data-filter-value='2']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("[data-filter-key='age'][data-filter-value='adult']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("[data-filter-key='physicalLanguage'][data-filter-value='english']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("[data-filter-key='recommendation'][data-filter-value='duo']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("[data-filter-key='duration'][data-filter-value='quick']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("[data-filter-key='duration'][data-filter-value='standard']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("[data-filter-key='weight'][data-filter-value='light']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("[data-filter-key='weight'][data-filter-value='heavy']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page).toHaveURL(/#\/archive\?search=munchkin&players=2&duration=quick%2Cstandard&weight=light%2Cheavy&lang=english&best=2&age=adult&sort=rating&dir=desc&view=list&rec=duo$/);
+});
+
+test("hash route supports browser back and forward across sections", async ({ page }) => {
+  await page.goto(appUrl, { waitUntil: "load" });
+
+  await openPageByNav(page, "Explorar");
+  await expect(page.locator("body")).toHaveAttribute("data-page", "browse");
+  await expect(page).toHaveURL(/#\/browse\?/);
+
+  await page.getByRole("button", { name: "Rápidos", exact: true }).click();
+  await expect(page).toHaveURL(/#\/browse\?.*rec=quick/);
+
+  await openPageByNav(page, "Historial");
+  await expect(page.locator("body")).toHaveAttribute("data-page", "history");
+  await expect(page).toHaveURL(/#\/history$/);
+
+  await page.goBack();
+  await expect(page.locator("body")).toHaveAttribute("data-page", "browse");
+  await expect(page.locator("[data-filter-key='recommendation'][data-filter-value='quick']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page).toHaveURL(/#\/browse\?.*rec=quick/);
+
+  await page.goBack();
+  await expect(page.locator("body")).toHaveAttribute("data-page", "browse");
+  await expect(page.locator("[data-filter-key='recommendation'][data-filter-value='quick']")).toHaveAttribute("aria-pressed", "false");
+  await expect(page).toHaveURL(/#\/browse\?sort=name&dir=asc&view=grid$/);
+
+  await page.goBack();
+  await expect(page.locator("body")).toHaveAttribute("data-page", "home");
+  await expect(page).toHaveURL(/#\/home$/);
+
+  await page.goForward();
+  await expect(page.locator("body")).toHaveAttribute("data-page", "browse");
+  await expect(page.locator("[data-filter-key='recommendation'][data-filter-value='quick']")).toHaveAttribute("aria-pressed", "false");
+
+  await page.goForward();
+  await expect(page.locator("body")).toHaveAttribute("data-page", "browse");
+  await expect(page.locator("[data-filter-key='recommendation'][data-filter-value='quick']")).toHaveAttribute("aria-pressed", "true");
+});
+
 test("browse supports ascending and descending sort direction", async ({ page }) => {
   await page.goto(appUrl, { waitUntil: "load" });
   await page.getByRole("button", { name: "Explorar", exact: true }).click();

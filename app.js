@@ -9,11 +9,26 @@ const RECENT_HIGHLIGHT_WINDOW_MONTHS = 6;
 const RECENT_HIGHLIGHT_MIN_ITEMS = 7;
 const RECENT_HIGHLIGHT_FILL_LIMIT_MONTHS = 18;
 const THEME_KEYS = ["light", "dark"];
+const ROUTE_FILTER_PARAM_MAP = {
+  search: "search",
+  players: "players",
+  duration: "duration",
+  weight: "weight",
+  physicalLanguage: "lang",
+  bestPlayers: "best",
+  age: "age",
+  sort: "sort",
+  sortDirection: "dir",
+  view: "view",
+  recommendation: "rec"
+};
+const ROUTE_FILTER_DEFAULT_REPLACE_KEYS = new Set(["search"]);
 
 const PAGE_KEYS = ["home", "browse", "archive", "random", "history", "settings"];
 let masonryLayoutFrame = 0;
 let gameCardResizeObserver = null;
 let bodyScrollLockY = 0;
+let lastSerializedRoute = "";
 let historyCharts = {
   yearly: null,
   monthly: null
@@ -629,6 +644,7 @@ const state = {
   currentRandomEntryIds: [],
   randomDrawCount: 1,
   randomRevealTimer: null,
+  activeDetailGameId: null,
   historyScope: "all",
   historySelectedYear: null,
   historySelectedMonth: null,
@@ -659,8 +675,12 @@ async function init() {
   applyTranslations();
   await loadData();
   ensureValidActivePage();
+  const routeApplied = syncStateFromCurrentRoute();
   syncSectionWithPage();
   render();
+  if (!routeApplied || getCurrentSerializedRoute() !== serializeRoute(buildRouteFromState())) {
+    writeRouteFromState({ replace: true });
+  }
 }
 
 function cacheElements() {
@@ -781,6 +801,7 @@ function bindEvents() {
   document.querySelector("#toolbar-random").addEventListener("click", () => setActivePage("random"));
   document.querySelector("#random-browse-action").addEventListener("click", () => setActivePage(state.lastWorkspacePage));
   document.querySelector("#random-page-trigger").addEventListener("click", drawRandomFromCurrentScope);
+  window.addEventListener("hashchange", handleHashChange);
   window.addEventListener("resize", () => {
     syncStickyOffsets();
     renderFilterControls();
@@ -794,7 +815,208 @@ function ensureValidActivePage() {
   }
 }
 
-function setFilter(key, value) {
+function getDefaultFilters(section = "owned") {
+  return {
+    search: "",
+    players: "",
+    duration: [],
+    weight: [],
+    languageKey: "",
+    physicalLanguage: "",
+    bestPlayers: "",
+    age: "",
+    sort: "name",
+    sortDirection: "asc",
+    view: state.preferences.view || "grid",
+    recommendation: "",
+    section
+  };
+}
+
+function getDefaultRoute() {
+  const fallbackPage = PAGE_KEYS.includes(state.activePage) ? state.activePage : "home";
+  return {
+    page: fallbackPage,
+    params: new URLSearchParams()
+  };
+}
+
+function parseHashRoute(hash = window.location.hash) {
+  const text = String(hash || "").trim();
+  if (!text) return null;
+  const raw = text.startsWith("#") ? text.slice(1) : text;
+  const [pathname = "", query = ""] = raw.split("?");
+  const page = pathname.replace(/^\/+/, "").trim() || "home";
+  return {
+    page,
+    params: new URLSearchParams(query)
+  };
+}
+
+function getCurrentSerializedRoute() {
+  const hash = String(window.location.hash || "").trim();
+  if (!hash) return "";
+  return hash.startsWith("#") ? hash : `#${hash}`;
+}
+
+function getRouteAllowedValues(key) {
+  const definition = getFilterControlDefinitions()[key];
+  return definition?.options?.map(([value]) => value).filter(Boolean) || [];
+}
+
+function sanitizeRouteFilterValue(key, value) {
+  const text = String(value || "").trim();
+  if (!text) return "";
+  if (key === "search") return text.toLowerCase();
+  const allowedValues = getRouteAllowedValues(key);
+  return allowedValues.includes(text) ? text : "";
+}
+
+function sanitizeRouteFilterList(key, value) {
+  const allowedValues = getRouteAllowedValues(key);
+  if (!allowedValues.length) return [];
+  const requested = new Set(
+    String(value || "")
+      .split(",")
+      .map((item) => item.trim())
+      .filter(Boolean)
+  );
+  return allowedValues.filter((item) => requested.has(item));
+}
+
+function readBrowseRouteParams(params, page) {
+  const nextFilters = getDefaultFilters(page === "archive" ? "archive" : "owned");
+  nextFilters.search = sanitizeRouteFilterValue("search", params.get(ROUTE_FILTER_PARAM_MAP.search));
+  nextFilters.players = sanitizeRouteFilterValue("players", params.get(ROUTE_FILTER_PARAM_MAP.players));
+  nextFilters.duration = sanitizeRouteFilterList("duration", params.get(ROUTE_FILTER_PARAM_MAP.duration));
+  nextFilters.weight = sanitizeRouteFilterList("weight", params.get(ROUTE_FILTER_PARAM_MAP.weight));
+  nextFilters.physicalLanguage = sanitizeRouteFilterValue("physicalLanguage", params.get(ROUTE_FILTER_PARAM_MAP.physicalLanguage));
+  nextFilters.bestPlayers = sanitizeRouteFilterValue("bestPlayers", params.get(ROUTE_FILTER_PARAM_MAP.bestPlayers));
+  nextFilters.age = sanitizeRouteFilterValue("age", params.get(ROUTE_FILTER_PARAM_MAP.age));
+  nextFilters.sort = sanitizeRouteFilterValue("sort", params.get(ROUTE_FILTER_PARAM_MAP.sort)) || "name";
+  nextFilters.sortDirection = sanitizeRouteFilterValue("sortDirection", params.get(ROUTE_FILTER_PARAM_MAP.sortDirection)) || "asc";
+  nextFilters.view = sanitizeRouteFilterValue("view", params.get(ROUTE_FILTER_PARAM_MAP.view)) || (state.preferences.view || "grid");
+  nextFilters.recommendation = sanitizeRouteFilterValue("recommendation", params.get(ROUTE_FILTER_PARAM_MAP.recommendation));
+  return nextFilters;
+}
+
+function normalizeRoute(route) {
+  const baseRoute = route || getDefaultRoute();
+  const page = PAGE_KEYS.includes(baseRoute.page) ? baseRoute.page : "home";
+  const params = new URLSearchParams();
+
+  if (page === "browse" || page === "archive") {
+    const normalizedFilters = readBrowseRouteParams(baseRoute.params || new URLSearchParams(), page);
+    Object.entries(ROUTE_FILTER_PARAM_MAP).forEach(([key, paramKey]) => {
+      const value = normalizedFilters[key];
+      if (Array.isArray(value)) {
+        if (value.length) params.set(paramKey, value.join(","));
+        return;
+      }
+      if (typeof value === "string" && value) {
+        params.set(paramKey, value);
+      }
+    });
+  }
+
+  return { page, params };
+}
+
+function serializeRoute(route) {
+  const normalizedRoute = normalizeRoute(route);
+  const query = normalizedRoute.params.toString();
+  return `#/${normalizedRoute.page}${query ? `?${query}` : ""}`;
+}
+
+function buildRouteFromState() {
+  const params = new URLSearchParams();
+
+  if (state.activePage === "browse" || state.activePage === "archive") {
+    Object.entries(ROUTE_FILTER_PARAM_MAP).forEach(([key, paramKey]) => {
+      const value = state.filters[key];
+      if (Array.isArray(value)) {
+        if (value.length) params.set(paramKey, value.join(","));
+        return;
+      }
+      if (typeof value === "string" && value) {
+        params.set(paramKey, value);
+      }
+    });
+  }
+
+  return {
+    page: PAGE_KEYS.includes(state.activePage) ? state.activePage : "home",
+    params
+  };
+}
+
+function applyRouteToState(route, options = {}) {
+  const { updatePreferences = false } = options;
+  const normalizedRoute = normalizeRoute(route);
+  const nextPage = normalizedRoute.page;
+
+  state.activePage = nextPage;
+  if (nextPage === "browse" || nextPage === "archive") {
+    state.lastWorkspacePage = nextPage;
+    state.filters = readBrowseRouteParams(normalizedRoute.params, nextPage);
+  } else {
+    state.filters.section = state.lastWorkspacePage === "archive" ? "archive" : "owned";
+  }
+
+  if (updatePreferences) {
+    state.preferences.activePage = nextPage;
+    savePreferences();
+  }
+
+  syncSectionWithPage();
+  syncControls();
+  return normalizedRoute;
+}
+
+function syncStateFromCurrentRoute() {
+  const route = parseHashRoute();
+  if (!route) return false;
+  const normalizedRoute = applyRouteToState(route);
+  const serializedRoute = serializeRoute(normalizedRoute);
+  if (serializedRoute !== getCurrentSerializedRoute()) {
+    const url = new URL(window.location.href);
+    url.hash = serializedRoute;
+    history.replaceState(null, "", url);
+  }
+  return true;
+}
+
+function writeRouteFromState(options = {}) {
+  const { replace = false } = options;
+  const serializedRoute = serializeRoute(buildRouteFromState());
+  if (serializedRoute === getCurrentSerializedRoute()) return;
+  if (replace) {
+    const url = new URL(window.location.href);
+    url.hash = serializedRoute;
+    history.replaceState(null, "", url);
+    lastSerializedRoute = "";
+    return;
+  }
+  lastSerializedRoute = serializedRoute;
+  window.location.hash = serializedRoute.slice(1);
+}
+
+function handleHashChange() {
+  const serializedRoute = getCurrentSerializedRoute();
+  if (serializedRoute === lastSerializedRoute) {
+    lastSerializedRoute = "";
+    return;
+  }
+  const routeApplied = syncStateFromCurrentRoute();
+  if (routeApplied) render();
+}
+
+function setFilter(key, value, options = {}) {
+  const {
+    syncRoute = true,
+    replace = ROUTE_FILTER_DEFAULT_REPLACE_KEYS.has(key),
+    renderNow = true
+  } = options;
   state.filters[key] = value;
   if (key === "view") {
     state.preferences.view = value;
@@ -803,7 +1025,8 @@ function setFilter(key, value) {
   if (state.randomRevealState !== "revealing" && isRandomResultOutOfSync()) {
     clearCurrentRandomSelection();
   }
-  render();
+  if (renderNow) render();
+  if (syncRoute) writeRouteFromState({ replace });
 }
 
 function setLanguage(language) {
@@ -834,17 +1057,26 @@ function applyThemePreference() {
   document.documentElement.style.colorScheme = effectiveTheme;
 }
 
-function setActivePage(page) {
+function setActivePage(page, options = {}) {
+  const {
+    syncRoute = true,
+    replace = false,
+    renderNow = true,
+    updatePreferences = true
+  } = options;
   if (!PAGE_KEYS.includes(page)) return;
   state.activePage = page;
   if (page === "browse" || page === "archive") {
     state.lastWorkspacePage = page;
     state.filters.section = page === "archive" ? "archive" : "owned";
   }
-  state.preferences.activePage = page;
-  savePreferences();
+  if (updatePreferences) {
+    state.preferences.activePage = page;
+    savePreferences();
+  }
   elements.filtersPanel.classList.remove("is-open");
-  render();
+  if (renderNow) render();
+  if (syncRoute) writeRouteFromState({ replace });
 }
 
 function syncSectionWithPage() {
@@ -861,24 +1093,16 @@ function syncSectionWithPage() {
   state.filters.section = state.lastWorkspacePage === "archive" ? "archive" : "owned";
 }
 
-function resetFilters() {
-  state.filters = {
-    search: "",
-    players: "",
-    duration: [],
-    weight: [],
-    languageKey: "",
-    physicalLanguage: "",
-    bestPlayers: "",
-    age: "",
-    sort: "name",
-    sortDirection: "asc",
-    view: state.preferences.view || "grid",
-    recommendation: "",
-    section: getEffectiveSection()
-  };
+function resetFilters(options = {}) {
+  const {
+    syncRoute = true,
+    replace = false,
+    renderNow = true
+  } = options;
+  state.filters = getDefaultFilters(getEffectiveSection());
   syncControls();
-  render();
+  if (renderNow) render();
+  if (syncRoute) writeRouteFromState({ replace });
 }
 
 function applyTranslations() {
