@@ -9,11 +9,39 @@ const RECENT_HIGHLIGHT_WINDOW_MONTHS = 6;
 const RECENT_HIGHLIGHT_MIN_ITEMS = 7;
 const RECENT_HIGHLIGHT_FILL_LIMIT_MONTHS = 18;
 const THEME_KEYS = ["light", "dark"];
+const ROUTE_FILTER_PARAM_MAP = {
+  search: "search",
+  players: "players",
+  duration: "duration",
+  weight: "weight",
+  physicalLanguage: "lang",
+  bestPlayers: "best",
+  age: "age",
+  sort: "sort",
+  sortDirection: "dir",
+  view: "view",
+  recommendation: "rec"
+};
+const ROUTE_DETAIL_PARAM = "game";
+const ROUTE_FILTER_DEFAULT_REPLACE_KEYS = new Set(["search"]);
+const ROUTE_HISTORY_PARAM_MAP = {
+  scope: "scope",
+  mode: "mode",
+  year: "year",
+  month: "month"
+};
+const ROUTE_RANDOM_PARAM_MAP = {
+  scope: "scope",
+  draw: "draw"
+};
+const ROUTE_RANDOM_FILTER_KEYS = ["search", "players", "duration", "weight", "physicalLanguage", "bestPlayers", "age", "recommendation"];
 
 const PAGE_KEYS = ["home", "browse", "archive", "random", "history", "settings"];
 let masonryLayoutFrame = 0;
 let gameCardResizeObserver = null;
 let bodyScrollLockY = 0;
+let lastSerializedRoute = "";
+let detailShareFeedbackTimer = null;
 let historyCharts = {
   yearly: null,
   monthly: null
@@ -94,8 +122,10 @@ const translations = {
     links: "Enlaces",
     openBgg: "Abrir en BGG",
     openRules: "Leer resumen de reglas",
-    rulesAvailable: "Reglas disponibles",
-    rulesFromBase: "Reglas del juego base",
+    shareGame: "Compartir",
+    shareGameCopied: "Link copiado",
+    shareGameShared: "Compartido",
+    shareGameError: "No se pudo compartir",
     expansion: "Expansión",
     expansionRequiresBase: "Requiere juego base",
     expansionsTitle: "Expansiones",
@@ -355,8 +385,10 @@ const translations = {
     links: "Links",
     openBgg: "Open on BGG",
     openRules: "Read rules summary",
-    rulesAvailable: "Rules available",
-    rulesFromBase: "Base game rules",
+    shareGame: "Share",
+    shareGameCopied: "Link copied",
+    shareGameShared: "Shared",
+    shareGameError: "Could not share",
     expansion: "Expansion",
     expansionRequiresBase: "Requires base game",
     expansionsTitle: "Expansions",
@@ -574,6 +606,10 @@ const icons = {
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 6.5-5 5 5 5"/><path d="M19.5 11.5h-10"/></svg>',
   external:
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5h5v5"/><path d="M10 14 19 5"/><path d="M19 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></svg>',
+  share:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4"/><path d="m15.4 6.5-6.8 4"/></svg>',
+  check:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.2 4.2L19 7"/></svg>',
   rules:
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4.5A2.5 2.5 0 0 1 7.5 2H19v17H7.5A2.5 2.5 0 0 0 5 21.5z"/><path d="M5 4.5v17M9 7h6M9 11h6"/></svg>',
   duo:
@@ -633,6 +669,7 @@ const state = {
   currentRandomEntryIds: [],
   randomDrawCount: 1,
   randomRevealTimer: null,
+  activeDetailGameId: null,
   historyScope: "all",
   historySelectedYear: null,
   historySelectedMonth: null,
@@ -663,8 +700,12 @@ async function init() {
   applyTranslations();
   await loadData();
   ensureValidActivePage();
+  const routeApplied = syncStateFromCurrentRoute();
   syncSectionWithPage();
   render();
+  if (!routeApplied || getCurrentSerializedRoute() !== serializeRoute(buildRouteFromState())) {
+    writeRouteFromState({ replace: true });
+  }
 }
 
 function cacheElements() {
@@ -762,6 +803,31 @@ function animateDetailsDialogIn() {
   });
 }
 
+function ensureDetailsDialogOpen() {
+  if (!elements.detailsDialog) return false;
+  if (elements.detailsDialog.open) return true;
+
+  let opened = false;
+  try {
+    elements.detailsDialog.showModal();
+    opened = true;
+  } catch (error) {
+    try {
+      elements.detailsDialog.show();
+      opened = true;
+    } catch (fallbackError) {
+      elements.detailsDialog.setAttribute("open", "open");
+      opened = true;
+    }
+  }
+
+  if (!elements.detailsDialog.open && opened) {
+    elements.detailsDialog.setAttribute("open", "open");
+  }
+
+  return elements.detailsDialog.open;
+}
+
 function bindEvents() {
   elements.searchInput.addEventListener("input", (event) => setFilter("search", event.target.value.trim().toLowerCase()));
   elements.filtersPanel.addEventListener("click", handleFilterControlClick);
@@ -773,10 +839,15 @@ function bindEvents() {
     const resetButton = event.target.closest("[data-reset-filters]");
     if (resetButton && !resetButton.disabled) resetFilters();
   });
-  document.querySelector("#details-close").addEventListener("click", () => elements.detailsDialog.close());
+  document.querySelector("#details-close").addEventListener("click", () => closeDetails());
   elements.detailsDialog?.addEventListener("close", () => {
     elements.detailsDialog.classList.remove("is-visible", "is-entering");
+    elements.detailsContent.dataset.gameId = "";
     unlockBodyScroll();
+    if (state.activeDetailGameId) {
+      state.activeDetailGameId = null;
+      writeRouteFromState();
+    }
   });
   document.querySelector("#open-filters").addEventListener("click", () => elements.filtersPanel.classList.add("is-open"));
   document.querySelector("#close-filters").addEventListener("click", () => elements.filtersPanel.classList.remove("is-open"));
@@ -785,6 +856,7 @@ function bindEvents() {
   document.querySelector("#toolbar-random").addEventListener("click", () => setActivePage("random"));
   document.querySelector("#random-browse-action").addEventListener("click", () => setActivePage(state.lastWorkspacePage));
   document.querySelector("#random-page-trigger").addEventListener("click", drawRandomFromCurrentScope);
+  window.addEventListener("hashchange", handleHashChange);
   window.addEventListener("resize", () => {
     syncStickyOffsets();
     renderFilterControls();
@@ -798,7 +870,450 @@ function ensureValidActivePage() {
   }
 }
 
-function setFilter(key, value) {
+function getDefaultFilters(section = "owned") {
+  return {
+    search: "",
+    players: "",
+    duration: [],
+    weight: [],
+    languageKey: "",
+    physicalLanguage: "",
+    bestPlayers: "",
+    age: "",
+    sort: "name",
+    sortDirection: "asc",
+    view: state.preferences.view || "grid",
+    recommendation: "",
+    section
+  };
+}
+
+function getDefaultRoute() {
+  const fallbackPage = PAGE_KEYS.includes(state.activePage) ? state.activePage : "home";
+  return {
+    page: fallbackPage,
+    params: new URLSearchParams()
+  };
+}
+
+function parseHashRoute(hash = window.location.hash) {
+  const text = String(hash || "").trim();
+  if (!text) return null;
+  const raw = text.startsWith("#") ? text.slice(1) : text;
+  const [pathname = "", query = ""] = raw.split("?");
+  const page = pathname.replace(/^\/+/, "").trim() || "home";
+  return {
+    page,
+    params: new URLSearchParams(query)
+  };
+}
+
+function getCurrentSerializedRoute() {
+  const hash = String(window.location.hash || "").trim();
+  if (!hash) return "";
+  return hash.startsWith("#") ? hash : `#${hash}`;
+}
+
+function getRouteAllowedValues(key) {
+  const definition = getFilterControlDefinitions()[key];
+  return definition?.options?.map(([value]) => value).filter(Boolean) || [];
+}
+
+function sanitizeRouteFilterValue(key, value) {
+  const text = String(value || "").trim();
+  if (!text) return "";
+  if (key === "search") return text.toLowerCase();
+  const allowedValues = getRouteAllowedValues(key);
+  return allowedValues.includes(text) ? text : "";
+}
+
+function sanitizeRouteFilterList(key, value) {
+  const allowedValues = getRouteAllowedValues(key);
+  if (!allowedValues.length) return [];
+  const requested = new Set(
+    String(value || "")
+      .split(",")
+      .map((item) => item.trim())
+      .filter(Boolean)
+  );
+  return allowedValues.filter((item) => requested.has(item));
+}
+
+function getValidRouteGameId(value) {
+  const normalizedId = Number(value);
+  if (!Number.isFinite(normalizedId)) return null;
+  const game = getGameById(normalizedId);
+  return game ? game.id : null;
+}
+
+function readHistoryRouteParams(params) {
+  const scope = ["owned", "archive", "all"].includes(params.get(ROUTE_HISTORY_PARAM_MAP.scope))
+    ? params.get(ROUTE_HISTORY_PARAM_MAP.scope)
+    : "all";
+  const mode = ["bar", "line"].includes(params.get(ROUTE_HISTORY_PARAM_MAP.mode))
+    ? params.get(ROUTE_HISTORY_PARAM_MAP.mode)
+    : "bar";
+  const availableYears = new Set(getAcquisitionHistory(scope).years.map((entry) => entry.year));
+  const parsedYear = Number(params.get(ROUTE_HISTORY_PARAM_MAP.year));
+  const year = Number.isFinite(parsedYear) && availableYears.has(parsedYear) ? parsedYear : null;
+  const parsedMonth = Number(params.get(ROUTE_HISTORY_PARAM_MAP.month));
+  const month = year && Number.isFinite(parsedMonth) && parsedMonth >= 1 && parsedMonth <= 12 ? parsedMonth : null;
+
+  return {
+    scope,
+    mode,
+    year,
+    month
+  };
+}
+
+function readBrowseRouteParams(params, page) {
+  const nextFilters = getDefaultFilters(page === "archive" ? "archive" : "owned");
+  nextFilters.search = sanitizeRouteFilterValue("search", params.get(ROUTE_FILTER_PARAM_MAP.search));
+  nextFilters.players = sanitizeRouteFilterValue("players", params.get(ROUTE_FILTER_PARAM_MAP.players));
+  nextFilters.duration = sanitizeRouteFilterList("duration", params.get(ROUTE_FILTER_PARAM_MAP.duration));
+  nextFilters.weight = sanitizeRouteFilterList("weight", params.get(ROUTE_FILTER_PARAM_MAP.weight));
+  nextFilters.physicalLanguage = sanitizeRouteFilterValue("physicalLanguage", params.get(ROUTE_FILTER_PARAM_MAP.physicalLanguage));
+  nextFilters.bestPlayers = sanitizeRouteFilterValue("bestPlayers", params.get(ROUTE_FILTER_PARAM_MAP.bestPlayers));
+  nextFilters.age = sanitizeRouteFilterValue("age", params.get(ROUTE_FILTER_PARAM_MAP.age));
+  nextFilters.sort = sanitizeRouteFilterValue("sort", params.get(ROUTE_FILTER_PARAM_MAP.sort)) || "name";
+  nextFilters.sortDirection = sanitizeRouteFilterValue("sortDirection", params.get(ROUTE_FILTER_PARAM_MAP.sortDirection)) || "asc";
+  nextFilters.view = sanitizeRouteFilterValue("view", params.get(ROUTE_FILTER_PARAM_MAP.view)) || (state.preferences.view || "grid");
+  nextFilters.recommendation = sanitizeRouteFilterValue("recommendation", params.get(ROUTE_FILTER_PARAM_MAP.recommendation));
+  return nextFilters;
+}
+
+function getValidRandomScope(value) {
+  return value === "archive" ? "archive" : "browse";
+}
+
+function getRandomRouteDrawCount(value) {
+  const normalized = Number(value);
+  if (!Number.isFinite(normalized)) return 1;
+  return Math.min(Math.max(1, normalized), RANDOM_HISTORY_LIMIT);
+}
+
+function readRandomRouteParams(params) {
+  const scope = getValidRandomScope(params.get(ROUTE_RANDOM_PARAM_MAP.scope));
+  const scopedFilters = readBrowseRouteParams(params, scope);
+  const filtersSnapshot = ROUTE_RANDOM_FILTER_KEYS.reduce((snapshot, key) => {
+    const value = scopedFilters[key];
+    snapshot[key] = Array.isArray(value) ? [...value] : value;
+    return snapshot;
+  }, {});
+
+  return {
+    scope,
+    drawCount: getRandomRouteDrawCount(params.get(ROUTE_RANDOM_PARAM_MAP.draw)),
+    filtersSnapshot
+  };
+}
+
+function normalizeRoute(route) {
+  const baseRoute = route || getDefaultRoute();
+  const page = PAGE_KEYS.includes(baseRoute.page) ? baseRoute.page : "home";
+  const params = new URLSearchParams();
+
+  if (page === "browse" || page === "archive") {
+    const normalizedFilters = readBrowseRouteParams(baseRoute.params || new URLSearchParams(), page);
+    Object.entries(ROUTE_FILTER_PARAM_MAP).forEach(([key, paramKey]) => {
+      const value = normalizedFilters[key];
+      if (Array.isArray(value)) {
+        if (value.length) params.set(paramKey, value.join(","));
+        return;
+      }
+      if (typeof value === "string" && value) {
+        params.set(paramKey, value);
+      }
+    });
+  }
+
+  if (page === "history") {
+    const historyRoute = readHistoryRouteParams(baseRoute.params || new URLSearchParams());
+    if (historyRoute.scope !== "all") {
+      params.set(ROUTE_HISTORY_PARAM_MAP.scope, historyRoute.scope);
+    }
+    if (historyRoute.mode !== "bar") {
+      params.set(ROUTE_HISTORY_PARAM_MAP.mode, historyRoute.mode);
+    }
+    if (historyRoute.year) {
+      params.set(ROUTE_HISTORY_PARAM_MAP.year, String(historyRoute.year));
+    }
+    if (historyRoute.month) {
+      params.set(ROUTE_HISTORY_PARAM_MAP.month, String(historyRoute.month));
+    }
+  }
+
+  if (page === "random") {
+    const randomRoute = readRandomRouteParams(baseRoute.params || new URLSearchParams());
+    if (randomRoute.scope !== "browse") {
+      params.set(ROUTE_RANDOM_PARAM_MAP.scope, randomRoute.scope);
+    }
+    ROUTE_RANDOM_FILTER_KEYS.forEach((key) => {
+      const value = randomRoute.filtersSnapshot[key];
+      const paramKey = ROUTE_FILTER_PARAM_MAP[key];
+      if (!paramKey) return;
+      if (Array.isArray(value)) {
+        if (value.length) params.set(paramKey, value.join(","));
+        return;
+      }
+      if (typeof value === "string" && value) {
+        params.set(paramKey, value);
+      }
+    });
+    if (randomRoute.drawCount > 1) {
+      params.set(ROUTE_RANDOM_PARAM_MAP.draw, String(randomRoute.drawCount));
+    }
+  }
+
+  const detailGameId = getValidRouteGameId(baseRoute.params?.get(ROUTE_DETAIL_PARAM));
+  if (detailGameId) {
+    params.set(ROUTE_DETAIL_PARAM, String(detailGameId));
+  }
+
+  return { page, params };
+}
+
+function serializeRoute(route) {
+  const normalizedRoute = normalizeRoute(route);
+  const query = normalizedRoute.params.toString();
+  return `#/${normalizedRoute.page}${query ? `?${query}` : ""}`;
+}
+
+function buildRouteFromState() {
+  const params = new URLSearchParams();
+
+  if (state.activePage === "browse" || state.activePage === "archive") {
+    Object.entries(ROUTE_FILTER_PARAM_MAP).forEach(([key, paramKey]) => {
+      const value = state.filters[key];
+      if (Array.isArray(value)) {
+        if (value.length) params.set(paramKey, value.join(","));
+        return;
+      }
+      if (typeof value === "string" && value) {
+        params.set(paramKey, value);
+      }
+    });
+  }
+
+  if (state.activePage === "history") {
+    if (state.historyScope !== "all") {
+      params.set(ROUTE_HISTORY_PARAM_MAP.scope, state.historyScope);
+    }
+    if (state.historyChartMode !== "bar") {
+      params.set(ROUTE_HISTORY_PARAM_MAP.mode, state.historyChartMode);
+    }
+    if (Number.isFinite(state.historySelectedYear)) {
+      params.set(ROUTE_HISTORY_PARAM_MAP.year, String(state.historySelectedYear));
+    }
+    if (Number.isFinite(state.historySelectedMonth) && Number.isFinite(state.historySelectedYear)) {
+      params.set(ROUTE_HISTORY_PARAM_MAP.month, String(state.historySelectedMonth));
+    }
+  }
+
+  if (state.activePage === "random") {
+    const currentContext = buildRandomContext();
+    if (currentContext.scope !== "browse") {
+      params.set(ROUTE_RANDOM_PARAM_MAP.scope, currentContext.scope);
+    }
+    ROUTE_RANDOM_FILTER_KEYS.forEach((key) => {
+      const value = currentContext.filtersSnapshot[key];
+      const paramKey = ROUTE_FILTER_PARAM_MAP[key];
+      if (!paramKey) return;
+      if (Array.isArray(value)) {
+        if (value.length) params.set(paramKey, value.join(","));
+        return;
+      }
+      if (typeof value === "string" && value) {
+        params.set(paramKey, value);
+      }
+    });
+    if (state.randomDrawCount > 1) {
+      params.set(ROUTE_RANDOM_PARAM_MAP.draw, String(state.randomDrawCount));
+    }
+  }
+
+  const detailGameId = getValidRouteGameId(state.activeDetailGameId);
+  if (detailGameId) {
+    params.set(ROUTE_DETAIL_PARAM, String(detailGameId));
+  }
+
+  return {
+    page: PAGE_KEYS.includes(state.activePage) ? state.activePage : "home",
+    params
+  };
+}
+
+function applyRouteToState(route, options = {}) {
+  const { updatePreferences = false } = options;
+  const normalizedRoute = normalizeRoute(route);
+  const nextPage = normalizedRoute.page;
+
+  state.activePage = nextPage;
+  if (nextPage === "browse" || nextPage === "archive") {
+    state.lastWorkspacePage = nextPage;
+    state.filters = readBrowseRouteParams(normalizedRoute.params, nextPage);
+  } else {
+    state.filters.section = state.lastWorkspacePage === "archive" ? "archive" : "owned";
+  }
+  if (nextPage === "history") {
+    const historyRoute = readHistoryRouteParams(normalizedRoute.params);
+    state.historyScope = historyRoute.scope;
+    state.historyChartMode = historyRoute.mode;
+    state.historySelectedYear = historyRoute.year;
+    state.historySelectedMonth = historyRoute.month;
+  }
+  if (nextPage === "random") {
+    const randomRoute = readRandomRouteParams(normalizedRoute.params);
+    state.lastWorkspacePage = randomRoute.scope;
+    const scopedDefaults = getDefaultFilters(randomRoute.scope === "archive" ? "archive" : "owned");
+    state.filters = {
+      ...scopedDefaults,
+      ...randomRoute.filtersSnapshot,
+      section: randomRoute.scope === "archive" ? "archive" : "owned"
+    };
+    state.randomDrawCount = randomRoute.drawCount;
+  }
+  state.activeDetailGameId = getValidRouteGameId(normalizedRoute.params.get(ROUTE_DETAIL_PARAM));
+
+  if (updatePreferences) {
+    state.preferences.activePage = nextPage;
+    savePreferences();
+  }
+
+  syncSectionWithPage();
+  syncControls();
+  return normalizedRoute;
+}
+
+function syncStateFromCurrentRoute() {
+  const route = parseHashRoute();
+  if (!route) return false;
+  const normalizedRoute = applyRouteToState(route);
+  const serializedRoute = serializeRoute(normalizedRoute);
+  if (serializedRoute !== getCurrentSerializedRoute()) {
+    const url = new URL(window.location.href);
+    url.hash = serializedRoute;
+    history.replaceState(null, "", url);
+  }
+  return true;
+}
+
+function writeRouteFromState(options = {}) {
+  const { replace = false } = options;
+  const serializedRoute = serializeRoute(buildRouteFromState());
+  if (serializedRoute === getCurrentSerializedRoute()) return;
+  if (replace) {
+    const url = new URL(window.location.href);
+    url.hash = serializedRoute;
+    history.replaceState(null, "", url);
+    lastSerializedRoute = "";
+    return;
+  }
+  lastSerializedRoute = serializedRoute;
+  window.location.hash = serializedRoute.slice(1);
+}
+
+function handleHashChange() {
+  const serializedRoute = getCurrentSerializedRoute();
+  if (serializedRoute === lastSerializedRoute) {
+    lastSerializedRoute = "";
+    return;
+  }
+  const routeApplied = syncStateFromCurrentRoute();
+  if (routeApplied) render();
+}
+
+function getShareableDetailUrl(gameId = state.activeDetailGameId) {
+  const normalizedGameId = getValidRouteGameId(gameId);
+  const route = buildRouteFromState();
+  if (normalizedGameId) {
+    route.params.set(ROUTE_DETAIL_PARAM, String(normalizedGameId));
+  }
+  const url = new URL(window.location.href);
+  url.hash = serializeRoute(route);
+  return url.toString();
+}
+
+function canUseNativeShare(url) {
+  if (typeof navigator.share !== "function") return false;
+  const protocol = String(window.location.protocol || "").toLowerCase();
+  if (protocol !== "https:" && protocol !== "http:") return false;
+
+  const payload = { url };
+  if (typeof navigator.canShare === "function") {
+    try {
+      return navigator.canShare(payload);
+    } catch (error) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function resetDetailShareButtonLabel(button, label) {
+  if (!button) return;
+  button.dataset.feedbackState = "idle";
+  button.innerHTML = iconMarkup("share", "inline-icon-label__icon");
+  button.setAttribute("aria-label", label);
+  button.setAttribute("title", label);
+}
+
+function setDetailShareButtonFeedback(button, label, state = "success") {
+  if (!button) return;
+  window.clearTimeout(detailShareFeedbackTimer);
+  button.dataset.feedbackState = state;
+  button.innerHTML = iconMarkup(state === "success" ? "check" : "share", "inline-icon-label__icon");
+  button.setAttribute("aria-label", label);
+  button.setAttribute("title", label);
+  detailShareFeedbackTimer = window.setTimeout(() => {
+    detailShareFeedbackTimer = null;
+    const defaultLabel = button.dataset.defaultLabel || translations[state.language].shareGame;
+    resetDetailShareButtonLabel(button, defaultLabel);
+  }, 1800);
+}
+
+async function shareDetailGame(game, button) {
+  const copy = translations[state.language];
+  const url = getShareableDetailUrl(game?.id);
+  const defaultButton = button || elements.detailsContent?.querySelector("[data-detail-share]");
+  try {
+    if (canUseNativeShare(url)) {
+      await navigator.share({
+        title: getDisplayName(game),
+        text: getDisplayName(game),
+        url
+      });
+      setDetailShareButtonFeedback(defaultButton, copy.shareGameShared, "success");
+      return;
+    }
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(url);
+      setDetailShareButtonFeedback(defaultButton, copy.shareGameCopied, "success");
+      return;
+    }
+    throw new Error("Share unavailable");
+  } catch (error) {
+    if (error?.name === "AbortError") return;
+    if (navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(url);
+        setDetailShareButtonFeedback(defaultButton, copy.shareGameCopied, "success");
+        return;
+      } catch (clipboardError) {
+        // Ignore and surface generic feedback below.
+      }
+    }
+    setDetailShareButtonFeedback(defaultButton, copy.shareGameError, "error");
+  }
+}
+
+function setFilter(key, value, options = {}) {
+  const {
+    syncRoute = true,
+    replace = ROUTE_FILTER_DEFAULT_REPLACE_KEYS.has(key),
+    renderNow = true
+  } = options;
   state.filters[key] = value;
   if (key === "view") {
     state.preferences.view = value;
@@ -807,7 +1322,8 @@ function setFilter(key, value) {
   if (state.randomRevealState !== "revealing" && isRandomResultOutOfSync()) {
     clearCurrentRandomSelection();
   }
-  render();
+  if (renderNow) render();
+  if (syncRoute) writeRouteFromState({ replace });
 }
 
 function setLanguage(language) {
@@ -838,17 +1354,26 @@ function applyThemePreference() {
   document.documentElement.style.colorScheme = effectiveTheme;
 }
 
-function setActivePage(page) {
+function setActivePage(page, options = {}) {
+  const {
+    syncRoute = true,
+    replace = false,
+    renderNow = true,
+    updatePreferences = true
+  } = options;
   if (!PAGE_KEYS.includes(page)) return;
   state.activePage = page;
   if (page === "browse" || page === "archive") {
     state.lastWorkspacePage = page;
     state.filters.section = page === "archive" ? "archive" : "owned";
   }
-  state.preferences.activePage = page;
-  savePreferences();
+  if (updatePreferences) {
+    state.preferences.activePage = page;
+    savePreferences();
+  }
   elements.filtersPanel.classList.remove("is-open");
-  render();
+  if (renderNow) render();
+  if (syncRoute) writeRouteFromState({ replace });
 }
 
 function syncSectionWithPage() {
@@ -865,24 +1390,16 @@ function syncSectionWithPage() {
   state.filters.section = state.lastWorkspacePage === "archive" ? "archive" : "owned";
 }
 
-function resetFilters() {
-  state.filters = {
-    search: "",
-    players: "",
-    duration: [],
-    weight: [],
-    languageKey: "",
-    physicalLanguage: "",
-    bestPlayers: "",
-    age: "",
-    sort: "name",
-    sortDirection: "asc",
-    view: state.preferences.view || "grid",
-    recommendation: "",
-    section: getEffectiveSection()
-  };
+function resetFilters(options = {}) {
+  const {
+    syncRoute = true,
+    replace = false,
+    renderNow = true
+  } = options;
+  state.filters = getDefaultFilters(getEffectiveSection());
   syncControls();
-  render();
+  if (renderNow) render();
+  if (syncRoute) writeRouteFromState({ replace });
 }
 
 function applyTranslations() {
@@ -1486,6 +2003,7 @@ function render() {
   renderGames();
   renderRandomPage();
   renderAcquisitionHistoryPage();
+  syncDetailsDialogState();
 }
 
 function syncVisualContext() {
@@ -1653,33 +2171,69 @@ function renderHomePanel() {
   });
 }
 
-function setHistoryScope(scope) {
+function setHistoryScope(scope, options = {}) {
+  const {
+    syncRoute = true,
+    replace = false,
+    renderNow = true
+  } = options;
   if (!["owned", "archive", "all"].includes(scope)) return;
   state.historyScope = scope;
   state.historySelectedYear = null;
   state.historySelectedMonth = null;
-  render();
+  if (renderNow) render();
+  if (syncRoute) writeRouteFromState({ replace });
 }
 
-function setHistorySelectedYear(year) {
+function setHistorySelectedYear(year, options = {}) {
+  const {
+    syncRoute = true,
+    replace = false,
+    renderNow = true
+  } = options;
   const normalized = Number(year);
   if (!Number.isFinite(normalized)) return;
   state.historySelectedYear = normalized;
   state.historySelectedMonth = null;
-  render();
+  if (renderNow) render();
+  if (syncRoute) writeRouteFromState({ replace });
 }
 
-function setHistorySelectedMonth(month) {
+function setHistorySelectedMonth(month, options = {}) {
+  const {
+    syncRoute = true,
+    replace = false,
+    renderNow = true
+  } = options;
   const normalized = Number(month);
   if (!Number.isFinite(normalized) || normalized < 1 || normalized > 12) return;
   state.historySelectedMonth = state.historySelectedMonth === normalized ? null : normalized;
-  render();
+  if (renderNow) render();
+  if (syncRoute) writeRouteFromState({ replace });
 }
 
-function setHistoryChartMode(mode) {
+function setHistoryChartMode(mode, options = {}) {
+  const {
+    syncRoute = true,
+    replace = false,
+    renderNow = true
+  } = options;
   if (!["bar", "line"].includes(mode)) return;
   state.historyChartMode = mode;
-  render();
+  if (renderNow) render();
+  if (syncRoute) writeRouteFromState({ replace });
+}
+
+function setRandomDrawCount(value, options = {}) {
+  const {
+    syncRoute = true,
+    replace = false,
+    renderNow = true
+  } = options;
+  const normalized = getRandomRouteDrawCount(value);
+  state.randomDrawCount = normalized;
+  if (renderNow) render();
+  if (syncRoute) writeRouteFromState({ replace });
 }
 
 function getAcquisitionHistoryScopeGames(scope = state.historyScope) {
@@ -2642,8 +3196,6 @@ function renderGames() {
     const art = node.querySelector(".game-card__art");
     const badge = node.querySelector(".game-card__badge");
     const flag = node.querySelector(".game-card__flag");
-    const rulesBadge = node.querySelector(".game-card__rules");
-    const rulesGuide = getRulesGuide(game);
     const displayName = getDisplayName(game);
     node.classList.toggle("game-card--list", isListView);
     node.classList.toggle("game-card--new", game.isNew);
@@ -2651,10 +3203,6 @@ function renderGames() {
     node.querySelector(".game-card__subtitle").textContent = buildCardSubtitle(game);
     flag.textContent = translations[state.language].newTag;
     flag.classList.toggle("hidden", !game.isNew);
-    rulesBadge.textContent = rulesGuide?.inherited
-      ? translations[state.language].rulesFromBase
-      : translations[state.language].rulesAvailable;
-    rulesBadge.classList.toggle("hidden", !rulesGuide);
     badge.textContent = game.averageRating ? game.averageRating.toFixed(1) : "n/a";
     badge.dataset.rating = typeof game.averageRating === "number" && Number.isFinite(game.averageRating)
       ? String(game.averageRating)
@@ -2805,7 +3353,42 @@ function renderDetailParagraphs(text, fallback) {
   return paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("");
 }
 
-function openDetails(game) {
+function syncDetailsDialogState() {
+  const game = getGameById(state.activeDetailGameId);
+  if (game) {
+    openDetails(game, { syncRoute: false });
+    return;
+  }
+  if (elements.detailsDialog?.open || elements.detailsDialog?.hasAttribute("open")) {
+    closeDetails({ syncRoute: false });
+  }
+}
+
+function closeDetails(options = {}) {
+  const {
+    syncRoute = true,
+    replace = false
+  } = options;
+  state.activeDetailGameId = null;
+  window.clearTimeout(detailShareFeedbackTimer);
+  detailShareFeedbackTimer = null;
+  if (elements.detailsDialog?.open) {
+    elements.detailsDialog.close();
+  } else if (elements.detailsDialog?.hasAttribute("open")) {
+    elements.detailsDialog.removeAttribute("open");
+    elements.detailsDialog.classList.remove("is-visible", "is-entering");
+    elements.detailsContent.dataset.gameId = "";
+    unlockBodyScroll();
+  }
+  if (syncRoute) writeRouteFromState({ replace });
+}
+
+function openDetails(game, options = {}) {
+  const {
+    syncRoute = true,
+    replace = false
+  } = options;
+  state.activeDetailGameId = game.id;
   const copy = translations[state.language];
   const displayName = getDisplayName(game);
   const secondaryName = getSecondaryName(game);
@@ -2857,7 +3440,19 @@ function openDetails(game) {
           <div class="detail-hero-copy">
             <div class="detail-heading">
               <p class="eyebrow detail-eyebrow">${escapeHtml(game.yearPublished ? String(game.yearPublished) : copy.notAvailable)}</p>
-              <h2 id="detail-title">${escapeHtml(displayName)}</h2>
+              <div class="detail-title-row">
+                <h2 id="detail-title">${escapeHtml(displayName)}</h2>
+                <button
+                  class="button button--ghost detail-share-button"
+                  type="button"
+                  data-detail-share
+                  data-default-label="${escapeAttribute(copy.shareGame)}"
+                  aria-label="${escapeAttribute(copy.shareGame)}"
+                  title="${escapeAttribute(copy.shareGame)}"
+                >
+                  ${iconMarkup("share", "inline-icon-label__icon")}
+                </button>
+              </div>
               ${detailSubtitle ? `<p class="detail-subtitle">${detailSubtitle}</p>` : ""}
             </div>
             <div class="detail-hero-badges">
@@ -2899,6 +3494,7 @@ function openDetails(game) {
       </div>
     </div>
   `;
+  elements.detailsContent.dataset.gameId = String(game.id);
 
   injectCover(document.querySelector("#detail-cover"), game, 420);
   elements.detailsContent.querySelectorAll("[data-expansion-id]").forEach((button) => {
@@ -2913,12 +3509,17 @@ function openDetails(game) {
       if (baseGame) openDetails(baseGame);
     });
   });
+  elements.detailsContent.querySelector("[data-detail-share]")?.addEventListener("click", async (event) => {
+    await shareDetailGame(game, event.currentTarget);
+  });
 
-  if (!elements.detailsDialog.open) {
+  if (!elements.detailsDialog.open && !elements.detailsDialog.hasAttribute("open")) {
     lockBodyScroll();
-    elements.detailsDialog.showModal();
-    animateDetailsDialogIn();
+    if (ensureDetailsDialogOpen()) {
+      animateDetailsDialogIn();
+    }
   }
+  if (syncRoute) writeRouteFromState({ replace });
 }
 
 function detailKv(label, value) {
@@ -3009,7 +3610,7 @@ function renderRandomPage() {
     ${isStale ? `<p class="random-summary__note">${escapeHtml(copy.randomSummaryStale)}</p>` : ""}
   `;
   elements.randomPageSummary.querySelector("#random-draw-count").addEventListener("change", (event) => {
-    state.randomDrawCount = Math.max(1, Math.min(maxDrawCount, Number(event.target.value) || 1));
+    setRandomDrawCount(Math.max(1, Math.min(maxDrawCount, Number(event.target.value) || 1)));
   });
 
   if (state.randomRevealState === "revealing") {

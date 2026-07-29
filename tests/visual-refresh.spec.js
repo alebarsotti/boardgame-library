@@ -209,6 +209,208 @@ test("history page updates scope, selected year, and detail drill-in", async ({ 
   await expect(page.locator("#detail-title")).toBeVisible();
 });
 
+test("hash route hydrates archive filters with a canonical URL", async ({ page }) => {
+  await page.goto(
+    `${appUrl}#/archive?search=munchkin&players=2&duration=standard,quick&weight=heavy,light&lang=english&best=2&age=adult&sort=rating&dir=desc&view=list&rec=duo`,
+    { waitUntil: "load" }
+  );
+
+  await expect(page.locator("body")).toHaveAttribute("data-page", "archive");
+  await expect(page.locator("#workspace-panel")).toBeVisible();
+  await expect(page.locator("#search-input")).toHaveValue("munchkin");
+  await expect(page.locator("#games-grid")).toHaveClass(/list-view/);
+  await expect(page.locator("#sort-filter select")).toHaveValue("rating");
+  await expect(page.locator("[data-filter-key='sortDirection'][data-filter-value='desc']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("[data-filter-key='players'][data-filter-value='2']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("[data-filter-key='bestPlayers'][data-filter-value='2']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("[data-filter-key='age'][data-filter-value='adult']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("[data-filter-key='physicalLanguage'][data-filter-value='english']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("[data-filter-key='recommendation'][data-filter-value='duo']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("[data-filter-key='duration'][data-filter-value='quick']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("[data-filter-key='duration'][data-filter-value='standard']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("[data-filter-key='weight'][data-filter-value='light']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("[data-filter-key='weight'][data-filter-value='heavy']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page).toHaveURL(/#\/archive\?search=munchkin&players=2&duration=quick%2Cstandard&weight=light%2Cheavy&lang=english&best=2&age=adult&sort=rating&dir=desc&view=list&rec=duo$/);
+});
+
+test("hash route supports browser back and forward across sections", async ({ page }) => {
+  await page.goto(appUrl, { waitUntil: "load" });
+
+  await openPageByNav(page, "Explorar");
+  await expect(page.locator("body")).toHaveAttribute("data-page", "browse");
+  await expect(page).toHaveURL(/#\/browse\?/);
+
+  await page.getByRole("button", { name: "Rápidos", exact: true }).click();
+  await expect(page).toHaveURL(/#\/browse\?.*rec=quick/);
+
+  await openPageByNav(page, "Historial");
+  await expect(page.locator("body")).toHaveAttribute("data-page", "history");
+  await expect(page).toHaveURL(/#\/history(?:\?year=\d+)?$/);
+
+  await page.goBack();
+  await expect(page.locator("body")).toHaveAttribute("data-page", "browse");
+  await expect(page.locator("[data-filter-key='recommendation'][data-filter-value='quick']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page).toHaveURL(/#\/browse\?.*rec=quick/);
+
+  await page.goBack();
+  await expect(page.locator("body")).toHaveAttribute("data-page", "browse");
+  await expect(page.locator("[data-filter-key='recommendation'][data-filter-value='quick']")).toHaveAttribute("aria-pressed", "false");
+  await expect(page).toHaveURL(/#\/browse\?sort=name&dir=asc&view=grid$/);
+
+  await page.goBack();
+  await expect(page.locator("body")).toHaveAttribute("data-page", "home");
+  await expect(page).toHaveURL(/#\/home$/);
+
+  await page.goForward();
+  await expect(page.locator("body")).toHaveAttribute("data-page", "browse");
+  await expect(page.locator("[data-filter-key='recommendation'][data-filter-value='quick']")).toHaveAttribute("aria-pressed", "false");
+
+  await page.goForward();
+  await expect(page.locator("body")).toHaveAttribute("data-page", "browse");
+  await expect(page.locator("[data-filter-key='recommendation'][data-filter-value='quick']")).toHaveAttribute("aria-pressed", "true");
+});
+
+test("detail modal syncs with hash routing and survives reload", async ({ page }) => {
+  await page.goto(`${appUrl}#/browse?search=munchkin&sort=name&dir=asc&view=grid`, { waitUntil: "load" });
+
+  const baseCard = page.locator(".game-card").filter({ has: page.getByText("Munchkin", { exact: true }) });
+  await baseCard.locator(".game-card__button").click();
+  await expect(page.locator("#details-dialog")).toBeVisible();
+  await expect(page.locator("#detail-title")).toContainText("Munchkin");
+  await expect(page).toHaveURL(/#\/browse\?.*game=\d+/);
+
+  const detailUrl = page.url();
+
+  await page.goBack();
+  await expect(page.locator("#details-dialog")).not.toBeVisible();
+  await expect(page).not.toHaveURL(/game=\d+/);
+
+  await page.goto(detailUrl, { waitUntil: "load" });
+  await expect(page).toHaveURL(/game=\d+/);
+  await expect(page.locator("#details-content")).toContainText("Munchkin");
+});
+
+test("detail modal exposes a share action with the routed URL", async ({ page }) => {
+  await page.addInitScript(() => {
+    window.__copiedShareUrl = null;
+    Object.defineProperty(navigator, "clipboard", {
+      configurable: true,
+      value: {
+        writeText: async (value) => {
+          window.__copiedShareUrl = value;
+        }
+      }
+    });
+  });
+
+  await page.goto(`${appUrl}#/browse?search=munchkin&sort=name&dir=asc&view=grid`, { waitUntil: "load" });
+  const baseCard = page.locator(".game-card").filter({ has: page.getByText("Munchkin", { exact: true }) });
+  await baseCard.locator(".game-card__button").click();
+  await expect(page.locator("[data-detail-share]")).toBeVisible();
+
+  await page.locator("[data-detail-share]").click();
+
+  const copiedShareUrl = await page.evaluate(() => window.__copiedShareUrl);
+  expect(copiedShareUrl).toMatch(/#\/browse\?.*game=\d+/);
+  await expect(page.locator("[data-detail-share]")).toHaveAttribute("aria-label", /Link copiado|Link copied/);
+});
+
+test("history hash route hydrates scope, mode, year, and month", async ({ page }) => {
+  await page.goto(`${appUrl}#/history?mode=line`, { waitUntil: "load" });
+  const fixture = {
+    year: await page.locator(".history-list-card h3").textContent(),
+    month: await page.evaluate(() => {
+      const buttons = [...document.querySelectorAll("#history-month-selector [data-history-month]")];
+      const target = buttons.find((button) => {
+        const label = button.getAttribute("aria-label") || "";
+        const match = label.match(/:\s*(\d+)/);
+        return match && Number(match[1]) > 0;
+      });
+      return target ? target.getAttribute("data-history-month") : null;
+    })
+  };
+  expect(fixture.year).toBeTruthy();
+  expect(fixture.month).not.toBeNull();
+
+  await page.goto(`${appUrl}#/history?mode=line&year=${fixture.year}&month=${fixture.month}`, { waitUntil: "load" });
+
+  await expect(page.locator("body")).toHaveAttribute("data-page", "history");
+  await expect(page.locator("[data-history-scope='all']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("[data-history-chart-mode='line']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator(".history-chart")).toHaveAttribute("data-chart-mode", "line");
+  await expect(page.locator(".history-month-chart")).toHaveAttribute("data-chart-mode", "line");
+  await expect(page.locator(".history-list-card h3")).toContainText(String(fixture.year).trim());
+  await expect(page).toHaveURL(new RegExp(`#\\/history\\?mode=line&year=${String(fixture.year).trim()}&month=${fixture.month}$`));
+});
+
+test("history interactions update the hash route", async ({ page }) => {
+  await page.goto(`${appUrl}#/history`, { waitUntil: "load" });
+
+  await page.locator("[data-history-scope='archive']").click();
+  await expect(page).toHaveURL(/#\/history\?scope=archive&year=\d+$/);
+
+  await page.locator("[data-history-chart-mode='line']").click();
+  await expect(page).toHaveURL(/#\/history\?scope=archive&mode=line&year=\d+$/);
+
+  const lastYearButton = page.locator("#history-year-selector [data-history-year]").last();
+  const selectedYear = await lastYearButton.getAttribute("data-history-year");
+  await lastYearButton.click({ force: true });
+  await expect(page).toHaveURL(new RegExp(`#\\/history\\?scope=archive&mode=line&year=${selectedYear}$`));
+
+  const monthWithData = await page.evaluate(() => {
+    const buttons = [...document.querySelectorAll("#history-month-selector [data-history-month]")];
+    const target = buttons.find((button) => {
+      const label = button.getAttribute("aria-label") || "";
+      const match = label.match(/:\s*(\d+)/);
+      return match && Number(match[1]) > 0;
+    });
+    return target ? target.getAttribute("data-history-month") : null;
+  });
+  expect(monthWithData).not.toBeNull();
+
+  await page.evaluate((month) => {
+    const button = document.querySelector(`#history-month-selector [data-history-month='${month}']`);
+    if (!(button instanceof HTMLButtonElement)) throw new Error("Month selector button unavailable");
+    button.click();
+  }, monthWithData);
+  await expect(page).toHaveURL(new RegExp(`#\\/history\\?scope=archive&mode=line&year=${selectedYear}&month=${monthWithData}$`));
+});
+
+test("random hash route hydrates shared context", async ({ page }) => {
+  await page.goto(
+    `${appUrl}#/random?scope=archive&players=2&duration=standard,quick&weight=heavy,light&lang=english&best=2&age=adult&rec=duo&draw=2`,
+    { waitUntil: "load" }
+  );
+
+  await expect(page.locator("body")).toHaveAttribute("data-page", "random");
+  await expect(page.locator("#random-panel")).toBeVisible();
+  await expect(page.locator("#random-page-summary")).toContainText("Archivo");
+  await expect(page.locator("#random-page-summary")).toContainText("Jugadores: 2");
+  await expect(page.locator("#random-page-summary")).toContainText("Tiempo");
+  await expect(page.locator("#random-page-summary")).toContainText("Mejor cantidad: 2");
+  await expect(page.locator("#random-page-summary")).toContainText("Edad");
+  await expect(page.locator("#random-page-summary")).toContainText("Rec: Ideal para 2");
+  await expect(page.locator("#random-draw-count")).toHaveValue("2");
+  await expect(page).toHaveURL(/#\/random\?scope=archive&players=2&duration=quick%2Cstandard&weight=light%2Cheavy&lang=english&best=2&age=adult&rec=duo&draw=2$/);
+});
+
+test("random interactions update hash and preserve workspace context", async ({ page }) => {
+  await page.goto(`${appUrl}#/browse?search=munchkin&rec=quick`, { waitUntil: "load" });
+  await openPageByNav(page, "Azar");
+
+  await expect(page.locator("body")).toHaveAttribute("data-page", "random");
+  await expect(page).toHaveURL(/#\/random\?search=munchkin&rec=quick$/);
+
+  await page.locator("#random-draw-count").selectOption("2");
+  await expect(page).toHaveURL(/#\/random\?search=munchkin&rec=quick&draw=2$/);
+
+  await page.locator("#random-browse-action").click();
+  await expect(page.locator("body")).toHaveAttribute("data-page", "browse");
+  await expect(page.locator("#search-input")).toHaveValue("munchkin");
+  await expect(page.locator("[data-filter-key='recommendation'][data-filter-value='quick']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page).toHaveURL(/#\/browse\?search=munchkin&sort=name&dir=asc&view=grid&rec=quick$/);
+});
+
 test("browse supports ascending and descending sort direction", async ({ page }) => {
   await page.goto(appUrl, { waitUntil: "load" });
   await page.getByRole("button", { name: "Explorar", exact: true }).click();
@@ -294,7 +496,6 @@ test("Munchkin and its expansions expose the rules guide", async ({ page }) => {
   await page.locator("#search-input").fill("Munchkin");
 
   const baseCard = page.locator(".game-card").filter({ has: page.getByText("Munchkin", { exact: true }) });
-  await expect(baseCard.locator(".game-card__rules")).toHaveText("Reglas disponibles");
   await baseCard.locator(".game-card__button").click();
   await expect(page.getByRole("link", { name: "Leer resumen de reglas" })).toBeVisible();
   await page.locator('[data-expansion-id="3943"]').click();
