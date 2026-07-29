@@ -351,6 +351,41 @@ test("history interactions update the hash route", async ({ page }) => {
   await expect(page).toHaveURL(new RegExp(`#\\/history\\?scope=archive&mode=line&year=${selectedYear}&month=${monthWithData}$`));
 });
 
+test("random hash route hydrates shared context", async ({ page }) => {
+  await page.goto(
+    `${appUrl}#/random?scope=archive&players=2&duration=standard,quick&weight=heavy,light&lang=english&best=2&age=adult&rec=duo&draw=2`,
+    { waitUntil: "load" }
+  );
+
+  await expect(page.locator("body")).toHaveAttribute("data-page", "random");
+  await expect(page.locator("#random-panel")).toBeVisible();
+  await expect(page.locator("#random-page-summary")).toContainText("Archivo");
+  await expect(page.locator("#random-page-summary")).toContainText("Jugadores: 2");
+  await expect(page.locator("#random-page-summary")).toContainText("Tiempo");
+  await expect(page.locator("#random-page-summary")).toContainText("Mejor cantidad: 2");
+  await expect(page.locator("#random-page-summary")).toContainText("Edad");
+  await expect(page.locator("#random-page-summary")).toContainText("Rec: Ideal para 2");
+  await expect(page.locator("#random-draw-count")).toHaveValue("2");
+  await expect(page).toHaveURL(/#\/random\?scope=archive&players=2&duration=quick%2Cstandard&weight=light%2Cheavy&lang=english&best=2&age=adult&rec=duo&draw=2$/);
+});
+
+test("random interactions update hash and preserve workspace context", async ({ page }) => {
+  await page.goto(`${appUrl}#/browse?search=munchkin&rec=quick`, { waitUntil: "load" });
+  await openPageByNav(page, "Azar");
+
+  await expect(page.locator("body")).toHaveAttribute("data-page", "random");
+  await expect(page).toHaveURL(/#\/random\?search=munchkin&rec=quick$/);
+
+  await page.locator("#random-draw-count").selectOption("2");
+  await expect(page).toHaveURL(/#\/random\?search=munchkin&rec=quick&draw=2$/);
+
+  await page.locator("#random-browse-action").click();
+  await expect(page.locator("body")).toHaveAttribute("data-page", "browse");
+  await expect(page.locator("#search-input")).toHaveValue("munchkin");
+  await expect(page.locator("[data-filter-key='recommendation'][data-filter-value='quick']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page).toHaveURL(/#\/browse\?search=munchkin&sort=name&dir=asc&view=grid&rec=quick$/);
+});
+
 test("browse supports ascending and descending sort direction", async ({ page }) => {
   await page.goto(appUrl, { waitUntil: "load" });
   await page.getByRole("button", { name: "Explorar", exact: true }).click();

@@ -30,6 +30,11 @@ const ROUTE_HISTORY_PARAM_MAP = {
   year: "year",
   month: "month"
 };
+const ROUTE_RANDOM_PARAM_MAP = {
+  scope: "scope",
+  draw: "draw"
+};
+const ROUTE_RANDOM_FILTER_KEYS = ["search", "players", "duration", "weight", "physicalLanguage", "bestPlayers", "age", "recommendation"];
 
 const PAGE_KEYS = ["home", "browse", "archive", "random", "history", "settings"];
 let masonryLayoutFrame = 0;
@@ -940,6 +945,32 @@ function readBrowseRouteParams(params, page) {
   return nextFilters;
 }
 
+function getValidRandomScope(value) {
+  return value === "archive" ? "archive" : "browse";
+}
+
+function getRandomRouteDrawCount(value) {
+  const normalized = Number(value);
+  if (!Number.isFinite(normalized)) return 1;
+  return Math.min(Math.max(1, normalized), RANDOM_HISTORY_LIMIT);
+}
+
+function readRandomRouteParams(params) {
+  const scope = getValidRandomScope(params.get(ROUTE_RANDOM_PARAM_MAP.scope));
+  const scopedFilters = readBrowseRouteParams(params, scope);
+  const filtersSnapshot = ROUTE_RANDOM_FILTER_KEYS.reduce((snapshot, key) => {
+    const value = scopedFilters[key];
+    snapshot[key] = Array.isArray(value) ? [...value] : value;
+    return snapshot;
+  }, {});
+
+  return {
+    scope,
+    drawCount: getRandomRouteDrawCount(params.get(ROUTE_RANDOM_PARAM_MAP.draw)),
+    filtersSnapshot
+  };
+}
+
 function normalizeRoute(route) {
   const baseRoute = route || getDefaultRoute();
   const page = PAGE_KEYS.includes(baseRoute.page) ? baseRoute.page : "home";
@@ -972,6 +1003,28 @@ function normalizeRoute(route) {
     }
     if (historyRoute.month) {
       params.set(ROUTE_HISTORY_PARAM_MAP.month, String(historyRoute.month));
+    }
+  }
+
+  if (page === "random") {
+    const randomRoute = readRandomRouteParams(baseRoute.params || new URLSearchParams());
+    if (randomRoute.scope !== "browse") {
+      params.set(ROUTE_RANDOM_PARAM_MAP.scope, randomRoute.scope);
+    }
+    ROUTE_RANDOM_FILTER_KEYS.forEach((key) => {
+      const value = randomRoute.filtersSnapshot[key];
+      const paramKey = ROUTE_FILTER_PARAM_MAP[key];
+      if (!paramKey) return;
+      if (Array.isArray(value)) {
+        if (value.length) params.set(paramKey, value.join(","));
+        return;
+      }
+      if (typeof value === "string" && value) {
+        params.set(paramKey, value);
+      }
+    });
+    if (randomRoute.drawCount > 1) {
+      params.set(ROUTE_RANDOM_PARAM_MAP.draw, String(randomRoute.drawCount));
     }
   }
 
@@ -1020,6 +1073,28 @@ function buildRouteFromState() {
     }
   }
 
+  if (state.activePage === "random") {
+    const currentContext = buildRandomContext();
+    if (currentContext.scope !== "browse") {
+      params.set(ROUTE_RANDOM_PARAM_MAP.scope, currentContext.scope);
+    }
+    ROUTE_RANDOM_FILTER_KEYS.forEach((key) => {
+      const value = currentContext.filtersSnapshot[key];
+      const paramKey = ROUTE_FILTER_PARAM_MAP[key];
+      if (!paramKey) return;
+      if (Array.isArray(value)) {
+        if (value.length) params.set(paramKey, value.join(","));
+        return;
+      }
+      if (typeof value === "string" && value) {
+        params.set(paramKey, value);
+      }
+    });
+    if (state.randomDrawCount > 1) {
+      params.set(ROUTE_RANDOM_PARAM_MAP.draw, String(state.randomDrawCount));
+    }
+  }
+
   const detailGameId = getValidRouteGameId(state.activeDetailGameId);
   if (detailGameId) {
     params.set(ROUTE_DETAIL_PARAM, String(detailGameId));
@@ -1049,6 +1124,17 @@ function applyRouteToState(route, options = {}) {
     state.historyChartMode = historyRoute.mode;
     state.historySelectedYear = historyRoute.year;
     state.historySelectedMonth = historyRoute.month;
+  }
+  if (nextPage === "random") {
+    const randomRoute = readRandomRouteParams(normalizedRoute.params);
+    state.lastWorkspacePage = randomRoute.scope;
+    const scopedDefaults = getDefaultFilters(randomRoute.scope === "archive" ? "archive" : "owned");
+    state.filters = {
+      ...scopedDefaults,
+      ...randomRoute.filtersSnapshot,
+      section: randomRoute.scope === "archive" ? "archive" : "owned"
+    };
+    state.randomDrawCount = randomRoute.drawCount;
   }
   state.activeDetailGameId = getValidRouteGameId(normalizedRoute.params.get(ROUTE_DETAIL_PARAM));
 
@@ -2012,6 +2098,18 @@ function setHistoryChartMode(mode, options = {}) {
   } = options;
   if (!["bar", "line"].includes(mode)) return;
   state.historyChartMode = mode;
+  if (renderNow) render();
+  if (syncRoute) writeRouteFromState({ replace });
+}
+
+function setRandomDrawCount(value, options = {}) {
+  const {
+    syncRoute = true,
+    replace = false,
+    renderNow = true
+  } = options;
+  const normalized = getRandomRouteDrawCount(value);
+  state.randomDrawCount = normalized;
   if (renderNow) render();
   if (syncRoute) writeRouteFromState({ replace });
 }
@@ -3367,7 +3465,7 @@ function renderRandomPage() {
     ${isStale ? `<p class="random-summary__note">${escapeHtml(copy.randomSummaryStale)}</p>` : ""}
   `;
   elements.randomPageSummary.querySelector("#random-draw-count").addEventListener("change", (event) => {
-    state.randomDrawCount = Math.max(1, Math.min(maxDrawCount, Number(event.target.value) || 1));
+    setRandomDrawCount(Math.max(1, Math.min(maxDrawCount, Number(event.target.value) || 1)));
   });
 
   if (state.randomRevealState === "revealing") {
