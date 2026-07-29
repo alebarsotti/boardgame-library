@@ -790,6 +790,31 @@ function animateDetailsDialogIn() {
   });
 }
 
+function ensureDetailsDialogOpen() {
+  if (!elements.detailsDialog) return false;
+  if (elements.detailsDialog.open) return true;
+
+  let opened = false;
+  try {
+    elements.detailsDialog.showModal();
+    opened = true;
+  } catch (error) {
+    try {
+      elements.detailsDialog.show();
+      opened = true;
+    } catch (fallbackError) {
+      elements.detailsDialog.setAttribute("open", "open");
+      opened = true;
+    }
+  }
+
+  if (!elements.detailsDialog.open && opened) {
+    elements.detailsDialog.setAttribute("open", "open");
+  }
+
+  return elements.detailsDialog.open;
+}
+
 function bindEvents() {
   elements.searchInput.addEventListener("input", (event) => setFilter("search", event.target.value.trim().toLowerCase()));
   elements.filtersPanel.addEventListener("click", handleFilterControlClick);
@@ -3237,7 +3262,7 @@ function syncDetailsDialogState() {
     openDetails(game, { syncRoute: false });
     return;
   }
-  if (elements.detailsDialog?.open) {
+  if (elements.detailsDialog?.open || elements.detailsDialog?.hasAttribute("open")) {
     closeDetails({ syncRoute: false });
   }
 }
@@ -3250,6 +3275,11 @@ function closeDetails(options = {}) {
   state.activeDetailGameId = null;
   if (elements.detailsDialog?.open) {
     elements.detailsDialog.close();
+  } else if (elements.detailsDialog?.hasAttribute("open")) {
+    elements.detailsDialog.removeAttribute("open");
+    elements.detailsDialog.classList.remove("is-visible", "is-entering");
+    elements.detailsContent.dataset.gameId = "";
+    unlockBodyScroll();
   }
   if (syncRoute) writeRouteFromState({ replace });
 }
@@ -3369,10 +3399,11 @@ function openDetails(game, options = {}) {
     });
   });
 
-  if (!elements.detailsDialog.open) {
+  if (!elements.detailsDialog.open && !elements.detailsDialog.hasAttribute("open")) {
     lockBodyScroll();
-    elements.detailsDialog.showModal();
-    animateDetailsDialogIn();
+    if (ensureDetailsDialogOpen()) {
+      animateDetailsDialogIn();
+    }
   }
   if (syncRoute) writeRouteFromState({ replace });
 }
