@@ -290,6 +290,31 @@ test("detail modal syncs with hash routing and survives reload", async ({ page }
   await expect(page.locator("#details-content")).toContainText("Munchkin");
 });
 
+test("detail modal exposes a share action with the routed URL", async ({ page }) => {
+  await page.addInitScript(() => {
+    window.__copiedShareUrl = null;
+    Object.defineProperty(navigator, "clipboard", {
+      configurable: true,
+      value: {
+        writeText: async (value) => {
+          window.__copiedShareUrl = value;
+        }
+      }
+    });
+  });
+
+  await page.goto(`${appUrl}#/browse?search=munchkin&sort=name&dir=asc&view=grid`, { waitUntil: "load" });
+  const baseCard = page.locator(".game-card").filter({ has: page.getByText("Munchkin", { exact: true }) });
+  await baseCard.locator(".game-card__button").click();
+  await expect(page.locator("[data-detail-share]")).toBeVisible();
+
+  await page.locator("[data-detail-share]").click();
+
+  const copiedShareUrl = await page.evaluate(() => window.__copiedShareUrl);
+  expect(copiedShareUrl).toMatch(/#\/browse\?.*game=\d+/);
+  await expect(page.locator("[data-detail-share]")).toHaveAttribute("aria-label", /Link copiado|Link copied/);
+});
+
 test("history hash route hydrates scope, mode, year, and month", async ({ page }) => {
   await page.goto(`${appUrl}#/history?mode=line`, { waitUntil: "load" });
   const fixture = {

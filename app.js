@@ -41,6 +41,7 @@ let masonryLayoutFrame = 0;
 let gameCardResizeObserver = null;
 let bodyScrollLockY = 0;
 let lastSerializedRoute = "";
+let detailShareFeedbackTimer = null;
 let historyCharts = {
   yearly: null,
   monthly: null
@@ -121,6 +122,10 @@ const translations = {
     links: "Enlaces",
     openBgg: "Abrir en BGG",
     openRules: "Leer resumen de reglas",
+    shareGame: "Compartir",
+    shareGameCopied: "Link copiado",
+    shareGameShared: "Compartido",
+    shareGameError: "No se pudo compartir",
     expansion: "Expansión",
     expansionRequiresBase: "Requiere juego base",
     expansionsTitle: "Expansiones",
@@ -380,6 +385,10 @@ const translations = {
     links: "Links",
     openBgg: "Open on BGG",
     openRules: "Read rules summary",
+    shareGame: "Share",
+    shareGameCopied: "Link copied",
+    shareGameShared: "Shared",
+    shareGameError: "Could not share",
     expansion: "Expansion",
     expansionRequiresBase: "Requires base game",
     expansionsTitle: "Expansions",
@@ -597,6 +606,10 @@ const icons = {
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 6.5-5 5 5 5"/><path d="M19.5 11.5h-10"/></svg>',
   external:
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5h5v5"/><path d="M10 14 19 5"/><path d="M19 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></svg>',
+  share:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4"/><path d="m15.4 6.5-6.8 4"/></svg>',
+  check:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.2 4.2L19 7"/></svg>',
   rules:
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4.5A2.5 2.5 0 0 1 7.5 2H19v17H7.5A2.5 2.5 0 0 0 5 21.5z"/><path d="M5 4.5v17M9 7h6M9 11h6"/></svg>',
   duo:
@@ -1209,6 +1222,90 @@ function handleHashChange() {
   }
   const routeApplied = syncStateFromCurrentRoute();
   if (routeApplied) render();
+}
+
+function getShareableDetailUrl(gameId = state.activeDetailGameId) {
+  const normalizedGameId = getValidRouteGameId(gameId);
+  const route = buildRouteFromState();
+  if (normalizedGameId) {
+    route.params.set(ROUTE_DETAIL_PARAM, String(normalizedGameId));
+  }
+  const url = new URL(window.location.href);
+  url.hash = serializeRoute(route);
+  return url.toString();
+}
+
+function canUseNativeShare(url) {
+  if (typeof navigator.share !== "function") return false;
+  const protocol = String(window.location.protocol || "").toLowerCase();
+  if (protocol !== "https:" && protocol !== "http:") return false;
+
+  const payload = { url };
+  if (typeof navigator.canShare === "function") {
+    try {
+      return navigator.canShare(payload);
+    } catch (error) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function resetDetailShareButtonLabel(button, label) {
+  if (!button) return;
+  button.dataset.feedbackState = "idle";
+  button.innerHTML = iconMarkup("share", "inline-icon-label__icon");
+  button.setAttribute("aria-label", label);
+  button.setAttribute("title", label);
+}
+
+function setDetailShareButtonFeedback(button, label, state = "success") {
+  if (!button) return;
+  window.clearTimeout(detailShareFeedbackTimer);
+  button.dataset.feedbackState = state;
+  button.innerHTML = iconMarkup(state === "success" ? "check" : "share", "inline-icon-label__icon");
+  button.setAttribute("aria-label", label);
+  button.setAttribute("title", label);
+  detailShareFeedbackTimer = window.setTimeout(() => {
+    detailShareFeedbackTimer = null;
+    const defaultLabel = button.dataset.defaultLabel || translations[state.language].shareGame;
+    resetDetailShareButtonLabel(button, defaultLabel);
+  }, 1800);
+}
+
+async function shareDetailGame(game, button) {
+  const copy = translations[state.language];
+  const url = getShareableDetailUrl(game?.id);
+  const defaultButton = button || elements.detailsContent?.querySelector("[data-detail-share]");
+  try {
+    if (canUseNativeShare(url)) {
+      await navigator.share({
+        title: getDisplayName(game),
+        text: getDisplayName(game),
+        url
+      });
+      setDetailShareButtonFeedback(defaultButton, copy.shareGameShared, "success");
+      return;
+    }
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(url);
+      setDetailShareButtonFeedback(defaultButton, copy.shareGameCopied, "success");
+      return;
+    }
+    throw new Error("Share unavailable");
+  } catch (error) {
+    if (error?.name === "AbortError") return;
+    if (navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(url);
+        setDetailShareButtonFeedback(defaultButton, copy.shareGameCopied, "success");
+        return;
+      } catch (clipboardError) {
+        // Ignore and surface generic feedback below.
+      }
+    }
+    setDetailShareButtonFeedback(defaultButton, copy.shareGameError, "error");
+  }
 }
 
 function setFilter(key, value, options = {}) {
@@ -3273,6 +3370,8 @@ function closeDetails(options = {}) {
     replace = false
   } = options;
   state.activeDetailGameId = null;
+  window.clearTimeout(detailShareFeedbackTimer);
+  detailShareFeedbackTimer = null;
   if (elements.detailsDialog?.open) {
     elements.detailsDialog.close();
   } else if (elements.detailsDialog?.hasAttribute("open")) {
@@ -3341,7 +3440,19 @@ function openDetails(game, options = {}) {
           <div class="detail-hero-copy">
             <div class="detail-heading">
               <p class="eyebrow detail-eyebrow">${escapeHtml(game.yearPublished ? String(game.yearPublished) : copy.notAvailable)}</p>
-              <h2 id="detail-title">${escapeHtml(displayName)}</h2>
+              <div class="detail-title-row">
+                <h2 id="detail-title">${escapeHtml(displayName)}</h2>
+                <button
+                  class="button button--ghost detail-share-button"
+                  type="button"
+                  data-detail-share
+                  data-default-label="${escapeAttribute(copy.shareGame)}"
+                  aria-label="${escapeAttribute(copy.shareGame)}"
+                  title="${escapeAttribute(copy.shareGame)}"
+                >
+                  ${iconMarkup("share", "inline-icon-label__icon")}
+                </button>
+              </div>
               ${detailSubtitle ? `<p class="detail-subtitle">${detailSubtitle}</p>` : ""}
             </div>
             <div class="detail-hero-badges">
@@ -3397,6 +3508,9 @@ function openDetails(game, options = {}) {
       const baseGame = findGameById(Number(button.dataset.baseGameId));
       if (baseGame) openDetails(baseGame);
     });
+  });
+  elements.detailsContent.querySelector("[data-detail-share]")?.addEventListener("click", async (event) => {
+    await shareDetailGame(game, event.currentTarget);
   });
 
   if (!elements.detailsDialog.open && !elements.detailsDialog.hasAttribute("open")) {
