@@ -117,6 +117,14 @@ test("desktop smoke covers theme, nav, browse, random, and footer", async ({ pag
   await expect(page.locator("#theme-segment-settings").getByRole("button", { name: "Oscuro", exact: true })).toHaveClass(/is-active/);
 });
 
+test("Ideal para 2 only includes games whose best player count is 2", async ({ page }) => {
+  await page.goto(`${appUrl}#/browse?search=dnup&rec=duo`, { waitUntil: "load" });
+
+  await expect(page.locator("[data-filter-key='recommendation'][data-filter-value='duo']")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("#games-grid .game-card")).toHaveCount(0);
+  await expect(page.locator("#empty-state")).toBeVisible();
+});
+
 test.describe("mobile smoke", () => {
   test.use({
     ...mobileDevice,

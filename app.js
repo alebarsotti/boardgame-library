@@ -2100,9 +2100,8 @@ function sortGames(left, right) {
 
 function matchesRecommendation(game, recommendation) {
   const bestPlayers = toPlayerArray(game.bestPlayers);
-  const recommendedPlayers = toPlayerArray(game.recommendedPlayers);
   const map = {
-    duo: bestPlayers.includes(2) || recommendedPlayers.includes(2),
+    duo: bestPlayers.includes(2),
     quick: game.timeBand === "quick",
     heavy: game.weightBand === "heavy",
     teach: (game.tags || []).includes("teaching-friendly"),

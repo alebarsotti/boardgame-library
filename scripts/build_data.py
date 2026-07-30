@@ -1514,7 +1514,7 @@ def build_payload(
         "prevOwnedCount": sum(1 for row in rows if row.get("prevowned") == "1"),
         "recommendations": {
             "quick": sum(1 for game in games if game["timeBand"] == "quick"),
-            "duo": sum(1 for game in games if 2 in game["bestPlayers"] or 2 in game["recommendedPlayers"]),
+            "duo": sum(1 for game in games if 2 in game["bestPlayers"]),
             "teachingFriendly": sum(1 for game in games if "teaching-friendly" in game["tags"]),
             "heavy": sum(1 for game in games if game["weightBand"] == "heavy"),
         },
