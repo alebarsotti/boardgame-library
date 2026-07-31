@@ -528,6 +528,22 @@ body[data-theme="dark"] .button--ghost {
   border-color: color-mix(in srgb, var(--accent) 28%, var(--line));
 }
 
+.button--external:hover,
+.detail-share-button:hover:not([data-feedback-state="success"]):not([data-feedback-state="error"]) {
+  color: #fff8f3;
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  border-color: color-mix(in srgb, var(--accent-strong) 70%, var(--button-ghost-border));
+  box-shadow: 0 12px 24px color-mix(in srgb, var(--accent-strong) 28%, transparent);
+}
+
+body[data-theme="dark"] .button--external:hover,
+body[data-theme="dark"] .detail-share-button:hover:not([data-feedback-state="success"]):not([data-feedback-state="error"]) {
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent-strong) 82%, var(--button-ghost-bg));
+  border-color: color-mix(in srgb, var(--accent-soft) 68%, var(--button-ghost-border));
+  box-shadow: 0 12px 24px color-mix(in srgb, var(--accent-strong) 32%, transparent);
+}
+
 .button--small { min-height: 36px; padding: 0 14px; }
 .button:disabled {
   opacity: 0.6;
@@ -2838,6 +2854,29 @@ body[data-theme="dark"] .modal__close {
   border-radius: 11px;
   font-size: 0.75rem;
   opacity: 0.9;
+}
+.detail-tags--soft .tag--interactive {
+  cursor: pointer;
+  transition:
+    transform var(--transition-fast),
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+.detail-tags--soft .tag--interactive:hover {
+  color: var(--accent-strong);
+  background: color-mix(in srgb, var(--accent-soft) 38%, var(--chip-bg));
+  border-color: color-mix(in srgb, var(--accent) 52%, var(--chip-border));
+  transform: translateY(-1px);
+}
+body[data-theme="dark"] .detail-tags--soft .tag--interactive:hover {
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent-strong) 78%, var(--chip-bg));
+  border-color: color-mix(in srgb, var(--accent-soft) 68%, var(--chip-border));
+}
+.detail-tags--soft .tag--interactive:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 .detail-cover img {
   width: 100%;

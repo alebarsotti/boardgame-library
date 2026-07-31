@@ -300,6 +300,9 @@ test("detail modal syncs with hash routing and survives reload", async ({ page }
   await expect(page).toHaveURL(/#\/browse\?.*game=\d+/);
 
   const detailUrl = page.url();
+  await page.reload({ waitUntil: "load" });
+  await expect(page.locator("#details-dialog")).not.toBeFocused();
+  await expect(page.locator("#details-close")).not.toBeFocused();
 
   await page.goBack();
   await expect(page.locator("#details-dialog")).not.toBeVisible();
@@ -333,6 +336,43 @@ test("detail modal exposes a share action with the routed URL", async ({ page })
   const copiedShareUrl = await page.evaluate(() => window.__copiedShareUrl);
   expect(copiedShareUrl).toMatch(/#\/browse\?.*game=\d+/);
   await expect(page.locator("[data-detail-share]")).toHaveAttribute("aria-label", /Link copiado|Link copied/);
+});
+
+test("detail tags open exact category, mechanic, and recommendation filters", async ({ page }) => {
+  await page.goto(`${appUrl}#/browse`, { waitUntil: "load" });
+  const fixture = await page.evaluate(() => {
+    const games = window.__BGG_LIBRARY_DATA__?.games || [];
+    const game = games.find((candidate) =>
+      candidate.own &&
+      candidate.categories?.length &&
+      candidate.mechanics?.length &&
+      candidate.tags?.includes("teaching-friendly")
+    );
+    return game
+      ? { name: game.name, category: game.categories[0], mechanic: game.mechanics[0] }
+      : null;
+  });
+  expect(fixture).not.toBeNull();
+
+  const card = page.locator(".game-card").filter({ has: page.getByText(fixture.name, { exact: true }) }).first();
+  await card.locator(".game-card__button").click();
+  await page.locator("[data-detail-filter-key='category']").filter({ hasText: fixture.category }).first().click();
+
+  await expect(page.locator("#details-dialog")).not.toBeVisible();
+  await expect(page.locator("body")).toHaveAttribute("data-page", "browse");
+  await expect(page).toHaveURL(/category=/);
+  await expect(page.locator(".active-filters")).toContainText(`Categoría: ${fixture.category}`);
+  await expect(page.locator("#games-grid .game-card")).not.toHaveCount(0);
+
+  await page.goto(`${appUrl}#/browse?mechanic=${encodeURIComponent(fixture.mechanic)}`, { waitUntil: "load" });
+  await expect(page.locator(".active-filters")).toContainText(`Mecánica: ${fixture.mechanic}`);
+  await expect(page.locator("#games-grid .game-card")).not.toHaveCount(0);
+
+  await page.goto(`${appUrl}#/browse`, { waitUntil: "load" });
+  await page.locator(".game-card").filter({ has: page.getByText(fixture.name, { exact: true }) }).first().locator(".game-card__button").click();
+  await page.locator("[data-detail-filter-key='recommendation'][data-detail-filter-value='teach']").click();
+  await expect(page).toHaveURL(/rec=teach/);
+  await expect(page.locator(".active-filters")).toContainText("Recomendaciones: Fáciles de enseñar");
 });
 
 test("history hash route hydrates scope, mode, year, and month", async ({ page }) => {

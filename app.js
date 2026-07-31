@@ -20,7 +20,9 @@ const ROUTE_FILTER_PARAM_MAP = {
   sort: "sort",
   sortDirection: "dir",
   view: "view",
-  recommendation: "rec"
+  recommendation: "rec",
+  category: "category",
+  mechanic: "mechanic"
 };
 const ROUTE_DETAIL_PARAM = "game";
 const ROUTE_FILTER_DEFAULT_REPLACE_KEYS = new Set(["search"]);
@@ -34,7 +36,7 @@ const ROUTE_RANDOM_PARAM_MAP = {
   scope: "scope",
   draw: "draw"
 };
-const ROUTE_RANDOM_FILTER_KEYS = ["search", "players", "duration", "weight", "physicalLanguage", "bestPlayers", "age", "recommendation"];
+const ROUTE_RANDOM_FILTER_KEYS = ["search", "players", "duration", "weight", "physicalLanguage", "bestPlayers", "age", "recommendation", "category", "mechanic"];
 
 const PAGE_KEYS = ["home", "browse", "archive", "random", "history", "settings"];
 let masonryLayoutFrame = 0;
@@ -178,6 +180,8 @@ const translations = {
     recSolo: "Modo solitario",
     recGroup: "Para grupo grande",
     filterSearch: "Texto",
+    filterCategory: "Categoría",
+    filterMechanic: "Mecánica",
     filterPlayers: "Jugadores",
     filterDuration: "Tiempo",
     filterWeight: "Peso",
@@ -441,6 +445,8 @@ const translations = {
     recSolo: "Solo-ready",
     recGroup: "Big group",
     filterSearch: "Text",
+    filterCategory: "Category",
+    filterMechanic: "Mechanic",
     filterPlayers: "Players",
     filterDuration: "Duration",
     filterWeight: "Weight",
@@ -651,6 +657,8 @@ const state = {
     sortDirection: "asc",
     view: "grid",
     recommendation: "",
+    category: "",
+    mechanic: "",
     section: "owned"
   },
   preferences: {
@@ -888,6 +896,8 @@ function getDefaultFilters(section = "owned") {
     sortDirection: "asc",
     view: state.preferences.view || "grid",
     recommendation: "",
+    category: "",
+    mechanic: "",
     section
   };
 }
@@ -919,6 +929,10 @@ function getCurrentSerializedRoute() {
 }
 
 function getRouteAllowedValues(key) {
+  if (key === "category" || key === "mechanic") {
+    const field = key === "category" ? "categories" : "mechanics";
+    return [...new Set((state.data?.games || []).flatMap((game) => game[field] || []))];
+  }
   const definition = getFilterControlDefinitions()[key];
   return definition?.options?.map(([value]) => value).filter(Boolean) || [];
 }
@@ -984,6 +998,8 @@ function readBrowseRouteParams(params, page) {
   nextFilters.sortDirection = sanitizeRouteFilterValue("sortDirection", params.get(ROUTE_FILTER_PARAM_MAP.sortDirection)) || "asc";
   nextFilters.view = sanitizeRouteFilterValue("view", params.get(ROUTE_FILTER_PARAM_MAP.view)) || (state.preferences.view || "grid");
   nextFilters.recommendation = sanitizeRouteFilterValue("recommendation", params.get(ROUTE_FILTER_PARAM_MAP.recommendation));
+  nextFilters.category = sanitizeRouteFilterValue("category", params.get(ROUTE_FILTER_PARAM_MAP.category));
+  nextFilters.mechanic = sanitizeRouteFilterValue("mechanic", params.get(ROUTE_FILTER_PARAM_MAP.mechanic));
   return nextFilters;
 }
 
@@ -2082,6 +2098,8 @@ function getFilteredGames() {
         if (!accepted[state.filters.age]) return false;
       }
       if (state.filters.recommendation && !matchesRecommendation(game, state.filters.recommendation)) return false;
+      if (state.filters.category && !(game.categories || []).includes(state.filters.category)) return false;
+      if (state.filters.mechanic && !(game.mechanics || []).includes(state.filters.mechanic)) return false;
       return true;
     })
     .sort(sortGames);
@@ -3172,6 +3190,8 @@ function renderActiveFilters() {
   if (state.filters.bestPlayers) tags.push({ key: "bestPlayers", icon: "players", label: copy.filterBestPlayers, value: state.filters.bestPlayers === "5" ? "5+" : getFilterValueLabel("bestPlayers", state.filters.bestPlayers) });
   if (state.filters.age) tags.push({ key: "age", icon: "age", label: copy.filterAge, value: getFilterValueLabel("age", state.filters.age) });
   if (state.filters.recommendation) tags.push({ key: "recommendation", icon: getRecommendationIconKey(state.filters.recommendation), label: copy.recommendTitle, value: getFilterValueLabel("recommendation", state.filters.recommendation) });
+  if (state.filters.category) tags.push({ key: "category", icon: "search", label: copy.filterCategory, value: state.filters.category });
+  if (state.filters.mechanic) tags.push({ key: "mechanic", icon: "search", label: copy.filterMechanic, value: state.filters.mechanic });
   const hasFilters = tags.length > 0;
   elements.activeFilters.innerHTML = `
     <div class="active-filters__content">
@@ -3339,6 +3359,40 @@ function getDisplayTags(game, options = {}) {
   return list.slice(0, compact ? 2 : 3);
 }
 
+function getDetailTags(game) {
+  const list = [];
+  const bestPlayers = toPlayerArray(game.bestPlayers);
+  const tags = Array.isArray(game.tags) ? game.tags : [];
+  const copy = translations[state.language];
+  if (isExpansionGame(game)) list.push({ label: copy.expansion });
+  if (game.isNew) list.push({ label: copy.newTag });
+  if (bestPlayers.length) {
+    list.push({
+      label: formatBestPlayersTag(bestPlayers),
+      filterKey: bestPlayers.length === 1 ? "bestPlayers" : "",
+      filterValue: bestPlayers.length === 1 ? String(bestPlayers[0]) : "",
+      filterLabel: copy.filterBestPlayers
+    });
+  }
+  if (tags.includes("teaching-friendly")) {
+    list.push({ label: copy.recTeach, filterKey: "recommendation", filterValue: "teach", filterLabel: copy.recommendTitle });
+  }
+  if (tags.includes("solo")) {
+    list.push({ label: copy.recSolo, filterKey: "recommendation", filterValue: "solo", filterLabel: copy.recommendTitle });
+  }
+  (game.categories || []).forEach((label) => list.push({ label, filterKey: "category", filterValue: label, filterLabel: copy.filterCategory }));
+  (game.mechanics || []).forEach((label) => list.push({ label, filterKey: "mechanic", filterValue: label, filterLabel: copy.filterMechanic }));
+  return list.slice(0, 10);
+}
+
+function renderDetailTag(tag) {
+  if (!tag.filterKey || !tag.filterValue) {
+    return `<span class="tag">${escapeHtml(tag.label)}</span>`;
+  }
+  const actionLabel = `${tag.filterLabel}: ${tag.label}`;
+  return `<button class="tag tag--interactive" type="button" data-detail-filter-key="${escapeAttribute(tag.filterKey)}" data-detail-filter-value="${escapeAttribute(tag.filterValue)}" aria-label="${escapeAttribute(actionLabel)}" title="${escapeAttribute(actionLabel)}">${escapeHtml(tag.label)}</button>`;
+}
+
 function getLocalizedContentValue(node, language = state.language) {
   if (typeof node === "string") {
     return language === "en" ? node : "";
@@ -3398,6 +3452,18 @@ function closeDetails(options = {}) {
   if (syncRoute) writeRouteFromState({ replace });
 }
 
+function openDetailFilter(key, value) {
+  if (!key || !value) return;
+  const page = state.lastWorkspacePage === "archive" ? "archive" : "browse";
+  closeDetails({ syncRoute: false });
+  state.filters = {
+    ...getDefaultFilters(page === "archive" ? "archive" : "owned"),
+    [key]: value
+  };
+  setActivePage(page, { syncRoute: false });
+  writeRouteFromState();
+}
+
 function openDetails(game, options = {}) {
   const {
     syncRoute = true,
@@ -3409,7 +3475,7 @@ function openDetails(game, options = {}) {
   const secondaryName = getSecondaryName(game);
   const detailSubtitle = buildDetailSubtitleMarkup(game, secondaryName);
   const heroBadges = [game.own ? copy.owned : copy.prevOwned].concat(getDisplayTags(game, { compact: true })).slice(0, 3);
-  const tags = getDisplayTags(game).concat(game.categories || [], game.mechanics || []).slice(0, 10);
+  const tags = getDetailTags(game);
   const linkedExpansions = getExpansionGames(game);
   const rulesGuide = getRulesGuide(game);
   const content = getGameContent(game, "summary");
@@ -3445,9 +3511,9 @@ function openDetails(game, options = {}) {
                 ? `<a class="button button--primary" href="${escapeAttribute(rulesGuide.url)}">${renderIconLabel(copy.openRules, "rules")}</a>`
                 : ""
             }
-            <a class="button button--ghost" href="${escapeAttribute(game.bggUrl)}" target="_blank" rel="noreferrer">${renderIconLabel(copy.openBgg, "external")}</a>
+            <a class="button button--ghost button--external" href="${escapeAttribute(game.bggUrl)}" target="_blank" rel="noreferrer">${renderIconLabel(copy.openBgg, "external")}</a>
           </div>
-          <div class="detail-tags detail-tags--soft">${tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}</div>
+          <div class="detail-tags detail-tags--soft">${tags.map(renderDetailTag).join("")}</div>
         </div>
       </div>
       <div class="detail-copy">
@@ -3524,6 +3590,11 @@ function openDetails(game, options = {}) {
       if (baseGame) openDetails(baseGame);
     });
   });
+  elements.detailsContent.querySelectorAll("[data-detail-filter-key]").forEach((button) => {
+    button.addEventListener("click", () => {
+      openDetailFilter(button.dataset.detailFilterKey, button.dataset.detailFilterValue);
+    });
+  });
   elements.detailsContent.querySelector("[data-detail-share]")?.addEventListener("click", async (event) => {
     await shareDetailGame(game, event.currentTarget);
   });
@@ -3531,6 +3602,9 @@ function openDetails(game, options = {}) {
   if (!elements.detailsDialog.open && !elements.detailsDialog.hasAttribute("open")) {
     lockBodyScroll();
     if (ensureDetailsDialogOpen()) {
+      if (!syncRoute && document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur();
+      }
       animateDetailsDialogIn();
     }
   }
@@ -3808,6 +3882,8 @@ function getRandomSummary(filtersSnapshot = buildRandomFiltersSnapshot()) {
   if (filtersSnapshot.bestPlayers) chips.push(`<span class="chip">${escapeHtml(copy.filterBestPlayers)}: ${escapeHtml(filtersSnapshot.bestPlayers === "5" ? "5+" : filtersSnapshot.bestPlayers)}</span>`);
   if (filtersSnapshot.age) chips.push(`<span class="chip">${escapeHtml(copy.filterAge)}: ${escapeHtml(labelForAgeBand(filtersSnapshot.age))}</span>`);
   if (filtersSnapshot.recommendation) chips.push(`<span class="chip">Rec: ${escapeHtml(getFilterValueLabel("recommendation", filtersSnapshot.recommendation))}</span>`);
+  if (filtersSnapshot.category) chips.push(`<span class="chip">${escapeHtml(copy.filterCategory)}: ${escapeHtml(filtersSnapshot.category)}</span>`);
+  if (filtersSnapshot.mechanic) chips.push(`<span class="chip">${escapeHtml(copy.filterMechanic)}: ${escapeHtml(filtersSnapshot.mechanic)}</span>`);
   return chips.join("");
 }
 
