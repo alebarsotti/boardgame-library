@@ -300,6 +300,9 @@ test("detail modal syncs with hash routing and survives reload", async ({ page }
   await expect(page).toHaveURL(/#\/browse\?.*game=\d+/);
 
   const detailUrl = page.url();
+  await page.reload({ waitUntil: "load" });
+  await expect(page.locator("#details-dialog")).not.toBeFocused();
+  await expect(page.locator("#details-close")).not.toBeFocused();
 
   await page.goBack();
   await expect(page.locator("#details-dialog")).not.toBeVisible();

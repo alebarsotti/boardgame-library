@@ -3602,6 +3602,9 @@ function openDetails(game, options = {}) {
   if (!elements.detailsDialog.open && !elements.detailsDialog.hasAttribute("open")) {
     lockBodyScroll();
     if (ensureDetailsDialogOpen()) {
+      if (!syncRoute && document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur();
+      }
       animateDetailsDialogIn();
     }
   }
