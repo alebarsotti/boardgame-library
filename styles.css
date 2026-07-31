@@ -1865,6 +1865,28 @@ body[data-theme="dark"] .toolbar__actions .button--ghost {
   gap: 8px;
 }
 
+.active-filters__list .chip--removable {
+  cursor: pointer;
+  appearance: none;
+}
+
+.active-filters__list .chip--removable:hover {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--line));
+  background: color-mix(in srgb, var(--surface-raised) 82%, var(--accent) 18%);
+}
+
+.active-filters__list .chip--removable:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.chip__remove-icon {
+  width: 13px;
+  height: 13px;
+  margin-left: -2px;
+}
+
 .active-filters__empty {
   color: var(--muted);
   font-size: 0.86rem;

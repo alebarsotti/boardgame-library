@@ -125,6 +125,18 @@ test("Ideal para 2 only includes games whose best player count is 2", async ({ p
   await expect(page.locator("#empty-state")).toBeVisible();
 });
 
+test("active filter chips remove individual values and update the route", async ({ page }) => {
+  await page.goto(`${appUrl}#/browse?duration=quick%2Cstandard&weight=light%2Cheavy`, { waitUntil: "load" });
+
+  await expect(page.locator("[data-remove-filter='duration']")).toHaveCount(2);
+  await expect(page.locator("[data-remove-filter='weight']")).toHaveCount(2);
+  await page.locator("[data-remove-filter='duration'][data-remove-filter-value='quick']").click();
+
+  await expect(page.locator("[data-remove-filter='duration'][data-remove-filter-value='quick']")).toHaveCount(0);
+  await expect(page.locator("[data-remove-filter='duration'][data-remove-filter-value='standard']")).toBeVisible();
+  await expect(page).toHaveURL(/#\/browse\?duration=standard&weight=light%2Cheavy&sort=name&dir=asc&view=grid$/);
+});
+
 test.describe("mobile smoke", () => {
   test.use({
     ...mobileDevice,
