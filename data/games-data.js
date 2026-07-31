@@ -6,7 +6,7 @@ window.__BGG_LIBRARY_DATA__ = {
     "prevOwnedCount": 31,
     "recommendations": {
       "quick": 51,
-      "duo": 143,
+      "duo": 81,
       "teachingFriendly": 93,
       "heavy": 5
     },

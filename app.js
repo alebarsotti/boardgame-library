@@ -101,6 +101,7 @@ const translations = {
     resultsSingle: "resultado",
     resultsPlural: "resultados",
     resetFilters: "Limpiar filtros",
+    removeFilter: "Quitar filtro",
     emptyTitle: "No hay coincidencias para esta combinación.",
     emptyBody: "Probá relajar algún filtro o dejar que la suerte elija desde otro conjunto.",
     owned: "En colección",
@@ -364,6 +365,7 @@ const translations = {
     resultsSingle: "result",
     resultsPlural: "results",
     resetFilters: "Reset filters",
+    removeFilter: "Remove filter",
     emptyTitle: "No games match this combination.",
     emptyBody: "Try relaxing a filter or let chance choose from a broader set.",
     owned: "Currently owned",
@@ -838,6 +840,8 @@ function bindEvents() {
   elements.activeFilters.addEventListener("click", (event) => {
     const resetButton = event.target.closest("[data-reset-filters]");
     if (resetButton && !resetButton.disabled) resetFilters();
+    const removeButton = event.target.closest("[data-remove-filter]");
+    if (removeButton) removeActiveFilter(removeButton.dataset.removeFilter, removeButton.dataset.removeFilterValue || "");
   });
   document.querySelector("#details-close").addEventListener("click", () => closeDetails());
   elements.detailsDialog?.addEventListener("close", () => {
@@ -1400,6 +1404,15 @@ function resetFilters(options = {}) {
   syncControls();
   if (renderNow) render();
   if (syncRoute) writeRouteFromState({ replace });
+}
+
+function removeActiveFilter(key, value) {
+  if (["duration", "weight"].includes(key)) {
+    const currentValues = Array.isArray(state.filters[key]) ? state.filters[key] : [];
+    setFilter(key, currentValues.filter((item) => item !== value));
+    return;
+  }
+  setFilter(key, "");
 }
 
 function applyTranslations() {
@@ -2100,9 +2113,8 @@ function sortGames(left, right) {
 
 function matchesRecommendation(game, recommendation) {
   const bestPlayers = toPlayerArray(game.bestPlayers);
-  const recommendedPlayers = toPlayerArray(game.recommendedPlayers);
   const map = {
-    duo: bestPlayers.includes(2) || recommendedPlayers.includes(2),
+    duo: bestPlayers.includes(2),
     quick: game.timeBand === "quick",
     heavy: game.weightBand === "heavy",
     teach: (game.tags || []).includes("teaching-friendly"),
@@ -3152,21 +3164,24 @@ function renderResultsSummary() {
 function renderActiveFilters() {
   const copy = translations[state.language];
   const tags = [];
-  if (state.filters.search) tags.push({ icon: "search", label: copy.filterSearch, value: state.filters.search });
-  if (state.filters.players) tags.push({ icon: "players", label: copy.filterPlayers, value: state.filters.players === "5" ? "5+" : getFilterValueLabel("players", state.filters.players) });
-  if (Array.isArray(state.filters.duration) && state.filters.duration.length) tags.push({ icon: "time", label: copy.filterDuration, value: getMultiFilterSummary("duration", state.filters.duration) });
-  if (Array.isArray(state.filters.weight) && state.filters.weight.length) tags.push({ icon: "weight", label: copy.filterWeight, value: getMultiFilterSummary("weight", state.filters.weight) });
-  if (state.filters.physicalLanguage) tags.push({ icon: "language", label: copy.filterPhysicalLanguage, value: labelForPhysicalLanguage(state.filters.physicalLanguage) });
-  if (state.filters.bestPlayers) tags.push({ icon: "players", label: copy.filterBestPlayers, value: state.filters.bestPlayers === "5" ? "5+" : getFilterValueLabel("bestPlayers", state.filters.bestPlayers) });
-  if (state.filters.age) tags.push({ icon: "age", label: copy.filterAge, value: getFilterValueLabel("age", state.filters.age) });
-  if (state.filters.recommendation) tags.push({ icon: getRecommendationIconKey(state.filters.recommendation), label: copy.recommendTitle, value: getFilterValueLabel("recommendation", state.filters.recommendation) });
+  if (state.filters.search) tags.push({ key: "search", icon: "search", label: copy.filterSearch, value: state.filters.search });
+  if (state.filters.players) tags.push({ key: "players", icon: "players", label: copy.filterPlayers, value: state.filters.players === "5" ? "5+" : getFilterValueLabel("players", state.filters.players) });
+  if (Array.isArray(state.filters.duration)) state.filters.duration.forEach((value) => tags.push({ key: "duration", icon: "time", label: copy.filterDuration, value: getFilterValueLabel("duration", value), filterValue: value }));
+  if (Array.isArray(state.filters.weight)) state.filters.weight.forEach((value) => tags.push({ key: "weight", icon: "weight", label: copy.filterWeight, value: getFilterValueLabel("weight", value), filterValue: value }));
+  if (state.filters.physicalLanguage) tags.push({ key: "physicalLanguage", icon: "language", label: copy.filterPhysicalLanguage, value: labelForPhysicalLanguage(state.filters.physicalLanguage) });
+  if (state.filters.bestPlayers) tags.push({ key: "bestPlayers", icon: "players", label: copy.filterBestPlayers, value: state.filters.bestPlayers === "5" ? "5+" : getFilterValueLabel("bestPlayers", state.filters.bestPlayers) });
+  if (state.filters.age) tags.push({ key: "age", icon: "age", label: copy.filterAge, value: getFilterValueLabel("age", state.filters.age) });
+  if (state.filters.recommendation) tags.push({ key: "recommendation", icon: getRecommendationIconKey(state.filters.recommendation), label: copy.recommendTitle, value: getFilterValueLabel("recommendation", state.filters.recommendation) });
   const hasFilters = tags.length > 0;
   elements.activeFilters.innerHTML = `
     <div class="active-filters__content">
       <p class="active-filters__title">${escapeHtml(copy.activeFiltersTitle)}</p>
       <div class="active-filters__list">
         ${hasFilters
-          ? tags.map(({ icon, label, value }) => `<span class="chip chip--with-icon">${iconMarkup(icon, "chip__icon")}<span>${escapeHtml(label)}: ${escapeHtml(String(value))}</span></span>`).join("")
+          ? tags.map(({ key, icon, label, value, filterValue = "" }) => {
+            const removeLabel = `${copy.removeFilter}: ${label}: ${value}`;
+            return `<button class="chip chip--with-icon chip--removable" type="button" data-remove-filter="${escapeAttribute(key)}" data-remove-filter-value="${escapeAttribute(filterValue)}" title="${escapeAttribute(removeLabel)}" aria-label="${escapeAttribute(removeLabel)}">${iconMarkup(icon, "chip__icon")}<span>${escapeHtml(label)}: ${escapeHtml(String(value))}</span>${iconMarkup("close", "chip__remove-icon")}</button>`;
+          }).join("")
           : `<span class="active-filters__empty">${escapeHtml(copy.activeFiltersEmpty)}</span>`}
       </div>
     </div>
