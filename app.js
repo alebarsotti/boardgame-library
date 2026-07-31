@@ -3511,7 +3511,7 @@ function openDetails(game, options = {}) {
                 ? `<a class="button button--primary" href="${escapeAttribute(rulesGuide.url)}">${renderIconLabel(copy.openRules, "rules")}</a>`
                 : ""
             }
-            <a class="button button--ghost" href="${escapeAttribute(game.bggUrl)}" target="_blank" rel="noreferrer">${renderIconLabel(copy.openBgg, "external")}</a>
+            <a class="button button--ghost button--external" href="${escapeAttribute(game.bggUrl)}" target="_blank" rel="noreferrer">${renderIconLabel(copy.openBgg, "external")}</a>
           </div>
           <div class="detail-tags detail-tags--soft">${tags.map(renderDetailTag).join("")}</div>
         </div>

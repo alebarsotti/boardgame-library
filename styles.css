@@ -528,6 +528,22 @@ body[data-theme="dark"] .button--ghost {
   border-color: color-mix(in srgb, var(--accent) 28%, var(--line));
 }
 
+.button--external:hover,
+.detail-share-button:hover:not([data-feedback-state="success"]):not([data-feedback-state="error"]) {
+  color: #fff8f3;
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  border-color: color-mix(in srgb, var(--accent-strong) 70%, var(--button-ghost-border));
+  box-shadow: 0 12px 24px color-mix(in srgb, var(--accent-strong) 28%, transparent);
+}
+
+body[data-theme="dark"] .button--external:hover,
+body[data-theme="dark"] .detail-share-button:hover:not([data-feedback-state="success"]):not([data-feedback-state="error"]) {
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent-strong) 82%, var(--button-ghost-bg));
+  border-color: color-mix(in srgb, var(--accent-soft) 68%, var(--button-ghost-border));
+  box-shadow: 0 12px 24px color-mix(in srgb, var(--accent-strong) 32%, transparent);
+}
+
 .button--small { min-height: 36px; padding: 0 14px; }
 .button:disabled {
   opacity: 0.6;
