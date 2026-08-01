@@ -81,4 +81,93 @@
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && manualsMenu?.open) manualsMenu.open = false;
   });
+
+  const quickReference = document.querySelector("[data-quick-reference]");
+  const quickReferenceSurface = quickReference?.querySelector(".quick-reference__surface");
+  const quickReferenceOpen = document.querySelector("[data-quick-reference-open]");
+  const quickReferenceClose = document.querySelector("[data-quick-reference-close]");
+
+  if (quickReference && quickReferenceSurface && quickReferenceOpen && quickReferenceClose) {
+    let ownsFullscreen = false;
+    let wakeLock = null;
+
+    const requestWakeLock = async () => {
+      if (!("wakeLock" in navigator)) return;
+      if (document.visibilityState !== "visible" || !quickReference.open || wakeLock) return;
+
+      try {
+        const sentinel = await navigator.wakeLock.request("screen");
+        if (!quickReference.open) {
+          await sentinel.release();
+          return;
+        }
+        wakeLock = sentinel;
+        sentinel.addEventListener("release", () => {
+          if (wakeLock === sentinel) wakeLock = null;
+        });
+      } catch (_) {
+        wakeLock = null;
+      }
+    };
+
+    const releaseWakeLock = async () => {
+      const sentinel = wakeLock;
+      wakeLock = null;
+      if (sentinel && !sentinel.released) {
+        try {
+          await sentinel.release();
+        } catch (_) {}
+      }
+    };
+
+    const exitOwnedFullscreen = async () => {
+      if (!ownsFullscreen || !document.fullscreenElement) return;
+      ownsFullscreen = false;
+      try {
+        await document.exitFullscreen();
+      } catch (_) {}
+    };
+
+    const closeQuickReference = async () => {
+      await exitOwnedFullscreen();
+      await releaseWakeLock();
+      if (quickReference.open) quickReference.close();
+    };
+
+    quickReferenceOpen.addEventListener("click", async () => {
+      quickReference.showModal();
+      document.body.classList.add("quick-reference-is-open");
+      quickReferenceClose.focus();
+      requestWakeLock();
+      if (!document.fullscreenElement && quickReferenceSurface.requestFullscreen) {
+        try {
+          await quickReferenceSurface.requestFullscreen({ navigationUI: "hide" });
+          ownsFullscreen = document.fullscreenElement === quickReferenceSurface;
+        } catch (_) {
+          ownsFullscreen = false;
+        }
+      }
+    });
+
+    quickReferenceClose.addEventListener("click", closeQuickReference);
+    quickReference.addEventListener("close", () => {
+      document.body.classList.remove("quick-reference-is-open");
+      exitOwnedFullscreen();
+      releaseWakeLock();
+    });
+    quickReference.addEventListener("click", (event) => {
+      if (event.target === quickReference) closeQuickReference();
+    });
+    document.addEventListener("fullscreenchange", () => {
+      if (ownsFullscreen && !document.fullscreenElement && quickReference.open) {
+        ownsFullscreen = false;
+        quickReference.close();
+      }
+    });
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible" && quickReference.open && !wakeLock) {
+        requestWakeLock();
+      }
+    });
+  }
 })();
