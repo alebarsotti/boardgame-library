@@ -476,8 +476,8 @@
   .quick-reference__section--turn { grid-column: 1 / span 3; }
   .quick-reference__section--combat { grid-column: 4 / span 3; }
   .quick-reference__section--character { grid-column: 7 / -1; }
-  .quick-reference__section--actions { grid-column: 1 / span 7; }
-  .quick-reference__section--general { grid-column: 8 / -1; }
+  .quick-reference__section--actions { grid-column: 1 / span 8; }
+  .quick-reference__section--general { grid-column: 9 / -1; }
   .quick-reference__golden-rules { grid-column: 1 / -1; padding: 11px 16px; border-radius: 16px; }
   .quick-reference__section-heading { gap: 9px; margin-bottom: 10px; }
   .quick-reference__section-heading h3 { font-size: clamp(1.5rem, 2vw, 2rem); }
