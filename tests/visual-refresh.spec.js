@@ -675,6 +675,173 @@ test("Munchkin rules guide supports navigation, anchors, theme, and print layout
   await page.getByRole("link", { name: "Reglas clave", exact: true }).click();
   await expect(page.locator("#reglas-clave .rule-callout__title .rule-card-icon")).toBeVisible();
 
+  await page.setViewportSize({ width: 1024, height: 768 });
+  await page.evaluate(() => {
+    document.querySelector(".quick-reference__surface").requestFullscreen = async () => {
+      document.querySelector(".quick-reference__surface").dataset.fullscreenRequested = "true";
+    };
+    Object.defineProperty(navigator, "wakeLock", {
+      configurable: true,
+      value: {
+        request: async (type) => {
+          document.documentElement.dataset.wakeLockRequested = type;
+          const sentinel = new EventTarget();
+          sentinel.released = false;
+          sentinel.release = async () => {
+            sentinel.released = true;
+            document.documentElement.dataset.wakeLockReleased = "true";
+            sentinel.dispatchEvent(new Event("release"));
+          };
+          return sentinel;
+        }
+      }
+    });
+  });
+  const quickReference = page.locator("[data-quick-reference]");
+  const quickReferenceTrigger = page.locator(".rules-game-summary").getByRole("button", { name: "Ayuda rápida" });
+  await expect(quickReferenceTrigger).toBeVisible();
+  await expect(quickReferenceTrigger).toHaveCSS("position", "absolute");
+  const heroBox = await page.locator(".rules-game-summary").boundingBox();
+  const quickReferenceTriggerBox = await quickReferenceTrigger.boundingBox();
+  expect(heroBox).not.toBeNull();
+  expect(quickReferenceTriggerBox).not.toBeNull();
+  expect(quickReferenceTriggerBox.x + quickReferenceTriggerBox.width).toBeGreaterThan(heroBox.x + heroBox.width - 80);
+  expect(quickReferenceTriggerBox.y).toBeLessThan(heroBox.y + 80);
+  await expect(page.locator(".rules-topbar").getByRole("button", { name: "Ayuda rápida" })).toHaveCount(0);
+  await expect(quickReference).not.toBeVisible();
+  await quickReferenceTrigger.click();
+  await expect(quickReference).toBeVisible();
+  await expect(quickReference).toHaveJSProperty("open", true);
+  await expect(page.locator(".quick-reference__surface")).toHaveAttribute("data-fullscreen-requested", "true");
+  await expect(page.locator("html")).not.toHaveAttribute("data-fullscreen-requested", "true");
+  await expect(page.locator("html")).toHaveAttribute("data-wake-lock-requested", "screen");
+  await expect(page.locator("[data-wake-lock-status]")).toHaveCount(0);
+  const quickReferenceBox = await quickReference.boundingBox();
+  expect(quickReferenceBox).not.toBeNull();
+  expect(quickReferenceBox.width).toBe(1024);
+  expect(quickReferenceBox.height).toBe(768);
+  await expect(page.locator(".quick-reference__content")).toHaveCSS("grid-template-columns", /.+ .+ .+/);
+  await expect(quickReference.getByRole("heading", { name: "Munchkin · Referencia rápida" })).toBeVisible();
+  await expect(quickReference.getByText("1 · Patear la puerta", { exact: true })).toBeVisible();
+  await expect(quickReference.getByText("2 · Buscar problemas o saquear", { exact: true })).toBeVisible();
+  await expect(quickReference.getByText("3 · Caridad", { exact: true })).toBeVisible();
+  await expect(quickReference.locator(".quick-turn-flow p")).toHaveCount(0);
+  const quickTurnBox = await quickReference.locator(".quick-reference__section--turn").boundingBox();
+  const quickActionsBox = await quickReference.locator(".quick-reference__section--actions").boundingBox();
+  expect(quickTurnBox).not.toBeNull();
+  expect(quickActionsBox).not.toBeNull();
+  expect(quickActionsBox.width).toBeGreaterThan(quickTurnBox.width * 2.5);
+  const quickBodyFontSizes = await page.evaluate(() => ({
+    listItem: parseFloat(getComputedStyle(document.querySelector(".quick-action-grid li")).fontSize),
+    sectionTitle: parseFloat(getComputedStyle(document.querySelector(".quick-reference__section-heading h3")).fontSize)
+  }));
+  expect(quickBodyFontSizes.listItem).toBeGreaterThanOrEqual(16);
+  expect(quickBodyFontSizes.sectionTitle).toBeGreaterThanOrEqual(24);
+  const quickTextColors = await page.evaluate(() => {
+    const referenceColor = getComputedStyle(document.querySelector("[data-quick-reference]")).color;
+    const selectors = [
+      ".quick-turn-flow strong",
+      ".quick-reference__badge",
+      ".quick-slots strong",
+      ".quick-reference__section--combat li"
+    ];
+    return {
+      referenceColor,
+      colors: selectors.map((selector) => getComputedStyle(document.querySelector(selector)).color)
+    };
+  });
+  expect(quickTextColors.colors.every((color) => color === quickTextColors.referenceColor)).toBe(true);
+  const quickBadgeStyles = await page.evaluate(() => {
+    const styles = getComputedStyle(document.querySelector(".quick-reference__badge"));
+    return {
+      fontSize: parseFloat(styles.fontSize),
+      borderWidth: styles.borderTopWidth,
+      borderStyle: styles.borderTopStyle
+    };
+  });
+  expect(quickBadgeStyles.fontSize).toBeGreaterThanOrEqual(14);
+  expect(quickBadgeStyles.borderWidth).toBe("1px");
+  expect(quickBadgeStyles.borderStyle).toBe("solid");
+  const quickSections = {
+    turn: quickReference.locator(".quick-reference__section--turn"),
+    combat: quickReference.locator(".quick-reference__section--combat"),
+    character: quickReference.locator(".quick-reference__section--character"),
+    actions: quickReference.locator(".quick-reference__section--actions"),
+    general: quickReference.locator(".quick-reference__section--general")
+  };
+  await expect(quickSections.combat.locator(".quick-reference__number")).toHaveText("2");
+  await expect(quickSections.character.locator(".quick-reference__number")).toHaveText("3");
+  await expect(quickSections.actions.locator(".quick-reference__number")).toHaveText("4");
+  await expect(quickSections.general.locator(".quick-reference__number")).toHaveText("5");
+  const quickSectionBoxes = {
+    turn: await quickSections.turn.boundingBox(),
+    combat: await quickSections.combat.boundingBox(),
+    character: await quickSections.character.boundingBox(),
+    actions: await quickSections.actions.boundingBox(),
+    general: await quickSections.general.boundingBox()
+  };
+  Object.values(quickSectionBoxes).forEach((box) => expect(box).not.toBeNull());
+  expect(Math.abs(quickSectionBoxes.turn.y - quickSectionBoxes.combat.y)).toBeLessThan(2);
+  expect(Math.abs(quickSectionBoxes.turn.y - quickSectionBoxes.character.y)).toBeLessThan(2);
+  expect(quickSectionBoxes.turn.x).toBeLessThan(quickSectionBoxes.combat.x);
+  expect(quickSectionBoxes.combat.x).toBeLessThan(quickSectionBoxes.character.x);
+  expect(Math.abs(quickSectionBoxes.actions.y - quickSectionBoxes.general.y)).toBeLessThan(2);
+  expect(quickSectionBoxes.actions.y).toBeGreaterThan(quickSectionBoxes.turn.y);
+  expect(quickSectionBoxes.actions.x).toBeLessThan(quickSectionBoxes.general.x);
+  await expect(quickReference).toContainText("En cualquier momento");
+  await expect(quickReference).toContainText("Fuera de combate");
+  await expect(quickReference).toContainText("Durante un combate");
+  await expect(quickReference).toContainText("1 Yelmo");
+  await expect(quickReference).toContainText("2 Manos");
+  await expect(quickReference).toContainText("solo 1");
+  await expect(quickReference).toContainText("5 cartas");
+  await expect(quickReference).toContainText("Los monstruos ganan los empates");
+  await expect(page.locator("body")).toHaveClass(/quick-reference-is-open/);
+  await page.keyboard.press("Escape");
+  await expect(quickReference).not.toBeVisible();
+  await expect(page.locator("html")).toHaveAttribute("data-wake-lock-released", "true");
+  await expect(page.locator("body")).not.toHaveClass(/quick-reference-is-open/);
+  await expect(quickReferenceTrigger).toBeFocused();
+
+  await page.emulateMedia({ media: "print" });
+  await expect(page.locator(".rules-topbar")).toBeHidden();
+  await expect(page.locator(".rules-toc")).toBeHidden();
+});
+
+test("Cartógrafos exposes a complete rules guide", async ({ page }) => {
+  await page.goto(appUrl, { waitUntil: "load" });
+  await openPageByNav(page, "Explorar");
+  await page.locator("#search-input").fill("Cartógrafos");
+
+  const baseCard = page.locator(".game-card").filter({ has: page.getByText("Cartógrafos", { exact: true }) });
+  await baseCard.locator(".game-card__button").click();
+  await expect(page.getByRole("link", { name: "Leer resumen de reglas" })).toBeVisible();
+  await page.getByRole("link", { name: "Leer resumen de reglas" }).click();
+
+  await expect(page).toHaveTitle(/Cartógrafos · Resumen de reglas/);
+  await expect(page.locator(".rules-game-summary h1")).toHaveText("Cartógrafos");
+  await expect(page.locator(".rules-game-summary__meta")).toContainText("1–100");
+  await expect(page.locator(".rules-game-summary__meta")).toContainText("30–45 min");
+  await expect(page.locator(".rules-game-summary__description")).toHaveText("Dibujá el mapa · Cumplí los edictos · Contené a los Dragul");
+
+  await expect(page.locator("#preparacion .rule-card")).toHaveCount(6);
+  await expect(page.locator("#turno")).toContainText("rotarla y/o voltearla");
+  await expect(page.locator("#turno")).toContainText("1×1");
+  await expect(page.locator("#cartas-especiales")).toContainText("Ruina seguida de emboscada");
+  await expect(page.locator("#fin-estacion")).toContainText("Primavera:");
+  await expect(page.locator("#fin-estacion")).toContainText("Invierno:");
+  await expect(page.locator("#misiones .rule-card")).toHaveCount(16);
+  await expect(page.locator("#fin-juego")).toContainText("Menor pérdida por monstruos");
+  await expect(page.locator("#solitario")).toHaveCount(0);
+
+  const manualsMenu = page.locator(".rules-manuals-menu");
+  await manualsMenu.locator("summary").click();
+  const officialRulesLink = manualsMenu.getByRole("link", { name: "Juego base" });
+  await expect(officialRulesLink).toHaveAttribute("href", /Cartografos_Reglamento_Web\.pdf/);
+  await expect(officialRulesLink).toHaveAttribute("target", "_blank");
+
+  await page.getByRole("link", { name: "Reglas clave", exact: true }).click();
+  await expect(page.locator("#reglas-clave")).toHaveJSProperty("open", true);
   await page.emulateMedia({ media: "print" });
   await expect(page.locator(".rules-topbar")).toBeHidden();
   await expect(page.locator(".rules-toc")).toBeHidden();

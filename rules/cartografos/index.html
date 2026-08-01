@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Resumen no oficial en español de las reglas de Cartógrafos, preparado a partir del reglamento de la edición Buró 2020." />
+    <title>Cartógrafos · Resumen de reglas · Ludoteca de Ale</title>
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../styles.css" />
+    <link rel="stylesheet" href="../rules.css?v=20260723-1" />
+    <script>
+      try {
+        const preferences = JSON.parse(localStorage.getItem("bgg-library-preferences-v4") || "{}");
+        document.documentElement.style.colorScheme = preferences.theme === "light" ? "light" : "dark";
+        document.addEventListener("DOMContentLoaded", () => {
+          document.body.dataset.theme = preferences.theme === "light" ? "light" : "dark";
+        });
+      } catch (_) {}
+    </script>
+  </head>
+  <body class="rules-page" data-page="browse" data-game-id="263918">
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+    <div class="rules-shell">
+      <nav class="rules-topbar" aria-label="Navegación de la guía">
+        <a class="rules-brand" href="../../" aria-label="Volver a la Ludoteca de Ale">
+          <span class="eyebrow">Biblioteca personal</span>
+          <strong>Ludoteca de Ale</strong>
+        </a>
+        <div class="rules-topbar__actions">
+          <a class="button button--ghost rules-bgg-link" href="https://boardgamegeek.com/boardgame/263918" target="_blank" rel="noreferrer">Ver en BGG</a>
+          <details class="rules-manuals-menu">
+            <summary class="button button--ghost">Ver reglamento</summary>
+            <div class="rules-manuals-menu__panel">
+              <a href="https://www.dropbox.com/scl/fo/a4v9ti3qhbn2se98zh24g/AKKi_iCxfY8D6pEDaELeZQg/Cartografos_Reglamento_Web.pdf?rlkey=piqt8coebkd9d4gyoxcps4wtp&amp;e=1&amp;dl=0" target="_blank" rel="noreferrer">Juego base</a>
+            </div>
+          </details>
+        </div>
+      </nav>
+
+      <header class="rules-game-summary">
+        <div class="rules-game-summary__cover">
+          <img
+            data-rules-game-cover
+            src="https://cf.geekdo-images.com/GifbnAmsA4lfEcDkeaC9VA__original/img/YzJORdIDNza8kmrY6KEU_h2p2Wo=/0x0/filters:format(png)/pic4397932.png"
+            alt="Portada de Cartógrafos"
+          />
+        </div>
+        <div class="rules-game-summary__copy">
+          <p class="eyebrow">Resumen de reglas</p>
+          <h1 data-rules-game-title>Cartógrafos</h1>
+          <div class="rules-game-summary__meta" aria-label="Datos principales">
+            <span><strong data-rules-game-players>1–100</strong> jugadores</span>
+            <span><strong data-rules-game-time>30–45 min</strong> de juego</span>
+          </div>
+          <p class="rules-game-summary__description" data-rules-game-summary data-rules-summary-override>Dibujá el mapa · Cumplí los edictos · Contené a los Dragul</p>
+        </div>
+      </header>
+
+      <div class="rules-layout">
+        <nav class="rules-toc" aria-label="Índice de reglas">
+          <strong>Contenido</strong>
+          <a href="#objetivo">Objetivo</a><a href="#preparacion">Preparación</a><a href="#turno">Cada turno</a>
+          <a href="#cartas-especiales">Cartas especiales</a><a href="#fin-estacion">Final de estación</a>
+          <a href="#misiones">Misiones</a><a href="#fin-juego">Final del juego</a>
+          <a href="#reglas-clave">Reglas clave</a>
+        </nav>
+
+        <main class="rules-content" id="contenido">
+          <section class="rules-section" id="objetivo">
+            <h2>Objetivo de la partida</h2>
+            <div class="rules-grid rules-grid--two">
+              <article class="rule-card"><span class="rule-kicker">Duración</span><h3>Cuatro estaciones</h3><p>Dibujá terrenos en tu mapa durante primavera, verano, otoño e invierno.</p></article>
+              <article class="rule-card"><span class="rule-kicker">Victoria</span><h3>Mayor reputación</h3><p>Sumá estrellas cumpliendo misiones y ganando monedas, y evitá perderlas por los monstruos.</p></article>
+            </div>
+          </section>
+
+          <section class="rules-section" id="preparacion">
+            <h2>Preparación</h2>
+            <div class="rules-grid">
+              <article class="rule-card"><span class="rule-step">1</span><h3>Repartí los mapas</h3><p>Cada persona recibe una hoja y un lápiz. Todos usan el mismo lado: <strong>salvaje (A)</strong> o <strong>tierras baldías (B)</strong>.</p></article>
+              <article class="rule-card"><span class="rule-step">2</span><h3>Elegí las misiones</h3><p>Ordená los edictos A–D. Separá las misiones por reverso, mezclá cada grupo y colocá <strong>una al azar</strong> bajo cada edicto.</p></article>
+              <article class="rule-card"><span class="rule-step">3</span><h3>Prepará las estaciones</h3><p>Apilalas boca arriba en orden: primavera, verano, otoño e invierno, con primavera visible.</p></article>
+              <article class="rule-card"><span class="rule-step">4</span><h3>Armá las emboscadas</h3><p>Mezclá sus cuatro cartas boca abajo y dejalas separadas del mazo de exploración.</p></article>
+              <article class="rule-card"><span class="rule-step">5</span><h3>Armá la exploración</h3><p>Mezclá las 13 cartas de exploración y añadí, sin revelarla, la carta superior del mazo de emboscadas.</p></article>
+              <article class="rule-card"><span class="rule-step">6</span><h3>Personalizá tu mapa</h3><p>Escribí el nombre del cartógrafo. También podés agregar título, escudo y nombre de las tierras.</p></article>
+            </div>
+          </section>
+
+          <section class="rules-section" id="turno">
+            <h2>Las tres fases de cada turno</h2>
+            <div class="rules-grid">
+              <article class="rule-card"><span class="rule-step">1</span><h3>Exploración</h3><p>Revelá una carta y colocala en la columna de la estación, dejando visibles todos los valores de tiempo. Si es una ruina, revelá otra carta; si vuelve a ser ruina, revelá una tercera.</p></article>
+              <article class="rule-card"><span class="rule-step">2</span><h3>Dibujo simultáneo</h3><p>Cada persona elige <strong>un terreno y una forma</strong> disponibles en la carta, dibuja la forma en su mapa y la rellena con ese terreno.</p></article>
+              <article class="rule-card"><span class="rule-step">3</span><h3>Control</h3><p>Sumá el tiempo de todas las cartas visibles. Si alcanza o supera el límite de la estación, puntuá; si no, comenzá otro turno.</p></article>
+            </div>
+
+            <details class="rule-disclosure" open>
+              <summary>Cómo dibujar una forma legal</summary>
+              <div>
+                <ul>
+                  <li>Podés <strong>rotarla y/o voltearla</strong>.</li>
+                  <li>No puede salir del mapa ni superponerse con espacios ocupados. Montañas y pantanos ya están ocupados; las ruinas no.</li>
+                  <li>No hace falta que toque una forma dibujada anteriormente.</li>
+                  <li>Todos los espacios de la forma llevan el terreno elegido.</li>
+                  <li>Si ninguna forma entra legalmente, dibujá un <strong>1×1</strong> donde quieras y elegí cualquier terreno salvo montaña.</li>
+                </ul>
+              </div>
+            </details>
+
+            <div class="rule-callout rule-callout--success"><strong>Monedas:</strong> marcá la siguiente moneda de tu contador cuando elegís una forma con moneda o cuando llenás los cuatro espacios ortogonalmente adyacentes a una montaña.</div>
+          </section>
+
+          <details class="rules-section rules-section--collapsible" id="cartas-especiales" open>
+            <summary><span><strong>Cartas especiales</strong><small>Grieta interdimensional, ruinas y emboscadas.</small></span></summary>
+            <div class="rules-section__body">
+              <div class="rules-grid">
+                <article class="rule-card"><span class="rule-kicker">Grieta interdimensional</span><h3>Dibujá un 1×1</h3><p>Cada persona lo coloca donde quiera y elige cualquier terreno salvo montaña. Se mantienen todas las restricciones normales.</p></article>
+                <article class="rule-card"><span class="rule-kicker">Ruinas</span><h3>Cubrí una ruina</h3><p>La forma de la siguiente carta debe superponerse con un espacio de ruina, si es posible. Si no podés o ya no quedan ruinas libres, dibujá un 1×1 con cualquier terreno salvo montaña.</p></article>
+                <article class="rule-card"><span class="rule-kicker">Emboscada</span><h3>Pasá el mapa</h3><p>Pasalo en la dirección de las flechas. Dibujá la forma indicada con terreno de monstruo en el mapa recibido; si no entra, dibujá un monstruo 1×1. Devolvé los mapas y retirala de la partida.</p></article>
+              </div>
+              <div class="rule-callout"><strong>Ruina seguida de emboscada:</strong> resolvé la emboscada normalmente. La obligación de cubrir una ruina se conserva para la próxima carta de exploración.</div>
+            </div>
+          </details>
+
+          <details class="rules-section rules-section--collapsible" id="fin-estacion" open>
+            <summary><span><strong>Final de estación</strong><small>Cuándo termina y cómo anotar la reputación.</small></span></summary>
+            <div class="rules-section__body">
+              <div class="rules-grid rules-grid--two">
+                <article class="rule-card">
+                  <span class="rule-kicker">Límites y edictos</span>
+                  <h3>La rueda de las estaciones</h3>
+                  <ul class="rule-compact-list">
+                    <li><strong>Primavera:</strong> tiempo 8 · A + B</li>
+                    <li><strong>Verano:</strong> tiempo 8 · B + C</li>
+                    <li><strong>Otoño:</strong> tiempo 7 · C + D</li>
+                    <li><strong>Invierno:</strong> tiempo 6 · D + A</li>
+                  </ul>
+                </article>
+                <article class="rule-card">
+                  <span class="rule-kicker">Puntuación</span>
+                  <h3>Sumá cuatro resultados</h3>
+                  <ol class="rule-compact-list">
+                    <li>Primera misión evaluada.</li>
+                    <li>Segunda misión evaluada.</li>
+                    <li><strong>+1</strong> por cada moneda marcada.</li>
+                    <li><strong>−1</strong> por cada espacio vacío adyacente a uno o más monstruos.</li>
+                  </ol>
+                </article>
+              </div>
+              <div class="rule-callout rule-callout--danger"><strong>Penalización de monstruos:</strong> cada espacio vacío cuenta una sola vez, aunque toque varios monstruos. Las ruinas sin cubrir están vacías; montañas y pantanos no.</div>
+              <details class="rule-disclosure">
+                <summary>Preparar la estación siguiente</summary>
+                <div>
+                  <ol>
+                    <li>Retirá la estación terminada para revelar la próxima.</li>
+                    <li>Mezclá otra vez todas las cartas de exploración, incluidas las reveladas.</li>
+                    <li>Añadí sin mirar la siguiente emboscada.</li>
+                  </ol>
+                  <p>Una emboscada no revelada permanece en el mazo. Igual se añade otra, por lo que pueden acumularse varias en estaciones posteriores.</p>
+                </div>
+              </details>
+            </div>
+          </details>
+
+          <details class="rules-section rules-section--collapsible" id="misiones">
+            <summary><span><strong>Referencia de misiones</strong><small>Las 16 cartas, agrupadas por su reverso.</small></span></summary>
+            <div class="rules-section__body">
+              <div class="rule-callout"><strong>Conceptos generales:</strong> solo comparten adyacencia los espacios que se tocan por un lado, no en diagonal. Un grupo es cualquier cantidad de espacios adyacentes del mismo terreno, incluso uno solo. Monstruos, montañas y pantanos cuentan como llenos; una ruina solo cuenta como llena si fue cubierta.</div>
+
+              <details class="rule-disclosure" open>
+                <summary>Tierras de cultivo y agua</summary>
+                <div class="rules-grid rules-grid--two">
+                  <article class="rule-card"><h3>Granero Dorado</h3><p><strong>+1</strong> por cada agua adyacente a una ruina y <strong>+3</strong> por cada granja sobre una ruina.</p></article>
+                  <article class="rule-card"><h3>Lago Canal</h3><p><strong>+1</strong> por cada agua adyacente a al menos una granja y <strong>+1</strong> por cada granja adyacente a al menos un agua.</p></article>
+                  <article class="rule-card"><h3>Extensión Costera</h3><p><strong>+3</strong> por cada grupo de granja que no toque agua ni borde; también <strong>+3</strong> por cada grupo de agua que no toque granja ni borde.</p></article>
+                  <article class="rule-card"><h3>Valle de los Magos</h3><p><strong>+2</strong> por cada agua adyacente a una montaña y <strong>+1</strong> por cada granja adyacente a una montaña.</p></article>
+                </div>
+              </details>
+
+              <details class="rule-disclosure">
+                <summary>Bosques</summary>
+                <div class="rules-grid rules-grid--two">
+                  <article class="rule-card"><h3>Bosque Centinela</h3><p><strong>+1</strong> por cada bosque adyacente al borde del mapa.</p></article>
+                  <article class="rule-card"><h3>Torre Arbórea</h3><p><strong>+1</strong> por cada bosque rodeado en sus cuatro lados por espacios llenos o el borde.</p></article>
+                  <article class="rule-card"><h3>Bosque de las Piedras</h3><p><strong>+3</strong> por cada montaña conectada con otra montaña mediante un grupo de bosque.</p></article>
+                  <article class="rule-card"><h3>Dominio Verde</h3><p><strong>+1</strong> por cada fila y columna que contenga al menos un bosque. Un mismo espacio puede puntuar su fila y su columna.</p></article>
+                </div>
+              </details>
+
+              <details class="rule-disclosure">
+                <summary>Configuración del mapa</summary>
+                <div class="rules-grid rules-grid--two">
+                  <article class="rule-card"><h3>Baronía Perdida</h3><p><strong>+3</strong> por cada espacio a lo largo de un lado del cuadrado más grande de espacios llenos.</p></article>
+                  <article class="rule-card"><h3>Tierras Fronterizas</h3><p><strong>+6</strong> por cada fila o columna completamente llena.</p></article>
+                  <article class="rule-card"><h3>Los Calderos</h3><p><strong>+1</strong> por cada espacio vacío rodeado en sus cuatro lados por espacios llenos o el borde.</p></article>
+                  <article class="rule-card"><h3>Camino Quebrado</h3><p><strong>+3</strong> por cada diagonal de espacios llenos que toque el borde izquierdo y el borde inferior.</p></article>
+                </div>
+              </details>
+
+              <details class="rule-disclosure">
+                <summary>Aldeas</summary>
+                <div class="rules-grid rules-grid--two">
+                  <article class="rule-card"><h3>Asentamientos Salvajes</h3><p><strong>+8</strong> por cada grupo de aldea de seis o más espacios.</p></article>
+                  <article class="rule-card"><h3>Gran Ciudad</h3><p><strong>+1</strong> por cada aldea del grupo más grande que no sea adyacente a una montaña.</p></article>
+                  <article class="rule-card"><h3>Puerta de Escudo</h3><p><strong>+2</strong> por cada aldea del segundo grupo de aldeas más grande.</p></article>
+                  <article class="rule-card"><h3>Llanuras Prodigiosas</h3><p><strong>+3</strong> por cada grupo de aldea adyacente a tres o más tipos de terreno distintos.</p></article>
+                </div>
+              </details>
+            </div>
+          </details>
+
+          <details class="rules-section rules-section--collapsible" id="fin-juego">
+            <summary><span><strong>Final del juego</strong><small>Victoria y desempate después del invierno.</small></span></summary>
+            <div class="rules-section__body">
+              <div class="rules-grid rules-grid--two">
+                <article class="rule-card"><span class="rule-kicker">Puntuación final</span><h3>Sumá las cuatro estaciones</h3><p>La persona con más estrellas de reputación gana.</p></article>
+                <article class="rule-card"><span class="rule-kicker">Desempate</span><h3>Menor pérdida por monstruos</h3><p>Entre quienes empatan, gana quien haya perdido menos estrellas por monstruos en toda la partida. Si sigue el empate, comparten la victoria.</p></article>
+              </div>
+            </div>
+          </details>
+
+          <details class="rules-section rules-section--collapsible" id="reglas-clave">
+            <summary><span><strong>Reglas clave</strong><small>Los recordatorios que más evitan errores.</small></span></summary>
+            <div class="rules-section__body">
+              <ol>
+                <li>Las diagonales <strong>no cuentan</strong> como adyacencia.</li>
+                <li>Una estación termina cuando el tiempo visible <strong>iguala o supera</strong> su límite; no hace falta alcanzarlo exactamente.</li>
+                <li>Las monedas marcadas puntúan en <strong>todas las estaciones</strong>, no solo cuando se obtienen.</li>
+                <li>Si una forma no entra, el reemplazo 1×1 puede llevar cualquier terreno <strong>salvo montaña</strong>.</li>
+                <li>Las formas disponibles pueden <strong>rotarse y voltearse</strong> antes de dibujarlas.</li>
+              </ol>
+              <div class="rule-callout"><strong class="rule-callout__title"><span class="rule-card-icon" aria-hidden="true"></span>Ante una duda</strong><p>Esta guía está pensada para consulta rápida. Para resolver un caso particular, usá el texto exacto de la carta y el reglamento original.</p></div>
+            </div>
+          </details>
+        </main>
+      </div>
+
+      <footer class="rules-footer">
+        <p><strong>Resumen no oficial en español</strong>, elaborado a partir del reglamento de la edición Buró 2020.</p>
+        <p>Esta guía condensa las reglas para consulta rápida; ante casos particulares, leé el texto exacto de la carta y el reglamento original.</p>
+      </footer>
+    </div>
+    <script src="../../data/games-data.js"></script>
+    <script src="../rules-page.js?v=20260723-1"></script>
+  </body>
+</html>
