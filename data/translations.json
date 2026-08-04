@@ -1,0 +1,564 @@
+{
+  "version": 1,
+  "entries": {
+    "224182:summary": {"sourceHash": "c59df7b1795e40375e8fc0c650497f02e9080bbfe03ff2c2d7488bafef79eda2", "es": "Suplemento de Star Realms formado por veinte cartas de escenario. Antes de jugar se revela una carta al azar, que modifica una o más reglas o introduce nuevas reglas para esa partida."},
+    "158957:summary": {"sourceHash": "d14f1a20559b70c6b040d20f710949a0407cf14ad4bfe7d6e08ada471a9d7c16", "es": "Conjunto de expansión para Star Realms con dos desafíos en solitario, dos cooperativos para enfrentar a los Piratas de la Estrella Oscura o a la Bestia Némesis, dos naves Crucero Mercenarias y doce cartas de Gambito con habilidades especiales."},
+    "202564:summary": {"sourceHash": "529493c527bf8c064f004a389d13af06a96b6d36d63d70fc2c222bde02656931", "es": "Juego de velocidad en el que los jugadores trabajan en una panadería y deben ordenar fichas de galletas para reproducir los pedidos de nueve unidades. Al terminar, tocan la campana; gana quien consigue cuatro pedidos, pero dos errores eliminan de la partida."},
+    "253664:summary": {"sourceHash": "6d73bfda8396d81d631314bb8516f811c2551fe1948951f8e1df7302b6c1934e", "es": "Juego de cartas caótico de palmadas. Los jugadores colocan cartas en un montón común mientras dicen taco, gato, cabra, queso y pizza; cuando carta y palabra coinciden, todos golpean el mazo. El último recoge las cartas y gana quien se queda sin ellas."},
+    "182078:summary": {"sourceHash": "53e2fd87fdc4abc777ad31a86fdf160dfcccd36204b48870b27c6428010d5192", "es": "Quinta colección de mapas de Ticket to Ride, con un tablero de doble cara y reglas nuevas para jugar Ticket to Ride o Ticket to Ride: Europa en las islas británicas y Pensilvania."},
+    "276894:summary": {"sourceHash": "3ab421164a20065dbd8b89993495e6f5e01d498c51b50133d59b29e07725a3b7", "es": "Versión breve de Ticket to Ride ambientada en el Londres de los años 70. Mantiene la recolección de cartas, las rutas y los boletos, pero permite partidas de hasta quince minutos. Cada jugador inicia con diecisiete autobuses de dos pisos."},
+    "284083:summary": {"sourceHash": "066c39204b55b2c28c0cb6814c4bb033814210ca519d375745a0d5663a5c7bd0", "es": "Juego cooperativo de bazas en el que los jugadores son astronautas en una aventura espacial de cincuenta misiones. Para superar los desafíos se deben cumplir las tareas individuales de todos, por lo que la comunicación es esencial."},
+    "324856:summary": {"sourceHash": "da56ad84a66ecb666bbae6ab5fc04b07b6a84670cce61f1ba066207de46aa56f", "es": "Juego cooperativo de cartas sobre una expedición a las profundidades marinas en busca del continente perdido de Mu. El éxito depende de la precisión, el trabajo en equipo y un sentido compartido del momento oportuno."},
+    "458805:summary": {"sourceHash": "36091eaf42be7502a020e7612d5a25ead07bc29fdc1f263d427aee39d095b3b4", "es": "Aventura corta de Unlock! de 30 a 45 minutos en formato pequeño. Es un juego cooperativo de cartas inspirado en las salas de escape: se explora una habitación, se buscan objetos —algunos ocultos— y se resuelven acertijos."},
+    "464697:summary": {"sourceHash": "ab65e984ba4572ec25670f14ea6d0be4bbee44263c1fd3d5bf8bcec4d0b4d1ba", "es": "Miniaventura de 30 cartas de la serie Unlock!, juegos de escape con cartas. Requiere la aplicación gratuita complementaria para jugar."},
+    "323242:summary": {"sourceHash": "18c26d9550f618651ad13328ec9192d7c9dda2f4dd4a0f565a0ee9312054edad", "es": "Expansión temática de Halloween para Virus! con murciélagos, monstruos y nuevas cartas para el mazo. Añade tratamientos como ladrones de color, experimentos fallidos, trasplantes alienígenas y truco o trato, además de un órgano mutante."},
+    "457914:summary": {"sourceHash": "6281e78ff246a89a1510f7aeb6c1ef6ec0e67af7a9fefe8f45e4da173611a6ac", "es": "Edición independiente por el 15.º aniversario de Fantasma Blitz. Incluye una torta de cumpleaños y dos juegos: el Fantasma Blitz original y Fantasma Blitz 2; también sirve como una gran ampliación si ya se poseen."},
+    "371942:summary": {"sourceHash": "9adb5da6f5b2d49ab12bbe613881486b62ccd904a8eeac8c2b976ba19ef991c3", "es": "Juego en el que los jugadores controlan clanes que buscan sumar más puntos de victoria. Deben ganar influencia en la corte, gestionar recursos con audacia y colocar trabajadores en el lugar y momento adecuados."},
+    "340638:summary": {"sourceHash": "fbd0e8cd323964e3fc3ba305fb2bca0e7f2620ff71544040c52830a03c0ffa9b", "es": "Expansión de 54 cartas para Happy Little Dinosaurs centrada en la pubertad de los dinosaurios. Añade problemas como hormonas, presión social y acné, además de los peligros habituales como meteoritos, pozos de alquitrán y depredadores."},
+    "277458:summary": {"sourceHash": "0f31f00dcae2c6e71d249caa5f09a91e2aeb558897aa37657edd0d6ac681e574", "es": "Juego de destreza magnético para una a cuatro personas, breve, portátil y accesible. Los jugadores colocan por turnos piedras magnéticas dentro del área delimitada por un cordón; quien se queda sin imanes gana, pero si se agrupan durante su turno debe recogerlos."},
+    "283948:summary": {"sourceHash": "e93a838ef999132514785f6ad1488ffef56eeb764d332a8d3035919c9d5d9d66", "es": "La partida termina tras cinco rondas. Se puntúa por contratos, oro, escudos, sellos y mercancías; gana quien obtiene más puntos."},
+    "377715:summary": {"sourceHash": "d430fbe361bee7fa1fb8b4902e7976c2f9a10087cc9ae7841bf7ddf163b49f3a", "es": "Expansión de Mille Fiori que permite seguir navegando por la ciudad, conocer figuras destacadas y crear obras maestras de vidrio. Añade un tablero que extiende la ruta de navegación, cartas del Dogo y la influencia de la Signoria."},
+    "244992:summary": {"sourceHash": "5e5c4546b28047ba24f7528851b32a14f0058d4bb86ea0f57960fbc644bac5d8", "es": "Más que un juego, The Mind es un experimento y una experiencia de equipo: no se puede intercambiar información, pero los jugadores deben sincronizarse para superar todos los niveles."},
+    "160477:summary": {"sourceHash": "e522049f8521d481392236df4c058e625de171d0da43c2083b08a8f7aeda8d30", "es": "Juego abstracto de información perfecta para dos jugadores con preparación inicial aleatoria. En un tablero de 5×5, cada bando comienza con cinco peones y su peón principal en el centro."},
+    "206931:summary": {"sourceHash": "da1d406a3e1d3edae3d90469891f41684205695600fe96d4e15d49af956a5e9c", "es": "Juego de marcar y escribir en el que completar una columna antes que los demás otorga más puntos. También hay bonificaciones por completar todas las casillas de un color; termina cuando alguien completa dos colores, con opción de jugar un Encore!"},
+    "180974:summary": {"sourceHash": "ff168e9eea7c81a9c3d1e33876504cc57f2df7499afaf89a718e554a03a84944", "es": "Juego para dos a cuatro jugadores de Horrible Guild, diseñado por Lorenzo Silva, Andrea Crespi y Stefano Castelli."},
+    "203542:summary": {"sourceHash": "db5bba9843f278619bb90a3128fc4d079124a508ea60f9cb1e1aa67fc256bd89", "es": "Expansión de Potion Explosion que introduce un ingrediente fantasmal: el ectoplasma. Nuevos profesores enseñan a manipularlo con seguridad para elaborar poderosas pociones."},
+    "305682:summary": {"sourceHash": "9e5123d05726d8086a841e755e712f89d0b3fe9f89c8337a35b342d57ca361f5", "es": "Juego de tirar y escribir en el que los jugadores compiten por conseguir más estrellas mediante minijuegos durante tres rondas. En cada turno se tiran dos dados y todos usan los resultados en sus cartas de reino para generar recursos y sumar estrellas."},
+    "382350:summary": {"sourceHash": "aada60be9f26628b1685096ef9bf479dab7c7ee63b51ecbd26ae87ee55eb31b4", "es": "Expansión que puede añadirse a Las Ruinas Perdidas de Arnak o descubrirse mediante una campaña cooperativa para una o dos personas de seis capítulos, cada uno con reglas, objetivos y logros distintos. Requiere el juego base y es compatible con Líderes de Expedición."},
+    "359142:summary": {"sourceHash": "831beddc745350395336a757997ca679768cef28af5d8f697f515a43bb7711c4", "es": "Expansión de Sagrada que incorpora nuevos desafíos artesanales: dados de Conflicto con restricciones de colocación, cartas de Pionero para objetivos nuevos y objetivos privados del módulo Flourish para recompensar estilos únicos."},
+    "263695:summary": {"sourceHash": "b9eefc3d6124fd9494940840a753d311899a5a05346fb02205d24df9b1aa9a5e", "es": "Primera parte de la serie de expansiones Grandes Fachadas de Sagrada, junto a Vida y Gloria. Añade cartas de inspiración, dados y cartas de vidrio raro, objetivos privados de vidrio raro y objetivos públicos de simetría."},
+    "301561:summary": {"sourceHash": "28266ecee8e4890a015a52595c656ac92978e46a39e03044e9be603ff5caa1da", "es": "Expansión de Sagrada que añade desafíos artesanales. Las cartas de aprendiz otorgan habilidades, los dados de obra maestra dan prestigio al cumplir restricciones y los objetivos públicos de esfuerzo recompensan asumir retos."},
+    "373106:summary": {"sourceHash": "5b48988b95eb635b9ca8d642d9c32e51edaa621d855365b02fe03d70618a8245", "es": "Juego cooperativo exclusivo para dos jugadores en el que se interpreta a piloto y copiloto al mando de un avión. El objetivo es coordinarse para aterrizar en distintos aeropuertos del mundo."},
+    "400738:summary": {"sourceHash": "8f95f2584f1513d76bd48bea037df126c0876783f18fe86c0ab7da46ef6f9460", "es": "Expansión de Carcassonne que incorpora maravillas históricas al juego de colocación de losetas; cada una de ellas tiene un efecto único sobre la partida."},
+    "428459:summary": {"sourceHash": "32cc9072487546df0e6cc17895404ab52c1bd01f9c7d46ebac8d8a0d3a579780", "es": "Segundo conjunto de Maravillas de la Humanidad, con Abu Simbel, Tikal, Angkor Wat y el Ejército de Terracota. Al final de la partida se puntúan primero las maravillas correspondientes; cada loseta de maravilla cuenta como cinco losetas normales."},
+    "457386:summary": {"sourceHash": "6f7f7a5f38653c5863563f8013f7cab02158bc5d897b6ffe73624d9e05f4bba3", "es": "Juego de cartas en el que cada turno se realizan dos de cuatro acciones posibles. El objetivo es crear una poción jugando cartas frente a sí; cada una otorga puntos según sus ingredientes. La partida termina cuando alguien juega su undécima carta."},
+    "315767:summary": {"sourceHash": "a35cec5559957b2c52bb057bc23b9d485a7efded17fed0ab066603467cf9633f", "es": "Secuela de Cartógrafos. Como cartógrafos reales, los jugadores exploran las Tierras Occidentales en tiempos de guerra, donde las fuerzas Dragul buscan frustrar los planes de expansión de la reina Gimnax. Incluye mapas, cartas de puntuación, exploración y emboscada nuevos."},
+    "206175:summary": {"sourceHash": "ba2109fbfeb679f02d452c8d0f030b30d951a282ef0e1602ee6cc219af27b178", "es": "Juego de cartas ágil para hasta seis jugadores que pone a prueba memoria, cognición y percepción sensorial. Incluye cartas de textura para desafíos táctiles en los que hay que adivinar lo que se está tocando."},
+    "439742:summary": {"sourceHash": "cc56aab905060c4e9282b616eb0bb22fc12e71d6f3190d557c1b2541f42a9df5", "es": "Juego competitivo de colocación de áreas para dos a cuatro jugadores, con carreras, posicionamiento y estrategia de mano. Los jugadores reúnen cartas de terreno para colocar campamentos, cumplir requisitos de las losetas de historia y obtener puntos extra con bayas y fuego."},
+    "268201:summary": {"sourceHash": "37bc607e991805497c94059a7b34ba1469a2bca0293aca4c85b9691ed492fd77", "es": "Juego de combate ágil para dos a seis jugadores, con modalidades uno contra uno, equipos o todos contra todos. Cada héroe usa cinco dados únicos para atacar y activar habilidades; los puntos de combate se gastan en cartas de mejoras, estados y manipulación de dados."},
+    "432456:summary": {"sourceHash": "709e75fb2733d2cf8763ae74fa5c54f38d781906c71b1e9d0e4bdf7d00789066", "es": "Juego de cartas cuyo objetivo es quedarse sin cartas en la mano. Se juegan una o más cartas del mismo valor, pero para superar a alguien con la misma cantidad deben ser de valor mayor; quien es superado recupera sus cartas."},
+    "438010:summary": {"sourceHash": "b772c632414aa0ab197fd1e981d1775f1645be9e1da59cc676283e94f46abfb5", "es": "Juego de losetas en el que los jugadores avanzan hacia la salida colocando las piezas unas encima de otras. Hay que memorizar la ruta de escape y cooperar para atravesar el edificio; al final se revela el camino y se descubre quién sobrevivió para puntuar."},
+    "366318:summary": {"sourceHash": "593d220ac1d4546c3f418ed59defafa9c75b7ef869a6dadef357bcb4e072397e", "es": "Sherlock Holmes necesita ayuda: lo acusan de asesinar al escritor Ignatius Loyde y se ha ocultado. De uno a cuatro jugadores ayudan al Dr. Watson a reunir pruebas, seguir pistas y resolver el caso, incluido el papel de Moriarty."},
+    "383479:summary": {"sourceHash": "a9bed3f4ac7532e6ee101e2fd4d51980d9278e09648fd319eeef3ffebf866445", "es": "Juego EXIT en el que los jugadores se dividen en dos equipos para escapar de prisión simultáneamente. Solo una cooperación intensa permite salir a tiempo y sin ser vistos."},
+    "391163:summary": {"sourceHash": "590d8a4c249dce02d44f86a66c7a76b730c6d72d3608b52c54449e6cb7bbaf01", "es": "Juego en el que los jugadores compiten por reunir los árboles más valiosos y atraer especies para crear un hábitat equilibrado de flora y fauna. Es el primer título de la línea Lookout Greenline, producido en papel certificado FSC y sin plástico."},
+    "291457:summary": {"sourceHash": "3df0351c512125490e735bb9db02247be6b8b1eb5777878ee06379107ecb3456", "es": "Versión de Gloomhaven orientada a un público más casual. Reemplaza las losetas de mapa por el libro de escenarios ilustrado, simplifica las reglas e incorpora un tutorial de cinco escenarios para introducir gradualmente la experiencia."},
+    "357888:summary": {"sourceHash": "0eec6497cfd981556d3aadb3c74068367b5f7f8970bb9d184bd7b9d4615a0d41", "es": "Expansión de 54 cartas para Happy Little Dinosaurs con citas desastrosas: se puede esquivar la temida zona de amistad, encontrar un enorme pez gato o salir con un dinosaurio que dice te amo demasiado pronto."},
+    "395822:summary": {"sourceHash": "48caf1e5c7572ce7313d3eb175357b72cac64e82e2109e2b712a7529032b11a0", "es": "Expansión de Happy Little Dinosaurs que incorpora peligros. Al añadir ciertas cartas de desastre al área de desastre se puede colocar una ficha de peligro en la ruta de escape de otro jugador; al alcanzarla, debe revelar una carta del mazo de peligros."},
+    "173346:summary": {
+      "sourceHash": "ca91bb2fd8675c419c80532dedb929e2fe1d772f8fab9c2f807748b78f13065b",
+      "es": "Juego de cartas para dos jugadores en el que se desarrollan civilizaciones a lo largo de tres eras mediante cartas de recursos, desarrollo militar o científico. A diferencia del juego original, las cartas se eligen de una disposición compartida de cartas visibles y ocultas."
+    },
+    "295949:summary": {
+      "sourceHash": "1238eac55046802ea622544b93cacc092d537fca6a5c5ed1286760c569ba1086",
+      "es": "Juego cooperativo de misterio en el que los jugadores exploran lugares, hablan con personajes, buscan pistas y combinan objetos para revelar una historia. Las decisiones cambian el curso de los acontecimientos y no se puede volver atrás."
+    },
+    "284082:summary": {
+      "sourceHash": "6d4068510242154be7a995ead35146208deb71e4a183015b816ce0ce1857da68",
+      "es": "Juego cooperativo de misterio en el que los jugadores exploran lugares, hablan con personajes, buscan pistas y combinan objetos para revelar una historia. Las decisiones cambian el curso de los acontecimientos y no se puede volver atrás."
+    },
+    "267813:summary": {
+      "sourceHash": "6d4068510242154be7a995ead35146208deb71e4a183015b816ce0ce1857da68",
+      "es": "Juego cooperativo de misterio en el que los jugadores exploran lugares, hablan con personajes, buscan pistas y combinan objetos para revelar una historia. Las decisiones cambian el curso de los acontecimientos y no se puede volver atrás."
+    },
+    "267814:summary": {
+      "sourceHash": "6d4068510242154be7a995ead35146208deb71e4a183015b816ce0ce1857da68",
+      "es": "Juego cooperativo de misterio en el que los jugadores exploran lugares, hablan con personajes, buscan pistas y combinan objetos para revelar una historia. Las decisiones cambian el curso de los acontecimientos y no se puede volver atrás."
+    },
+    "155068:summary": {
+      "sourceHash": "e1f2e32e5f8351cd3cf7077a9c91ec2e665747c132981e9b502c66c8c921a6f8",
+      "es": "Juego de campaña para 2 a 4 jugadores en el que cada participante controla un gremio de tres héroes. Los gremios se enfrentan entre sí y a monstruos controlados por el juego, y deben completar misiones para ganar cada escenario y elegir el siguiente destino de la campaña."
+    },
+    "15987:summary": {
+      "sourceHash": "60d00f54cffa5a6a8c348efd4c31e56a3b77495a6d05db2d1db1fecf18b334e7",
+      "es": "Juego cooperativo de aventura ambientado en los Mitos de Cthulhu de H. P. Lovecraft. Los jugadores eligen entre dieciséis investigadores para impedir que uno de los ocho Primigenios irrumpa en el mundo, mejorando sus personajes con habilidades, aliados, objetos, armas y hechizos."
+    },
+    "230802:summary": {
+      "sourceHash": "d3ccb8fd002f6c06b72189e9ac1ab5020781062e90ec12abb7de14414ae06b6d",
+      "es": "Juego de colocación de losetas en el que los jugadores seleccionan losetas de colores y las ubican en su tablero para decorar un palacio. Se obtienen puntos por patrones y conjuntos completos; los materiales desperdiciados penalizan. Gana quien tenga más puntos."
+    },
+    "346965:summary": {
+      "sourceHash": "3162a011806daca3f90c282504eb9df07223f533769a05030cd2e9f3e7049a09",
+      "es": "Juego de la serie Azul en el que los jugadores diseñan un jardín para la reina mediante plantas, árboles y adornos. Usan el característico sistema de selección de losetas para decorar el jardín; el diseño más impresionante recibe la bendición de la reina."
+    },
+    "287954:summary": {
+      "sourceHash": "2d27dbe25e9841616d6d5544ef8ce59fa4231a4f0fe653176c9619c42d0faa22",
+      "es": "Juego de losetas que se desarrolla en seis rondas. En cada una, los jugadores eligen losetas y las colocan en su tablero personal para obtener puntos. Cada uno de los seis colores funciona como comodín durante una ronda."
+    },
+    "256226:summary": {
+      "sourceHash": "81b14fa56cb042ea0d506f7f52b2ad04af5683f60744f5d714ec2eebea3651d1",
+      "es": "Juego de la serie Azul en el que los jugadores eligen cuidadosamente paneles de vidrio para completar vitrales, evitando dañarlos o desperdiciar materiales. Los paneles son de doble cara y crean un tablero personal dinámico con gran variabilidad."
+    },
+    "299592:summary": {
+      "sourceHash": "685050af27609624f63f58f1a2cd8a4b0a33cf8e858a08aceb3ee4f327626e1c",
+      "es": "Juego de estrategia en el que los jugadores optimizan rutas de vuelo para asegurar néctar para su colmena. Compiten con las demás abejas por objetivos públicos y privados, mientras planifican y almacenan el néctar."
+    },
+    "224517:summary": {
+      "sourceHash": "da2149fcde71a04b7d66c24969dfcf97eb5f22d655ed7e3d32b84569951d32f2",
+      "es": "Secuela de Brass, este juego de estrategia económica narra la competencia entre emprendedores de Birmingham durante la Revolución Industrial, entre 1770 y 1870."
+    },
+    "364405:summary": {
+      "sourceHash": "d60d22c117d3ca723718a416e47333b3dde91a0a984e610afbe834d541f445a5",
+      "es": "Caja básica de Carcassonne que reúne el juego de 2001 y once expansiones. Incluye, entre otros contenidos, posadas y catedrales que aumentan el valor de ciudades y caminos si se completan, además de un meeple grande para cada jugador."
+    },
+    "4561:summary": {
+      "sourceHash": "6e75ee0e7af6e8bfe6018ba54b05533c588f83d08f4553ca9343f3b4cbe57f07",
+      "es": "Juego de trivia por equipos en el que se recorre un tablero de casillas de colores y se responden preguntas de seis categorías: ciencia, entretenimiento, historia y geografía, deportes, arte y comercio."
+    },
+    "263918:summary": {
+      "sourceHash": "654768eb6470823467fc0a0666de0680217220cd6f2f696032bf632c6b08941b",
+      "es": "Juego de cartografía en el que los jugadores compiten por obtener más estrellas de reputación durante cuatro estaciones. En cada estación dibujan en sus mapas y cumplen los edictos de la reina; al final del invierno gana quien acumula más reputación."
+    },
+    "13:summary": {
+      "sourceHash": "84125ca7095f5054922438a935b1dbb3e1ea20500c650bc9956aa497f8a6e533",
+      "es": "En Catan, los jugadores buscan dominar la isla construyendo asentamientos, ciudades y caminos. En cada turno se tiran dados para determinar qué recursos produce la isla."
+    },
+    "413246:summary": {
+      "sourceHash": "a01a695cf340222556d89b42e89318fec34c53ed5c98d38a58427d793ae1c648",
+      "es": "Juego cooperativo de deducción en el que un equipo de expertos debe desactivar una bomba antes de que termine la cuenta regresiva. Hay que deducir los cables de los compañeros y cortar los iguales, evitando los cables rojos, mientras los desafíos se vuelven más difíciles."
+    },
+    "209685:summary": {
+      "sourceHash": "75583f89e0652c786fe04a9c77f9940657a9bc1b622d31ca1724f04b64723e75",
+      "es": "Juego de comercio de especias en el que los jugadores establecen rutas, comercian o cosechan especias, cumplen demandas y recuperan las cartas jugadas. La última ronda comienza cuando alguien reclama su quinta carta de puntos; luego gana quien tenga más puntos."
+    },
+    "242574:summary": {
+      "sourceHash": "24ea0259f71f63ca9999c9ae90129017c9f4008774153cb2ad955052a18e19d2",
+      "es": "Juego de comercio de especias en el que los jugadores navegan por las islas de Indonesia como mercaderes que buscan prosperar. Incorpora nuevos mecanismos, múltiples estrategias y gran rejugabilidad dentro de la serie Century."
+    },
+    "270970:summary": {
+      "sourceHash": "d8d68795e3e6aa454141c739408afabb0b8662970790457ad329fe7e4afd0303",
+      "es": "Juego de la serie Century ambientado en las Américas de comienzos del siglo XVI. Los jugadores exploran territorios, comercian con habitantes locales, registran hallazgos y recolectan recursos para sobrevivir mediante un sistema de comercio y colocación de trabajadores."
+    },
+    "195421:summary": {
+      "sourceHash": "7b2d4de118e3e58a909db45c627682431b2faa6ea0281db05babe3900b3fcb09",
+      "es": "Secuela de Above and Below con un libro de encuentros. A lo largo de diez partidas, los jugadores recorren capítulos con mapas, arte y aventuras distintos mientras cuatro viajeros buscan la Última Ruina, una ciudad legendaria capaz de conceder sus mayores deseos."
+    },
+    "201186:summary": {
+      "sourceHash": "e8c39e2a39c43f0fcc3469df61ca47d146912484e3bafccfa920a8a3ab8e938b",
+      "es": "Juego de supervivencia que, gracias a su tablero de doble cara y mecanismos variables, puede jugarse de forma competitiva, cooperativa o en solitario."
+    },
+    "156023:summary": {
+      "sourceHash": "fc8af928e5b64c81b051ce232216fdd58aa94f82696e47493b909d042ccff75e",
+      "es": "Juego de mesa en español para amantes del cine, con un mecanismo de preguntas y respuestas basado en 448 escenas ilustradas y más de 1700 preguntas. Las respuestas correctas otorgan fichas; gana quien complete primero su tablero."
+    },
+    "245377:summary": {
+      "sourceHash": "4626c747f986942d3e041b9e4cff0f1a75d927739505c813d9fa70625cf8bf9f",
+      "es": "Expansión para Clank! que añade una momia errante a los caminos de la pirámide y nuevos artefactos que obtener en sus profundidades. Los tesoros están protegidos por una maldición y por el dragón Croxobek."
+    },
+    "201808:summary": {
+      "sourceHash": "47ce91b8cda78c80e360eea37ff86c80a8887060754ea32f1a46eacb24c14458",
+      "es": "Juego de construcción de mazo en el que los jugadores se infiltran en la montaña de un dragón para robar artefactos. Mejoran sus habilidades con cartas, pero cada ruido atrae la atención y la furia del dragón; solo se disfruta el botín si se logra escapar."
+    },
+    "377061:summary": {
+      "sourceHash": "a0dfa8d9d5e3bc651489059af583947b1c2fc8828bf8235967599080cbdb03a2",
+      "es": "Juego de gestión de pedidos ambientado en una cafetería durante la hora pico. Los jugadores completan encargos para elevar su calificación y ser reconocidos como el mejor barista."
+    },
+    "215503:summary": {
+      "sourceHash": "1eeca0a9066601db5640a32e2b752805c99e933abf8b090696b151fc2d6c7bea",
+      "es": "Eurogame liviano de media hora en el que los jugadores controlan dos conejos y compiten por cosechar cinco tipos de hortalizas en un tablero modular configurado al azar. No hay azar durante la partida: la planificación y las buenas decisiones son decisivas."
+    },
+    "246784:summary": {
+      "sourceHash": "990a549dda212724ddc0f96afc967389eddaa0c01e0e0cecbb9e4b151c83def1",
+      "es": "Juego de deducción con información oculta en el que cada jugador posee una pista sobre una criatura misteriosa. Hay que descubrir información sobre las pistas rivales sin revelar demasiado de la propia, o alguien más encontrará primero a la criatura."
+    },
+    "242667:summary": {
+      "sourceHash": "bc6b9ff1606e69f529130eb9f1f96f0e07cfab475f1f68065a49eaa6201091da",
+      "es": "Juego cooperativo de cartas y evolución de mazo para uno a cuatro jugadores. Los jugadores exploran encuentros, derrotan enemigos para conseguir almas y tesoros, y adaptan su mazo antes de desafiar a poderosos jefes."
+    },
+    "227466:summary": {
+      "sourceHash": "e3614b15a3e4afb9b481379e0566c892231c1f046ce993c62415748240c8edf2",
+      "es": "Juego de deducción lógica con losetas numéricas y cartas de preguntas. En dos jugadores se gana al adivinar todas las losetas rivales; en tres o cuatro, al deducir las losetas ocultas del centro."
+    },
+    "317457:summary": {
+      "sourceHash": "f0edf9c0f3f97b9193c46ff25ea1929aa21d14de39f76164175a1078f891d13f",
+      "es": "Juego de gestión de parques de dinosaurios en un mundo donde su regreso ya es público y los nuevos parques abren incluso antes de estar terminados. La ambición de entretener al público convive con los riesgos y tragedias de estas especies."
+    },
+    "63268:summary": {
+      "sourceHash": "26135563ac4cd1b242ae917d89e389fe2c24a8071d7aebc005530821b1df58b6",
+      "es": "Juego sencillo de reconocimiento de patrones en el que los jugadores buscan la imagen que aparece en dos cartas."
+    },
+    "390422:summary": {
+      "sourceHash": "505e3be6d8ccde1276874c398529cdf3ebdd133f64d134e1590caed22448a0bc",
+      "es": "Juego estratégico de construcción de mazo para dos o cuatro jugadores. Cada participante encarna a un Sabio, invoca guerreros de cuatro facciones, mejora sus habilidades y protege a su Sabio para derrotar a sus rivales y convertirse en Maestro de los Elementos."
+    },
+    "158243:summary": {
+      "sourceHash": "b9790bcc8f420fd4bd05748cd688dacd57674d0e2d3d5d57b3daec1b40a5e186",
+      "es": "Juego de tentar a la suerte sobre cacerías de dragones. Las reglas son sencillas y se repite la caza hasta decidir detenerse, pero los desafíos entre jugadores y sus recompensas o castigos añaden decisiones a cada turno."
+    },
+    "100423:summary": {
+      "sourceHash": "36e0cf3321150da356e4789ed41407983fab9c468e7f74737e22b2350d62c759",
+      "es": "Juego cooperativo de dados de intriga sobrenatural para uno a ocho jugadores. Los investigadores compiten contra el tiempo para impedir el regreso de un Primigenio, reuniendo herramientas, aliados y conocimientos ocultos para encontrar los Símbolos Arcanos que lo mantienen sellado."
+    },
+    "166679:summary": {
+      "sourceHash": "eff752204a3f8ffe8c60dd0c6911663dcdabaeeb6c4434b71ec23eda1775d127",
+      "es": "Expansión de Elder Sign que lleva la lucha contra los Primigenios desde el museo hasta Arkham. Las aventuras transcurren en más de veinte lugares, mientras puertas a Otros Mundos se abren por la ciudad y desestabilizan el tiempo y el espacio."
+    },
+    "146021:summary": {
+      "sourceHash": "545ba95c3ca0d3e79252307767e4d06c5ea414910ec3658fb36e3ef1b8edf57b",
+      "es": "Juego cooperativo de terror y aventura para uno a ocho jugadores. Los investigadores viajan por el mundo para resolver misterios, reunir pistas y protegerlo de un Primigenio; cada criatura cuenta con sus propios mazos de Misterios e Investigación."
+    },
+    "230498:summary": {
+      "sourceHash": "fde18219210e8b895e9524251eccd866d5037a843c64d5a78d2631860e9a2454",
+      "es": "Juego cooperativo inspirado en las salas de escape. El grupo debe resolver acertijos, comprender la trama y usar con inteligencia los objetos disponibles para salir de la habitación lo más rápido posible."
+    },
+    "218311:summary": {
+      "sourceHash": "9d26f10a76dcff4ed5fabf87acfc8eda49dedbe29fd7347d632ea14faf07d851",
+      "es": "Juego cooperativo inspirado en las salas de escape. El grupo debe resolver acertijos, comprender la trama y usar con inteligencia los objetos disponibles para salir de la habitación lo más rápido posible."
+    },
+    "113294:summary": {
+      "sourceHash": "1addbf3aa279cc350062d3c659c63377481fe230a3f903fdec1e6257cc81a96d",
+      "es": "Juego cooperativo en el que los jugadores deben escapar de un templo maldito antes de que se derrumbe; si uno o más exploradores mueren, todo el grupo pierde."
+    },
+    "363307:summary": {
+      "sourceHash": "fc892f5b2c81684b0c49df77fd6985806a5d0f89f1a611bfc3ec1f00472744c2",
+      "es": "Juego de construcción de ecosistemas en el que los jugadores plantan semillas, cultivan árboles y colocan elementos naturales en su planeta para convertirlo en el más verde y fértil."
+    },
+    "295945:summary": {
+      "sourceHash": "6e60aa981f979ae776e5228f35ee015b6c75ec4e0a94e4a417bc24dc47deccf6",
+      "es": "Según la leyenda, esta noche la luna tiene el ángulo adecuado para encontrar un rubí rojo escondido en la tumba de Sir Reginald Wreston. Nadie lo ha logrado todavía: ¿podrán encontrarlo?"
+    },
+    "203420:summary": {
+      "sourceHash": "fd4dc8b17aff24ea86b526c641bedae78e2d1d77e4baaed8f13e310e032c982b",
+      "es": "Tras pasar la noche en una cabaña abandonada, los jugadores descubren que la puerta y las ventanas están cerradas. Un libro misterioso y un disco de códigos giratorio son sus únicas pistas para escapar."
+    },
+    "317372:summary": {
+      "sourceHash": "4c50e8fa2236c3690528948a3e998546f25e275f6d76c82be20f7298004545f9",
+      "es": "Tras seguir un mapa antiguo hasta una cueva, los jugadores encuentran un extraño portal de anillos metálicos. Al tocarlo, todo se oscurece y despiertan en un mundo nuevo y extraño."
+    },
+    "203416:summary": {
+      "sourceHash": "e681a18ca71445bd565220a80a5d3c05aafa299ad38a6ede4286c54cb0d0c63c",
+      "es": "Durante unas vacaciones en Egipto, los jugadores se pierden en los corredores de las pirámides y quedan atrapados en una cámara funeraria. Solo cuentan con un cuaderno cubierto de arena y un antiguo disco de códigos."
+    },
+    "255675:summary": {
+      "sourceHash": "5ac13b43207fd2ff0c61e790e0caa6acd21d9a61132cceda72688cad0889e1a5",
+      "es": "Tras la desaparición de un amigo en las catacumbas de París, los jugadores emprenden una búsqueda por el laberinto subterráneo. Deben encontrarlo a tiempo y escapar de un mundo de oscuros misterios."
+    },
+    "226522:summary": {
+      "sourceHash": "38c6deed7274014e4ce02fe18b09dacf44a5dc63a7ef29def52f9f3a97e6abec",
+      "es": "Entrega de dificultad alta de la serie EXIT. Solo se puede jugar una vez: para resolver los enigmas hay que escribir, doblar y cortar los materiales, lo que permite acertijos especialmente variados."
+    },
+    "341583:summary": {
+      "sourceHash": "5aafa58f0e67862746b37d19a417ea57d683e2aeccd722c03480dc2445c74f66",
+      "es": "Juego de la serie EXIT de salas de escape para el hogar. Los jugadores resuelven enigmas y descifran códigos para escapar de un entorno imaginario; es de un solo uso porque hay que marcar, doblar y rasgar los materiales."
+    },
+    "283934:summary": {
+      "sourceHash": "9f5d3692d6d90a05a043b18e1c40a5a61289b9b778195e7636ef46d279192113",
+      "es": "Juego cooperativo de deducción para uno a cuatro jugadores. Durante un viaje en barco de vapor por el Misisipi ocurre un robo, y el equipo debe hallar al culpable antes de llegar a Nueva Orleans."
+    },
+    "298282:summary": {
+      "sourceHash": "5c374e8bc6aa46d4fb750b9eb94b1747b6654df63d94b67b5a81416af37d1f8f",
+      "es": "Durante una tormenta, los jugadores encuentran un faro cuya luz se apaga justo cuando un barco se dirige hacia los acantilados. Deben subir al faro y encenderlo antes de que el barco se estrelle."
+    },
+    "215840:summary": {
+      "sourceHash": "ac64bbfd5f5439f487334d6077ac94d7f64c6094db43ec6bd8578c0c00c703e0",
+      "es": "Juego de acertijos inspirado en las salas de escape. Tras entrar en un castillo durante una caminata, las puertas se cierran y extrañas pistas deberán guiarlos hacia la libertad."
+    },
+    "215841:summary": {
+      "sourceHash": "dd27d44b4882a520050ae03ec4cef93f6f7a1be4ea68d8aa0ff86240b15e352c",
+      "es": "Juego de acertijos inspirado en las salas de escape. Tras naufragar en una isla olvidada, los jugadores deben resolver los enigmas que dejó el dueño de una barca encadenada para liberarla y escapar."
+    },
+    "215842:summary": {
+      "sourceHash": "015b3e63eec9d2f92a41a35090b63af6c93a63a70bb9b048276271d000627f1e",
+      "es": "Juego de acertijos inspirado en las salas de escape. Una alarma obliga a evacuar una estación polar, pero un grupo de investigadores queda atrás y dispone de una hora para hallar el código que abre la salida."
+    },
+    "203417:summary": {
+      "sourceHash": "d0b5081f7931de47d6fcea4b385673ee8a88c1c8967fe51b15bb81d4dbda9e7d",
+      "es": "Juego de la serie EXIT en el que los jugadores usan trabajo en equipo, creatividad y deducción para descifrar códigos, resolver acertijos, reunir objetos y recuperar la libertad paso a paso."
+    },
+    "226520:summary": {
+      "sourceHash": "a1608cc2b3cb130859f00a60c4dd0df9ec2243350ac5461866e2f42154ec01ee",
+      "es": "Juego de acertijos inspirado en las salas de escape. La Mansión Siniestra pertenece al nivel intermedio de dificultad de la serie EXIT."
+    },
+    "226518:summary": {
+      "sourceHash": "42674d709ad1380e23cf73806c4ed5cca36c1b9ee75169497ec9e52d2ad1b488",
+      "es": "Juego de acertijos inspirado en las salas de escape. El Tesoro Hundido pertenece al nivel inicial de dificultad de la serie EXIT."
+    },
+    "172225:summary": {
+      "sourceHash": "f18a2e12b6c58bc31f6587da74a0fc228b18f28536a871bb6d6de7a2857cd367",
+      "es": "Versión gatuna de la ruleta rusa: los jugadores roban cartas hasta que alguien encuentra un gatito explosivo y pierde. Las demás cartas permiten anticipar robos, obligar a otros a robar o barajar el mazo; la tensión aumenta a medida que quedan menos cartas."
+    },
+    "300993:summary": {
+      "sourceHash": "ac57cb26287e87ea96594ac2276ae17908762cbc63963d8e425623568ebcb01a",
+      "es": "El Mundo Perdido, donde sobrevivieron los dinosaurios, está amenazado por una intensa actividad volcánica. Los jugadores se unen a la expedición de rescate, exploran el lugar y tratan de salvar la mayor cantidad de animales de una nueva extinción."
+    },
+    "260428:summary": {
+      "sourceHash": "bf514c111111ec7b070cb36a4d249c74249d563b3f1c69759e3008a599b10b09",
+      "es": "Pandemic: Fall of Rome incluye un modo solitario en el que una persona asume el papel del emperador y controla tres roles para proteger la ciudad de las hordas invasoras. También ofrece el desafío Roma Caput Mundi para aumentar la dificultad."
+    },
+    "83195:summary": {
+      "sourceHash": "bf14008bf28c067e03c74b1defbd9c67c57188232d0498b9e5b1267782c97fd0",
+      "es": "Juego veloz de reconocimiento de forma y color que pone a prueba los reflejos. Cinco objetos de madera esperan sobre la mesa; cada carta muestra dos objetos con colores incorrectos y todos deben tomar al mismo tiempo el objeto correcto."
+    },
+    "118705:summary": {
+      "sourceHash": "97e7a95682b32fcd1fa32975d5c07e179b04deae6c2f654f4cbc81b28cfa6018",
+      "es": "Nueva versión de Fantasma Blitz con objetos distintos: una fantasma blanca, una rana verde, una bañera gris, un cepillo azul y una toalla roja. Las cartas muestran dos objetos con colores erróneos y todos intentan atrapar el correcto."
+    },
+    "336794:summary": {
+      "sourceHash": "250300b28af99a176809ef0c03e5bd6f29397d6565caf77cedd48d2e728b570e",
+      "es": "Tras el lanzamiento, los jugadores enfrentan peligros mientras buscan oportunidades económicas, cargamento valioso y la mayor cantidad posible de su nave intacta. Las amenazas pueden mandar al espacio partes de la nave, la carga y la tripulación."
+    },
+    "360232:summary": {
+      "sourceHash": "7fc8a5d46983526d001e7b00233620d953837b45e0c6d03c1d174106097c4b9a",
+      "es": "Expansión para Galaxy Trucker destinada a quienes ya dominan el juego base. Corp Inc presenta nuevas naves experimentales que plantean desafíos y hacen preguntarse qué estaban pensando sus diseñadores."
+    },
+    "9674:summary": {
+      "sourceHash": "e7b7ff28f50705be4458070a2c30664c748296c31c302f5b3c946c1f12de7abd",
+      "es": "Juego de colocación de losetas tipo dominó en el que los jugadores amplían líneas de símbolos de colores para puntuar. La clave es que la puntuación de cada jugador equivale a su color con menos puntos, por lo que hay que equilibrar todos los colores."
+    },
+    "269144:summary": {
+      "sourceHash": "fe9b806351e5e36c874da3b495b6404263126d6b14266383524cfbf2edd1135f",
+      "es": "Juego de desarrollo de civilizaciones a lo largo de tres épocas. Los jugadores transforman un pequeño asentamiento en una alta cultura, incorporan personas de distintas procedencias y épocas, y eligen con cuidado logros para dar gloria y honor a su mundo."
+    },
+    "325414:summary": {
+      "sourceHash": "7a6bd975c0a39264296b5528ccc33271c5194d73c09d4c0075361cf269f8fb95",
+      "es": "Juego de cartas en el que gana quien alcanza primero 50 puntos o queda como el último dinosaurio en pie. En cada ronda se revela un desastre natural, depredador o emocional, y los jugadores juegan cartas de puntos para evitarlo."
+    },
+    "194626:summary": {
+      "sourceHash": "4767a953286b7064da473c48f643d86d4ac67365dd15af49d1fdf442e8a9c534",
+      "es": "Juego de cartas muy rápido y disparatado sin turnos. Los jugadores gritan las acciones de sus cartas y, cuando dos coinciden, celebran realizando la acción, como chocar las manos, golpear los puños, intercambiar lugares o hacer el Happy Salmon."
+    },
+    "154597:summary": {
+      "sourceHash": "798502ec39514f756c8b01f6885399ef465007c5c77b8c9f92913a3f1b22ccd8",
+      "es": "Juego estratégico para dos jugadores sin tablero, jugable sobre cualquier superficie plana. Incluye 26 piezas blancas y negras con criaturas de movimientos únicos, incluidas las expansiones Mosquito y Mariquita."
+    },
+    "218804:summary": {
+      "sourceHash": "e8bffad9098ee233b8370d14e5063dc9aff54f6caa90f9a9a488036983f0538f",
+      "es": "Juego de estrategia, combinación y desarrollo."
+    },
+    "270844:summary": {
+      "sourceHash": "bb514e7af17d70b5e8aab57f76ad7bfc65ef0609c45293cec494d71e8a5b14da",
+      "es": "Juego de cartas independiente del universo Imperial Settlers. Los jugadores lideran una de tres facciones del lejano norte —escoceses, inuit o vikingos— e intentan convertirla en el mejor imperio del mundo."
+    },
+    "28023:summary": {
+      "sourceHash": "808a640c871be1c4747609d54ca892820c3b2b51897dfba0641845d1f74cdb44",
+      "es": "Juego de carreras alrededor de Jamaica. La partida termina cuando un barco completa una vuelta a la isla; entonces se suma el oro según la posición, los tesoros hallados, los robos a rivales y el oro cargado durante la carrera."
+    },
+    "223953:summary": {
+      "sourceHash": "96c18c019140cee612bb042b85d78e020ea1f22595456e74b8d83a75c5132ba9",
+      "es": "Juego cooperativo en tiempo real que simula la presión de una cocina profesional. Los jugadores usan relojes de arena como trabajadores para tomar pedidos, preparar y servir platos, comprar ingredientes, limpiar y cubrir gastos para obtener ganancias."
+    },
+    "181810:summary": {
+      "sourceHash": "16d72f2a97f54e089a90059287f1889333f666db5f790b63221f5fcb367cf142",
+      "es": "El bosque crece rápido y los jugadores, como cuidadores de los espíritus Kodama, deben convertirlo en un hogar sano y frondoso. A lo largo de tres estaciones cultivan árboles con flores, insectos y ramas para hacer felices a sus Kodama."
+    },
+    "241266:summary": {
+      "sourceHash": "2ea207f6f7b9f3b6439468dab206efbf85d3f704ae0c272e7e86ea0785b71bc9",
+      "es": "Juego de desarrollo urbano en el que los jugadores dirigen arquitectos, envían trabajadores al pueblo, reúnen recursos y dinero, construyen edificios y desarrollan la ciudad. Dura cuatro rondas y cada colocación obtiene los recursos de las ocho casillas adyacentes."
+    },
+    "259393:summary": {
+      "sourceHash": "2d01c1745130faf8e46b46fbcaefec004985f5f25670ae4176bcdf18a6423539",
+      "es": "Juego de mesa rápido para una persona que debe completar las tareas esenciales del día y salir de la oficina sin que la atrape su jefe."
+    },
+    "245643:summary": {
+      "sourceHash": "a2d9b16d9ed5cce508bb664b0d77cae5ad852a4d35e28958eb8ec676cac27554",
+      "es": "Grupos de aventureros exploran el legendario templo de Luxor en busca de tesoros. La meta es alcanzar la tumba del faraón, pero gana quien lleve rápido a su equipo hasta ella mientras rescata la mayor cantidad posible de tesoros."
+    },
+    "363091:summary": {
+      "sourceHash": "8fe15bb2bd37ddee6d0861022ad150949a9634ee7f2bfa2a5b910944fa731be7",
+      "es": "Juego de laberintos para una persona que desafía incluso a las mentes más inquietas. Esta caja incluye siete retos de dificultad creciente, desde un primer laberinto accesible hasta un entramado final para las mentes más agudas."
+    },
+    "331652:summary": {
+      "sourceHash": "0a2fa17c4288542a1f3b9f465bc7f69c04cd1a7fad7109fe9e4aebe1483c2506",
+      "es": "Juego de laberintos para una persona que propone intensos desafíos mentales mientras se busca la salida. Es portátil y rejugable, con siete mapas para explorar y descubrir todos sus recovecos."
+    },
+    "415036:summary": {
+      "sourceHash": "66cbbbf042d91c5962bf0804ea454fa2400732d162988e842a4fd9d3248aeb6d",
+      "es": "Juego de misterios médicos fácil de aprender que no requiere conocimientos previos. Incluye un caso tutorial, entrevistas de admisión e historias clínicas electrónicas para revisar, evaluar, tratar y diagnosticar a cada paciente."
+    },
+    "346501:summary": {
+      "sourceHash": "3b913d46d1c3c4e486518c6fa2693e9bd7a9db0290e92d946d02c3009623fc08",
+      "es": "En Mille Fiori, de Reiner Knizia, los jugadores asumen el papel de fabricantes y comerciantes de vidrio que buscan obtener el máximo beneficio de la producción de bellas piezas de vidrio. El nombre alude a una técnica decorativa que significa Mil Flores."
+    },
+    "1927:summary": {
+      "sourceHash": "3491e37f7752343e7bf620ecd3d306a2e9b87b6ee29a09b475368aff717e855c",
+      "es": "Juego de cartas satírico basado en los clichés de Dungeons & Dragons y otros juegos de rol. Todos comienzan en nivel 1 y gana quien alcanza primero el nivel 10; las clases de personaje determinan en parte qué cartas se pueden jugar."
+    },
+    "3943:summary": {
+      "sourceHash": "3c9e2723c1c2267b242286b26ce0df56168c69c21bcbc3630cbf032f885d9c73",
+      "es": "Expansión de Munchkin con 112 cartas nuevas para matar monstruos y robar sus cosas. Añade la raza de los orcos, enemigos como el Demonio Tentáculo y equipo absurdo, incluido el temible Hacha Sobrenatural."
+    },
+    "6606:summary": {
+      "sourceHash": "8cb27159477809e049696767c3d0c9b3f88dd3610ee202e6183d0adc3c778b58",
+      "es": "Suplemento para Munchkin que requiere el juego original, aunque también puede mezclarse con Munchkin Fu o Munchkin Bites, o combinarse todo para una partida de proporciones delirantes."
+    },
+    "367220:summary": {
+      "sourceHash": "5b1e0a6220f950d3ea8068667be173902a899e48dfeb0056bca821e4147e0d6d",
+      "es": "Juego de cartas de colección de conjuntos similar al rummy. En cada turno se arma la mano, se pueden jugar cartas por su efecto y se decide si terminar la ronda o dar a los rivales otra oportunidad. La partida termina al llegar a 30, 35 o 40 puntos según la cantidad de jugadores."
+    },
+    "244522:summary": {
+      "sourceHash": "830379ae599a30b267f04cc61e1af833b82447e454fb418bc925dc84e3c92a65",
+      "es": "Juego de dados en el que se eligen con astucia los dados para marcarlos en áreas de colores de la hoja de puntuación y encadenar oportunidades de puntos. Los dados no usados de valor menor quedan disponibles para los demás jugadores."
+    },
+    "269210:summary": {
+      "sourceHash": "469a2cde0c315f5ea68de1cc17d9aaa99f73f1ded7acaa01dedd7062d1ce1bc6",
+      "es": "Juego de dados de la familia Ganz schön clever. En cada turno, el jugador activo tira seis dados, elige uno para marcar su planilla, aparta los menores y vuelve a tirar los restantes. El dado blanco es comodín y los demás jugadores pueden elegir un dado apartado."
+    },
+    "30549:summary": {
+      "sourceHash": "2d785e53e79c8012f4768cc5046d9d3f1ca38fcde42eab3cfbfbba1d2de5405c",
+      "es": "Juego cooperativo en el que varias enfermedades virulentas estallan simultáneamente en todo el mundo. Los jugadores son especialistas que tratan focos de contagio e investigan curas para cuatro plagas antes de que se descontrolen."
+    },
+    "40849:summary": {
+      "sourceHash": "e6e38124c228447148a86b86b5a609571ca2ef5d6381effddf7158d529efe3b1",
+      "es": "Expansión para Pandemic que añade nuevas cartas de evento y de rol, reglas para cinco jugadores y desafíos opcionales que elevan la dificultad. El desafío Cepa Virulenta vuelve a una enfermedad especialmente mortífera e impredecible."
+    },
+    "72644:summary": {
+      "sourceHash": "9c8906bfd8e831c17ec0c73209e51a180cc56e39dcf7bda2db8871cf2449820c",
+      "es": "Laberinto tridimensional con varias pistas y cien obstáculos. Los jugadores eligen una pista y usan la gravedad para inclinar, girar y dar vuelta la esfera mientras guían una canica."
+    },
+    "117992:summary": {
+      "sourceHash": "e7d6a9ed29e54d3db04ee6e4bc0eee615f6f02b5c5073f703649aea671031fc4",
+      "es": "Juego de cartas en el que los jugadores buscan camarones coincidentes en el mar. Las cartas comparten rasgos como cantidad, origen, tamaño y color; al detectar una coincidencia entre las tres zonas de pesca hay que apretar rápido la estrella de mar para recogerlas."
+    },
+    "285894:summary": {
+      "sourceHash": "c493bc66cf014fc051e091d4811405c976ff36597bca50deb54fe0e490800e78",
+      "es": "Juego de dados de marcar y escribir de la familia Noch mal!, con reglas y posibilidades adicionales. Incorpora un séptimo dado opcional con elementos como bomba, corazón y estrellas, que ofrecen nuevas acciones y bonificaciones."
+    },
+    "244521:summary": {
+      "sourceHash": "b3288b256d2ee93ccefbe00d11ffb4e7fafca16face63924f406d13da506a3c4",
+      "es": "Juego en el que los jugadores son médicos charlatanes que preparan su propia pócima secreta, añadiendo ingredientes uno a uno. Hay que medir bien el riesgo: demasiada cantidad de cierto ingrediente puede arruinar toda la mezcla."
+    },
+    "269259:summary": {
+      "sourceHash": "fb0029729d43e203d68956452f384f4a73f2fd4a691d57bbabcc310ad96cd330",
+      "es": "Expansión que añade brujas con habilidades especiales utilizables una vez por partida, la hierba loca como ingrediente de valor variable, nuevos libros de ingredientes y componentes negros para sumar un quinto jugador."
+    },
+    "681:summary": {
+      "sourceHash": "c7fb425eb0467945d9771ec3360624c7ebc9411aa2b440639218e1e77d456c7e",
+      "es": "Juego abstracto con un tablero de 4×4 y 16 piezas, cada una con color, altura, forma y consistencia. El objetivo es completar una fila de cuatro piezas con al menos un atributo común, pero en cada turno el rival elige la pieza que se debe colocar."
+    },
+    "181:summary": {
+      "sourceHash": "5fdc282d5464631ff2117165616caa7ab95bcc1d88b885f9124e7cd1a7b74136",
+      "es": "Clásico juego de conquista mundial. En cada turno se obtienen refuerzos por territorios, continentes y conjuntos de cartas; luego se ataca comparando los dados más altos y se pueden mover ejércitos entre territorios adyacentes."
+    },
+    "312484:summary": {
+      "sourceHash": "cc7238a3755b7b8ced4037f79c95a3693a5b8038bb307ee63d1da7c417b0e304",
+      "es": "Juego de exploración, gestión de recursos, construcción de mazo y colocación de trabajadores. Las cartas también sirven para colocar trabajadores y, al explorar la isla, se desbloquean nuevas acciones. Solo hay una acción por turno, por lo que cada elección importa."
+    },
+    "199561:summary": {
+      "sourceHash": "7a2e6311a1e7594bba86bc85d143ef46b976f525a7d576f7255272fff25ebd38",
+      "es": "Juego de dados en el que los jugadores construyen vitrales colocando dados en una cuadrícula personal. Cada espacio limita el color o valor posible, y no se pueden colocar dados del mismo color o valor en casillas adyacentes. La selección de dados rota por rondas."
+    },
+    "244262:summary": {
+      "sourceHash": "d929526ee3b69bb60c4232863c1456316df012469720e131eccf31a5c526ffde",
+      "es": "Expansión de Sagrada que permite sumar hasta dos jugadores. Introduce tableros privados de reserva de dados para partidas fluidas de hasta seis participantes, además de nuevos objetivos privados, herramientas y patrones de vitrales."
+    },
+    "402669:summary": {
+      "sourceHash": "47d81188724d7dd927c2856eaa005191101f7fb7fad04d2cd619a25a3798801e",
+      "es": "Juego de recoger y entregar diseñado para una a cuatro personas, con partidas de unos 120 minutos. Tras seis rondas —cinco con cuatro jugadores— gana quien haya obtenido más oro."
+    },
+    "194655:summary": {
+      "sourceHash": "fd4a87e39570abaec7f970d10e32a9b9c7ee9eb18f379082c5178662dacb956e",
+      "es": "Juego de estrategia accesible y profundo que superpone poderes variables de dioses y héroes sobre una base abstracta. Sus cuarenta poderes temáticos cambian de manera fundamental la forma de jugar."
+    },
+    "2511:summary": {
+      "sourceHash": "3273a1354c1ce14a8a012b37e26e598414023583308cdbd69d3a9b1fdae9876c",
+      "es": "Juego de investigación ambientado en el Londres victoriano. Los jugadores pueden recorrer las calles junto a Sherlock Holmes, seguir pistas por Baker Street y adentrarse en lugares peligrosos mientras buscan resolver los casos."
+    },
+    "250780:summary": {
+      "sourceHash": "d4795edd2cac2dd4d79af223b8b81eda26dae36f411c791ddd953892518b1257",
+      "es": "Juego de deducción en el que los jugadores revelan información colocando cartas de su mano sobre la mesa. Las pistas irrelevantes restan puntos al final de la partida, pero algunas son vitales para resolver el caso."
+    },
+    "162886:summary": {
+      "sourceHash": "668bd0874d0cfab1bdfbf832bebbaa7725b8efc4695cc19743d50269f810202b",
+      "es": "Juego cooperativo complejo y temático sobre la defensa de una isla frente a invasores colonizadores. Cada jugador encarna un espíritu de la tierra con poderes elementales únicos y elige simultáneamente sus cartas de poder, pagando energía y combinando afinidades para activar efectos extra."
+    },
+    "147020:summary": {
+      "sourceHash": "031e2fafca0dc3fd009921a34aca054f39fa032fdda6e7359fb6adeaa0848bdb",
+      "es": "Juego de construcción de mazo y combate espacial que combina velocidad e interacción de los juegos de cartas coleccionables. Los jugadores usan naves y bases para generar comercio, adquirir cartas o combatir al rival y reducir su Autoridad."
+    },
+    "182631:summary": {
+      "sourceHash": "53e11c0789da93ca665e487d2362139c3bdd4714ae7322924cb66cd1de091690",
+      "es": "Juego de construcción de mazo de la serie Star Realms que funciona como caja independiente para dos jugadores, con un mazo comercial de 80 cartas, y como expansión para que el juego base admita hasta cuatro personas."
+    },
+    "260159:summary": {
+      "sourceHash": "7e18e799448f992dd6a0fc1392f1283a58466c10248e88f9c34ada20b51e31df",
+      "es": "Juego de cartas competitivo uno contra uno en el que los jugadores corren hacia la meta. Cada cual arma un mazo de veinte cartas de acciones, habilidades y trucos para avanzar y obstaculizar al rival; los personajes del universo Super Meat Boy aportan poderes únicos."
+    },
+    "425428:summary": {
+      "sourceHash": "02ce5e7d7222340f9f0dc00b411335a833933578966b2d1bfb182f9bf4bfb794",
+      "es": "Juego competitivo en el que los jugadores intentan evacuar de una isla que se hunde a sus aventureros, especialmente los de mayor valor, para maximizar su puntuación."
+    },
+    "192291:summary": {
+      "sourceHash": "d0ac9752c00708938c77d185288804b451f7a9da0adb2bee7c6f8e5afa19de51",
+      "es": "Expansión de Sushi Go! con mega maki, super sashimi y muchas otras opciones. Se siguen eligiendo combinaciones de sushi para puntuar, pero cada partida se personaliza con más de veinte platos y pueden participar hasta ocho jugadores."
+    },
+    "9209:summary": {
+      "sourceHash": "6cce87a6b9d0ddbb80861efaeee7b646ef47e8038a0b7823867b9340c7b84fc2",
+      "es": "Juego de reglas simples que se aprende en menos de quince minutos. Los jugadores reúnen cartas de vagones para reclamar rutas ferroviarias en Norteamérica, sumando por rutas largas, boletos de destino cumplidos y la ruta continua más extensa."
+    },
+    "12333:summary": {
+      "sourceHash": "a611ab79534bdfa319faf7e2411b6905330b810a4b1dd7b7bca986cc3a95ea95",
+      "es": "Juego para dos jugadores que simula los cuarenta y cinco años de intriga, prestigio y conflictos ocasionales entre la Unión Soviética y Estados Unidos. La lucha ideológica recorre el mundo desde las ruinas de Europa tras la Segunda Guerra Mundial hasta 1989."
+    },
+    "294612:summary": {
+      "sourceHash": "66c86d7b88bf0956be6eb12c690cda22b4053666e40057db7db177688ac2e6ea",
+      "es": "Séptima entrega de Unlock!, con tres escenarios de sala de escape para jugar en mesa. Uno de ellos, El séptimo pase, lleva a los jugadores al estreno de una película de terror sobre la última noche de un hombre lobo."
+    },
+    "330084:summary": {
+      "sourceHash": "05c08fd5a9fcb0cd4f36ffec7822a70167a2df03da1bb7faa151d7b02690b73a",
+      "es": "Entrega de Unlock! con tres nuevos escenarios de sala de escape para jugar sobre la mesa."
+    },
+    "368037:summary": {
+      "sourceHash": "7b27499e9f7fffce6731fc8aba0c7a84772138c9c07d8838ccc9cea4b19a94fe",
+      "es": "Serie de aventuras de escape para hasta seis jugadores. En 30 a 45 minutos, el equipo recorre un mazo de treinta cartas, busca pistas, combina objetos y resuelve acertijos. La aplicación gratuita controla el tiempo, ofrece pistas y confirma los códigos correctos."
+    },
+    "368036:summary": {
+      "sourceHash": "7b27499e9f7fffce6731fc8aba0c7a84772138c9c07d8838ccc9cea4b19a94fe",
+      "es": "Serie de aventuras de escape para hasta seis jugadores. En 30 a 45 minutos, el equipo recorre un mazo de treinta cartas, busca pistas, combina objetos y resuelve acertijos. La aplicación gratuita controla el tiempo, ofrece pistas y confirma los códigos correctos."
+    },
+    "257707:summary": {
+      "sourceHash": "f3ecfa9cc19c8d9f2383c9bd2d6e4caf7ac4d0303d8a62cfd49737c6226e15f4",
+      "es": "Miniaventura de Unlock! con 24 cartas —cuatro son informativas y no se usan—. La aventura comienza en la entrada de una cueva, en busca de una estatua de oro."
+    },
+    "368035:summary": {
+      "sourceHash": "7b27499e9f7fffce6731fc8aba0c7a84772138c9c07d8838ccc9cea4b19a94fe",
+      "es": "Serie de aventuras de escape para hasta seis jugadores. En 30 a 45 minutos, el equipo recorre un mazo de treinta cartas, busca pistas, combina objetos y resuelve acertijos. La aplicación gratuita controla el tiempo, ofrece pistas y confirma los códigos correctos."
+    },
+    "392192:summary": {
+      "sourceHash": "30cd4b019cfbc61e6702c50274fa82d680d88e27e31169a414a8abe60e6cdaae",
+      "es": "Versión breve de Unlock!, con aventuras de 30 a 45 minutos en formato pequeño, ideal para llevar o regalar. Es un juego cooperativo de cartas inspirado en las salas de escape, para jugar en casa alrededor de una mesa."
+    },
+    "392193:summary": {
+      "sourceHash": "36091eaf42be7502a020e7612d5a25ead07bc29fdc1f263d427aee39d095b3b4",
+      "es": "Aventura corta de Unlock! de 30 a 45 minutos en formato pequeño. Es un juego cooperativo de cartas inspirado en las salas de escape: se explora una habitación, se buscan objetos —algunos ocultos— y se resuelven acertijos."
+    },
+    "391995:summary": {
+      "sourceHash": "30cd4b019cfbc61e6702c50274fa82d680d88e27e31169a414a8abe60e6cdaae",
+      "es": "Versión breve de Unlock!, con aventuras de 30 a 45 minutos en formato pequeño, ideal para llevar o regalar. Es un juego cooperativo de cartas inspirado en las salas de escape, para jugar en casa alrededor de una mesa."
+    },
+    "302425:summary": {
+      "sourceHash": "e9494e504fe79090c858bded8c0ee7b57539cb72797ac1e83d02728c60a6b58b",
+      "es": "Serie de aventuras de escape para hasta seis jugadores. En una hora, el equipo recorre sesenta cartas, busca pistas, combina objetos y resuelve acertijos con ayuda de la aplicación gratuita. Mythic Adventures contiene tres escenarios."
+    },
+    "239307:summary": {
+      "sourceHash": "82db450096cbd5df1050699e2c6bd4035cedaeadfd3328a7f6b7ffc7ddfd2a8d",
+      "es": "Juego cooperativo de cartas inspirado en las salas de escape. Un sistema simple permite explorar escenas, combinar objetos y resolver enigmas usando cartas y una aplicación que ofrece pistas, verifica códigos y controla el tiempo. Incluye tres escenarios."
+    },
+    "402373:summary": {
+      "sourceHash": "fea9bfd7a38c2c04462a1e6bb7af4dcbbf8746cfeba25737c6aaeaad7de558b8",
+      "es": "Juego cooperativo de cartas inspirado en las salas de escape. Los jugadores exploran escenas, combinan objetos y resuelven acertijos en la mesa, con una aplicación que ofrece pistas, verifica códigos y controla el tiempo restante."
+    },
+    "279613:summary": {
+      "sourceHash": "4062008fe0197905a71cedf91d7758a4aaa9b74a7506779bc298e241450ea997",
+      "es": "Entrega de Unlock! con tres nuevos escenarios de sala de escape para jugar sobre la mesa."
+    },
+    "171623:summary": {
+      "sourceHash": "c518414385b0f1040cb8fd5bfc915e97e4b2626f8b6ee89995c5809e4665e617",
+      "es": "Juego que recrea el viaje de Marco Polo en cinco rondas. Cada jugador tiene un personaje histórico con un poder especial, tira sus cinco dados personales y los coloca en el tablero para reunir recursos o dinero, obtener contratos, viajar o realizar acciones de ciudades."
+    },
+    "180020:summary": {
+      "sourceHash": "125480ac87cd828d08b6ebf56690773a3ec0e103c11a4acbc82af2eb0c41a582",
+      "es": "Juego de cartas en el que cada jugador puede tener un órgano de cada tipo. Las pastillas y los virus se juegan sobre órganos del mismo color; una segunda pastilla los inmuniza. Gana quien reúne primero cuatro órganos sanos."
+    },
+    "266667:summary": {
+      "sourceHash": "dd3f438e7d651478b6a04b9bbbb1c0d8002cd6f5bf5b9343cded829e3b665b7b",
+      "es": "Expansión para el juego de cartas Virus! que añade contenido basado en nuevos virus y cartas de acción."
+    },
+    "266192:summary": {
+      "sourceHash": "a25d4a659cbdf20ce2a9bc5a7d7db5d94ed036cdfcd4b911f785b994468e5526",
+      "es": "Juego competitivo de construcción de motor, de peso medio y basado en cartas, diseñado por Elizabeth Hargrave. Incluye 180 aves ilustradas por Natalia Rojas y Ana Maria Martinez; desde la séptima edición incorpora el paquete promocional Swift-Start."
+    },
+    "7854:summary": {
+      "sourceHash": "56cebf1acbb2f2c3ce1dec65c9d0518cdec229335c6ecd083952b92a92c51501",
+      "es": "Juego abstracto en el que cada jugador comienza con cinco anillos. Al mover un anillo deja una ficha y salta sobre otras para voltearlas, cambiando su color. El objetivo es formar una fila de cinco fichas de color propio; al lograrlo se retira un anillo."
+    }
+  }
+}

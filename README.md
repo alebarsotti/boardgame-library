@@ -7,7 +7,7 @@ Static site for exploring a BoardGameGeek collection with:
 - tabs for current collection and archive
 - random picker based on the filtered set
 - ES/EN interface
-- optional local-first bilingual content generation with Ollama
+- versioned Spanish translations with English fallback
 
 ## Main Files
 
@@ -58,152 +58,34 @@ This generates:
 - `data/games-data.js`
 - `data/images/` if `--download-images` is enabled
 
-## Localized Content With Ollama
+## Spanish Translations
 
-The build can optionally generate bilingual localized text offline with Ollama.
+The builder does not call a language model. English text comes from BGG; approved Spanish translations live in the versioned `data/translations.json` file. Each translation is tied to a hash of its English source, so a changed source is not applied silently.
 
-This is local-first:
-
-- no paid API is required
-- nothing runs in the browser
-- generated content is cached outside `data/`
-- if Ollama or the model is unavailable, the build falls back to deterministic content
-
-### Prerequisites
-
-1. Install Ollama and make sure the local server is running.
-2. Pull a model for the profile you want to use.
-
-Recommended defaults:
-
-- `local`: `mistral-small3.2:24b`
-
-Example model download:
+Export the pending summaries for Codex or another assistant:
 
 ```bash
-ollama pull mistral-small3.2:24b
+python scripts/build_data.py --csv-path "/path/your-collection.csv" --export-translation-work generated/translation-work.json
 ```
 
-### Local Mode
-
-- `local`: intended for the primary desktop build machine
-- default behavior: generate bilingual summaries only
-- optional behavior: include bilingual long descriptions with an explicit flag
-
-### Example Commands
-
-Desktop-oriented localized build:
+Include long descriptions only when you are ready to translate them:
 
 ```bash
-python scripts/build_data.py --csv-path "C:\path\your-collection.csv" --bgg-token "YOUR_TOKEN" --localized-content-mode local
+python scripts/build_data.py --csv-path "/path/your-collection.csv" --export-translation-work generated/translation-work.json --include-descriptions
 ```
 
-Use a specific model and refresh the localized cache:
-
-```bash
-python scripts/build_data.py --csv-path "/path/your-collection.csv" --localized-content-mode local --local-model "mistral-small3.2:24b" --refresh-localized-content
-```
-
-Limit a run to a tiny sample:
-
-```bash
-python scripts/build_data.py --csv-path "/path/your-collection.csv" --localized-content-mode local --limit 3
-```
-
-Run against specific games only:
-
-```bash
-python scripts/build_data.py --csv-path "/path/your-collection.csv" --localized-content-mode local --game-id 173346 --game-id 15987 --game-id 230802
-```
-
-Include bilingual long descriptions explicitly:
-
-```bash
-python scripts/build_data.py --csv-path "/path/your-collection.csv" --localized-content-mode local --include-long-descriptions
-```
-
-Recommended resilient workflow for larger libraries:
-
-```bash
-python scripts/build_data.py --csv-path "/path/your-collection.csv" --localized-content-mode local --limit 2
-```
-
-### CLI Options
-
-- `--localized-content-mode off|local`
-- `--local-model <name>`
-- `--limit <n>`
-- `--game-id <id>` (repeatable)
-- `--localized-cache-path <path>`
-- `--refresh-localized-content`
-- `--include-long-descriptions`
-- `--ollama-host <url>`
-- `--ollama-timeout-seconds <n>`
-- `--fail-on-localized-generation-error`
-
-### Evaluation Harness
-
-For quick model comparison on a very small sample, use:
-
-```bash
-python scripts/evaluate_localized_content.py --csv-path "/path/your-collection.csv" --localized-content-mode local
-```
-
-If no `--game-id` is passed, the harness uses this fixed trio by default:
-
-- `7 Wonders Duel`
-- `Arkham Horror`
-- `Azul`
-
-You can also narrow it explicitly:
-
-```bash
-python scripts/evaluate_localized_content.py --csv-path "/path/your-collection.csv" --localized-content-mode local --game-id 173346 --game-id 230802
-```
-
-The evaluator prints, for each selected title:
-
-- source summary in English
-- source description in English
-- generated summary in English and Spanish
-- generated description in English and Spanish when `--include-long-descriptions` is enabled
-
-### Cache And Fallback Behavior
-
-Localized content is cached by source text, field, language, profile, model, prompt version, and generation parameters.
-
-The builder now saves localized cache incrementally after each game that produces new content, so long-running batches can resume without losing all progress.
-
-Default cache path:
-
-- `generated/localized-content-cache.json`
-
-If localized generation is not available:
-
-- the build prints a warning
-- the dataset still builds successfully by default
-- English deterministic content from the cleaned BGG description remains available
-- Spanish localized fields fall back to English at runtime when needed
-- cached localized entries are still applied during normal builds, even when `--localized-content-mode=off`
-
-If you want the build to fail instead of warning, pass:
-
-```bash
-python scripts/build_data.py --csv-path "/path/your-collection.csv" --localized-content-mode local --fail-on-localized-generation-error
-```
-
-### Runtime Data Shape
-
-The generated dataset now stores content as localized objects:
+For every exported item, add an entry to `data/translations.json` using the `id:field` key, the supplied `sourceHash`, and the reviewed Spanish text:
 
 ```json
 {
-  "summary": { "en": "...", "es": "..." },
-  "description": { "en": "...", "es": "..." }
+  "173346:summary": {
+    "sourceHash": "...",
+    "es": "Resumen revisado en español."
+  }
 }
 ```
 
-The frontend still accepts legacy string-based datasets during the transition.
+Then run the normal build. The frontend falls back to English whenever Spanish is unavailable.
 
 ## Name Overrides
 
