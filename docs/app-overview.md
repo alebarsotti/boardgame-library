@@ -32,7 +32,7 @@ Core parts of the project:
 - `styles.css` defines the visual system and responsive layout
 - `app.js` handles data loading, filtering, rendering, localization, dialogs, persistence, and random selection
 - `data/` contains generated collection data and optional supporting files
-- `scripts/build_data.py` transforms a BoardGameGeek collection CSV into the runtime dataset
+- `scripts/build_data.py` transforms a BoardGameGeek collection CSV and reviewed translations into the runtime dataset
 
 The current dataset model includes collection metadata plus per-game fields such as player counts, play time, weight, age guidance, ownership state, tags, ratings, enrichment fields like summaries, descriptions, mechanics, categories, and images, plus expansion relationship metadata when BGG enrichment is available.
 
@@ -61,6 +61,7 @@ The current flow is:
 3. Generate `data/games.json` for normal static hosting.
 4. Generate `data/games-data.js` for direct `file://` usage.
 5. Optionally enrich data with BoardGameGeek metadata and optionally download images locally.
+6. Export pending Spanish translation work for Codex or another assistant, review it in `data/translations.json`, then rebuild.
 
 ## Deployment Model
 
