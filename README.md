@@ -87,6 +87,20 @@ For every exported item, add an entry to `data/translations.json` using the `id:
 
 Then run the normal build. The frontend falls back to English whenever Spanish is unavailable.
 
+## Category And Mechanic Tags
+
+BGG categories and mechanics keep their original English values for filters and shared URLs, while the interface displays their Spanish labels from `data/tag-translations.json`.
+
+Check coverage and export any new terms after a BGG refresh:
+
+```bash
+python scripts/build_data.py --csv-path "/path/your-collection.csv" \
+  --export-tag-translation-work generated/tag-translation-work.json \
+  --fail-on-missing-tag-translations
+```
+
+The strict flag exits with an error when a tag is missing, making untranslated BGG taxonomy visible in the build workflow.
+
 ## Name Overrides
 
 Displayed names use the base BGG names plus any overrides already prepared in the generated dataset.

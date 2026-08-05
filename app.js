@@ -1932,11 +1932,27 @@ function normalizeDataset(data) {
   const recentIds = new Set(selectRecentHighlightGames(games).map((game) => game.id));
   return {
     ...data,
+    tagTranslations: normalizeTagTranslations(data.tagTranslations),
     games: games.map((game) => ({
       ...game,
       isNew: recentIds.has(game.id)
     }))
   };
+}
+
+function normalizeTagTranslations(value) {
+  if (!value || typeof value !== "object") return {};
+  return Object.fromEntries(
+    Object.entries(value)
+      .filter(([key, label]) => typeof key === "string" && typeof label === "string" && label.trim())
+      .map(([key, label]) => [key, label.trim()])
+  );
+}
+
+function getTagLabel(value) {
+  const source = String(value || "");
+  if (state.language !== "es") return source;
+  return state.data?.tagTranslations?.[source] || source;
 }
 
 function normalizeGame(game) {
@@ -3190,8 +3206,8 @@ function renderActiveFilters() {
   if (state.filters.bestPlayers) tags.push({ key: "bestPlayers", icon: "players", label: copy.filterBestPlayers, value: state.filters.bestPlayers === "5" ? "5+" : getFilterValueLabel("bestPlayers", state.filters.bestPlayers) });
   if (state.filters.age) tags.push({ key: "age", icon: "age", label: copy.filterAge, value: getFilterValueLabel("age", state.filters.age) });
   if (state.filters.recommendation) tags.push({ key: "recommendation", icon: getRecommendationIconKey(state.filters.recommendation), label: copy.recommendTitle, value: getFilterValueLabel("recommendation", state.filters.recommendation) });
-  if (state.filters.category) tags.push({ key: "category", icon: "search", label: copy.filterCategory, value: state.filters.category });
-  if (state.filters.mechanic) tags.push({ key: "mechanic", icon: "search", label: copy.filterMechanic, value: state.filters.mechanic });
+  if (state.filters.category) tags.push({ key: "category", icon: "search", label: copy.filterCategory, value: getTagLabel(state.filters.category) });
+  if (state.filters.mechanic) tags.push({ key: "mechanic", icon: "search", label: copy.filterMechanic, value: getTagLabel(state.filters.mechanic) });
   const hasFilters = tags.length > 0;
   elements.activeFilters.innerHTML = `
     <div class="active-filters__content">
@@ -3380,8 +3396,8 @@ function getDetailTags(game) {
   if (tags.includes("solo")) {
     list.push({ label: copy.recSolo, filterKey: "recommendation", filterValue: "solo", filterLabel: copy.recommendTitle });
   }
-  (game.categories || []).forEach((label) => list.push({ label, filterKey: "category", filterValue: label, filterLabel: copy.filterCategory }));
-  (game.mechanics || []).forEach((label) => list.push({ label, filterKey: "mechanic", filterValue: label, filterLabel: copy.filterMechanic }));
+  (game.categories || []).forEach((label) => list.push({ label: getTagLabel(label), filterKey: "category", filterValue: label, filterLabel: copy.filterCategory }));
+  (game.mechanics || []).forEach((label) => list.push({ label: getTagLabel(label), filterKey: "mechanic", filterValue: label, filterLabel: copy.filterMechanic }));
   return list.slice(0, 10);
 }
 

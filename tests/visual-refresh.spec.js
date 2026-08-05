@@ -349,7 +349,13 @@ test("detail tags open exact category, mechanic, and recommendation filters", as
       candidate.tags?.includes("teaching-friendly")
     );
     return game
-      ? { name: game.name, category: game.categories[0], mechanic: game.mechanics[0] }
+      ? {
+        name: game.name,
+        category: game.categories[0],
+        mechanic: game.mechanics[0],
+        categoryLabel: window.__BGG_LIBRARY_DATA__?.tagTranslations?.[game.categories[0]] || game.categories[0],
+        mechanicLabel: window.__BGG_LIBRARY_DATA__?.tagTranslations?.[game.mechanics[0]] || game.mechanics[0]
+      }
       : null;
   });
   expect(fixture).not.toBeNull();
@@ -361,11 +367,11 @@ test("detail tags open exact category, mechanic, and recommendation filters", as
   await expect(page.locator("#details-dialog")).not.toBeVisible();
   await expect(page.locator("body")).toHaveAttribute("data-page", "browse");
   await expect(page).toHaveURL(/category=/);
-  await expect(page.locator(".active-filters")).toContainText(`Categoría: ${fixture.category}`);
+  await expect(page.locator(".active-filters")).toContainText(`Categoría: ${fixture.categoryLabel}`);
   await expect(page.locator("#games-grid .game-card")).not.toHaveCount(0);
 
   await page.goto(`${appUrl}#/browse?mechanic=${encodeURIComponent(fixture.mechanic)}`, { waitUntil: "load" });
-  await expect(page.locator(".active-filters")).toContainText(`Mecánica: ${fixture.mechanic}`);
+  await expect(page.locator(".active-filters")).toContainText(`Mecánica: ${fixture.mechanicLabel}`);
   await expect(page.locator("#games-grid .game-card")).not.toHaveCount(0);
 
   await page.goto(`${appUrl}#/browse`, { waitUntil: "load" });
@@ -373,6 +379,18 @@ test("detail tags open exact category, mechanic, and recommendation filters", as
   await page.locator("[data-detail-filter-key='recommendation'][data-detail-filter-value='teach']").click();
   await expect(page).toHaveURL(/rec=teach/);
   await expect(page.locator(".active-filters")).toContainText("Recomendaciones: Fáciles de enseñar");
+});
+
+test("Spanish detail tags are localized while their filter routes keep BGG values", async ({ page }) => {
+  await page.goto(`${appUrl}#/browse?search=the%20mind`, { waitUntil: "load" });
+  const card = page.locator(".game-card").filter({ has: page.getByText("The Mind", { exact: true }) });
+  await card.locator(".game-card__button").click();
+
+  await expect(page.locator("#details-dialog")).toContainText("Juego de cartas");
+  await expect(page.locator("#details-dialog")).toContainText("Comunicación limitada");
+  await page.locator("[data-detail-filter-key='mechanic'][data-detail-filter-value='Communication Limits']").click();
+  await expect(page).toHaveURL(/mechanic=Communication%20Limits/);
+  await expect(page.locator(".active-filters")).toContainText("Mecánica: Comunicación limitada");
 });
 
 test("history hash route hydrates scope, mode, year, and month", async ({ page }) => {

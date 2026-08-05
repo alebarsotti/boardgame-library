@@ -1,10 +1,15 @@
 import hashlib
+import json
+import tempfile
 import unittest
+from pathlib import Path
 
 from scripts.build_data import (
     apply_image_overrides,
     apply_translations,
     build_translation_work,
+    get_tag_translation_work,
+    load_tag_translations,
     normalize_image_override_value,
     source_text_hash,
 )
@@ -39,6 +44,19 @@ class BuildDataTests(unittest.TestCase):
         self.assertEqual(len(work["items"]), 1)
         self.assertEqual(work["items"][0]["previousTranslation"], "Vieja")
         self.assertEqual(work["items"][0]["sourceHash"], source_text_hash("Source"))
+
+    def test_tag_translation_report_detects_missing_category_and_mechanic(self):
+        games = [{"categories": ["Card Game"], "mechanics": ["Hand Management", "Drafting"]}]
+        report, missing = get_tag_translation_work(games, {"Card Game": "Juego de cartas", "Hand Management": "Gestión de mano"})
+        self.assertEqual(report, {"total": 3, "translated": 2, "missing": 1})
+        self.assertEqual(missing, [{"tag": "Drafting", "types": ["mechanic"]}])
+
+    def test_tag_translations_require_the_current_version(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "tags.json"
+            path.write_text(json.dumps({"version": 0, "entries": {"Card Game": "Juego de cartas"}}), encoding="utf-8")
+            with self.assertRaises(ValueError):
+                load_tag_translations(path)
 
 
 if __name__ == "__main__":
