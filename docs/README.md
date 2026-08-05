@@ -17,6 +17,7 @@ The root project [`README.md`](../README.md) should stay focused on setup, data 
 
 ## Technical References
 
+- [`data-generation-guide.md`](./data-generation-guide.md): operational workflow for refreshing the collection, enrichment, translations, tags, validation, and common failures
 - [`reference/bgg-xmlapi-observed-response-reference.md`](./reference/bgg-xmlapi-observed-response-reference.md): implementation-facing notes about observed BoardGameGeek XML API response structure and safe fields to use
 - [`reference/example.xml`](./reference/example.xml): sample BoardGameGeek XML response used by the reference documentation
 

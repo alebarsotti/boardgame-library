@@ -25,6 +25,7 @@ DEFAULT_IMAGES_DIRECTORY = PROJECT_ROOT / "data" / "images"
 DEFAULT_NAME_OVERRIDES_PATH = PROJECT_ROOT / "data" / "name-overrides.json"
 DEFAULT_IMAGE_OVERRIDES_PATH = PROJECT_ROOT / "data" / "image-overrides.json"
 DEFAULT_TRANSLATIONS_PATH = PROJECT_ROOT / "data" / "translations.json"
+DEFAULT_TAG_TRANSLATIONS_PATH = PROJECT_ROOT / "data" / "tag-translations.json"
 DEFAULT_TOKEN_PATH = PROJECT_ROOT / ".bgg-token"
 TRANSLATIONS_VERSION = 1
 TRANSLATABLE_FIELDS = ("summary", "description")
@@ -802,6 +803,22 @@ def load_translations(path: Path) -> dict[str, dict[str, Any]]:
     return {key: value for key, value in entries.items() if isinstance(key, str) and isinstance(value, dict)}
 
 
+def load_tag_translations(path: Path) -> dict[str, str]:
+    if not path.exists():
+        return {}
+    payload = read_json_map(path)
+    if payload.get("version") != TRANSLATIONS_VERSION:
+        raise ValueError(f"Tag translations file must be an object with version {TRANSLATIONS_VERSION}: {path}")
+    entries = payload.get("entries", {})
+    if not isinstance(entries, dict):
+        raise ValueError(f"Tag translations file has no valid 'entries' object: {path}")
+    return {
+        str(key): str(value).strip()
+        for key, value in entries.items()
+        if isinstance(key, str) and isinstance(value, str) and value.strip()
+    }
+
+
 def migrate_translations_from_dataset(path: Path) -> dict[str, dict[str, Any]]:
     payload = read_existing_payload(path)
     if not payload:
@@ -884,6 +901,36 @@ def build_translation_work(
     }
 
 
+def get_tag_translation_work(games: list[dict[str, Any]], entries: dict[str, str]) -> tuple[dict[str, int], list[dict[str, Any]]]:
+    tag_types: dict[str, set[str]] = {}
+    for game in games:
+        for field, tag_type in (("categories", "category"), ("mechanics", "mechanic")):
+            for value in game.get(field, []):
+                tag = str(value or "").strip()
+                if tag:
+                    tag_types.setdefault(tag, set()).add(tag_type)
+
+    missing = [
+        {"tag": tag, "types": sorted(types)}
+        for tag, types in sorted(tag_types.items())
+        if not entries.get(tag, "").strip()
+    ]
+    return {
+        "total": len(tag_types),
+        "translated": len(tag_types) - len(missing),
+        "missing": len(missing),
+    }, missing
+
+
+def build_tag_translation_work(items: list[dict[str, Any]]) -> dict[str, Any]:
+    return {
+        "version": TRANSLATIONS_VERSION,
+        "generatedAt": time.strftime("%Y-%m-%dT%H:%M:%S"),
+        "instructions": "Translate each BGG tag into concise neutral Rioplatense Spanish, then add it to data/tag-translations.json.",
+        "items": items,
+    }
+
+
 def write_atomic_text(path: Path, text: str) -> None:
     ensure_parent(path)
     with tempfile.NamedTemporaryFile("w", encoding="utf-8", dir=path.parent, delete=False) as handle:
@@ -903,6 +950,7 @@ def build_payload(
     existing_payload: dict[str, Any] | None,
     *,
     translations: dict[str, dict[str, Any]],
+    tag_translations: dict[str, str],
 ) -> dict[str, Any]:
     games = [build_game_from_row(row, name_overrides) for row in rows]
     games_by_id = {game["id"]: game for game in games if game["id"] is not None}
@@ -918,6 +966,7 @@ def build_payload(
         ensure_deterministic_localized_content(game)
 
     translation_report = apply_translations(games, translations)
+    tag_translation_report, _ = get_tag_translation_work(games, tag_translations)
 
     for game in games:
         ensure_deterministic_localized_content(game)
@@ -935,9 +984,10 @@ def build_payload(
             "heavy": sum(1 for game in games if game["weightBand"] == "heavy"),
         },
         "translations": translation_report,
+        "tagTranslations": tag_translation_report,
     }
 
-    return {"summary": summary, "games": games}
+    return {"summary": summary, "tagTranslations": tag_translations, "games": games}
 
 
 def parse_args() -> argparse.Namespace:
@@ -949,7 +999,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--name-overrides-path", default=str(DEFAULT_NAME_OVERRIDES_PATH))
     parser.add_argument("--image-overrides-path", default=str(DEFAULT_IMAGE_OVERRIDES_PATH))
     parser.add_argument("--translations-path", default=str(DEFAULT_TRANSLATIONS_PATH))
+    parser.add_argument("--tag-translations-path", default=str(DEFAULT_TAG_TRANSLATIONS_PATH))
     parser.add_argument("--export-translation-work", default="")
+    parser.add_argument("--export-tag-translation-work", default="")
+    parser.add_argument("--fail-on-missing-tag-translations", action="store_true")
     parser.add_argument("--migrate-translations-from", default="", help="One-time migration from an existing generated dataset.")
     parser.add_argument("--include-descriptions", action="store_true", help="Include long descriptions when exporting translation work.")
     parser.add_argument("--bgg-token", default="")
@@ -973,6 +1026,7 @@ def main() -> int:
     name_overrides_path = Path(args.name_overrides_path)
     image_overrides_path = Path(args.image_overrides_path)
     translations_path = Path(args.translations_path)
+    tag_translations_path = Path(args.tag_translations_path)
 
     if args.migrate_translations_from:
         try:
@@ -1004,6 +1058,7 @@ def main() -> int:
     image_overrides = read_json_map(image_overrides_path)
     try:
         translations = load_translations(translations_path)
+        tag_translations = load_tag_translations(tag_translations_path)
     except ValueError as error:
         print(str(error), file=sys.stderr)
         return 1
@@ -1020,6 +1075,7 @@ def main() -> int:
         output_path,
         existing_payload,
         translations=translations,
+        tag_translations=tag_translations,
     )
 
     json_payload = json.dumps(payload, ensure_ascii=False, indent=2)
@@ -1035,13 +1091,27 @@ def main() -> int:
         )
         write_atomic_text(Path(args.export_translation_work), json.dumps(translation_work, ensure_ascii=False, indent=2))
 
+    _, missing_tag_translations = get_tag_translation_work(payload["games"], tag_translations)
+    if args.export_tag_translation_work:
+        write_atomic_text(
+            Path(args.export_tag_translation_work),
+            json.dumps(build_tag_translation_work(missing_tag_translations), ensure_ascii=False, indent=2),
+        )
+    if args.fail_on_missing_tag_translations and missing_tag_translations:
+        print(f"Missing translations for {len(missing_tag_translations)} BGG tags.", file=sys.stderr)
+        return 1
+
     print(f"Generated {len(payload['games'])} games into {output_path} and {script_output_path}")
     if not token:
         print("BGG enrichment skipped because no token was provided.")
     report = payload["summary"]["translations"]
     print(f"Translations: {report['applied']} applied, {report['missing']} missing, {report['stale']} stale, {report['withoutSource']} without source.")
+    tag_report = payload["summary"]["tagTranslations"]
+    print(f"Tag translations: {tag_report['translated']}/{tag_report['total']} translated, {tag_report['missing']} missing.")
     if args.export_translation_work:
         print(f"Translation work exported to {args.export_translation_work}")
+    if args.export_tag_translation_work:
+        print(f"Tag translation work exported to {args.export_tag_translation_work}")
     return 0
 
 
