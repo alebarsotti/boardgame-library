@@ -362,7 +362,7 @@ test("detail tags open exact category, mechanic, and recommendation filters", as
 
   const card = page.locator(".game-card").filter({ has: page.getByText(fixture.name, { exact: true }) }).first();
   await card.locator(".game-card__button").click();
-  await page.locator("[data-detail-filter-key='category']").filter({ hasText: fixture.category }).first().click();
+  await page.locator("[data-detail-filter-key='category']").filter({ hasText: fixture.categoryLabel }).first().click();
 
   await expect(page.locator("#details-dialog")).not.toBeVisible();
   await expect(page.locator("body")).toHaveAttribute("data-page", "browse");
@@ -389,7 +389,10 @@ test("Spanish detail tags are localized while their filter routes keep BGG value
   await expect(page.locator("#details-dialog")).toContainText("Juego de cartas");
   await expect(page.locator("#details-dialog")).toContainText("Comunicación limitada");
   await page.locator("[data-detail-filter-key='mechanic'][data-detail-filter-value='Communication Limits']").click();
-  await expect(page).toHaveURL(/mechanic=Communication%20Limits/);
+  await expect.poll(() => page.evaluate(() => {
+    const [, query = ""] = window.location.hash.split("?");
+    return new URLSearchParams(query).get("mechanic");
+  })).toBe("Communication Limits");
   await expect(page.locator(".active-filters")).toContainText("Mecánica: Comunicación limitada");
 });
 
