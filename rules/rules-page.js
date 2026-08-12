@@ -90,6 +90,26 @@
   if (quickReference && quickReferenceSurface && quickReferenceOpen && quickReferenceClose) {
     let ownsFullscreen = false;
     let wakeLock = null;
+    let controlsHideTimer = null;
+    const usesTouchControls = () => window.matchMedia("(hover: none), (pointer: coarse)").matches;
+
+    const hideQuickReferenceControls = () => {
+      quickReference.classList.remove("quick-reference-controls-visible");
+      controlsHideTimer = null;
+    };
+
+    const revealQuickReferenceControls = () => {
+      if (!quickReference.open || !usesTouchControls()) return;
+      quickReference.classList.add("quick-reference-controls-visible");
+      if (controlsHideTimer) window.clearTimeout(controlsHideTimer);
+      controlsHideTimer = window.setTimeout(hideQuickReferenceControls, 2400);
+    };
+
+    const resetQuickReferenceControls = () => {
+      if (controlsHideTimer) window.clearTimeout(controlsHideTimer);
+      controlsHideTimer = null;
+      quickReference.classList.remove("quick-reference-controls-visible");
+    };
 
     const requestWakeLock = async () => {
       if (!("wakeLock" in navigator)) return;
@@ -137,7 +157,8 @@
     quickReferenceOpen.addEventListener("click", async () => {
       quickReference.showModal();
       document.body.classList.add("quick-reference-is-open");
-      quickReferenceClose.focus();
+      resetQuickReferenceControls();
+      quickReferenceSurface.focus({ preventScroll: true });
       requestWakeLock();
       if (!document.fullscreenElement && quickReferenceSurface.requestFullscreen) {
         try {
@@ -152,6 +173,7 @@
     quickReferenceClose.addEventListener("click", closeQuickReference);
     quickReference.addEventListener("close", () => {
       document.body.classList.remove("quick-reference-is-open");
+      resetQuickReferenceControls();
       exitOwnedFullscreen();
       releaseWakeLock();
     });
@@ -168,6 +190,11 @@
       if (document.visibilityState === "visible" && quickReference.open && !wakeLock) {
         requestWakeLock();
       }
+    });
+    quickReferenceSurface.addEventListener("pointermove", revealQuickReferenceControls, { passive: true });
+    quickReferenceSurface.addEventListener("pointerdown", revealQuickReferenceControls, { passive: true });
+    document.addEventListener("keydown", () => {
+      if (quickReference.open) revealQuickReferenceControls();
     });
   }
 })();

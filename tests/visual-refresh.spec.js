@@ -742,16 +742,29 @@ test("Munchkin rules guide supports navigation, anchors, theme, and print layout
   expect(quickReferenceBox.width).toBe(1024);
   expect(quickReferenceBox.height).toBe(768);
   await expect(page.locator(".quick-reference__content")).toHaveCSS("grid-template-columns", /.+ .+ .+/);
-  await expect(quickReference.getByRole("heading", { name: "Munchkin · Referencia rápida" })).toBeVisible();
+  await expect(quickReference).toHaveAccessibleName("Munchkin · Referencia rápida");
+  await expect(quickReference.getByText("Munchkin · Referencia rápida", { exact: true })).toHaveCount(0);
+  const quickReferenceClose = quickReference.getByRole("button", { name: "Cerrar ayuda rápida" });
+  await expect(quickReferenceClose).toBeHidden();
+  await page.mouse.move(500, 400);
+  await expect(quickReferenceClose).toBeHidden();
+  await page.mouse.click(500, 400);
+  await expect(quickReferenceClose).toBeHidden();
   await expect(quickReference.getByText("1 · Patear la puerta", { exact: true })).toBeVisible();
+  await expect(quickReference.locator(".quick-reference__icon")).toHaveCount(5);
+  await expect(quickReference.locator(".quick-reference__section--general .quick-reference__icon")).toHaveAttribute("src", "./icons/objective.png");
+  await expect(quickReference.locator(".quick-reference__section--turn .quick-reference__icon")).toHaveAttribute("src", "./icons/turn-phases.png");
+  await expect(quickReference.locator(".quick-reference__section--actions .quick-reference__icon")).toHaveAttribute("src", "./icons/actions.png");
+  await expect(quickReference.locator(".quick-reference__section--combat .quick-reference__icon")).toHaveAttribute("src", "./icons/combat.png");
+  await expect(quickReference.locator(".quick-reference__section--character .quick-reference__icon")).toHaveAttribute("src", "./icons/character-equipment.png");
   await expect(quickReference.getByText("2 · Buscar problemas o saquear", { exact: true })).toBeVisible();
   await expect(quickReference.getByText("3 · Caridad", { exact: true })).toBeVisible();
-  await expect(quickReference.locator(".quick-turn-flow p")).toHaveCount(0);
+  await expect(quickReference.locator(".quick-reference__section--turn .quick-turn-flow p")).toHaveCount(0);
   const quickTurnBox = await quickReference.locator(".quick-reference__section--turn").boundingBox();
   const quickActionsBox = await quickReference.locator(".quick-reference__section--actions").boundingBox();
   expect(quickTurnBox).not.toBeNull();
   expect(quickActionsBox).not.toBeNull();
-  expect(quickActionsBox.width).toBeGreaterThan(quickTurnBox.width * 2.5);
+  expect(quickActionsBox.width).toBeGreaterThan(quickTurnBox.width * 1.8);
   const quickBodyFontSizes = await page.evaluate(() => ({
     listItem: parseFloat(getComputedStyle(document.querySelector(".quick-action-grid li")).fontSize),
     sectionTitle: parseFloat(getComputedStyle(document.querySelector(".quick-reference__section-heading h3")).fontSize)
@@ -790,10 +803,7 @@ test("Munchkin rules guide supports navigation, anchors, theme, and print layout
     actions: quickReference.locator(".quick-reference__section--actions"),
     general: quickReference.locator(".quick-reference__section--general")
   };
-  await expect(quickSections.combat.locator(".quick-reference__number")).toHaveText("2");
-  await expect(quickSections.character.locator(".quick-reference__number")).toHaveText("3");
-  await expect(quickSections.actions.locator(".quick-reference__number")).toHaveText("4");
-  await expect(quickSections.general.locator(".quick-reference__number")).toHaveText("5");
+  await expect(quickReference.locator(".quick-reference__number")).toHaveCount(0);
   const quickSectionBoxes = {
     turn: await quickSections.turn.boundingBox(),
     combat: await quickSections.combat.boundingBox(),
@@ -802,13 +812,12 @@ test("Munchkin rules guide supports navigation, anchors, theme, and print layout
     general: await quickSections.general.boundingBox()
   };
   Object.values(quickSectionBoxes).forEach((box) => expect(box).not.toBeNull());
-  expect(Math.abs(quickSectionBoxes.turn.y - quickSectionBoxes.combat.y)).toBeLessThan(2);
-  expect(Math.abs(quickSectionBoxes.turn.y - quickSectionBoxes.character.y)).toBeLessThan(2);
-  expect(quickSectionBoxes.turn.x).toBeLessThan(quickSectionBoxes.combat.x);
+  expect(quickSectionBoxes.general.y).toBeLessThan(quickSectionBoxes.turn.y);
+  expect(Math.abs(quickSectionBoxes.turn.y - quickSectionBoxes.actions.y)).toBeLessThan(2);
+  expect(quickSectionBoxes.turn.x).toBeLessThan(quickSectionBoxes.actions.x);
+  expect(Math.abs(quickSectionBoxes.combat.y - quickSectionBoxes.character.y)).toBeLessThan(2);
+  expect(quickSectionBoxes.combat.y).toBeGreaterThan(quickSectionBoxes.turn.y);
   expect(quickSectionBoxes.combat.x).toBeLessThan(quickSectionBoxes.character.x);
-  expect(Math.abs(quickSectionBoxes.actions.y - quickSectionBoxes.general.y)).toBeLessThan(2);
-  expect(quickSectionBoxes.actions.y).toBeGreaterThan(quickSectionBoxes.turn.y);
-  expect(quickSectionBoxes.actions.x).toBeLessThan(quickSectionBoxes.general.x);
   await expect(quickReference).toContainText("En cualquier momento");
   await expect(quickReference).toContainText("Fuera de combate");
   await expect(quickReference).toContainText("Durante un combate");
@@ -827,6 +836,29 @@ test("Munchkin rules guide supports navigation, anchors, theme, and print layout
   await page.emulateMedia({ media: "print" });
   await expect(page.locator(".rules-topbar")).toBeHidden();
   await expect(page.locator(".rules-toc")).toBeHidden();
+});
+
+test.describe("Munchkin quick-reference mobile controls", () => {
+  test.use({
+    ...mobileDevice,
+    colorScheme: "dark"
+  });
+
+  test("shows the close button only after touch", async ({ page }) => {
+    const munchkinUrl = pathToFileURL(path.resolve(__dirname, "../rules/munchkin/index.html")).href;
+    await page.goto(munchkinUrl, { waitUntil: "load" });
+    await page.evaluate(() => {
+      document.querySelector(".quick-reference__surface").requestFullscreen = async () => {};
+    });
+
+    await page.getByRole("button", { name: "Ayuda rápida" }).click();
+    const quickReference = page.locator("[data-quick-reference]");
+    const quickReferenceClose = quickReference.getByRole("button", { name: "Cerrar ayuda rápida" });
+    await expect(quickReferenceClose).toBeHidden();
+
+    await page.touchscreen.tap(200, 300);
+    await expect(quickReferenceClose).toBeVisible();
+  });
 });
 
 test("Cartógrafos exposes a complete rules guide", async ({ page }) => {

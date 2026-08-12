@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&amp;icon_names=info&amp;display=block" rel="stylesheet" />
     <link rel="stylesheet" href="../../styles.css" />
-    <link rel="stylesheet" href="../rules.css?v=20260731-1" />
+    <link rel="stylesheet" href="../rules.css?v=20260811-1" />
     <script>
       try {
         const preferences = JSON.parse(localStorage.getItem("bgg-library-preferences-v4") || "{}");
@@ -276,23 +276,35 @@
       </footer>
     </div>
 
-    <dialog class="quick-reference" data-quick-reference aria-labelledby="quick-reference-title">
-      <div class="quick-reference__surface">
-        <header class="quick-reference__header">
-          <div>
-            <h3 id="quick-reference-title">Munchkin · Referencia rápida</h3>
-          </div>
+    <dialog class="quick-reference" data-quick-reference aria-label="Munchkin · Referencia rápida">
+      <div class="quick-reference__surface" tabindex="-1">
+        <div class="quick-reference__header">
           <div class="quick-reference__header-actions">
             <button class="quick-reference__close" type="button" data-quick-reference-close aria-label="Cerrar ayuda rápida">
               <span aria-hidden="true">×</span>
             </button>
           </div>
-        </header>
+        </div>
 
         <div class="quick-reference__content">
+          <section class="quick-reference__section quick-reference__section--general" aria-labelledby="quick-cards-title">
+            <div class="quick-reference__section-heading">
+              <img class="quick-reference__icon" src="./icons/objective.png" alt="" width="512" height="512" aria-hidden="true" />
+              <div>
+                <h3 id="quick-cards-title">Objetivo</h3>
+              </div>
+            </div>
+            <div class="quick-turn-flow">
+              <article>
+                <strong>Llegar al nivel 10</strong>
+                <p>Debe ganarse matando un monstruo, salvo que una carta diga lo contrario.</p>
+              </article>
+            </div>
+          </section>
+
           <section class="quick-reference__section quick-reference__section--turn" aria-labelledby="quick-turn-title">
             <div class="quick-reference__section-heading">
-              <span class="quick-reference__number" aria-hidden="true">1</span>
+              <img class="quick-reference__icon" src="./icons/turn-phases.png" alt="" width="512" height="512" aria-hidden="true" />
               <div>
                 <h3 id="quick-turn-title">Fases del turno</h3>
               </div>
@@ -300,56 +312,31 @@
             <div class="quick-turn-flow">
               <article>
                 <strong>1 · Patear la puerta</strong>
+                <ul class="quick-reference__list">
+                  <li>Combatir si sale un monstruo</li>
+                </ul>
               </article>
               <span aria-hidden="true">→</span>
               <article>
                 <strong>2 · Buscar problemas o saquear</strong>
+                <ul class="quick-reference__list">
+                  <li>Si no hubo combate</li>
+                </ul>
               </article>
               <span aria-hidden="true">→</span>
               <article>
                 <strong>3 · Caridad</strong>
+                <ul class="quick-reference__list">
+                  <li>5 cartas en mano</li>
+                  <li>Transportar, vender o donar al de menor nivel</li>
+                </ul>
               </article>
             </div>
-          </section>
-          <section class="quick-reference__section quick-reference__section--combat" aria-labelledby="quick-combat-title">
-            <div class="quick-reference__section-heading">
-              <span class="quick-reference__number" aria-hidden="true">2</span>
-              <div>
-                <h3 id="quick-combat-title">Combate</h3>
-              </div>
-            </div>
-            <ul class="quick-reference__list">
-              <li>Nivel + bonificaciones − penalizaciones</li>
-              <li>Los monstruos ganan los empates.</li>
-              <li>Se debe escapar de cada monstruo con 5 o 6.</li>
-              <li>Podes pedir ayuda de un solo jugador.</li>
-            </ul>
-          </section>
-
-          <section class="quick-reference__section quick-reference__section--character" aria-labelledby="quick-equipment-title">
-            <div class="quick-reference__section-heading">
-              <span class="quick-reference__number" aria-hidden="true">3</span>
-              <div>
-                <h3 id="quick-equipment-title">Personaje y equipo</h3>
-              </div>
-            </div>
-            <div class="quick-slots" aria-label="Límites de equipo activo">
-              <span><strong>1</strong> Yelmo</span>
-              <span><strong>1</strong> Armadura</span>
-              <span><strong>1</strong> Calzado</span>
-              <span><strong>2</strong> Manos</span>
-            </div>
-            <ul class="quick-reference__list">
-              <li><strong>Ítems Pequeños:</strong> ∞</li>
-              <li><strong>Ítems Grandes:</strong> solo 1, salvo que una carta diga lo contrario.</li>
-              <li><strong>Equipo activo:</strong> únicamente sus bonificaciones cuentan en combate; el resto sigue transportado.</li>
-              <li><strong>Raza y Clase:</strong> 1 de cada una. <em>Mestizo</em> y <em>Súper Munchkin</em> permiten combinar 2 distintas.</li>
-            </ul>
           </section>
 
           <section class="quick-reference__section quick-reference__section--actions" aria-labelledby="quick-actions-title">
             <div class="quick-reference__section-heading">
-              <span class="quick-reference__number" aria-hidden="true">4</span>
+              <img class="quick-reference__icon" src="./icons/actions.png" alt="" width="512" height="512" aria-hidden="true" />
               <div>
                 <h3 id="quick-actions-title">Acciones</h3>
               </div>
@@ -358,52 +345,77 @@
               <article>
                 <span class="quick-reference__badge">En cualquier momento</span>
                 <ul>
-                  <li>Descartar tu Raza o Clase.</li>
-                  <li>Jugar una Maldición.</li>
-                  <li>Jugar <em>Sube un nivel</em> o un Mercenario.</li>
+                  <li><strong>Descartar</strong> tu Raza o Clase.</li>
+                  <li><strong>Jugar</strong> una Maldición.</li>
+                  <li><strong>Jugar</strong> <em>Sube un nivel</em> o un Mercenario.</li>
                 </ul>
               </article>
               <article>
                 <span class="quick-reference__badge">En tu turno</span>
                 <ul>
-                  <li>Bajar una Raza o Clase.</li>
-                  <li>Jugar la mayoría de los Ítems.</li>
-                  <li>Vender Ítems para subir niveles.</li>
+                  <li><strong>Bajar</strong> una Raza o Clase.</li>
+                  <li><strong>Jugar</strong> la mayoría de los Ítems.</li>
+                  <li><strong>Vender</strong> Ítems de la mano o la mesa: <strong>1.000 oro = 1 nivel</strong>.</li>
                 </ul>
               </article>
               <article>
                 <span class="quick-reference__badge">Fuera de combate</span>
                 <ul>
-                  <li>Cambiar qué equipo está activo.</li>
-                  <li>Intercambiar Ítems de la mesa.</li>
-                  <li>Jugar una carta recién recibida, si es legal.</li>
+                  <li><strong>Cambiar</strong> qué equipo está activo.</li>
+                  <li><strong>Intercambiar</strong> Ítems de la mesa.</li>
+                  <li><strong>Jugar</strong> una carta recién recibida, si es legal.</li>
                 </ul>
               </article>
               <article>
                 <span class="quick-reference__badge">Durante un combate</span>
                 <ul>
-                  <li>Usar Ítems de un solo uso desde la mano o la mesa.</li>
-                  <li>Jugar potenciadores de monstruo o interferencias permitidas.</li>
-                  <li>No comerciar, vender ni cambiar el equipo activo.</li>
+                  <li><strong>Usar</strong> Ítems de un solo uso desde la mano o la mesa.</li>
+                  <li><strong>Jugar</strong> potenciadores de monstruo o interferencias permitidas.</li>
                 </ul>
               </article>
             </div>
           </section>
 
-          <section class="quick-reference__section quick-reference__section--general" aria-labelledby="quick-cards-title">
+          <section class="quick-reference__section quick-reference__section--combat" aria-labelledby="quick-combat-title">
             <div class="quick-reference__section-heading">
-              <span class="quick-reference__number" aria-hidden="true">5</span>
+              <img class="quick-reference__icon" src="./icons/combat.png" alt="" width="512" height="512" aria-hidden="true" />
               <div>
-                <h3 id="quick-cards-title">Reglas generales</h3>
+                <h3 id="quick-combat-title">Combate</h3>
               </div>
             </div>
+            <div class="quick-turn-flow">
+              <article>
+                <strong>Nivel + bonificaciones − penalizaciones</strong>
+              </article>
+            </div>
             <ul class="quick-reference__list">
-              <li>Límite de <strong>5 cartas</strong> en mano.</li>
-              <li>El nivel 10 debe ganarse matando un monstruo, salvo que una carta diga lo contrario.</li>
-              <li>Solo intercambiar <strong>Ítems que estén en la mesa</strong>.</li>
-              <li>Vendé Ítems de la mano o la mesa: <strong>1.000 piezas de oro</strong> = 1 nivel.</li>
-              <li>No podés comprar el nivel 10.</li>
-              <li>Solo podés pedir ayuda de un jugador.</li>
+              <li>Los monstruos ganan los empates.</li>
+              <li>Si hay más de uno, se suman sus niveles.</li>
+              <li>Se debe escapar de cada monstruo con 5 o 6.</li>
+              <li>Podes pedir ayuda de un solo jugador.</li>
+            </ul>
+          </section>
+
+          <section class="quick-reference__section quick-reference__section--character" aria-labelledby="quick-equipment-title">
+            <div class="quick-reference__section-heading">
+              <img class="quick-reference__icon" src="./icons/character-equipment.png" alt="" width="512" height="512" aria-hidden="true" />
+              <div>
+                <h3 id="quick-equipment-title">Personaje y equipo</h3>
+              </div>
+            </div>
+            <div class="quick-slots" aria-label="Límites de equipo activo">
+              <span><strong>1</strong> Raza</span>
+              <span><strong>1</strong> Clase</span>
+              <span><strong>1</strong> Yelmo</span>
+              <span><strong>1</strong> Armadura</span>
+              <span><strong>1</strong> Calzado</span>
+              <span><strong>2</strong> Manos</span>
+            </div>
+            <ul class="quick-reference__list">
+              <li><strong>Equipo activo:</strong> deben cumplir las reglas de personaje</li>
+              <li><strong>Equipo transportado:</strong> pueden activarse solo si se cumplen las reglas.</li>
+              <li><strong>Ítems Pequeños:</strong> ∞</li>
+              <li><strong>Ítems Grandes:</strong> solo 1</li>
             </ul>
           </section>
         </div>
@@ -411,6 +423,6 @@
     </dialog>
 
     <script src="../../data/games-data.js"></script>
-    <script src="../rules-page.js?v=20260730-5"></script>
+    <script src="../rules-page.js?v=20260810-2"></script>
   </body>
 </html>
