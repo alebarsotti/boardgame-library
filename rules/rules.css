@@ -205,11 +205,39 @@
   box-shadow: 0 16px 42px rgba(26, 15, 9, .07);
 }
 .rule-card { padding: 15px; }
+.rule-card--full { grid-column: 1 / -1; }
+.rule-card--step-inline { display: grid; grid-template-columns: 32px minmax(0, 1fr); align-items: center; gap: 12px; }
+.rule-card--step-inline h3 { margin: 0; }
+.rules-setup-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; }
+.rules-setup-grid .rule-card {
+  grid-column: span 2;
+  max-height: 60px;
+  padding: 10px;
+  column-gap: 14px;
+}
+.rules-setup-grid .rule-card:nth-child(n + 4) { grid-column: span 3; }
+.rules-setup-grid .rule-card h4 {
+  font-family: var(--font-sans);
+  font-size: clamp(1.05rem, 1.5vw, 1rem);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0;
+}
+.rules-setup-grid .rule-card--with-info {
+  grid-template-columns: 32px minmax(0, 1fr) 28px;
+  padding-right: 18px;
+}
+.rules-setup-grid .rule-info-button {
+  position: static;
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end;
+}
 .rule-card--with-info { position: relative; padding-right: 50px; }
-.rule-card h3 { margin: 6px 0 10px; font-family: var(--font-serif); font-size: 1.35rem; }
+.rule-card h3 { margin: 6px 0 10px; font-family: var(--font-serif); font-size: 1.4rem; }
 .rule-card p, .rule-callout p { margin-bottom: 0; }
 .rule-step { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 10px; color: white; background: var(--accent); font-weight: 800; }
-.rule-kicker { color: var(--accent); font-size: .7rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.rule-kicker { color: var(--accent); font-size: .8rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
 .rule-info-button {
   position: absolute;
   top: 12px;
@@ -283,7 +311,38 @@
 .rule-formula { margin: 16px 0; padding: 18px; border-radius: 16px; color: white; background: #2c211d; text-align: center; font-size: 1.1rem; font-weight: 800; }
 .rule-disclosure { margin: 12px 0; }
 .rule-disclosure summary { cursor: pointer; padding: 16px 18px; color: var(--accent-strong); font-weight: 800; }
+.rule-disclosure__title { margin: 0; padding: 16px 18px; color: var(--accent-strong); font-size: 1rem; font-weight: 800; }
 .rule-disclosure > div { padding: 0 18px 18px; }
+.rule-illustration-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(200px, .5fr);
+  align-items: center;
+  gap: 20px;
+}
+.rule-disclosure > .rule-illustration-layout { padding-top: 18px; }
+.rule-illustration-layout > ul,
+.rule-illustration-layout > ol { margin: 0; }
+.rule-illustration-layout--balanced { grid-template-columns: minmax(0, 1.5fr) minmax(200px, .5fr); }
+.rule-illustration-layout--balanced .rule-illustration img { max-height: 160px; }
+.rule-illustration {
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--surface-inset) 82%, transparent);
+  text-align: center;
+}
+.rule-illustration img { display: block; width: 100%; max-height: 160px; object-fit: contain; }
+.rule-illustration figcaption { margin-top: 8px; color: var(--muted); font-size: .8rem; font-weight: 700; }
+.rule-illustration--end-row {
+  max-width: 300px;
+  margin: 16px auto 20px;
+  padding: 0;
+}
+.rule-illustration--end-row img {
+  height: auto;
+  max-height: none;
+}
 .rules-content ul, .rules-content ol { padding-left: 22px; }
 .rules-content li + li { margin-top: 8px; }
 .rules-content .rule-compact-list { margin: 8px 0 0; padding-left: 20px; }
@@ -513,6 +572,13 @@
   .rules-toc { position: relative; top: 0; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .rules-toc strong { grid-column: 1 / -1; }
   .rules-grid, .rules-grid--two { grid-template-columns: 1fr; }
+  .rules-setup-grid .rule-card,
+  .rules-setup-grid .rule-card:nth-child(n + 4) { grid-column: auto; }
+  .rule-illustration-layout { grid-template-columns: 1fr; }
+  .rule-illustration-layout--balanced { grid-template-columns: 1fr; }
+  .rule-illustration-layout > ul,
+  .rule-illustration-layout > ol { margin-top: 0; }
+  .rule-illustration-layout > .rule-illustration { order: -1; }
   .quick-action-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .quick-combat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .quick-reference__golden-rules ul { grid-template-columns: 1fr; }
