@@ -8,6 +8,15 @@ window.BOARDGAME_RULES = {
     sourceDate: "2019-07",
     url: "./rules/munchkin/index.html"
   },
+  230802: {
+    gameId: 230802,
+    slug: "azul",
+    language: "es",
+    title: "Resumen de reglas",
+    rulesVersion: "edición Plan B Games 2017",
+    sourceDate: "2017-12",
+    url: "./rules/azul/index.html"
+  },
   263918: {
     gameId: 263918,
     slug: "cartografos",

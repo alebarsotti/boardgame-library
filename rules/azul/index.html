@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Resumen no oficial en español de las reglas de Azul, preparado a partir del reglamento de la edición Plan B Games 2017." />
+    <title>Azul · Resumen de reglas · Ludoteca de Ale</title>
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Cormorant+Garamond:wght@500;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&amp;icon_names=info&amp;display=block" rel="stylesheet" />
+    <link rel="stylesheet" href="../../styles.css" />
+    <link rel="stylesheet" href="../rules.css?v=20260811-1" />
+    <script>
+      try {
+        const preferences = JSON.parse(localStorage.getItem("bgg-library-preferences-v4") || "{}");
+        document.documentElement.style.colorScheme = preferences.theme === "light" ? "light" : "dark";
+        document.addEventListener("DOMContentLoaded", () => {
+          document.body.dataset.theme = preferences.theme === "light" ? "light" : "dark";
+        });
+      } catch (_) {}
+    </script>
+  </head>
+  <body class="rules-page" data-page="browse" data-game-id="230802">
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+    <div class="rules-shell">
+      <nav class="rules-topbar" aria-label="Navegación de la guía">
+        <a class="rules-brand" href="../../" aria-label="Volver a la Ludoteca de Ale">
+          <span class="eyebrow">Biblioteca personal</span>
+          <strong>Ludoteca de Ale</strong>
+        </a>
+        <div class="rules-topbar__actions">
+          <a class="button button--ghost rules-bgg-link" href="https://boardgamegeek.com/boardgame/230802" target="_blank" rel="noreferrer">Ver en BGG</a>
+        </div>
+      </nav>
+
+      <header class="rules-game-summary">
+        <div class="rules-game-summary__cover">
+          <img
+            data-rules-game-cover
+            src="https://cf.geekdo-images.com/aPSHJO0d0XOpQR5X-wJonw__original/img/AkbtYVc6xXJF3c9EUrakklcclKw=/0x0/filters:format(png)/pic6973671.png"
+            alt="Portada de Azul"
+          />
+        </div>
+        <div class="rules-game-summary__copy">
+          <p class="eyebrow">Resumen de reglas</p>
+          <h1 data-rules-game-title>Azul</h1>
+          <div class="rules-game-summary__meta" aria-label="Datos principales">
+            <span><strong data-rules-game-players>2–4</strong> jugadores</span>
+            <span><strong data-rules-game-time>30–45 min</strong> de juego</span>
+          </div>
+          <p class="rules-game-summary__description" data-rules-game-summary data-rules-summary-override>Elegí azulejos · Completá patrones · Decorá el palacio</p>
+        </div>
+      </header>
+
+      <div class="rules-layout">
+        <nav class="rules-toc" aria-label="Índice de reglas">
+          <strong>Contenido</strong>
+          <a href="#objetivo">Objetivo</a><a href="#preparacion">Preparación</a><a href="#ronda">La ronda</a>
+          <a href="#oferta">Oferta de fábrica</a><a href="#pared">Alicatado de la pared</a>
+          <a href="#puntuacion">Puntuación</a><a href="#siguiente-ronda">Siguiente ronda</a>
+          <a href="#fin-juego">Final del juego</a><a href="#variante">Variante</a>
+        </nav>
+
+        <main class="rules-content" id="contenido">
+          <section class="rules-section" id="objetivo">
+            <h2>Objetivo de la partida</h2>
+            <div class="rules-grid">
+              <article class="rule-card rule-card--full"><h3>Decorá la pared y obtené la mayor puntuación</h3></article>
+            </div>
+          </section>
+
+          <section class="rules-section" id="preparacion">
+            <h2>Preparación</h2>
+            <div class="rules-grid rules-setup-grid">
+              <article class="rule-card rule-card--step-inline"><span class="rule-step">1</span><h4>Entregá los tableros</h4></article>
+              <article class="rule-card rule-card--step-inline"><span class="rule-step">2</span><h4>Colocá el marcador de puntuación en el <strong>0</strong></h4></article>
+              <article class="rule-card rule-card--step-inline rule-card--with-info">
+                <span class="rule-step">3</span>
+                <h4>Colocá las fábricas</h4>
+                <button class="rule-info-button" type="button" aria-label="Más información sobre la cantidad de fábricas" aria-expanded="false" aria-controls="fabricas-info">
+                  <span class="material-symbols-outlined" aria-hidden="true">info</span>
+                </button>
+                <div class="rule-info-tooltip" id="fabricas-info" role="tooltip" hidden>
+                  <p>Formá un círculo:<br>2 jugadores: 5 expositores<br>3 jugadores: 7 expositores<br>4 jugadores: 9 expositores</p>
+                </div>
+              </article>
+              <article class="rule-card rule-card--step-inline"><span class="rule-step">4</span><h4>Poné los azulejos en la bolsa</h4></article>
+              <article class="rule-card rule-card--step-inline rule-card--with-info">
+                <span class="rule-step">5</span>
+                <h4>Llená las fábricas</h4>
+                <button class="rule-info-button" type="button" aria-label="Más información sobre cómo llenar las fábricas" aria-expanded="false" aria-controls="llenar-fabricas-info">
+                  <span class="material-symbols-outlined" aria-hidden="true">info</span>
+                </button>
+                <div class="rule-info-tooltip" id="llenar-fabricas-info" role="tooltip" hidden>
+                  <p>El jugador inicial coloca <strong>4 azulejos al azar</strong> en cada fábrica.</p>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section class="rules-section" id="ronda">
+            <h2>Las tres fases de una ronda</h2>
+            <div class="rules-grid">
+              <article class="rule-card rule-card--step-inline"><span class="rule-step">1</span><h3>Oferta de fábrica</h3></article>
+              <article class="rule-card rule-card--step-inline"><span class="rule-step">2</span><h3>Alicatado de la pared</h3></article>
+              <article class="rule-card rule-card--step-inline"><span class="rule-step">3</span><h3>Siguiente ronda</h3></article>
+            </div>
+          </section>
+
+          <details class="rules-section rules-section--collapsible" id="oferta" open>
+            <summary><span><strong>Oferta de fábrica</strong><small>Cómo seleccionar y colocar azulejos.</small></span></summary>
+            <div class="rules-section__body">
+              <h3 style="margin-top: 4px; margin-bottom: 8px;">Tomá un color</h3>
+              <div class="rules-grid rules-grid--two">
+                <article class="rule-card"><span class="rule-kicker">Desde una fábrica</span><p>Elegí una fábrica y tomá <strong>todos los azulejos de un mismo color</strong>. Empujá todos los demás al centro de la mesa.</p></article>
+                <article class="rule-card"><span class="rule-kicker">Desde el centro</span><p>Tomá <strong>todos los azulejos de un mismo color</strong>. La primera persona que elija del centro también toma el marcador inicial y lo pone en el primer espacio libre de su línea del suelo.</p></article>
+              </div>
+
+              <section class="rule-disclosure" aria-label="Colocar la selección en una línea de patrón">
+                <div class="rule-illustration-layout">
+                  <ul>
+                    <li>Colocá <strong>toda la selección en una sola línea</strong>, de derecha a izquierda. No podés dividirla entre varias líneas.</li>
+                    <li>Las líneas solo pueden contener <strong>un color</strong>.</li>
+                    <li>No podés usar una línea si la fila correspondiente de la pared ya contiene un azulejo de ese color.</li>
+                    <li>Todo exceso va a la línea del suelo, de izquierda a derecha.</li>
+                    <li>Está permitido colocar toda la selección directamente en la línea del suelo, aunque exista una línea de patrón válida.</li>
+                    <li>Si no quedan espacios, guardá los azulejos sobrantes en la tapa de la caja. No ocupan casillas adicionales ni generan más penalización.</li>
+                  </ul>
+                  <figure class="rule-illustration">
+                    <img src="./images/linea-patron-derecha-izquierda.png" width="1678" height="937" loading="lazy" alt="Dos azulejos naranjas se colocan en una línea de patrón empezando por el espacio de la derecha" />
+                  </figure>
+                </div>
+              </section>
+            </div>
+          </details>
+
+          <details class="rules-section rules-section--collapsible" id="pared" open>
+            <summary><span><strong>Alicatado de la pared</strong><small>Resolución de líneas completas y penalización del suelo.</small></span></summary>
+            <div class="rules-section__body">
+              <div class="rule-illustration-layout rule-illustration-layout--balanced">
+                <ol>
+                  <li>Revisá las líneas de patrón <strong>de arriba hacia abajo</strong>.</li>
+                  <li>Por cada línea completa, mové el azulejo situado más a la derecha al espacio de su color en la fila correspondiente de la pared.</li>
+                  <li>Puntuá el azulejo recién colocado inmediatamente.</li>
+                  <li>Descartá a la tapa de la caja los demás azulejos de esa línea.</li>
+                  <li>Dejá intactas las líneas incompletas: sus azulejos permanecen para la ronda siguiente.</li>
+                </ol>
+                <figure class="rule-illustration">
+                  <img src="./images/alicatado-pared.png" width="1774" height="887" loading="lazy" alt="Los azulejos situados más a la derecha de dos líneas completas se trasladan a los espacios de su color en la pared; los azulejos restantes están marcados para descartar" />
+                </figure>
+              </div>
+              <div class="rule-callout rule-callout--danger"><strong>Al terminar:</strong> perdé los puntos impresos sobre los espacios ocupados de la línea del suelo. Nunca podés bajar de 0 puntos.</div>
+              <p>Después de aplicar la penalización, descartá a la tapa todos los azulejos del suelo. Conservá frente a vos el marcador inicial: serás quien comience la próxima ronda.</p>
+            </div>
+          </details>
+
+          <details class="rules-section rules-section--collapsible" id="puntuacion" open>
+            <summary><span><strong>Puntuación al colocar un azulejo</strong><small>Contá las conexiones horizontales y verticales.</small></span></summary>
+            <div class="rules-section__body">
+              <div class="rules-grid">
+                <article class="rule-card"><span class="rule-kicker">Sin vecinos</span><h3>1 punto</h3><p>Si no tiene ningún azulejo adyacente en horizontal ni vertical, ganá 1 punto.</p></article>
+                <article class="rule-card"><span class="rule-kicker">Una dirección</span><h3>Contá la línea conectada</h3><p>Si solo forma un grupo horizontal o vertical, ganá 1 punto por cada azulejo conectado de esa línea, incluido el recién colocado.</p></article>
+                <article class="rule-card"><span class="rule-kicker">Dos direcciones</span><h3>Sumá ambas líneas</h3><p>Si conecta tanto en horizontal como en vertical, puntuá la línea horizontal completa y luego la vertical completa. El nuevo azulejo cuenta en las dos.</p></article>
+              </div>
+              <div class="rule-callout"><strong>Solo adyacencia ortogonal:</strong> las diagonales no conectan azulejos ni dan puntos.</div>
+            </div>
+          </details>
+
+          <details class="rules-section rules-section--collapsible" id="siguiente-ronda">
+            <summary><span><strong>Preparar la siguiente ronda</strong><small>Rellenado de fábricas y reposición de la bolsa.</small></span></summary>
+            <div class="rules-section__body">
+              <p>Si nadie completó una fila horizontal de cinco azulejos, la persona con el marcador inicial llena otra vez cada fábrica con cuatro azulejos de la bolsa.</p>
+              <ul>
+                <li>Si la bolsa se vacía, meté en ella todos los azulejos acumulados en la tapa y seguí llenando.</li>
+                <li>Si tampoco alcanzan los descartes, comenzá la ronda aunque algunas fábricas no tengan cuatro azulejos.</li>
+                <li>Colocá el marcador inicial nuevamente en el centro de la mesa.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="rules-section rules-section--collapsible" id="fin-juego" open>
+            <summary><span><strong>Final del juego</strong><small>Bonificaciones, victoria y desempate.</small></span></summary>
+            <div class="rules-section__body">
+              <div class="rule-final-layout">
+                <p>La partida termina después de la fase de Alicatado de la Pared en la que alguien completa al menos una fila horizontal de cinco azulejos.</p>
+                <figure class="rule-illustration rule-illustration--end-row">
+                  <img src="images/fila-horizontal-completa.png" alt="Fila horizontal completa resaltada con un marco rojo entre dos filas de azulejos atenuadas">
+                </figure>
+              </div>
+              <div class="rules-grid">
+                <article class="rule-card"><span class="rule-kicker">Filas</span><h3>+2 puntos</h3><p>Por cada fila horizontal completa de cinco azulejos.</p></article>
+                <article class="rule-card"><span class="rule-kicker">Columnas</span><h3>+7 puntos</h3><p>Por cada columna vertical completa de cinco azulejos.</p></article>
+                <article class="rule-card"><span class="rule-kicker">Colores</span><h3>+10 puntos</h3><p>Por cada color del que hayas colocado sus cinco azulejos en la pared.</p></article>
+              </div>
+              <div class="rule-callout rule-callout--success"><strong>Victoria:</strong> gana quien tenga más puntos. En caso de empate, gana quien tenga más filas horizontales completas; si persiste, comparten la victoria.</div>
+            </div>
+          </details>
+
+          <details class="rules-section rules-section--collapsible" id="variante">
+            <summary><span><strong>Variante del muro gris</strong><small>Una pared libre con una restricción adicional.</small></span></summary>
+            <div class="rules-section__body">
+              <p>Usá el lado gris de los tableros. Todas las reglas son iguales, excepto que al trasladar un azulejo desde una línea de patrón podés colocarlo en cualquier espacio de la fila correspondiente.</p>
+              <div class="rule-callout"><strong>Restricción:</strong> un mismo color no puede aparecer más de una vez en ninguna fila ni en ninguna columna de la pared.</div>
+            </div>
+          </details>
+        </main>
+      </div>
+    </div>
+    <script src="../../data/games-data.js"></script>
+    <script src="../rules-page.js?v=20260723-1"></script>
+  </body>
+</html>
