@@ -235,7 +235,7 @@
 }
 .rule-card--with-info { position: relative; padding-right: 50px; }
 .rule-card h3 { margin: 6px 0 10px; font-family: var(--font-serif); font-size: 1.4rem; }
-.rule-card p, .rule-callout p { margin-bottom: 0; }
+.rule-card p, .rule-callout p { margin: 0; }
 .rule-step { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 10px; color: white; background: var(--accent); font-weight: 800; }
 .rule-kicker { color: var(--accent); font-size: .8rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
 .rule-info-button {
@@ -340,8 +340,21 @@
   padding: 0;
 }
 .rule-illustration--end-row img {
-  height: auto;
+  height: 80px;
   max-height: none;
+}
+.rule-final-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 10fr) minmax(150px, 2fr);
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+.rule-final-layout > p { margin: 0; }
+.rule-final-layout .rule-illustration--end-row {
+  width: 100%;
+  max-width: none;
+  margin: 0;
 }
 .rules-content ul, .rules-content ol { padding-left: 22px; }
 .rules-content li + li { margin-top: 8px; }
@@ -579,6 +592,11 @@
   .rule-illustration-layout > ul,
   .rule-illustration-layout > ol { margin-top: 0; }
   .rule-illustration-layout > .rule-illustration { order: -1; }
+  .rule-final-layout { grid-template-columns: 1fr; }
+  .rule-final-layout .rule-illustration--end-row {
+    max-width: 300px;
+    margin-inline: auto;
+  }
   .quick-action-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .quick-combat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .quick-reference__golden-rules ul { grid-template-columns: 1fr; }
