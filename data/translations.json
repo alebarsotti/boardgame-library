@@ -1,6 +1,11 @@
 {
   "version": 1,
   "entries": {
+    "161970:summary": {"sourceHash": "e0f67cab662f9fe3a8669ffb2a82693a18253f532412b4afe23030b887dafd17", "es": "Juego de deducción y colocación de trabajadores que se desarrolla en seis rondas. Los jugadores eligen el orden de turno, programan acciones y experimentan con ingredientes mediante una aplicación que genera reglas de alquimia distintas para cada partida."},
+    "271320:summary": {"sourceHash": "6c2a2827af2ff8732b1d3ab894aa866352c252f57933086f7ce23c9742cfa08f", "es": "Juego ambientado en la Borgoña de la Francia medieval. Cada jugador dirige un pequeño principado y busca desarrollarlo construyendo asentamientos y castillos, comerciando por el río, explotando minas de plata y aprovechando el conocimiento de los viajeros."},
+    "420087:summary": {"sourceHash": "1b23c82b98312b67ebdaa093aa0de75d447a9dbb30e0482eff86d3e9a252e8b6", "es": "Juego de cartas de tentar a la suerte en el que hay una carta con el número 1, dos con el 2 y así sucesivamente, además de cartas especiales. Se puede asegurar la puntuación antes de pasarse o arriesgar para revelar siete números distintos y obtener una bonificación."},
+    "376472:summary": {"sourceHash": "2f38ebcf73e6ff11686cf0f797aae01e10553f9ed21156a0453855cc2e00a12d", "es": "Juego cooperativo para tres a cinco personas en el que una tripulación debe superar tareas y desafíos espaciales. Cada jugador conoce o posee solo una parte de la solución, por lo que el equipo debe comunicar la información y combinar sus recursos."},
+    "425433:summary": {"sourceHash": "e4773b1544f1fcb19fcbf12a54fe2569924ab95efbf804e24573a9e7311ddae9", "es": "Juego cooperativo de cartas inspirado en las salas de escape. Los jugadores exploran escenas, combinan objetos y resuelven acertijos con ayuda de una aplicación que ofrece pistas, verifica códigos y controla el tiempo. Incluye tres escenarios de dificultad creciente."},
     "224182:summary": {"sourceHash": "c59df7b1795e40375e8fc0c650497f02e9080bbfe03ff2c2d7488bafef79eda2", "es": "Suplemento de Star Realms formado por veinte cartas de escenario. Antes de jugar se revela una carta al azar, que modifica una o más reglas o introduce nuevas reglas para esa partida."},
     "158957:summary": {"sourceHash": "d14f1a20559b70c6b040d20f710949a0407cf14ad4bfe7d6e08ada471a9d7c16", "es": "Conjunto de expansión para Star Realms con dos desafíos en solitario, dos cooperativos para enfrentar a los Piratas de la Estrella Oscura o a la Bestia Némesis, dos naves Crucero Mercenarias y doce cartas de Gambito con habilidades especiales."},
     "202564:summary": {"sourceHash": "529493c527bf8c064f004a389d13af06a96b6d36d63d70fc2c222bde02656931", "es": "Juego de velocidad en el que los jugadores trabajan en una panadería y deben ordenar fichas de galletas para reproducir los pedidos de nueve unidades. Al terminar, tocan la campana; gana quien consigue cuatro pedidos, pero dos errores eliminan de la partida."},
@@ -10,7 +15,7 @@
     "284083:summary": {"sourceHash": "066c39204b55b2c28c0cb6814c4bb033814210ca519d375745a0d5663a5c7bd0", "es": "Juego cooperativo de bazas en el que los jugadores son astronautas en una aventura espacial de cincuenta misiones. Para superar los desafíos se deben cumplir las tareas individuales de todos, por lo que la comunicación es esencial."},
     "324856:summary": {"sourceHash": "da56ad84a66ecb666bbae6ab5fc04b07b6a84670cce61f1ba066207de46aa56f", "es": "Juego cooperativo de cartas sobre una expedición a las profundidades marinas en busca del continente perdido de Mu. El éxito depende de la precisión, el trabajo en equipo y un sentido compartido del momento oportuno."},
     "458805:summary": {"sourceHash": "36091eaf42be7502a020e7612d5a25ead07bc29fdc1f263d427aee39d095b3b4", "es": "Aventura corta de Unlock! de 30 a 45 minutos en formato pequeño. Es un juego cooperativo de cartas inspirado en las salas de escape: se explora una habitación, se buscan objetos —algunos ocultos— y se resuelven acertijos."},
-    "464697:summary": {"sourceHash": "ab65e984ba4572ec25670f14ea6d0be4bbee44263c1fd3d5bf8bcec4d0b4d1ba", "es": "Miniaventura de 30 cartas de la serie Unlock!, juegos de escape con cartas. Requiere la aplicación gratuita complementaria para jugar."},
+    "464697:summary": {"sourceHash": "9b96e264b06064a95206f7e0d5ddbaa45a8dc601ca994ef583fcb65357a8c93f", "es": "Miniaventura de 30 cartas de la serie Unlock!, juegos de escape con cartas. Requiere la aplicación gratuita complementaria para jugar."},
     "323242:summary": {"sourceHash": "18c26d9550f618651ad13328ec9192d7c9dda2f4dd4a0f565a0ee9312054edad", "es": "Expansión temática de Halloween para Virus! con murciélagos, monstruos y nuevas cartas para el mazo. Añade tratamientos como ladrones de color, experimentos fallidos, trasplantes alienígenas y truco o trato, además de un órgano mutante."},
     "457914:summary": {"sourceHash": "6281e78ff246a89a1510f7aeb6c1ef6ec0e67af7a9fefe8f45e4da173611a6ac", "es": "Edición independiente por el 15.º aniversario de Fantasma Blitz. Incluye una torta de cumpleaños y dos juegos: el Fantasma Blitz original y Fantasma Blitz 2; también sirve como una gran ampliación si ya se poseen."},
     "371942:summary": {"sourceHash": "9adb5da6f5b2d49ab12bbe613881486b62ccd904a8eeac8c2b976ba19ef991c3", "es": "Juego en el que los jugadores controlan clanes que buscan sumar más puntos de victoria. Deben ganar influencia en la corte, gestionar recursos con audacia y colocar trabajadores en el lugar y momento adecuados."},
@@ -40,7 +45,7 @@
     "438010:summary": {"sourceHash": "b772c632414aa0ab197fd1e981d1775f1645be9e1da59cc676283e94f46abfb5", "es": "Juego de losetas en el que los jugadores avanzan hacia la salida colocando las piezas unas encima de otras. Hay que memorizar la ruta de escape y cooperar para atravesar el edificio; al final se revela el camino y se descubre quién sobrevivió para puntuar."},
     "366318:summary": {"sourceHash": "593d220ac1d4546c3f418ed59defafa9c75b7ef869a6dadef357bcb4e072397e", "es": "Sherlock Holmes necesita ayuda: lo acusan de asesinar al escritor Ignatius Loyde y se ha ocultado. De uno a cuatro jugadores ayudan al Dr. Watson a reunir pruebas, seguir pistas y resolver el caso, incluido el papel de Moriarty."},
     "383479:summary": {"sourceHash": "a9bed3f4ac7532e6ee101e2fd4d51980d9278e09648fd319eeef3ffebf866445", "es": "Juego EXIT en el que los jugadores se dividen en dos equipos para escapar de prisión simultáneamente. Solo una cooperación intensa permite salir a tiempo y sin ser vistos."},
-    "391163:summary": {"sourceHash": "590d8a4c249dce02d44f86a66c7a76b730c6d72d3608b52c54449e6cb7bbaf01", "es": "Juego en el que los jugadores compiten por reunir los árboles más valiosos y atraer especies para crear un hábitat equilibrado de flora y fauna. Es el primer título de la línea Lookout Greenline, producido en papel certificado FSC y sin plástico."},
+    "391163:summary": {"sourceHash": "5394d10d529080c9689ad4bbb6b7647b4442021b2b716525d370a939219f672b", "es": "Juego en el que los jugadores compiten por reunir árboles valiosos y atraer especies para crear un hábitat equilibrado de flora y fauna. La partida termina inmediatamente al aparecer la tercera carta de invierno; gana quien obtiene más puntos con su bosque."},
     "291457:summary": {"sourceHash": "3df0351c512125490e735bb9db02247be6b8b1eb5777878ee06379107ecb3456", "es": "Versión de Gloomhaven orientada a un público más casual. Reemplaza las losetas de mapa por el libro de escenarios ilustrado, simplifica las reglas e incorpora un tutorial de cinco escenarios para introducir gradualmente la experiencia."},
     "357888:summary": {"sourceHash": "0eec6497cfd981556d3aadb3c74068367b5f7f8970bb9d184bd7b9d4615a0d41", "es": "Expansión de 54 cartas para Happy Little Dinosaurs con citas desastrosas: se puede esquivar la temida zona de amistad, encontrar un enorme pez gato o salir con un dinosaurio que dice te amo demasiado pronto."},
     "395822:summary": {"sourceHash": "48caf1e5c7572ce7313d3eb175357b72cac64e82e2109e2b712a7529032b11a0", "es": "Expansión de Happy Little Dinosaurs que incorpora peligros. Al añadir ciertas cartas de desastre al área de desastre se puede colocar una ficha de peligro en la ruta de escape de otro jugador; al alcanzarla, debe revelar una carta del mazo de peligros."},
@@ -325,11 +330,11 @@
       "es": "Juego de estrategia, combinación y desarrollo."
     },
     "270844:summary": {
-      "sourceHash": "bb514e7af17d70b5e8aab57f76ad7bfc65ef0609c45293cec494d71e8a5b14da",
+      "sourceHash": "959cf2c7587630334f449fcee0059beaf36875df36a9f6a1f1bad8d392d5ce8f",
       "es": "Juego de cartas independiente del universo Imperial Settlers. Los jugadores lideran una de tres facciones del lejano norte —escoceses, inuit o vikingos— e intentan convertirla en el mejor imperio del mundo."
     },
     "28023:summary": {
-      "sourceHash": "808a640c871be1c4747609d54ca892820c3b2b51897dfba0641845d1f74cdb44",
+      "sourceHash": "22aa0bace114e2e3ce13e0046a875295d227e22e1f168091be18e80a42c42220",
       "es": "Juego de carreras alrededor de Jamaica. La partida termina cuando un barco completa una vuelta a la isla; entonces se suma el oro según la posición, los tesoros hallados, los robos a rivales y el oro cargado durante la carrera."
     },
     "223953:summary": {
@@ -381,7 +386,7 @@
       "es": "Suplemento para Munchkin que requiere el juego original, aunque también puede mezclarse con Munchkin Fu o Munchkin Bites, o combinarse todo para una partida de proporciones delirantes."
     },
     "367220:summary": {
-      "sourceHash": "5b1e0a6220f950d3ea8068667be173902a899e48dfeb0056bca821e4147e0d6d",
+      "sourceHash": "aadc493fffbe004cd428c4262c10b2bb36efb0f60d5df58fc8e61d02921792ee",
       "es": "Juego de cartas de colección de conjuntos similar al rummy. En cada turno se arma la mano, se pueden jugar cartas por su efecto y se decide si terminar la ronda o dar a los rivales otra oportunidad. La partida termina al llegar a 30, 35 o 40 puntos según la cantidad de jugadores."
     },
     "244522:summary": {
@@ -485,7 +490,7 @@
       "es": "Juego de reglas simples que se aprende en menos de quince minutos. Los jugadores reúnen cartas de vagones para reclamar rutas ferroviarias en Norteamérica, sumando por rutas largas, boletos de destino cumplidos y la ruta continua más extensa."
     },
     "12333:summary": {
-      "sourceHash": "a611ab79534bdfa319faf7e2411b6905330b810a4b1dd7b7bca986cc3a95ea95",
+      "sourceHash": "d8b89633cc2251d405c26b4207c042d6f2a53ca9cb233e4625ed788dc69fffe5",
       "es": "Juego para dos jugadores que simula los cuarenta y cinco años de intriga, prestigio y conflictos ocasionales entre la Unión Soviética y Estados Unidos. La lucha ideológica recorre el mundo desde las ruinas de Europa tras la Segunda Guerra Mundial hasta 1989."
     },
     "294612:summary": {
@@ -505,7 +510,7 @@
       "es": "Serie de aventuras de escape para hasta seis jugadores. En 30 a 45 minutos, el equipo recorre un mazo de treinta cartas, busca pistas, combina objetos y resuelve acertijos. La aplicación gratuita controla el tiempo, ofrece pistas y confirma los códigos correctos."
     },
     "257707:summary": {
-      "sourceHash": "f3ecfa9cc19c8d9f2383c9bd2d6e4caf7ac4d0303d8a62cfd49737c6226e15f4",
+      "sourceHash": "5522940b54cbb75f996e0eaf7499f904204ee1f4989a1e8ccb1c77c9b4650dd4",
       "es": "Miniaventura de Unlock! con 24 cartas —cuatro son informativas y no se usan—. La aventura comienza en la entrada de una cueva, en busca de una estatua de oro."
     },
     "368035:summary": {

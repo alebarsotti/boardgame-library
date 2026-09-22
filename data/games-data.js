@@ -1,24 +1,24 @@
 window.__BGG_LIBRARY_DATA__ = {
   "summary": {
-    "generatedAt": "2026-08-04T23:55:38",
-    "count": 172,
-    "ownCount": 141,
+    "generatedAt": "2026-09-22T00:21:46",
+    "count": 177,
+    "ownCount": 146,
     "prevOwnedCount": 31,
     "recommendations": {
-      "quick": 52,
-      "duo": 81,
-      "teachingFriendly": 94,
-      "heavy": 5
+      "quick": 54,
+      "duo": 83,
+      "teachingFriendly": 96,
+      "heavy": 6
     },
     "translations": {
-      "applied": 172,
-      "missing": 172,
+      "applied": 177,
+      "missing": 177,
       "stale": 0,
       "withoutSource": 0
     },
     "tagTranslations": {
-      "total": 187,
-      "translated": 187,
+      "total": 190,
+      "translated": 190,
       "missing": 0
     }
   },
@@ -49,6 +49,7 @@ window.__BGG_LIBRARY_DATA__ = {
     "Command Cards": "Cartas de mando",
     "Commodity Speculation": "Especulación de mercancías",
     "Connections": "Conexiones",
+    "Constrained Bidding": "Pujas restringidas",
     "Contracts": "Contratos",
     "Critical Hits and Failures": "Éxitos y fallos críticos",
     "Deck Construction": "Construcción de mazo",
@@ -74,6 +75,7 @@ window.__BGG_LIBRARY_DATA__ = {
     "Highest-Lowest Scoring": "Puntuación del mayor y menor valor",
     "Hot Potato": "Papa caliente",
     "Income": "Ingresos",
+    "Induction": "Inducción",
     "Increase Value of Unchosen Resources": "Aumento de valor de recursos no elegidos",
     "Industry / Manufacturing": "Industria / Manufactura",
     "Interrupts": "Interrupciones",
@@ -87,6 +89,7 @@ window.__BGG_LIBRARY_DATA__ = {
     "Map Addition": "Adición de mapa",
     "Map Reduction": "Reducción de mapa",
     "Market": "Mercado",
+    "Matching": "Emparejamiento",
     "Math": "Matemáticas",
     "Medical": "Médico",
     "Medieval": "Medieval",
@@ -236,7 +239,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 30,
       "minPlayTime": 30,
       "maxPlayTime": 30,
-      "averageRating": 8.08,
+      "averageRating": 8.07,
       "bayesAverage": 7.95,
       "rank": 24,
       "avgWeight": 2.23,
@@ -334,9 +337,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "minPlayTime": 270,
       "maxPlayTime": 270,
       "averageRating": 7.25,
-      "bayesAverage": 5.91,
-      "rank": 3805,
-      "avgWeight": 1.7,
+      "bayesAverage": 5.92,
+      "rank": 3776,
+      "avgWeight": 1.67,
       "weightBand": "light",
       "timeBand": "epic",
       "playerBand": "small-group",
@@ -412,15 +415,15 @@ window.__BGG_LIBRARY_DATA__ = {
       ],
       "age": 10,
       "ageText": "10+",
-      "playingTime": 75,
+      "playingTime": 200,
       "minPlayTime": 75,
-      "maxPlayTime": 75,
+      "maxPlayTime": 200,
       "averageRating": 5.89,
       "bayesAverage": 5.59,
-      "rank": 9918,
+      "rank": 9974,
       "avgWeight": 2.05,
       "weightBand": "medium-light",
-      "timeBand": "extended",
+      "timeBand": "epic",
       "playerBand": "small-group",
       "languageDependence": "Unplayable in another language",
       "languageKey": "extreme",
@@ -464,9 +467,10 @@ window.__BGG_LIBRARY_DATA__ = {
       "tags": [
         "owned",
         "solo",
-        "great-at-2"
+        "great-at-2",
+        "long"
       ],
-      "searchText": "adventure games: la isla volcánica adventure games: the volcanic island spanish edition devir; kosmos spanish explore places, combine items, and experience stories in adventure games, a series of co-operative games from german publisher kosmos. in each of these titles, players are presented with a mysterious story that they must unravel over the course of play. working together, players explore common areas, talk to people, look for clues, and combine various items to reveal the secret of the story. depending on what decisions the players make, the course of history changes and there is no going back! juego cooperativo de misterio en el que los jugadores exploran lugares, hablan con personajes, buscan pistas y combinan objetos para revelar una historia. las decisiones cambian el curso de los acontecimientos y no se puede volver atrás. explore places, combine items, and experience stories in adventure games, a series of co-operative games from german publisher kosmos. in each of these titles, players are presented with a mysterious story that they must unravel over the course of play. working together, players explore common areas, talk to people, look for clues, and combine various items to reveal the secret of the story. depending on what decisions the players make, the course of history changes and there is no going back! unlike the co-operative exit: the game series, titles in this series focus on the telling and discovery of the story with no time pressure. that said, many different paths can be experienced during play, with more than one correct resolution to the story waiting to be discovered. each title consists of three chapters, each taking about 75 minutes to play. nothing is destroyed, so the games can be played multiple times. in the volcanic island, you slip into the roles of four students on a volcanic island who face mysterious events. like a thriller, you need to solve puzzles, make decisions, track traces, and analyze and use objects. you will experience a story together. gameplay is variable and different in each group. admin note: the first edition of the german edition of the volcanic island contains an error for which kosmos has released a pdf correction that you'll find in the files. adventure puzzle cooperative game narrative choice / paragraph owned solo great-at-2 1 2 3 4 2"
+      "searchText": "adventure games: la isla volcánica adventure games: the volcanic island spanish edition devir; kosmos spanish explore places, combine items, and experience stories in adventure games, a series of co-operative games from german publisher kosmos. in each of these titles, players are presented with a mysterious story that they must unravel over the course of play. working together, players explore common areas, talk to people, look for clues, and combine various items to reveal the secret of the story. depending on what decisions the players make, the course of history changes and there is no going back! juego cooperativo de misterio en el que los jugadores exploran lugares, hablan con personajes, buscan pistas y combinan objetos para revelar una historia. las decisiones cambian el curso de los acontecimientos y no se puede volver atrás. explore places, combine items, and experience stories in adventure games, a series of co-operative games from german publisher kosmos. in each of these titles, players are presented with a mysterious story that they must unravel over the course of play. working together, players explore common areas, talk to people, look for clues, and combine various items to reveal the secret of the story. depending on what decisions the players make, the course of history changes and there is no going back! unlike the co-operative exit: the game series, titles in this series focus on the telling and discovery of the story with no time pressure. that said, many different paths can be experienced during play, with more than one correct resolution to the story waiting to be discovered. each title consists of three chapters, each taking about 75 minutes to play. nothing is destroyed, so the games can be played multiple times. in the volcanic island, you slip into the roles of four students on a volcanic island who face mysterious events. like a thriller, you need to solve puzzles, make decisions, track traces, and analyze and use objects. you will experience a story together. gameplay is variable and different in each group. admin note: the first edition of the german edition of the volcanic island contains an error for which kosmos has released a pdf correction that you'll find in the files. adventure puzzle cooperative game narrative choice / paragraph owned solo great-at-2 long 1 2 3 4 2"
     },
     {
       "id": 267813,
@@ -497,7 +501,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 90,
       "averageRating": 6.91,
       "bayesAverage": 6.25,
-      "rank": 2066,
+      "rank": 2073,
       "avgWeight": 1.66,
       "weightBand": "light",
       "timeBand": "extended",
@@ -578,9 +582,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 75,
       "minPlayTime": 75,
       "maxPlayTime": 75,
-      "averageRating": 6.54,
+      "averageRating": 6.53,
       "bayesAverage": 5.95,
-      "rank": 3492,
+      "rank": 3504,
       "avgWeight": 1.93,
       "weightBand": "medium-light",
       "timeBand": "extended",
@@ -630,6 +634,93 @@ window.__BGG_LIBRARY_DATA__ = {
       "searchText": "adventure games: monocromo s.a. adventure games: monochrome inc. spanish edition devir spanish explore places, combine items, and experience stories in adventure games, a series of co-operative games from german publisher kosmos. in each of these titles, players are presented with a mysterious story that they must unravel over the course of play. working together, players explore common areas, talk to people, look for clues, and combine various items to reveal the secret of the story. depending on what decisions the players make, the course of history changes and there is no going back! juego cooperativo de misterio en el que los jugadores exploran lugares, hablan con personajes, buscan pistas y combinan objetos para revelar una historia. las decisiones cambian el curso de los acontecimientos y no se puede volver atrás. explore places, combine items, and experience stories in adventure games, a series of co-operative games from german publisher kosmos. in each of these titles, players are presented with a mysterious story that they must unravel over the course of play. working together, players explore common areas, talk to people, look for clues, and combine various items to reveal the secret of the story. depending on what decisions the players make, the course of history changes and there is no going back! unlike the co-operative exit: the game series, titles in this series focus on the telling and discovery of the story with no time pressure. that said, many different paths can be experienced during play, with more than one correct resolution to the story waiting to be discovered. each title consists of three chapters, each taking about 75 minutes to play. nothing is destroyed, so the games can be played multiple times. in monochrome inc., players have been instructed to break into the research building named in the game's title, and once they get inside this tower's mirrored windows, they are left on their own. what they find there, what conclusions they draw from these items, and how this nerve-wracking story ends is entirely in their hands. only by co-ordinating their team will they avoid potential pitfalls, carry out their mission, and solve the mystery of this building. cooperative game narrative choice / paragraph owned solo great-at-2 light 1 2 3 4 2"
     },
     {
+      "id": 161970,
+      "collId": 149780017,
+      "name": "Alquimistas",
+      "originalName": "Alchemists",
+      "nameOverrides": {
+        "es": "",
+        "en": ""
+      },
+      "type": "thing",
+      "yearPublished": 2015,
+      "minPlayers": 2,
+      "maxPlayers": 4,
+      "recommendedPlayers": [
+        2,
+        3,
+        4
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "age": 12,
+      "ageText": "12+",
+      "playingTime": 120,
+      "minPlayTime": 120,
+      "maxPlayTime": 120,
+      "averageRating": 7.64,
+      "bayesAverage": 7.39,
+      "rank": 179,
+      "avgWeight": 3.92,
+      "weightBand": "heavy",
+      "timeBand": "extended",
+      "playerBand": "small-group",
+      "languageDependence": "Moderate in-game text - needs crib sheet or paste ups",
+      "languageKey": "moderate",
+      "quantity": 1,
+      "own": true,
+      "prevOwned": false,
+      "forTrade": false,
+      "wantToPlay": false,
+      "wantToBuy": false,
+      "wishlist": false,
+      "acquisitionDate": "2026-09-07",
+      "versionNickname": "Spanish edition",
+      "versionPublishers": "Devir",
+      "versionLanguages": "Spanish",
+      "notes": "",
+      "summary": {
+        "en": "The game is played in six rounds. At the beginning of the round, players choose their play order. Those who choose to play later get more rewards. Players declare all their actions by placing cubes on the various action spaces, then each action space is evaluated in order. Players gain knowledge by mixing ingredients and testing the results using a smartphone app (iOS, Android, and also Windows) that randomizes the rules of alchemy for each new game....",
+        "es": "Juego de deducción y colocación de trabajadores que se desarrolla en seis rondas. Los jugadores eligen el orden de turno, programan acciones y experimentan con ingredientes mediante una aplicación que genera reglas de alquimia distintas para cada partida."
+      },
+      "description": {
+        "en": "In Alchemists, two to four budding alchemists compete to discover the secrets of their mystical art. Points can be earned in various ways, but most points are earned by publishing theories – correct theories, that is — and therein lies the problem.\n\nThe game is played in six rounds. At the beginning of the round, players choose their play order. Those who choose to play later get more rewards. Players declare all their actions by placing cubes on the various action spaces, then each action space is evaluated in order. Players gain knowledge by mixing ingredients and testing the results using a smartphone app (iOS, Android, and also Windows) that randomizes the rules of alchemy for each new game. And if the alchemists are longing for something even more special, they can always buy magical artifacts to get an extra push. There are 9 of them (different for each game) and they are not only very powerful, but also very expensive. But money means nothing, when there's academic pride at stake! And the possession of these artifacts will definitely earn you some reputation too. Players can also earn money by selling potions of questionable quality to adventurers, but money is just a means to an end. The alchemists don't want riches, after all. They want respect, and respect usually comes from publishing theories.\n\nDuring play, players' reputations will go up and down. After six rounds and a final exhibition, reputation will be converted into points. Points will also be scored for artifacts and grants. Then the secrets of alchemy are revealed and players score points or lose points based on whether their theories were correct. Whoever has the most points at the end of the game wins.\n\nFlavor text: Mandrake root and scorpion tail; spongy mushroom and warty toad — these are the foundations of the alchemist's livelihood, science, and art.\n\nBut what arcane secrets do these strange ingredients hide? Now it is time to find out. Mix them into potions and drink them to determine their effects — or play it safe and test the concoction on a helpful assistant! Gain riches selling potions to wandering adventurers and invest these riches in powerful artifacts. As your knowledge grows, so will your reputation, as you publish your theories for all to see. Knowledge, wealth, and fame can all be found in the murky depths of the alchemist's cauldron.",
+        "es": ""
+      },
+      "categories": [
+        "Deduction",
+        "Fantasy",
+        "Puzzle"
+      ],
+      "mechanics": [
+        "Action Drafting",
+        "Constrained Bidding",
+        "Deduction",
+        "End Game Bonuses",
+        "Events",
+        "Hand Management",
+        "Open Drafting",
+        "Turn Order: Progressive",
+        "Worker Placement"
+      ],
+      "bggItemType": "boardgame",
+      "dependencyType": "",
+      "requiresGameId": null,
+      "requiresGameName": "",
+      "expansionIds": [],
+      "bggUrl": "https://boardgamegeek.com/boardgame/161970",
+      "thumbnailUrl": "https://cf.geekdo-images.com/ztNshEv3Fsm46HCJaEOFPw__small/img/-a0oJ_E49V_7PDW78W7KIyS3rF8=/fit-in/200x150/filters:strip_icc()/pic2241156.png",
+      "imageUrl": "https://cf.geekdo-images.com/ztNshEv3Fsm46HCJaEOFPw__original/img/SP4ItZ27dLweUPbz_bF7C-P7GtA=/0x0/filters:format(png)/pic2241156.png",
+      "imageHint": "Alquimistas (2015)",
+      "tags": [
+        "owned",
+        "great-at-2",
+        "heavy"
+      ],
+      "searchText": "alquimistas alchemists spanish edition devir spanish the game is played in six rounds. at the beginning of the round, players choose their play order. those who choose to play later get more rewards. players declare all their actions by placing cubes on the various action spaces, then each action space is evaluated in order. players gain knowledge by mixing ingredients and testing the results using a smartphone app (ios, android, and also windows) that randomizes the rules of alchemy for each new game.... juego de deducción y colocación de trabajadores que se desarrolla en seis rondas. los jugadores eligen el orden de turno, programan acciones y experimentan con ingredientes mediante una aplicación que genera reglas de alquimia distintas para cada partida. in alchemists, two to four budding alchemists compete to discover the secrets of their mystical art. points can be earned in various ways, but most points are earned by publishing theories – correct theories, that is — and therein lies the problem. the game is played in six rounds. at the beginning of the round, players choose their play order. those who choose to play later get more rewards. players declare all their actions by placing cubes on the various action spaces, then each action space is evaluated in order. players gain knowledge by mixing ingredients and testing the results using a smartphone app (ios, android, and also windows) that randomizes the rules of alchemy for each new game. and if the alchemists are longing for something even more special, they can always buy magical artifacts to get an extra push. there are 9 of them (different for each game) and they are not only very powerful, but also very expensive. but money means nothing, when there's academic pride at stake! and the possession of these artifacts will definitely earn you some reputation too. players can also earn money by selling potions of questionable quality to adventurers, but money is just a means to an end. the alchemists don't want riches, after all. they want respect, and respect usually comes from publishing theories. during play, players' reputations will go up and down. after six rounds and a final exhibition, reputation will be converted into points. points will also be scored for artifacts and grants. then the secrets of alchemy are revealed and players score points or lose points based on whether their theories were correct. whoever has the most points at the end of the game wins. flavor text: mandrake root and scorpion tail; spongy mushroom and warty toad — these are the foundations of the alchemist's livelihood, science, and art. but what arcane secrets do these strange ingredients hide? now it is time to find out. mix them into potions and drink them to determine their effects — or play it safe and test the concoction on a helpful assistant! gain riches selling potions to wandering adventurers and invest these riches in powerful artifacts. as your knowledge grows, so will your reputation, as you publish your theories for all to see. knowledge, wealth, and fame can all be found in the murky depths of the alchemist's cauldron. deduction fantasy puzzle action drafting constrained bidding deduction end game bonuses events hand management open drafting turn order: progressive worker placement owned great-at-2 heavy 2 3 4 4"
+    },
+    {
       "id": 155068,
       "collId": 135744746,
       "name": "Arcadia Quest",
@@ -657,8 +748,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 60,
       "averageRating": 7.58,
       "bayesAverage": 7.12,
-      "rank": 372,
-      "avgWeight": 2.54,
+      "rank": 376,
+      "avgWeight": 2.53,
       "weightBand": "medium-light",
       "timeBand": "standard",
       "playerBand": "small-group",
@@ -748,7 +839,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 240,
       "averageRating": 7.24,
       "bayesAverage": 7.02,
-      "rank": 488,
+      "rank": 492,
       "avgWeight": 3.59,
       "weightBand": "medium-heavy",
       "timeBand": "epic",
@@ -926,9 +1017,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 60,
       "minPlayTime": 45,
       "maxPlayTime": 60,
-      "averageRating": 7.42,
-      "bayesAverage": 6.86,
-      "rank": 677,
+      "averageRating": 7.41,
+      "bayesAverage": 6.85,
+      "rank": 687,
       "avgWeight": 2.92,
       "weightBand": "medium-heavy",
       "timeBand": "standard",
@@ -1011,7 +1102,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 45,
       "averageRating": 7.56,
       "bayesAverage": 7.29,
-      "rank": 244,
+      "rank": 246,
       "avgWeight": 2.08,
       "weightBand": "medium-light",
       "timeBand": "standard",
@@ -1094,7 +1185,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 45,
       "averageRating": 7.28,
       "bayesAverage": 6.99,
-      "rank": 514,
+      "rank": 518,
       "avgWeight": 2.01,
       "weightBand": "medium-light",
       "timeBand": "standard",
@@ -1179,7 +1270,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 45,
       "averageRating": 6.68,
       "bayesAverage": 6.03,
-      "rank": 3054,
+      "rank": 3083,
       "avgWeight": 1.8,
       "weightBand": "light",
       "timeBand": "standard",
@@ -1347,7 +1438,8 @@ window.__BGG_LIBRARY_DATA__ = {
         2,
         3,
         4,
-        5
+        5,
+        6
       ],
       "bestPlayers": [
         2,
@@ -1360,7 +1452,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "minPlayTime": 35,
       "maxPlayTime": 35,
       "averageRating": 8.23,
-      "bayesAverage": 6.38,
+      "bayesAverage": 6.39,
       "rank": 0,
       "avgWeight": 1.96,
       "weightBand": "medium-light",
@@ -1417,7 +1509,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "light",
         "teaching-friendly"
       ],
-      "searchText": "carcassonne big box carcassonne big box 7 spanish edition devir; hans im glück spanish inns & cathedrals - these make cities and roads more valuable - but only if they are completed at the end of the game! each player gains a large meeple to allow them to claim features quickly. carcassonne basic game including 11 expansions! the game of the year from 2001 and 11 expansions are combined in this new carcassonne bigbox - the perfect starter set for carcassonne fans and anyone who wants to get to know the best-selling game in all its diversity. caja básica de carcassonne que reúne el juego de 2001 y once expansiones. incluye, entre otros contenidos, posadas y catedrales que aumentan el valor de ciudades y caminos si se completan, además de un meeple grande para cada jugador. carcassonne basic game including 11 expansions! the game of the year from 2001 and 11 expansions are combined in this new carcassonne bigbox - the perfect starter set for carcassonne fans and anyone who wants to get to know the best-selling game in all its diversity. now with a new cardboard inlay. it is perfect for sorting the included expansions more easily and finding them again quickly. the tiles of the new bigbox are still unchanged and compatible with the other games and expansions. you can combine all expansions and with over 180 tiles you can design your own combination of games as you like and experience endless fun. the included expansions: inns & cathedrals - these make cities and roads more valuable - but only if they are completed at the end of the game! each player gains a large meeple to allow them to claim features quickly. traders & builders - traders vie for goods in the cities, while builders allow players to take multiple turns and accelerate the construction of roads and cities. pigs on a farm can increase a farmer's yield. the abbot - the abbot likes to spend his day in the monastery, but he likes to pass the time in gardens in the countryside even more. the river - the river creates varied setups at the beginning of each game, and winds through the landscape in a beautiful blue course. the flying machine - resourceful tinkerers have made their dreams of flight come true, and it's time to test their magnificent flying machines. how long the can fly, and they'll land, is still quite unpredictable. the messengers - the queen sends dispatches to her loyal subjects which, if used skillfully, can be the key to attaining wealth and prestige. the ferries - there are many small lakes with ferries all around carcassonne, giving travelers a great deal more variety. the gold mines - we've struck gold! it's a thrilling time, and everyone wants to secure the precious metals. however, you won't know how much each gold bar is worth until the end of the game. mage & witch - magic spreads across the land! the mage causes cities and other features to flourish, while the witch can curse your opponents' favors. the robbers - robbers are on the prowl, ready to steal points from your high-scoring opponents. the crop circles - mysterious circles appear in the fields, influencing the lives of knights and farmers in bizarre ways. city building medieval territory building area majority / influence map addition tile placement owned great-at-2 group light teaching-friendly 2 3 4 5 2 3 4"
+      "searchText": "carcassonne big box carcassonne big box 7 spanish edition devir; hans im glück spanish inns & cathedrals - these make cities and roads more valuable - but only if they are completed at the end of the game! each player gains a large meeple to allow them to claim features quickly. carcassonne basic game including 11 expansions! the game of the year from 2001 and 11 expansions are combined in this new carcassonne bigbox - the perfect starter set for carcassonne fans and anyone who wants to get to know the best-selling game in all its diversity. caja básica de carcassonne que reúne el juego de 2001 y once expansiones. incluye, entre otros contenidos, posadas y catedrales que aumentan el valor de ciudades y caminos si se completan, además de un meeple grande para cada jugador. carcassonne basic game including 11 expansions! the game of the year from 2001 and 11 expansions are combined in this new carcassonne bigbox - the perfect starter set for carcassonne fans and anyone who wants to get to know the best-selling game in all its diversity. now with a new cardboard inlay. it is perfect for sorting the included expansions more easily and finding them again quickly. the tiles of the new bigbox are still unchanged and compatible with the other games and expansions. you can combine all expansions and with over 180 tiles you can design your own combination of games as you like and experience endless fun. the included expansions: inns & cathedrals - these make cities and roads more valuable - but only if they are completed at the end of the game! each player gains a large meeple to allow them to claim features quickly. traders & builders - traders vie for goods in the cities, while builders allow players to take multiple turns and accelerate the construction of roads and cities. pigs on a farm can increase a farmer's yield. the abbot - the abbot likes to spend his day in the monastery, but he likes to pass the time in gardens in the countryside even more. the river - the river creates varied setups at the beginning of each game, and winds through the landscape in a beautiful blue course. the flying machine - resourceful tinkerers have made their dreams of flight come true, and it's time to test their magnificent flying machines. how long the can fly, and they'll land, is still quite unpredictable. the messengers - the queen sends dispatches to her loyal subjects which, if used skillfully, can be the key to attaining wealth and prestige. the ferries - there are many small lakes with ferries all around carcassonne, giving travelers a great deal more variety. the gold mines - we've struck gold! it's a thrilling time, and everyone wants to secure the precious metals. however, you won't know how much each gold bar is worth until the end of the game. mage & witch - magic spreads across the land! the mage causes cities and other features to flourish, while the witch can curse your opponents' favors. the robbers - robbers are on the prowl, ready to steal points from your high-scoring opponents. the crop circles - mysterious circles appear in the fields, influencing the lives of knights and farmers in bizarre ways. city building medieval territory building area majority / influence map addition tile placement owned great-at-2 group light teaching-friendly 2 3 4 5 6 2 3 4"
     },
     {
       "id": 400738,
@@ -1439,7 +1531,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 45,
       "minPlayTime": 30,
       "maxPlayTime": 45,
-      "averageRating": 7.54,
+      "averageRating": 7.48,
       "bayesAverage": 5.54,
       "rank": 0,
       "avgWeight": 0.0,
@@ -1590,10 +1682,10 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 25,
       "minPlayTime": 25,
       "maxPlayTime": 25,
-      "averageRating": 7.22,
-      "bayesAverage": 6.06,
-      "rank": 2863,
-      "avgWeight": 1.62,
+      "averageRating": 7.21,
+      "bayesAverage": 6.11,
+      "rank": 2641,
+      "avgWeight": 1.65,
       "weightBand": "light",
       "timeBand": "quick",
       "playerBand": "small-group",
@@ -1625,7 +1717,9 @@ window.__BGG_LIBRARY_DATA__ = {
       ],
       "mechanics": [
         "Delayed Purchase",
-        "Set Collection"
+        "Open Drafting",
+        "Set Collection",
+        "Tags"
       ],
       "bggItemType": "boardgame",
       "dependencyType": "",
@@ -1643,7 +1737,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "light",
         "teaching-friendly"
       ],
-      "searchText": "carnuta carnuta spanish edition repos production spanish a game of carnuta plays over a series of turns. on your turn, you will take 2 actions, the same or different, out of the 4 possible. the goal of the game is to create a potion by playing cards in front of you. each card is worth points depending on the ingredients in your potion. the game ends once one player plays an 11th card in front of them. juego de cartas en el que cada turno se realizan dos de cuatro acciones posibles. el objetivo es crear una poción jugando cartas frente a sí; cada una otorga puntos según sus ingredientes. la partida termina cuando alguien juega su undécima carta. welcome to the annual ceremony that brings together druids from distant lands! eight secret ingredients have been selected, and your task in carnuta is to combine them carefully and assemble your runes to create an exceptional potion. to your billhooks, set, go! a game of carnuta plays over a series of turns. on your turn, you will take 2 actions, the same or different, out of the 4 possible. the goal of the game is to create a potion by playing cards in front of you. each card is worth points depending on the ingredients in your potion. the game ends once one player plays an 11th card in front of them. optimize the combinations of your ingredients to gain the highest score and win the game! card game fantasy delayed purchase set collection owned great-at-2 quick light teaching-friendly 2 3 4 2 3"
+      "searchText": "carnuta carnuta spanish edition repos production spanish a game of carnuta plays over a series of turns. on your turn, you will take 2 actions, the same or different, out of the 4 possible. the goal of the game is to create a potion by playing cards in front of you. each card is worth points depending on the ingredients in your potion. the game ends once one player plays an 11th card in front of them. juego de cartas en el que cada turno se realizan dos de cuatro acciones posibles. el objetivo es crear una poción jugando cartas frente a sí; cada una otorga puntos según sus ingredientes. la partida termina cuando alguien juega su undécima carta. welcome to the annual ceremony that brings together druids from distant lands! eight secret ingredients have been selected, and your task in carnuta is to combine them carefully and assemble your runes to create an exceptional potion. to your billhooks, set, go! a game of carnuta plays over a series of turns. on your turn, you will take 2 actions, the same or different, out of the 4 possible. the goal of the game is to create a potion by playing cards in front of you. each card is worth points depending on the ingredients in your potion. the game ends once one player plays an 11th card in front of them. optimize the combinations of your ingredients to gain the highest score and win the game! card game fantasy delayed purchase open drafting set collection tags owned great-at-2 quick light teaching-friendly 2 3 4 2 3"
     },
     {
       "id": 4561,
@@ -1673,9 +1767,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 90,
       "minPlayTime": 90,
       "maxPlayTime": 90,
-      "averageRating": 5.43,
+      "averageRating": 5.44,
       "bayesAverage": 5.49,
-      "rank": 28229,
+      "rank": 28617,
       "avgWeight": 1.17,
       "weightBand": "light",
       "timeBand": "extended",
@@ -1856,10 +1950,10 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 45,
       "minPlayTime": 30,
       "maxPlayTime": 45,
-      "averageRating": 7.7,
-      "bayesAverage": 7.04,
-      "rank": 460,
-      "avgWeight": 1.96,
+      "averageRating": 7.69,
+      "bayesAverage": 7.05,
+      "rank": 462,
+      "avgWeight": 1.98,
       "weightBand": "medium-light",
       "timeBand": "standard",
       "playerBand": "large-group",
@@ -1921,6 +2015,97 @@ window.__BGG_LIBRARY_DATA__ = {
       "searchText": "cartógrafos: héroes cartographers heroes buró spanish edition buró; thunderworks games spanish the expedition to the western lands is the kind of honor that comes once in a lifetime for a royal cartographer. but these are dangerous times. war ravages the land, and you are sure to encounter dragul forces determined to thwart queen gimnax’s plans for western expansion. cartographers heroes is the sequel to the critically acclaimed map-drawing game cartographers. it includes all-new map sheets, scoring cards, explore cards, and ambush cards with unique abilities. secuela de cartógrafos. como cartógrafos reales, los jugadores exploran las tierras occidentales en tiempos de guerra, donde las fuerzas dragul buscan frustrar los planes de expansión de la reina gimnax. incluye mapas, cartas de puntuación, exploración y emboscada nuevos. the expedition to the western lands is the kind of honor that comes once in a lifetime for a royal cartographer. but these are dangerous times. war ravages the land, and you are sure to encounter dragul forces determined to thwart queen gimnax’s plans for western expansion. fortunately, brave heroes have risen to the defense of nalos. chart their deeds alongside the queen's edicts and secure your place in history. cartographers heroes is the sequel to the critically acclaimed map-drawing game cartographers. it includes all-new map sheets, scoring cards, explore cards, and ambush cards with unique abilities. cartographers heroes can be played on its own or mixed with components from the original game for a greater variety of gameplay possibilities. -description from publisher fantasy territory building bingo end game bonuses grid coverage line drawing paper-and-pencil simultaneous action selection solo / solitaire game square grid take that variable set-up owned solo great-at-2 group light teaching-friendly 1 2 3 4 5 6 7 8 9 10 3 4"
     },
     {
+      "id": 271320,
+      "collId": 149780006,
+      "name": "The Castles of Burgundy",
+      "originalName": "The Castles of Burgundy",
+      "nameOverrides": {
+        "es": "",
+        "en": ""
+      },
+      "type": "thing",
+      "yearPublished": 2020,
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "recommendedPlayers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "bestPlayers": [
+        2
+      ],
+      "age": 12,
+      "ageText": "12+",
+      "playingTime": 120,
+      "minPlayTime": 70,
+      "maxPlayTime": 120,
+      "averageRating": 8.46,
+      "bayesAverage": 8.02,
+      "rank": 0,
+      "avgWeight": 2.91,
+      "weightBand": "medium-heavy",
+      "timeBand": "extended",
+      "playerBand": "small-group",
+      "languageDependence": "No necessary in-game text",
+      "languageKey": "none",
+      "quantity": 1,
+      "own": true,
+      "prevOwned": false,
+      "forTrade": false,
+      "wantToPlay": false,
+      "wantToBuy": false,
+      "wishlist": false,
+      "acquisitionDate": "2026-09-22",
+      "versionNickname": "Multilingual edition",
+      "versionPublishers": "alea; Ravensburger AG",
+      "versionLanguages": "English; French; German; Italian; Portuguese; Spanish",
+      "notes": "",
+      "summary": {
+        "en": "The Castles of Burgundy is set in the Burgundy region of High Medieval France. Each player takes on the role of an aristocrat, originally controlling a small princedom. While playing, they aim to build settlements and powerful castles, practice trade along the river, exploit silver mines, and use the knowledge of travelers.",
+        "es": "Juego ambientado en la Borgoña de la Francia medieval. Cada jugador dirige un pequeño principado y busca desarrollarlo construyendo asentamientos y castillos, comerciando por el río, explotando minas de plata y aprovechando el conocimiento de los viajeros."
+      },
+      "description": {
+        "en": "The Castles of Burgundy is set in the Burgundy region of High Medieval France. Each player takes on the role of an aristocrat, originally controlling a small princedom. While playing, they aim to build settlements and powerful castles, practice trade along the river, exploit silver mines, and use the knowledge of travelers.\n\nThe game is about players taking settlement tiles from the game board and placing them into their princedom, which is represented by the player board. Every tile has a function that starts when the tile is placed in the princedom. The princedom itself consists of several regions, each of which demands its own type of settlement tile.\n\nThe game is played in five phases, each consisting of five rounds. Each phase begins with the game board stocked with settlement tiles and goods tiles. During each round, players take their turns in the current turn order. During their turn, a player may perform any two of the four possible types of actions:\n\nPlace a settlement tile in the staging area on their player board. Place a settlement tile from the staging area of their player board to a space on their player board. Deliver goods with a number matching one of their dice. Take worker tokens that allow the player to adjust the roll of their dice.\n\nEach settlement tile offers a benefit: additional actions, additional money, advancement on the turn order track, more goods tiles, die roll adjustment or victory points. Bonus victory points are awarded for filling a region with settlement tiles.\n\nThe game ends when the last player finishes their turn of the fifth round of the fifth phase. Victory points are awarded for unused money and workers and for undelivered goods. Bonus victory points from certain settlement tiles are awarded at the end of the game. The player with the most victory points wins.",
+        "es": ""
+      },
+      "categories": [
+        "Dice",
+        "Medieval",
+        "Territory Building"
+      ],
+      "mechanics": [
+        "Dice Rolling",
+        "End Game Bonuses",
+        "Grid Coverage",
+        "Hexagon Grid",
+        "Pattern Building",
+        "Set Collection",
+        "Solo / Solitaire Game",
+        "Team-Based Game",
+        "Tile Placement",
+        "Turn Order: Stat-Based",
+        "Variable Set-up",
+        "Worker Placement with Dice Workers"
+      ],
+      "bggItemType": "boardgame",
+      "dependencyType": "",
+      "requiresGameId": null,
+      "requiresGameName": "",
+      "expansionIds": [],
+      "bggUrl": "https://boardgamegeek.com/boardgame/271320",
+      "thumbnailUrl": "https://cf.geekdo-images.com/VrNrk7XVU1hN0j1ZFhjcjw__small/img/6XPO0XNGGw3V77NjWR0K7Y33fqc=/fit-in/200x150/filters:strip_icc()/pic4934938.jpg",
+      "imageUrl": "https://cf.geekdo-images.com/VrNrk7XVU1hN0j1ZFhjcjw__original/img/IYxnn0KV56lDy18_0e23DSLcMso=/0x0/filters:format(jpeg)/pic4934938.jpg",
+      "imageHint": "The Castles of Burgundy (2020)",
+      "tags": [
+        "owned",
+        "solo",
+        "great-at-2"
+      ],
+      "searchText": "the castles of burgundy the castles of burgundy multilingual edition alea; ravensburger ag english; french; german; italian; portuguese; spanish the castles of burgundy is set in the burgundy region of high medieval france. each player takes on the role of an aristocrat, originally controlling a small princedom. while playing, they aim to build settlements and powerful castles, practice trade along the river, exploit silver mines, and use the knowledge of travelers. juego ambientado en la borgoña de la francia medieval. cada jugador dirige un pequeño principado y busca desarrollarlo construyendo asentamientos y castillos, comerciando por el río, explotando minas de plata y aprovechando el conocimiento de los viajeros. the castles of burgundy is set in the burgundy region of high medieval france. each player takes on the role of an aristocrat, originally controlling a small princedom. while playing, they aim to build settlements and powerful castles, practice trade along the river, exploit silver mines, and use the knowledge of travelers. the game is about players taking settlement tiles from the game board and placing them into their princedom, which is represented by the player board. every tile has a function that starts when the tile is placed in the princedom. the princedom itself consists of several regions, each of which demands its own type of settlement tile. the game is played in five phases, each consisting of five rounds. each phase begins with the game board stocked with settlement tiles and goods tiles. during each round, players take their turns in the current turn order. during their turn, a player may perform any two of the four possible types of actions: place a settlement tile in the staging area on their player board. place a settlement tile from the staging area of their player board to a space on their player board. deliver goods with a number matching one of their dice. take worker tokens that allow the player to adjust the roll of their dice. each settlement tile offers a benefit: additional actions, additional money, advancement on the turn order track, more goods tiles, die roll adjustment or victory points. bonus victory points are awarded for filling a region with settlement tiles. the game ends when the last player finishes their turn of the fifth round of the fifth phase. victory points are awarded for unused money and workers and for undelivered goods. bonus victory points from certain settlement tiles are awarded at the end of the game. the player with the most victory points wins. dice medieval territory building dice rolling end game bonuses grid coverage hexagon grid pattern building set collection solo / solitaire game team-based game tile placement turn order: stat-based variable set-up worker placement with dice workers owned solo great-at-2 1 2 3 4 2"
+    },
+    {
       "id": 13,
       "collId": 135744784,
       "name": "Catan",
@@ -1947,7 +2132,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 120,
       "averageRating": 7.09,
       "bayesAverage": 6.9,
-      "rank": 626,
+      "rank": 627,
       "avgWeight": 2.28,
       "weightBand": "medium-light",
       "timeBand": "extended",
@@ -1987,6 +2172,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "Income",
         "Market",
         "Modular Board",
+        "Negotiation",
         "Network and Route Building",
         "Race",
         "Random Production",
@@ -2006,7 +2192,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "tags": [
         "owned"
       ],
-      "searchText": "catan catan spanish edition 2015 devir spanish in catan (formerly the settlers of catan), players try to be the dominant force on the island of catan by building settlements, cities and roads. on each turn dice are rolled to determine which resources the island produces.... en catan, los jugadores buscan dominar la isla construyendo asentamientos, ciudades y caminos. en cada turno se tiran dados para determinar qué recursos produce la isla. in catan (formerly the settlers of catan), players try to be the dominant force on the island of catan by building settlements, cities and roads. on each turn dice are rolled to determine which resources the island produces. players build structures by 'spending' resources (sheep, wheat, wood, brick and ore) which are represented by the relevant resource cards; each land type, with the exception of the unproductive desert, produces a specific resource: hills produce brick, forests produce wood, mountains produce ore, fields produce wheat, and pastures produce sheep. set-up includes randomly placing large hexagonal tiles (each depicting one of the five resource-producing terrain types--or the desert) in a honeycomb shape and surrounding them with water tiles, some of which contain ports of exchange. a number disk, the value of which will correspond to the roll of two 6-sided dice, are placed on each terrain tile. each player is given two settlements (think: houses) and roads (sticks) which are placed on intersections and borders of the terrain tiles. players collect a hand of resource cards based on which terrain tiles their last-placed settlement is adjacent to. a robber pawn is placed on the desert tile. a turn consists of rolling the dice, collecting resource cards based on this dice roll and the position of settlements (or upgraded cities—think: hotels), turning in resource cards (if possible and desired) for improvements, trading cards at a port, possibly playing a development card, or trading resource cards with other players. if the dice roll is a 7, the active player moves the robber to a new terrain tile and steals a resource card from another player who has a settlement adjacent to that tile. points are accumulated by building settlements and cities, having the longest road or the largest army (from some of the development cards), and gathering certain development cards that simply award victory points. when a player has gathered 10 points (some of which may be held in secret), s/he announces this and claims the win. economic negotiation chaining dice rolling hand management hexagon grid hidden victory points income market modular board network and route building race random production take that trading variable set-up owned 3 4 4"
+      "searchText": "catan catan spanish edition 2015 devir spanish in catan (formerly the settlers of catan), players try to be the dominant force on the island of catan by building settlements, cities and roads. on each turn dice are rolled to determine which resources the island produces.... en catan, los jugadores buscan dominar la isla construyendo asentamientos, ciudades y caminos. en cada turno se tiran dados para determinar qué recursos produce la isla. in catan (formerly the settlers of catan), players try to be the dominant force on the island of catan by building settlements, cities and roads. on each turn dice are rolled to determine which resources the island produces. players build structures by 'spending' resources (sheep, wheat, wood, brick and ore) which are represented by the relevant resource cards; each land type, with the exception of the unproductive desert, produces a specific resource: hills produce brick, forests produce wood, mountains produce ore, fields produce wheat, and pastures produce sheep. set-up includes randomly placing large hexagonal tiles (each depicting one of the five resource-producing terrain types--or the desert) in a honeycomb shape and surrounding them with water tiles, some of which contain ports of exchange. a number disk, the value of which will correspond to the roll of two 6-sided dice, are placed on each terrain tile. each player is given two settlements (think: houses) and roads (sticks) which are placed on intersections and borders of the terrain tiles. players collect a hand of resource cards based on which terrain tiles their last-placed settlement is adjacent to. a robber pawn is placed on the desert tile. a turn consists of rolling the dice, collecting resource cards based on this dice roll and the position of settlements (or upgraded cities—think: hotels), turning in resource cards (if possible and desired) for improvements, trading cards at a port, possibly playing a development card, or trading resource cards with other players. if the dice roll is a 7, the active player moves the robber to a new terrain tile and steals a resource card from another player who has a settlement adjacent to that tile. points are accumulated by building settlements and cities, having the longest road or the largest army (from some of the development cards), and gathering certain development cards that simply award victory points. when a player has gathered 10 points (some of which may be held in secret), s/he announces this and claims the win. economic negotiation chaining dice rolling hand management hexagon grid hidden victory points income market modular board negotiation network and route building race random production take that trading variable set-up owned 3 4 4"
     },
     {
       "id": 413246,
@@ -2022,7 +2208,6 @@ window.__BGG_LIBRARY_DATA__ = {
       "minPlayers": 2,
       "maxPlayers": 5,
       "recommendedPlayers": [
-        2,
         3,
         4,
         5
@@ -2035,10 +2220,10 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 30,
       "minPlayTime": 30,
       "maxPlayTime": 30,
-      "averageRating": 8.04,
-      "bayesAverage": 7.64,
-      "rank": 88,
-      "avgWeight": 2.0,
+      "averageRating": 8.03,
+      "bayesAverage": 7.65,
+      "rank": 84,
+      "avgWeight": 2.01,
       "weightBand": "medium-light",
       "timeBand": "quick",
       "playerBand": "mid-group",
@@ -2088,12 +2273,10 @@ window.__BGG_LIBRARY_DATA__ = {
       "imageHint": "Caza Bombas (2025)",
       "tags": [
         "owned",
-        "great-at-2",
         "quick",
-        "light",
         "teaching-friendly"
       ],
-      "searchText": "caza bombas bomb busters spanish edition cocktail games; devir spanish there is a bomb full of wires and the countdown has started... who are you gonna call? you! to clear the bomb, you need to collaborate with your team of bomb disposal experts! using the wires on the tile holder in front of you, try and figure out your teammates’ wires. find and cut identical wires, but watch out, if you cut a red wire: boom! use your equipment wisely to meet the varied challenges which get harder and harder.... juego cooperativo de deducción en el que un equipo de expertos debe desactivar una bomba antes de que termine la cuenta regresiva. hay que deducir los cables de los compañeros y cortar los iguales, evitando los cables rojos, mientras los desafíos se vuelven más difíciles. there is a bomb full of wires and the countdown has started... who are you gonna call? you! to clear the bomb, you need to collaborate with your team of bomb disposal experts! using the wires on the tile holder in front of you, try and figure out your teammates’ wires. find and cut identical wires, but watch out, if you cut a red wire: boom! use your equipment wisely to meet the varied challenges which get harder and harder. tick tock tick tock... will you figure it out before it’s too late? in bomb busters, there is a set of 48 normal wire cards numbered 1-12 (4 of each value) with some yellow and red wire cards. these are dealt out. each mission is different, but your goal is always the same: go through all 12 numbers without blowing up! players place the tiles on their stands and then take turns pointing at each others’ wires and guessing their values. if the guess is correct, the wires are cut. if not — the detonator advances! if you manage to cut all wires without blowing up — good job, the mission is completed! but if the bomb goes off - try again! with 66 missions, there will be: => 66 different ways to play depending on your moods (in order, by level of difficulty, favorite configuration) => 66 challenges to play over and over (even if you already blew your top!) => plenty of tricky bombs which become more and more dangerous (but don’t get cut up about it!) deduction communication limits cooperative game deduction memory once-per-game abilities real-time scenario / mission / campaign game sudden death ending owned great-at-2 quick light teaching-friendly 2 3 4 5 4"
+      "searchText": "caza bombas bomb busters spanish edition cocktail games; devir spanish there is a bomb full of wires and the countdown has started... who are you gonna call? you! to clear the bomb, you need to collaborate with your team of bomb disposal experts! using the wires on the tile holder in front of you, try and figure out your teammates’ wires. find and cut identical wires, but watch out, if you cut a red wire: boom! use your equipment wisely to meet the varied challenges which get harder and harder.... juego cooperativo de deducción en el que un equipo de expertos debe desactivar una bomba antes de que termine la cuenta regresiva. hay que deducir los cables de los compañeros y cortar los iguales, evitando los cables rojos, mientras los desafíos se vuelven más difíciles. there is a bomb full of wires and the countdown has started... who are you gonna call? you! to clear the bomb, you need to collaborate with your team of bomb disposal experts! using the wires on the tile holder in front of you, try and figure out your teammates’ wires. find and cut identical wires, but watch out, if you cut a red wire: boom! use your equipment wisely to meet the varied challenges which get harder and harder. tick tock tick tock... will you figure it out before it’s too late? in bomb busters, there is a set of 48 normal wire cards numbered 1-12 (4 of each value) with some yellow and red wire cards. these are dealt out. each mission is different, but your goal is always the same: go through all 12 numbers without blowing up! players place the tiles on their stands and then take turns pointing at each others’ wires and guessing their values. if the guess is correct, the wires are cut. if not — the detonator advances! if you manage to cut all wires without blowing up — good job, the mission is completed! but if the bomb goes off - try again! with 66 missions, there will be: => 66 different ways to play depending on your moods (in order, by level of difficulty, favorite configuration) => 66 challenges to play over and over (even if you already blew your top!) => plenty of tricky bombs which become more and more dangerous (but don’t get cut up about it!) deduction communication limits cooperative game deduction memory once-per-game abilities real-time scenario / mission / campaign game sudden death ending owned quick teaching-friendly 3 4 5 4"
     },
     {
       "id": 209685,
@@ -2125,7 +2308,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 45,
       "averageRating": 7.29,
       "bayesAverage": 7.1,
-      "rank": 392,
+      "rank": 394,
       "avgWeight": 1.8,
       "weightBand": "light",
       "timeBand": "standard",
@@ -2214,7 +2397,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 45,
       "averageRating": 7.1,
       "bayesAverage": 6.7,
-      "rank": 917,
+      "rank": 920,
       "avgWeight": 2.11,
       "weightBand": "medium-light",
       "timeBand": "standard",
@@ -2296,7 +2479,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 45,
       "averageRating": 7.27,
       "bayesAverage": 6.72,
-      "rank": 888,
+      "rank": 893,
       "avgWeight": 2.11,
       "weightBand": "medium-light",
       "timeBand": "standard",
@@ -2377,7 +2560,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 120,
       "averageRating": 7.64,
       "bayesAverage": 7.22,
-      "rank": 281,
+      "rank": 283,
       "avgWeight": 2.9,
       "weightBand": "medium-heavy",
       "timeBand": "extended",
@@ -2478,8 +2661,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 180,
       "averageRating": 7.08,
       "bayesAverage": 5.99,
-      "rank": 3240,
-      "avgWeight": 2.49,
+      "rank": 3255,
+      "avgWeight": 2.48,
       "weightBand": "medium-light",
       "timeBand": "epic",
       "playerBand": "mid-group",
@@ -2571,9 +2754,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 60,
       "minPlayTime": 60,
       "maxPlayTime": 60,
-      "averageRating": 6.4,
-      "bayesAverage": 5.53,
-      "rank": 15929,
+      "averageRating": 6.41,
+      "bayesAverage": 5.54,
+      "rank": 15795,
       "avgWeight": 2.0,
       "weightBand": "medium-light",
       "timeBand": "standard",
@@ -2741,7 +2924,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 60,
       "averageRating": 7.76,
       "bayesAverage": 7.59,
-      "rank": 102,
+      "rank": 103,
       "avgWeight": 2.23,
       "weightBand": "medium-light",
       "timeBand": "standard",
@@ -2777,12 +2960,15 @@ window.__BGG_LIBRARY_DATA__ = {
         "Deck, Bag, and Pool Building",
         "Delayed Purchase",
         "End Game Bonuses",
+        "Events",
         "Movement Points",
         "Open Drafting",
         "Player Elimination",
         "Point to Point Movement",
         "Push Your Luck",
-        "Variable Set-up"
+        "Take That",
+        "Variable Set-up",
+        "Victory Points as a Resource"
       ],
       "bggItemType": "boardgame",
       "dependencyType": "",
@@ -2799,7 +2985,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "owned",
         "great-at-2"
       ],
-      "searchText": "clank!: una aventura de construcción de mazos clank!: a deck-building adventure spanish edition, first printing devir spanish burgle your way to adventure in the deck-building board game clank! sneak into an angry dragon's mountain lair to steal precious artifacts. delve deeper to find more valuable loot. acquire cards for your deck and watch your thievish abilities grow. be quick and be quiet. one false step and clank! each careless sound draws the attention of the dragon, and each artifact stolen increases its rage. you can enjoy your plunder only if you make it out of the depths alive! juego de construcción de mazo en el que los jugadores se infiltran en la montaña de un dragón para robar artefactos. mejoran sus habilidades con cartas, pero cada ruido atrae la atención y la furia del dragón; solo se disfruta el botín si se logra escapar. burgle your way to adventure in the deck-building board game clank! sneak into an angry dragon's mountain lair to steal precious artifacts. delve deeper to find more valuable loot. acquire cards for your deck and watch your thievish abilities grow. be quick and be quiet. one false step and clank! each careless sound draws the attention of the dragon, and each artifact stolen increases its rage. you can enjoy your plunder only if you make it out of the depths alive! clank! is a deck-building game. each player has their own deck, and building yours up is part of playing the game. you start each of your turns with five cards in your hand, and you'll play them all in any order you choose. most cards will generate resources, of which there are three different kinds: skill, which is used to acquire new cards for your deck. swords, which are used to fight the monsters that infest the dungeon. boots, which are used to move around the board. every time you acquire a new card, you put it face up in your discard pile. whenever you need to draw a card and find your deck empty, you shuffle your discard pile and turn it face down to form a new deck. with each shuffle, your newest cards become part of a bigger and better deck! each player starts with the same cards in their deck, but they’ll acquire different cards during their turns. because cards can do many different things, each player’s deck (and strategy) will become more and more different as the game unfolds. during the game, you have two goals: retrieve an artifact token and escape the dragon by returning to the place you started, outside of the dungeon. accumulate enough points with your artifact and other loot to beat out your opponents and earn the title of greatest thief in the realm! adventure fantasy action points deck, bag, and pool building delayed purchase end game bonuses movement points open drafting player elimination point to point movement push your luck variable set-up owned great-at-2 2 3 4 3"
+      "searchText": "clank!: una aventura de construcción de mazos clank!: a deck-building adventure spanish edition, first printing devir spanish burgle your way to adventure in the deck-building board game clank! sneak into an angry dragon's mountain lair to steal precious artifacts. delve deeper to find more valuable loot. acquire cards for your deck and watch your thievish abilities grow. be quick and be quiet. one false step and clank! each careless sound draws the attention of the dragon, and each artifact stolen increases its rage. you can enjoy your plunder only if you make it out of the depths alive! juego de construcción de mazo en el que los jugadores se infiltran en la montaña de un dragón para robar artefactos. mejoran sus habilidades con cartas, pero cada ruido atrae la atención y la furia del dragón; solo se disfruta el botín si se logra escapar. burgle your way to adventure in the deck-building board game clank! sneak into an angry dragon's mountain lair to steal precious artifacts. delve deeper to find more valuable loot. acquire cards for your deck and watch your thievish abilities grow. be quick and be quiet. one false step and clank! each careless sound draws the attention of the dragon, and each artifact stolen increases its rage. you can enjoy your plunder only if you make it out of the depths alive! clank! is a deck-building game. each player has their own deck, and building yours up is part of playing the game. you start each of your turns with five cards in your hand, and you'll play them all in any order you choose. most cards will generate resources, of which there are three different kinds: skill, which is used to acquire new cards for your deck. swords, which are used to fight the monsters that infest the dungeon. boots, which are used to move around the board. every time you acquire a new card, you put it face up in your discard pile. whenever you need to draw a card and find your deck empty, you shuffle your discard pile and turn it face down to form a new deck. with each shuffle, your newest cards become part of a bigger and better deck! each player starts with the same cards in their deck, but they’ll acquire different cards during their turns. because cards can do many different things, each player’s deck (and strategy) will become more and more different as the game unfolds. during the game, you have two goals: retrieve an artifact token and escape the dragon by returning to the place you started, outside of the dungeon. accumulate enough points with your artifact and other loot to beat out your opponents and earn the title of greatest thief in the realm! adventure fantasy action points deck, bag, and pool building delayed purchase end game bonuses events movement points open drafting player elimination point to point movement push your luck take that variable set-up victory points as a resource owned great-at-2 2 3 4 3"
     },
     {
       "id": 377061,
@@ -2827,10 +3013,10 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 30,
       "minPlayTime": 30,
       "maxPlayTime": 30,
-      "averageRating": 7.09,
-      "bayesAverage": 6.54,
-      "rank": 1233,
-      "avgWeight": 1.78,
+      "averageRating": 7.08,
+      "bayesAverage": 6.55,
+      "rank": 1224,
+      "avgWeight": 1.8,
       "weightBand": "light",
       "timeBand": "quick",
       "playerBand": "small-group",
@@ -2907,9 +3093,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 40,
       "minPlayTime": 20,
       "maxPlayTime": 40,
-      "averageRating": 7.3,
+      "averageRating": 7.25,
       "bayesAverage": 5.6,
-      "rank": 9570,
+      "rank": 9743,
       "avgWeight": 2.11,
       "weightBand": "medium-light",
       "timeBand": "standard",
@@ -2988,9 +3174,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 15,
       "minPlayTime": 15,
       "maxPlayTime": 15,
-      "averageRating": 6.2,
+      "averageRating": 6.19,
       "bayesAverage": 5.75,
-      "rank": 5472,
+      "rank": 5527,
       "avgWeight": 1.06,
       "weightBand": "light",
       "timeBand": "quick",
@@ -3075,8 +3261,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 50,
       "averageRating": 7.42,
       "bayesAverage": 7.16,
-      "rank": 341,
-      "avgWeight": 2.25,
+      "rank": 343,
+      "avgWeight": 2.26,
       "weightBand": "medium-light",
       "timeBand": "standard",
       "playerBand": "mid-group",
@@ -3108,6 +3294,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "mechanics": [
         "Deduction",
         "Hexagon Grid",
+        "Induction",
         "Modular Board",
         "Pattern Recognition",
         "Race"
@@ -3124,7 +3311,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "tags": [
         "owned"
       ],
-      "searchText": "cryptid cryptid english edition osprey games english cryptid is a unique deduction game of honest misdirection in which players must try to uncover information about their opponents' clues while throwing them off the scent of their own. each player holds one piece of evidence to help them find the creature, and on their turn they can try to gain more information from their opponents. be warned; give too much away and your opponents might beat you to the mysterious animal and claim the glory for themselves! juego de deducción con información oculta en el que cada jugador posee una pista sobre una criatura misteriosa. hay que descubrir información sobre las pistas rivales sin revelar demasiado de la propia, o alguien más encontrará primero a la criatura. you've studied the footage, connected the dots, and gathered what meager evidence you could. you're close — soon the whole world will know the truth behind the cryptid. a group of like-minded cryptozoologists have come together to finally uncover the elusive creature, but the glory of discovery is too rich to share. without giving away some of what you know you will never succeed in locating the beast, but reveal too much and your name will be long forgotten! cryptid is a unique deduction game of honest misdirection in which players must try to uncover information about their opponents' clues while throwing them off the scent of their own. each player holds one piece of evidence to help them find the creature, and on their turn they can try to gain more information from their opponents. be warned; give too much away and your opponents might beat you to the mysterious animal and claim the glory for themselves! the game includes a modular board, five clue books, and a deck of set-up cards with hundreds of possible set-ups across two difficulty levels. it is also supported by an entirely optional digital companion, allowing for faster game set-up and a near-infinite range of puzzles. —description from the publisher note: some copies have a delta clue booklet with misprints in eight clues: 2,#9,#13,#64 states cougar, should be bear 3,#63,#72,#95 states bear, should be cougar deduction deduction hexagon grid modular board pattern recognition race owned 3 4 5 4"
+      "searchText": "cryptid cryptid english edition osprey games english cryptid is a unique deduction game of honest misdirection in which players must try to uncover information about their opponents' clues while throwing them off the scent of their own. each player holds one piece of evidence to help them find the creature, and on their turn they can try to gain more information from their opponents. be warned; give too much away and your opponents might beat you to the mysterious animal and claim the glory for themselves! juego de deducción con información oculta en el que cada jugador posee una pista sobre una criatura misteriosa. hay que descubrir información sobre las pistas rivales sin revelar demasiado de la propia, o alguien más encontrará primero a la criatura. you've studied the footage, connected the dots, and gathered what meager evidence you could. you're close — soon the whole world will know the truth behind the cryptid. a group of like-minded cryptozoologists have come together to finally uncover the elusive creature, but the glory of discovery is too rich to share. without giving away some of what you know you will never succeed in locating the beast, but reveal too much and your name will be long forgotten! cryptid is a unique deduction game of honest misdirection in which players must try to uncover information about their opponents' clues while throwing them off the scent of their own. each player holds one piece of evidence to help them find the creature, and on their turn they can try to gain more information from their opponents. be warned; give too much away and your opponents might beat you to the mysterious animal and claim the glory for themselves! the game includes a modular board, five clue books, and a deck of set-up cards with hundreds of possible set-ups across two difficulty levels. it is also supported by an entirely optional digital companion, allowing for faster game set-up and a near-infinite range of puzzles. —description from the publisher note: some copies have a delta clue booklet with misprints in eight clues: 2,#9,#13,#64 states cougar, should be bear 3,#63,#72,#95 states bear, should be cougar deduction deduction hexagon grid induction modular board pattern recognition race owned 3 4 5 4"
     },
     {
       "id": 242667,
@@ -3153,9 +3340,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 60,
       "minPlayTime": 45,
       "maxPlayTime": 60,
-      "averageRating": 6.75,
+      "averageRating": 6.74,
       "bayesAverage": 5.87,
-      "rank": 4132,
+      "rank": 4179,
       "avgWeight": 2.47,
       "weightBand": "medium-light",
       "timeBand": "standard",
@@ -3238,8 +3425,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 15,
       "averageRating": 7.04,
       "bayesAverage": 6.21,
-      "rank": 2204,
-      "avgWeight": 1.7,
+      "rank": 2207,
+      "avgWeight": 1.69,
       "weightBand": "light",
       "timeBand": "quick",
       "playerBand": "small-group",
@@ -3319,10 +3506,10 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 40,
       "minPlayTime": 40,
       "maxPlayTime": 40,
-      "averageRating": 7.37,
-      "bayesAverage": 6.3,
-      "rank": 1900,
-      "avgWeight": 2.09,
+      "averageRating": 7.4,
+      "bayesAverage": 6.38,
+      "rank": 1663,
+      "avgWeight": 2.1,
       "weightBand": "medium-light",
       "timeBand": "standard",
       "playerBand": "small-group",
@@ -3399,7 +3586,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 40,
       "averageRating": 7.59,
       "bayesAverage": 6.65,
-      "rank": 1016,
+      "rank": 1005,
       "avgWeight": 2.15,
       "weightBand": "medium-light",
       "timeBand": "standard",
@@ -3423,7 +3610,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "es": "Juego de combate ágil para dos a seis jugadores, con modalidades uno contra uno, equipos o todos contra todos. Cada héroe usa cinco dados únicos para atacar y activar habilidades; los puntos de combate se gastan en cartas de mejoras, estados y manipulación de dados."
       },
       "description": {
-        "en": "GAME SYSTEM\n\nThis entry is to allow for discussion/rating of the game system as a whole. It is not for a specific product or release. Versions will appear on the individual item pages.\n\nDice Throne is a fast-paced 2-6 player combat game, whether 1v1, 2v2, 3v3, 2v2v2, or free-for-all. Select from a variety of heroes that play and feel completely distinct from one another. Attack opponents and activate abilities by rolling your hero's unique set of five dice. Accumulate combat points and spend them on cards that have a large range of effects, such as granting permanent hero upgrades, applying status effects, and manipulating dice directly whether yours, your teammate's, or even your opponent's.\n\nEach player needs their own hero to play Dice Throne, and all heroes are cross-compatible.\n\nThe very first release, Season One, was a single box that contained components for six heroes and basic art and components. When Season Two was released, it overhauled the component and card design into what is now the standard, and following that, Season One - Rerolled was released to update and rebalance the original six heroes into the new standard format, as well as adding two additional heroes. These releases are available as 8 character \"Battle Chests\" or as two character \"Battle Boxes\". Dice Throne than released several major Marvel-themed sets (Marvel Dice Throne, Marvel Dice Throne: X-Men, and Deadpool), as well as smaller themed sets (Santa vs. Krampus, Outcasts, and Vanguard).\n\nIn 2026, Dice Throne announced a pivot to offering single characters for sale, which will mostly replace the \"Battle Chest\" and \"Battle Box\" releases. The first stand-alone character in this new packaging is the Alchemist, but all non-Marvel characters are planned to be released in the single character format.\n\nCooperative expansions have also been released. Dice Throne Adventures was the first, a dungeon crawl/boss battler campaign game for 1-4 heroes through 8 scenarios, allowing players to upgrade their decks throughout the campaign using loot cards. An expansion, Dice Throne Adventures: Unchained, offered a new boss and the ability to run \"One-Shot Adventures\" using the same loot card system but without the campaign element. Marvel Dice Throne: Missions was also released alongside the Marvel Dice Throne: X-Men set, allowing 1-4 players to battle villains from the Marvel universe in one-shot missions.\n\nLinked entries in the BGG database:\n\nCharacters and Character Sets:\n\nDice Throne: Season One Dice Throne: Season One ReRolled Dice Throne: Season One Rerolled – Battle 1: Barbarian v. Moon Elf Dice Throne: Season One ReRolled – Monk v. Paladin Dice Throne: Season One ReRolled – Pyromancer v. Shadow Thief Dice Throne: Season One ReRolled – Treant v. Ninja\n\nDice Throne: Season Two – Battle Chest Dice Throne: Season Two – Seraph v. Vampire Lord Dice Throne: Season Two – Tactician v. Huntress Dice Throne: Season Two – Gunslinger v. Samurai Dice Throne: Season Two – Cursed Pirate v. Artificer\n\nDice Throne: Santa v. Krampus Marvel Dice Throne Marvel Dice Throne: Black Widow v. Doctor Strange Marvel Dice Throne: Captain Marvel v. Black Panther Marvel Dice Throne: Scarlet Witch v. Thor v. Loki v. Spider-Man\n\nMarvel Dice Throne: X-Men Marvel Dice Throne: X-Men – Cyclops v. Gambit v. Rogue v. Jean Grey Marvel Dice Throne: X-Men – Iceman v. Psylocke v. Storm v. Wolverine\n\nMarvel Dice Throne: Deadpool Dice Throne: Outcasts Dice Throne: Vanguard Dice Throne: Alchemist\n\nCooperative Expansions\n\nDice Throne: Adventures Dice Throne: Adventures – Unchained\n\nMarvel Dice Throne: Missions",
+        "en": "GAME SYSTEM\n\nThis entry is to allow for discussion/rating of the game system as a whole. It is not for a specific product or release. Versions will appear on the individual item pages.\n\nDice Throne is a fast-paced 2-6 player combat game, whether 1v1, 2v2, 3v3, 2v2v2, or free-for-all. Select from a variety of heroes that play and feel completely distinct from one another. Attack opponents and activate abilities by rolling your hero's unique set of five dice. Accumulate combat points and spend them on cards that have a large range of effects, such as granting permanent hero upgrades, applying status effects, and manipulating dice directly whether yours, your teammate's, or even your opponent's.\n\nEach player needs their own hero to play Dice Throne, and all heroes are cross-compatible.\n\nThe very first release, Season One, was a single box that contained components for six heroes and basic art and components. When Season Two was released, it overhauled the component and card design into what is now the standard, and following that, Season One - Rerolled was released to update and rebalance the original six heroes into the new standard format, as well as adding two additional heroes. These releases are available as 8 character \"Battle Chests\" or as two character \"Battle Boxes\". Dice Throne than released several major Marvel-themed sets (Marvel Dice Throne, Marvel Dice Throne: X-Men, and Deadpool), as well as smaller themed sets (Santa vs. Krampus, Outcasts, and Vanguard).\n\nIn 2026, Dice Throne announced a pivot to offering single characters for sale, which will mostly replace the \"Battle Chest\" and \"Battle Box\" releases. The first stand-alone character in this new packaging is the Alchemist, but all non-Marvel characters are planned to be released in the single character format.\n\nCooperative expansions have also been released. Dice Throne Adventures was the first, a dungeon crawl/boss battler campaign game for 1-4 heroes through 8 scenarios, allowing players to upgrade their decks throughout the campaign using loot cards. An expansion, Dice Throne Adventures: Unchained, offered a new boss and the ability to run \"One-Shot Adventures\" using the same loot card system but without the campaign element. Marvel Dice Throne: Missions was also released alongside the Marvel Dice Throne: X-Men set, allowing 1-4 players to battle villains from the Marvel universe in one-shot missions.\n\nLinked entries in the BGG database:\n\nCharacters and Character Sets:\n\nDice Throne: Season One Dice Throne: Season One Rerolled Dice Throne: Season One Rerolled – Battle 1: Barbarian v. Moon Elf Dice Throne: Season One ReRolled – Monk v. Paladin Dice Throne: Season One ReRolled – Pyromancer v. Shadow Thief Dice Throne: Season One ReRolled – Treant v. Ninja\n\nDice Throne: Season Two – Battle Chest Dice Throne: Season Two – Seraph v. Vampire Lord Dice Throne: Season Two – Tactician v. Huntress Dice Throne: Season Two – Gunslinger v. Samurai Dice Throne: Season Two – Cursed Pirate v. Artificer\n\nDice Throne: Santa v. Krampus Marvel Dice Throne Marvel Dice Throne: Black Widow v. Doctor Strange Marvel Dice Throne: Captain Marvel v. Black Panther Marvel Dice Throne: Scarlet Witch v. Thor v. Loki v. Spider-Man\n\nMarvel Dice Throne: X-Men Marvel Dice Throne: X-Men – Cyclops v. Gambit v. Rogue v. Jean Grey Marvel Dice Throne: X-Men – Iceman v. Psylocke v. Storm v. Wolverine\n\nMarvel Dice Throne: Deadpool Dice Throne: Outcasts Dice Throne: Vanguard Dice Throne: Alchemist\n\nCooperative Expansions\n\nDice Throne: Adventures Dice Throne: Adventures – Unchained\n\nMarvel Dice Throne: Missions",
         "es": ""
       },
       "categories": [
@@ -3483,9 +3670,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 120,
       "minPlayTime": 60,
       "maxPlayTime": 120,
-      "averageRating": 7.31,
+      "averageRating": 7.3,
       "bayesAverage": 6.64,
-      "rank": 1022,
+      "rank": 1034,
       "avgWeight": 3.27,
       "weightBand": "medium-heavy",
       "timeBand": "extended",
@@ -3567,10 +3754,10 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 20,
       "minPlayTime": 15,
       "maxPlayTime": 20,
-      "averageRating": 7.24,
-      "bayesAverage": 6.3,
-      "rank": 1892,
-      "avgWeight": 1.38,
+      "averageRating": 7.26,
+      "bayesAverage": 6.48,
+      "rank": 1397,
+      "avgWeight": 1.36,
       "weightBand": "light",
       "timeBand": "quick",
       "playerBand": "mid-group",
@@ -3652,8 +3839,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "minPlayTime": 15,
       "maxPlayTime": 15,
       "averageRating": 6.52,
-      "bayesAverage": 6.36,
-      "rank": 1707,
+      "bayesAverage": 6.35,
+      "rank": 1718,
       "avgWeight": 1.04,
       "weightBand": "light",
       "timeBand": "quick",
@@ -3736,10 +3923,10 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 60,
       "minPlayTime": 30,
       "maxPlayTime": 60,
-      "averageRating": 6.91,
-      "bayesAverage": 5.84,
-      "rank": 4417,
-      "avgWeight": 2.41,
+      "averageRating": 6.92,
+      "bayesAverage": 5.85,
+      "rank": 4322,
+      "avgWeight": 2.39,
       "weightBand": "medium-light",
       "timeBand": "standard",
       "playerBand": "small-group",
@@ -3827,7 +4014,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 15,
       "averageRating": 5.59,
       "bayesAverage": 5.52,
-      "rank": 20303,
+      "rank": 20277,
       "avgWeight": 1.11,
       "weightBand": "light",
       "timeBand": "quick",
@@ -3911,7 +4098,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 90,
       "averageRating": 6.97,
       "bayesAverage": 6.77,
-      "rank": 801,
+      "rank": 806,
       "avgWeight": 2.34,
       "weightBand": "medium-light",
       "timeBand": "extended",
@@ -4096,7 +4283,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "averageRating": 7.74,
       "bayesAverage": 7.49,
       "rank": 140,
-      "avgWeight": 3.31,
+      "avgWeight": 3.32,
       "weightBand": "medium-heavy",
       "timeBand": "epic",
       "playerBand": "large-group",
@@ -4133,12 +4320,15 @@ window.__BGG_LIBRARY_DATA__ = {
         "Action Points",
         "Cooperative Game",
         "Dice Rolling",
+        "Events",
+        "Pick-up and Deliver",
         "Point to Point Movement",
         "Resource to Move",
         "Role Playing",
         "Solo / Solitaire Game",
         "Stat Check Resolution",
-        "Variable Player Powers"
+        "Variable Player Powers",
+        "Variable Set-up"
       ],
       "bggItemType": "boardgame",
       "dependencyType": "",
@@ -4156,7 +4346,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "group",
         "long"
       ],
-      "searchText": "eldritch horror eldritch horror english edition fantasy flight games english eldritch horror is a co-operative game of terror and adventure in which one to eight players take the roles of globetrotting investigators working to solve mysteries, gather clues, and protect the world from an ancient one – that is, an elder being intent on destroying our world. each ancient one comes with its own unique decks of mystery and research cards, which draw you deeper into the lore surrounding each loathsome creature.... juego cooperativo de terror y aventura para uno a ocho jugadores. los investigadores viajan por el mundo para resolver misterios, reunir pistas y protegerlo de un primigenio; cada criatura cuenta con sus propios mazos de misterios e investigación. across the globe, ancient evil is stirring. now, you and your trusted circle of colleagues must travel around the world, working against all odds to hold back the approaching horror. foul monsters, brutal encounters, and obscure mysteries will take you to your limit and beyond. all the while, you and your fellow investigators must unravel the otherworldy mysteries scattered around the globe in order to push back the gathering mayhem that threatens to overwhelm humanity. the end draws near! do you have the courage to prevent global destruction? eldritch horror is a co-operative game of terror and adventure in which one to eight players take the roles of globetrotting investigators working to solve mysteries, gather clues, and protect the world from an ancient one – that is, an elder being intent on destroying our world. each ancient one comes with its own unique decks of mystery and research cards, which draw you deeper into the lore surrounding each loathsome creature. discover the true name of azathoth or battle cthulhu on the high seas. while the tasks on these mystery cards (along with the locations of otherworldly gates, menacing monsters, and helpful clues) will often inform both your travel plans and the dangers you confront, you can find adventure anywhere in the world...even where you least expect it. it is during the encounter phase of each turn that players resolve combat or, alternatively, build their investigators' personal stories by reading an encounter narrative from one of several types of encounter cards. you might go head to head with a monster in istanbul or find yourself in a tough spot with the crime syndicate in a major city. maybe you will embark on an expedition to the pyramids or research a clue you uncover in the unnamed wilderness. you may even find your way through a gate and explore a dimension beyond time and space. should you fail an encounter, the cost is steep. if you are fortunate, you will merely incur physical or mental trauma. however, you might also be compelled to take a condition card, which represents a specific injury or restriction gained throughout your journey, such as a leg injury or amnesia. you could find yourself getting in over your head to acquire assets and receive a debt condition – or maybe you'll owe a favor to something far more insidious than a debt collector, and enter into a dark pact! whatever your condition, you would be wise to find a resolution with haste; many conditions have a \"reckoning effect\" which, if triggered, ensure a much more sinister fate. all the while, the arrival of the ancient one approaches. its malign influence is manifested in eldritch horror as you draw mythos cards, which govern the appearance of otherworldly gates, fearsome monsters, and other ominous elements. mythos cards keep your investigators under pressure, introducing new threats, even as the arrival of the great old one draws nearer! since the investigators draw a new mythos card each round, they're certain to have their hands full battling foul creatures and following up on strange rumors, even as they work to solve their three all-important mysteries. with twelve unique investigators, two hundred-fifty tokens, and over three hundred cards, eldritch horror presents an epic, world-spanning adventure with each and every game. adventure fighting horror novel-based travel action points cooperative game dice rolling point to point movement resource to move role playing solo / solitaire game stat check resolution variable player powers owned solo great-at-2 group long 1 2 3 4 5 4"
+      "searchText": "eldritch horror eldritch horror english edition fantasy flight games english eldritch horror is a co-operative game of terror and adventure in which one to eight players take the roles of globetrotting investigators working to solve mysteries, gather clues, and protect the world from an ancient one – that is, an elder being intent on destroying our world. each ancient one comes with its own unique decks of mystery and research cards, which draw you deeper into the lore surrounding each loathsome creature.... juego cooperativo de terror y aventura para uno a ocho jugadores. los investigadores viajan por el mundo para resolver misterios, reunir pistas y protegerlo de un primigenio; cada criatura cuenta con sus propios mazos de misterios e investigación. across the globe, ancient evil is stirring. now, you and your trusted circle of colleagues must travel around the world, working against all odds to hold back the approaching horror. foul monsters, brutal encounters, and obscure mysteries will take you to your limit and beyond. all the while, you and your fellow investigators must unravel the otherworldy mysteries scattered around the globe in order to push back the gathering mayhem that threatens to overwhelm humanity. the end draws near! do you have the courage to prevent global destruction? eldritch horror is a co-operative game of terror and adventure in which one to eight players take the roles of globetrotting investigators working to solve mysteries, gather clues, and protect the world from an ancient one – that is, an elder being intent on destroying our world. each ancient one comes with its own unique decks of mystery and research cards, which draw you deeper into the lore surrounding each loathsome creature. discover the true name of azathoth or battle cthulhu on the high seas. while the tasks on these mystery cards (along with the locations of otherworldly gates, menacing monsters, and helpful clues) will often inform both your travel plans and the dangers you confront, you can find adventure anywhere in the world...even where you least expect it. it is during the encounter phase of each turn that players resolve combat or, alternatively, build their investigators' personal stories by reading an encounter narrative from one of several types of encounter cards. you might go head to head with a monster in istanbul or find yourself in a tough spot with the crime syndicate in a major city. maybe you will embark on an expedition to the pyramids or research a clue you uncover in the unnamed wilderness. you may even find your way through a gate and explore a dimension beyond time and space. should you fail an encounter, the cost is steep. if you are fortunate, you will merely incur physical or mental trauma. however, you might also be compelled to take a condition card, which represents a specific injury or restriction gained throughout your journey, such as a leg injury or amnesia. you could find yourself getting in over your head to acquire assets and receive a debt condition – or maybe you'll owe a favor to something far more insidious than a debt collector, and enter into a dark pact! whatever your condition, you would be wise to find a resolution with haste; many conditions have a \"reckoning effect\" which, if triggered, ensure a much more sinister fate. all the while, the arrival of the ancient one approaches. its malign influence is manifested in eldritch horror as you draw mythos cards, which govern the appearance of otherworldly gates, fearsome monsters, and other ominous elements. mythos cards keep your investigators under pressure, introducing new threats, even as the arrival of the great old one draws nearer! since the investigators draw a new mythos card each round, they're certain to have their hands full battling foul creatures and following up on strange rumors, even as they work to solve their three all-important mysteries. with twelve unique investigators, two hundred-fifty tokens, and over three hundred cards, eldritch horror presents an epic, world-spanning adventure with each and every game. adventure fighting horror novel-based travel action points cooperative game dice rolling events pick-up and deliver point to point movement resource to move role playing solo / solitaire game stat check resolution variable player powers variable set-up owned solo great-at-2 group long 1 2 3 4 5 4"
     },
     {
       "id": 438010,
@@ -4186,8 +4376,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "minPlayTime": 15,
       "maxPlayTime": 15,
       "averageRating": 6.53,
-      "bayesAverage": 5.54,
-      "rank": 14104,
+      "bayesAverage": 5.55,
+      "rank": 13801,
       "avgWeight": 1.67,
       "weightBand": "light",
       "timeBand": "quick",
@@ -4271,8 +4461,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "minPlayTime": 60,
       "maxPlayTime": 60,
       "averageRating": 6.15,
-      "bayesAverage": 5.82,
-      "rank": 4642,
+      "bayesAverage": 5.81,
+      "rank": 4700,
       "avgWeight": 1.97,
       "weightBand": "medium-light",
       "timeBand": "standard",
@@ -4356,7 +4546,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 90,
       "averageRating": 6.55,
       "bayesAverage": 6.08,
-      "rank": 2787,
+      "rank": 2819,
       "avgWeight": 1.58,
       "weightBand": "light",
       "timeBand": "extended",
@@ -4441,7 +4631,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 10,
       "averageRating": 6.95,
       "bayesAverage": 6.75,
-      "rank": 837,
+      "rank": 843,
       "avgWeight": 1.48,
       "weightBand": "light",
       "timeBand": "quick",
@@ -4538,7 +4728,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 45,
       "averageRating": 7.45,
       "bayesAverage": 6.75,
-      "rank": 844,
+      "rank": 841,
       "avgWeight": 2.13,
       "weightBand": "medium-light",
       "timeBand": "standard",
@@ -4566,13 +4756,15 @@ window.__BGG_LIBRARY_DATA__ = {
         "es": ""
       },
       "categories": [
+        "Environmental",
         "Puzzle"
       ],
       "mechanics": [
         "Bias",
         "End Game Bonuses",
         "Grid Coverage",
-        "Open Drafting"
+        "Open Drafting",
+        "Tech Trees / Tech Tracks"
       ],
       "bggItemType": "boardgame",
       "dependencyType": "",
@@ -4589,7 +4781,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "great-at-2",
         "teaching-friendly"
       ],
-      "searchText": "evergreen evergreen spanish edition horrible guild spanish in evergreen, your goal is to build a lush ecosystem by planting seeds, growing trees, and placing other natural elements on your planet, trying to make it the greenest and most fertile of all. juego de construcción de ecosistemas en el que los jugadores plantan semillas, cultivan árboles y colocan elementos naturales en su planeta para convertirlo en el más verde y fértil. in evergreen, your goal is to build a lush ecosystem by planting seeds, growing trees, and placing other natural elements on your planet, trying to make it the greenest and most fertile of all. you choose biome cards from a common pool to determine which area of your planet you'll develop in a round. the cards not chosen make those regions more fertile, and thus more valuable. to create a huge forest, you want to grow trees, plant bushes, and place lakes, while using the power of nature to gain extra actions. ideally you can concentrate your trees in the most fertile areas, but without them overshadowing one another as you also want them to collect as much light as possible. puzzle bias end game bonuses grid coverage open drafting owned solo great-at-2 teaching-friendly 1 2 3 4 2"
+      "searchText": "evergreen evergreen spanish edition horrible guild spanish in evergreen, your goal is to build a lush ecosystem by planting seeds, growing trees, and placing other natural elements on your planet, trying to make it the greenest and most fertile of all. juego de construcción de ecosistemas en el que los jugadores plantan semillas, cultivan árboles y colocan elementos naturales en su planeta para convertirlo en el más verde y fértil. in evergreen, your goal is to build a lush ecosystem by planting seeds, growing trees, and placing other natural elements on your planet, trying to make it the greenest and most fertile of all. you choose biome cards from a common pool to determine which area of your planet you'll develop in a round. the cards not chosen make those regions more fertile, and thus more valuable. to create a huge forest, you want to grow trees, plant bushes, and place lakes, while using the power of nature to gain extra actions. ideally you can concentrate your trees in the most fertile areas, but without them overshadowing one another as you also want them to collect as much light as possible. environmental puzzle bias end game bonuses grid coverage open drafting tech trees / tech tracks owned solo great-at-2 teaching-friendly 1 2 3 4 2"
     },
     {
       "id": 295945,
@@ -4619,7 +4811,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 120,
       "averageRating": 6.97,
       "bayesAverage": 6.06,
-      "rank": 2912,
+      "rank": 2927,
       "avgWeight": 2.8,
       "weightBand": "medium-heavy",
       "timeBand": "extended",
@@ -4699,7 +4891,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 120,
       "averageRating": 7.4,
       "bayesAverage": 7.07,
-      "rank": 423,
+      "rank": 425,
       "avgWeight": 2.54,
       "weightBand": "medium-light",
       "timeBand": "extended",
@@ -4778,10 +4970,10 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 90,
       "minPlayTime": 45,
       "maxPlayTime": 90,
-      "averageRating": 6.99,
-      "bayesAverage": 5.83,
-      "rank": 4480,
-      "avgWeight": 2.64,
+      "averageRating": 7.0,
+      "bayesAverage": 5.84,
+      "rank": 4459,
+      "avgWeight": 2.67,
       "weightBand": "medium-light",
       "timeBand": "extended",
       "playerBand": "small-group",
@@ -4858,9 +5050,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 120,
       "minPlayTime": 60,
       "maxPlayTime": 120,
-      "averageRating": 6.38,
+      "averageRating": 6.39,
       "bayesAverage": 5.6,
-      "rank": 9529,
+      "rank": 9506,
       "avgWeight": 3.62,
       "weightBand": "heavy",
       "timeBand": "extended",
@@ -4939,8 +5131,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 120,
       "averageRating": 7.32,
       "bayesAverage": 6.09,
-      "rank": 2737,
-      "avgWeight": 2.67,
+      "rank": 2746,
+      "avgWeight": 2.69,
       "weightBand": "medium-light",
       "timeBand": "extended",
       "playerBand": "small-group",
@@ -5017,9 +5209,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 90,
       "minPlayTime": 45,
       "maxPlayTime": 90,
-      "averageRating": 7.13,
+      "averageRating": 7.12,
       "bayesAverage": 6.71,
-      "rank": 896,
+      "rank": 898,
       "avgWeight": 2.73,
       "weightBand": "medium-light",
       "timeBand": "extended",
@@ -5100,9 +5292,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 240,
       "minPlayTime": 120,
       "maxPlayTime": 240,
-      "averageRating": 7.27,
-      "bayesAverage": 6.31,
-      "rank": 1826,
+      "averageRating": 7.28,
+      "bayesAverage": 6.32,
+      "rank": 1838,
       "avgWeight": 2.7,
       "weightBand": "medium-light",
       "timeBand": "epic",
@@ -5181,10 +5373,10 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 120,
       "minPlayTime": 60,
       "maxPlayTime": 120,
-      "averageRating": 7.53,
+      "averageRating": 7.52,
       "bayesAverage": 6.91,
-      "rank": 612,
-      "avgWeight": 2.64,
+      "rank": 617,
+      "avgWeight": 2.63,
       "weightBand": "medium-light",
       "timeBand": "extended",
       "playerBand": "small-group",
@@ -5214,7 +5406,8 @@ window.__BGG_LIBRARY_DATA__ = {
         "Deduction",
         "Murder / Mystery",
         "Puzzle",
-        "Real-time"
+        "Real-time",
+        "Trains"
       ],
       "mechanics": [
         "Cooperative Game",
@@ -5234,7 +5427,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "solo",
         "great-at-2"
       ],
-      "searchText": "exit: el juego – muerte en el orient express exit: the game – dead man on the orient express spanish edition devir spanish starting with season 3, the exit series is divided into difficulty levels. \"dead man on the orient express\" is categorized at hard level. this game can only be played once. to solve the riddles, you will have to write on, fold, and cut the game materials. this makes it possible to have especially diverse riddles. the paper and cardboard components are recyclable! entrega de dificultad alta de la serie exit. solo se puede jugar una vez: para resolver los enigmas hay que escribir, doblar y cortar los materiales, lo que permite acertijos especialmente variados. exit: the game – dead man on the orient express is a puzzle game modeled after escape rooms. one murder, eight suspects. by chance, the world-famous private detective achilles pussot happens to be on board the train - but he has been knocked out. can you use his documents to solve the case before the orient express reaches constantinople? an unforgettable, unique gaming experience. solve all of the puzzles as fast as you can! can you solve the case before it's too late? starting with season 3, the exit series is divided into difficulty levels. \"dead man on the orient express\" is categorized at hard level. this game can only be played once. to solve the riddles, you will have to write on, fold, and cut the game materials. this makes it possible to have especially diverse riddles. the paper and cardboard components are recyclable! deduction murder / mystery puzzle real-time cooperative game deduction previously-owned solo great-at-2 1 2 3 4 2"
+      "searchText": "exit: el juego – muerte en el orient express exit: the game – dead man on the orient express spanish edition devir spanish starting with season 3, the exit series is divided into difficulty levels. \"dead man on the orient express\" is categorized at hard level. this game can only be played once. to solve the riddles, you will have to write on, fold, and cut the game materials. this makes it possible to have especially diverse riddles. the paper and cardboard components are recyclable! entrega de dificultad alta de la serie exit. solo se puede jugar una vez: para resolver los enigmas hay que escribir, doblar y cortar los materiales, lo que permite acertijos especialmente variados. exit: the game – dead man on the orient express is a puzzle game modeled after escape rooms. one murder, eight suspects. by chance, the world-famous private detective achilles pussot happens to be on board the train - but he has been knocked out. can you use his documents to solve the case before the orient express reaches constantinople? an unforgettable, unique gaming experience. solve all of the puzzles as fast as you can! can you solve the case before it's too late? starting with season 3, the exit series is divided into difficulty levels. \"dead man on the orient express\" is categorized at hard level. this game can only be played once. to solve the riddles, you will have to write on, fold, and cut the game materials. this makes it possible to have especially diverse riddles. the paper and cardboard components are recyclable! deduction murder / mystery puzzle real-time trains cooperative game deduction previously-owned solo great-at-2 1 2 3 4 2"
     },
     {
       "id": 341583,
@@ -5262,9 +5455,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 90,
       "minPlayTime": 45,
       "maxPlayTime": 90,
-      "averageRating": 7.6,
+      "averageRating": 7.58,
       "bayesAverage": 6.01,
-      "rank": 3145,
+      "rank": 3160,
       "avgWeight": 3.0,
       "weightBand": "medium-heavy",
       "timeBand": "extended",
@@ -5344,8 +5537,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 90,
       "averageRating": 7.05,
       "bayesAverage": 6.16,
-      "rank": 2403,
-      "avgWeight": 2.71,
+      "rank": 2421,
+      "avgWeight": 2.76,
       "weightBand": "medium-light",
       "timeBand": "extended",
       "playerBand": "small-group",
@@ -5424,7 +5617,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 180,
       "averageRating": 6.91,
       "bayesAverage": 5.88,
-      "rank": 4067,
+      "rank": 4105,
       "avgWeight": 3.05,
       "weightBand": "medium-heavy",
       "timeBand": "epic",
@@ -5503,7 +5696,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 90,
       "averageRating": 6.77,
       "bayesAverage": 6.26,
-      "rank": 2004,
+      "rank": 2024,
       "avgWeight": 3.22,
       "weightBand": "medium-heavy",
       "timeBand": "extended",
@@ -5581,9 +5774,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 90,
       "minPlayTime": 45,
       "maxPlayTime": 90,
-      "averageRating": 6.86,
+      "averageRating": 6.85,
       "bayesAverage": 6.34,
-      "rank": 1744,
+      "rank": 1768,
       "avgWeight": 2.61,
       "weightBand": "medium-light",
       "timeBand": "extended",
@@ -5662,8 +5855,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "minPlayTime": 45,
       "maxPlayTime": 90,
       "averageRating": 6.82,
-      "bayesAverage": 6.33,
-      "rank": 1789,
+      "bayesAverage": 6.32,
+      "rank": 1806,
       "avgWeight": 2.63,
       "weightBand": "medium-light",
       "timeBand": "extended",
@@ -5743,7 +5936,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 150,
       "averageRating": 7.04,
       "bayesAverage": 6.66,
-      "rank": 994,
+      "rank": 1000,
       "avgWeight": 2.52,
       "weightBand": "medium-light",
       "timeBand": "epic",
@@ -5823,9 +6016,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 90,
       "minPlayTime": 45,
       "maxPlayTime": 90,
-      "averageRating": 7.21,
-      "bayesAverage": 6.44,
-      "rank": 1499,
+      "averageRating": 7.2,
+      "bayesAverage": 6.43,
+      "rank": 1515,
       "avgWeight": 2.47,
       "weightBand": "medium-light",
       "timeBand": "extended",
@@ -5901,10 +6094,10 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 90,
       "minPlayTime": 45,
       "maxPlayTime": 90,
-      "averageRating": 7.03,
+      "averageRating": 7.02,
       "bayesAverage": 6.43,
-      "rank": 1513,
-      "avgWeight": 1.81,
+      "rank": 1528,
+      "avgWeight": 1.83,
       "weightBand": "light",
       "timeBand": "extended",
       "playerBand": "small-group",
@@ -5987,8 +6180,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "minPlayTime": 15,
       "maxPlayTime": 15,
       "averageRating": 6.07,
-      "bayesAverage": 5.89,
-      "rank": 4012,
+      "bayesAverage": 5.88,
+      "rank": 4056,
       "avgWeight": 1.08,
       "weightBand": "light",
       "timeBand": "quick",
@@ -6077,7 +6270,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 15,
       "averageRating": 7.12,
       "bayesAverage": 5.78,
-      "rank": 5063,
+      "rank": 5059,
       "avgWeight": 1.35,
       "weightBand": "light",
       "timeBand": "quick",
@@ -6157,9 +6350,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 60,
       "minPlayTime": 45,
       "maxPlayTime": 60,
-      "averageRating": 7.59,
+      "averageRating": 7.58,
       "bayesAverage": 7.02,
-      "rank": 481,
+      "rank": 488,
       "avgWeight": 2.5,
       "weightBand": "medium-light",
       "timeBand": "standard",
@@ -6245,9 +6438,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 20,
       "minPlayTime": 20,
       "maxPlayTime": 20,
-      "averageRating": 6.71,
+      "averageRating": 6.7,
       "bayesAverage": 6.43,
-      "rank": 1508,
+      "rank": 1516,
       "avgWeight": 1.13,
       "weightBand": "light",
       "timeBand": "quick",
@@ -6336,7 +6529,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 30,
       "averageRating": 6.73,
       "bayesAverage": 6.04,
-      "rank": 2991,
+      "rank": 2997,
       "avgWeight": 1.17,
       "weightBand": "light",
       "timeBand": "quick",
@@ -6393,6 +6586,96 @@ window.__BGG_LIBRARY_DATA__ = {
       "searchText": "fantasma blitz 2.0 ghost blitz 2 spanish/portuguese first edition devir portuguese; spanish ghost blitz 2.0 – the new version of ghost blitz with different items – five wooden items sit on the table waiting to be caught: a white female ghost, a green frog, a grey bathtub, a blue hairbrush, and a red bath towel. each card in the deck shows pictures of two objects, with one or both objects colored the wrong way. with all players playing at the same time, someone reveals a card, then players grab for the \"right\" object – but which object is right? nueva versión de fantasma blitz con objetos distintos: una fantasma blanca, una rana verde, una bañera gris, un cepillo azul y una toalla roja. las cartas muestran dos objetos con colores erróneos y todos intentan atrapar el correcto. ghost blitz 2.0 – the new version of ghost blitz with different items – five wooden items sit on the table waiting to be caught: a white female ghost, a green frog, a grey bathtub, a blue hairbrush, and a red bath towel. each card in the deck shows pictures of two objects, with one or both objects colored the wrong way. with all players playing at the same time, someone reveals a card, then players grab for the \"right\" object – but which object is right? if one object is colored correctly – say, a green bathtub and a red rug – then players need to grab that correctly colored object. if both objects are colored incorrectly – say, a green bathtub and a red ghost – then you look for the object and color not represented among the four details shown. in this case you see green, red, ghost and bathtub, so players need to grab the blue brush. the new version of ghost blitz functions similarly to the original but includes the following new rules: - if the frog appears, you have to call out the item. - if the frog or the other item is in its original colour, you have to call out the correct item in a foreign language. - if the towel appears on a card, the item of the towel`s colour is the one to grab for. the first player to grab the correct object keeps the card, then reveals the next card from the deck. if a player grabs the wrong object, she must discard one card previously collected. once the card deck runs out, the game ends and whoever has collected the most cards wins! action / dexterity card game children's game party game real-time pattern recognition owned great-at-2 group quick light teaching-friendly 2 3 4 5 6 7 8 4 5"
     },
     {
+      "id": 420087,
+      "collId": 149780013,
+      "name": "Flip 7",
+      "originalName": "Flip 7",
+      "nameOverrides": {
+        "es": "",
+        "en": ""
+      },
+      "type": "thing",
+      "yearPublished": 2025,
+      "minPlayers": 3,
+      "maxPlayers": 18,
+      "recommendedPlayers": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "bestPlayers": [
+        5,
+        6
+      ],
+      "age": 6,
+      "ageText": "6+",
+      "playingTime": 20,
+      "minPlayTime": 20,
+      "maxPlayTime": 20,
+      "averageRating": 7.2,
+      "bayesAverage": 7.0,
+      "rank": 514,
+      "avgWeight": 1.04,
+      "weightBand": "light",
+      "timeBand": "quick",
+      "playerBand": "large-group",
+      "languageDependence": "Some necessary text - easily memorized or small crib sheet",
+      "languageKey": "low",
+      "quantity": 1,
+      "own": true,
+      "prevOwned": false,
+      "forTrade": false,
+      "wantToPlay": false,
+      "wantToBuy": false,
+      "wishlist": false,
+      "acquisitionDate": "2026-09-08",
+      "versionNickname": "English second edition",
+      "versionPublishers": "The Op Games",
+      "versionLanguages": "English",
+      "notes": "",
+      "summary": {
+        "en": "Sound easy? Think again! This isn't just any deck of cards… In Flip 7 there's only one 1 card, two 2's, three 3’s, etc plus a bunch of special cards that can score you extra points, give you a second chance, or freeze you or your opponents in your tracks.\n\nAre you the type of player to play it safe and bank points before you bust, or are you going to risk it all and go for the bonus points by flipping over seven in a row? Press your luck meets strategy in this addictive card game that's sure to be the greatest card game you’ve ever played!",
+        "es": "Juego de cartas de tentar a la suerte en el que hay una carta con el número 1, dos con el 2 y así sucesivamente, además de cartas especiales. Se puede asegurar la puntuación antes de pasarse o arriesgar para revelar siete números distintos y obtener una bonificación."
+      },
+      "description": {
+        "en": "Flip over cards one by one without flipping the same number twice.\n\nSound easy? Think again! This isn't just any deck of cards… In Flip 7 there's only one 1 card, two 2's, three 3’s, etc plus a bunch of special cards that can score you extra points, give you a second chance, or freeze you or your opponents in your tracks.\n\nAre you the type of player to play it safe and bank points before you bust, or are you going to risk it all and go for the bonus points by flipping over seven in a row? Press your luck meets strategy in this addictive card game that's sure to be the greatest card game you’ve ever played!\n\n—description from the publisher",
+        "es": ""
+      },
+      "categories": [
+        "Card Game",
+        "Novel-based",
+        "Number",
+        "Party Game"
+      ],
+      "mechanics": [
+        "Interrupts",
+        "Push Your Luck",
+        "Score-and-Reset Game",
+        "Take That"
+      ],
+      "bggItemType": "boardgame",
+      "dependencyType": "",
+      "requiresGameId": null,
+      "requiresGameName": "",
+      "expansionIds": [],
+      "bggUrl": "https://boardgamegeek.com/boardgame/420087",
+      "thumbnailUrl": "https://cf.geekdo-images.com/YrQxEB9Ef0kQorRApzG5vQ__small/img/_dNNsSelyw9qUEOIXBRt6PE_1us=/fit-in/200x150/filters:strip_icc()/pic8780246.jpg",
+      "imageUrl": "https://cf.geekdo-images.com/YrQxEB9Ef0kQorRApzG5vQ__original/img/hK6k-x_GYfooemrkkRuF0bTvKxE=/0x0/filters:format(jpeg)/pic8780246.jpg",
+      "imageHint": "Flip 7 (2025)",
+      "tags": [
+        "owned",
+        "group",
+        "quick",
+        "light",
+        "teaching-friendly"
+      ],
+      "searchText": "flip 7 flip 7 english second edition the op games english sound easy? think again! this isn't just any deck of cards… in flip 7 there's only one 1 card, two 2's, three 3’s, etc plus a bunch of special cards that can score you extra points, give you a second chance, or freeze you or your opponents in your tracks. are you the type of player to play it safe and bank points before you bust, or are you going to risk it all and go for the bonus points by flipping over seven in a row? press your luck meets strategy in this addictive card game that's sure to be the greatest card game you’ve ever played! juego de cartas de tentar a la suerte en el que hay una carta con el número 1, dos con el 2 y así sucesivamente, además de cartas especiales. se puede asegurar la puntuación antes de pasarse o arriesgar para revelar siete números distintos y obtener una bonificación. flip over cards one by one without flipping the same number twice. sound easy? think again! this isn't just any deck of cards… in flip 7 there's only one 1 card, two 2's, three 3’s, etc plus a bunch of special cards that can score you extra points, give you a second chance, or freeze you or your opponents in your tracks. are you the type of player to play it safe and bank points before you bust, or are you going to risk it all and go for the bonus points by flipping over seven in a row? press your luck meets strategy in this addictive card game that's sure to be the greatest card game you’ve ever played! —description from the publisher card game novel-based number party game interrupts push your luck score-and-reset game take that owned group quick light teaching-friendly 3 4 5 6 7 8 9 5 6"
+    },
+    {
       "id": 391163,
       "collId": 147298019,
       "name": "Forest Shuffle",
@@ -6420,7 +6703,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 60,
       "averageRating": 7.73,
       "bayesAverage": 7.46,
-      "rank": 151,
+      "rank": 150,
       "avgWeight": 2.22,
       "weightBand": "medium-light",
       "timeBand": "standard",
@@ -6440,11 +6723,11 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "In Forest Shuffle, players compete to gather the most valuable trees, then attract species to these trees, thus creating an ecologically balanced habitat for flora and fauna.\n\nForest Shuffle is the first in a line of Lookout games sporting the Lookout Greenline label, produced on FSC certified paper and avoiding plastic completely.",
-        "es": "Juego en el que los jugadores compiten por reunir los árboles más valiosos y atraer especies para crear un hábitat equilibrado de flora y fauna. Es el primer título de la línea Lookout Greenline, producido en papel certificado FSC y sin plástico."
+        "en": "In Forest Shuffle, players compete to gather the most valuable trees, then attract species to these trees, thus creating an ecologically balanced habitat for flora and fauna.\n\nDuring set-up, three winter cards were placed into the bottom third of the deck. When the third winter card is drawn, the game ends immediately, then players tally their points based on the trees and dwellers in their forest. Whoever scores the most points wins.",
+        "es": "Juego en el que los jugadores compiten por reunir árboles valiosos y atraer especies para crear un hábitat equilibrado de flora y fauna. La partida termina inmediatamente al aparecer la tercera carta de invierno; gana quien obtiene más puntos con su bosque."
       },
       "description": {
-        "en": "In Forest Shuffle, players compete to gather the most valuable trees, then attract species to these trees, thus creating an ecologically balanced habitat for flora and fauna.\n\nTo start, each player has six cards in hand, with cards depicting either a particular type of tree or two forest dwellers (animal, plant, mushroom, etc.), with these latter cards being divided in half, whether vertically or horizontally, with one dweller in each card half.\n\nOn a turn, either draw two cards — whether face down from the deck or face up from the clearing — and add them to your hand, or play a card from your hand by paying the cost, then putting it into play.\n\nDuring set-up, three winter cards were placed into the bottom third of the deck. When the third winter card is drawn, the game ends immediately, then players tally their points based on the trees and dwellers in their forest. Whoever scores the most points wins.\n\nForest Shuffle is the first in a line of Lookout games sporting the Lookout Greenline label, produced on FSC certified paper and avoiding plastic completely.",
+        "en": "In Forest Shuffle, players compete to gather the most valuable trees, then attract species to these trees, thus creating an ecologically balanced habitat for flora and fauna.\n\nTo start, each player has six cards in hand, with cards depicting either a particular type of tree or two forest dwellers (animal, plant, mushroom, etc.), with these latter cards being divided in half, whether vertically or horizontally, with one dweller in each card half.\n\nOn a turn, either draw two cards — whether face down from the deck or face up from the clearing — and add them to your hand, or play a card from your hand by paying the cost, then putting it into play.\n\nDuring set-up, three winter cards were placed into the bottom third of the deck. When the third winter card is drawn, the game ends immediately, then players tally their points based on the trees and dwellers in their forest. Whoever scores the most points wins.\n\nManufactured from FSC-certified material.",
         "es": ""
       },
       "categories": [
@@ -6476,7 +6759,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "owned",
         "great-at-2"
       ],
-      "searchText": "forest shuffle forest shuffle spanish edition lookout games spanish in forest shuffle, players compete to gather the most valuable trees, then attract species to these trees, thus creating an ecologically balanced habitat for flora and fauna. forest shuffle is the first in a line of lookout games sporting the lookout greenline label, produced on fsc certified paper and avoiding plastic completely. juego en el que los jugadores compiten por reunir los árboles más valiosos y atraer especies para crear un hábitat equilibrado de flora y fauna. es el primer título de la línea lookout greenline, producido en papel certificado fsc y sin plástico. in forest shuffle, players compete to gather the most valuable trees, then attract species to these trees, thus creating an ecologically balanced habitat for flora and fauna. to start, each player has six cards in hand, with cards depicting either a particular type of tree or two forest dwellers (animal, plant, mushroom, etc.), with these latter cards being divided in half, whether vertically or horizontally, with one dweller in each card half. on a turn, either draw two cards — whether face down from the deck or face up from the clearing — and add them to your hand, or play a card from your hand by paying the cost, then putting it into play. during set-up, three winter cards were placed into the bottom third of the deck. when the third winter card is drawn, the game ends immediately, then players tally their points based on the trees and dwellers in their forest. whoever scores the most points wins. forest shuffle is the first in a line of lookout games sporting the lookout greenline label, produced on fsc certified paper and avoiding plastic completely. animals card game educational environmental end game bonuses hand management layering melding and splaying multi-use cards open drafting set collection tags owned great-at-2 2 3 4 2"
+      "searchText": "forest shuffle forest shuffle spanish edition lookout games spanish in forest shuffle, players compete to gather the most valuable trees, then attract species to these trees, thus creating an ecologically balanced habitat for flora and fauna. during set-up, three winter cards were placed into the bottom third of the deck. when the third winter card is drawn, the game ends immediately, then players tally their points based on the trees and dwellers in their forest. whoever scores the most points wins. juego en el que los jugadores compiten por reunir árboles valiosos y atraer especies para crear un hábitat equilibrado de flora y fauna. la partida termina inmediatamente al aparecer la tercera carta de invierno; gana quien obtiene más puntos con su bosque. in forest shuffle, players compete to gather the most valuable trees, then attract species to these trees, thus creating an ecologically balanced habitat for flora and fauna. to start, each player has six cards in hand, with cards depicting either a particular type of tree or two forest dwellers (animal, plant, mushroom, etc.), with these latter cards being divided in half, whether vertically or horizontally, with one dweller in each card half. on a turn, either draw two cards — whether face down from the deck or face up from the clearing — and add them to your hand, or play a card from your hand by paying the cost, then putting it into play. during set-up, three winter cards were placed into the bottom third of the deck. when the third winter card is drawn, the game ends immediately, then players tally their points based on the trees and dwellers in their forest. whoever scores the most points wins. manufactured from fsc-certified material. animals card game educational environmental end game bonuses hand management layering melding and splaying multi-use cards open drafting set collection tags owned great-at-2 2 3 4 2"
     },
     {
       "id": 336794,
@@ -6507,13 +6790,13 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 30,
       "averageRating": 7.41,
       "bayesAverage": 6.9,
-      "rank": 624,
+      "rank": 620,
       "avgWeight": 2.26,
       "weightBand": "medium-light",
       "timeBand": "quick",
       "playerBand": "small-group",
-      "languageDependence": "Some necessary text - easily memorized or small crib sheet",
-      "languageKey": "low",
+      "languageDependence": "No necessary in-game text",
+      "languageKey": "none",
       "quantity": 1,
       "own": true,
       "prevOwned": false,
@@ -6597,7 +6880,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 60,
       "minPlayTime": 30,
       "maxPlayTime": 60,
-      "averageRating": 7.89,
+      "averageRating": 7.9,
       "bayesAverage": 5.84,
       "rank": 0,
       "avgWeight": 2.73,
@@ -6688,7 +6971,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 45,
       "averageRating": 7.09,
       "bayesAverage": 6.88,
-      "rank": 643,
+      "rank": 646,
       "avgWeight": 1.9,
       "weightBand": "medium-light",
       "timeBand": "standard",
@@ -6820,7 +7103,10 @@ window.__BGG_LIBRARY_DATA__ = {
         "Hexagon Grid",
         "Legacy Game",
         "Line of Sight",
+        "Movement Points",
         "Multi-Use Cards",
+        "Multiple Maps",
+        "Narrative Choice / Paragraph",
         "Once-Per-Game Abilities",
         "Player Elimination",
         "Role Playing",
@@ -6844,7 +7130,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "great-at-2",
         "heavy"
       ],
-      "searchText": "gloomhaven: fauces del león gloomhaven: jaws of the lion spanish edition cephalofair games spanish gloomhaven: jaws of the lion is aimed at a more casual audience to get people into the gameplay more quickly. all of the hard-to-organize cardboard map tiles have been removed, and instead players will play on the scenario book itself, which features new artwork unique to each scenario. the last barrier to entry — i.e., learning the game — has also been lowered through a simplified rule set and a five-scenario tutorial that will ease new players into the experience. versión de gloomhaven orientada a un público más casual. reemplaza las losetas de mapa por el libro de escenarios ilustrado, simplifica las reglas e incorpora un tutorial de cinco escenarios para introducir gradualmente la experiencia. gloomhaven: jaws of the lion is a standalone game that takes place before the events of gloomhaven. the game includes four new characters — valrath red guard (tank, crowd control), inox hatchet (ranged damage), human voidwarden (support, mind control), and quatryl demolitionist (melee damage, obstacle manipulation) — that can also be used in the original gloomhaven game. the game also includes 16 monster types (including seven new standard monsters and three new bosses) and a new campaign with 25 scenarios that invites the heroes to investigate a case of mysterious disappearances within the city. is it the work of vermlings, or is something far more sinister going on? gloomhaven: jaws of the lion is aimed at a more casual audience to get people into the gameplay more quickly. all of the hard-to-organize cardboard map tiles have been removed, and instead players will play on the scenario book itself, which features new artwork unique to each scenario. the last barrier to entry — i.e., learning the game — has also been lowered through a simplified rule set and a five-scenario tutorial that will ease new players into the experience. adventure exploration fantasy fighting miniatures action queue action retrieval campaign / battle card driven communication limits cooperative game critical hits and failures deck construction grid movement hand management hexagon grid legacy game line of sight multi-use cards once-per-game abilities player elimination role playing scenario / mission / campaign game simultaneous action selection solo / solitaire game variable player powers owned solo great-at-2 heavy 1 2 3 4 2"
+      "searchText": "gloomhaven: fauces del león gloomhaven: jaws of the lion spanish edition cephalofair games spanish gloomhaven: jaws of the lion is aimed at a more casual audience to get people into the gameplay more quickly. all of the hard-to-organize cardboard map tiles have been removed, and instead players will play on the scenario book itself, which features new artwork unique to each scenario. the last barrier to entry — i.e., learning the game — has also been lowered through a simplified rule set and a five-scenario tutorial that will ease new players into the experience. versión de gloomhaven orientada a un público más casual. reemplaza las losetas de mapa por el libro de escenarios ilustrado, simplifica las reglas e incorpora un tutorial de cinco escenarios para introducir gradualmente la experiencia. gloomhaven: jaws of the lion is a standalone game that takes place before the events of gloomhaven. the game includes four new characters — valrath red guard (tank, crowd control), inox hatchet (ranged damage), human voidwarden (support, mind control), and quatryl demolitionist (melee damage, obstacle manipulation) — that can also be used in the original gloomhaven game. the game also includes 16 monster types (including seven new standard monsters and three new bosses) and a new campaign with 25 scenarios that invites the heroes to investigate a case of mysterious disappearances within the city. is it the work of vermlings, or is something far more sinister going on? gloomhaven: jaws of the lion is aimed at a more casual audience to get people into the gameplay more quickly. all of the hard-to-organize cardboard map tiles have been removed, and instead players will play on the scenario book itself, which features new artwork unique to each scenario. the last barrier to entry — i.e., learning the game — has also been lowered through a simplified rule set and a five-scenario tutorial that will ease new players into the experience. adventure exploration fantasy fighting miniatures action queue action retrieval campaign / battle card driven communication limits cooperative game critical hits and failures deck construction grid movement hand management hexagon grid legacy game line of sight movement points multi-use cards multiple maps narrative choice / paragraph once-per-game abilities player elimination role playing scenario / mission / campaign game simultaneous action selection solo / solitaire game variable player powers owned solo great-at-2 heavy 1 2 3 4 2"
     },
     {
       "id": 269144,
@@ -6876,7 +7162,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 60,
       "averageRating": 7.38,
       "bayesAverage": 6.94,
-      "rank": 577,
+      "rank": 587,
       "avgWeight": 2.21,
       "weightBand": "medium-light",
       "timeBand": "standard",
@@ -6955,9 +7241,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "minPlayTime": 30,
       "maxPlayTime": 60,
       "averageRating": 6.15,
-      "bayesAverage": 5.82,
-      "rank": 4565,
-      "avgWeight": 1.38,
+      "bayesAverage": 5.83,
+      "rank": 4581,
+      "avgWeight": 1.37,
       "weightBand": "light",
       "timeBand": "standard",
       "playerBand": "small-group",
@@ -7049,7 +7335,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 60,
       "minPlayTime": 30,
       "maxPlayTime": 60,
-      "averageRating": 7.29,
+      "averageRating": 7.28,
       "bayesAverage": 5.62,
       "rank": 0,
       "avgWeight": 1.5,
@@ -7135,7 +7421,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 60,
       "minPlayTime": 30,
       "maxPlayTime": 60,
-      "averageRating": 7.31,
+      "averageRating": 7.33,
       "bayesAverage": 5.57,
       "rank": 0,
       "avgWeight": 2.0,
@@ -7220,7 +7506,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 60,
       "minPlayTime": 30,
       "maxPlayTime": 60,
-      "averageRating": 7.11,
+      "averageRating": 7.09,
       "bayesAverage": 5.64,
       "rank": 0,
       "avgWeight": 1.0,
@@ -7310,7 +7596,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 2,
       "averageRating": 6.64,
       "bayesAverage": 6.32,
-      "rank": 1801,
+      "rank": 1818,
       "avgWeight": 1.06,
       "weightBand": "light",
       "timeBand": "quick",
@@ -7477,8 +7763,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "minPlayTime": 90,
       "maxPlayTime": 90,
       "averageRating": 7.12,
-      "bayesAverage": 6.25,
-      "rank": 2059,
+      "bayesAverage": 6.24,
+      "rank": 2077,
       "avgWeight": 2.9,
       "weightBand": "medium-heavy",
       "timeBand": "extended",
@@ -7558,8 +7844,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 90,
       "averageRating": 7.37,
       "bayesAverage": 6.91,
-      "rank": 608,
-      "avgWeight": 2.82,
+      "rank": 611,
+      "avgWeight": 2.81,
       "weightBand": "medium-heavy",
       "timeBand": "extended",
       "playerBand": "small-group",
@@ -7578,11 +7864,11 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "English",
       "notes": "",
       "summary": {
-        "en": "Imperial Settlers: Empires of the North is a new, standalone card game in the established Imperial Settlers universe, with players heading to the far north where three different factions live: Scotsmen, Inuits, and Vikings. Take on the role of leader, and make your faction into the best empire in the world!",
+        "en": "Imperial Settlers: Empires of the North is a standalone card game in the established Imperial Settlers universe, with players heading to the far north where three groups live: Scotsmen, Inuits, and Vikings. Take on the role of leader, and make your faction into the best empire in the world!",
         "es": "Juego de cartas independiente del universo Imperial Settlers. Los jugadores lideran una de tres facciones del lejano norte —escoceses, inuit o vikingos— e intentan convertirla en el mejor imperio del mundo."
       },
       "description": {
-        "en": "Imperial Settlers: Empires of the North is a new, standalone card game in the established Imperial Settlers universe, with players heading to the far north where three different factions live: Scotsmen, Inuits, and Vikings. Take on the role of leader, and make your faction into the best empire in the world!\n\nChoosing the faction is only the first step, though, as each faction can be played using one of the two separate and unique decks. Yes, in the base game, players will find six pre-constructed decks ready to use straight out of the box. Each one offers a completely different gameplay style!\n\nDevelop your economy, deflect your opponent, and fight for dominance in the north. Learn new mechanisms, and experience a unique style of Imperial Settlers. Will you be able to create the most successful civilization in Imperial Settlers: Empires of the North?",
+        "en": "Imperial Settlers: Empires of the North is a standalone card game in the established Imperial Settlers universe, with players heading to the far north where three groups live: Scotsmen, Inuits, and Vikings. Take on the role of leader, and make your faction into the best empire in the world!\n\nPlayers will find six pre-constructed Clan (two for each faction) decks ready to use straight out of the box. Each Clan has a different take on the game with focus on different mechanics, and varied play difficulty between 1-10.\n\nThe game plays out over a series of rounds, during which players explore new lands, construct buildings, trade resources, and sail to new lands with the aim of either conquering, or pillaging to gain more goods! Each action draws the clans closer to becoming the greatest empire! The game is played in rounds of 4 phases: Lookout, Action, Expedition, and Cleanup. The game continues until a player reaches or passes the 25 Victory points space on the scoreboard during the Action phase. Once that happens, the final round is triggered and the game will end at the end of the current round.\n\nDevelop your economy, deflect your opponent, and fight for dominance in the north. Learn new mechanisms, and experience a unique style of Imperial Settlers. Will you be able to create the most successful civilization in Imperial Settlers: Empires of the North?",
         "es": ""
       },
       "categories": [
@@ -7613,7 +7899,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "solo",
         "great-at-2"
       ],
-      "searchText": "imperial settlers: empires of the north imperial settlers: empires of the north english edition portal games english imperial settlers: empires of the north is a new, standalone card game in the established imperial settlers universe, with players heading to the far north where three different factions live: scotsmen, inuits, and vikings. take on the role of leader, and make your faction into the best empire in the world! juego de cartas independiente del universo imperial settlers. los jugadores lideran una de tres facciones del lejano norte —escoceses, inuit o vikingos— e intentan convertirla en el mejor imperio del mundo. imperial settlers: empires of the north is a new, standalone card game in the established imperial settlers universe, with players heading to the far north where three different factions live: scotsmen, inuits, and vikings. take on the role of leader, and make your faction into the best empire in the world! choosing the faction is only the first step, though, as each faction can be played using one of the two separate and unique decks. yes, in the base game, players will find six pre-constructed decks ready to use straight out of the box. each one offers a completely different gameplay style! develop your economy, deflect your opponent, and fight for dominance in the north. learn new mechanisms, and experience a unique style of imperial settlers. will you be able to create the most successful civilization in imperial settlers: empires of the north? ancient card game city building civilization exploration nautical hand management take that variable player powers worker placement owned solo great-at-2 1 2 3 2"
+      "searchText": "imperial settlers: empires of the north imperial settlers: empires of the north english edition portal games english imperial settlers: empires of the north is a standalone card game in the established imperial settlers universe, with players heading to the far north where three groups live: scotsmen, inuits, and vikings. take on the role of leader, and make your faction into the best empire in the world! juego de cartas independiente del universo imperial settlers. los jugadores lideran una de tres facciones del lejano norte —escoceses, inuit o vikingos— e intentan convertirla en el mejor imperio del mundo. imperial settlers: empires of the north is a standalone card game in the established imperial settlers universe, with players heading to the far north where three groups live: scotsmen, inuits, and vikings. take on the role of leader, and make your faction into the best empire in the world! players will find six pre-constructed clan (two for each faction) decks ready to use straight out of the box. each clan has a different take on the game with focus on different mechanics, and varied play difficulty between 1-10. the game plays out over a series of rounds, during which players explore new lands, construct buildings, trade resources, and sail to new lands with the aim of either conquering, or pillaging to gain more goods! each action draws the clans closer to becoming the greatest empire! the game is played in rounds of 4 phases: lookout, action, expedition, and cleanup. the game continues until a player reaches or passes the 25 victory points space on the scoreboard during the action phase. once that happens, the final round is triggered and the game will end at the end of the current round. develop your economy, deflect your opponent, and fight for dominance in the north. learn new mechanisms, and experience a unique style of imperial settlers. will you be able to create the most successful civilization in imperial settlers: empires of the north? ancient card game city building civilization exploration nautical hand management take that variable player powers worker placement owned solo great-at-2 1 2 3 2"
     },
     {
       "id": 28023,
@@ -7644,8 +7930,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "minPlayTime": 30,
       "maxPlayTime": 60,
       "averageRating": 7.06,
-      "bayesAverage": 6.88,
-      "rank": 649,
+      "bayesAverage": 6.87,
+      "rank": 653,
       "avgWeight": 1.66,
       "weightBand": "light",
       "timeBand": "standard",
@@ -7665,11 +7951,11 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Goal: The game ends on the turn when at least one player's ship reaches the finish line, completing one circuit around the island of Jamaica. At that point, players are awarded different amounts of gold in accordance with how far away from the finish line they were when the race concluded. This gold is added to any gold a player gathered along the way by detouring from the race to search for valuable treasure, by stealing gold or treasure from other players, or just by loading gold as directed by the cards the player played during the race....",
+        "en": "The game ends on the turn when at least one player's ship reaches the finish line, completing one circuit around the island of Jamaica. At that point, players are awarded different amounts of gold in accordance with how far away from the finish line they were when the race concluded. This gold is added to any gold a player gathered along the way by detouring from the race to search for valuable treasure, by stealing gold or treasure from other players, or just by loading gold as directed by the cards the player played during the race.",
         "es": "Juego de carreras alrededor de Jamaica. La partida termina cuando un barco completa una vuelta a la isla; entonces se suma el oro según la posición, los tesoros hallados, los robos a rivales y el oro cargado durante la carrera."
       },
       "description": {
-        "en": "Summary: This is a pirate-themed tactical race game with player interaction and side goals (e.g. detouring for treasure). The winner is the player who best balances their position in the race with their success at the side goals.\n\nSetting: Jamaica, 1675. After a long career in piracy, Captain Henry Morgan skillfully gets appointed to be Governor of Jamaica, with the explicit order to cleanse the Caribbean of pirates and buccaneers! Instead, he invites all of his former \"colleagues\" to join him in his retirement, to enjoy the fruits of their looting with impunity. Each year, in remembrance of the \"good old days,\" Morgan organizes the Great Challenge, a race around the island, and at its end, the Captain with the most gold is declared Grand Winner.\n\nGoal: The game ends on the turn when at least one player's ship reaches the finish line, completing one circuit around the island of Jamaica. At that point, players are awarded different amounts of gold in accordance with how far away from the finish line they were when the race concluded. This gold is added to any gold a player gathered along the way by detouring from the race to search for valuable treasure, by stealing gold or treasure from other players, or just by loading gold as directed by the cards the player played during the race. The player with the most total gold acquired through all these means is then declared the winner.\n\nGameplay: The game is played in rounds. Each player always has a hand of three cards, and a personal board depicting the five \"holds\" of their ship, into which goods can be loaded during the game. Each round, one player is designated as \"captain,\" with the next clockwise player being captain in the following round, and so on. The captain rolls two standard D6 dice, examines her cards, then announces which die will correspond to the \"day\" and which to the \"night.\" Each player then simultaneously selects a card from their hand and places it face down in front of them. Each card has two symbols on it, one on the left - corresponding to \"day\" - and one on the right (\"night\"). The symbols indicate either ship movement (forward or backward) or the loading of a type of good. After every player has selected a card, all cards are revealed simultaneously and then resolved clockwise one by one, starting with the captain's. When it is a player's turn to resolve her card, for first the left symbol on her card and then for the right symbol, the player will load a number of goods or move a number of spaces equal to the number of pips showing on the corresponding day or night die for that round. Thus the main decision each player makes during the game is which of their current three cards would best serve them on a particular turn, given the values of the day and night dice. Finally, during the race, when a player lands on a spot already occupied by another player, there is a battle. Battles are mainly resolved by rolling a \"combat\" die, but players may improve their chances by using \"gunpowder\" tokens from their holds, if they loaded any on previous turns. The winner of a battle may steal some goods or treasure from the loser.",
+        "en": "After a long career in piracy, Captain Henry Morgan skillfully gets appointed to be Governor of Jamaica. He invites all of his former \"colleagues\" to join him in his retirement, to enjoy the fruits of their looting with impunity. Each year, in remembrance of the \"good old days,\" Morgan organizes the Great Challenge, a race around the island, and at its end, the Captain with the most gold is declared Grand Winner.\n\nThe game is played in rounds. Each player always has a hand of three cards, and a personal board depicting the five \"holds\" of their ship, into which goods can be loaded during the game. Each round, one player is designated as \"captain,\" with the next clockwise player being captain in the following round, and so on. The captain rolls two standard D6 dice, examines her cards, then announces which die will correspond to the \"day\" and which to the \"night.\" Each player then simultaneously selects a card from their hand and places it face down in front of them. Each card has two symbols on it, one on the left - corresponding to \"day\" - and one on the right (\"night\"). The symbols indicate either ship movement (forward or backward) or the loading of a type of good. After every player has selected a card, all cards are revealed simultaneously and then resolved clockwise one by one, starting with the captain's.\n\nWhen it is a player's turn to resolve her card, for first the left symbol on her card and then for the right symbol, the player will load a number of goods or move a number of spaces equal to the number of pips showing on the corresponding day or night die for that round. Thus the main decision each player makes during the game is which of their current three cards would best serve them on a particular turn, given the values of the day and night dice. When a player lands on a spot already occupied by another player, there is a battle. Battles are mainly resolved by rolling a \"combat\" die, but players may improve their chances by using \"gunpowder\" tokens from their holds, if they loaded any on previous turns. The winner of a battle may steal some goods or treasure from the loser.\n\nThe game ends on the turn when at least one player's ship reaches the finish line, completing one circuit around the island of Jamaica. At that point, players are awarded different amounts of gold in accordance with how far away from the finish line they were when the race concluded. This gold is added to any gold a player gathered along the way by detouring from the race to search for valuable treasure, by stealing gold or treasure from other players, or just by loading gold as directed by the cards the player played during the race.\n\nThe player with the most total gold acquired through all these means is then declared the winner.",
         "es": ""
       },
       "categories": [
@@ -7704,7 +7990,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "light",
         "teaching-friendly"
       ],
-      "searchText": "jamaica jamaica spanish edition space cowboys spanish goal: the game ends on the turn when at least one player's ship reaches the finish line, completing one circuit around the island of jamaica. at that point, players are awarded different amounts of gold in accordance with how far away from the finish line they were when the race concluded. this gold is added to any gold a player gathered along the way by detouring from the race to search for valuable treasure, by stealing gold or treasure from other players, or just by loading gold as directed by the cards the player played during the race.... juego de carreras alrededor de jamaica. la partida termina cuando un barco completa una vuelta a la isla; entonces se suma el oro según la posición, los tesoros hallados, los robos a rivales y el oro cargado durante la carrera. summary: this is a pirate-themed tactical race game with player interaction and side goals (e.g. detouring for treasure). the winner is the player who best balances their position in the race with their success at the side goals. setting: jamaica, 1675. after a long career in piracy, captain henry morgan skillfully gets appointed to be governor of jamaica, with the explicit order to cleanse the caribbean of pirates and buccaneers! instead, he invites all of his former \"colleagues\" to join him in his retirement, to enjoy the fruits of their looting with impunity. each year, in remembrance of the \"good old days,\" morgan organizes the great challenge, a race around the island, and at its end, the captain with the most gold is declared grand winner. goal: the game ends on the turn when at least one player's ship reaches the finish line, completing one circuit around the island of jamaica. at that point, players are awarded different amounts of gold in accordance with how far away from the finish line they were when the race concluded. this gold is added to any gold a player gathered along the way by detouring from the race to search for valuable treasure, by stealing gold or treasure from other players, or just by loading gold as directed by the cards the player played during the race. the player with the most total gold acquired through all these means is then declared the winner. gameplay: the game is played in rounds. each player always has a hand of three cards, and a personal board depicting the five \"holds\" of their ship, into which goods can be loaded during the game. each round, one player is designated as \"captain,\" with the next clockwise player being captain in the following round, and so on. the captain rolls two standard d6 dice, examines her cards, then announces which die will correspond to the \"day\" and which to the \"night.\" each player then simultaneously selects a card from their hand and places it face down in front of them. each card has two symbols on it, one on the left - corresponding to \"day\" - and one on the right (\"night\"). the symbols indicate either ship movement (forward or backward) or the loading of a type of good. after every player has selected a card, all cards are revealed simultaneously and then resolved clockwise one by one, starting with the captain's. when it is a player's turn to resolve her card, for first the left symbol on her card and then for the right symbol, the player will load a number of goods or move a number of spaces equal to the number of pips showing on the corresponding day or night die for that round. thus the main decision each player makes during the game is which of their current three cards would best serve them on a particular turn, given the values of the day and night dice. finally, during the race, when a player lands on a spot already occupied by another player, there is a battle. battles are mainly resolved by rolling a \"combat\" die, but players may improve their chances by using \"gunpowder\" tokens from their holds, if they loaded any on previous turns. the winner of a battle may steal some goods or treasure from the loser. nautical pirates racing dice rolling hand management hidden victory points race roll / spin and move simultaneous action selection take that track movement turn order: progressive victory points as a resource owned group light teaching-friendly 3 4 5 6 5 6"
+      "searchText": "jamaica jamaica spanish edition space cowboys spanish the game ends on the turn when at least one player's ship reaches the finish line, completing one circuit around the island of jamaica. at that point, players are awarded different amounts of gold in accordance with how far away from the finish line they were when the race concluded. this gold is added to any gold a player gathered along the way by detouring from the race to search for valuable treasure, by stealing gold or treasure from other players, or just by loading gold as directed by the cards the player played during the race. juego de carreras alrededor de jamaica. la partida termina cuando un barco completa una vuelta a la isla; entonces se suma el oro según la posición, los tesoros hallados, los robos a rivales y el oro cargado durante la carrera. after a long career in piracy, captain henry morgan skillfully gets appointed to be governor of jamaica. he invites all of his former \"colleagues\" to join him in his retirement, to enjoy the fruits of their looting with impunity. each year, in remembrance of the \"good old days,\" morgan organizes the great challenge, a race around the island, and at its end, the captain with the most gold is declared grand winner. the game is played in rounds. each player always has a hand of three cards, and a personal board depicting the five \"holds\" of their ship, into which goods can be loaded during the game. each round, one player is designated as \"captain,\" with the next clockwise player being captain in the following round, and so on. the captain rolls two standard d6 dice, examines her cards, then announces which die will correspond to the \"day\" and which to the \"night.\" each player then simultaneously selects a card from their hand and places it face down in front of them. each card has two symbols on it, one on the left - corresponding to \"day\" - and one on the right (\"night\"). the symbols indicate either ship movement (forward or backward) or the loading of a type of good. after every player has selected a card, all cards are revealed simultaneously and then resolved clockwise one by one, starting with the captain's. when it is a player's turn to resolve her card, for first the left symbol on her card and then for the right symbol, the player will load a number of goods or move a number of spaces equal to the number of pips showing on the corresponding day or night die for that round. thus the main decision each player makes during the game is which of their current three cards would best serve them on a particular turn, given the values of the day and night dice. when a player lands on a spot already occupied by another player, there is a battle. battles are mainly resolved by rolling a \"combat\" die, but players may improve their chances by using \"gunpowder\" tokens from their holds, if they loaded any on previous turns. the winner of a battle may steal some goods or treasure from the loser. the game ends on the turn when at least one player's ship reaches the finish line, completing one circuit around the island of jamaica. at that point, players are awarded different amounts of gold in accordance with how far away from the finish line they were when the race concluded. this gold is added to any gold a player gathered along the way by detouring from the race to search for valuable treasure, by stealing gold or treasure from other players, or just by loading gold as directed by the cards the player played during the race. the player with the most total gold acquired through all these means is then declared the winner. nautical pirates racing dice rolling hand management hidden victory points race roll / spin and move simultaneous action selection take that track movement turn order: progressive victory points as a resource owned group light teaching-friendly 3 4 5 6 5 6"
     },
     {
       "id": 223953,
@@ -7735,8 +8021,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 45,
       "averageRating": 7.2,
       "bayesAverage": 6.57,
-      "rank": 1157,
-      "avgWeight": 2.19,
+      "rank": 1170,
+      "avgWeight": 2.2,
       "weightBand": "medium-light",
       "timeBand": "standard",
       "playerBand": "small-group",
@@ -7816,10 +8102,10 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 20,
       "minPlayTime": 10,
       "maxPlayTime": 20,
-      "averageRating": 6.55,
+      "averageRating": 6.54,
       "bayesAverage": 6.16,
-      "rank": 2415,
-      "avgWeight": 1.04,
+      "rank": 2412,
+      "avgWeight": 1.03,
       "weightBand": "light",
       "timeBand": "quick",
       "playerBand": "small-group",
@@ -7901,7 +8187,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 30,
       "averageRating": 6.65,
       "bayesAverage": 6.3,
-      "rank": 1881,
+      "rank": 1902,
       "avgWeight": 1.64,
       "weightBand": "light",
       "timeBand": "quick",
@@ -7984,7 +8270,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 60,
       "averageRating": 7.14,
       "bayesAverage": 6.56,
-      "rank": 1194,
+      "rank": 1201,
       "avgWeight": 1.95,
       "weightBand": "medium-light",
       "timeBand": "standard",
@@ -8061,9 +8347,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 10,
       "minPlayTime": 10,
       "maxPlayTime": 10,
-      "averageRating": 7.3,
+      "averageRating": 7.28,
       "bayesAverage": 5.64,
-      "rank": 7854,
+      "rank": 7902,
       "avgWeight": 1.43,
       "weightBand": "light",
       "timeBand": "quick",
@@ -8151,7 +8437,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 45,
       "averageRating": 7.2,
       "bayesAverage": 6.64,
-      "rank": 1027,
+      "rank": 1028,
       "avgWeight": 1.91,
       "weightBand": "medium-light",
       "timeBand": "standard",
@@ -8234,9 +8520,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 120,
       "minPlayTime": 60,
       "maxPlayTime": 120,
-      "averageRating": 7.92,
+      "averageRating": 7.91,
       "bayesAverage": 7.36,
-      "rank": 208,
+      "rank": 209,
       "avgWeight": 3.38,
       "weightBand": "medium-heavy",
       "timeBand": "extended",
@@ -8318,9 +8604,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 15,
       "minPlayTime": 15,
       "maxPlayTime": 15,
-      "averageRating": 6.57,
+      "averageRating": 6.58,
       "bayesAverage": 5.54,
-      "rank": 14743,
+      "rank": 14735,
       "avgWeight": 2.0,
       "weightBand": "medium-light",
       "timeBand": "quick",
@@ -8397,9 +8683,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 90,
       "minPlayTime": 5,
       "maxPlayTime": 90,
-      "averageRating": 6.54,
+      "averageRating": 6.55,
       "bayesAverage": 5.68,
-      "rank": 6915,
+      "rank": 6878,
       "avgWeight": 1.17,
       "weightBand": "light",
       "timeBand": "extended",
@@ -8475,9 +8761,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 60,
       "minPlayTime": 30,
       "maxPlayTime": 60,
-      "averageRating": 7.57,
-      "bayesAverage": 6.06,
-      "rank": 2913,
+      "averageRating": 7.55,
+      "bayesAverage": 6.07,
+      "rank": 2840,
       "avgWeight": 2.14,
       "weightBand": "medium-light",
       "timeBand": "standard",
@@ -8558,8 +8844,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "minPlayTime": 60,
       "maxPlayTime": 90,
       "averageRating": 7.42,
-      "bayesAverage": 6.85,
-      "rank": 686,
+      "bayesAverage": 6.86,
+      "rank": 681,
       "avgWeight": 2.18,
       "weightBand": "medium-light",
       "timeBand": "extended",
@@ -8637,10 +8923,10 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 90,
       "minPlayTime": 60,
       "maxPlayTime": 90,
-      "averageRating": 7.77,
+      "averageRating": 7.75,
       "bayesAverage": 5.82,
       "rank": 0,
-      "avgWeight": 2.77,
+      "avgWeight": 2.73,
       "weightBand": "medium-light",
       "timeBand": "extended",
       "playerBand": "small-group",
@@ -8719,7 +9005,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 20,
       "averageRating": 6.71,
       "bayesAverage": 6.59,
-      "rank": 1122,
+      "rank": 1141,
       "avgWeight": 1.07,
       "weightBand": "light",
       "timeBand": "quick",
@@ -8802,7 +9088,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 120,
       "averageRating": 5.87,
       "bayesAverage": 5.69,
-      "rank": 6514,
+      "rank": 6575,
       "avgWeight": 1.82,
       "weightBand": "light",
       "timeBand": "extended",
@@ -8974,7 +9260,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 90,
       "minPlayTime": 90,
       "maxPlayTime": 90,
-      "averageRating": 6.45,
+      "averageRating": 6.46,
       "bayesAverage": 6.06,
       "rank": 0,
       "avgWeight": 1.86,
@@ -9034,6 +9320,90 @@ window.__BGG_LIBRARY_DATA__ = {
       "searchText": "munchkin 3: errores clericales munchkin 3: clerical errors buró spanish edition buró; steve jackson games spanish munchkin 3 - clerical errors is a supplement to munchkin; you will need the original game to play. or you could add it to a game of munchkin, munchkin fu, or munchkin bites! instead, or mix them all together for a munchkin-fest of truly mind-bending proportions! phil foglio's magnificent hat pete abrams' perfectly ordinary rabbit tom ricket's stick figure jon rosenberg's fowl fiend and randy milholland's redneck tree! suplemento para munchkin que requiere el juego original, aunque también puede mezclarse con munchkin fu o munchkin bites, o combinarse todo para una partida de proporciones delirantes. publisher's descriptionyou wanted more munchkin, so here it is! created by steve jackson and illustrated by john kovalic... munchkin 3 - clerical errors has 112 more cards for the best-selling game of killing monsters and taking their stuff. play a new race: gnomes! try on the bard class. face the tequila mockingbird, the bad ass, and the dreaded auntie paladin! equip yourself with amazing items like the chainmail bikini and the stab-a-matic... and show them who's the mightiest, munchkinest dungeon delver of them all. and this set has a special treat. we asked five of our favorite comic guys to do one card each. so in this set you'll find: phil foglio's magnificent hat pete abrams' perfectly ordinary rabbit tom ricket's stick figure jon rosenberg's fowl fiend and randy milholland's redneck tree! munchkin 3 - clerical errors is a supplement to munchkin; you will need the original game to play. or you could add it to a game of munchkin, munchkin fu, or munchkin bites! instead, or mix them all together for a munchkin-fest of truly mind-bending proportions! otherpart of the munchkin series. card game expansion for base-game fantasy fighting humor dice rolling hand management open drafting take that variable player powers owned group light 3 4 5 6 4"
     },
     {
+      "id": 376472,
+      "collId": 149779995,
+      "name": "Novatos en el espacio",
+      "originalName": "Noobs in Space",
+      "nameOverrides": {
+        "es": "",
+        "en": ""
+      },
+      "type": "thing",
+      "yearPublished": 2024,
+      "minPlayers": 3,
+      "maxPlayers": 5,
+      "recommendedPlayers": [
+        3,
+        4,
+        5
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "age": 10,
+      "ageText": "10+",
+      "playingTime": 15,
+      "minPlayTime": 15,
+      "maxPlayTime": 15,
+      "averageRating": 7.08,
+      "bayesAverage": 5.95,
+      "rank": 3545,
+      "avgWeight": 1.64,
+      "weightBand": "light",
+      "timeBand": "quick",
+      "playerBand": "mid-group",
+      "languageDependence": "Unplayable in another language",
+      "languageKey": "extreme",
+      "quantity": 1,
+      "own": true,
+      "prevOwned": false,
+      "forTrade": false,
+      "wantToPlay": false,
+      "wantToBuy": false,
+      "wishlist": false,
+      "acquisitionDate": "2026-09-22",
+      "versionNickname": "Spanish edition",
+      "versionPublishers": "Devir; KOSMOS",
+      "versionLanguages": "Spanish",
+      "notes": "",
+      "summary": {
+        "en": "In Noobs in Space, a team of three to five players must complete a series of tasks and challenges together, using what little knowledge you have. Not all hope is lost because each of you has a small part of the solution; you just need to figure out how to put it all together. While one player may know the task at hand but not have the resources to implement it, those resources may be shared among three other players....",
+        "es": "Juego cooperativo para tres a cinco personas en el que una tripulación debe superar tareas y desafíos espaciales. Cada jugador conoce o posee solo una parte de la solución, por lo que el equipo debe comunicar la información y combinar sus recursos."
+      },
+      "description": {
+        "en": "You are a team of newbie astronauts sent on an actual mission in an actual spaceship in actual outer space! Exciting, right? It would be...if any of you actually knew what you were doing. Would have been nice to have at least one experienced pilot on board, but now that you're here, you'll just have to figure it out as you go along.\n\nIn Noobs in Space, a team of three to five players must complete a series of tasks and challenges together, using what little knowledge you have. Not all hope is lost because each of you has a small part of the solution; you just need to figure out how to put it all together. While one player may know the task at hand but not have the resources to implement it, those resources may be shared among three other players. They, on the other hand, do not know what is necessary based on the information they have. Since players cannot show cards to each other, there must be a lot of clear communication and interaction by describing or reading out cards in order to gradually find out what should be done — and all of this must be done as quickly as possible.\n\nThe story leads through several levels, and each level consists of several tasks, so the whole game is an action-packed event from beginning to end.",
+        "es": ""
+      },
+      "categories": [
+        "Aviation / Flight",
+        "Humor",
+        "Puzzle",
+        "Science Fiction"
+      ],
+      "mechanics": [
+        "Communication Limits",
+        "Cooperative Game",
+        "Matching",
+        "Scenario / Mission / Campaign Game"
+      ],
+      "bggItemType": "boardgame",
+      "dependencyType": "",
+      "requiresGameId": null,
+      "requiresGameName": "",
+      "expansionIds": [],
+      "bggUrl": "https://boardgamegeek.com/boardgame/376472",
+      "thumbnailUrl": "https://cf.geekdo-images.com/1j-412YMFlb0GhAVKDMouw__small/img/A5DW0g4qAodfERg9lnBIZa3TqDY=/fit-in/200x150/filters:strip_icc()/pic7233515.png",
+      "imageUrl": "https://cf.geekdo-images.com/1j-412YMFlb0GhAVKDMouw__original/img/7GZ8Fv09vPz9GGbzKJxrf-OnVBQ=/0x0/filters:format(png)/pic7233515.png",
+      "imageHint": "Novatos en el espacio (2024)",
+      "tags": [
+        "owned",
+        "quick",
+        "light",
+        "teaching-friendly"
+      ],
+      "searchText": "novatos en el espacio noobs in space spanish edition devir; kosmos spanish in noobs in space, a team of three to five players must complete a series of tasks and challenges together, using what little knowledge you have. not all hope is lost because each of you has a small part of the solution; you just need to figure out how to put it all together. while one player may know the task at hand but not have the resources to implement it, those resources may be shared among three other players.... juego cooperativo para tres a cinco personas en el que una tripulación debe superar tareas y desafíos espaciales. cada jugador conoce o posee solo una parte de la solución, por lo que el equipo debe comunicar la información y combinar sus recursos. you are a team of newbie astronauts sent on an actual mission in an actual spaceship in actual outer space! exciting, right? it would be...if any of you actually knew what you were doing. would have been nice to have at least one experienced pilot on board, but now that you're here, you'll just have to figure it out as you go along. in noobs in space, a team of three to five players must complete a series of tasks and challenges together, using what little knowledge you have. not all hope is lost because each of you has a small part of the solution; you just need to figure out how to put it all together. while one player may know the task at hand but not have the resources to implement it, those resources may be shared among three other players. they, on the other hand, do not know what is necessary based on the information they have. since players cannot show cards to each other, there must be a lot of clear communication and interaction by describing or reading out cards in order to gradually find out what should be done — and all of this must be done as quickly as possible. the story leads through several levels, and each level consists of several tasks, so the whole game is an action-packed event from beginning to end. aviation / flight humor puzzle science fiction communication limits cooperative game matching scenario / mission / campaign game owned quick light teaching-friendly 3 4 5 4"
+    },
+    {
       "id": 367220,
       "collId": 135745471,
       "name": "Océanos de Papel",
@@ -9060,9 +9430,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "minPlayTime": 30,
       "maxPlayTime": 45,
       "averageRating": 7.51,
-      "bayesAverage": 7.27,
-      "rank": 253,
-      "avgWeight": 1.48,
+      "bayesAverage": 7.28,
+      "rank": 252,
+      "avgWeight": 1.49,
       "weightBand": "light",
       "timeBand": "standard",
       "playerBand": "small-group",
@@ -9081,11 +9451,11 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "During your turn, you assemble your hand, maybe place cards for their effect, and decide if you want to end the round. But do you think you are the one with the most points in hand? You will have to choose: stop the round immediately or give the others an extra turn to try to extend the gap? Is it worth taking the risk? The game ends when you reach 30/35/40 points (4/3/2 players).\n\nIt's a set collection card game like Rummy. The origami created especially for the game is just the illustrations on the cards.",
+        "en": "During your turn, you assemble your hand, maybe place cards for their effect, and decide if you want to end the round. But do you think you are the one with the most points in hand? You will have to choose: stop the round immediately or give the others an extra turn to try to extend the gap? Is it worth taking the risk? The game ends when you reach 30/35/40 points (4/3/2 players).",
         "es": "Juego de cartas de colección de conjuntos similar al rummy. En cada turno se arma la mano, se pueden jugar cartas por su efecto y se decide si terminar la ronda o dar a los rivales otra oportunidad. La partida termina al llegar a 30, 35 o 40 puntos según la cantidad de jugadores."
       },
       "description": {
-        "en": "During your turn, you assemble your hand, maybe place cards for their effect, and decide if you want to end the round. But do you think you are the one with the most points in hand? You will have to choose: stop the round immediately or give the others an extra turn to try to extend the gap? Is it worth taking the risk? The game ends when you reach 30/35/40 points (4/3/2 players).\n\nThe excitement of ending the round to catch your opponents off guard\n\nThe pleasure of playing your effect cards and making combos\n\nIt's a set collection card game like Rummy. The origami created especially for the game is just the illustrations on the cards.",
+        "en": "During your turn, you assemble your hand, maybe place cards for their effect, and decide if you want to end the round. But do you think you are the one with the most points in hand? You will have to choose: stop the round immediately or give the others an extra turn to try to extend the gap? Is it worth taking the risk? The game ends when you reach 30/35/40 points (4/3/2 players).",
         "es": ""
       },
       "categories": [
@@ -9117,7 +9487,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "light",
         "teaching-friendly"
       ],
-      "searchText": "océanos de papel sea salt & paper buró spanish edition bombyx; buró spanish during your turn, you assemble your hand, maybe place cards for their effect, and decide if you want to end the round. but do you think you are the one with the most points in hand? you will have to choose: stop the round immediately or give the others an extra turn to try to extend the gap? is it worth taking the risk? the game ends when you reach 30/35/40 points (4/3/2 players). it's a set collection card game like rummy. the origami created especially for the game is just the illustrations on the cards. juego de cartas de colección de conjuntos similar al rummy. en cada turno se arma la mano, se pueden jugar cartas por su efecto y se decide si terminar la ronda o dar a los rivales otra oportunidad. la partida termina al llegar a 30, 35 o 40 puntos según la cantidad de jugadores. during your turn, you assemble your hand, maybe place cards for their effect, and decide if you want to end the round. but do you think you are the one with the most points in hand? you will have to choose: stop the round immediately or give the others an extra turn to try to extend the gap? is it worth taking the risk? the game ends when you reach 30/35/40 points (4/3/2 players). the excitement of ending the round to catch your opponents off guard the pleasure of playing your effect cards and making combos it's a set collection card game like rummy. the origami created especially for the game is just the illustrations on the cards. animals card game hand management melding and splaying open drafting push your luck score-and-reset game set collection sudden death ending take that owned great-at-2 light teaching-friendly 2 3 4 2"
+      "searchText": "océanos de papel sea salt & paper buró spanish edition bombyx; buró spanish during your turn, you assemble your hand, maybe place cards for their effect, and decide if you want to end the round. but do you think you are the one with the most points in hand? you will have to choose: stop the round immediately or give the others an extra turn to try to extend the gap? is it worth taking the risk? the game ends when you reach 30/35/40 points (4/3/2 players). juego de cartas de colección de conjuntos similar al rummy. en cada turno se arma la mano, se pueden jugar cartas por su efecto y se decide si terminar la ronda o dar a los rivales otra oportunidad. la partida termina al llegar a 30, 35 o 40 puntos según la cantidad de jugadores. during your turn, you assemble your hand, maybe place cards for their effect, and decide if you want to end the round. but do you think you are the one with the most points in hand? you will have to choose: stop the round immediately or give the others an extra turn to try to extend the gap? is it worth taking the risk? the game ends when you reach 30/35/40 points (4/3/2 players). animals card game hand management melding and splaying open drafting push your luck score-and-reset game set collection sudden death ending take that owned great-at-2 light teaching-friendly 2 3 4 2"
     },
     {
       "id": 160477,
@@ -9144,8 +9514,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "minPlayTime": 15,
       "maxPlayTime": 20,
       "averageRating": 7.33,
-      "bayesAverage": 7.14,
-      "rank": 361,
+      "bayesAverage": 7.13,
+      "rank": 366,
       "avgWeight": 1.66,
       "weightBand": "light",
       "timeBand": "quick",
@@ -9230,7 +9600,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 30,
       "averageRating": 7.55,
       "bayesAverage": 7.36,
-      "rank": 202,
+      "rank": 203,
       "avgWeight": 1.85,
       "weightBand": "light",
       "timeBand": "quick",
@@ -9315,8 +9685,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 30,
       "averageRating": 7.41,
       "bayesAverage": 7.03,
-      "rank": 470,
-      "avgWeight": 2.27,
+      "rank": 474,
+      "avgWeight": 2.28,
       "weightBand": "medium-light",
       "timeBand": "quick",
       "playerBand": "small-group",
@@ -9348,6 +9718,7 @@ window.__BGG_LIBRARY_DATA__ = {
       ],
       "mechanics": [
         "Dice Rolling",
+        "Highest-Lowest Scoring",
         "Paper-and-Pencil",
         "Re-rolling and Locking",
         "Solo / Solitaire Game"
@@ -9367,7 +9738,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "great-at-2",
         "quick"
       ],
-      "searchText": "optimus 2 twice as clever! iberian edition devir catalan; italian; portuguese; spanish doppelt so clever follows the model of 2018's ganz schön clever. each turn the active player rolls six dice, chooses one of them to mark off a space on their scoring grid, places any dice with lower numbers aside, then re-rolls any remaining dice. the white die is a joker and can be used as any one of the other five colors. after the active player chooses at most three dice, then the other players each choose one of the set-aside dice for use on their scoring sheet. juego de dados de la familia ganz schön clever. en cada turno, el jugador activo tira seis dados, elige uno para marcar su planilla, aparta los menores y vuelve a tirar los restantes. el dado blanco es comodín y los demás jugadores pueden elegir un dado apartado. doppelt so clever follows the model of 2018's ganz schön clever. each turn the active player rolls six dice, chooses one of them to mark off a space on their scoring grid, places any dice with lower numbers aside, then re-rolls any remaining dice. the white die is a joker and can be used as any one of the other five colors. after the active player chooses at most three dice, then the other players each choose one of the set-aside dice for use on their scoring sheet. doppelt so clever has five new dice-marking challenges and a new action beyond the re-roll and \"use one more die\" actions of the earlier game. dice number dice rolling paper-and-pencil re-rolling and locking solo / solitaire game owned solo great-at-2 quick 1 2 3 4 2"
+      "searchText": "optimus 2 twice as clever! iberian edition devir catalan; italian; portuguese; spanish doppelt so clever follows the model of 2018's ganz schön clever. each turn the active player rolls six dice, chooses one of them to mark off a space on their scoring grid, places any dice with lower numbers aside, then re-rolls any remaining dice. the white die is a joker and can be used as any one of the other five colors. after the active player chooses at most three dice, then the other players each choose one of the set-aside dice for use on their scoring sheet. juego de dados de la familia ganz schön clever. en cada turno, el jugador activo tira seis dados, elige uno para marcar su planilla, aparta los menores y vuelve a tirar los restantes. el dado blanco es comodín y los demás jugadores pueden elegir un dado apartado. doppelt so clever follows the model of 2018's ganz schön clever. each turn the active player rolls six dice, chooses one of them to mark off a space on their scoring grid, places any dice with lower numbers aside, then re-rolls any remaining dice. the white die is a joker and can be used as any one of the other five colors. after the active player chooses at most three dice, then the other players each choose one of the set-aside dice for use on their scoring sheet. doppelt so clever has five new dice-marking challenges and a new action beyond the re-roll and \"use one more die\" actions of the earlier game. dice number dice rolling highest-lowest scoring paper-and-pencil re-rolling and locking solo / solitaire game owned solo great-at-2 quick 1 2 3 4 2"
     },
     {
       "id": 30549,
@@ -9534,6 +9905,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "Point to Point Movement",
         "Secret Unit Deployment",
         "Set Collection",
+        "Simulation",
         "Tags",
         "Team-Based Game",
         "Trading",
@@ -9552,7 +9924,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "owned",
         "great-at-2"
       ],
-      "searchText": "pandemic: on the brink pandemic: on the brink pandemic: on the brink includes new event cards, new role cards, rules for five players, and optional game challenges to increase the difficulty of the pandemic base game.... the virulent strain challenge makes one disease become particularly deadly in unpredictable ways. expansión para pandemic que añade nuevas cartas de evento y de rol, reglas para cinco jugadores y desafíos opcionales que elevan la dificultad. el desafío cepa virulenta vuelve a una enfermedad especialmente mortífera e impredecible. pandemic: on the brink includes new event cards, new role cards, rules for five players, and optional game challenges to increase the difficulty of the pandemic base game. these new challenges, which can be used individually or combined for even more difficult play, are as follows: the virulent strain challenge makes one disease become particularly deadly in unpredictable ways. the mutation challenge adds a fifth (purple) disease that behaves differently than the original four. the bio-terrorist challenge pits one player against the others! part of the pandemic series. expansion for base-game environmental medical science fiction action points cooperative game hand management hidden movement point to point movement secret unit deployment set collection tags team-based game trading variable player powers owned great-at-2 1 2 3 4 5 4"
+      "searchText": "pandemic: on the brink pandemic: on the brink pandemic: on the brink includes new event cards, new role cards, rules for five players, and optional game challenges to increase the difficulty of the pandemic base game.... the virulent strain challenge makes one disease become particularly deadly in unpredictable ways. expansión para pandemic que añade nuevas cartas de evento y de rol, reglas para cinco jugadores y desafíos opcionales que elevan la dificultad. el desafío cepa virulenta vuelve a una enfermedad especialmente mortífera e impredecible. pandemic: on the brink includes new event cards, new role cards, rules for five players, and optional game challenges to increase the difficulty of the pandemic base game. these new challenges, which can be used individually or combined for even more difficult play, are as follows: the virulent strain challenge makes one disease become particularly deadly in unpredictable ways. the mutation challenge adds a fifth (purple) disease that behaves differently than the original four. the bio-terrorist challenge pits one player against the others! part of the pandemic series. expansion for base-game environmental medical science fiction action points cooperative game hand management hidden movement point to point movement secret unit deployment set collection simulation tags team-based game trading variable player powers owned great-at-2 1 2 3 4 5 4"
     },
     {
       "id": 72644,
@@ -9580,7 +9952,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 30,
       "averageRating": 6.91,
       "bayesAverage": 5.72,
-      "rank": 5922,
+      "rank": 5972,
       "avgWeight": 1.5,
       "weightBand": "light",
       "timeBand": "quick",
@@ -9659,9 +10031,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 15,
       "minPlayTime": 15,
       "maxPlayTime": 15,
-      "averageRating": 5.89,
+      "averageRating": 5.9,
       "bayesAverage": 5.53,
-      "rank": 16262,
+      "rank": 16352,
       "avgWeight": 1.0,
       "weightBand": "light",
       "timeBand": "quick",
@@ -9736,17 +10108,18 @@ window.__BGG_LIBRARY_DATA__ = {
         6
       ],
       "bestPlayers": [
-        2
+        2,
+        3
       ],
       "age": 8,
       "ageText": "8+",
       "playingTime": 20,
       "minPlayTime": 20,
       "maxPlayTime": 20,
-      "averageRating": 6.93,
+      "averageRating": 6.92,
       "bayesAverage": 6.5,
-      "rank": 1350,
-      "avgWeight": 1.16,
+      "rank": 1356,
+      "avgWeight": 1.17,
       "weightBand": "light",
       "timeBand": "quick",
       "playerBand": "mid-group",
@@ -9799,7 +10172,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "light",
         "teaching-friendly"
       ],
-      "searchText": "plenus encore! catalan/italian/portuguese/spanish second edition devir catalan; italian; portuguese; spanish make sure to complete columns before other players do! the first to complete a column earns more points than those who complete them later. in addition to points for completed columns, a player can receive a bonus if they checked all the boxes of the same color. the game is over when a player has checked off all boxes of two colors, but you could have an encore! by playing once more! juego de marcar y escribir en el que completar una columna antes que los demás otorga más puntos. también hay bonificaciones por completar todas las casillas de un color; termina cuando alguien completa dos colores, con opción de jugar un encore! in encore!, first published as noch mal!, the dice determine which color and how many spaces you can mark off on your playing sheet — but the starting player may first evaluate what everyone's doing, then remove two dice, leaving everyone else to make their choices with the dice that remain... players earn points by being the first to check off all boxes in a column, and all boxes of the same color. players pick a combination of a color die and a number die, and check the respective boxes. only boxes connected to other boxes can be checked. make sure to complete columns before other players do! the first to complete a column earns more points than those who complete them later. in addition to points for completed columns, a player can receive a bonus if they checked all the boxes of the same color. the game is over when a player has checked off all boxes of two colors, but you could have an encore! by playing once more! dice dice rolling grid coverage paper-and-pencil solo / solitaire game owned solo great-at-2 group quick light teaching-friendly 1 2 3 4 5 6 2"
+      "searchText": "plenus encore! catalan/italian/portuguese/spanish second edition devir catalan; italian; portuguese; spanish make sure to complete columns before other players do! the first to complete a column earns more points than those who complete them later. in addition to points for completed columns, a player can receive a bonus if they checked all the boxes of the same color. the game is over when a player has checked off all boxes of two colors, but you could have an encore! by playing once more! juego de marcar y escribir en el que completar una columna antes que los demás otorga más puntos. también hay bonificaciones por completar todas las casillas de un color; termina cuando alguien completa dos colores, con opción de jugar un encore! in encore!, first published as noch mal!, the dice determine which color and how many spaces you can mark off on your playing sheet — but the starting player may first evaluate what everyone's doing, then remove two dice, leaving everyone else to make their choices with the dice that remain... players earn points by being the first to check off all boxes in a column, and all boxes of the same color. players pick a combination of a color die and a number die, and check the respective boxes. only boxes connected to other boxes can be checked. make sure to complete columns before other players do! the first to complete a column earns more points than those who complete them later. in addition to points for completed columns, a player can receive a bonus if they checked all the boxes of the same color. the game is over when a player has checked off all boxes of two colors, but you could have an encore! by playing once more! dice dice rolling grid coverage paper-and-pencil solo / solitaire game owned solo great-at-2 group quick light teaching-friendly 1 2 3 4 5 6 2 3"
     },
     {
       "id": 285894,
@@ -9832,7 +10205,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 20,
       "averageRating": 7.17,
       "bayesAverage": 6.21,
-      "rank": 2208,
+      "rank": 2218,
       "avgWeight": 1.84,
       "weightBand": "light",
       "timeBand": "quick",
@@ -9913,8 +10286,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "minPlayTime": 45,
       "maxPlayTime": 45,
       "averageRating": 7.8,
-      "bayesAverage": 7.67,
-      "rank": 80,
+      "bayesAverage": 7.66,
+      "rank": 81,
       "avgWeight": 1.94,
       "weightBand": "medium-light",
       "timeBand": "standard",
@@ -10088,7 +10461,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 45,
       "averageRating": 7.12,
       "bayesAverage": 6.92,
-      "rank": 600,
+      "rank": 604,
       "avgWeight": 1.78,
       "weightBand": "light",
       "timeBand": "standard",
@@ -10255,7 +10628,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 20,
       "averageRating": 6.9,
       "bayesAverage": 6.57,
-      "rank": 1180,
+      "rank": 1187,
       "avgWeight": 1.86,
       "weightBand": "light",
       "timeBand": "quick",
@@ -10341,9 +10714,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 30,
       "minPlayTime": 30,
       "maxPlayTime": 30,
-      "averageRating": 7.11,
+      "averageRating": 7.1,
       "bayesAverage": 6.58,
-      "rank": 1138,
+      "rank": 1148,
       "avgWeight": 2.0,
       "weightBand": "medium-light",
       "timeBand": "quick",
@@ -10430,7 +10803,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 120,
       "averageRating": 5.61,
       "bayesAverage": 5.47,
-      "rank": 29938,
+      "rank": 30202,
       "avgWeight": 2.06,
       "weightBand": "medium-light",
       "timeBand": "extended",
@@ -10613,9 +10986,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "minPlayTime": 30,
       "maxPlayTime": 120,
       "averageRating": 8.66,
-      "bayesAverage": 7.35,
+      "bayesAverage": 7.37,
       "rank": 0,
-      "avgWeight": 3.2,
+      "avgWeight": 3.21,
       "weightBand": "medium-heavy",
       "timeBand": "extended",
       "playerBand": "small-group",
@@ -10698,11 +11071,11 @@ window.__BGG_LIBRARY_DATA__ = {
       "age": 8,
       "ageText": "8+",
       "playingTime": 45,
-      "minPlayTime": 30,
+      "minPlayTime": 45,
       "maxPlayTime": 45,
       "averageRating": 7.47,
       "bayesAverage": 7.33,
-      "rank": 227,
+      "rank": 228,
       "avgWeight": 1.92,
       "weightBand": "medium-light",
       "timeBand": "standard",
@@ -10797,7 +11170,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 40,
       "minPlayTime": 20,
       "maxPlayTime": 40,
-      "averageRating": 7.69,
+      "averageRating": 7.7,
       "bayesAverage": 6.78,
       "rank": 0,
       "avgWeight": 2.11,
@@ -10880,8 +11253,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 45,
       "minPlayTime": 30,
       "maxPlayTime": 45,
-      "averageRating": 7.8,
-      "bayesAverage": 5.85,
+      "averageRating": 7.79,
+      "bayesAverage": 5.86,
       "rank": 0,
       "avgWeight": 2.57,
       "weightBand": "medium-light",
@@ -10967,7 +11340,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "minPlayTime": 30,
       "maxPlayTime": 45,
       "averageRating": 7.52,
-      "bayesAverage": 6.28,
+      "bayesAverage": 6.29,
       "rank": 0,
       "avgWeight": 2.32,
       "weightBand": "medium-light",
@@ -11047,7 +11420,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "minPlayTime": 30,
       "maxPlayTime": 45,
       "averageRating": 7.78,
-      "bayesAverage": 6.11,
+      "bayesAverage": 6.12,
       "rank": 0,
       "avgWeight": 2.75,
       "weightBand": "medium-light",
@@ -11117,8 +11490,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "recommendedPlayers": [
         1,
         2,
-        3,
-        4
+        3
       ],
       "bestPlayers": [
         2
@@ -11130,8 +11502,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 120,
       "averageRating": 6.67,
       "bayesAverage": 5.83,
-      "rank": 4489,
-      "avgWeight": 3.3,
+      "rank": 4503,
+      "avgWeight": 3.31,
       "weightBand": "medium-heavy",
       "timeBand": "extended",
       "playerBand": "small-group",
@@ -11185,7 +11557,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "solo",
         "great-at-2"
       ],
-      "searchText": "sand sand multilingual edition devir catalan; english; italian; portuguese; spanish designed by ariel di costanzo and javier pelizzari and illustrated by ernest sala, sand is a game with a main mechanism of pick-up-and-deliver that can be enjoyed alone or in groups of up to four players in games of about 120 minutes long. players have to earn as much gold as possible after six rounds (five in a four-player game) to win. juego de recoger y entregar diseñado para una a cuatro personas, con partidas de unos 120 minutos. tras seis rondas —cinco con cuatro jugadores— gana quien haya obtenido más oro. people refer to this vast place only as the desert since no one remembers what was here before. the golden age of human beings has long passed. now there is only sand, and the only hope is in the humidity. travelers cross the desert that stretches from the slopes of the akaishi mountains to the cliffs of seaclaw. half-ruined ancient cities are home to the last human communities struggling to survive by foraging for what little green remains standing. these desert travelers transport goods on the backs of their caterpillars. although their only goal is to make as much money as they can, at the same time and in a more or less deliberate way, they are helping to bring life back to the desert by carrying small plants from the artificial greenhouses of the cities to the most remote corners of this ocean of sand. designed by ariel di costanzo and javier pelizzari and illustrated by ernest sala, sand is a game with a main mechanism of pick-up-and-deliver that can be enjoyed alone or in groups of up to four players in games of about 120 minutes long. players have to earn as much gold as possible after six rounds (five in a four-player game) to win. in sand, players put themselves in the shoes of these intrepid desert travelers who travel the paths of the board and visit the different towns. they collect goods to take them to other places and thus earn gold for the transport service. they cross the dunes on the backs of their faithful caterpillars, which, cared for, will grow and help players complete their tasks more effectively. along the way they will be joined by helpful companions and be entrusted with missions that, if completed, will bring good benefits at the end of the journey. help the plants take root again, and perhaps there is still some hope for this desolate place... —description from the publisher transportation action points contracts dice rolling different dice movement pick-up and deliver point to point movement resource to move set collection tech trees / tech tracks owned solo great-at-2 1 2 3 4 2"
+      "searchText": "sand sand multilingual edition devir catalan; english; italian; portuguese; spanish designed by ariel di costanzo and javier pelizzari and illustrated by ernest sala, sand is a game with a main mechanism of pick-up-and-deliver that can be enjoyed alone or in groups of up to four players in games of about 120 minutes long. players have to earn as much gold as possible after six rounds (five in a four-player game) to win. juego de recoger y entregar diseñado para una a cuatro personas, con partidas de unos 120 minutos. tras seis rondas —cinco con cuatro jugadores— gana quien haya obtenido más oro. people refer to this vast place only as the desert since no one remembers what was here before. the golden age of human beings has long passed. now there is only sand, and the only hope is in the humidity. travelers cross the desert that stretches from the slopes of the akaishi mountains to the cliffs of seaclaw. half-ruined ancient cities are home to the last human communities struggling to survive by foraging for what little green remains standing. these desert travelers transport goods on the backs of their caterpillars. although their only goal is to make as much money as they can, at the same time and in a more or less deliberate way, they are helping to bring life back to the desert by carrying small plants from the artificial greenhouses of the cities to the most remote corners of this ocean of sand. designed by ariel di costanzo and javier pelizzari and illustrated by ernest sala, sand is a game with a main mechanism of pick-up-and-deliver that can be enjoyed alone or in groups of up to four players in games of about 120 minutes long. players have to earn as much gold as possible after six rounds (five in a four-player game) to win. in sand, players put themselves in the shoes of these intrepid desert travelers who travel the paths of the board and visit the different towns. they collect goods to take them to other places and thus earn gold for the transport service. they cross the dunes on the backs of their faithful caterpillars, which, cared for, will grow and help players complete their tasks more effectively. along the way they will be joined by helpful companions and be entrusted with missions that, if completed, will bring good benefits at the end of the journey. help the plants take root again, and perhaps there is still some hope for this desolate place... —description from the publisher transportation action points contracts dice rolling different dice movement pick-up and deliver point to point movement resource to move set collection tech trees / tech tracks owned solo great-at-2 1 2 3 2"
     },
     {
       "id": 194655,
@@ -11214,7 +11586,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 20,
       "averageRating": 7.33,
       "bayesAverage": 7.19,
-      "rank": 315,
+      "rank": 317,
       "avgWeight": 1.72,
       "weightBand": "light",
       "timeBand": "quick",
@@ -11302,7 +11674,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 120,
       "averageRating": 7.6,
       "bayesAverage": 7.36,
-      "rank": 206,
+      "rank": 210,
       "avgWeight": 2.66,
       "weightBand": "medium-light",
       "timeBand": "extended",
@@ -11388,7 +11760,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 60,
       "averageRating": 6.67,
       "bayesAverage": 5.93,
-      "rank": 3644,
+      "rank": 3675,
       "avgWeight": 1.54,
       "weightBand": "light",
       "timeBand": "standard",
@@ -11561,7 +11933,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "averageRating": 8.34,
       "bayesAverage": 8.14,
       "rank": 11,
-      "avgWeight": 4.07,
+      "avgWeight": 4.08,
       "weightBand": "heavy",
       "timeBand": "extended",
       "playerBand": "small-group",
@@ -11742,9 +12114,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 20,
       "minPlayTime": 20,
       "maxPlayTime": 20,
-      "averageRating": 7.78,
+      "averageRating": 7.77,
       "bayesAverage": 7.25,
-      "rank": 265,
+      "rank": 267,
       "avgWeight": 1.87,
       "weightBand": "light",
       "timeBand": "quick",
@@ -12080,8 +12452,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "minPlayTime": 45,
       "maxPlayTime": 45,
       "averageRating": 7.44,
-      "bayesAverage": 6.62,
-      "rank": 1058,
+      "bayesAverage": 6.64,
+      "rank": 1025,
       "avgWeight": 1.48,
       "weightBand": "light",
       "timeBand": "standard",
@@ -12167,9 +12539,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 20,
       "minPlayTime": 15,
       "maxPlayTime": 20,
-      "averageRating": 6.67,
+      "averageRating": 6.68,
       "bayesAverage": 5.63,
-      "rank": 8361,
+      "rank": 8355,
       "avgWeight": 1.0,
       "weightBand": "light",
       "timeBand": "quick",
@@ -12255,8 +12627,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 20,
       "averageRating": 7.37,
       "bayesAverage": 7.22,
-      "rank": 288,
-      "avgWeight": 1.32,
+      "rank": 289,
+      "avgWeight": 1.33,
       "weightBand": "light",
       "timeBand": "quick",
       "playerBand": "large-group",
@@ -12290,6 +12662,8 @@ window.__BGG_LIBRARY_DATA__ = {
         "Closed Drafting",
         "End Game Bonuses",
         "Hand Management",
+        "Push Your Luck",
+        "Score-and-Reset Game",
         "Set Collection",
         "Simultaneous Action Selection",
         "Variable Set-up"
@@ -12310,7 +12684,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "light",
         "teaching-friendly"
       ],
-      "searchText": "sushi go party! sushi go party! spanish edition devir spanish sushi go party! expands sushi go! with a party platter of mega maki, super sashimi, and endless edamame. you still earn points by picking winning sushi combos, but now you can customize each game by choosing à la carte from a menu of more than twenty delectable dishes. what's more, up to eight players can join in on the sushi-feast. let the good times roll! expansión de sushi go! con mega maki, super sashimi y muchas otras opciones. se siguen eligiendo combinaciones de sushi para puntuar, pero cada partida se personaliza con más de veinte platos y pueden participar hasta ocho jugadores. sushi go party! expands sushi go! with a party platter of mega maki, super sashimi, and endless edamame. you still earn points by picking winning sushi combos, but now you can customize each game by choosing à la carte from a menu of more than twenty delectable dishes. what's more, up to eight players can join in on the sushi-feast. let the good times roll! —description from the publisher card game party game closed drafting end game bonuses hand management set collection simultaneous action selection variable set-up owned group quick light teaching-friendly 3 4 5 6 7 8 4 5"
+      "searchText": "sushi go party! sushi go party! spanish edition devir spanish sushi go party! expands sushi go! with a party platter of mega maki, super sashimi, and endless edamame. you still earn points by picking winning sushi combos, but now you can customize each game by choosing à la carte from a menu of more than twenty delectable dishes. what's more, up to eight players can join in on the sushi-feast. let the good times roll! expansión de sushi go! con mega maki, super sashimi y muchas otras opciones. se siguen eligiendo combinaciones de sushi para puntuar, pero cada partida se personaliza con más de veinte platos y pueden participar hasta ocho jugadores. sushi go party! expands sushi go! with a party platter of mega maki, super sashimi, and endless edamame. you still earn points by picking winning sushi combos, but now you can customize each game by choosing à la carte from a menu of more than twenty delectable dishes. what's more, up to eight players can join in on the sushi-feast. let the good times roll! —description from the publisher card game party game closed drafting end game bonuses hand management push your luck score-and-reset game set collection simultaneous action selection variable set-up owned group quick light teaching-friendly 3 4 5 6 7 8 4 5"
     },
     {
       "id": 253664,
@@ -12343,9 +12717,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 30,
       "minPlayTime": 10,
       "maxPlayTime": 30,
-      "averageRating": 6.46,
+      "averageRating": 6.45,
       "bayesAverage": 6.16,
-      "rank": 2387,
+      "rank": 2420,
       "avgWeight": 1.03,
       "weightBand": "light",
       "timeBand": "quick",
@@ -12433,7 +12807,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 60,
       "averageRating": 7.38,
       "bayesAverage": 7.26,
-      "rank": 262,
+      "rank": 263,
       "avgWeight": 1.82,
       "weightBand": "light",
       "timeBand": "standard",
@@ -12603,8 +12977,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 15,
       "averageRating": 7.04,
       "bayesAverage": 6.57,
-      "rank": 1173,
-      "avgWeight": 1.34,
+      "rank": 1178,
+      "avgWeight": 1.35,
       "weightBand": "light",
       "timeBand": "quick",
       "playerBand": "small-group",
@@ -12685,7 +13059,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 20,
       "averageRating": 7.75,
       "bayesAverage": 7.61,
-      "rank": 96,
+      "rank": 97,
       "avgWeight": 1.97,
       "weightBand": "medium-light",
       "timeBand": "quick",
@@ -12769,8 +13143,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 20,
       "averageRating": 8.04,
       "bayesAverage": 7.8,
-      "rank": 44,
-      "avgWeight": 2.05,
+      "rank": 45,
+      "avgWeight": 2.06,
       "weightBand": "medium-light",
       "timeBand": "quick",
       "playerBand": "mid-group",
@@ -12872,11 +13246,11 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "",
       "notes": "",
       "summary": {
-        "en": "Twilight Struggle is a two-player game simulating the forty-five year dance of intrigue, prestige, and occasional flares of warfare between the Soviet Union and the United States. The entire world is the stage on which these two titans fight to make the world safe for their own ideologies and ways of life. The game begins amidst the ruins of Europe as the two new \"superpowers\" scramble over the wreckage of the Second World War, and ends in 1989, when only the United States remained standing.",
+        "en": "Twilight Struggle is a two-player game simulating the forty-five year dance of intrigue, prestige, and occasional flares of warfare between the Soviet Union and the United States. The game begins amidst the ruins of Europe as the two new \"superpowers\" scramble over the wreckage of the Second World War, and ends in 1989.",
         "es": "Juego para dos jugadores que simula los cuarenta y cinco años de intriga, prestigio y conflictos ocasionales entre la Unión Soviética y Estados Unidos. La lucha ideológica recorre el mundo desde las ruinas de Europa tras la Segunda Guerra Mundial hasta 1989."
       },
       "description": {
-        "en": "Now the trumpet summons us again, not as a call to bear arms, though arms we need; not as a call to battle, though embattled we are – but a call to bear the burden of a long twilight struggle. – John F. Kennedy\n\nIn 1945, unlikely allies toppled Hitler's war machine, while humanity's most devastating weapons forced the Japanese Empire to its knees in a storm of fire. Where once there stood many great powers, there then stood only two. The world had scant months to sigh its collective relief before a new conflict threatened. Unlike the titanic struggles of the preceding decades, this conflict would be waged not primarily by soldiers and tanks, but by spies and politicians, scientists and intellectuals, artists and traitors.\n\nTwilight Struggle is a two-player game simulating the forty-five year dance of intrigue, prestige, and occasional flares of warfare between the Soviet Union and the United States. The entire world is the stage on which these two titans fight to make the world safe for their own ideologies and ways of life. The game begins amidst the ruins of Europe as the two new \"superpowers\" scramble over the wreckage of the Second World War, and ends in 1989, when only the United States remained standing.\n\nTwilight Struggle inherits its fundamental systems from the card-driven classics We the People and Hannibal: Rome vs. Carthage. It is a quick-playing, low-complexity game in that tradition. The game map is a world map of the period, whereon players move units and exert influence in attempts to gain allies and control for their superpower. As with GMT's other card-driven games, decision-making is a challenge; how to best use one's cards and units given consistently limited resources? Event cards add detail and flavor to the game. They cover a vast array of historical happenings, from the Arab-Israeli conflicts of 1948 and 1967, to Vietnam and the U.S. peace movement, to the Cuban Missile Crisis and other such incidents that brought the world to the brink of nuclear annihilation. Subsystems capture the prestige-laden Space Race as well as nuclear tensions, with the possibility of game-ending nuclear war.\n\nTIME SCALE: approx. 3-5 years per turn MAP SCALE: Point-to-point system UNIT SCALE: Influence markers",
+        "en": "Now the trumpet summons us again, not as a call to bear arms, though arms we need; not as a call to battle, though embattled we are – but a call to bear the burden of a long twilight struggle. – John F. Kennedy\n\nIn 1945, unlikely allies toppled Hitler's war machine, while humanity's most devastating weapons forced the Japanese Empire to its knees in a storm of fire. Where once there stood many great powers, there then stood only two. Unlike the titanic struggles of the preceding decades, this conflict would be waged not primarily by soldiers and tanks, but by spies and politicians, scientists and intellectuals, artists and traitors.\n\nTwilight Struggle is a two-player game simulating the forty-five year dance of intrigue, prestige, and occasional flares of warfare between the Soviet Union and the United States. The game begins amidst the ruins of Europe as the two new \"superpowers\" scramble over the wreckage of the Second World War, and ends in 1989.\n\nTwilight Struggle inherits its fundamental systems from We the People and Hannibal: Rome vs. Carthage. It is a quick-playing, low-complexity game in that tradition. The game map is a world map of the period, where players move units and exert influence in attempts to gain allies and control for their superpower. Decision-making is a challenge; how to best use one's cards and units given consistently limited resources? Event cards add detail and flavor to the game.\n\nThere are several ways to achieve an automatic victory in Twilight Struggle. But, If neither side has achieved victory of any kind by the end of turn 10, the points are totaled and the player with the most points wins.",
         "es": ""
       },
       "categories": [
@@ -12916,7 +13290,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "long",
         "heavy"
       ],
-      "searchText": "twilight struggle twilight struggle twilight struggle is a two-player game simulating the forty-five year dance of intrigue, prestige, and occasional flares of warfare between the soviet union and the united states. the entire world is the stage on which these two titans fight to make the world safe for their own ideologies and ways of life. the game begins amidst the ruins of europe as the two new \"superpowers\" scramble over the wreckage of the second world war, and ends in 1989, when only the united states remained standing. juego para dos jugadores que simula los cuarenta y cinco años de intriga, prestigio y conflictos ocasionales entre la unión soviética y estados unidos. la lucha ideológica recorre el mundo desde las ruinas de europa tras la segunda guerra mundial hasta 1989. now the trumpet summons us again, not as a call to bear arms, though arms we need; not as a call to battle, though embattled we are – but a call to bear the burden of a long twilight struggle. – john f. kennedy in 1945, unlikely allies toppled hitler's war machine, while humanity's most devastating weapons forced the japanese empire to its knees in a storm of fire. where once there stood many great powers, there then stood only two. the world had scant months to sigh its collective relief before a new conflict threatened. unlike the titanic struggles of the preceding decades, this conflict would be waged not primarily by soldiers and tanks, but by spies and politicians, scientists and intellectuals, artists and traitors. twilight struggle is a two-player game simulating the forty-five year dance of intrigue, prestige, and occasional flares of warfare between the soviet union and the united states. the entire world is the stage on which these two titans fight to make the world safe for their own ideologies and ways of life. the game begins amidst the ruins of europe as the two new \"superpowers\" scramble over the wreckage of the second world war, and ends in 1989, when only the united states remained standing. twilight struggle inherits its fundamental systems from the card-driven classics we the people and hannibal: rome vs. carthage. it is a quick-playing, low-complexity game in that tradition. the game map is a world map of the period, whereon players move units and exert influence in attempts to gain allies and control for their superpower. as with gmt's other card-driven games, decision-making is a challenge; how to best use one's cards and units given consistently limited resources? event cards add detail and flavor to the game. they cover a vast array of historical happenings, from the arab-israeli conflicts of 1948 and 1967, to vietnam and the u.s. peace movement, to the cuban missile crisis and other such incidents that brought the world to the brink of nuclear annihilation. subsystems capture the prestige-laden space race as well as nuclear tensions, with the possibility of game-ending nuclear war. time scale: approx. 3-5 years per turn map scale: point-to-point system unit scale: influence markers modern warfare political wargame action / event advantage token area majority / influence campaign / battle card driven dice rolling events hand management simulation simultaneous action selection stat check resolution sudden death ending tug of war variable player powers variable set-up owned two-player great-at-2 long heavy 2 2"
+      "searchText": "twilight struggle twilight struggle twilight struggle is a two-player game simulating the forty-five year dance of intrigue, prestige, and occasional flares of warfare between the soviet union and the united states. the game begins amidst the ruins of europe as the two new \"superpowers\" scramble over the wreckage of the second world war, and ends in 1989. juego para dos jugadores que simula los cuarenta y cinco años de intriga, prestigio y conflictos ocasionales entre la unión soviética y estados unidos. la lucha ideológica recorre el mundo desde las ruinas de europa tras la segunda guerra mundial hasta 1989. now the trumpet summons us again, not as a call to bear arms, though arms we need; not as a call to battle, though embattled we are – but a call to bear the burden of a long twilight struggle. – john f. kennedy in 1945, unlikely allies toppled hitler's war machine, while humanity's most devastating weapons forced the japanese empire to its knees in a storm of fire. where once there stood many great powers, there then stood only two. unlike the titanic struggles of the preceding decades, this conflict would be waged not primarily by soldiers and tanks, but by spies and politicians, scientists and intellectuals, artists and traitors. twilight struggle is a two-player game simulating the forty-five year dance of intrigue, prestige, and occasional flares of warfare between the soviet union and the united states. the game begins amidst the ruins of europe as the two new \"superpowers\" scramble over the wreckage of the second world war, and ends in 1989. twilight struggle inherits its fundamental systems from we the people and hannibal: rome vs. carthage. it is a quick-playing, low-complexity game in that tradition. the game map is a world map of the period, where players move units and exert influence in attempts to gain allies and control for their superpower. decision-making is a challenge; how to best use one's cards and units given consistently limited resources? event cards add detail and flavor to the game. there are several ways to achieve an automatic victory in twilight struggle. but, if neither side has achieved victory of any kind by the end of turn 10, the points are totaled and the player with the most points wins. modern warfare political wargame action / event advantage token area majority / influence campaign / battle card driven dice rolling events hand management simulation simultaneous action selection stat check resolution sudden death ending tug of war variable player powers variable set-up owned two-player great-at-2 long heavy 2 2"
     },
     {
       "id": 294612,
@@ -12945,9 +13319,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 60,
       "minPlayTime": 60,
       "maxPlayTime": 60,
-      "averageRating": 7.65,
+      "averageRating": 7.64,
       "bayesAverage": 6.67,
-      "rank": 962,
+      "rank": 969,
       "avgWeight": 2.12,
       "weightBand": "medium-light",
       "timeBand": "standard",
@@ -13034,9 +13408,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "minPlayTime": 60,
       "maxPlayTime": 60,
       "averageRating": 7.47,
-      "bayesAverage": 6.23,
-      "rank": 2125,
-      "avgWeight": 2.24,
+      "bayesAverage": 6.24,
+      "rank": 2107,
+      "avgWeight": 2.28,
       "weightBand": "medium-light",
       "timeBand": "standard",
       "playerBand": "mid-group",
@@ -13059,7 +13433,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "es": "Entrega de Unlock! con tres nuevos escenarios de sala de escape para jugar sobre la mesa."
       },
       "description": {
-        "en": "Unlock! Legendary Adventures features three new \"escape room\" scenarios that you can play on your tabletop.\n\nUnlock! is a co-operative card game inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. Play Unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc. The three scenarios are:\n\nAction Story - The elusive Stella has stolen the world's most expensive gem! Stop her and take away her precious haul. Robin Hood: Dead or Alive - Robin has fallen into the clutches of the Sheriff of Nottingham. Call upon his companions to free him from the dungeon. Sherlock Holmes: The Case of the Burnt Angels - The most famous detective ever needs your help in solving a strange murder case.",
+        "en": "Unlock! Legendary Adventures features three new \"escape room\" scenarios that you can play on your tabletop.\n\nUnlock! is a co-operative card game inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. Play Unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc. The three scenarios are:\n\nAction Story (easy) - The elusive Stella has stolen the world's most expensive gem! Stop her and take away her precious haul. Robin Hood: Dead or Alive (medium) - Robin has fallen into the clutches of the Sheriff of Nottingham. Call upon his companions to free him from the dungeon. Sherlock Holmes: The Case of the Burnt Angels (difficult) - The most famous detective ever needs your help in solving a strange murder case.",
         "es": ""
       },
       "categories": [
@@ -13087,7 +13461,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "great-at-2",
         "group"
       ],
-      "searchText": "unlock!: legendary adventures unlock!: legendary adventures spanish edition space cowboys spanish unlock! legendary adventures features three new \"escape room\" scenarios that you can play on your tabletop. entrega de unlock! con tres nuevos escenarios de sala de escape para jugar sobre la mesa. unlock! legendary adventures features three new \"escape room\" scenarios that you can play on your tabletop. unlock! is a co-operative card game inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. play unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc. the three scenarios are: action story - the elusive stella has stolen the world's most expensive gem! stop her and take away her precious haul. robin hood: dead or alive - robin has fallen into the clutches of the sheriff of nottingham. call upon his companions to free him from the dungeon. sherlock holmes: the case of the burnt angels - the most famous detective ever needs your help in solving a strange murder case. card game exploration puzzle real-time cooperative game storytelling previously-owned solo great-at-2 group 1 2 3 4 2"
+      "searchText": "unlock!: legendary adventures unlock!: legendary adventures spanish edition space cowboys spanish unlock! legendary adventures features three new \"escape room\" scenarios that you can play on your tabletop. entrega de unlock! con tres nuevos escenarios de sala de escape para jugar sobre la mesa. unlock! legendary adventures features three new \"escape room\" scenarios that you can play on your tabletop. unlock! is a co-operative card game inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. play unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc. the three scenarios are: action story (easy) - the elusive stella has stolen the world's most expensive gem! stop her and take away her precious haul. robin hood: dead or alive (medium) - robin has fallen into the clutches of the sheriff of nottingham. call upon his companions to free him from the dungeon. sherlock holmes: the case of the burnt angels (difficult) - the most famous detective ever needs your help in solving a strange murder case. card game exploration puzzle real-time cooperative game storytelling previously-owned solo great-at-2 group 1 2 3 4 2"
     },
     {
       "id": 458805,
@@ -13115,9 +13489,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 45,
       "minPlayTime": 45,
       "maxPlayTime": 45,
-      "averageRating": 5.28,
+      "averageRating": 5.27,
       "bayesAverage": 5.49,
-      "rank": 28249,
+      "rank": 28106,
       "avgWeight": 2.0,
       "weightBand": "medium-light",
       "timeBand": "standard",
@@ -13203,8 +13577,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "minPlayTime": 30,
       "maxPlayTime": 45,
       "averageRating": 6.69,
-      "bayesAverage": 5.73,
-      "rank": 5713,
+      "bayesAverage": 5.74,
+      "rank": 5707,
       "avgWeight": 1.7,
       "weightBand": "light",
       "timeBand": "standard",
@@ -13286,11 +13660,11 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 30,
       "minPlayTime": 30,
       "maxPlayTime": 30,
-      "averageRating": 7.25,
+      "averageRating": 7.23,
       "bayesAverage": 5.88,
-      "rank": 4074,
-      "avgWeight": 1.92,
-      "weightBand": "medium-light",
+      "rank": 4091,
+      "avgWeight": 1.85,
+      "weightBand": "light",
       "timeBand": "quick",
       "playerBand": "mid-group",
       "languageDependence": "Unplayable in another language",
@@ -13312,7 +13686,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "es": "Serie de aventuras de escape para hasta seis jugadores. En 30 a 45 minutos, el equipo recorre un mazo de treinta cartas, busca pistas, combina objetos y resuelve acertijos. La aplicación gratuita controla el tiempo, ofrece pistas y confirma los códigos correctos."
       },
       "description": {
-        "en": "Unlock! Short adventures is a series of escape adventures for up to six players. With 30 to 45 minutes on the clock, players work through a deck of 30 cards as a team, searching for clues, combining objects, and solving puzzles. The free Unlock! companion app runs the timer while also providing clues, offering hints, and confirming successes. Once the team has reached a solution and entered the correct code into the app, they will escape and win the game!\n\nWith this adventure, infiltrate the carnival of Venice and fulfill your secret mission before the time runs out! Be careful, behind every mask there may be an enemy!",
+        "en": "Unlock! Short adventures is a series of escape adventures for up to six players. With 30 to 45 minutes on the clock, players work through a deck of 30 cards as a team, searching for clues, combining objects, and solving puzzles. The free Unlock! companion app runs the timer while also providing clues, offering hints, and confirming successes. Once the team has reached a solution and entered the correct code into the app, they will escape and win the game!\n\nWith this (medium) adventure, infiltrate the carnival of Venice and fulfill your secret mission before the time runs out! Be careful, behind every mask there may be an enemy!",
         "es": ""
       },
       "categories": [
@@ -13330,8 +13704,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "requiresGameName": "",
       "expansionIds": [],
       "bggUrl": "https://boardgamegeek.com/boardgame/368036",
-      "thumbnailUrl": "https://cf.geekdo-images.com/Lk1kz30g9fu_xdWFk8_1VQ__small/img/c0mnNLBdSqAz95gbRE9MFSljUWU=/fit-in/200x150/filters:strip_icc()/pic6991243.jpg",
-      "imageUrl": "https://cf.geekdo-images.com/Lk1kz30g9fu_xdWFk8_1VQ__original/img/khGTQILdrDiqSv5ce9Uj-PMzAVM=/0x0/filters:format(jpeg)/pic6991243.jpg",
+      "thumbnailUrl": "https://cf.geekdo-images.com/kQUHlDU78eJUi8zb7DxaLA__small/img/OAJFLxGJIFouSyfew9aMs7VCrP8=/fit-in/200x150/filters:strip_icc()/pic7700486.jpg",
+      "imageUrl": "https://cf.geekdo-images.com/kQUHlDU78eJUi8zb7DxaLA__original/img/tx1fddSu25OLYrZHlgEfyJyKkXY=/0x0/filters:format(jpeg)/pic7700486.jpg",
       "imageHint": "Unlock!: Miniaventuras – El vuelo del ángel (2023)",
       "tags": [
         "previously-owned",
@@ -13342,7 +13716,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "light",
         "teaching-friendly"
       ],
-      "searchText": "unlock!: miniaventuras – el vuelo del ángel unlock!: short adventures – the flight of the angel spanish edition space cowboys spanish unlock! short adventures is a series of escape adventures for up to six players. with 30 to 45 minutes on the clock, players work through a deck of 30 cards as a team, searching for clues, combining objects, and solving puzzles. the free unlock! companion app runs the timer while also providing clues, offering hints, and confirming successes. once the team has reached a solution and entered the correct code into the app, they will escape and win the game! serie de aventuras de escape para hasta seis jugadores. en 30 a 45 minutos, el equipo recorre un mazo de treinta cartas, busca pistas, combina objetos y resuelve acertijos. la aplicación gratuita controla el tiempo, ofrece pistas y confirma los códigos correctos. unlock! short adventures is a series of escape adventures for up to six players. with 30 to 45 minutes on the clock, players work through a deck of 30 cards as a team, searching for clues, combining objects, and solving puzzles. the free unlock! companion app runs the timer while also providing clues, offering hints, and confirming successes. once the team has reached a solution and entered the correct code into the app, they will escape and win the game! with this adventure, infiltrate the carnival of venice and fulfill your secret mission before the time runs out! be careful, behind every mask there may be an enemy! card game puzzle real-time cooperative game real-time previously-owned solo great-at-2 group quick light teaching-friendly 1 2 3 2"
+      "searchText": "unlock!: miniaventuras – el vuelo del ángel unlock!: short adventures – the flight of the angel spanish edition space cowboys spanish unlock! short adventures is a series of escape adventures for up to six players. with 30 to 45 minutes on the clock, players work through a deck of 30 cards as a team, searching for clues, combining objects, and solving puzzles. the free unlock! companion app runs the timer while also providing clues, offering hints, and confirming successes. once the team has reached a solution and entered the correct code into the app, they will escape and win the game! serie de aventuras de escape para hasta seis jugadores. en 30 a 45 minutos, el equipo recorre un mazo de treinta cartas, busca pistas, combina objetos y resuelve acertijos. la aplicación gratuita controla el tiempo, ofrece pistas y confirma los códigos correctos. unlock! short adventures is a series of escape adventures for up to six players. with 30 to 45 minutes on the clock, players work through a deck of 30 cards as a team, searching for clues, combining objects, and solving puzzles. the free unlock! companion app runs the timer while also providing clues, offering hints, and confirming successes. once the team has reached a solution and entered the correct code into the app, they will escape and win the game! with this (medium) adventure, infiltrate the carnival of venice and fulfill your secret mission before the time runs out! be careful, behind every mask there may be an enemy! card game puzzle real-time cooperative game real-time previously-owned solo great-at-2 group quick light teaching-friendly 1 2 3 2"
     },
     {
       "id": 257707,
@@ -13371,8 +13745,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "minPlayTime": 30,
       "maxPlayTime": 30,
       "averageRating": 6.91,
-      "bayesAverage": 5.83,
-      "rank": 4505,
+      "bayesAverage": 5.84,
+      "rank": 4487,
       "avgWeight": 2.0,
       "weightBand": "medium-light",
       "timeBand": "quick",
@@ -13392,11 +13766,11 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "In Pursuit of Cabrakan is a 24-card (4 cards are advertisements or information cards not used in-game) mini adventure for Unlock!, the card-driven escape room game from Space Cowboys. At the beginning of the adventure, you are at the mouth of a cave in search of a gold statue.",
+        "en": "In Pursuit of Cabrakan is a 24-card (4 cards are advertisements or information cards not used in-game) mini adventure (medium) for Unlock!, the card-driven escape room game from Space Cowboys. At the beginning of the adventure, you are at the mouth of a cave in search of a gold statue.\n\nIn Pursuit of Cabrakan was produced as a special scenario for Gen Con 2018 events. It was also distributed with AsmoMag #1 (May-June 2018).",
         "es": "Miniaventura de Unlock! con 24 cartas —cuatro son informativas y no se usan—. La aventura comienza en la entrada de una cueva, en busca de una estatua de oro."
       },
       "description": {
-        "en": "In Pursuit of Cabrakan is a 24-card (4 cards are advertisements or information cards not used in-game) mini adventure for Unlock!, the card-driven escape room game from Space Cowboys. At the beginning of the adventure, you are at the mouth of a cave in search of a gold statue.\n\nIn Pursuit of Cabrakan was produced as a special scenario for Gen Con 2018 events.\n\nIt also requires a free companion app to play.",
+        "en": "In Pursuit of Cabrakan is a 24-card (4 cards are advertisements or information cards not used in-game) mini adventure (medium) for Unlock!, the card-driven escape room game from Space Cowboys. At the beginning of the adventure, you are at the mouth of a cave in search of a gold statue.\n\nIn Pursuit of Cabrakan was produced as a special scenario for Gen Con 2018 events. It was also distributed with AsmoMag #1 (May-June 2018).\n\nIt also requires a free companion app to play.",
         "es": ""
       },
       "categories": [
@@ -13428,7 +13802,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "light",
         "teaching-friendly"
       ],
-      "searchText": "unlock!: miniaventuras – en busca de cabrakán unlock!: short adventures – in pursuit of cabrakan spanish edition space cowboys spanish in pursuit of cabrakan is a 24-card (4 cards are advertisements or information cards not used in-game) mini adventure for unlock!, the card-driven escape room game from space cowboys. at the beginning of the adventure, you are at the mouth of a cave in search of a gold statue. miniaventura de unlock! con 24 cartas —cuatro son informativas y no se usan—. la aventura comienza en la entrada de una cueva, en busca de una estatua de oro. in pursuit of cabrakan is a 24-card (4 cards are advertisements or information cards not used in-game) mini adventure for unlock!, the card-driven escape room game from space cowboys. at the beginning of the adventure, you are at the mouth of a cave in search of a gold statue. in pursuit of cabrakan was produced as a special scenario for gen con 2018 events. it also requires a free companion app to play. card game puzzle real-time cooperative game elapsed real time ending real-time storytelling previously-owned solo great-at-2 group quick light teaching-friendly 1 2 3 2"
+      "searchText": "unlock!: miniaventuras – en busca de cabrakán unlock!: short adventures – in pursuit of cabrakan spanish edition space cowboys spanish in pursuit of cabrakan is a 24-card (4 cards are advertisements or information cards not used in-game) mini adventure (medium) for unlock!, the card-driven escape room game from space cowboys. at the beginning of the adventure, you are at the mouth of a cave in search of a gold statue. in pursuit of cabrakan was produced as a special scenario for gen con 2018 events. it was also distributed with asmomag #1 (may-june 2018). miniaventura de unlock! con 24 cartas —cuatro son informativas y no se usan—. la aventura comienza en la entrada de una cueva, en busca de una estatua de oro. in pursuit of cabrakan is a 24-card (4 cards are advertisements or information cards not used in-game) mini adventure (medium) for unlock!, the card-driven escape room game from space cowboys. at the beginning of the adventure, you are at the mouth of a cave in search of a gold statue. in pursuit of cabrakan was produced as a special scenario for gen con 2018 events. it was also distributed with asmomag #1 (may-june 2018). it also requires a free companion app to play. card game puzzle real-time cooperative game elapsed real time ending real-time storytelling previously-owned solo great-at-2 group quick light teaching-friendly 1 2 3 2"
     },
     {
       "id": 464697,
@@ -13456,9 +13830,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 45,
       "minPlayTime": 45,
       "maxPlayTime": 45,
-      "averageRating": 6.65,
+      "averageRating": 6.57,
       "bayesAverage": 5.55,
-      "rank": 13838,
+      "rank": 13207,
       "avgWeight": 2.0,
       "weightBand": "medium-light",
       "timeBand": "standard",
@@ -13478,11 +13852,11 @@ window.__BGG_LIBRARY_DATA__ = {
       "versionLanguages": "Spanish",
       "notes": "",
       "summary": {
-        "en": "Unlock!: Short Adventures – The Ascent is a 30-card mini-adventure in the Unlock! series of card-driven escape room games. It requires a free companion app to play.",
+        "en": "Unlock!: Short Adventures – The Ascent is a 30-card mini-adventure (medium) in the Unlock! series of card-driven escape room games. It requires a free companion app to play.",
         "es": "Miniaventura de 30 cartas de la serie Unlock!, juegos de escape con cartas. Requiere la aplicación gratuita complementaria para jugar."
       },
       "description": {
-        "en": "Unlock!: Short Adventures – The Ascent is a 30-card mini-adventure in the Unlock! series of card-driven escape room games. It requires a free companion app to play.",
+        "en": "Take a journey to Mount Celestine and find your grandfather.\n\nUnlock!: Short Adventures – The Ascent is a 30-card mini-adventure (medium) in the Unlock! series of card-driven escape room games. It requires a free companion app to play.",
         "es": ""
       },
       "categories": [
@@ -13511,7 +13885,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "light",
         "teaching-friendly"
       ],
-      "searchText": "unlock!: miniaventuras – la escalada unlock!: short adventures – the ascent spanish edition space cowboys spanish unlock!: short adventures – the ascent is a 30-card mini-adventure in the unlock! series of card-driven escape room games. it requires a free companion app to play. miniaventura de 30 cartas de la serie unlock!, juegos de escape con cartas. requiere la aplicación gratuita complementaria para jugar. unlock!: short adventures – the ascent is a 30-card mini-adventure in the unlock! series of card-driven escape room games. it requires a free companion app to play. adventure card game puzzle cooperative game storytelling owned solo great-at-2 group light teaching-friendly 1 2 3 2"
+      "searchText": "unlock!: miniaventuras – la escalada unlock!: short adventures – the ascent spanish edition space cowboys spanish unlock!: short adventures – the ascent is a 30-card mini-adventure (medium) in the unlock! series of card-driven escape room games. it requires a free companion app to play. miniaventura de 30 cartas de la serie unlock!, juegos de escape con cartas. requiere la aplicación gratuita complementaria para jugar. take a journey to mount celestine and find your grandfather. unlock!: short adventures – the ascent is a 30-card mini-adventure (medium) in the unlock! series of card-driven escape room games. it requires a free companion app to play. adventure card game puzzle cooperative game storytelling owned solo great-at-2 group light teaching-friendly 1 2 3 2"
     },
     {
       "id": 368035,
@@ -13540,9 +13914,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 60,
       "minPlayTime": 30,
       "maxPlayTime": 60,
-      "averageRating": 7.02,
+      "averageRating": 7.01,
       "bayesAverage": 5.8,
-      "rank": 4873,
+      "rank": 4858,
       "avgWeight": 2.3,
       "weightBand": "medium-light",
       "timeBand": "standard",
@@ -13566,7 +13940,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "es": "Serie de aventuras de escape para hasta seis jugadores. En 30 a 45 minutos, el equipo recorre un mazo de treinta cartas, busca pistas, combina objetos y resuelve acertijos. La aplicación gratuita controla el tiempo, ofrece pistas y confirma los códigos correctos."
       },
       "description": {
-        "en": "Unlock! Short adventures is a series of escape adventures for up to six players. With 30 to 45 minutes on the clock, players work through a deck of 30 cards as a team, searching for clues, combining objects, and solving puzzles. The free Unlock! companion app runs the timer while also providing clues, offering hints, and confirming successes. Once the team has reached a solution and entered the correct code into the app, they will escape and win the game!\n\nWith this adventure, follow in the footsteps of a legendary pirate and discover his treasure. But beware the Baron Samedi!",
+        "en": "Unlock! Short adventures is a series of escape adventures for up to six players. With 30 to 45 minutes on the clock, players work through a deck of 30 cards as a team, searching for clues, combining objects, and solving puzzles. The free Unlock! companion app runs the timer while also providing clues, offering hints, and confirming successes. Once the team has reached a solution and entered the correct code into the app, they will escape and win the game!\n\nWith this (difficult) adventure, follow in the footsteps of a legendary pirate and discover his treasure. But beware the Baron Samedi!",
         "es": ""
       },
       "categories": [
@@ -13594,7 +13968,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "great-at-2",
         "group"
       ],
-      "searchText": "unlock!: miniaventuras – los secretos del pulpo unlock!: short adventures – the secrets of the octopus spanish edition space cowboys spanish unlock! short adventures is a series of escape adventures for up to six players. with 30 to 45 minutes on the clock, players work through a deck of 30 cards as a team, searching for clues, combining objects, and solving puzzles. the free unlock! companion app runs the timer while also providing clues, offering hints, and confirming successes. once the team has reached a solution and entered the correct code into the app, they will escape and win the game! serie de aventuras de escape para hasta seis jugadores. en 30 a 45 minutos, el equipo recorre un mazo de treinta cartas, busca pistas, combina objetos y resuelve acertijos. la aplicación gratuita controla el tiempo, ofrece pistas y confirma los códigos correctos. unlock! short adventures is a series of escape adventures for up to six players. with 30 to 45 minutes on the clock, players work through a deck of 30 cards as a team, searching for clues, combining objects, and solving puzzles. the free unlock! companion app runs the timer while also providing clues, offering hints, and confirming successes. once the team has reached a solution and entered the correct code into the app, they will escape and win the game! with this adventure, follow in the footsteps of a legendary pirate and discover his treasure. but beware the baron samedi! card game pirates puzzle real-time cooperative game real-time previously-owned solo great-at-2 group 1 2 3 4 2"
+      "searchText": "unlock!: miniaventuras – los secretos del pulpo unlock!: short adventures – the secrets of the octopus spanish edition space cowboys spanish unlock! short adventures is a series of escape adventures for up to six players. with 30 to 45 minutes on the clock, players work through a deck of 30 cards as a team, searching for clues, combining objects, and solving puzzles. the free unlock! companion app runs the timer while also providing clues, offering hints, and confirming successes. once the team has reached a solution and entered the correct code into the app, they will escape and win the game! serie de aventuras de escape para hasta seis jugadores. en 30 a 45 minutos, el equipo recorre un mazo de treinta cartas, busca pistas, combina objetos y resuelve acertijos. la aplicación gratuita controla el tiempo, ofrece pistas y confirma los códigos correctos. unlock! short adventures is a series of escape adventures for up to six players. with 30 to 45 minutes on the clock, players work through a deck of 30 cards as a team, searching for clues, combining objects, and solving puzzles. the free unlock! companion app runs the timer while also providing clues, offering hints, and confirming successes. once the team has reached a solution and entered the correct code into the app, they will escape and win the game! with this (difficult) adventure, follow in the footsteps of a legendary pirate and discover his treasure. but beware the baron samedi! card game pirates puzzle real-time cooperative game real-time previously-owned solo great-at-2 group 1 2 3 4 2"
     },
     {
       "id": 392192,
@@ -13623,14 +13997,14 @@ window.__BGG_LIBRARY_DATA__ = {
       "minPlayTime": 30,
       "maxPlayTime": 60,
       "averageRating": 7.18,
-      "bayesAverage": 5.77,
-      "rank": 5182,
+      "bayesAverage": 5.78,
+      "rank": 5121,
       "avgWeight": 2.0,
       "weightBand": "medium-light",
       "timeBand": "standard",
       "playerBand": "mid-group",
-      "languageDependence": "Extensive use of text - massive conversion needed to be playable",
-      "languageKey": "high",
+      "languageDependence": "Unplayable in another language",
+      "languageKey": "extreme",
       "quantity": 1,
       "own": false,
       "prevOwned": true,
@@ -13648,7 +14022,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "es": "Versión breve de Unlock!, con aventuras de 30 a 45 minutos en formato pequeño, ideal para llevar o regalar. Es un juego cooperativo de cartas inspirado en las salas de escape, para jugar en casa alrededor de una mesa."
       },
       "description": {
-        "en": "Unlock! Short Adventures: it's Unlock, only shorter! Unlock Short Adventures are 30 to 45 minute Unlocks in a small format, ideal for pocketing or giving as a gift. Unlock! is a cooperative card game inspired by escape rooms. Unlock! brings these experiences into your home, around a table. After familiarizing yourself with the context of the scenario, you begin your adventure in a room (a location map showing various numbers). Search the room for objects! Beware: some may be hidden! Visual and audio puzzles slow your progress. It's up to you to cooperate with your partners to advance and finish on time. Unlock!, an interactive game combining traditional hardware and mobile application To play, you need the free Unlock! app, compatible with Android and iOS phones and tablets. It allows you to obtain clues, locate hidden objects and enter the codes you discover. The app makes the game very real. It adds to the atmosphere, with music dedicated to each adventure, audio puzzles, terrible penalties and a fatal countdown.\n\nUnlock! Short Adventures: Murder in Birmingham! An Escape room in your living room! Investigate Birmingham's underworld in 1920! The app sets the pace and mood for 30-minute games. The puzzles, the app, the clues, the timer - all from Unlock!\n\nUnlock! Short Adventures : Meurtre à Birmingham ! Une Escape room dans votre salon ! Enquêtez dans les bas-fonds de Birmingham en 1920 ! L’application donne le rythme et pose d’ambiance pour des parties de 30 minutes. Les énigmes, l’app, les indices, le timer, du concentré de Unlock! Unlock! Short Adventures : Meurtre à Birmingham est une aventure de niveau de difficulté 3 (sur 3). Il contient 30 cartes d'aventures et 2 cartes de règles.",
+        "en": "Unlock! Short Adventures: it's Unlock, only shorter! Unlock Short Adventures are 30 to 45 minute Unlocks in a small format, ideal for pocketing or giving as a gift. Unlock! is a cooperative card game inspired by escape rooms. Unlock! brings these experiences into your home, around a table. After familiarizing yourself with the context of the scenario, you begin your adventure in a room (a location map showing various numbers). Search the room for objects! Beware: some may be hidden! Visual and audio puzzles slow your progress. It's up to you to cooperate with your partners to advance and finish on time. Unlock!, an interactive game combining traditional hardware and mobile application To play, you need the free Unlock! app, compatible with Android and iOS phones and tablets. It allows you to obtain clues, locate hidden objects and enter the codes you discover. The app makes the game very real. It adds to the atmosphere, with music dedicated to each adventure, audio puzzles, terrible penalties and a fatal countdown.\n\nUnlock! Short Adventures: Murder in Birmingham! An Escape room in your living room! Investigate Birmingham's underworld in 1920! The app sets the pace and mood for 30-minute games. The puzzles, the app, the clues, the timer - all from Unlock!\n\nDifficulty level : medium (2)\n\nUnlock! Short Adventures : Meurtre à Birmingham ! Une Escape room dans votre salon ! Enquêtez dans les bas-fonds de Birmingham en 1920 ! L’application donne le rythme et pose d’ambiance pour des parties de 30 minutes. Les énigmes, l’app, les indices, le timer, du concentré de Unlock! Unlock! Short Adventures : Meurtre à Birmingham est une aventure de niveau de difficulté 3 (sur 3). Il contient 30 cartes d'aventures et 2 cartes de règles.",
         "es": ""
       },
       "categories": [
@@ -13667,8 +14041,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "requiresGameName": "",
       "expansionIds": [],
       "bggUrl": "https://boardgamegeek.com/boardgame/392192",
-      "thumbnailUrl": "https://cf.geekdo-images.com/rFpGtpToXiHePcUsxhDSUA__small/img/ijo-mvFbQuEcSdw-TbENQ7jcqgM=/fit-in/200x150/filters:strip_icc()/pic7624624.jpg",
-      "imageUrl": "https://cf.geekdo-images.com/rFpGtpToXiHePcUsxhDSUA__original/img/WYW_CzxUgVnd7MTlb4GzlhrCDts=/0x0/filters:format(jpeg)/pic7624624.jpg",
+      "thumbnailUrl": "https://cf.geekdo-images.com/4m3lIFpAL4yNC0Ok_fPI-A__small/img/upcCZAx88u7fBXjtH_ZsQQV0MFg=/fit-in/200x150/filters:strip_icc()/pic8365369.png",
+      "imageUrl": "https://cf.geekdo-images.com/4m3lIFpAL4yNC0Ok_fPI-A__original/img/2FJZT5qRUclzVpuJYc-fJ7VhMRs=/0x0/filters:format(png)/pic8365369.png",
       "imageHint": "Unlock!: Miniaventuras Asesinato en Birmingham (2024)",
       "tags": [
         "previously-owned",
@@ -13678,7 +14052,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "light",
         "teaching-friendly"
       ],
-      "searchText": "unlock!: miniaventuras asesinato en birmingham unlock!: short adventures – the birmingham murder spanish edition space cowboys spanish unlock! short adventures: it's unlock, only shorter! unlock short adventures are 30 to 45 minute unlocks in a small format, ideal for pocketing or giving as a gift. unlock! is a cooperative card game inspired by escape rooms. unlock! brings these experiences into your home, around a table. after familiarizing yourself with the context of the scenario, you begin your adventure in a room (a location map showing various numbers).... versión breve de unlock!, con aventuras de 30 a 45 minutos en formato pequeño, ideal para llevar o regalar. es un juego cooperativo de cartas inspirado en las salas de escape, para jugar en casa alrededor de una mesa. unlock! short adventures: it's unlock, only shorter! unlock short adventures are 30 to 45 minute unlocks in a small format, ideal for pocketing or giving as a gift. unlock! is a cooperative card game inspired by escape rooms. unlock! brings these experiences into your home, around a table. after familiarizing yourself with the context of the scenario, you begin your adventure in a room (a location map showing various numbers). search the room for objects! beware: some may be hidden! visual and audio puzzles slow your progress. it's up to you to cooperate with your partners to advance and finish on time. unlock!, an interactive game combining traditional hardware and mobile application to play, you need the free unlock! app, compatible with android and ios phones and tablets. it allows you to obtain clues, locate hidden objects and enter the codes you discover. the app makes the game very real. it adds to the atmosphere, with music dedicated to each adventure, audio puzzles, terrible penalties and a fatal countdown. unlock! short adventures: murder in birmingham! an escape room in your living room! investigate birmingham's underworld in 1920! the app sets the pace and mood for 30-minute games. the puzzles, the app, the clues, the timer - all from unlock! unlock! short adventures : meurtre à birmingham ! une escape room dans votre salon ! enquêtez dans les bas-fonds de birmingham en 1920 ! l’application donne le rythme et pose d’ambiance pour des parties de 30 minutes. les énigmes, l’app, les indices, le timer, du concentré de unlock! unlock! short adventures : meurtre à birmingham est une aventure de niveau de difficulté 3 (sur 3). il contient 30 cartes d'aventures et 2 cartes de règles. card game murder / mystery puzzle real-time cooperative game real-time previously-owned solo great-at-2 group light teaching-friendly 1 2 3 2"
+      "searchText": "unlock!: miniaventuras asesinato en birmingham unlock!: short adventures – the birmingham murder spanish edition space cowboys spanish unlock! short adventures: it's unlock, only shorter! unlock short adventures are 30 to 45 minute unlocks in a small format, ideal for pocketing or giving as a gift. unlock! is a cooperative card game inspired by escape rooms. unlock! brings these experiences into your home, around a table. after familiarizing yourself with the context of the scenario, you begin your adventure in a room (a location map showing various numbers).... versión breve de unlock!, con aventuras de 30 a 45 minutos en formato pequeño, ideal para llevar o regalar. es un juego cooperativo de cartas inspirado en las salas de escape, para jugar en casa alrededor de una mesa. unlock! short adventures: it's unlock, only shorter! unlock short adventures are 30 to 45 minute unlocks in a small format, ideal for pocketing or giving as a gift. unlock! is a cooperative card game inspired by escape rooms. unlock! brings these experiences into your home, around a table. after familiarizing yourself with the context of the scenario, you begin your adventure in a room (a location map showing various numbers). search the room for objects! beware: some may be hidden! visual and audio puzzles slow your progress. it's up to you to cooperate with your partners to advance and finish on time. unlock!, an interactive game combining traditional hardware and mobile application to play, you need the free unlock! app, compatible with android and ios phones and tablets. it allows you to obtain clues, locate hidden objects and enter the codes you discover. the app makes the game very real. it adds to the atmosphere, with music dedicated to each adventure, audio puzzles, terrible penalties and a fatal countdown. unlock! short adventures: murder in birmingham! an escape room in your living room! investigate birmingham's underworld in 1920! the app sets the pace and mood for 30-minute games. the puzzles, the app, the clues, the timer - all from unlock! difficulty level : medium (2) unlock! short adventures : meurtre à birmingham ! une escape room dans votre salon ! enquêtez dans les bas-fonds de birmingham en 1920 ! l’application donne le rythme et pose d’ambiance pour des parties de 30 minutes. les énigmes, l’app, les indices, le timer, du concentré de unlock! unlock! short adventures : meurtre à birmingham est une aventure de niveau de difficulté 3 (sur 3). il contient 30 cartes d'aventures et 2 cartes de règles. card game murder / mystery puzzle real-time cooperative game real-time previously-owned solo great-at-2 group light teaching-friendly 1 2 3 2"
     },
     {
       "id": 392193,
@@ -13706,9 +14080,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 60,
       "minPlayTime": 30,
       "maxPlayTime": 60,
-      "averageRating": 6.71,
+      "averageRating": 6.72,
       "bayesAverage": 5.7,
-      "rank": 6381,
+      "rank": 6303,
       "avgWeight": 2.0,
       "weightBand": "medium-light",
       "timeBand": "standard",
@@ -13732,7 +14106,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "es": "Aventura corta de Unlock! de 30 a 45 minutos en formato pequeño. Es un juego cooperativo de cartas inspirado en las salas de escape: se explora una habitación, se buscan objetos —algunos ocultos— y se resuelven acertijos."
       },
       "description": {
-        "en": "Unlock! Short Adventures: it's Unlock, only shorter!\n\nUnlock Short Adventures are 30 to 45 minute Unlocks in a small format, ideal for pocketing or giving as a gift. Unlock! is a cooperative card game inspired by escape rooms. Unlock! brings these experiences into your home, around a table. After familiarizing yourself with the context of the scenario, you begin your adventure in a room (a location map showing various numbers). Search the room for objects! Beware: some may be hidden! Visual and audio puzzles slow your progress. It's up to you to cooperate with your partners to advance and finish on time.\n\nUnlock!, an interactive game combining traditional hardware and mobile application\n\nTo play, you need the free Unlock! app, compatible with Android and iOS phones and tablets. It allows you to obtain clues, locate hidden objects and enter the codes you discover. The app makes the game very real. It adds to the atmosphere, with music dedicated to each adventure, audio puzzles, terrible penalties and a fatal countdown.\n\nUnlock! Short Adventures: Le Chat de M. Schrödinger! An Escape room in your living room! The app sets the pace and mood for 30-minute games. The puzzles, the app, the clues, the timer - all from Unlock!\n\n—description from the publisher\n\nUnlock ! Short Adventures : Le Chat de M. Schrödinger ! Une Escape room dans votre salon !\n\nL’application donne le rythme et pose d’ambiance pour des parties de 30 minutes. Les énigmes, l’app, les indices, le timer, du concentré de Unlock! Unlock ! Short Adventures : Le Chat de M. Schrödinger est une aventure de niveau de difficulté 2 (sur 3). Il contient 30 cartes d'aventures et 2 cartes de règles.\n\n—description from the publisher (French)",
+        "en": "Unlock! Short Adventures: it's Unlock, only shorter!\n\nUnlock Short Adventures are 30 to 45 minute Unlocks in a small format, ideal for pocketing or giving as a gift. Unlock! is a cooperative card game inspired by escape rooms. Unlock! brings these experiences into your home, around a table. After familiarizing yourself with the context of the scenario, you begin your adventure in a room (a location map showing various numbers). Search the room for objects! Beware: some may be hidden! Visual and audio puzzles slow your progress. It's up to you to cooperate with your partners to advance and finish on time.\n\nUnlock!, an interactive game combining traditional hardware and mobile application\n\nTo play, you need the free Unlock! app, compatible with Android and iOS phones and tablets. It allows you to obtain clues, locate hidden objects and enter the codes you discover. The app makes the game very real. It adds to the atmosphere, with music dedicated to each adventure, audio puzzles, terrible penalties and a fatal countdown.\n\nDifficulty level: medium (2)\n\nUnlock! Short Adventures: Le Chat de M. Schrödinger! An Escape room in your living room! The app sets the pace and mood for 30-minute games. The puzzles, the app, the clues, the timer - all from Unlock!\n\n—description from the publisher\n\nUnlock ! Short Adventures : Le Chat de M. Schrödinger ! Une Escape room dans votre salon !\n\nL’application donne le rythme et pose d’ambiance pour des parties de 30 minutes. Les énigmes, l’app, les indices, le timer, du concentré de Unlock! Unlock ! Short Adventures : Le Chat de M. Schrödinger est une aventure de niveau de difficulté 2 (sur 3). Il contient 30 cartes d'aventures et 2 cartes de règles.\n\n—description from the publisher (French)",
         "es": ""
       },
       "categories": [
@@ -13751,8 +14125,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "requiresGameName": "",
       "expansionIds": [],
       "bggUrl": "https://boardgamegeek.com/boardgame/392193",
-      "thumbnailUrl": "https://cf.geekdo-images.com/s150EN1U_DdGc4aCw-1XWA__small/img/73W3FTXULvZw9z3gP94UMyExNFw=/fit-in/200x150/filters:strip_icc()/pic7624647.jpg",
-      "imageUrl": "https://cf.geekdo-images.com/s150EN1U_DdGc4aCw-1XWA__original/img/tEWI01MCJ3qEetXVyfNY6Fp_oUc=/0x0/filters:format(jpeg)/pic7624647.jpg",
+      "thumbnailUrl": "https://cf.geekdo-images.com/_ozhcJk7vE3NAFmyt0J_OA__small/img/1NzeyZlWZ0ktOJLQcdR6ge9ubVA=/fit-in/200x150/filters:strip_icc()/pic8365384.png",
+      "imageUrl": "https://cf.geekdo-images.com/_ozhcJk7vE3NAFmyt0J_OA__original/img/vX7_4GJOTBg1OKvJqFijbxE0VI4=/0x0/filters:format(png)/pic8365384.png",
       "imageHint": "Unlock!: Miniaventuras El gato de Schrödinger (2024)",
       "tags": [
         "previously-owned",
@@ -13762,7 +14136,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "light",
         "teaching-friendly"
       ],
-      "searchText": "unlock!: miniaventuras el gato de schrödinger unlock!: short adventures – schrödinger's cat spanish edition space cowboys spanish unlock short adventures are 30 to 45 minute unlocks in a small format, ideal for pocketing or giving as a gift. unlock! is a cooperative card game inspired by escape rooms. unlock! brings these experiences into your home, around a table. after familiarizing yourself with the context of the scenario, you begin your adventure in a room (a location map showing various numbers). search the room for objects! beware: some may be hidden!... aventura corta de unlock! de 30 a 45 minutos en formato pequeño. es un juego cooperativo de cartas inspirado en las salas de escape: se explora una habitación, se buscan objetos —algunos ocultos— y se resuelven acertijos. unlock! short adventures: it's unlock, only shorter! unlock short adventures are 30 to 45 minute unlocks in a small format, ideal for pocketing or giving as a gift. unlock! is a cooperative card game inspired by escape rooms. unlock! brings these experiences into your home, around a table. after familiarizing yourself with the context of the scenario, you begin your adventure in a room (a location map showing various numbers). search the room for objects! beware: some may be hidden! visual and audio puzzles slow your progress. it's up to you to cooperate with your partners to advance and finish on time. unlock!, an interactive game combining traditional hardware and mobile application to play, you need the free unlock! app, compatible with android and ios phones and tablets. it allows you to obtain clues, locate hidden objects and enter the codes you discover. the app makes the game very real. it adds to the atmosphere, with music dedicated to each adventure, audio puzzles, terrible penalties and a fatal countdown. unlock! short adventures: le chat de m. schrödinger! an escape room in your living room! the app sets the pace and mood for 30-minute games. the puzzles, the app, the clues, the timer - all from unlock! —description from the publisher unlock ! short adventures : le chat de m. schrödinger ! une escape room dans votre salon ! l’application donne le rythme et pose d’ambiance pour des parties de 30 minutes. les énigmes, l’app, les indices, le timer, du concentré de unlock! unlock ! short adventures : le chat de m. schrödinger est une aventure de niveau de difficulté 2 (sur 3). il contient 30 cartes d'aventures et 2 cartes de règles. —description from the publisher (french) animals card game puzzle real-time cooperative game real-time previously-owned solo great-at-2 group light teaching-friendly 1 2 3 2"
+      "searchText": "unlock!: miniaventuras el gato de schrödinger unlock!: short adventures – schrödinger's cat spanish edition space cowboys spanish unlock short adventures are 30 to 45 minute unlocks in a small format, ideal for pocketing or giving as a gift. unlock! is a cooperative card game inspired by escape rooms. unlock! brings these experiences into your home, around a table. after familiarizing yourself with the context of the scenario, you begin your adventure in a room (a location map showing various numbers). search the room for objects! beware: some may be hidden!... aventura corta de unlock! de 30 a 45 minutos en formato pequeño. es un juego cooperativo de cartas inspirado en las salas de escape: se explora una habitación, se buscan objetos —algunos ocultos— y se resuelven acertijos. unlock! short adventures: it's unlock, only shorter! unlock short adventures are 30 to 45 minute unlocks in a small format, ideal for pocketing or giving as a gift. unlock! is a cooperative card game inspired by escape rooms. unlock! brings these experiences into your home, around a table. after familiarizing yourself with the context of the scenario, you begin your adventure in a room (a location map showing various numbers). search the room for objects! beware: some may be hidden! visual and audio puzzles slow your progress. it's up to you to cooperate with your partners to advance and finish on time. unlock!, an interactive game combining traditional hardware and mobile application to play, you need the free unlock! app, compatible with android and ios phones and tablets. it allows you to obtain clues, locate hidden objects and enter the codes you discover. the app makes the game very real. it adds to the atmosphere, with music dedicated to each adventure, audio puzzles, terrible penalties and a fatal countdown. difficulty level: medium (2) unlock! short adventures: le chat de m. schrödinger! an escape room in your living room! the app sets the pace and mood for 30-minute games. the puzzles, the app, the clues, the timer - all from unlock! —description from the publisher unlock ! short adventures : le chat de m. schrödinger ! une escape room dans votre salon ! l’application donne le rythme et pose d’ambiance pour des parties de 30 minutes. les énigmes, l’app, les indices, le timer, du concentré de unlock! unlock ! short adventures : le chat de m. schrödinger est une aventure de niveau de difficulté 2 (sur 3). il contient 30 cartes d'aventures et 2 cartes de règles. —description from the publisher (french) animals card game puzzle real-time cooperative game real-time previously-owned solo great-at-2 group light teaching-friendly 1 2 3 2"
     },
     {
       "id": 391995,
@@ -13790,10 +14164,10 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 60,
       "minPlayTime": 30,
       "maxPlayTime": 60,
-      "averageRating": 7.31,
-      "bayesAverage": 5.74,
-      "rank": 5667,
-      "avgWeight": 2.33,
+      "averageRating": 7.29,
+      "bayesAverage": 5.75,
+      "rank": 5596,
+      "avgWeight": 2.29,
       "weightBand": "medium-light",
       "timeBand": "standard",
       "playerBand": "mid-group",
@@ -13816,7 +14190,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "es": "Versión breve de Unlock!, con aventuras de 30 a 45 minutos en formato pequeño, ideal para llevar o regalar. Es un juego cooperativo de cartas inspirado en las salas de escape, para jugar en casa alrededor de una mesa."
       },
       "description": {
-        "en": "Unlock! Short Adventures: it's Unlock, only shorter! Unlock Short Adventures are 30 to 45 minute Unlocks in a small format, ideal for pocketing or giving as a gift. Unlock! is a cooperative card game inspired by escape rooms. Unlock! brings these experiences into your home, around a table. After familiarizing yourself with the context of the scenario, you begin your adventure in a room (a location map showing various numbers). Search the room for objects! Beware: some may be hidden! Visual and audio puzzles slow your progress. It's up to you to cooperate with your partners to advance and finish on time.\n\nUnlock!, an interactive game combining traditional hardware and mobile application To play, you need the free Unlock! app, compatible with Android and iOS phones and tablets. It allows you to obtain clues, locate hidden objects and enter the codes you discover. The app makes the game very real. It adds to the atmosphere, with music dedicated to each adventure, audio puzzles, terrible penalties and a fatal countdown.\n\nUnlock ! Short Adventures : Red Mask ! An Escape room in your living room! The app sets the pace and mood for 30-minute games. The puzzles, the app, the clues, the timer - all from Unlock!\n\nUnlock ! Short Adventures : c'est Unlock mais en plus court ! Unlock Short Adventures, ce sont des Unlock de 30 à 45 minutes en petit format, pratique à mettre dans la poche ou à offrir pour faire découvrir le jeu. Unlock ! est un jeu de carte coopératif inspiré des escape rooms. Unlock! vous fait vivre ces expériences chez vous, autour d'une table. Après avoir pris connaissance du contexte du scénario, vous commencez votre aventure dans une pièce (une carte de lieu qui indique divers numéros). Fouillez-la pour trouver des objets ! Attention : certains peuvent être cachés ! Des énigmes visuelles ou audio ralentissent votre progression. À vous de coopérer avec vos partenaires pour avancer et terminer dans les temps. Unlock !, un jeu interactif qui combine matériel traditionnel et application mobile L'application gratuite Unlock !, compatible avec les téléphones et tablettes Android et iOS, est nécessaire pour jouer. Elle permet d'obtenir des indices, de repérer des objets cachés, mais aussi d'entrer les codes découverts. L'application rend le jeu très concret. Elle contribue à l'ambiance avec ses musiques dédiées à chaque aventure, ses énigmes audio, ses terribles pénalités et son compte à rebours fatal. Unlock ! Short Adventures : Red Mask ! Une Escape room dans votre salon ! Devenez un justicier masqué au Mexique en 1811 pour délivrer un ami prisonnier ! L’application donne le rythme et pose d’ambiance pour des parties de 30 minutes. Les énigmes, l’app, les indices, le timer, du concentré de Unlock!\n\nUnlock ! Short Adventures : Red Mask est une aventure de niveau de difficulté 2 (sur 3). Il contient 30 cartes d'aventures et 2 cartes de règles.",
+        "en": "Unlock! Short Adventures: it's Unlock, only shorter! Unlock Short Adventures are 30 to 45 minute Unlocks in a small format, ideal for pocketing or giving as a gift. Unlock! is a cooperative card game inspired by escape rooms. Unlock! brings these experiences into your home, around a table. After familiarizing yourself with the context of the scenario, you begin your adventure in a room (a location map showing various numbers). Search the room for objects! Beware: some may be hidden! Visual and audio puzzles slow your progress. It's up to you to cooperate with your partners to advance and finish on time.\n\nUnlock!, an interactive game combining traditional hardware and mobile application To play, you need the free Unlock! app, compatible with Android and iOS phones and tablets. It allows you to obtain clues, locate hidden objects and enter the codes you discover. The app makes the game very real. It adds to the atmosphere, with music dedicated to each adventure, audio puzzles, terrible penalties and a fatal countdown.\n\nUnlock ! Short Adventures : Red Mask ! An Escape room in your living room! The app sets the pace and mood for 30-minute games. The puzzles, the app, the clues, the timer - all from Unlock!\n\nDifficulty level: difficult (3)\n\nUnlock ! Short Adventures : c'est Unlock mais en plus court ! Unlock Short Adventures, ce sont des Unlock de 30 à 45 minutes en petit format, pratique à mettre dans la poche ou à offrir pour faire découvrir le jeu. Unlock ! est un jeu de carte coopératif inspiré des escape rooms. Unlock! vous fait vivre ces expériences chez vous, autour d'une table. Après avoir pris connaissance du contexte du scénario, vous commencez votre aventure dans une pièce (une carte de lieu qui indique divers numéros). Fouillez-la pour trouver des objets ! Attention : certains peuvent être cachés ! Des énigmes visuelles ou audio ralentissent votre progression. À vous de coopérer avec vos partenaires pour avancer et terminer dans les temps. Unlock !, un jeu interactif qui combine matériel traditionnel et application mobile L'application gratuite Unlock !, compatible avec les téléphones et tablettes Android et iOS, est nécessaire pour jouer. Elle permet d'obtenir des indices, de repérer des objets cachés, mais aussi d'entrer les codes découverts. L'application rend le jeu très concret. Elle contribue à l'ambiance avec ses musiques dédiées à chaque aventure, ses énigmes audio, ses terribles pénalités et son compte à rebours fatal. Unlock ! Short Adventures : Red Mask ! Une Escape room dans votre salon ! Devenez un justicier masqué au Mexique en 1811 pour délivrer un ami prisonnier ! L’application donne le rythme et pose d’ambiance pour des parties de 30 minutes. Les énigmes, l’app, les indices, le timer, du concentré de Unlock!\n\nUnlock ! Short Adventures : Red Mask est une aventure de niveau de difficulté 2 (sur 3). Il contient 30 cartes d'aventures et 2 cartes de règles.",
         "es": ""
       },
       "categories": [
@@ -13834,8 +14208,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "requiresGameName": "",
       "expansionIds": [],
       "bggUrl": "https://boardgamegeek.com/boardgame/391995",
-      "thumbnailUrl": "https://cf.geekdo-images.com/Kt-BIWfqYeoHGXQoJ9CwvA__small/img/0z738NQYKW2qENkQmpJtOuYm00Q=/fit-in/200x150/filters:strip_icc()/pic7624633.jpg",
-      "imageUrl": "https://cf.geekdo-images.com/Kt-BIWfqYeoHGXQoJ9CwvA__original/img/Ou0GZXj3wOZLKgHQn8Qvm6R7bc0=/0x0/filters:format(jpeg)/pic7624633.jpg",
+      "thumbnailUrl": "https://cf.geekdo-images.com/7V8sguvojZ0SuHAwbKvL-Q__small/img/KCumJPfB_RKToPAwsBH7G87nAec=/fit-in/200x150/filters:strip_icc()/pic8365376.png",
+      "imageUrl": "https://cf.geekdo-images.com/7V8sguvojZ0SuHAwbKvL-Q__original/img/YP0nzqMz-_Qr-QqvGLPafvohxYU=/0x0/filters:format(png)/pic8365376.png",
       "imageHint": "Unlock!: Miniaventuras Máscara roja (2024)",
       "tags": [
         "previously-owned",
@@ -13843,7 +14217,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "great-at-2",
         "group"
       ],
-      "searchText": "unlock!: miniaventuras máscara roja unlock!: short adventures – red mask spanish edition space cowboys spanish unlock! short adventures: it's unlock, only shorter! unlock short adventures are 30 to 45 minute unlocks in a small format, ideal for pocketing or giving as a gift. unlock! is a cooperative card game inspired by escape rooms. unlock! brings these experiences into your home, around a table. after familiarizing yourself with the context of the scenario, you begin your adventure in a room (a location map showing various numbers).... versión breve de unlock!, con aventuras de 30 a 45 minutos en formato pequeño, ideal para llevar o regalar. es un juego cooperativo de cartas inspirado en las salas de escape, para jugar en casa alrededor de una mesa. unlock! short adventures: it's unlock, only shorter! unlock short adventures are 30 to 45 minute unlocks in a small format, ideal for pocketing or giving as a gift. unlock! is a cooperative card game inspired by escape rooms. unlock! brings these experiences into your home, around a table. after familiarizing yourself with the context of the scenario, you begin your adventure in a room (a location map showing various numbers). search the room for objects! beware: some may be hidden! visual and audio puzzles slow your progress. it's up to you to cooperate with your partners to advance and finish on time. unlock!, an interactive game combining traditional hardware and mobile application to play, you need the free unlock! app, compatible with android and ios phones and tablets. it allows you to obtain clues, locate hidden objects and enter the codes you discover. the app makes the game very real. it adds to the atmosphere, with music dedicated to each adventure, audio puzzles, terrible penalties and a fatal countdown. unlock ! short adventures : red mask ! an escape room in your living room! the app sets the pace and mood for 30-minute games. the puzzles, the app, the clues, the timer - all from unlock! unlock ! short adventures : c'est unlock mais en plus court ! unlock short adventures, ce sont des unlock de 30 à 45 minutes en petit format, pratique à mettre dans la poche ou à offrir pour faire découvrir le jeu. unlock ! est un jeu de carte coopératif inspiré des escape rooms. unlock! vous fait vivre ces expériences chez vous, autour d'une table. après avoir pris connaissance du contexte du scénario, vous commencez votre aventure dans une pièce (une carte de lieu qui indique divers numéros). fouillez-la pour trouver des objets ! attention : certains peuvent être cachés ! des énigmes visuelles ou audio ralentissent votre progression. à vous de coopérer avec vos partenaires pour avancer et terminer dans les temps. unlock !, un jeu interactif qui combine matériel traditionnel et application mobile l'application gratuite unlock !, compatible avec les téléphones et tablettes android et ios, est nécessaire pour jouer. elle permet d'obtenir des indices, de repérer des objets cachés, mais aussi d'entrer les codes découverts. l'application rend le jeu très concret. elle contribue à l'ambiance avec ses musiques dédiées à chaque aventure, ses énigmes audio, ses terribles pénalités et son compte à rebours fatal. unlock ! short adventures : red mask ! une escape room dans votre salon ! devenez un justicier masqué au mexique en 1811 pour délivrer un ami prisonnier ! l’application donne le rythme et pose d’ambiance pour des parties de 30 minutes. les énigmes, l’app, les indices, le timer, du concentré de unlock! unlock ! short adventures : red mask est une aventure de niveau de difficulté 2 (sur 3). il contient 30 cartes d'aventures et 2 cartes de règles. card game puzzle real-time cooperative game real-time previously-owned solo great-at-2 group 1 2 3 2"
+      "searchText": "unlock!: miniaventuras máscara roja unlock!: short adventures – red mask spanish edition space cowboys spanish unlock! short adventures: it's unlock, only shorter! unlock short adventures are 30 to 45 minute unlocks in a small format, ideal for pocketing or giving as a gift. unlock! is a cooperative card game inspired by escape rooms. unlock! brings these experiences into your home, around a table. after familiarizing yourself with the context of the scenario, you begin your adventure in a room (a location map showing various numbers).... versión breve de unlock!, con aventuras de 30 a 45 minutos en formato pequeño, ideal para llevar o regalar. es un juego cooperativo de cartas inspirado en las salas de escape, para jugar en casa alrededor de una mesa. unlock! short adventures: it's unlock, only shorter! unlock short adventures are 30 to 45 minute unlocks in a small format, ideal for pocketing or giving as a gift. unlock! is a cooperative card game inspired by escape rooms. unlock! brings these experiences into your home, around a table. after familiarizing yourself with the context of the scenario, you begin your adventure in a room (a location map showing various numbers). search the room for objects! beware: some may be hidden! visual and audio puzzles slow your progress. it's up to you to cooperate with your partners to advance and finish on time. unlock!, an interactive game combining traditional hardware and mobile application to play, you need the free unlock! app, compatible with android and ios phones and tablets. it allows you to obtain clues, locate hidden objects and enter the codes you discover. the app makes the game very real. it adds to the atmosphere, with music dedicated to each adventure, audio puzzles, terrible penalties and a fatal countdown. unlock ! short adventures : red mask ! an escape room in your living room! the app sets the pace and mood for 30-minute games. the puzzles, the app, the clues, the timer - all from unlock! difficulty level: difficult (3) unlock ! short adventures : c'est unlock mais en plus court ! unlock short adventures, ce sont des unlock de 30 à 45 minutes en petit format, pratique à mettre dans la poche ou à offrir pour faire découvrir le jeu. unlock ! est un jeu de carte coopératif inspiré des escape rooms. unlock! vous fait vivre ces expériences chez vous, autour d'une table. après avoir pris connaissance du contexte du scénario, vous commencez votre aventure dans une pièce (une carte de lieu qui indique divers numéros). fouillez-la pour trouver des objets ! attention : certains peuvent être cachés ! des énigmes visuelles ou audio ralentissent votre progression. à vous de coopérer avec vos partenaires pour avancer et terminer dans les temps. unlock !, un jeu interactif qui combine matériel traditionnel et application mobile l'application gratuite unlock !, compatible avec les téléphones et tablettes android et ios, est nécessaire pour jouer. elle permet d'obtenir des indices, de repérer des objets cachés, mais aussi d'entrer les codes découverts. l'application rend le jeu très concret. elle contribue à l'ambiance avec ses musiques dédiées à chaque aventure, ses énigmes audio, ses terribles pénalités et son compte à rebours fatal. unlock ! short adventures : red mask ! une escape room dans votre salon ! devenez un justicier masqué au mexique en 1811 pour délivrer un ami prisonnier ! l’application donne le rythme et pose d’ambiance pour des parties de 30 minutes. les énigmes, l’app, les indices, le timer, du concentré de unlock! unlock ! short adventures : red mask est une aventure de niveau de difficulté 2 (sur 3). il contient 30 cartes d'aventures et 2 cartes de règles. card game puzzle real-time cooperative game real-time previously-owned solo great-at-2 group 1 2 3 2"
     },
     {
       "id": 302425,
@@ -13872,9 +14246,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 60,
       "minPlayTime": 60,
       "maxPlayTime": 60,
-      "averageRating": 7.64,
+      "averageRating": 7.63,
       "bayesAverage": 6.49,
-      "rank": 1362,
+      "rank": 1370,
       "avgWeight": 2.17,
       "weightBand": "medium-light",
       "timeBand": "standard",
@@ -13898,7 +14272,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "es": "Serie de aventuras de escape para hasta seis jugadores. En una hora, el equipo recorre sesenta cartas, busca pistas, combina objetos y resuelve acertijos con ayuda de la aplicación gratuita. Mythic Adventures contiene tres escenarios."
       },
       "description": {
-        "en": "Unlock! is a series of escape adventures for up to six players. With one hour on the clock, players work through a deck of sixty cards as a team, searching for clues, combining objects, and solving puzzles. The free Unlock! companion app runs the timer while also providing clues, offering hints, and confirming successes. Once the team has reached a solution and entered the correct code into the app, they will escape and win the game!\n\nUnlock!: Mythic Adventures contains three scenarios revolving around these themes.\n\n• In the Clutches of Hades - You are Alix, a slave in Greece during antiquity. Gaining your freedom will not be an easy task unless you ask the Gods for help.\n\n• Professor Noside's Animal-O-Matic - \"The Animal-O-Matic transfers you into the body of any animal. It's not dangerous, I'm telling you! Will you stop moving James!\"\n\n• Around the World in 80 Minutes - \"I made the bet with these gentlemen from the Reform Club that we will travel around the world in 80 days. Passepartout! Hurry! The world awaits Phileas Fogg's masterstroke!\"\n\n—description from the publisher",
+        "en": "Unlock! is a series of escape adventures for up to six players. With one hour on the clock, players work through a deck of sixty cards as a team, searching for clues, combining objects, and solving puzzles. The free Unlock! companion app runs the timer while also providing clues, offering hints, and confirming successes. Once the team has reached a solution and entered the correct code into the app, they will escape and win the game!\n\nUnlock!: Mythic Adventures contains three scenarios revolving around these themes.\n\n• In the Clutches of Hades (easy) - You are Alix, a slave in Greece during antiquity. Gaining your freedom will not be an easy task unless you ask the Gods for help.\n\n• Professor Noside's Animal-O-Matic (medium) - \"The Animal-O-Matic transfers you into the body of any animal. It's not dangerous, I'm telling you! Will you stop moving James!\"\n\n• Around the World in 80 Minutes (difficult) - \"I made the bet with these gentlemen from the Reform Club that we will travel around the world in 80 days. Passepartout! Hurry! The world awaits Phileas Fogg's masterstroke!\"\n\n—description from the publisher",
         "es": ""
       },
       "categories": [
@@ -13933,7 +14307,91 @@ window.__BGG_LIBRARY_DATA__ = {
         "group",
         "teaching-friendly"
       ],
-      "searchText": "unlock!: mythic adventures unlock!: mythic adventures spanish edition space cowboys spanish unlock! is a series of escape adventures for up to six players. with one hour on the clock, players work through a deck of sixty cards as a team, searching for clues, combining objects, and solving puzzles. the free unlock! companion app runs the timer while also providing clues, offering hints, and confirming successes. once the team has reached a solution and entered the correct code into the app, they will escape and win the game! unlock!: mythic adventures contains three scenarios revolving around these themes. serie de aventuras de escape para hasta seis jugadores. en una hora, el equipo recorre sesenta cartas, busca pistas, combina objetos y resuelve acertijos con ayuda de la aplicación gratuita. mythic adventures contiene tres escenarios. unlock! is a series of escape adventures for up to six players. with one hour on the clock, players work through a deck of sixty cards as a team, searching for clues, combining objects, and solving puzzles. the free unlock! companion app runs the timer while also providing clues, offering hints, and confirming successes. once the team has reached a solution and entered the correct code into the app, they will escape and win the game! unlock!: mythic adventures contains three scenarios revolving around these themes. • in the clutches of hades - you are alix, a slave in greece during antiquity. gaining your freedom will not be an easy task unless you ask the gods for help. • professor noside's animal-o-matic - \"the animal-o-matic transfers you into the body of any animal. it's not dangerous, i'm telling you! will you stop moving james!\" • around the world in 80 minutes - \"i made the bet with these gentlemen from the reform club that we will travel around the world in 80 days. passepartout! hurry! the world awaits phileas fogg's masterstroke!\" —description from the publisher animals card game exploration mythology novel-based puzzle real-time science fiction cooperative game pieces as map real-time storytelling previously-owned solo great-at-2 group teaching-friendly 1 2 3 4 2"
+      "searchText": "unlock!: mythic adventures unlock!: mythic adventures spanish edition space cowboys spanish unlock! is a series of escape adventures for up to six players. with one hour on the clock, players work through a deck of sixty cards as a team, searching for clues, combining objects, and solving puzzles. the free unlock! companion app runs the timer while also providing clues, offering hints, and confirming successes. once the team has reached a solution and entered the correct code into the app, they will escape and win the game! unlock!: mythic adventures contains three scenarios revolving around these themes. serie de aventuras de escape para hasta seis jugadores. en una hora, el equipo recorre sesenta cartas, busca pistas, combina objetos y resuelve acertijos con ayuda de la aplicación gratuita. mythic adventures contiene tres escenarios. unlock! is a series of escape adventures for up to six players. with one hour on the clock, players work through a deck of sixty cards as a team, searching for clues, combining objects, and solving puzzles. the free unlock! companion app runs the timer while also providing clues, offering hints, and confirming successes. once the team has reached a solution and entered the correct code into the app, they will escape and win the game! unlock!: mythic adventures contains three scenarios revolving around these themes. • in the clutches of hades (easy) - you are alix, a slave in greece during antiquity. gaining your freedom will not be an easy task unless you ask the gods for help. • professor noside's animal-o-matic (medium) - \"the animal-o-matic transfers you into the body of any animal. it's not dangerous, i'm telling you! will you stop moving james!\" • around the world in 80 minutes (difficult) - \"i made the bet with these gentlemen from the reform club that we will travel around the world in 80 days. passepartout! hurry! the world awaits phileas fogg's masterstroke!\" —description from the publisher animals card game exploration mythology novel-based puzzle real-time science fiction cooperative game pieces as map real-time storytelling previously-owned solo great-at-2 group teaching-friendly 1 2 3 4 2"
+    },
+    {
+      "id": 425433,
+      "collId": 149779997,
+      "name": "Unlock!: Risky Adventures",
+      "originalName": "Unlock!: Risky Adventures",
+      "nameOverrides": {
+        "es": "",
+        "en": ""
+      },
+      "type": "thing",
+      "yearPublished": 2026,
+      "minPlayers": 1,
+      "maxPlayers": 6,
+      "recommendedPlayers": [
+        1,
+        2,
+        3
+      ],
+      "bestPlayers": [
+        2
+      ],
+      "age": null,
+      "ageText": "",
+      "playingTime": 120,
+      "minPlayTime": 60,
+      "maxPlayTime": 120,
+      "averageRating": 7.79,
+      "bayesAverage": 5.65,
+      "rank": 7613,
+      "avgWeight": 2.25,
+      "weightBand": "medium-light",
+      "timeBand": "extended",
+      "playerBand": "mid-group",
+      "languageDependence": "Unplayable in another language",
+      "languageKey": "extreme",
+      "quantity": 1,
+      "own": true,
+      "prevOwned": false,
+      "forTrade": false,
+      "wantToPlay": false,
+      "wantToBuy": false,
+      "wishlist": false,
+      "acquisitionDate": "2026-09-22",
+      "versionNickname": "Spanish edition",
+      "versionPublishers": "Space Cowboys",
+      "versionLanguages": "Spanish",
+      "notes": "",
+      "summary": {
+        "en": "Unlock! is a cooperative card game series inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. Play Unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc.\n\nQueen Altipia's Crown (easy) A Memorable Date (medium) Covert Operation in Little Itlay (difficult)",
+        "es": "Juego cooperativo de cartas inspirado en las salas de escape. Los jugadores exploran escenas, combinan objetos y resuelven acertijos con ayuda de una aplicación que ofrece pistas, verifica códigos y controla el tiempo. Incluye tres escenarios de dificultad creciente."
+      },
+      "description": {
+        "en": "Unlock! is a cooperative card game series inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. Play Unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc.\n\nUnlock! Risky Adventures includes three separate scenarios for you to explore:\n\nQueen Altipia's Crown (easy) A Memorable Date (medium) Covert Operation in Little Itlay (difficult)\n\nNote: Unlock! requires a free application to be downloaded from the App Store or Google Play. Once downloaded, an internet connection is not required during game play.",
+        "es": ""
+      },
+      "categories": [
+        "Deduction",
+        "Puzzle",
+        "Real-time"
+      ],
+      "mechanics": [
+        "Cooperative Game",
+        "Deduction",
+        "Scenario / Mission / Campaign Game",
+        "Solo / Solitaire Game",
+        "Storytelling"
+      ],
+      "bggItemType": "boardgame",
+      "dependencyType": "",
+      "requiresGameId": null,
+      "requiresGameName": "",
+      "expansionIds": [],
+      "bggUrl": "https://boardgamegeek.com/boardgame/425433",
+      "thumbnailUrl": "https://cf.geekdo-images.com/ouyAwoRcZUUH9JxmY1hr3g__small/img/nWHpSUsdRljMsp1JcXhHwjvFYjI=/fit-in/200x150/filters:strip_icc()/pic8562070.jpg",
+      "imageUrl": "https://cf.geekdo-images.com/ouyAwoRcZUUH9JxmY1hr3g__original/img/rDqAemWgs_dDW1tW15LaJ9ZsTg8=/0x0/filters:format(jpeg)/pic8562070.jpg",
+      "imageHint": "Unlock!: Risky Adventures (2026)",
+      "tags": [
+        "owned",
+        "solo",
+        "great-at-2",
+        "group"
+      ],
+      "searchText": "unlock!: risky adventures unlock!: risky adventures spanish edition space cowboys spanish unlock! is a cooperative card game series inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. play unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc. queen altipia's crown (easy) a memorable date (medium) covert operation in little itlay (difficult) juego cooperativo de cartas inspirado en las salas de escape. los jugadores exploran escenas, combinan objetos y resuelven acertijos con ayuda de una aplicación que ofrece pistas, verifica códigos y controla el tiempo. incluye tres escenarios de dificultad creciente. unlock! is a cooperative card game series inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. play unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc. unlock! risky adventures includes three separate scenarios for you to explore: queen altipia's crown (easy) a memorable date (medium) covert operation in little itlay (difficult) note: unlock! requires a free application to be downloaded from the app store or google play. once downloaded, an internet connection is not required during game play. deduction puzzle real-time cooperative game deduction scenario / mission / campaign game solo / solitaire game storytelling owned solo great-at-2 group 1 2 3 2"
     },
     {
       "id": 239307,
@@ -13963,9 +14421,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 60,
       "minPlayTime": 60,
       "maxPlayTime": 60,
-      "averageRating": 7.49,
+      "averageRating": 7.48,
       "bayesAverage": 6.64,
-      "rank": 1037,
+      "rank": 1049,
       "avgWeight": 2.13,
       "weightBand": "medium-light",
       "timeBand": "standard",
@@ -13989,7 +14447,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "es": "Juego cooperativo de cartas inspirado en las salas de escape. Un sistema simple permite explorar escenas, combinar objetos y resolver enigmas usando cartas y una aplicación que ofrece pistas, verifica códigos y controla el tiempo. Incluye tres escenarios."
       },
       "description": {
-        "en": "Unlock! Secret Adventures features three \"escape room\" scenarios that you can play on your tabletop.\n\nUnlock! is a cooperative card game inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. Play Unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc. The three scenarios are...\n\n\"A Noside Story\" \"Tombstone Express\" \"The Adventurers of Oz\"",
+        "en": "Unlock! Secret Adventures features three \"escape room\" scenarios that you can play on your tabletop.\n\nUnlock! is a cooperative card game inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. Play Unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc. The three scenarios are...\n\n\"A Noside Story\" (easy) \"Tombstone Express\" (medium) \"The Adventurers of Oz\" (difficult)",
         "es": ""
       },
       "categories": [
@@ -14022,7 +14480,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "group",
         "teaching-friendly"
       ],
-      "searchText": "unlock!: secret adventures unlock!: secret adventures spanish edition space cowboys spanish unlock! is a cooperative card game inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. play unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc. the three scenarios are... unlock! secret adventures features three \"escape room\" scenarios that you can play on your tabletop. juego cooperativo de cartas inspirado en las salas de escape. un sistema simple permite explorar escenas, combinar objetos y resolver enigmas usando cartas y una aplicación que ofrece pistas, verifica códigos y controla el tiempo. incluye tres escenarios. unlock! secret adventures features three \"escape room\" scenarios that you can play on your tabletop. unlock! is a cooperative card game inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. play unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc. the three scenarios are... \"a noside story\" \"tombstone express\" \"the adventurers of oz\" american west card game exploration fantasy novel-based puzzle real-time trains cooperative game storytelling previously-owned solo great-at-2 group teaching-friendly 1 2 3 4 2 3"
+      "searchText": "unlock!: secret adventures unlock!: secret adventures spanish edition space cowboys spanish unlock! is a cooperative card game inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. play unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc. the three scenarios are... unlock! secret adventures features three \"escape room\" scenarios that you can play on your tabletop. juego cooperativo de cartas inspirado en las salas de escape. un sistema simple permite explorar escenas, combinar objetos y resolver enigmas usando cartas y una aplicación que ofrece pistas, verifica códigos y controla el tiempo. incluye tres escenarios. unlock! secret adventures features three \"escape room\" scenarios that you can play on your tabletop. unlock! is a cooperative card game inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. play unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc. the three scenarios are... \"a noside story\" (easy) \"tombstone express\" (medium) \"the adventurers of oz\" (difficult) american west card game exploration fantasy novel-based puzzle real-time trains cooperative game storytelling previously-owned solo great-at-2 group teaching-friendly 1 2 3 4 2 3"
     },
     {
       "id": 402373,
@@ -14051,9 +14509,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 60,
       "minPlayTime": 30,
       "maxPlayTime": 60,
-      "averageRating": 6.56,
-      "bayesAverage": 5.72,
-      "rank": 5966,
+      "averageRating": 6.57,
+      "bayesAverage": 5.73,
+      "rank": 5864,
       "avgWeight": 2.3,
       "weightBand": "medium-light",
       "timeBand": "standard",
@@ -14077,7 +14535,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "es": "Juego cooperativo de cartas inspirado en las salas de escape. Los jugadores exploran escenas, combinan objetos y resuelven acertijos en la mesa, con una aplicación que ofrece pistas, verifica códigos y controla el tiempo restante."
       },
       "description": {
-        "en": "Unlock! is a cooperative card game inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. Play Unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc.\n\nUnlock! Supernatural Adventures includes three separate scenarios for you to explore:\n\nNova City under Threat Dia de Los Muertos Ragnarök\n\nNote: Unlock! requires a free application to be downloaded from the App Store or Google Play. Once downloaded, an internet connection is not required during game play.\n\n—description from the publisher",
+        "en": "Unlock! is a cooperative card game inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. Play Unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc.\n\nUnlock! Supernatural Adventures includes three separate scenarios for you to explore:\n\nNova City under Threat Día de los Muertos Ragnarök\n\nNote: Unlock! requires a free application to be downloaded from the App Store or Google Play. Once downloaded, an internet connection is not required during game play.\n\n—description from the publisher",
         "es": ""
       },
       "categories": [
@@ -14108,7 +14566,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "great-at-2",
         "group"
       ],
-      "searchText": "unlock!: supernatural adventures unlock!: supernatural adventures spanish edition space cowboys spanish unlock! is a cooperative card game inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. play unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc. juego cooperativo de cartas inspirado en las salas de escape. los jugadores exploran escenas, combinan objetos y resuelven acertijos en la mesa, con una aplicación que ofrece pistas, verifica códigos y controla el tiempo restante. unlock! is a cooperative card game inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. play unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc. unlock! supernatural adventures includes three separate scenarios for you to explore: nova city under threat dia de los muertos ragnarök note: unlock! requires a free application to be downloaded from the app store or google play. once downloaded, an internet connection is not required during game play. —description from the publisher adventure deduction fantasy puzzle real-time cooperative game deduction scenario / mission / campaign game storytelling previously-owned solo great-at-2 group 1 2 3 4 2"
+      "searchText": "unlock!: supernatural adventures unlock!: supernatural adventures spanish edition space cowboys spanish unlock! is a cooperative card game inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. play unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc. juego cooperativo de cartas inspirado en las salas de escape. los jugadores exploran escenas, combinan objetos y resuelven acertijos en la mesa, con una aplicación que ofrece pistas, verifica códigos y controla el tiempo restante. unlock! is a cooperative card game inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. play unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc. unlock! supernatural adventures includes three separate scenarios for you to explore: nova city under threat día de los muertos ragnarök note: unlock! requires a free application to be downloaded from the app store or google play. once downloaded, an internet connection is not required during game play. —description from the publisher adventure deduction fantasy puzzle real-time cooperative game deduction scenario / mission / campaign game storytelling previously-owned solo great-at-2 group 1 2 3 4 2"
     },
     {
       "id": 279613,
@@ -14138,8 +14596,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 90,
       "averageRating": 7.72,
       "bayesAverage": 6.76,
-      "rank": 830,
-      "avgWeight": 2.07,
+      "rank": 835,
+      "avgWeight": 2.1,
       "weightBand": "medium-light",
       "timeBand": "extended",
       "playerBand": "mid-group",
@@ -14162,7 +14620,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "es": "Entrega de Unlock! con tres nuevos escenarios de sala de escape para jugar sobre la mesa."
       },
       "description": {
-        "en": "Unlock! Timeless Adventures features three new \"escape room\" scenarios that you can play on your tabletop.\n\nUnlock! is a co-operative card game inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. Play Unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc. The three scenarios are\n\nThe Noside Show Arsène Lupin and the Great White Diamond Lost in the ChronoWarp\n\nNote: Each of these has been released separately in the German market in addition to the box set. Unlock!: Timeless Adventures – Die Noside-Show, Unlock!: Timeless Adventures – Arsène Lupin und der große weiße Diamant, and Unlock!: Timeless Adventures – Verloren im Zeitstrudel!",
+        "en": "Unlock! Timeless Adventures features three new \"escape room\" scenarios that you can play on your tabletop.\n\nUnlock! is a co-operative card game inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. Play Unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc. The three scenarios are\n\nThe Noside Show Arsène Lupin and the Great White Diamond Lost in the Time Warp\n\nNote: Each of these has been released separately in the German market in addition to the box set. Unlock!: Timeless Adventures – Die Noside-Show, Unlock!: Timeless Adventures – Arsène Lupin und der große weiße Diamant, and Unlock!: Timeless Adventures – Verloren im Zeitstrudel!",
         "es": ""
       },
       "categories": [
@@ -14191,7 +14649,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "great-at-2",
         "group"
       ],
-      "searchText": "unlock!: timeless adventures unlock!: timeless adventures spanish edition space cowboys spanish unlock! timeless adventures features three new \"escape room\" scenarios that you can play on your tabletop. entrega de unlock! con tres nuevos escenarios de sala de escape para jugar sobre la mesa. unlock! timeless adventures features three new \"escape room\" scenarios that you can play on your tabletop. unlock! is a co-operative card game inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. play unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc. the three scenarios are the noside show arsène lupin and the great white diamond lost in the chronowarp note: each of these has been released separately in the german market in addition to the box set. unlock!: timeless adventures – die noside-show, unlock!: timeless adventures – arsène lupin und der große weiße diamant, and unlock!: timeless adventures – verloren im zeitstrudel! card game exploration novel-based puzzle real-time cooperative game storytelling previously-owned solo great-at-2 group 1 2 3 2"
+      "searchText": "unlock!: timeless adventures unlock!: timeless adventures spanish edition space cowboys spanish unlock! timeless adventures features three new \"escape room\" scenarios that you can play on your tabletop. entrega de unlock! con tres nuevos escenarios de sala de escape para jugar sobre la mesa. unlock! timeless adventures features three new \"escape room\" scenarios that you can play on your tabletop. unlock! is a co-operative card game inspired by escape rooms that uses a simple system which allows you to search scenes, combine objects, and solve riddles. play unlock! to embark on great adventures, while seated at a table using only cards and a companion app that can provide clues, check codes, monitor time remaining, etc. the three scenarios are the noside show arsène lupin and the great white diamond lost in the time warp note: each of these has been released separately in the german market in addition to the box set. unlock!: timeless adventures – die noside-show, unlock!: timeless adventures – arsène lupin und der große weiße diamant, and unlock!: timeless adventures – verloren im zeitstrudel! card game exploration novel-based puzzle real-time cooperative game storytelling previously-owned solo great-at-2 group 1 2 3 2"
     },
     {
       "id": 171623,
@@ -14307,8 +14765,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "minPlayTime": 20,
       "maxPlayTime": 20,
       "averageRating": 6.71,
-      "bayesAverage": 6.3,
-      "rank": 1899,
+      "bayesAverage": 6.29,
+      "rank": 1925,
       "avgWeight": 1.06,
       "weightBand": "light",
       "timeBand": "quick",
@@ -14393,8 +14851,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 20,
       "minPlayTime": 20,
       "maxPlayTime": 20,
-      "averageRating": 6.99,
-      "bayesAverage": 6.09,
+      "averageRating": 7.0,
+      "bayesAverage": 6.1,
       "rank": 0,
       "avgWeight": 1.36,
       "weightBand": "light",
@@ -14559,7 +15017,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 30,
       "minPlayTime": 30,
       "maxPlayTime": 30,
-      "averageRating": 5.0,
+      "averageRating": 6.67,
       "bayesAverage": 0.0,
       "rank": 0,
       "avgWeight": 0.0,
@@ -14643,9 +15101,9 @@ window.__BGG_LIBRARY_DATA__ = {
       "minPlayTime": 80,
       "maxPlayTime": 80,
       "averageRating": 7.98,
-      "bayesAverage": 7.69,
+      "bayesAverage": 7.7,
       "rank": 72,
-      "avgWeight": 3.06,
+      "avgWeight": 3.07,
       "weightBand": "medium-heavy",
       "timeBand": "extended",
       "playerBand": "small-group",
@@ -14688,6 +15146,8 @@ window.__BGG_LIBRARY_DATA__ = {
         "Race",
         "Resource Queue",
         "Solo / Solitaire Game",
+        "Tech Trees / Tech Tracks",
+        "Turn Order: Stat-Based",
         "Variable Set-up",
         "Worker Placement",
         "Worker Placement with Dice Workers"
@@ -14706,7 +15166,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "solo",
         "great-at-2"
       ],
-      "searchText": "the white castle the white castle ca/en/it/pt/es edition 2025 devir catalan; english; italian; portuguese; spanish in the white castle, players will control one of these clans in order to score more victory points than the rest. to do so, they must amass influence in the court, manage resources boldly, and place their workers in the right place at the right time. the authors are sheila santos and israel cendrero, the duo known as llama dice who also designed the successful the red cathedral with devir.... juego en el que los jugadores controlan clanes que buscan sumar más puntos de victoria. deben ganar influencia en la corte, gestionar recursos con audacia y colocar trabajadores en el lugar y momento adecuados. the heron flies over the himeji sky while the daimyo, from the top of the castle, watches his servants move. gardeners tend the pond, where the koi carp live, warriors stand guard on the walls, and courtiers crowd the gates, pining for an audience that brings them closer to the innermost circles of the court. when night falls, the lanterns are lit and the workers return to their clan. in the white castle, players will control one of these clans in order to score more victory points than the rest. to do so, they must amass influence in the court, manage resources boldly, and place their workers in the right place at the right time. the authors are sheila santos and israel cendrero, the duo known as llama dice who also designed the successful the red cathedral with devir. in this case, we leave the moscow of ivan the terrible behind to explore the most imposing fortress in modern japan, himeji castle, where the banner of the sakai clan flies under the orders of daimyo sakai tadakiyo. the white castle is a euro type game with mechanics of resource management, worker placement and dice placement to carry out actions. during the game, over three rounds, players will send members of their clan to tend the gardens, defend the castle or progress up the social ladder of the nobility. at the end of the match, these will award players victory points in a variety of ways. the central panel shows himeji castle in all its splendor, divided into several zones. the largest is inside the castle, with the room of the thousand carpets, where the courtiers must ascend socially until they reach the circle closest to the daimyo to enjoy his favor. there is also the pond and the gardens, patiently tended by the gardeners where everyone can relax and contemplate its beauty without restriction. another important area is the wall and the outside of the castle, where the warriors patrol and stand guard. finally, we find the area of the three bridges, where the three types of dice that can be used to carry out actions are accumulated, and the personal domain of each player, where they will keep track of their resources and where they will have the reserve of workers. with accessible rules and a very careful setting, the white castle is a very versatile title that will fit in with different gaming groups. as is tradition with llama dice titles, its sleek and simple design belies a great deal of strategic depth within the grasp of players. —description from the publisher dice economic medieval action drafting area movement dice rolling end game bonuses income melding and splaying multi-use cards open drafting race resource queue solo / solitaire game variable set-up worker placement worker placement with dice workers owned solo great-at-2 1 2 3 4 3"
+      "searchText": "the white castle the white castle ca/en/it/pt/es edition 2025 devir catalan; english; italian; portuguese; spanish in the white castle, players will control one of these clans in order to score more victory points than the rest. to do so, they must amass influence in the court, manage resources boldly, and place their workers in the right place at the right time. the authors are sheila santos and israel cendrero, the duo known as llama dice who also designed the successful the red cathedral with devir.... juego en el que los jugadores controlan clanes que buscan sumar más puntos de victoria. deben ganar influencia en la corte, gestionar recursos con audacia y colocar trabajadores en el lugar y momento adecuados. the heron flies over the himeji sky while the daimyo, from the top of the castle, watches his servants move. gardeners tend the pond, where the koi carp live, warriors stand guard on the walls, and courtiers crowd the gates, pining for an audience that brings them closer to the innermost circles of the court. when night falls, the lanterns are lit and the workers return to their clan. in the white castle, players will control one of these clans in order to score more victory points than the rest. to do so, they must amass influence in the court, manage resources boldly, and place their workers in the right place at the right time. the authors are sheila santos and israel cendrero, the duo known as llama dice who also designed the successful the red cathedral with devir. in this case, we leave the moscow of ivan the terrible behind to explore the most imposing fortress in modern japan, himeji castle, where the banner of the sakai clan flies under the orders of daimyo sakai tadakiyo. the white castle is a euro type game with mechanics of resource management, worker placement and dice placement to carry out actions. during the game, over three rounds, players will send members of their clan to tend the gardens, defend the castle or progress up the social ladder of the nobility. at the end of the match, these will award players victory points in a variety of ways. the central panel shows himeji castle in all its splendor, divided into several zones. the largest is inside the castle, with the room of the thousand carpets, where the courtiers must ascend socially until they reach the circle closest to the daimyo to enjoy his favor. there is also the pond and the gardens, patiently tended by the gardeners where everyone can relax and contemplate its beauty without restriction. another important area is the wall and the outside of the castle, where the warriors patrol and stand guard. finally, we find the area of the three bridges, where the three types of dice that can be used to carry out actions are accumulated, and the personal domain of each player, where they will keep track of their resources and where they will have the reserve of workers. with accessible rules and a very careful setting, the white castle is a very versatile title that will fit in with different gaming groups. as is tradition with llama dice titles, its sleek and simple design belies a great deal of strategic depth within the grasp of players. —description from the publisher dice economic medieval action drafting area movement dice rolling end game bonuses income melding and splaying multi-use cards open drafting race resource queue solo / solitaire game tech trees / tech tracks turn order: stat-based variable set-up worker placement worker placement with dice workers owned solo great-at-2 1 2 3 4 3"
     },
     {
       "id": 266192,
@@ -14735,7 +15195,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "playingTime": 70,
       "minPlayTime": 40,
       "maxPlayTime": 70,
-      "averageRating": 8.0,
+      "averageRating": 7.99,
       "bayesAverage": 7.84,
       "rank": 38,
       "avgWeight": 2.48,
@@ -14767,7 +15227,8 @@ window.__BGG_LIBRARY_DATA__ = {
       "categories": [
         "Animals",
         "Card Game",
-        "Educational"
+        "Educational",
+        "Environmental"
       ],
       "mechanics": [
         "Action Queue",
@@ -14794,7 +15255,7 @@ window.__BGG_LIBRARY_DATA__ = {
         "solo",
         "great-at-2"
       ],
-      "searchText": "wingspan wingspan spanish edition maldito games spanish wingspan is a competitive, medium-weight, card-driven, engine-building board game from stonemaier games. it's designed by elizabeth hargrave and features 180 birds illustrated by natalia rojas and ana maria martinez. from the 7th printing on, the base game box includes wingspan: swift-start promo pack. juego competitivo de construcción de motor, de peso medio y basado en cartas, diseñado por elizabeth hargrave. incluye 180 aves ilustradas por natalia rojas y ana maria martinez; desde la séptima edición incorpora el paquete promocional swift-start. wingspan is a competitive, medium-weight, card-driven, engine-building board game from stonemaier games. it's designed by elizabeth hargrave and features 180 birds illustrated by natalia rojas and ana maria martinez. you are bird enthusiasts—researchers, bird watchers, ornithologists, and collectors—seeking to discover and attract the best birds to your network of wildlife preserves. each bird extends a chain of powerful combinations in one of your habitats (actions). these habitats focus on several key aspects of growth: gain food tokens via custom dice in a birdfeeder dice tower lay eggs using egg miniatures in a variety of colors draw from hundreds of unique bird cards and play them the winner is the player with the most points after 4 rounds. —description from the publisher from the 7th printing on, the base game box includes wingspan: swift-start promo pack. animals card game educational action queue dice rolling end game bonuses hand management once-per-game abilities open drafting set collection solo / solitaire game turn order: progressive owned solo great-at-2 1 2 3 4 3"
+      "searchText": "wingspan wingspan spanish edition maldito games spanish wingspan is a competitive, medium-weight, card-driven, engine-building board game from stonemaier games. it's designed by elizabeth hargrave and features 180 birds illustrated by natalia rojas and ana maria martinez. from the 7th printing on, the base game box includes wingspan: swift-start promo pack. juego competitivo de construcción de motor, de peso medio y basado en cartas, diseñado por elizabeth hargrave. incluye 180 aves ilustradas por natalia rojas y ana maria martinez; desde la séptima edición incorpora el paquete promocional swift-start. wingspan is a competitive, medium-weight, card-driven, engine-building board game from stonemaier games. it's designed by elizabeth hargrave and features 180 birds illustrated by natalia rojas and ana maria martinez. you are bird enthusiasts—researchers, bird watchers, ornithologists, and collectors—seeking to discover and attract the best birds to your network of wildlife preserves. each bird extends a chain of powerful combinations in one of your habitats (actions). these habitats focus on several key aspects of growth: gain food tokens via custom dice in a birdfeeder dice tower lay eggs using egg miniatures in a variety of colors draw from hundreds of unique bird cards and play them the winner is the player with the most points after 4 rounds. —description from the publisher from the 7th printing on, the base game box includes wingspan: swift-start promo pack. animals card game educational environmental action queue dice rolling end game bonuses hand management once-per-game abilities open drafting set collection solo / solitaire game turn order: progressive owned solo great-at-2 1 2 3 4 3"
     },
     {
       "id": 7854,
@@ -14822,7 +15283,7 @@ window.__BGG_LIBRARY_DATA__ = {
       "maxPlayTime": 60,
       "averageRating": 7.7,
       "bayesAverage": 7.26,
-      "rank": 260,
+      "rank": 262,
       "avgWeight": 2.62,
       "weightBand": "medium-light",
       "timeBand": "standard",
