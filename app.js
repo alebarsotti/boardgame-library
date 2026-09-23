@@ -171,6 +171,7 @@ const translations = {
     sortWeight: "Peso",
     sortTime: "Duración",
     sortMaxPlayers: "Máx. jugadores",
+    sortAcquisitionDate: "Fecha de adquisición",
     sortAscending: "Ascendente",
     sortDescending: "Descendente",
     recDuo: "Ideal para 2",
@@ -436,6 +437,7 @@ const translations = {
     sortWeight: "Weight",
     sortTime: "Duration",
     sortMaxPlayers: "Max players",
+    sortAcquisitionDate: "Acquisition date",
     sortAscending: "Ascending",
     sortDescending: "Descending",
     recDuo: "Great at 2",
@@ -1669,7 +1671,7 @@ function getFilterControlDefinitions() {
     },
     sort: {
       style: "select",
-      options: [["name", copy.sortName], ["rating", copy.sortRating], ["rank", copy.sortRank], ["weight", copy.sortWeight], ["time", copy.sortTime], ["maxPlayers", copy.sortMaxPlayers]]
+      options: [["name", copy.sortName], ["rating", copy.sortRating], ["rank", copy.sortRank], ["weight", copy.sortWeight], ["time", copy.sortTime], ["maxPlayers", copy.sortMaxPlayers], ["acquisitionDate", copy.sortAcquisitionDate]]
     },
     sortDirection: {
       style: "choice",
@@ -2121,6 +2123,17 @@ function getFilteredGames() {
     .sort(sortGames);
 }
 function sortGames(left, right) {
+  if (state.filters.sort === "acquisitionDate") {
+    const leftHasDate = Number.isFinite(left.acquisitionTimestamp);
+    const rightHasDate = Number.isFinite(right.acquisitionTimestamp);
+    if (leftHasDate !== rightHasDate) return leftHasDate ? -1 : 1;
+
+    const dateComparison = leftHasDate
+      ? left.acquisitionTimestamp - right.acquisitionTimestamp || getDisplayName(left).localeCompare(getDisplayName(right))
+      : getDisplayName(left).localeCompare(getDisplayName(right));
+    return state.filters.sortDirection === "desc" ? dateComparison * -1 : dateComparison;
+  }
+
   let comparison = 0;
   switch (state.filters.sort) {
     case "rating":
