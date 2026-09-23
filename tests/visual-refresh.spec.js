@@ -510,6 +510,35 @@ test("browse supports ascending and descending sort direction", async ({ page })
   expect(descendingTitles).toEqual([...descendingTitles].sort((left, right) => right.localeCompare(left, "es")));
 });
 
+test("acquisition date sorting keeps undated games last in collection and archive", async ({ page }) => {
+  const expectAcquisitionOrder = async (direction) => {
+    const timestamps = await page.evaluate(() => state.filteredGames.map((game) => game.acquisitionTimestamp));
+    const dated = timestamps.filter((timestamp) => Number.isFinite(timestamp));
+    const expected = [...dated].sort((left, right) => direction === "asc" ? left - right : right - left);
+    expect(dated).toEqual(expected);
+    expect(timestamps.slice(dated.length).every((timestamp) => !Number.isFinite(timestamp))).toBe(true);
+  };
+
+  await page.goto(appUrl, { waitUntil: "load" });
+  await openPageByNav(page, "Explorar");
+
+  const sortSelect = page.locator("#sort-filter select");
+  await expect(sortSelect).toContainText("Fecha de adquisición");
+  await sortSelect.selectOption("acquisitionDate");
+  await page.locator("[data-filter-key='sortDirection'][data-filter-value='desc']").click();
+  await expect(page).toHaveURL(/#\/browse\?sort=acquisitionDate&dir=desc&view=grid$/);
+  await expectAcquisitionOrder("desc");
+
+  await page.locator("[data-filter-key='sortDirection'][data-filter-value='asc']").click();
+  await expectAcquisitionOrder("asc");
+
+  await openPageByNav(page, "Archivo");
+  await sortSelect.selectOption("acquisitionDate");
+  await page.locator("[data-filter-key='sortDirection'][data-filter-value='desc']").click();
+  await expect(page).toHaveURL(/#\/archive\?sort=acquisitionDate&dir=desc&view=grid$/);
+  await expectAcquisitionOrder("desc");
+});
+
 test("expansion detail links back to its base game", async ({ page }) => {
   await page.goto(appUrl, { waitUntil: "load" });
   const fixture = await getBaseGameWithExpansionFixture(page);
