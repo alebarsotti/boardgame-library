@@ -34,7 +34,8 @@ const ROUTE_HISTORY_PARAM_MAP = {
 };
 const ROUTE_RANDOM_PARAM_MAP = {
   scope: "scope",
-  draw: "draw"
+  draw: "draw",
+  step: "step"
 };
 const ROUTE_RANDOM_FILTER_KEYS = ["search", "players", "duration", "weight", "physicalLanguage", "bestPlayers", "age", "recommendation", "category", "mechanic"];
 
@@ -243,6 +244,34 @@ const translations = {
     randomHistoryTitle: "Resultados recientes",
     randomHistoryBody: "Sirve para comparar opciones sin guardar nada de forma permanente.",
     randomHistoryEmpty: "Los resultados de esta sesión aparecerán acá.",
+    wizardProgress: "Paso {step} de 4",
+    wizardPlayers: "¿Cuántas personas juegan?",
+    wizardTime: "¿Cuánto tiempo tienen?",
+    wizardWeight: "¿Qué complejidad prefieren?",
+    wizardCount: "¿Cuántas opciones quieren ver?",
+    wizardAnyPlayers: "Cualquier cantidad",
+    wizardAnyTime: "Cualquier duración",
+    wizardAnyWeight: "Cualquier complejidad",
+    wizardUpTo60: "Hasta 60 min",
+    wizardUpTo120: "Hasta 120 min",
+    wizardOver120: "Más de 120 min",
+    wizardMedium: "Media",
+    wizardHeavy: "Alta",
+    wizardCandidateCount: "{count} juegos posibles",
+    wizardBack: "Anterior",
+    wizardNext: "Continuar",
+    wizardReviewAction: "Revisar selección",
+    wizardReviewTitle: "Revisemos la mesa",
+    wizardReviewBody: "Estas son las condiciones del sorteo. Podés ajustarlas antes de revelar los juegos.",
+    wizardEdit: "Editar respuestas",
+    wizardReset: "Empezar de nuevo",
+    wizardNoCandidates: "No hay juegos que cumplan estas condiciones. Ajustá una respuesta para continuar.",
+    wizardDrawCount: "{count} opciones",
+    wizardVetoReplace: "Vetar y reemplazar",
+    wizardVetoed: "Vetados en esta decisión",
+    wizardUndoVeto: "Quitar veto",
+    wizardEmptySlot: "No quedan alternativas para este lugar.",
+    wizardTryReplacement: "Buscar reemplazo",
     historyEyebrow: "Adquisiciones en el tiempo",
     historyTitle: "Historial de adquisiciones",
     historyBody: "Una vista histórica de cuándo fueron entrando juegos a la biblioteca, con foco en años, cobertura y títulos concretos.",
@@ -505,6 +534,34 @@ const translations = {
     randomHistoryTitle: "Recent draws",
     randomHistoryBody: "Useful for comparing options without saving anything permanently.",
     randomHistoryEmpty: "Draws from this session will appear here.",
+    wizardProgress: "Step {step} of 4",
+    wizardPlayers: "How many people are playing?",
+    wizardTime: "How much time do you have?",
+    wizardWeight: "How complex should the game be?",
+    wizardCount: "How many options would you like?",
+    wizardAnyPlayers: "Any player count",
+    wizardAnyTime: "Any duration",
+    wizardAnyWeight: "Any complexity",
+    wizardUpTo60: "Up to 60 min",
+    wizardUpTo120: "Up to 120 min",
+    wizardOver120: "Over 120 min",
+    wizardMedium: "Medium",
+    wizardHeavy: "Heavy",
+    wizardCandidateCount: "{count} possible games",
+    wizardBack: "Back",
+    wizardNext: "Continue",
+    wizardReviewAction: "Review choices",
+    wizardReviewTitle: "Review your table",
+    wizardReviewBody: "These are the draw conditions. You can adjust them before revealing games.",
+    wizardEdit: "Edit answers",
+    wizardReset: "Start over",
+    wizardNoCandidates: "No games match these choices. Adjust an answer to continue.",
+    wizardDrawCount: "{count} options",
+    wizardVetoReplace: "Veto and replace",
+    wizardVetoed: "Vetoed in this decision",
+    wizardUndoVeto: "Remove veto",
+    wizardEmptySlot: "No alternatives remain for this spot.",
+    wizardTryReplacement: "Find replacement",
     historyEyebrow: "Acquisitions over time",
     historyTitle: "Acquisition history",
     historyBody: "A historical view of when games entered the library, centered on years, data coverage, and concrete titles.",
@@ -680,6 +737,8 @@ const state = {
   randomLastAttemptContext: null,
   currentRandomEntryIds: [],
   randomDrawCount: 1,
+  randomWizardStep: 0,
+  randomVetoedIds: [],
   randomRevealTimer: null,
   activeDetailGameId: null,
   historyScope: "all",
@@ -1015,6 +1074,11 @@ function getRandomRouteDrawCount(value) {
   return Math.min(Math.max(1, normalized), RANDOM_HISTORY_LIMIT);
 }
 
+function getRandomRouteStep(value) {
+  const step = Number(value);
+  return Number.isInteger(step) && step >= 0 && step <= 4 ? step : 0;
+}
+
 function readRandomRouteParams(params) {
   const scope = getValidRandomScope(params.get(ROUTE_RANDOM_PARAM_MAP.scope));
   const scopedFilters = readBrowseRouteParams(params, scope);
@@ -1027,6 +1091,7 @@ function readRandomRouteParams(params) {
   return {
     scope,
     drawCount: getRandomRouteDrawCount(params.get(ROUTE_RANDOM_PARAM_MAP.draw)),
+    step: getRandomRouteStep(params.get(ROUTE_RANDOM_PARAM_MAP.step)),
     filtersSnapshot
   };
 }
@@ -1085,6 +1150,9 @@ function normalizeRoute(route) {
     });
     if (randomRoute.drawCount > 1) {
       params.set(ROUTE_RANDOM_PARAM_MAP.draw, String(randomRoute.drawCount));
+    }
+    if (randomRoute.step > 0) {
+      params.set(ROUTE_RANDOM_PARAM_MAP.step, String(randomRoute.step));
     }
   }
 
@@ -1153,6 +1221,9 @@ function buildRouteFromState() {
     if (state.randomDrawCount > 1) {
       params.set(ROUTE_RANDOM_PARAM_MAP.draw, String(state.randomDrawCount));
     }
+    if (state.randomWizardStep > 0) {
+      params.set(ROUTE_RANDOM_PARAM_MAP.step, String(state.randomWizardStep));
+    }
   }
 
   const detailGameId = getValidRouteGameId(state.activeDetailGameId);
@@ -1195,6 +1266,8 @@ function applyRouteToState(route, options = {}) {
       section: randomRoute.scope === "archive" ? "archive" : "owned"
     };
     state.randomDrawCount = randomRoute.drawCount;
+    state.randomWizardStep = randomRoute.step;
+    if (randomRoute.step < 4 && state.randomSelection.length) clearCurrentRandomSelection();
   }
   state.activeDetailGameId = getValidRouteGameId(normalizedRoute.params.get(ROUTE_DETAIL_PARAM));
 
@@ -2293,6 +2366,27 @@ function setRandomDrawCount(value, options = {}) {
   state.randomDrawCount = normalized;
   if (renderNow) render();
   if (syncRoute) writeRouteFromState({ replace });
+}
+
+function setRandomWizardStep(step) {
+  state.randomWizardStep = getRandomRouteStep(step);
+  render();
+  writeRouteFromState();
+}
+
+function resetRandomWizard() {
+  state.randomWizardStep = 0;
+  state.randomVetoedIds = [];
+  clearCurrentRandomSelection();
+  resetFilters();
+}
+
+function editRandomWizardStep(step = 0) {
+  if (state.randomSelection.length) {
+    clearCurrentRandomSelection();
+    state.randomVetoedIds = [];
+  }
+  setRandomWizardStep(step);
 }
 
 function getAcquisitionHistoryScopeGames(scope = state.historyScope) {
@@ -3657,10 +3751,12 @@ function getRulesGuide(game) {
   return baseGuide ? { ...baseGuide, inherited: true, sourceGameId: baseGame.id } : null;
 }
 function drawRandomFromCurrentScope() {
-  if (state.randomRevealState === "revealing") return;
+  if (state.randomRevealState === "revealing" || state.randomWizardStep !== 4) return;
 
   const context = buildRandomContext();
-  const candidates = getFilteredGames();
+  const vetoed = new Set(state.randomVetoedIds);
+  const candidates = getFilteredGames().filter((game) => !vetoed.has(game.id));
+  if (!candidates.length) return;
   const drawCount = getAllowedRandomDrawCount(candidates.length);
   const selection = pickRandomGames(candidates, context, drawCount);
   const revealDuration = getRandomRevealDuration();
@@ -3696,9 +3792,119 @@ function drawRandomFromCurrentScope() {
   }, revealDuration);
 }
 
+function getAvailableRandomCandidates() {
+  const vetoed = new Set(state.randomVetoedIds);
+  return getFilteredGames().filter((game) => !vetoed.has(game.id));
+}
+
+function getWizardChoices(step) {
+  const copy = translations[state.language];
+  if (step === 0) return [["", copy.wizardAnyPlayers], ...[1, 2, 3, 4, 5].map((count) => [String(count), String(count)])];
+  if (step === 1) return [
+    ["", copy.wizardAnyTime], ["quick", copy.timeQuick],
+    ["quick,standard", copy.wizardUpTo60],
+    ["quick,standard,extended", copy.wizardUpTo120], ["epic", copy.wizardOver120]
+  ];
+  if (step === 2) return [
+    ["", copy.wizardAnyWeight], ["light", copy.weightLight],
+    ["medium-light,medium-heavy", copy.wizardMedium], ["heavy", copy.wizardHeavy]
+  ];
+  return Array.from({ length: 5 }, (_, index) => [String(index + 1), formatTemplate(copy.wizardDrawCount, { count: index + 1 })]);
+}
+
+function getWizardSelectedValue(step) {
+  if (step === 0) return state.filters.players || "";
+  if (step === 1 || step === 2) {
+    const key = step === 1 ? "duration" : "weight";
+    const selected = new Set(state.filters[key] || []);
+    return getWizardChoices(step).find(([value]) => {
+      const values = value ? value.split(",") : [];
+      return values.length === selected.size && values.every((item) => selected.has(item));
+    })?.[0] ?? null;
+  }
+  return String(state.randomDrawCount);
+}
+
+function setWizardChoice(step, value) {
+  if (step === 0) setFilter("players", value);
+  else if (step === 1 || step === 2) setFilter(step === 1 ? "duration" : "weight", value ? value.split(",") : []);
+  else setRandomDrawCount(Number(value));
+}
+
+function renderRandomWizard() {
+  const copy = translations[state.language];
+  const titles = [copy.wizardPlayers, copy.wizardTime, copy.wizardWeight, copy.wizardCount];
+  const step = state.randomWizardStep;
+  const candidateCount = getAvailableRandomCandidates().length;
+  const progress = step < 4 ? formatTemplate(copy.wizardProgress, { step: step + 1 }) : copy.wizardReviewTitle;
+  const options = step < 4 ? getWizardChoices(step) : [];
+  const selected = step < 4 ? getWizardSelectedValue(step) : null;
+  const answerMarkup = options.map(([value, label]) => `
+    <button class="random-wizard__option ${selected === value ? "is-selected" : ""}" type="button"
+      data-wizard-choice="${escapeAttribute(value)}" aria-pressed="${selected === value}"
+      ${step === 3 && Number(value) > Math.max(1, candidateCount) ? "disabled" : ""}>${escapeHtml(label)}</button>
+  `).join("");
+  const reviewMarkup = titles.map((title, index) => {
+    const choice = getWizardChoices(index).find(([value]) => value === getWizardSelectedValue(index));
+    const advancedValue = index === 1 || index === 2
+      ? getMultiFilterSummary(index === 1 ? "duration" : "weight", state.filters[index === 1 ? "duration" : "weight"])
+      : "";
+    return `<button class="random-wizard__review-item" type="button" data-wizard-edit="${index}">
+      <span>${escapeHtml(title)}</span><strong>${escapeHtml(choice?.[1] || advancedValue || copy.anyOption)}</strong>
+    </button>`;
+  }).join("");
+  elements.randomPageContent.innerHTML = `
+    <div class="random-stage__surface random-stage__surface--wizard">
+      <div class="random-wizard__progress" aria-label="${escapeAttribute(progress)}">
+        ${titles.map((_, index) => `<span class="${index <= step ? "is-active" : ""}"></span>`).join("")}
+      </div>
+      <p class="eyebrow">${escapeHtml(progress)}</p>
+      <h3>${escapeHtml(step < 4 ? titles[step] : copy.wizardReviewTitle)}</h3>
+      ${step === 4 ? `<p>${escapeHtml(copy.wizardReviewBody)}</p><div class="random-wizard__review">${reviewMarkup}</div>`
+        : `<div class="random-wizard__options">${answerMarkup}</div>`}
+      <p class="random-wizard__count" aria-live="polite">${escapeHtml(formatTemplate(copy.wizardCandidateCount, { count: candidateCount }))}</p>
+      ${step === 4 && !candidateCount ? `<p class="random-wizard__warning">${escapeHtml(copy.wizardNoCandidates)}</p>` : ""}
+      <div class="random-actions random-wizard__actions">
+        ${step > 0 ? `<button class="button button--ghost" type="button" data-wizard-back>${escapeHtml(copy.wizardBack)}</button>` : ""}
+        ${step < 4 ? `<button class="button button--primary" type="button" data-wizard-next>${escapeHtml(step === 3 ? copy.wizardReviewAction : copy.wizardNext)}</button>`
+          : `<button class="button button--primary" type="button" data-wizard-draw ${candidateCount ? "" : "disabled"}>${escapeHtml(copy.randomAction)}</button>`}
+        <button class="button button--ghost" type="button" data-wizard-reset>${escapeHtml(copy.wizardReset)}</button>
+      </div>
+    </div>
+  `;
+  elements.randomPageContent.querySelectorAll("[data-wizard-choice]").forEach((button) => {
+    button.addEventListener("click", () => setWizardChoice(step, button.dataset.wizardChoice));
+  });
+  elements.randomPageContent.querySelectorAll("[data-wizard-edit]").forEach((button) => {
+    button.addEventListener("click", () => setRandomWizardStep(Number(button.dataset.wizardEdit)));
+  });
+  elements.randomPageContent.querySelector("[data-wizard-back]")?.addEventListener("click", () => setRandomWizardStep(step - 1));
+  elements.randomPageContent.querySelector("[data-wizard-next]")?.addEventListener("click", () => setRandomWizardStep(step + 1));
+  elements.randomPageContent.querySelector("[data-wizard-draw]")?.addEventListener("click", drawRandomFromCurrentScope);
+  elements.randomPageContent.querySelector("[data-wizard-reset]")?.addEventListener("click", resetRandomWizard);
+}
+
+function replaceRandomSlot(index, vetoCurrent = true) {
+  if (state.randomRevealState !== "result" || index < 0 || index >= state.randomSelection.length) return;
+  const current = state.randomSelection[index];
+  if (vetoCurrent && current && !state.randomVetoedIds.includes(current.id)) state.randomVetoedIds.push(current.id);
+  const excluded = new Set([...state.randomVetoedIds, ...state.randomSelection.filter((game, slot) => slot !== index && game).map((game) => game.id)]);
+  const context = buildRandomContext();
+  const pool = getFilteredGames().filter((game) => !excluded.has(game.id));
+  const replacement = pickRandomGames(pool, context, 1)[0] || null;
+  state.randomSelection[index] = replacement;
+  if (replacement) {
+    const [entry] = pushRandomHistory([replacement], context);
+    state.currentRandomEntryIds[index] = entry.id;
+  } else {
+    state.currentRandomEntryIds[index] = null;
+  }
+  render();
+}
+
 function renderRandomPage() {
   const copy = translations[state.language];
-  document.querySelector("#random-page-trigger").disabled = state.randomRevealState === "revealing";
+  document.querySelector("#random-page-trigger").disabled = state.randomRevealState === "revealing" || state.randomWizardStep !== 4 || !getAvailableRandomCandidates().length;
   const currentContext = buildRandomContext();
   const sourceLabel = currentContext.scope === "archive" ? copy.drawnFromArchive : copy.drawnFromBrowse;
   const filtersSummary = getRandomSummary(currentContext.filtersSnapshot) || `<span class="chip">${escapeHtml(copy.anyOption)}</span>`;
@@ -3749,32 +3955,7 @@ function renderRandomPage() {
   }
 
   if (!state.randomSelection.length) {
-    const showStaleState = Boolean(state.randomLastAttemptContext) && isStale;
-    const attemptedCurrentScope = state.randomLastAttemptContext && state.randomLastAttemptContext.signature === currentContext.signature;
-    const emptyTitle = showStaleState
-      ? copy.randomPageStaleTitle
-      : attemptedCurrentScope
-        ? copy.randomPageNoCandidatesTitle
-        : copy.randomPageEmptyTitle;
-    const emptyBody = showStaleState
-      ? copy.randomPageStaleBody
-      : attemptedCurrentScope
-        ? copy.randomPageNoCandidatesBody
-        : copy.randomPageEmptyBody;
-
-    elements.randomPageContent.innerHTML = `
-      <div class="random-stage__surface random-stage__surface--empty">
-        <p class="eyebrow">${escapeHtml(copy.randomTitle)}</p>
-        <h3>${escapeHtml(emptyTitle)}</h3>
-        <p>${escapeHtml(emptyBody)}</p>
-        <div class="random-actions">
-          <button class="button button--primary" id="random-page-empty-trigger" type="button">${escapeHtml(copy.randomAction)}</button>
-          <button class="button button--ghost" id="random-page-open-workspace" type="button">${escapeHtml(copy.randomPageOpenWorkspace)}</button>
-        </div>
-      </div>
-    `;
-    elements.randomPageContent.querySelector("#random-page-empty-trigger").addEventListener("click", drawRandomFromCurrentScope);
-    elements.randomPageContent.querySelector("#random-page-open-workspace").addEventListener("click", () => setActivePage(state.lastWorkspacePage));
+    renderRandomWizard();
     renderRandomHistory();
     return;
   }
@@ -3788,6 +3969,10 @@ function renderRandomPage() {
       <div class="random-result-list">
         ${state.randomSelection
           .map((game, index) => {
+            if (!game) return `<article class="random-result-card random-result-card--empty">
+              <p>${escapeHtml(copy.wizardEmptySlot)}</p>
+              <div class="random-actions"><button class="button button--ghost" type="button" data-random-slot-retry="${index}" ${getAvailableRandomCandidates().length ? "" : "disabled"}>${escapeHtml(copy.wizardTryReplacement)}</button></div>
+            </article>`;
             const displayName = getDisplayName(game);
             const description = getGameContent(game, "summary");
             return `
@@ -3814,6 +3999,7 @@ function renderRandomPage() {
                 </div>
                 <div class="random-actions">
                   <button class="button button--primary" data-random-result-details="${index}" type="button">${escapeHtml(copy.openDetails)}</button>
+                  <button class="button button--ghost" data-random-result-veto="${index}" type="button">${escapeHtml(copy.wizardVetoReplace)}</button>
                 </div>
               </article>
             `;
@@ -3821,14 +4007,34 @@ function renderRandomPage() {
           .join("")}
       </div>
       <div class="random-actions">
-        <button class="button button--ghost" id="random-page-reroll" type="button">${escapeHtml(copy.reroll)}</button>
+        <button class="button button--ghost" id="random-page-reroll" type="button" ${getAvailableRandomCandidates().length ? "" : "disabled"}>${escapeHtml(copy.reroll)}</button>
+        <button class="button button--ghost" data-random-edit type="button">${escapeHtml(copy.wizardEdit)}</button>
+        <button class="button button--ghost" data-random-reset type="button">${escapeHtml(copy.wizardReset)}</button>
       </div>
+      ${state.randomVetoedIds.length ? `<div class="random-wizard__vetoes"><h4>${escapeHtml(copy.wizardVetoed)}</h4><div class="random-actions">${state.randomVetoedIds.map((id) => {
+        const game = getGameById(id);
+        return game ? `<button class="button button--ghost button--small" type="button" data-random-undo-veto="${id}">${escapeHtml(getDisplayName(game))} · ${escapeHtml(copy.wizardUndoVeto)}</button>` : "";
+      }).join("")}</div></div>` : ""}
     </div>
   `;
   state.randomSelection.forEach((game, index) => {
-    injectCover(elements.randomPageContent.querySelector(`#random-result-cover-${index}`), game, 240);
+    if (game) injectCover(elements.randomPageContent.querySelector(`#random-result-cover-${index}`), game, 240);
   });
   elements.randomPageContent.querySelector("#random-page-reroll").addEventListener("click", drawRandomFromCurrentScope);
+  elements.randomPageContent.querySelector("[data-random-edit]").addEventListener("click", () => editRandomWizardStep(0));
+  elements.randomPageContent.querySelector("[data-random-reset]").addEventListener("click", resetRandomWizard);
+  elements.randomPageContent.querySelectorAll("[data-random-result-veto]").forEach((button) => {
+    button.addEventListener("click", () => replaceRandomSlot(Number(button.dataset.randomResultVeto)));
+  });
+  elements.randomPageContent.querySelectorAll("[data-random-slot-retry]").forEach((button) => {
+    button.addEventListener("click", () => replaceRandomSlot(Number(button.dataset.randomSlotRetry), false));
+  });
+  elements.randomPageContent.querySelectorAll("[data-random-undo-veto]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.randomVetoedIds = state.randomVetoedIds.filter((id) => id !== Number(button.dataset.randomUndoVeto));
+      render();
+    });
+  });
   elements.randomPageContent.querySelectorAll("[data-random-result-details]").forEach((button) => {
     button.addEventListener("click", () => {
       const game = state.randomSelection[Number(button.dataset.randomResultDetails)];
@@ -3936,7 +4142,9 @@ function buildRandomFiltersSnapshot(scope = state.lastWorkspacePage === "archive
     physicalLanguage: state.filters.physicalLanguage || "",
     bestPlayers: state.filters.bestPlayers || "",
     age: state.filters.age || "",
-    recommendation: state.filters.recommendation || ""
+    recommendation: state.filters.recommendation || "",
+    category: state.filters.category || "",
+    mechanic: state.filters.mechanic || ""
   };
 }
 
@@ -3951,7 +4159,9 @@ function serializeRandomContext(scope, filtersSnapshot) {
     physicalLanguage: filtersSnapshot.physicalLanguage,
     bestPlayers: filtersSnapshot.bestPlayers,
     age: filtersSnapshot.age,
-    recommendation: filtersSnapshot.recommendation
+    recommendation: filtersSnapshot.recommendation,
+    category: filtersSnapshot.category,
+    mechanic: filtersSnapshot.mechanic
   });
 }
 
@@ -3992,6 +4202,7 @@ function clearCurrentRandomSelection() {
   state.randomSelection = [];
   state.randomSelectionContext = null;
   state.currentRandomEntryIds = [];
+  state.randomVetoedIds = [];
   if (state.randomRevealState !== "revealing") {
     state.randomRevealState = "idle";
   }

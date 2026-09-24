@@ -492,6 +492,57 @@ test("random interactions update hash and preserve workspace context", async ({ 
   await expect(page).toHaveURL(/#\/browse\?search=munchkin&sort=name&dir=asc&view=grid&rec=quick$/);
 });
 
+test("guided random draw keeps other cards when one result is vetoed", async ({ page }) => {
+  await page.goto(`${appUrl}#/random`, { waitUntil: "load" });
+  await expect(page.locator("#random-page-content")).toContainText("¿Cuántas personas juegan?");
+  await page.locator('[data-wizard-choice="3"]').click();
+  await page.locator("[data-wizard-next]").click();
+  await expect(page).toHaveURL(/#\/random\?players=3&step=1$/);
+  await page.reload();
+  await expect(page.locator("#random-page-content")).toContainText("¿Cuánto tiempo tienen?");
+  await page.locator("[data-wizard-next]").click();
+  await page.locator("[data-wizard-next]").click();
+  await page.locator('[data-wizard-choice="3"]').click();
+  await page.locator("[data-wizard-next]").click();
+  await expect(page.locator("#random-page-content")).toContainText("Revisemos la mesa");
+  await page.locator("[data-wizard-draw]").click();
+  await expect(page.locator(".random-result-card")).toHaveCount(3);
+
+  const before = await page.locator(".random-result-card h4").allTextContents();
+  await page.locator('[data-random-result-veto="1"]').click();
+  const after = await page.locator(".random-result-card h4").allTextContents();
+  expect(after[0]).toBe(before[0]);
+  expect(after[2]).toBe(before[2]);
+  expect(after[1]).not.toBe(before[1]);
+  expect(new Set(after).size).toBe(3);
+  await expect(page.locator(".random-wizard__vetoes")).toContainText(before[1]);
+  await page.locator("#random-page-reroll").click();
+  await expect(page.locator(".random-result-card")).toHaveCount(3);
+  const rerolled = await page.locator(".random-result-card h4").allTextContents();
+  expect(rerolled).not.toContain(before[1]);
+  expect(new Set(rerolled).size).toBe(3);
+  await page.locator("[data-random-undo-veto]").first().click();
+  await expect(page.locator(".random-wizard__vetoes")).toHaveCount(0);
+});
+
+test("guided random draw allows up to five results", async ({ page }) => {
+  await page.goto(`${appUrl}#/random?step=3`, { waitUntil: "load" });
+  await page.locator('[data-wizard-choice="5"]').click();
+  await expect(page.locator('[data-wizard-choice="5"]')).toHaveAttribute("aria-pressed", "true");
+  await page.locator("[data-wizard-next]").click();
+  await expect(page.locator("#random-page-content")).toContainText("5 opciones");
+  await page.locator("[data-wizard-draw]").click();
+  await expect(page.locator(".random-result-card")).toHaveCount(5);
+});
+
+test("guided random draw blocks an empty pool and keeps review editable", async ({ page }) => {
+  await page.goto(`${appUrl}#/random?search=no-such-game-xyz&step=4`, { waitUntil: "load" });
+  await expect(page.locator(".random-wizard__warning")).toBeVisible();
+  await expect(page.locator("[data-wizard-draw]")).toBeDisabled();
+  await page.locator('[data-wizard-edit="0"]').click();
+  await expect(page.locator("#random-page-content")).toContainText("¿Cuántas personas juegan?");
+});
+
 test("browse supports ascending and descending sort direction", async ({ page }) => {
   await page.goto(appUrl, { waitUntil: "load" });
   await page.getByRole("button", { name: "Explorar", exact: true }).click();
