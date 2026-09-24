@@ -27,6 +27,7 @@ Completed specs should be moved out of the active roadmap and into [`archive/`](
 
 Recently archived:
 
+- [`archive/12-spec-guided-random-wizard.md`](./archive/12-spec-guided-random-wizard.md): shipped the guided Random flow with configurable shortlist and reversible per-result vetoes
 - [`archive/07-spec-ai-assisted-localized-content.md`](./archive/07-spec-ai-assisted-localized-content.md): shipped the local-first localized-content generation and bilingual dataset model
 - [`archive/06-spec-visual-design-system-refresh.md`](./archive/06-spec-visual-design-system-refresh.md): shipped the broader visual refresh with theme preferences, section identity, and refreshed typography hierarchy
 - [`archive/00-spec-remove-name-overrides-ui.md`](./archive/00-spec-remove-name-overrides-ui.md): removed the current game-detail controls for editing names and importing or exporting overrides

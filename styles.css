@@ -1260,6 +1260,39 @@ body[data-page="history"] .history-kpi-card {
   max-width: 14ch;
 }
 
+.random-stage__surface--wizard { align-content: start; gap: 20px; }
+.random-wizard__progress { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.random-wizard__progress span { height: 5px; border-radius: 999px; background: var(--line-strong); }
+.random-wizard__progress span.is-active { background: var(--accent); }
+.random-wizard__options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.random-wizard__option,
+.random-wizard__review-item {
+  min-height: 70px;
+  padding: 14px 18px;
+  border: 1px solid var(--line-strong);
+  border-radius: 20px;
+  background: var(--surface-muted);
+  color: var(--text);
+  font: inherit;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+.random-wizard__option:hover,
+.random-wizard__review-item:hover { border-color: var(--accent); }
+.random-wizard__option.is-selected { border-color: var(--accent); background: var(--accent-soft); }
+.random-wizard__option:disabled { opacity: .45; cursor: not-allowed; }
+.random-wizard__option:focus-visible,
+.random-wizard__review-item:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.random-wizard__review { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.random-wizard__review-item span { display: block; margin-bottom: 6px; color: var(--muted); font-size: .78rem; font-weight: 600; }
+.random-wizard__review-item strong { display: block; }
+.random-wizard__count { font-weight: 800; color: var(--accent-strong) !important; }
+.random-wizard__warning { padding: 12px 16px; border: 1px solid var(--accent); border-radius: 16px; }
+.random-wizard__vetoes { display: grid; gap: 10px; padding-top: 12px; border-top: 1px solid var(--line); }
+.random-wizard__vetoes h4 { margin: 0; font-family: var(--font-serif); }
+.random-result-card--empty { min-height: 150px; align-content: center; }
+
 .random-summary__meta {
   align-items: stretch;
 }
@@ -3425,4 +3458,6 @@ body[data-theme="dark"] .site-footer__brand img {
     max-width: none;
     font-size: clamp(2rem, 11vw, 3.2rem);
   }
+  .random-wizard__options,
+  .random-wizard__review { grid-template-columns: 1fr; }
 }
